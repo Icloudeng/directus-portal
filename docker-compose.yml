@@ -1,0 +1,15 @@
+version: '3.8'
+services:
+  db:
+    image: postgres:12-alpine
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: icloudeng_portal
+    networks:
+      - icloudeng_portal
+    ports:
+      - "5432:5432"
+
+networks:
+  icloudeng_portal: {}
