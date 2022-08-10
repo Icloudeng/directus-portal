@@ -1,0 +1,4 @@
+---
+# handlers file for tools/ansible/roles/firewall
+- name: restart ufw
+  service: name=ufw state=restarted enabled=yes

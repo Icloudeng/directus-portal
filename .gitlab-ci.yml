@@ -1,0 +1,45 @@
+cache:
+  paths:
+    - node_modules/
+    - apps/web/node_modules/
+    - apps/cms/node_modules/
+
+stages:
+  - front-test
+  - deploy-job
+
+# before_script:
+# - composer install
+
+front-test:
+  stage: front-test
+  only:
+    refs:
+      - main
+  script:
+    # Install Node 16
+    - curl -sL https://deb.nodesource.com/setup_16.x | bash -
+    - apt-get install -y nodejs
+    # Install PNPM and project Node dependencies.
+    - npm install pnpm --location=global
+    - pnpm install
+    # run test or build
+    - pnpm -r build
+
+deploy-job:
+  stage: deploy-job
+  image: python:3.8
+  only:
+    refs:
+      - main
+  environment:
+    name: testing
+  before_script:
+    - export ANSIBLE_HOST_KEY_CHECKING=False
+    - bash cicd_vars.sh
+    - make ansible-install-cd
+    - eval $(ssh-agent -s)
+    - ssh-add <(echo "$ANSIBLE_DEPLOY_KEY")
+  script:
+    - make provision-cd
+  when: manual

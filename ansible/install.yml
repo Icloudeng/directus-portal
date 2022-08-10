@@ -1,0 +1,27 @@
+---
+# https://docs.ansible.com/ansible/latest/collections/ansible/builtin/
+- name: Install all applications prerequisites
+  hosts: remote
+  become: yes
+
+  pre_tasks:
+    - name: "APT | Update & Upgrade"
+      become: yes
+      apt:
+        upgrade: dist
+        update_cache: yes
+
+  environment:
+    APP_ENV: "{{ app_env }}"
+    APP_DEBUG: "{{ app_debug }}"
+
+  tasks:
+
+  roles:
+    - { role: tools, tags: tools }
+    - { role: docker, tags: docker, when: docker or docker_install }
+    - { role: firewall, tags: firewall }
+    - { role: nginx, tags: nginx }
+    - { role: pgsql, tags: pgsql, when: not docker }
+    - { role: node, tags: node, when: not docker }
+    - { role: app, tags: app }

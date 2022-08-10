@@ -1,0 +1,140 @@
+proxy_cache_path /var/cache/nginx levels=1:2 keys_zone=STATIC:10m inactive=7d use_temp_path=off;
+
+# Disable logging for medias (resize/convert)
+map $request $loggable {
+     ~/media/* 0;
+     default 1;
+}
+
+upstream nextjs_upstream {
+  server {{ client_host }};
+}
+
+upstream php_upstream {
+  server {{ server_host }};
+}
+
+server {
+    listen                  443 ssl http2;
+    listen                  [::]:443 ssl http2;
+    server_name             {{ domain }};
+
+    # Page d'erreurs
+    # error_page 400 401 402 403 404 405 406 407 408 409 410 411 412 413 414 415 416 417 418 421 422 423 424 425 426 428 429 431 451 500 501 502 503 504 505 506 507 508 510 511 /error.html;
+
+    # SSL
+{% if letsencrypt %}
+    ssl_certificate         /etc/letsencrypt/live/{{ domain }}/fullchain.pem;
+    ssl_certificate_key     /etc/letsencrypt/live/{{ domain }}/privkey.pem;
+    ssl_trusted_certificate /etc/letsencrypt/live/{{ domain }}/chain.pem;
+{% endif %}
+
+    # security
+    include                 nginxconfig.io/security.conf;
+
+    # logging
+    access_log              {{ root_path }}/var/log/access.log combinedt if=$loggable;
+    error_log               {{ root_path }}/var/log/error.log warn;
+
+    # Disable CEO index
+    add_header X-Robots-Tag "noindex, nofollow, nosnippet, noarchive";
+
+    proxy_http_version 1.1;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection "upgrade";
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Proto $scheme;
+    proxy_set_header X-Forwarded-Host $host;
+    proxy_set_header X-Forwarded-Port $server_port;
+    proxy_cache_bypass $http_upgrade;
+
+    # Server config
+{% if client_host %}
+    location / {
+        proxy_pass http://nextjs_upstream;
+    }
+
+    location ^~ /_next/static {
+        proxy_cache STATIC;
+        proxy_pass http://nextjs_upstream;
+
+        # For testing cache - remove before deploying to production
+        # add_header X-Cache-Status $upstream_cache_status;
+    }
+
+    location ^~ /static {
+        proxy_cache STATIC;
+        proxy_ignore_headers Cache-Control;
+        proxy_cache_valid 60m;
+        proxy_pass http://nextjs_upstream;
+
+        # For testing cache - remove before deploying to production
+        # add_header X-Cache-Status $upstream_cache_status;
+    }
+
+
+    location ~ ^/[A-Za-z0-9-_]+\.(jpe?g|png|gif|ico)$ {
+        proxy_cache STATIC;
+        proxy_ignore_headers Cache-Control;
+        proxy_cache_valid 60m;
+        proxy_pass http://nextjs_upstream;
+
+        # For testing cache - remove before deploying to production
+        # add_header X-Cache-Status $upstream_cache_status;
+    }
+
+    location ~ ^/assets\/.+\.(jpe?g|png|gif|ico)$ {
+        proxy_cache STATIC;
+        proxy_ignore_headers Cache-Control;
+        proxy_cache_valid 60m;
+        proxy_pass http://nextjs_upstream;
+
+        # For testing cache - remove before deploying to production
+        # add_header X-Cache-Status $upstream_cache_status;
+    }
+{% endif %}
+
+    # Server config
+{% if server_host %}
+    location /api {
+        proxy_pass http://php_upstream;
+    }
+
+    location ^~ /bundles {
+        proxy_cache STATIC;
+        proxy_ignore_headers Cache-Control;
+        proxy_cache_valid 60m;
+        proxy_pass http://php_upstream;
+
+        # For testing cache - remove before deploying to production
+        # add_header X-Cache-Status $upstream_cache_status;
+    }
+
+    location ^~ /uploads {
+        proxy_cache STATIC;
+        proxy_ignore_headers Cache-Control;
+        proxy_cache_valid 60m;
+        proxy_pass http://php_upstream;
+
+        # For testing cache - remove before deploying to production
+        # add_header X-Cache-Status $upstream_cache_status;
+    }
+{% endif %}
+
+    # additional config
+    include nginxconfig.io/general.conf;
+}
+
+# HTTP redirect
+server {
+    listen      80;
+    listen      [::]:80;
+    server_name {{ domain }};
+    include     nginxconfig.io/letsencrypt.conf;
+
+    location / {
+        return 301 https://{{ domain }}$request_uri;
+    }
+}
