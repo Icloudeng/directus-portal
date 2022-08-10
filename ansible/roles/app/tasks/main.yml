@@ -1,0 +1,10 @@
+---
+# tasks file for ansible/roles/app
+- name: App Repository | Clone
+  become: false
+  git:
+    repo: "{{ app_git_repo }}"
+    dest: "{{ root_path }}"
+    accept_newhostkey: yes
+    force: yes
+    version: "{{ app_git_version }}"

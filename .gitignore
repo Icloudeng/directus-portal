@@ -43,3 +43,5 @@ venv/
 
 # Ansible
 .vault_pass
+
+.husky/

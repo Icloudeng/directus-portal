@@ -43,10 +43,6 @@ postgres-docker:
 # ============================
 
 
-.PHONY: generate-jwt-keypair
-generate-jwt-keypair: vendor/autoload.php
-	$(sy) lexik:jwt:generate-keypair
-
 # ============================
 # Dev server
 # ============================
@@ -80,7 +76,7 @@ else
 endif
 .PHONY: ansible-playbook
 ansible-playbook:
-	ansible-playbook --vault-password-file .vault_pass -i tools/ansible/hosts.yml tools/ansible/install.yml $(TAGSD)
+	ansible-playbook --vault-password-file .vault_pass -i ansible/hosts.yml ansible/install.yml $(TAGSD)
 
 
 ## Provision (deploy)
@@ -104,7 +100,7 @@ provision-cd:
 .PHONY: ansible-galaxy
 role?=
 ansible-role: .venv/bin/ansible
-	$(source) $(venv) && ansible-galaxy init tools/ansible/roles/$(role)
+	$(source) $(venv) && ansible-galaxy init ansible/roles/$(role)
 
 
 .PHONY: vault-gen

@@ -20,7 +20,7 @@
 
 - name: LetsEncrypt | Certbot certificate
   shell:
-    cmd: "certbot certonly --webroot -d {{ domain }} --email contact@{{ company_domain }} -w /var/www/_letsencrypt -n --agree-tos --force-renewal"
+    cmd: "certbot certonly --webroot -d {{ domain }} -d www.{{ domain }} -d {{ admin_domain }} --email contact@{{ company_domain }} -w /var/www/_letsencrypt -n --agree-tos --force-renewal"
     creates: "/etc/letsencrypt/live/{{ domain }}/fullchain.pem"
 
 - name: LetsEncrypt | Reload nginx on renewal
