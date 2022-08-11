@@ -11,9 +11,9 @@ export default function HomePage() {
       {/* <Seo /> */}
 
       <main>
-        <section className='bg-white'>
-          <div className='layout flex min-h-screen flex-col items-center justify-center text-center'>
-            <h1 className='mt-4'>
+        <section className=''>
+          <div className='layout flex flex-col items-center'>
+            <h1 className='dark:text-dark text-blue-500'>
               Hello from Cloud IT Engineering portal
             </h1>
           </div>

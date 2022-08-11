@@ -33,6 +33,7 @@ importers:
       lint-staged: ^12.5.0
       next: ^12.2.4
       next-sitemap: ^2.5.28
+      next-themes: ^0.2.0
       postcss: ^8.4.14
       prettier: ^2.7.1
       prettier-plugin-tailwindcss: ^0.1.13
@@ -45,6 +46,7 @@ importers:
     dependencies:
       clsx: 1.2.1
       next: 12.2.4_biqbaboplfbrettd7655fr4n2y
+      next-themes: 0.2.0_vyccxgqxcnj5vudpssiumaxlme
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
       react-icons: 4.4.0_react@18.2.0
@@ -9205,6 +9207,18 @@ packages:
       minimist: 1.2.6
       next: 12.2.4_biqbaboplfbrettd7655fr4n2y
     dev: true
+
+  /next-themes/0.2.0_vyccxgqxcnj5vudpssiumaxlme:
+    resolution: {integrity: sha512-myhpDL4vadBD9YDSHiewqvzorGzB03N84e+3LxCwHRlM/hiBOaW+UsKsQojQAzC7fdcJA0l2ppveXcYaVV+hxQ==}
+    peerDependencies:
+      next: '*'
+      react: '*'
+      react-dom: '*'
+    dependencies:
+      next: 12.2.4_biqbaboplfbrettd7655fr4n2y
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+    dev: false
 
   /next/12.2.4_biqbaboplfbrettd7655fr4n2y:
     resolution: {integrity: sha512-b1xlxEozmAWokAXzXsi5vlmU/IfJcFNIJA8dpU5UdkFbyDPio8wwb8mAQ/Y7rGtfTgG/t/u49BiyEA+xAgFvow==}
