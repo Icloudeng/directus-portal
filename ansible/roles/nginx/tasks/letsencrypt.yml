@@ -18,10 +18,16 @@
     name: nginx
     state: reloaded
 
-- name: LetsEncrypt | Certbot certificate
+- name: LetsEncrypt | Certbot {{ domain }} certificate
   shell:
-    cmd: "certbot certonly --webroot -d {{ domain }} -d www.{{ domain }} -d {{ admin_domain }} --email contact@{{ company_domain }} -w /var/www/_letsencrypt -n --agree-tos --force-renewal"
+    cmd: "certbot certonly --webroot -d {{ domain }} -d www.{{ domain }} --email contact@{{ company_domain }} -w /var/www/_letsencrypt -n --agree-tos --force-renewal"
     creates: "/etc/letsencrypt/live/{{ domain }}/fullchain.pem"
+
+
+- name: LetsEncrypt | Certbot {{ admin_domain }} certificate
+  shell:
+    cmd: "certbot certonly --webroot -d {{ admin_domain }} --email contact@{{ company_domain }} -w /var/www/_letsencrypt -n --agree-tos --force-renewal"
+    creates: "/etc/letsencrypt/live/{{ admin_domain }}/fullchain.pem"
 
 - name: LetsEncrypt | Reload nginx on renewal
   copy:

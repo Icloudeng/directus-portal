@@ -25,9 +25,9 @@
 
 # CMS App
 #
-- name: CMS App | App setup
+- name: CMS App | App bootstrap
   become: false
-  command: pnpm run setup
+  command: pnpm run bootstrap
   args:
     chdir: "{{ root_path }}/apps/cms"
     creates: "{{ root_path }}/apps/cms/setup.txt"
@@ -43,6 +43,7 @@
   command: pnpm run apply
   args:
     chdir: "{{ root_path }}/apps/cms"
+    removes: "{{ root_path }}/apps/cms/snapshot.yaml"
 
 - name: CMS App | Delete old pm2 process
   command: "pm2 delete {{ admin_domain }}"

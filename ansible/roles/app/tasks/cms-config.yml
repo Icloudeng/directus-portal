@@ -53,7 +53,7 @@
 - name: App CMS .env config | Redis
   blockinfile:
     path: "{{ env_file }}"
-    insertafter: "^CACHE_ENABLED="
+    insertafter: "CACHE_ENABLED=true"
     block: |
       CACHE_STORE=redis
       CACHE_REDIS_HOST=127.0.0.1
