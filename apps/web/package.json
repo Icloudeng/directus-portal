@@ -15,11 +15,12 @@
     "format": "prettier -w .",
     "format:check": "prettier -c .",
     "postbuild": "next-sitemap --config next-sitemap.config.js",
-    "prepare": "husky install"
+    "prepare": "cd ../.. husky install"
   },
   "dependencies": {
     "clsx": "^1.2.1",
     "next": "^12.2.4",
+    "next-themes": "^0.2.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.4.0",
