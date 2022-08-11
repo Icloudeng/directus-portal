@@ -35,3 +35,16 @@ lerna-debug.log*
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
+
+
+# Python venv
+.venv/
+venv/
+
+# Ansible
+.vault_pass
+
+.husky/
+
+
+/var/

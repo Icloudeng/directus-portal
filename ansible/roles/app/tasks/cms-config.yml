@@ -1,0 +1,66 @@
+- name: App CMS .env config
+  set_fact:
+    env_file: "{{ root_path }}/apps/cms/.env"
+
+- name: App CMS .env config | ADMIN_EMAIL
+  lineinfile:
+    path: "{{ env_file }}"
+    regexp: "^ADMIN_EMAIL="
+    line: "ADMIN_EMAIL={{ portaladmin_email }}"
+
+- name: App CMS .env config | ADMIN_PASSWORD
+  lineinfile:
+    path: "{{ env_file }}"
+    regexp: "^ADMIN_PASSWORD="
+    line: "ADMIN_PASSWORD={{ portaladmin_password }}"
+
+- name: App CMS .env config | DB_DATABASE
+  lineinfile:
+    path: "{{ env_file }}"
+    regexp: "^DB_DATABASE="
+    line: "DB_DATABASE={{ database }}"
+
+- name: App CMS .env config | DB_USER
+  lineinfile:
+    path: "{{ env_file }}"
+    regexp: "^DB_USER="
+    line: "DB_USER={{ database }}"
+
+- name: App CMS .env config | DB_PASSWORD
+  lineinfile:
+    path: "{{ env_file }}"
+    regexp: "^DB_PASSWORD="
+    line: "DB_PASSWORD={{ database_password }}"
+
+- name: App CMS .env config | CACHE_ENABLED
+  lineinfile:
+    path: "{{ env_file }}"
+    regexp: "^CACHE_ENABLED="
+    line: "CACHE_ENABLED=true"
+
+- name: App CMS .env config | RATE_LIMITER_ENABLED
+  lineinfile:
+    path: "{{ env_file }}"
+    regexp: "^RATE_LIMITER_ENABLED="
+    line: "RATE_LIMITER_ENABLED=true"
+
+- name: App CMS .env config | RATE_LIMITER_STORE
+  lineinfile:
+    path: "{{ env_file }}"
+    regexp: "^RATE_LIMITER_STORE="
+    line: "RATE_LIMITER_STORE=redis"
+
+- name: App CMS .env config | Redis
+  blockinfile:
+    path: "{{ env_file }}"
+    insertafter: "CACHE_ENABLED=true"
+    block: |
+      CACHE_STORE=redis
+      CACHE_REDIS_HOST=127.0.0.1
+      CACHE_REDIS_PORT=6379
+      # Messenger
+      MESSENGER_STORE=redis
+      # Rate Limiter
+      RATE_LIMITER_REDIS_HOST=127.0.0.1
+      RATE_LIMITER_REDIS_PORT=6379
+    state: present

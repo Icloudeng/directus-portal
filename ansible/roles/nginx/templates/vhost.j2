@@ -1,0 +1,163 @@
+proxy_cache_path /var/cache/nginx levels=1:2 keys_zone=STATIC:10m inactive=7d use_temp_path=off;
+
+upstream clientserver_upstream {
+  server {{ client_host }};
+}
+
+server {
+    listen                  443 ssl http2;
+    listen                  [::]:443 ssl http2;
+    server_name             {{ domain }} www.{{ domain }};
+
+    # SSL
+{% if letsencrypt %}
+    ssl_certificate         /etc/letsencrypt/live/{{ domain }}/fullchain.pem;
+    ssl_certificate_key     /etc/letsencrypt/live/{{ domain }}/privkey.pem;
+    ssl_trusted_certificate /etc/letsencrypt/live/{{ domain }}/chain.pem;
+{% endif %}
+
+    # security
+    include                 nginxconfig.io/security.conf;
+
+    # Disable CEO index
+    # add_header X-Robots-Tag "noindex, nofollow, nosnippet, noarchive";
+
+    proxy_http_version 1.1;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection "upgrade";
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Proto $scheme;
+    proxy_set_header X-Forwarded-Host $host;
+    proxy_set_header X-Forwarded-Port $server_port;
+    proxy_cache_bypass $http_upgrade;
+
+
+    location / {
+        proxy_pass http://clientserver_upstream;
+    }
+
+    location ^~ /_next/static {
+        proxy_cache STATIC;
+        proxy_pass http://clientserver_upstream;
+
+        # For testing cache - remove before deploying to production
+        # add_header X-Cache-Status $upstream_cache_status;
+    }
+
+    location ^~ /static {
+        proxy_cache STATIC;
+        proxy_ignore_headers Cache-Control;
+        proxy_cache_valid 60m;
+        proxy_pass http://clientserver_upstream;
+
+        # For testing cache - remove before deploying to production
+        # add_header X-Cache-Status $upstream_cache_status;
+    }
+
+
+    location ~ ^/[A-Za-z0-9-_]+\.(jpe?g|png|gif|ico)$ {
+        proxy_cache STATIC;
+        proxy_ignore_headers Cache-Control;
+        proxy_cache_valid 60m;
+        proxy_pass http://clientserver_upstream;
+
+        # For testing cache - remove before deploying to production
+        # add_header X-Cache-Status $upstream_cache_status;
+    }
+
+    location ~ ^/assets\/.+\.(jpe?g|png|gif|ico)$ {
+        proxy_cache STATIC;
+        proxy_ignore_headers Cache-Control;
+        proxy_cache_valid 60m;
+        proxy_pass http://clientserver_upstream;
+
+        # For testing cache - remove before deploying to production
+        # add_header X-Cache-Status $upstream_cache_status;
+    }
+
+    # additional config
+    include nginxconfig.io/general.conf;
+}
+
+# HTTP redirect
+server {
+    listen      80;
+    listen      [::]:80;
+    server_name {{ domain }} www.{{ domain }};
+    include     nginxconfig.io/letsencrypt.conf;
+
+    location / {
+        return 301 https://{{ domain }}$request_uri;
+    }
+}
+
+
+################## -------------- admin server -------------- ################## 
+
+upstream adminserver_upstream {
+  server {{ cms_host }};
+}
+
+
+server {
+    listen                  443 ssl http2;
+    listen                  [::]:443 ssl http2;
+    server_name             {{ admin_domain }};
+
+    # SSL
+{% if letsencrypt %}
+    ssl_certificate         /etc/letsencrypt/live/{{ admin_domain }}/fullchain.pem;
+    ssl_certificate_key     /etc/letsencrypt/live/{{ admin_domain }}/privkey.pem;
+    ssl_trusted_certificate /etc/letsencrypt/live/{{ admin_domain }}/chain.pem;
+{% endif %}
+
+
+    # security
+    include                 nginxconfig.io/security.conf;
+
+    # Disable CEO index
+    # add_header X-Robots-Tag "noindex, nofollow, nosnippet, noarchive";
+
+    proxy_http_version 1.1;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection "upgrade";
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Proto $scheme;
+    proxy_set_header X-Forwarded-Host $host;
+    proxy_set_header X-Forwarded-Port $server_port;
+    proxy_cache_bypass $http_upgrade;
+
+
+    location / {
+        proxy_pass http://adminserver_upstream;
+    }
+
+
+    location ^~ /admin/assets {
+        proxy_cache STATIC;
+        proxy_ignore_headers Cache-Control;
+        proxy_cache_valid 60m;
+        proxy_pass http://adminserver_upstream;
+    }
+    
+
+    # additional config
+    include nginxconfig.io/general.conf;
+}
+
+
+# HTTP redirect
+server {
+    listen      80;
+    listen      [::]:80;
+    server_name {{ admin_domain }};
+    include     nginxconfig.io/letsencrypt.conf;
+
+    location / {
+        return 301 https://{{ admin_domain }}$request_uri;
+    }
+}

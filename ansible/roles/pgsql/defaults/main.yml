@@ -1,0 +1,3 @@
+---
+# defaults file for tools/ansible/roles/pgsql
+postgresql_version: 12

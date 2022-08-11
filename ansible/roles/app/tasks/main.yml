@@ -1,0 +1,82 @@
+---
+# tasks file for ansible/roles/app
+- name: App Repository | Clone
+  become: false
+  git:
+    repo: "{{ app_git_repo }}"
+    dest: "{{ root_path }}"
+    force: yes
+    version: "{{ app_git_version }}"
+
+- name: PNPM | Setup
+  become: false
+  command: pnpm setup
+  args:
+    chdir: "{{ root_path }}"
+  ignore_errors: true
+
+- name: App Client | Download client dependencies
+  become: false
+  command: pnpm install
+  args:
+    chdir: "{{ root_path }}"
+
+- include_tasks: cms-config.yml
+
+# CMS App
+#
+- name: CMS App | App bootstrap
+  become: false
+  command: pnpm run bootstrap
+  args:
+    chdir: "{{ root_path }}/apps/cms"
+    creates: "{{ root_path }}/apps/cms/setup.txt"
+
+- name: CMS App | App setup file
+  become: false
+  file:
+    path: "{{ root_path }}/apps/cms/setup.txt"
+    state: touch
+
+- name: CMS App | App apply snapshot
+  become: false
+  command: pnpm run apply
+  args:
+    chdir: "{{ root_path }}/apps/cms"
+    removes: "{{ root_path }}/apps/cms/snapshot.yaml"
+
+- name: CMS App | Delete old pm2 process
+  command: "pm2 delete {{ admin_domain }}"
+  args:
+    chdir: "{{ root_path }}/apps/cms"
+  ignore_errors: true
+
+- name: CMS App | Start the server
+  command: "pm2 start npm --name {{ admin_domain }} -- run start"
+  args:
+    chdir: "{{ root_path }}/apps/cms"
+
+# Web App
+#
+- name: Web App | Build client assets
+  become: false
+  command: pnpm build
+  args:
+    chdir: "{{ root_path }}/apps/web"
+
+- name: Web App | Delete old pm2 process
+  command: "pm2 delete {{ domain }}"
+  args:
+    chdir: "{{ root_path }}/apps/web"
+  ignore_errors: true
+
+- name: Web App | Start the server
+  command: "pm2 start npm --name {{ domain }} -- run start"
+  args:
+    chdir: "{{ root_path }}/apps/web"
+
+- name: Reload nginx
+  service:
+    name: nginx
+    state: reloaded
+  ignore_errors: true

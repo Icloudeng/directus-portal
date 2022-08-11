@@ -1,0 +1,24 @@
+---
+# tasks file for tools/ansible/roles/tools
+- name: Outils | Requis
+  apt:
+    name:
+      - gnupg
+      - curl
+    state: present
+
+- name: Outils | Install
+  apt:
+    name:
+      - redis
+      - fish
+      - vim
+      - git
+      - ntp
+      - rsync
+      - fail2ban
+      - certbot
+      - acl
+      - make
+      - ffmpeg
+    state: present

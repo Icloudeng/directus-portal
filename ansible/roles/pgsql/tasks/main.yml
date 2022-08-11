@@ -1,0 +1,37 @@
+---
+# tasks file for tools/ansible/roles/pgsql
+- name: PostgreSQL | Certificat
+  apt_key:
+    url: https://www.postgresql.org/media/keys/ACCC4CF8.asc
+    state: present
+
+- name: PostgreSQL | PostgreSQL repository
+  apt_repository:
+    repo: deb http://apt.postgresql.org/pub/repos/apt {{ ansible_distribution_release }}-pgdg main
+    state: present
+
+- name: PostgreSQL | Install
+  apt:
+    name:
+      - postgresql-{{ postgresql_version }}
+      - postgresql-contrib
+      - libpq-dev
+      - python3-psycopg2
+    state: present
+
+- name: PostgreSQL | Create postgres user
+  become: true
+  become_user: postgres
+  community.general.postgresql_user:
+    name: "{{ database }}"
+    password: "{{ database_password }}"
+
+- name: PostgreSQL | Create database
+  become: true
+  become_user: postgres
+  community.general.postgresql_db:
+    name: "{{ database }}"
+    encoding: "UTF-8"
+    owner: "{{ database }}"
+    template: template0
+    state: present
