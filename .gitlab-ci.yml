@@ -18,14 +18,12 @@ stages:
 # - composer install
 
 front-test:
+  image: node:16.16
   stage: front-test
   only:
     refs:
       - main
   script:
-    # Install Node 16
-    - curl -sL https://deb.nodesource.com/setup_16.x | bash -
-    - apt-get install -y nodejs
     # Install PNPM and project Node dependencies.
     - npm install pnpm --location=global
     - pnpm install
