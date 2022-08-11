@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -77,8 +79,9 @@
 
   .layout {
     /* 1100px */
-    max-width: 68.75rem;
+    max-width: 75rem;
     @apply mx-auto w-11/12;
+    /* background-color: blue */
   }
 
   .bg-dark a.custom-link {
