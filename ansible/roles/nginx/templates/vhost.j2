@@ -143,6 +143,13 @@ server {
         proxy_cache_valid 60m;
         proxy_pass http://adminserver_upstream;
     }
+
+    location ^~ /extensions {
+        proxy_cache STATIC;
+        proxy_ignore_headers Cache-Control;
+        proxy_cache_valid 60m;
+        proxy_pass http://adminserver_upstream;
+    }
     
 
     # additional config
