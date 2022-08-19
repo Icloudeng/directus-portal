@@ -30,13 +30,6 @@
   command: pnpm run bootstrap
   args:
     chdir: "{{ root_path }}/apps/cms"
-    creates: "{{ root_path }}/apps/cms/setup.txt"
-
-- name: CMS App | App setup file
-  become: false
-  file:
-    path: "{{ root_path }}/apps/cms/setup.txt"
-    state: touch
 
 - name: CMS App | App apply snapshot
   become: false
