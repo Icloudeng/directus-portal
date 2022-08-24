@@ -12,9 +12,10 @@ export default function HomePage() {
 
       <main>
         <section className=''>
-          <div className='layout flex flex-col items-center'>
+          <div className='flex flex-col items-center'>
             <h1 className='dark:text-dark text-blue-500'>
               Hello from Cloud IT Engineering portal
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur numquam provident cum, fugit, rerum iste voluptates, nulla repudiandae mollitia similique dignissimos temporibus suscipit deleniti facilis! Porro obcaecati voluptatibus iste nesciunt!
             </h1>
           </div>
         </section>
