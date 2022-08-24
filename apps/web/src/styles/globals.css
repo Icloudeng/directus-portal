@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -84,6 +88,14 @@
     /* background-color: blue */
   }
 
+  .x-container {
+    @apply max-w-screen-lg mx-auto w-11/12;
+  }
+
+  .x-container-fluid {
+    @apply max-w-screen-xl mx-auto w-11/12;
+  }
+
   .bg-dark a.custom-link {
     @apply border-gray-200 hover:border-gray-200/0;
   }
@@ -117,4 +129,20 @@
   .animated-underline:focus-visible {
     background-size: 0 2px, 100% 2px;
   }
+}
+
+
+.lang-switcher.active .lang-switcher__submenu {
+    opacity: 1;
+    visibility: visible;
+    /* margin-top: 9px; */
+}
+
+.lang-switcher.active .lang-switcher__chevron {
+  /* width: 80px; */
+  /* color: rgb(179, 255, 0); */
+  transform: rotateX(180deg);
+  /* transform: translateY(); */
+  /* transform-origin: top;
+  rotate: (45deg); */
 }

@@ -9,7 +9,8 @@ module.exports = {
     extend: {
       fontFamily: {
         primary: ['Montserrat', 'sans-serif'],
-        // primary: ['Inter', ...fontFamily.sans],
+        // primary: ["Poppins", "sans-serif"],
+        // primary: ['Roboto', ...fontFamily.sans],
       },
       colors: {
         primary: {
@@ -26,6 +27,9 @@ module.exports = {
           900: 'rgb(var(--tw-color-primary-900) / <alpha-value>)',
         },
         dark: '#222222',
+        darkBg: '#121212',
+        textGray: '#e6eaf5',
+        textDark: '#1d2330',
       },
       keyframes: {
         flicker: {
@@ -53,6 +57,14 @@ module.exports = {
         shimmer: 'shimmer 1.3s linear infinite',
       },
     },
+    screens: {
+      xs: "480px",
+      ss: "620px",
+      sm: "768px",
+      md: "1060px",
+      lg: "1200px",
+      xl: "1700px",
+    }
   },
   plugins: [require('@tailwindcss/forms')],
 };

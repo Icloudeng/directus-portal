@@ -1,5 +1,5 @@
-import * as React from 'react';
 import Header from './Header';
+import { TopBar } from '../topBar/TopBar';
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   // Put Header or Footer Here
@@ -9,17 +9,18 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   //   {/* <h1>Footer</h1> */}
   // </>;
   const styles = {
-    wrapper: 'min-h-screen min-w-full flex flex-col',
-    mainContainer: 'flex-1 flex flex-col justify-center bg-gray-50',
+    wrapper: 'min-h-screen min-w-full flex flex-col bg-gray-50 dark:bg-darkBg',
+    mainContainer: 'flex-1 flex flex-col justify-center',
   }
   return (
     <div className={styles.wrapper}>
       {/* <h4 className=''>Header</h4> */}
+      <TopBar message='Introducing new platform for data analysis' />
       <Header />
       <div className={styles.mainContainer}>
         {children}
       </div>
-      <h4>Footer</h4>
+      <h4 className='layout dark:text-green-600'>Footer</h4>
     </div>
   )
 }
