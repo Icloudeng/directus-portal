@@ -31,7 +31,7 @@ export default function ChatwootWidget() {
         window.chatwootSDK.run({
           websiteToken:
             process.env.NEXT_PUBLIC_CHATWOOT_API_KEY ||
-            'js3ybS6F2ahwRX6NWM5whWTa',
+            'JBavMEU4FUNNSyVjD3R3ShBE',
           baseUrl: BASE_URL,
         });
       };
