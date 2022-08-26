@@ -5,15 +5,16 @@ import NextImage from '@/components/NextImage';
 
 import FrFlag from "~/images/france.png";
 import UsFlag from "~/images/united-states.png";
+import React from 'react';
 
 type TopBarPropsType = {
     message: string
 }
 
 export const TopBar: React.FC<TopBarPropsType> = ({ message }) => {
+    const langRef = React.useRef<HTMLElement>(null)
     const toggleLang = () => {
-        const lanSwitcher =  document.querySelector('.lang-switcher');
-        lanSwitcher?.classList.toggle('active');
+        langRef.current?.classList.toggle('active');
     }
 
   return (
@@ -39,7 +40,7 @@ export const TopBar: React.FC<TopBarPropsType> = ({ message }) => {
             </ul>
         </div>
         <div className='text-xs text-textDark h-full relative flex items-center'>
-            <nav className='lang-switcher block'>
+            <nav ref={langRef} className='lang-switcher block'>
                 <button type='button' onClick={toggleLang} className='flex items-center gap-[6px]'>
                     <span>
                         <NextImage useSkeleton src={UsFlag.src} width='15' height='15' alt='Icon'/>

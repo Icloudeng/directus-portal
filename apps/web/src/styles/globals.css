@@ -135,14 +135,19 @@
 .lang-switcher.active .lang-switcher__submenu {
     opacity: 1;
     visibility: visible;
-    /* margin-top: 9px; */
 }
 
 .lang-switcher.active .lang-switcher__chevron {
-  /* width: 80px; */
-  /* color: rgb(179, 255, 0); */
   transform: rotateX(180deg);
-  /* transform: translateY(); */
-  /* transform-origin: top;
-  rotate: (45deg); */
+}
+
+.menu-top__item.dropdown .menu-top__link.active + .submenu {
+  opacity: 1;
+  visibility: visible;
+  transition: 0.3s ease;
+}
+
+.menu-top__item.dropdown .menu-top__link.active .submenu-show__chevron {
+  transform: rotateX(180deg);
+  transition: 0.3s ease;
 }
