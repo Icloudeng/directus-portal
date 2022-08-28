@@ -1,6 +1,6 @@
-import Header from './Header';
-import { TopBar } from '../topBar/TopBar';
+import { Footer } from '../footer/Footer';
 import { Navbar } from '../navbar/Navbar';
+import { TopBar } from '../topBar/TopBar';
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const styles = {
@@ -16,7 +16,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <div className={styles.mainContainer}>
         {children}
       </div>
-      <h4 className='layout dark:text-green-600'>Footer</h4>
+      {/* <h4 className='layout dark:text-green-600'>Footer</h4> */}
+      <Footer />
     </div>
   )
 }
