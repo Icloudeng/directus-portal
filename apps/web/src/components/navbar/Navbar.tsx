@@ -5,7 +5,7 @@ import { useScrollPosition } from '@/hooks/useScrollPosition';
 
 import ButtonLink from '@/components/links/ButtonLink';
 import UnstyledLink from '@/components/links/UnstyledLink'
-import MenuList from '@/components/navbar/MenuList';
+import MenuList from '@/components/navbar/components/MenuList';
 import { PartnersSubmenu } from '@/components/navbar/Partners';
 import { ProductSubmenu } from '@/components/navbar/ProductSubmenu';
 import { SolutionSubmenu } from '@/components/navbar/Solutions';

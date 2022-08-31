@@ -3,28 +3,14 @@ import { HiOutlineCursorClick, HiOutlineShieldCheck } from 'react-icons/hi';
 import { MdOutlineDashboardCustomize } from 'react-icons/md';
 import { TbChartLine } from 'react-icons/tb';
 
-import UnstyledLink from '@/components/links/UnstyledLink';
-
-import { IProductFeaturedItem, IProductItem } from '@/types/navbarTypes';
+import { ProductFeaturedItem } from './components/products/ProductFeaturedItem';
+import { ProductItem } from './components/products/ProductItem';
 
 const ProductFeaturedItemsData = [
     { title: 'App Platforms', href: '#', description: 'Get a better understanding of where your traffic is coming from.' },
     { title: 'Databases', href: '#', description: 'Get a better understanding of where your traffic is coming from.' },
     { title: 'Business Intelligence', href: '#', description: 'Your customers&#039; data will be safe and secure.' },
 ]
-
-const ProductFeaturedItem = ({ title, description, href }: IProductFeaturedItem) => {
-    return (
-        <div className='flex flex-col items-center'>
-            <UnstyledLink href={href} className="-m-3 p-3 flex items-start rounded-lg hover:bg-primary-100 animated-underline">
-                <div className="ml-4">
-                    <p className="text-sm font-bold text-gray-900">{title}</p>
-                    <p className="mt-1 text-xs text-gray-400 font-normal">{description}</p>
-                </div>
-            </UnstyledLink>
-        </div>
-    )
-}
 
 const ProductItemsData = [
     {
@@ -48,25 +34,6 @@ const ProductItemsData = [
         ]
     },
 ]
-
-const ProductItem = ({ bigTitle, childItems }: IProductItem) => {
-    return (
-        <div className='flex flex-col items-center'>
-            <span className='mb-1 text-sm text-gray-300 mt-7'>{bigTitle}</span>
-            <div className="relative grid gap-6 px-5 py-6 sm:gap-6 sm:p-8">
-                {childItems.map(({ smallTitle, icon, description, href }, i) => {
-                    return <UnstyledLink key={i} href={href} className="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50 animated-underline">
-                        {icon}
-                        <div className="ml-4">
-                            <p className="text-sm font-medium text-gray-900">{smallTitle}</p>
-                            <p className="mt-1 text-xs text-gray-400 font-light">{description}</p>
-                        </div>
-                    </UnstyledLink>
-                })}
-            </div>
-        </div>
-    )
-}
 
 export const ProductSubmenu = () => {
     return (
