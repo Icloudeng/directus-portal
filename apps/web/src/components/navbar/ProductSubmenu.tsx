@@ -5,11 +5,7 @@ import { TbChartLine } from 'react-icons/tb';
 
 import UnstyledLink from '@/components/links/UnstyledLink';
 
-type ProductFeaturedItemProps = {
-    title: string,
-    description: string,
-    href: string,
-}
+import { IProductFeaturedItem, IProductItem } from '@/types/navbarTypes';
 
 const ProductFeaturedItemsData = [
     { title: 'App Platforms', href: '#', description: 'Get a better understanding of where your traffic is coming from.' },
@@ -17,7 +13,7 @@ const ProductFeaturedItemsData = [
     { title: 'Business Intelligence', href: '#', description: 'Your customers&#039; data will be safe and secure.' },
 ]
 
-const ProductFeaturedItem = ({ title, description, href }: ProductFeaturedItemProps) => {
+const ProductFeaturedItem = ({ title, description, href }: IProductFeaturedItem) => {
     return (
         <div className='flex flex-col items-center'>
             <UnstyledLink href={href} className="-m-3 p-3 flex items-start rounded-lg hover:bg-primary-100 animated-underline">
@@ -28,16 +24,6 @@ const ProductFeaturedItem = ({ title, description, href }: ProductFeaturedItemPr
             </UnstyledLink>
         </div>
     )
-}
-
-type ProductItemProps = {
-    bigTitle: string,
-    childItems: {
-        smallTitle: string,
-        icon: JSX.Element,
-        description: string,
-        href: string
-    }[]
 }
 
 const ProductItemsData = [
@@ -63,7 +49,7 @@ const ProductItemsData = [
     },
 ]
 
-const ProductItem = ({ bigTitle, childItems }: ProductItemProps) => {
+const ProductItem = ({ bigTitle, childItems }: IProductItem) => {
     return (
         <div className='flex flex-col items-center'>
             <span className='mb-1 text-sm text-gray-300 mt-7'>{bigTitle}</span>

@@ -3,12 +3,7 @@ import { TbChartLine } from 'react-icons/tb';
 
 import UnstyledLink from '@/components/links/UnstyledLink';
 
-type PatrnersItemProps = {
-    smallTitle: string,
-    icon: JSX.Element,
-    description: string,
-    href: string,
-}
+import { IPartnersItem } from '@/types/navbarTypes';
 
 const PartnersItemsData =  [
     {smallTitle: 'Analytics', href: '#', icon: <TbChartLine className='flex-shrink-0 h-6 w-6 text-primary-400' />, description: 'Get a better understanding of where your traffic is coming from.'},
@@ -16,7 +11,7 @@ const PartnersItemsData =  [
     {smallTitle: 'Security', href: '#', icon: <HiOutlineShieldCheck className='flex-shrink-0 h-6 w-6 text-primary-400' />, description: 'Your customers&#039; data will be safe and secure.'},
 ]
 
-const PartnersItem = ({ smallTitle, icon, description, href }: PatrnersItemProps) => {
+const PartnersItem = ({ smallTitle, icon, description, href }: IPartnersItem) => {
     return (
         <div className='flex flex-col items-center'>
             <UnstyledLink href={href} className="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50 animated-underline">

@@ -5,12 +5,7 @@ import { TbChartLine } from 'react-icons/tb';
 
 import UnstyledLink from '@/components/links/UnstyledLink';
 
-type SolutionsItemProps = {
-    smallTitle: string,
-    icon: JSX.Element,
-    description: string,
-    href: string,
-}
+import { ISolutionsItem } from '@/types/navbarTypes';
 
 const SolutionsItemsData = [
     { smallTitle: 'Analytics', href: '#', icon: <TbChartLine className='flex-shrink-0 h-6 w-6 text-primary-400' />, description: 'Get a better understanding of where your traffic is coming from.' },
@@ -20,7 +15,7 @@ const SolutionsItemsData = [
     { smallTitle: 'Automation', href: '#', icon: <BsArrowRepeat className='flex-shrink-0 h-6 w-6 text-primary-400' />, description: 'Build strategic funnels that will drive your customers to convert' },
 ]
 
-const SolutionsItem = ({ smallTitle, icon, description, href }: SolutionsItemProps) => {
+const SolutionsItem = ({ smallTitle, icon, description, href }: ISolutionsItem) => {
     return (
         <div className='flex flex-col items-center'>
             <UnstyledLink href={href} className="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50 animated-underline">
@@ -36,7 +31,6 @@ const SolutionsItem = ({ smallTitle, icon, description, href }: SolutionsItemPro
 
 export const SolutionSubmenu = () => {
     return (
-        // <div className="z-10 -ml-4 mt-[1.45rem] lg:mt-6 transform px-2 w-screen max-w-md sm:px-0 lg:ml-0 lg:-translate-x-36">
         <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden">
             <div className="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8">
                 {SolutionsItemsData.map(({ smallTitle, icon, description, href }, i) => (
@@ -50,7 +44,6 @@ export const SolutionSubmenu = () => {
                 ))}
             </div>
         </div>
-        // </div>
     )
 }
 

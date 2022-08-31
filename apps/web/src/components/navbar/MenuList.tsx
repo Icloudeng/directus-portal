@@ -1,14 +1,9 @@
 import React from "react"
 import { VscChevronDown } from "react-icons/vsc"
 
-type MenuListPropsTypes = {
-    name: string
-    subMenu?: React.ReactElement | React.ReactNode
-    subMenuExtraStyles?: string
-    isDropdown: boolean
-}
+import { IMenuList } from "@/types/navbarTypes"
 
-const MenuList:React.FC<MenuListPropsTypes> = ({ name, subMenu, subMenuExtraStyles, isDropdown }) => {
+const MenuList:React.FC<IMenuList> = ({ name, subMenu, subMenuExtraStyles, isDropdown }) => {
     const btnRef = React.useRef<HTMLButtonElement>(null)
     const onMouseHover = () => {
         btnRef.current?.classList.add('active');

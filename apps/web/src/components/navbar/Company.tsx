@@ -5,16 +5,7 @@ import { TbChartLine } from 'react-icons/tb';
 
 import UnstyledLink from '@/components/links/UnstyledLink';
 
-
-type CompanyItemProps = {
-    bigTitle: string,
-    childItems: {
-        smallTitle: string,
-        icon: JSX.Element,
-        description: string,
-        href: string
-    }[]
-}
+import { ICompanyItem } from '@/types/navbarTypes';
 
 const CompanyItemsData =  [
     {
@@ -39,7 +30,7 @@ const CompanyItemsData =  [
     },
 ]
 
-const CompanyItem = ({ bigTitle, childItems }: CompanyItemProps) => {
+const CompanyItem = ({ bigTitle, childItems }: ICompanyItem) => {
     return (
         <div className='flex flex-col items-center'>
             <span className='mb-1 text-sm text-gray-300 mt-7'>{bigTitle}</span>
