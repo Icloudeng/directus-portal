@@ -10,7 +10,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <div className={styles.wrapper}>
       {/* <h4 className=''>Header</h4> */}
-      <TopBar message='Introducing new platform for data analysis' />
+      <TopBar message='Introducing new platform for data analysis' href='#' />
       {/* <Header /> */}
       <Navbar />
       <div className={styles.mainContainer}>
