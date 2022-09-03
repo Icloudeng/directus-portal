@@ -1,10 +1,46 @@
-import React from 'react'
 import { FaCcMastercard, FaCcPaypal, FaCcVisa, FaDiscord, FaFacebookF, FaInstagram, FaLinkedinIn, FaTwitter, FaYoutube } from 'react-icons/fa';
 import { GoMailRead } from 'react-icons/go';
 
-import Button from '../buttons/Button';
-import ButtonLink from '../links/ButtonLink';
-import UnstyledLink from '../links/UnstyledLink'
+import Button from '@/components/buttons/Button';
+import ButtonLink from '@/components/links/ButtonLink';
+import UnstyledLink from '@/components/links/UnstyledLink'
+
+import { FooterItemLinks } from './components/FooterItemLinks';
+import { SocialMedia } from './components/SocialMedia';
+
+const socialMediaData = [
+  { href: '#', icon: <FaFacebookF fontSize={17} /> }, { href: '#', icon: <FaTwitter fontSize={17} /> },
+  { href: '#', icon: <FaInstagram fontSize={17} /> }, { href: '#', icon: <FaYoutube fontSize={17} /> },
+  { href: '#', icon: <FaDiscord fontSize={17} /> },{ href: '#', icon: <FaLinkedinIn fontSize={17} /> }
+]
+
+
+
+const FooterItemLinksData = [
+  {
+    bigTitle: 'Why Icloudeng',
+    childItems: [{ smallTitle: 'Choosing Icloudeng', href: '#' }, { smallTitle: 'Open cloud', href: '#' }, { smallTitle: 'Multicloud', href: '#' }, { smallTitle: 'Global infrastructure', href: '#' }, { smallTitle: 'Customers and case study', href: '#' }, { smallTitle: 'Analyst reports', href: '#' }, { smallTitle: 'Whitepapers', href: '#' }, { smallTitle: 'Blog', href: '#' }]
+  },
+  {
+    bigTitle: 'Products',
+    childItems: [{ smallTitle: 'Choosing Icloudeng', href: '#' }, { smallTitle: 'Open cloud', href: '#' }, { smallTitle: 'Multicloud', href: '#' }, { smallTitle: 'Global infrastructure', href: '#' }, { smallTitle: 'Customers and case study', href: '#' }, { smallTitle: 'Analyst reports', href: '#' }, { smallTitle: 'Whitepapers', href: '#' }, { smallTitle: 'Open cloud', href: '#' }, { smallTitle: 'Multicloud', href: '#' }, { smallTitle: 'Global infrastructure', href: '#' }, { smallTitle: 'Blog', href: '#' }, { smallTitle: 'Analyst reports', href: '#' }, { smallTitle: 'Whitepapers', href: '#' }, { smallTitle: 'Open cloud', href: '#' },]
+  },
+  {
+    bigTitle: 'Solutions',
+    childItems: [{ smallTitle: 'Choosing Icloudeng', href: '#' }, { smallTitle: 'Open cloud', href: '#' }, { smallTitle: 'Multicloud', href: '#' }, { smallTitle: 'Global infrastructure', href: '#' }, { smallTitle: 'Customers and case study', href: '#' }, { smallTitle: 'Analyst reports', href: '#' }, { smallTitle: 'Whitepapers', href: '#' }, { smallTitle: 'Blog', href: '#' }]
+  },
+  {
+    bigTitle: 'Resources',
+    childItems: [{ smallTitle: 'Choosing Icloudeng', href: '#' }, { smallTitle: 'Open cloud', href: '#' }, { smallTitle: 'Multicloud', href: '#' }, { smallTitle: 'Open cloud', href: '#' }, { smallTitle: 'Multicloud', href: '#' }, { smallTitle: 'Global infrastructure', href: '#' }, { smallTitle: 'Global infrastructure', href: '#' }, { smallTitle: 'Whitepapers', href: '#' }, { smallTitle: 'Blog', href: '#' }, { smallTitle: 'Whitepapers', href: '#' }]
+  },
+  {
+    bigTitle: 'About',
+    childItems: [{ smallTitle: 'Choosing Icloudeng', href: '#' }, { smallTitle: 'Open cloud', href: '#' }, { smallTitle: 'Multicloud', href: '#' }, { smallTitle: 'Global infrastructure', href: '#' }, { smallTitle: 'Customers and case study', href: '#' }, { smallTitle: 'Analyst reports', href: '#' }]
+  },
+]
+
+
+
 
 export const Footer = () => {
   return (
@@ -16,7 +52,7 @@ export const Footer = () => {
           </h1>
           <div className="flex items-center gap-7">
             <span>Take first step right now</span>
-            <ButtonLink href='#' className='py-[.7rem] px-10 font-normal rounded-none'  variant='primary'>Get started</ButtonLink>
+            <ButtonLink href='#' className='py-[.7rem] px-10 font-normal rounded-none' variant='primary'>Get started</ButtonLink>
           </div>
         </div>
 
@@ -45,112 +81,19 @@ export const Footer = () => {
               </span>
             </div>
             <div className='flex items-center gap-5 text-primary-400 mt-1'>
-              <UnstyledLink className='hover:text-primary-500' href='#'>
-                <FaFacebookF fontSize={17} />
-              </UnstyledLink>
-              <UnstyledLink className='hover:text-primary-500' href='#'>
-                <FaTwitter fontSize={17} />
-              </UnstyledLink>
-              <UnstyledLink className='hover:text-primary-500' href='#'>
-                <FaInstagram fontSize={17} />
-              </UnstyledLink>
-              <UnstyledLink className='hover:text-primary-500' href='#'>
-                <FaLinkedinIn fontSize={17} />
-              </UnstyledLink>
-              <UnstyledLink className='hover:text-primary-500' href='#'>
-                <FaYoutube fontSize={17} />
-              </UnstyledLink>
-              <UnstyledLink className='hover:text-primary-500' href='#'>
-                <FaDiscord fontSize={17} />
-              </UnstyledLink>
+              {socialMediaData.map(({ href, icon }, i) => (
+                <SocialMedia key={i} href={href} icon={icon} />
+              ))}
             </div>
           </div>
-          <div className="middle-left flex items-start justify-center gap-20 flex-1 ml-3 border-l-[1px] border-gray-300">
-            <div className="flex flex-col gap-4">
-              <p className='text-primary-400 font-medium'>Why Icloudeng</p>
-              <div className='flex flex-col text-sm text-gray-400 gap-2'>
-                <UnstyledLink href='#' className='hover:text-gray-300'>Choosing Icloudeng</UnstyledLink>
-                <UnstyledLink href='#' className='hover:text-gray-300'>Open cloud</UnstyledLink>
-                <UnstyledLink href='#' className='hover:text-gray-300'>Multicloud</UnstyledLink>
-                <UnstyledLink href='#' className='hover:text-gray-300'>Global infrastructure</UnstyledLink>
-                <UnstyledLink href='#' className='hover:text-gray-300'>Customers and case study</UnstyledLink>
-                <UnstyledLink href='#' className='hover:text-gray-300'>Analyst reports</UnstyledLink>
-                <UnstyledLink href='#' className='hover:text-gray-300'>Whitepapers</UnstyledLink>
-                <UnstyledLink href='#' className='hover:text-gray-300'>Blog</UnstyledLink>
-              </div>
-            </div>
-            <div className="flex flex-col gap-4">
-              <p className='text-primary-400 font-medium'>Products</p>
-              <div className='flex flex-col text-sm text-gray-400 gap-2'>
-                <UnstyledLink href='#' className='hover:text-gray-300'>Choosing Icloudeng</UnstyledLink>
-                <UnstyledLink href='#' className='hover:text-gray-300'>Open cloud</UnstyledLink>
-                <UnstyledLink href='#' className='hover:text-gray-300'>Multicloud</UnstyledLink>
-                <UnstyledLink href='#' className='hover:text-gray-300'>Global infrastructure</UnstyledLink>
-                <UnstyledLink href='#' className='hover:text-gray-300'>Customers and case study</UnstyledLink>
-                <UnstyledLink href='#' className='hover:text-gray-300'>Analyst reports</UnstyledLink>
-                <UnstyledLink href='#' className='hover:text-gray-300'>Whitepapers</UnstyledLink>
-                <UnstyledLink href='#' className='hover:text-gray-300'>Blog</UnstyledLink>
-                <UnstyledLink href='#' className='hover:text-gray-300'>Open cloud</UnstyledLink>
-                <UnstyledLink href='#' className='hover:text-gray-300'>Multicloud</UnstyledLink>
-                <UnstyledLink href='#' className='hover:text-gray-300'>Global infrastructure</UnstyledLink>
-                <UnstyledLink href='#' className='hover:text-gray-300'>Customers and case study</UnstyledLink>
-                <UnstyledLink href='#' className='hover:text-gray-300'>Analyst reports</UnstyledLink>
-                <UnstyledLink href='#' className='hover:text-gray-300'>Open cloud</UnstyledLink>
-                <UnstyledLink href='#' className='hover:text-gray-300'>Multicloud</UnstyledLink>
-                <UnstyledLink href='#' className='hover:text-gray-300'>Global infrastructure</UnstyledLink>
-                <UnstyledLink href='#' className='hover:text-gray-300'>Customers and case study</UnstyledLink>
-                <UnstyledLink href='#' className='hover:text-gray-300'>Analyst reports</UnstyledLink>
-              </div>
-            </div>
-            <div className="flex flex-col gap-4">
-              <p className='text-primary-400 font-medium'>Solutions</p>
-              <div className='flex flex-col text-sm text-gray-400 gap-2'>
-                <UnstyledLink href='#' className='hover:text-gray-300'>Choosing Icloudeng</UnstyledLink>
-                <UnstyledLink href='#' className='hover:text-gray-300'>Open cloud</UnstyledLink>
-                <UnstyledLink href='#' className='hover:text-gray-300'>Multicloud</UnstyledLink>
-                <UnstyledLink href='#' className='hover:text-gray-300'>Global infrastructure</UnstyledLink>
-                <UnstyledLink href='#' className='hover:text-gray-300'>Customers and case study</UnstyledLink>
-                <UnstyledLink href='#' className='hover:text-gray-300'>Analyst reports</UnstyledLink>
-                <UnstyledLink href='#' className='hover:text-gray-300'>Whitepapers</UnstyledLink>
-                <UnstyledLink href='#' className='hover:text-gray-300'>Blog</UnstyledLink>
-                <UnstyledLink href='#' className='hover:text-gray-300'>Open cloud</UnstyledLink>
-                <UnstyledLink href='#' className='hover:text-gray-300'>Multicloud</UnstyledLink>
-                <UnstyledLink href='#' className='hover:text-gray-300'>Global infrastructure</UnstyledLink>
-              </div>
-            </div>
-            <div className="flex flex-col gap-4">
-              <p className='text-primary-400 font-medium'>Resources</p>
-              <div className='flex flex-col text-sm text-gray-400 gap-2'>
-                <UnstyledLink href='#' className='hover:text-gray-300'>Choosing Icloudeng</UnstyledLink>
-                <UnstyledLink href='#' className='hover:text-gray-300'>Open cloud</UnstyledLink>
-                <UnstyledLink href='#' className='hover:text-gray-300'>Multicloud</UnstyledLink>
-                <UnstyledLink href='#' className='hover:text-gray-300'>Global infrastructure</UnstyledLink>
-                <UnstyledLink href='#' className='hover:text-gray-300'>Customers and case study</UnstyledLink>
-                <UnstyledLink href='#' className='hover:text-gray-300'>Analyst reports</UnstyledLink>
-                <UnstyledLink href='#' className='hover:text-gray-300'>Whitepapers</UnstyledLink>
-                <UnstyledLink href='#' className='hover:text-gray-300'>Blog</UnstyledLink>
-                <UnstyledLink href='#' className='hover:text-gray-300'>Open cloud</UnstyledLink>
-                <UnstyledLink href='#' className='hover:text-gray-300'>Multicloud</UnstyledLink>
-                <UnstyledLink href='#' className='hover:text-gray-300'>Global infrastructure</UnstyledLink>
-                <UnstyledLink href='#' className='hover:text-gray-300'>Customers and case study</UnstyledLink>
-                <UnstyledLink href='#' className='hover:text-gray-300'>Analyst reports</UnstyledLink>
-                <UnstyledLink href='#' className='hover:text-gray-300'>Open cloud</UnstyledLink>
-                <UnstyledLink href='#' className='hover:text-gray-300'>Multicloud</UnstyledLink>
-              </div>
-            </div>
-            <div className="flex flex-col gap-4">
-              <p className='text-primary-400 font-medium'>About</p>
-              <div className='flex flex-col text-sm text-gray-400 gap-2'>
-                <UnstyledLink href='#' className='hover:text-gray-300'>Choosing Icloudeng</UnstyledLink>
-                <UnstyledLink href='#' className='hover:text-gray-300'>Open cloud</UnstyledLink>
-                <UnstyledLink href='#' className='hover:text-gray-300'>Multicloud</UnstyledLink>
-                <UnstyledLink href='#' className='hover:text-gray-300'>Global infrastructure</UnstyledLink>
-                <UnstyledLink href='#' className='hover:text-gray-300'>Customers and case study</UnstyledLink>
-                <UnstyledLink href='#' className='hover:text-gray-300'>Analyst reports</UnstyledLink>
-                <UnstyledLink href='#' className='hover:text-gray-300'>Whitepapers</UnstyledLink>
-                <UnstyledLink href='#' className='hover:text-gray-300'>Blog</UnstyledLink>
-              </div>
-            </div>
+          <div className="middle-left flex items-start justify-center gap-20 flex-1 ml-3 border-l-[1px] border-gray-300 px-4">
+            {FooterItemLinksData.map(({ bigTitle, childItems }, i) => (
+              <FooterItemLinks
+                key={i}
+                bigTitle={bigTitle}
+                childItems={childItems}
+              />
+            ))}
           </div>
         </div>
 
