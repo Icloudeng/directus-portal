@@ -51,6 +51,12 @@
 
 # Web App
 #
+- name: "Web App | .env.local"
+  template:
+    src: .env.local-web
+    dest: "{{ root_path }}/apps/web/.env.local"
+    force: yes
+
 - name: Web App | Build client assets
   become: false
   command: pnpm build
