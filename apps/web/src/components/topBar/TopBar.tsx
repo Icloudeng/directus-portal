@@ -4,25 +4,25 @@ import { VscChevronDown, VscChevronRight } from 'react-icons/vsc';
 import UnstyledLink from '@/components/links/UnstyledLink';
 import NextImage from '@/components/NextImage';
 
-import { LangList } from './components/listData';
+import { LangList } from '@/components/topBar/components/ListData';
 
 import { ITopBar } from '@/types/topBarTypes';
 
-import FrFlag from "~/images/france.png";
-import UsFlag from "~/images/united-states.png";
+import FrFlag from '~/images/france.png';
+import UsFlag from '~/images/united-states.png';
 
 const langListData = [
-    { href: '#', imgSrc: FrFlag, name: 'French' },
-    { href: '#', imgSrc: UsFlag, name: 'English' },
-]
+  { href: '#', imgSrc: FrFlag, name: 'French' },
+  { href: '#', imgSrc: UsFlag, name: 'English' },
+];
 
-const listData = ['Cloud comparison', 'Pricing', 'Changelog']
+const listData = ['Cloud comparison', 'Pricing', 'Changelog'];
 
 export const TopBar: React.FC<ITopBar> = ({ message, href }) => {
-    const langRef = React.useRef<HTMLElement>(null)
-    const toggleLang = () => {
-        langRef.current?.classList.toggle('active');
-    }
+  const langRef = React.useRef<HTMLElement>(null);
+  const toggleLang = () => {
+    langRef.current?.classList.toggle('active');
+  };
 
     return (
         <div className="border-b border-b-textGray bg-white px-10">
