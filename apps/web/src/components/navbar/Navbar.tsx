@@ -25,13 +25,17 @@ const menuListData = [
     { name: 'Company', isDropdown: true, extraStyles: 'absolute -ml-4 mt-3 px-2 sm:px-0 top-[.7rem] z-10 pt-6 transform w-screen max-w-3xl sm:px-0 lg:ml-0 lg:-translate-x-64', subMenu: <CompanySubmenu /> },
 ]
 
+{/* <div className={pagePosition > 40?
+        'sticky top-0 h-[70px] shadow-sm backdrop-blur-sm bg-white text-black w-full flex items-center px-10 mb-10 ease-out duration-100 z-50' : 
+        'transition-shadow sticky top-0 h-[70px] w-full flex items-center px-10 mb-10 hover:bg-white hover:text-black ease-linear duration-100 text-white'}> */}
 
 export const Navbar = () => {
     const pagePosition = useScrollPosition();
     
     return (
-        <div className={xclassnames(pagePosition > 40 && 'shadow-sm backdrop-blur-sm bg-white/90', 'transition-shadow sticky top-0 h-[70px] w-full flex items-center px-10 mb-5 ease-out duration-700')}>
-            <div className='w-full flex items-center gap-4'>
+        <div className={`sticky top-0 h-[70px] flex items-center px-10 mb-10 z-50 transition-all ease-in-out duration-100 ${pagePosition > 40? 
+            'shadow-sm backdrop-blur-sm bg-white/90 text-black' : 'hover:bg-white hover:text-black text-white'}`}>
+            <div className='x-container-fluid flex items-center gap-4'>
                 <div className='nav__logo mr-60'>
                     <UnstyledLink href='#'>
                         <NextImage useSkeleton src={Logo.src} width={80} height={60} alt="icloudeng logo" />
@@ -51,9 +55,9 @@ export const Navbar = () => {
                             ))}
                         </ul>
                     </div>
-                    <div className='nav__buttons flex items-center gap-5'>
-                        <ButtonLink className='py-[4px] font-light rounded-none' href='#' variant='outline'>Contact Us</ButtonLink>
-                        <ButtonLink className='py-[4px] font-light rounded-none' href='#' variant='primary'>Get Started</ButtonLink>
+                    <div className='nav__buttons flex items-center gap-5 ml-3'>
+                        <ButtonLink className='py-[4px] text-center font-light rounded-sm' href='#' variant='outline'>Contact Us</ButtonLink>
+                        <ButtonLink className='py-[4px] text-center font-light rounded-sm' href='#' variant='primary'>Get Started</ButtonLink>
                     </div>
                 </div>
                 <div className='nav__burger text-primary-600 ml-3 hidden'>
