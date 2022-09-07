@@ -24,8 +24,8 @@ export const TopBar: React.FC<ITopBar> = ({ message, href }) => {
   };
 
     return (
-        <div className="hidden sd:block border-b border-b-textGray bg-white md:px-10">
-            <div className="x-container-fluid h-10 flex items-center justify-start">
+        <div className="hidden sd:block border-b border-b-textGray bg-white px-10">
+            <div className="h-10 flex items-center justify-start">
                 <div className="flex flex-1 items-center mr-auto overflow-hidden flex-nowrap">
                     <div className=" h-5 px-2 border border-primary-400 flex items-center justify-center rounded-sm">
                         <span className="uppercase text-[0.6rem] text-primary-400">news</span>
