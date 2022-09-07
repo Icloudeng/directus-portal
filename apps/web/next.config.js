@@ -4,8 +4,13 @@ module.exports = {
     dirs: ['src'],
   },
 
+  images: {
+    domains: ['localhost', 'portaladmin.coding.icloudeng.xyz', '127.0.0.1'],
+  },
+
   publicRuntimeConfig: {
     directus_url: process.env.DIRECTUS_URL,
+    cms_url: process.env.CMS_URL,
   },
 
   serverRuntimeConfig: {

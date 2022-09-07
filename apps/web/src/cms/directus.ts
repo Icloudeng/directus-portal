@@ -2,11 +2,13 @@ import getConfig from 'next/config';
 import { Directus } from '@directus/sdk';
 
 const { publicRuntimeConfig, serverRuntimeConfig } = getConfig();
-const { directus_url } = publicRuntimeConfig;
+const { directus_url, cms_url: _cms_url } = publicRuntimeConfig;
 const { directus_email, directus_password, directus_token } =
   serverRuntimeConfig;
 
 const directus = new Directus(directus_url);
+
+export const cms_url = _cms_url as string;
 
 export async function getDirectusClient() {
   if (await directus.auth.token) return directus;
@@ -21,4 +23,9 @@ export async function getDirectusClient() {
   }
 
   return directus;
+}
+
+export async function getDirectusAuthToken() {
+  await getDirectusClient();
+  return directus.auth.token;
 }

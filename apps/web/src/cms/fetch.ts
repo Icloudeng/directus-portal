@@ -1,28 +1,46 @@
 import { IMAGE_PRESETS } from '@/constant/cms';
-import { PartialItem, Sort } from '@directus/sdk';
-import { getDirectusClient } from './directus';
+import { Sort } from '@directus/sdk';
+import { cms_url, getDirectusClient } from './directus';
 
-function hasFile(
+function hasFile<T = unknown>(
   access_token: string,
-  data: PartialItem<any>,
+  data: T,
   imageKey = 'image',
-  preset?: string
-): PartialItem<any> {
-  const url = `/assets/${data[imageKey]}?access_token=${access_token}${
-    preset ? `&key=${preset}` : ''
+  preset?: string | [number, number]
+): T {
+  const d: any = data;
+
+  if (!d[imageKey]) {
+    return data;
+  }
+  let preset_url = '';
+
+  switch (typeof preset) {
+    case 'string':
+      preset_url += `&key=${preset}`;
+      break;
+    case 'object':
+      preset_url += `&width=${preset[0]}&height=${preset[1]}`;
+      break;
+  }
+
+  const orgin = cms_url.endsWith('/') ? cms_url : cms_url + '/';
+  const url = `${orgin}assets/${d[imageKey]}?access_token=${
+    access_token + preset_url
   }`;
 
-  data[imageKey] = url;
+  d[imageKey] = url;
 
   return data;
 }
 
-function hasFiles(
+function hasFiles<T>(
   access_token: string,
-  datas: PartialItem<any>[],
-  preset = IMAGE_PRESETS.sliders
-): PartialItem<any>[] {
-  return datas.map((data) => hasFile(access_token, data, 'image', preset));
+  datas: T[],
+  imageKey = 'image',
+  preset?: string | [number, number]
+): T[] {
+  return datas.map((data) => hasFile<T>(access_token, data, imageKey, preset));
 }
 
 async function getDatas<T = unknown>(
