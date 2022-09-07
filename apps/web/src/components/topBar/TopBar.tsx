@@ -58,7 +58,7 @@ export const TopBar: React.FC<ITopBar> = ({ message, href }) => {
               onClick={toggleLang}
               className='flex items-center gap-[6px]'
             >
-              {languages[0].icon_flag && (
+              {languages[0]?.icon_flag && (
                 <span>
                   <NextImage
                     useSkeleton
@@ -70,7 +70,7 @@ export const TopBar: React.FC<ITopBar> = ({ message, href }) => {
                 </span>
               )}
               <span className='flex items-center gap-[1px]'>
-                <span>{languages[0].code}</span>
+                <span>{languages[0]?.code}</span>
                 <VscChevronDown className='lang-switcher__chevron text-textDark text-sm' />
               </span>
             </button>
