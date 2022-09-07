@@ -1,5 +1,6 @@
 import { Footer } from '../footer/Footer';
-import { Navbar } from '../navbar/Navbar';
+import { Navbar2 } from '../navbar/SubMenu';
+// import { Navbar } from '../navbar/Navbar';
 import { TopBar } from '../topBar/TopBar';
 
 export default function Layout({ children }: { children: React.ReactNode }) {
@@ -10,7 +11,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <div className={styles.wrapper}>
       <TopBar message='Introducing new platform for data analysis' href='#' />
-      <Navbar />
+      <Navbar2 />
       <div className={styles.mainContainer}>
         {children}
       </div>
