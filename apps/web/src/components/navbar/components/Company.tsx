@@ -3,7 +3,7 @@ import { HiOutlineCursorClick, HiOutlineShieldCheck } from 'react-icons/hi';
 import { MdOutlineDashboardCustomize } from 'react-icons/md';
 import { TbChartLine } from 'react-icons/tb';
 
-import { CompanyItem } from './components/CompanyItem';
+import { CompanyItem } from './CompanyItem';
 
 const CompanyItemsData =  [
     {

@@ -1,3 +1,5 @@
+import { IconType } from 'react-icons';
+
 export type ISolutionsItem = {
     smallTitle: string,
     icon: JSX.Element,
@@ -44,4 +46,21 @@ export type IMenuList = {
     subMenu?: React.ReactElement | React.ReactNode
     subMenuExtraStyles?: string
     isDropdown: boolean
+}
+
+export type INavBarMenuList = {
+    title: string;
+    link: string;
+    external?: boolean;
+    subMenu?: ({
+        title?: string;
+        featured?: boolean;
+        items: {
+            title: string;
+            description: string;
+            icon?: IconType
+            link: string;
+            external?: boolean;
+        }[];
+    })[]
 }

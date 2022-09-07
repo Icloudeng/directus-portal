@@ -3,7 +3,7 @@ import { HiOutlineCursorClick, HiOutlineShieldCheck } from 'react-icons/hi';
 import { MdOutlineDashboardCustomize } from 'react-icons/md';
 import { TbChartLine } from 'react-icons/tb';
 
-import { SolutionsItem } from './components/SolutionsItem';
+import { SolutionsItem } from './SolutionsItem';
 
 const SolutionsItemsData = [
     { smallTitle: 'Analytics', href: '#', icon: <TbChartLine className='flex-shrink-0 h-6 w-6 text-primary-400' />, description: 'Get a better understanding of where your traffic is coming from.' },

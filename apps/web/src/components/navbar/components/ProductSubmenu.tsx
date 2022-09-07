@@ -3,8 +3,8 @@ import { HiOutlineCursorClick, HiOutlineShieldCheck } from 'react-icons/hi';
 import { MdOutlineDashboardCustomize } from 'react-icons/md';
 import { TbChartLine } from 'react-icons/tb';
 
-import { ProductFeaturedItem } from './components/products/ProductFeaturedItem';
-import { ProductItem } from './components/products/ProductItem';
+import { ProductFeaturedItem } from './products/ProductFeaturedItem';
+import { ProductItem } from './products/ProductItem';
 
 const ProductFeaturedItemsData = [
     { title: 'App Platforms', href: '#', description: 'Get a better understanding of where your traffic is coming from.' },
@@ -53,7 +53,7 @@ export const ProductSubmenu = () => {
                     </div>
                 </div>
             </div>
-            <div className='flex items-center justify-between divide-x-[1px] bg-white p-2'>
+            <div className='flex items-center justify-between bg-white p-2'>
                 {ProductItemsData.map((itemData, i) => (
                     <ProductItem
                         key={i}

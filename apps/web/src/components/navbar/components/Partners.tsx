@@ -1,7 +1,7 @@
 import { HiOutlineCursorClick, HiOutlineShieldCheck } from 'react-icons/hi';
 import { TbChartLine } from 'react-icons/tb';
 
-import { PartnersItem } from './components/PartnersItem';
+import { PartnersItem } from './PartnersItem';
 
 const PartnersItemsData =  [
     {smallTitle: 'Analytics', href: '#', icon: <TbChartLine className='flex-shrink-0 h-6 w-6 text-primary-400' />, description: 'Get a better understanding of where your traffic is coming from.'},
