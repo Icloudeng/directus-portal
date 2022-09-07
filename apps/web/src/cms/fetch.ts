@@ -1,6 +1,6 @@
 import { IMAGE_PRESETS } from '@/constant/cms';
 import { PartialItem, Sort } from '@directus/sdk';
-import { directus_client } from './directus';
+import { getDirectusClient } from './directus';
 
 function hasFile(
   access_token: string,
@@ -25,10 +25,14 @@ function hasFiles(
   return datas.map((data) => hasFile(access_token, data, 'image', preset));
 }
 
-async function getDatas(model: string, limit?: number, sort?: Sort<unknown>) {
-  const directus = await directus_client.instance;
+async function getDatas<T = unknown>(
+  model: string,
+  limit?: number,
+  sort?: Sort<T>
+) {
+  const directus = await getDirectusClient();
 
-  return directus.items(model).readByQuery({ limit, sort: sort });
+  return directus.items<string, T>(model).readByQuery({ limit, sort: sort });
 }
 
 export const directus_fetch = {
