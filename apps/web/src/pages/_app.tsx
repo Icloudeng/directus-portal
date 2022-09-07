@@ -26,7 +26,7 @@ function MyApp({
 
 MyApp.getInitialProps = async () => {
   const access_token = await getDirectusAuthToken();
-  let { data: languages } = await getMDLanguages(access_token);
+  const { data: languages } = await getMDLanguages(access_token);
 
   return {
     datas: {
