@@ -14,11 +14,13 @@ const listData = [
 ];
 
 export const TopBar: React.FC<ITopBar> = ({ message, href }) => {
-  const { languages } = useContext(sharedDataContext);
+  const { languages, user_language } = useContext(sharedDataContext);
   const langRef = React.useRef<HTMLElement>(null);
   const toggleLang = () => {
     langRef.current?.classList.toggle('active');
   };
+
+  const language = languages.find((lg) => lg.code === user_language);
 
   return (
     <div className='hidden sd:block border-b border-b-textGray bg-white px-10'>
@@ -58,11 +60,11 @@ export const TopBar: React.FC<ITopBar> = ({ message, href }) => {
               onClick={toggleLang}
               className='flex items-center gap-[6px]'
             >
-              {languages[0]?.icon_flag && (
+              {language && (
                 <span>
                   <NextImage
                     useSkeleton
-                    src={languages[0].icon_flag}
+                    src={language.icon_flag}
                     width='15'
                     height='15'
                     alt='Icon'
@@ -70,18 +72,13 @@ export const TopBar: React.FC<ITopBar> = ({ message, href }) => {
                 </span>
               )}
               <span className='flex items-center gap-[1px]'>
-                <span>{languages[0]?.code}</span>
+                <span>{language?.name}</span>
                 <VscChevronDown className='lang-switcher__chevron text-textDark text-sm' />
               </span>
             </button>
             <div className='lang-switcher__submenu absolute flex flex-col gap-[1px] border border-b-textGray py-2 top-full -left-5 bg-white z-50 invisible opacity-0'>
-              {languages.map(({ icon_flag, name }, i) => (
-                <LangList
-                  key={i}
-                  link={href}
-                  icon_flag={icon_flag}
-                  name={name}
-                />
+              {languages.map((lang, i) => (
+                <LangList key={i} {...lang} />
               ))}
             </div>
           </nav>
