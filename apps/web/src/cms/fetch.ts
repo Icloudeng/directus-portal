@@ -1,7 +1,13 @@
 import { Sort, Filter, Directus, TypeMap } from '@directus/sdk';
 import { cms_url, getDirectusClient } from './directus';
-import { IMAGE_PRESETS } from '@/constant/cms';
-import { DRTStatus, MDTranslation } from '@/types/directus';
+import { DRTStatus, MDTranslation, MDQueryFields } from '@/types/directus';
+
+type Query<T> = {
+  fields?: MDQueryFields<T>;
+  limit?: number;
+  sort?: Sort<T>;
+  filter?: Filter<T>;
+};
 
 function hasFile<T = unknown>(
   access_token: string,
@@ -44,16 +50,9 @@ function hasFiles<T>(
   return datas.map((data) => hasFile<T>(access_token, data, imageKey, preset));
 }
 
-async function getDatas<T = unknown>(
-  model: string,
-  limit?: number,
-  sort?: Sort<T>,
-  filter?: Filter<T>
-) {
+async function getDatas<T = unknown>(model: string, query: Query<T> = {}) {
   const directus = await getDirectusClient();
-  const res = await directus
-    .items<string, T>(model)
-    .readByQuery({ limit, sort, filter });
+  const res = await directus.items<string, T>(model).readByQuery(query);
 
   const data = res.data;
 
@@ -90,15 +89,15 @@ async function parseTranslations<
 
 function getPublishedDatas<T extends DRTStatus>(
   model: string,
-  limit?: number,
-  sort?: Sort<T>,
-  filter?: Filter<T>
+  query: Query<T> = {}
 ) {
-  return getDatas(model, limit, sort, {
-    status: {
-      _in: ['published'],
+  return getDatas<T>(model, {
+    filter: {
+      status: {
+        _in: ['published'],
+      },
     },
-    ...(filter ? filter : {}),
+    ...query,
   });
 }
 

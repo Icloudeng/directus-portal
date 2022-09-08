@@ -1,7 +1,6 @@
 import { DEFAULT_USER_LANG } from '@/constant/vars';
-import { sharedDataContext } from '@/store';
+import { useSharedData } from '@/store';
 import { MDWithTranslation, MDWithUserTranslation } from '@/types/directus';
-import { useContext } from 'react';
 
 /**
  * Return datas with translation from user language
@@ -12,7 +11,7 @@ import { useContext } from 'react';
 export function useMut<
   T extends MDWithTranslation<any> | MDWithTranslation<any>[]
 >(datas: T, lang?: string) {
-  const { user_language } = useContext(sharedDataContext);
+  const { user_language } = useSharedData();
   return mut(datas, lang || user_language);
 }
 

@@ -1,4 +1,4 @@
-import type { PartialItem } from '@directus/sdk';
+import type { PartialItem, QueryOne } from '@directus/sdk';
 
 export type DRTStatus = {
   status: 'published' | 'draft' | 'archived';
@@ -19,6 +19,10 @@ type I_MDWithUserTranslation<T> = {
       : never
     : T[k];
 };
+
+type ValueOf<T> = T[keyof T];
+
+export type MDQueryFields<T> = ValueOf<Pick<QueryOne<T>, 'fields'>>;
 
 export type WithTranslation<T> = T & {
   [k in keyof T as `${string & k}_translations`]: T[k];

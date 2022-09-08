@@ -1,15 +1,14 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { VscChevronDown, VscChevronRight } from 'react-icons/vsc';
-
 import UnstyledLink from '@/components/links/UnstyledLink';
 import NextImage from '@/components/NextImage';
 import { LangList } from '@/components/topBar/components/ListData';
 import { ITopBar } from '@/types/topBarTypes';
-import { sharedDataContext } from '@/store';
+import { useSharedData } from '@/store';
 import { useMut } from '@/cms/mut';
 
 export const TopBar: React.FC<ITopBar> = ({ message, href }) => {
-  const { languages, user_language } = useContext(sharedDataContext);
+  const { languages, user_language } = useSharedData();
   const langRef = React.useRef<HTMLElement>(null);
 
   const toggleLang = () => {
@@ -88,7 +87,7 @@ export const TopBar: React.FC<ITopBar> = ({ message, href }) => {
 };
 
 function TopbarLinks() {
-  const { tb_links } = useContext(sharedDataContext);
+  const { tb_links } = useSharedData();
   const datas = useMut(tb_links);
 
   return (
