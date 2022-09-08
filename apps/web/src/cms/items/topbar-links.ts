@@ -1,9 +1,11 @@
 import { CMS_MODELS } from '@/constant/cms';
-import { DRTStatus } from '@/types/directus';
+import { DRTStatus, MDWithTranslation } from '@/types/directus';
 import { directus_fetch } from '../fetch';
 
-export type MDTopbarLinks = {
+export type MDTopbarLinks = MDWithTranslation<{ name: string }> & {
   id: string;
+  url: string;
+  external: boolean;
 } & DRTStatus;
 
 export async function getMDTopbarLinks() {

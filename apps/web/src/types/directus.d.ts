@@ -5,7 +5,9 @@ export type DRTStatus = {
 };
 
 export type MDWithTranslation<T> = {
-  [x: string]: T;
+  translations: {
+    [x: string]: T;
+  };
 };
 
 export type MDTranslation = {
