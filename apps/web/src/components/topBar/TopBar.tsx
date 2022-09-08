@@ -7,18 +7,29 @@ import { LangList } from '@/components/topBar/components/ListData';
 import { ITopBar } from '@/types/topBarTypes';
 import { sharedDataContext } from '@/store';
 
-const listData = [
-  { href: '#', text: 'Cloud comparison' },
-  { href: '#', text: 'Pricing' },
-  { href: '#', text: 'Changelog' },
-];
-
 export const TopBar: React.FC<ITopBar> = ({ message, href }) => {
-  const { languages } = useContext(sharedDataContext);
+  const { languages, user_language } = useContext(sharedDataContext);
   const langRef = React.useRef<HTMLElement>(null);
+
   const toggleLang = () => {
     langRef.current?.classList.toggle('active');
   };
+
+  useEffect(() => {
+    if (!langRef.current) return;
+    const onBodyClick = (ev: MouseEvent) => {
+      if (!langRef.current?.contains(ev.target! as Node)) {
+        langRef.current?.classList.remove('active');
+      }
+    };
+
+    document.body.addEventListener('click', onBodyClick);
+    return () => {
+      document.body.removeEventListener('click', onBodyClick);
+    };
+  }, []);
+
+  const language = languages.find((lg) => lg.code === user_language);
 
   return (
     <div className='hidden sd:block border-b border-b-textGray bg-white px-10'>
@@ -38,18 +49,7 @@ export const TopBar: React.FC<ITopBar> = ({ message, href }) => {
           <VscChevronRight className='text-textDark text-sm' />
         </div>
         <div className=' mr-5'>
-          <ul className='no-underline hidden sm:flex gap-5 text-xs text-textDark list-none'>
-            {listData.map(({ href, text }, i) => (
-              <li key={i}>
-                <UnstyledLink
-                  href={href}
-                  className='animated-underline border-b-0'
-                >
-                  {text}
-                </UnstyledLink>
-              </li>
-            ))}
-          </ul>
+          <TopbarLinks />
         </div>
         <div className='text-xs text-textDark h-full relative flex items-center'>
           <nav ref={langRef} className='lang-switcher block'>
@@ -58,11 +58,11 @@ export const TopBar: React.FC<ITopBar> = ({ message, href }) => {
               onClick={toggleLang}
               className='flex items-center gap-[6px]'
             >
-              {languages[0]?.icon_flag && (
+              {language && (
                 <span>
                   <NextImage
                     useSkeleton
-                    src={languages[0].icon_flag}
+                    src={language.icon_flag}
                     width='15'
                     height='15'
                     alt='Icon'
@@ -70,18 +70,13 @@ export const TopBar: React.FC<ITopBar> = ({ message, href }) => {
                 </span>
               )}
               <span className='flex items-center gap-[1px]'>
-                <span>{languages[0]?.code}</span>
+                <span>{language?.name}</span>
                 <VscChevronDown className='lang-switcher__chevron text-textDark text-sm' />
               </span>
             </button>
             <div className='lang-switcher__submenu absolute flex flex-col gap-[1px] border border-b-textGray py-2 top-full -left-5 bg-white z-50 invisible opacity-0'>
-              {languages.map(({ icon_flag, name }, i) => (
-                <LangList
-                  key={i}
-                  link={href}
-                  icon_flag={icon_flag}
-                  name={name}
-                />
+              {languages.map((lang, i) => (
+                <LangList key={i} {...lang} />
               ))}
             </div>
           </nav>
@@ -90,3 +85,19 @@ export const TopBar: React.FC<ITopBar> = ({ message, href }) => {
     </div>
   );
 };
+
+function TopbarLinks() {
+  const { tb_links, user_language } = useContext(sharedDataContext);
+
+  return (
+    <ul className='no-underline hidden sm:flex gap-5 text-xs text-textDark list-none'>
+      {tb_links.map(({ translations, url, id }) => (
+        <li key={id}>
+          <UnstyledLink href={url} className='animated-underline border-b-0'>
+            {translations[user_language]?.name}
+          </UnstyledLink>
+        </li>
+      ))}
+    </ul>
+  );
+}
