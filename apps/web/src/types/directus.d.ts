@@ -5,9 +5,9 @@ export type DRTStatus = {
 };
 
 export type MDWithTranslation<T> = {
-  translations: {
+  translations: Partial<{
     [x: string]: T;
-  };
+  }>;
 };
 
 export type MDTranslation = {

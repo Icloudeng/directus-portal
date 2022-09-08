@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { VscChevronDown, VscChevronRight } from 'react-icons/vsc';
 
 import UnstyledLink from '@/components/links/UnstyledLink';
@@ -6,12 +6,6 @@ import NextImage from '@/components/NextImage';
 import { LangList } from '@/components/topBar/components/ListData';
 import { ITopBar } from '@/types/topBarTypes';
 import { sharedDataContext } from '@/store';
-
-const listData = [
-  { href: '#', text: 'Cloud comparison' },
-  { href: '#', text: 'Pricing' },
-  { href: '#', text: 'Changelog' },
-];
 
 export const TopBar: React.FC<ITopBar> = ({ message, href }) => {
   const { languages, user_language } = useContext(sharedDataContext);
@@ -40,18 +34,7 @@ export const TopBar: React.FC<ITopBar> = ({ message, href }) => {
           <VscChevronRight className='text-textDark text-sm' />
         </div>
         <div className=' mr-5'>
-          <ul className='no-underline hidden sm:flex gap-5 text-xs text-textDark list-none'>
-            {listData.map(({ href, text }, i) => (
-              <li key={i}>
-                <UnstyledLink
-                  href={href}
-                  className='animated-underline border-b-0'
-                >
-                  {text}
-                </UnstyledLink>
-              </li>
-            ))}
-          </ul>
+          <TopbarLinks />
         </div>
         <div className='text-xs text-textDark h-full relative flex items-center'>
           <nav ref={langRef} className='lang-switcher block'>
@@ -87,3 +70,19 @@ export const TopBar: React.FC<ITopBar> = ({ message, href }) => {
     </div>
   );
 };
+
+function TopbarLinks() {
+  const { tb_links, user_language } = useContext(sharedDataContext);
+
+  return (
+    <ul className='no-underline hidden sm:flex gap-5 text-xs text-textDark list-none'>
+      {tb_links.map(({ translations, url, id }) => (
+        <li key={id}>
+          <UnstyledLink href={url} className='animated-underline border-b-0'>
+            {translations[user_language]?.name}
+          </UnstyledLink>
+        </li>
+      ))}
+    </ul>
+  );
+}
