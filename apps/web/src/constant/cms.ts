@@ -1,10 +1,8 @@
+import { WithTranslation } from '@/types/directus';
+
 export const IMAGE_PRESETS = {
   sliders: 'sliders',
   systemLargeContain: 'system-large-contain',
-};
-
-type WithTranslation<T> = T & {
-  [k in keyof T as `${string & k}_translations`]: T[k];
 };
 
 function modelsWithTranslation<T>(models: T): WithTranslation<T> {
@@ -18,4 +16,5 @@ function modelsWithTranslation<T>(models: T): WithTranslation<T> {
 export const CMS_MODELS = modelsWithTranslation({
   languages: 'languages',
   topbar_links: 'TopbarLinks',
+  news: 'News',
 });

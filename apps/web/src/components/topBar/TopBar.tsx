@@ -6,6 +6,7 @@ import NextImage from '@/components/NextImage';
 import { LangList } from '@/components/topBar/components/ListData';
 import { ITopBar } from '@/types/topBarTypes';
 import { sharedDataContext } from '@/store';
+import { useMut } from '@/cms/mut';
 
 export const TopBar: React.FC<ITopBar> = ({ message, href }) => {
   const { languages, user_language } = useContext(sharedDataContext);
@@ -87,14 +88,15 @@ export const TopBar: React.FC<ITopBar> = ({ message, href }) => {
 };
 
 function TopbarLinks() {
-  const { tb_links, user_language } = useContext(sharedDataContext);
+  const { tb_links } = useContext(sharedDataContext);
+  const datas = useMut(tb_links);
 
   return (
     <ul className='no-underline hidden sm:flex gap-5 text-xs text-textDark list-none'>
-      {tb_links.map(({ translations, url, id }) => (
+      {datas.map(({ translations, url, id }) => (
         <li key={id}>
           <UnstyledLink href={url} className='animated-underline border-b-0'>
-            {translations[user_language]?.name}
+            {translations?.name}
           </UnstyledLink>
         </li>
       ))}

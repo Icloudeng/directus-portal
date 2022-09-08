@@ -8,10 +8,8 @@ export type MDTopbarLinks = MDWithTranslation<{ name: string }> & {
   external: boolean;
 } & DRTStatus;
 
-export async function getMDTopbarLinks() {
-  const res = await directus_fetch.getDatas<MDTopbarLinks>(
+export function getMDTopbarLinks() {
+  return directus_fetch.getPublishedDatas<MDTopbarLinks>(
     CMS_MODELS.topbar_links
   );
-
-  return res;
 }
