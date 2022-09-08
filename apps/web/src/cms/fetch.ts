@@ -78,7 +78,7 @@ async function parseTranslations<
     const data = await directus
       .items<string, MDTranslation>(model + '_translations')
       .readOne(tran_id);
-    if (data?.languages_code) {
+    if (data?.languages_code && !translations[data?.languages_code]) {
       translations[data?.languages_code] = data;
     }
   }
