@@ -1,7 +1,7 @@
-import { Sort, Filter } from '@directus/sdk';
+import { Sort, Filter, Directus, TypeMap } from '@directus/sdk';
 import { cms_url, getDirectusClient } from './directus';
 import { IMAGE_PRESETS } from '@/constant/cms';
-import { DRTStatus } from '@/types/directus';
+import { DRTStatus, MDTranslation } from '@/types/directus';
 
 function hasFile<T = unknown>(
   access_token: string,
@@ -51,8 +51,41 @@ async function getDatas<T = unknown>(
   filter?: Filter<T>
 ) {
   const directus = await getDirectusClient();
+  const res = await directus
+    .items<string, T>(model)
+    .readByQuery({ limit, sort, filter });
 
-  return directus.items<string, T>(model).readByQuery({ limit, sort, filter });
+  const data = res.data;
+
+  if (!data) return res;
+
+  for (const key in data) {
+    const object: any = data[key];
+    if (object?.translations) {
+      await parseTranslations(directus, model, object);
+    }
+  }
+
+  return res;
+}
+
+async function parseTranslations<
+  T extends { translations: number[] } | { [x: string]: any }
+>(directus: Directus<TypeMap>, model: string, object: T) {
+  const translations: { [x: string]: any } = {};
+
+  for (const tran_id of object.translations) {
+    const data = await directus
+      .items<string, MDTranslation>(model + '_translations')
+      .readOne(tran_id);
+    if (data?.languages_code) {
+      translations[data?.languages_code] = data;
+    }
+  }
+
+  object.translations = translations;
+
+  return object;
 }
 
 function getPublishedDatas<T extends DRTStatus>(
