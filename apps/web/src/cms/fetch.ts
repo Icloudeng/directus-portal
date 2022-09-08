@@ -1,6 +1,7 @@
-import { IMAGE_PRESETS } from '@/constant/cms';
-import { Sort } from '@directus/sdk';
+import { Sort, Filter } from '@directus/sdk';
 import { cms_url, getDirectusClient } from './directus';
+import { IMAGE_PRESETS } from '@/constant/cms';
+import { DRTStatus } from '@/types/directus';
 
 function hasFile<T = unknown>(
   access_token: string,
@@ -46,14 +47,30 @@ function hasFiles<T>(
 async function getDatas<T = unknown>(
   model: string,
   limit?: number,
-  sort?: Sort<T>
+  sort?: Sort<T>,
+  filter?: Filter<T>
 ) {
   const directus = await getDirectusClient();
 
-  return directus.items<string, T>(model).readByQuery({ limit, sort: sort });
+  return directus.items<string, T>(model).readByQuery({ limit, sort, filter });
+}
+
+function getPublishedDatas<T extends DRTStatus>(
+  model: string,
+  limit?: number,
+  sort?: Sort<T>,
+  filter?: Filter<T>
+) {
+  return getDatas(model, limit, sort, {
+    status: {
+      _in: ['published'],
+    },
+    ...(filter ? filter : {}),
+  });
 }
 
 export const directus_fetch = {
+  getPublishedDatas,
   getDatas,
   hasFiles,
   hasFile,

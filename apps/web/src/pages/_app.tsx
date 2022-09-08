@@ -1,13 +1,9 @@
 import { AppProps } from 'next/app';
-import { ThemeProvider } from 'next-themes';
-
 import '@/styles/globals.css';
 import ChatwootWidget from '@/components/services/chatwoot';
 import { getMDLanguages } from '@/cms/items';
 import { ISharedData, SharedDataProvider } from '@/store';
 import { getDirectusAuthToken } from '@/cms/directus';
-
-// import '@/styles/colors.css';
 
 function MyApp({
   Component,
@@ -16,9 +12,7 @@ function MyApp({
 }: AppProps & { datas: ISharedData }) {
   return (
     <SharedDataProvider value={datas}>
-      <ThemeProvider attribute='class'>
-        <Component {...pageProps} />
-      </ThemeProvider>
+      <Component {...pageProps} />
       <ChatwootWidget />
     </SharedDataProvider>
   );
