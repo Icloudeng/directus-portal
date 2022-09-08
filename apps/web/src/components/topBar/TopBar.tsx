@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { VscChevronDown, VscChevronRight } from 'react-icons/vsc';
 
 import UnstyledLink from '@/components/links/UnstyledLink';
@@ -10,9 +10,24 @@ import { sharedDataContext } from '@/store';
 export const TopBar: React.FC<ITopBar> = ({ message, href }) => {
   const { languages, user_language } = useContext(sharedDataContext);
   const langRef = React.useRef<HTMLElement>(null);
+
   const toggleLang = () => {
     langRef.current?.classList.toggle('active');
   };
+
+  useEffect(() => {
+    if (!langRef.current) return;
+    const onBodyClick = (ev: MouseEvent) => {
+      if (!langRef.current?.contains(ev.target! as Node)) {
+        langRef.current?.classList.remove('active');
+      }
+    };
+
+    document.body.addEventListener('click', onBodyClick);
+    return () => {
+      document.body.removeEventListener('click', onBodyClick);
+    };
+  }, []);
 
   const language = languages.find((lg) => lg.code === user_language);
 
