@@ -52,6 +52,19 @@ function hasFiles<T>(
 
 async function getDatas<T = unknown>(model: string, query: Query<T> = {}) {
   const directus = await getDirectusClient();
+  let translations_fields: string[] = [];
+
+  if (query.fields && Array.isArray(query.fields)) {
+    translations_fields = query.fields
+      .filter((f: string) => f.startsWith('translations.'))
+      .map((f: string) => f.replace('translations.', ''));
+
+    const qry: any = query;
+    qry.fields = query.fields.filter(
+      (f: string) => !f.startsWith('translations.')
+    );
+  }
+
   const res = await directus.items<string, T>(model).readByQuery(query);
 
   const data = res.data;
@@ -61,7 +74,7 @@ async function getDatas<T = unknown>(model: string, query: Query<T> = {}) {
   for (const key in data) {
     const object: any = data[key];
     if (object?.translations) {
-      await parseTranslations(directus, model, object);
+      await parseTranslations(directus, model, object, translations_fields);
     }
   }
 
@@ -70,13 +83,20 @@ async function getDatas<T = unknown>(model: string, query: Query<T> = {}) {
 
 async function parseTranslations<
   T extends { translations: number[] } | { [x: string]: any }
->(directus: Directus<TypeMap>, model: string, object: T) {
+>(
+  directus: Directus<TypeMap>,
+  model: string,
+  object: T,
+  translations_fields: string[]
+) {
   const translations: { [x: string]: any } = {};
 
   for (const tran_id of object.translations) {
     const data = await directus
       .items<string, MDTranslation>(model + '_translations')
-      .readOne(tran_id);
+      .readOne(tran_id, {
+        fields: translations_fields,
+      });
     if (data?.languages_code && !translations[data?.languages_code]) {
       translations[data?.languages_code] = data;
     }

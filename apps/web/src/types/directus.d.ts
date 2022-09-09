@@ -1,6 +1,7 @@
-import type { PartialItem, QueryOne } from '@directus/sdk';
+import type { ID, PartialItem, QueryOne } from '@directus/sdk';
 
 export type DRTStatus = {
+  id: ID,
   status: 'published' | 'draft' | 'archived';
   date_created: string;
   date_updated?: string;

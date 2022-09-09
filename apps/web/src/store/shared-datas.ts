@@ -1,10 +1,11 @@
 import { createContext, useContext } from 'react';
-import { MDLanguages, MDTopbarLinks } from '@/cms/items';
+import { MDLanguages, MDTopbarNews, MDTopbarLinks } from '@/cms/items';
 
 export type ISharedData = {
   languages: MDLanguages[];
   tb_links: MDTopbarLinks[];
   user_language: string;
+  tp_news: MDTopbarNews;
 };
 
 export const sharedDataContext = createContext<ISharedData>({} as ISharedData);
