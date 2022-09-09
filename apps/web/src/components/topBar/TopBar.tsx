@@ -111,9 +111,13 @@ function TopbarLinks() {
 
   return (
     <ul className='no-underline hidden sm:flex gap-5 text-xs text-textDark list-none'>
-      {datas.map(({ translations, url, id }) => (
+      {datas.map(({ translations, url, id, external }) => (
         <li key={id}>
-          <UnstyledLink href={url} className='animated-underline border-b-0'>
+          <UnstyledLink
+            href={url}
+            target={external ? '_blank' : undefined}
+            className='animated-underline border-b-0'
+          >
             {translations?.name}
           </UnstyledLink>
         </li>
