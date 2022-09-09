@@ -7,6 +7,7 @@ import { getDirectusAuthToken } from '@/cms/directus';
 import { useEffect } from 'react';
 import { GetServerSidePropsContext } from 'next';
 import { USER_LANG_HEADER } from '@/constant/vars';
+import { getMDFooterLinks } from '@/cms/items/footer-links';
 
 function MyApp({
   Component,
@@ -29,6 +30,7 @@ MyApp.getInitialProps = async ({ ctx }: { ctx: GetServerSidePropsContext }) => {
   const { data: languages } = await getMDLanguages(access_token);
   const { data: tb_links } = await getMDTopbarLinks();
   const { data: tp_news } = await getMDTopbarNews();
+  const { data: footer_links } = await getMDFooterLinks();
   const user_language = ctx.res.getHeader(USER_LANG_HEADER);
 
   return {
@@ -37,6 +39,7 @@ MyApp.getInitialProps = async ({ ctx }: { ctx: GetServerSidePropsContext }) => {
       tb_links,
       user_language,
       tp_news,
+      footer_links,
     },
   };
 };
