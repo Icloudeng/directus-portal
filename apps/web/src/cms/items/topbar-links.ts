@@ -5,6 +5,7 @@ import { directus_fetch } from '../fetch';
 
 export type MDTopbarLinks = MDWithTranslation<{ name: string }> & {
   id: ID;
+  label: string;
   url: string;
   external: boolean;
 } & DRTStatus;

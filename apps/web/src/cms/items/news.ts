@@ -12,6 +12,7 @@ type TransFields = {
 type Fields = {
   label: string;
   tags: string[];
+  image: string;
 };
 
 export type MDNews = MDWithTranslation<TransFields> & Fields & DRTStatus;

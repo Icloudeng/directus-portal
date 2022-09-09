@@ -1,6 +1,123 @@
 version: 1
 directus: 9.17.4
 collections:
+  - collection: Footer
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: closed
+      collection: Footer
+      color: '#A2B5CD'
+      display_template: null
+      group: null
+      hidden: false
+      icon: folder
+      item_duplication_fields: null
+      note: null
+      singleton: false
+      sort: 2
+      sort_field: null
+      translations: null
+      unarchive_value: null
+    schema: null
+  - collection: FooterLinkItems
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: status
+      archive_value: archived
+      collapse: open
+      collection: FooterLinkItems
+      color: null
+      display_template: null
+      group: Footer
+      hidden: true
+      icon: null
+      item_duplication_fields: null
+      note: null
+      singleton: false
+      sort: 3
+      sort_field: sort
+      translations: null
+      unarchive_value: draft
+    schema:
+      comment: null
+      name: FooterLinkItems
+      schema: public
+  - collection: FooterLinkItems_translations
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: FooterLinkItems_translations
+      color: null
+      display_template: null
+      group: Footer
+      hidden: true
+      icon: import_export
+      item_duplication_fields: null
+      note: null
+      singleton: false
+      sort: 4
+      sort_field: null
+      translations: null
+      unarchive_value: null
+    schema:
+      comment: null
+      name: FooterLinkItems_translations
+      schema: public
+  - collection: FooterLinks
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: status
+      archive_value: archived
+      collapse: open
+      collection: FooterLinks
+      color: null
+      display_template: null
+      group: Footer
+      hidden: false
+      icon: null
+      item_duplication_fields: null
+      note: null
+      singleton: false
+      sort: 1
+      sort_field: sort
+      translations: null
+      unarchive_value: draft
+    schema:
+      comment: null
+      name: FooterLinks
+      schema: public
+  - collection: FooterLinks_translations
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: FooterLinks_translations
+      color: null
+      display_template: null
+      group: Footer
+      hidden: true
+      icon: import_export
+      item_duplication_fields: null
+      note: null
+      singleton: false
+      sort: 2
+      sort_field: null
+      translations: null
+      unarchive_value: null
+    schema:
+      comment: null
+      name: FooterLinks_translations
+      schema: public
   - collection: News
     meta:
       accountability: all
@@ -17,7 +134,7 @@ collections:
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: null
+      sort: 3
       sort_field: sort
       translations: null
       unarchive_value: draft
@@ -41,7 +158,7 @@ collections:
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: null
+      sort: 4
       sort_field: null
       translations: null
       unarchive_value: null
@@ -128,13 +245,13 @@ collections:
       collection: languages
       color: null
       display_template: null
-      group: TopBar
+      group: null
       hidden: false
       icon: null
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: 3
+      sort: 5
       sort_field: null
       translations: null
       unarchive_value: null
@@ -143,6 +260,1130 @@ collections:
       name: languages
       schema: public
 fields:
+  - collection: FooterLinkItems
+    field: date_created
+    meta:
+      collection: FooterLinkItems
+      conditions: null
+      display: datetime
+      display_options:
+        relative: true
+      field: date_created
+      group: null
+      hidden: true
+      interface: datetime
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: 9
+      special:
+        - date-created
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      comment: null
+      data_type: timestamp with time zone
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: date_created
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: FooterLinkItems
+    type: timestamp
+  - collection: FooterLinkItems
+    field: external
+    meta:
+      collection: FooterLinkItems
+      conditions: null
+      display: null
+      display_options: null
+      field: external
+      group: null
+      hidden: false
+      interface: boolean
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 4
+      special:
+        - cast-boolean
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: boolean
+      default_value: false
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: external
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: FooterLinkItems
+    type: boolean
+  - collection: FooterLinkItems
+    field: footer_links_id
+    meta:
+      collection: FooterLinkItems
+      conditions: null
+      display: null
+      display_options: null
+      field: footer_links_id
+      group: null
+      hidden: true
+      interface: select-dropdown-m2o
+      note: null
+      options:
+        template: '{{translations.name}}'
+      readonly: false
+      required: false
+      sort: 2
+      special:
+        - m2o
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: FooterLinks
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: footer_links_id
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: FooterLinkItems
+    type: uuid
+  - collection: FooterLinkItems
+    field: id
+    meta:
+      collection: FooterLinkItems
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: 1
+      special:
+        - uuid
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: false
+      is_primary_key: true
+      is_unique: true
+      max_length: null
+      name: id
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: FooterLinkItems
+    type: uuid
+  - collection: FooterLinkItems
+    field: sort
+    meta:
+      collection: FooterLinkItems
+      conditions: null
+      display: null
+      display_options: null
+      field: sort
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 7
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: integer
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: sort
+      numeric_precision: 32
+      numeric_scale: 0
+      schema: public
+      table: FooterLinkItems
+    type: integer
+  - collection: FooterLinkItems
+    field: status
+    meta:
+      collection: FooterLinkItems
+      conditions: null
+      display: labels
+      display_options:
+        choices:
+          - text: $t:published
+            value: published
+            foreground: '#FFFFFF'
+            background: var(--primary)
+          - text: $t:draft
+            value: draft
+            foreground: '#18222F'
+            background: '#D3DAE4'
+          - text: $t:archived
+            value: archived
+            foreground: '#FFFFFF'
+            background: var(--warning)
+        showAsDot: true
+      field: status
+      group: null
+      hidden: false
+      interface: select-dropdown
+      note: null
+      options:
+        choices:
+          - text: $t:published
+            value: published
+          - text: $t:draft
+            value: draft
+          - text: $t:archived
+            value: archived
+      readonly: false
+      required: false
+      sort: 6
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: character varying
+      default_value: draft
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: false
+      is_primary_key: false
+      is_unique: false
+      max_length: 255
+      name: status
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: FooterLinkItems
+    type: string
+  - collection: FooterLinkItems
+    field: translations
+    meta:
+      collection: FooterLinkItems
+      conditions: null
+      display: null
+      display_options: null
+      field: translations
+      group: null
+      hidden: false
+      interface: translations
+      note: null
+      options:
+        languageField: code
+      readonly: false
+      required: false
+      sort: 3
+      special:
+        - translations
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema: null
+    type: alias
+  - collection: FooterLinkItems
+    field: url
+    meta:
+      collection: FooterLinkItems
+      conditions: null
+      display: null
+      display_options: null
+      field: url
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        placeholder: URL
+        trim: true
+      readonly: false
+      required: true
+      sort: 5
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: character varying
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: 255
+      name: url
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: FooterLinkItems
+    type: string
+  - collection: FooterLinkItems
+    field: user_created
+    meta:
+      collection: FooterLinkItems
+      conditions: null
+      display: user
+      display_options: null
+      field: user_created
+      group: null
+      hidden: true
+      interface: select-dropdown-m2o
+      note: null
+      options:
+        template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
+      readonly: true
+      required: false
+      sort: 8
+      special:
+        - user-created
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: directus_users
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: user_created
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: FooterLinkItems
+    type: uuid
+  - collection: FooterLinkItems_translations
+    field: FooterLinkItems_id
+    meta:
+      collection: FooterLinkItems_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: FooterLinkItems_id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 3
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: FooterLinkItems
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: FooterLinkItems_id
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: FooterLinkItems_translations
+    type: uuid
+  - collection: FooterLinkItems_translations
+    field: id
+    meta:
+      collection: FooterLinkItems_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 1
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: integer
+      default_value: nextval('"FooterLinkItems_translations_id_seq"'::regclass)
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: true
+      is_generated: false
+      is_nullable: false
+      is_primary_key: true
+      is_unique: true
+      max_length: null
+      name: id
+      numeric_precision: 32
+      numeric_scale: 0
+      schema: public
+      table: FooterLinkItems_translations
+    type: integer
+  - collection: FooterLinkItems_translations
+    field: languages_code
+    meta:
+      collection: FooterLinkItems_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: languages_code
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 4
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: character varying
+      default_value: null
+      foreign_key_column: code
+      foreign_key_schema: public
+      foreign_key_table: languages
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: 255
+      name: languages_code
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: FooterLinkItems_translations
+    type: string
+  - collection: FooterLinkItems_translations
+    field: name
+    meta:
+      collection: FooterLinkItems_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: name
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        placeholder: Link Name
+        trim: true
+      readonly: false
+      required: true
+      sort: 2
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: character varying
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: 255
+      name: name
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: FooterLinkItems_translations
+    type: string
+  - collection: FooterLinks
+    field: date_created
+    meta:
+      collection: FooterLinks
+      conditions: null
+      display: datetime
+      display_options:
+        relative: true
+      field: date_created
+      group: null
+      hidden: true
+      interface: datetime
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: 8
+      special:
+        - date-created
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      comment: null
+      data_type: timestamp with time zone
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: date_created
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: FooterLinks
+    type: timestamp
+  - collection: FooterLinks
+    field: date_updated
+    meta:
+      collection: FooterLinks
+      conditions: null
+      display: datetime
+      display_options:
+        relative: true
+      field: date_updated
+      group: null
+      hidden: true
+      interface: datetime
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: 10
+      special:
+        - date-updated
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      comment: null
+      data_type: timestamp with time zone
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: date_updated
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: FooterLinks
+    type: timestamp
+  - collection: FooterLinks
+    field: id
+    meta:
+      collection: FooterLinks
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: 1
+      special:
+        - uuid
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: false
+      is_primary_key: true
+      is_unique: true
+      max_length: null
+      name: id
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: FooterLinks
+    type: uuid
+  - collection: FooterLinks
+    field: label
+    meta:
+      collection: FooterLinks
+      conditions: null
+      display: null
+      display_options: null
+      field: label
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: true
+      sort: 2
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: character varying
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: 255
+      name: label
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: FooterLinks
+    type: string
+  - collection: FooterLinks
+    field: links
+    meta:
+      collection: FooterLinks
+      conditions: null
+      display: null
+      display_options: null
+      field: links
+      group: null
+      hidden: false
+      interface: list-o2m
+      note: null
+      options:
+        enableSelect: false
+        template: "{{translations.name}}\_--\_{{url}}\_\_{{status}}"
+      readonly: false
+      required: true
+      sort: 4
+      special:
+        - o2m
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema: null
+    type: alias
+  - collection: FooterLinks
+    field: sort
+    meta:
+      collection: FooterLinks
+      conditions: null
+      display: null
+      display_options: null
+      field: sort
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 6
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: integer
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: sort
+      numeric_precision: 32
+      numeric_scale: 0
+      schema: public
+      table: FooterLinks
+    type: integer
+  - collection: FooterLinks
+    field: status
+    meta:
+      collection: FooterLinks
+      conditions: null
+      display: labels
+      display_options:
+        choices:
+          - text: $t:published
+            value: published
+            foreground: '#FFFFFF'
+            background: var(--primary)
+          - text: $t:draft
+            value: draft
+            foreground: '#18222F'
+            background: '#D3DAE4'
+          - text: $t:archived
+            value: archived
+            foreground: '#FFFFFF'
+            background: var(--warning)
+        showAsDot: true
+      field: status
+      group: null
+      hidden: false
+      interface: select-dropdown
+      note: null
+      options:
+        choices:
+          - text: $t:published
+            value: published
+          - text: $t:draft
+            value: draft
+          - text: $t:archived
+            value: archived
+      readonly: false
+      required: false
+      sort: 5
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: character varying
+      default_value: draft
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: false
+      is_primary_key: false
+      is_unique: false
+      max_length: 255
+      name: status
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: FooterLinks
+    type: string
+  - collection: FooterLinks
+    field: translations
+    meta:
+      collection: FooterLinks
+      conditions: null
+      display: null
+      display_options: null
+      field: translations
+      group: null
+      hidden: false
+      interface: translations
+      note: null
+      options:
+        languageField: code
+      readonly: false
+      required: false
+      sort: 3
+      special:
+        - translations
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema: null
+    type: alias
+  - collection: FooterLinks
+    field: user_created
+    meta:
+      collection: FooterLinks
+      conditions: null
+      display: user
+      display_options: null
+      field: user_created
+      group: null
+      hidden: true
+      interface: select-dropdown-m2o
+      note: null
+      options:
+        template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
+      readonly: true
+      required: false
+      sort: 7
+      special:
+        - user-created
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: directus_users
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: user_created
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: FooterLinks
+    type: uuid
+  - collection: FooterLinks
+    field: user_updated
+    meta:
+      collection: FooterLinks
+      conditions: null
+      display: user
+      display_options: null
+      field: user_updated
+      group: null
+      hidden: true
+      interface: select-dropdown-m2o
+      note: null
+      options:
+        template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
+      readonly: true
+      required: false
+      sort: 9
+      special:
+        - user-updated
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: directus_users
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: user_updated
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: FooterLinks
+    type: uuid
+  - collection: FooterLinks_translations
+    field: FooterLinks_id
+    meta:
+      collection: FooterLinks_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: FooterLinks_id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 3
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: FooterLinks
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: FooterLinks_id
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: FooterLinks_translations
+    type: uuid
+  - collection: FooterLinks_translations
+    field: id
+    meta:
+      collection: FooterLinks_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 1
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: integer
+      default_value: nextval('"FooterLinks_translations_id_seq"'::regclass)
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: true
+      is_generated: false
+      is_nullable: false
+      is_primary_key: true
+      is_unique: true
+      max_length: null
+      name: id
+      numeric_precision: 32
+      numeric_scale: 0
+      schema: public
+      table: FooterLinks_translations
+    type: integer
+  - collection: FooterLinks_translations
+    field: languages_code
+    meta:
+      collection: FooterLinks_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: languages_code
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 4
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: character varying
+      default_value: null
+      foreign_key_column: code
+      foreign_key_schema: public
+      foreign_key_table: languages
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: 255
+      name: languages_code
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: FooterLinks_translations
+    type: string
+  - collection: FooterLinks_translations
+    field: name
+    meta:
+      collection: FooterLinks_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: name
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        trim: true
+      readonly: false
+      required: true
+      sort: 2
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: character varying
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: 255
+      name: name
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: FooterLinks_translations
+    type: string
   - collection: News
     field: date_created
     meta:
@@ -877,7 +2118,7 @@ fields:
       options: null
       readonly: true
       required: false
-      sort: 8
+      sort: 9
       special:
         - date-created
       translations: null
@@ -920,7 +2161,7 @@ fields:
       options: null
       readonly: true
       required: false
-      sort: 10
+      sort: 11
       special:
         - date-updated
       translations: null
@@ -962,7 +2203,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: 4
+      sort: 5
       special:
         - cast-boolean
       translations: null
@@ -1032,6 +2273,47 @@ fields:
       table: TopbarLinks
     type: uuid
   - collection: TopbarLinks
+    field: label
+    meta:
+      collection: TopbarLinks
+      conditions: null
+      display: null
+      display_options: null
+      field: label
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: true
+      sort: 2
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: character varying
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: 255
+      name: label
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: TopbarLinks
+    type: string
+  - collection: TopbarLinks
     field: sort
     meta:
       collection: TopbarLinks
@@ -1046,7 +2328,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: 6
+      sort: 7
       special: null
       translations: null
       validation: null
@@ -1108,7 +2390,7 @@ fields:
             value: archived
       readonly: false
       required: false
-      sort: 5
+      sort: 6
       special: null
       translations: null
       validation: null
@@ -1151,7 +2433,7 @@ fields:
         userLanguage: true
       readonly: false
       required: false
-      sort: 2
+      sort: 3
       special:
         - translations
       translations: null
@@ -1174,9 +2456,10 @@ fields:
       note: null
       options:
         placeholder: URL
+        trim: true
       readonly: false
       required: true
-      sort: 3
+      sort: 4
       special: null
       translations: null
       validation: null
@@ -1218,7 +2501,7 @@ fields:
         template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
       readonly: true
       required: false
-      sort: 7
+      sort: 8
       special:
         - user-created
       translations: null
@@ -1261,7 +2544,7 @@ fields:
         template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
       readonly: true
       required: false
-      sort: 9
+      sort: 10
       special:
         - user-updated
       translations: null
@@ -1445,7 +2728,7 @@ fields:
       is_generated: false
       is_nullable: true
       is_primary_key: false
-      is_unique: false
+      is_unique: true
       max_length: 255
       name: name
       numeric_precision: null
@@ -1630,6 +2913,182 @@ fields:
       table: languages
     type: string
 relations:
+  - collection: FooterLinkItems
+    field: footer_links_id
+    meta:
+      junction_field: null
+      many_collection: FooterLinkItems
+      many_field: footer_links_id
+      one_allowed_collections: null
+      one_collection: FooterLinks
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: links
+      sort_field: null
+    related_collection: FooterLinks
+    schema:
+      column: footer_links_id
+      constraint_name: footerlinkitems_footer_links_id_foreign
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: FooterLinks
+      on_delete: SET NULL
+      on_update: NO ACTION
+      table: FooterLinkItems
+  - collection: FooterLinkItems
+    field: user_created
+    meta:
+      junction_field: null
+      many_collection: FooterLinkItems
+      many_field: user_created
+      one_allowed_collections: null
+      one_collection: directus_users
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    related_collection: directus_users
+    schema:
+      column: user_created
+      constraint_name: footerlinkitems_user_created_foreign
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: directus_users
+      on_delete: NO ACTION
+      on_update: NO ACTION
+      table: FooterLinkItems
+  - collection: FooterLinkItems_translations
+    field: FooterLinkItems_id
+    meta:
+      junction_field: languages_code
+      many_collection: FooterLinkItems_translations
+      many_field: FooterLinkItems_id
+      one_allowed_collections: null
+      one_collection: FooterLinkItems
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: translations
+      sort_field: null
+    related_collection: FooterLinkItems
+    schema:
+      column: FooterLinkItems_id
+      constraint_name: footerlinkitems_translations_footerlinkitems_id_foreign
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: FooterLinkItems
+      on_delete: SET NULL
+      on_update: NO ACTION
+      table: FooterLinkItems_translations
+  - collection: FooterLinkItems_translations
+    field: languages_code
+    meta:
+      junction_field: FooterLinkItems_id
+      many_collection: FooterLinkItems_translations
+      many_field: languages_code
+      one_allowed_collections: null
+      one_collection: languages
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    related_collection: languages
+    schema:
+      column: languages_code
+      constraint_name: footerlinkitems_translations_languages_code_foreign
+      foreign_key_column: code
+      foreign_key_schema: public
+      foreign_key_table: languages
+      on_delete: SET NULL
+      on_update: NO ACTION
+      table: FooterLinkItems_translations
+  - collection: FooterLinks
+    field: user_created
+    meta:
+      junction_field: null
+      many_collection: FooterLinks
+      many_field: user_created
+      one_allowed_collections: null
+      one_collection: directus_users
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    related_collection: directus_users
+    schema:
+      column: user_created
+      constraint_name: footerlinks_user_created_foreign
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: directus_users
+      on_delete: NO ACTION
+      on_update: NO ACTION
+      table: FooterLinks
+  - collection: FooterLinks
+    field: user_updated
+    meta:
+      junction_field: null
+      many_collection: FooterLinks
+      many_field: user_updated
+      one_allowed_collections: null
+      one_collection: directus_users
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    related_collection: directus_users
+    schema:
+      column: user_updated
+      constraint_name: footerlinks_user_updated_foreign
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: directus_users
+      on_delete: NO ACTION
+      on_update: NO ACTION
+      table: FooterLinks
+  - collection: FooterLinks_translations
+    field: FooterLinks_id
+    meta:
+      junction_field: languages_code
+      many_collection: FooterLinks_translations
+      many_field: FooterLinks_id
+      one_allowed_collections: null
+      one_collection: FooterLinks
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: translations
+      sort_field: null
+    related_collection: FooterLinks
+    schema:
+      column: FooterLinks_id
+      constraint_name: footerlinks_translations_footerlinks_id_foreign
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: FooterLinks
+      on_delete: SET NULL
+      on_update: NO ACTION
+      table: FooterLinks_translations
+  - collection: FooterLinks_translations
+    field: languages_code
+    meta:
+      junction_field: FooterLinks_id
+      many_collection: FooterLinks_translations
+      many_field: languages_code
+      one_allowed_collections: null
+      one_collection: languages
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    related_collection: languages
+    schema:
+      column: languages_code
+      constraint_name: footerlinks_translations_languages_code_foreign
+      foreign_key_column: code
+      foreign_key_schema: public
+      foreign_key_table: languages
+      on_delete: SET NULL
+      on_update: NO ACTION
+      table: FooterLinks_translations
   - collection: News
     field: image
     meta:
