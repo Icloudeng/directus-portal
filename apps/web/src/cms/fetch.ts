@@ -112,12 +112,13 @@ function getPublishedDatas<T extends DRTStatus>(
   query: Query<T> = {}
 ) {
   return getDatas<T>(model, {
+    ...query,
     filter: {
       status: {
         _in: ['published'],
       },
+      ...(query.filter || {}),
     },
-    ...query,
   });
 }
 

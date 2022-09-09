@@ -1,10 +1,10 @@
-import { MDLanguages } from '@/cms/items';
+import { MDLanguage } from '@/cms/items';
 import NextImage from '@/components/NextImage';
 import { useCallback } from 'react';
 import { setCookie } from 'cookies-next';
 import { USER_LANG_COOKIE } from '@/constant/vars';
 
-export const LangList = ({ icon_flag, name, code }: Partial<MDLanguages>) => {
+export const LangList = ({ icon_flag, name, code }: Partial<MDLanguage>) => {
   const changeUserLang = useCallback(() => {
     setCookie(USER_LANG_COOKIE, code);
     window.location.reload();

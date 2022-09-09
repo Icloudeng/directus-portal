@@ -17,4 +17,6 @@ export const CMS_MODELS = modelsWithTranslation({
   languages: 'languages',
   topbar_links: 'TopbarLinks',
   news: 'News',
+  footer_links: 'FooterLinks',
+  footer_link_items: 'FooterLinkItems',
 });
