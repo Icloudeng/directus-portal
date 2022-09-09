@@ -42,7 +42,7 @@
   lineinfile:
     path: "{{ env_file }}"
     regexp: "^RATE_LIMITER_ENABLED="
-    line: "RATE_LIMITER_ENABLED=true"
+    line: "RATE_LIMITER_ENABLED=false"
 
 - name: App CMS .env config | RATE_LIMITER_STORE
   lineinfile:
