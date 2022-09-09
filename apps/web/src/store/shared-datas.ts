@@ -5,7 +5,7 @@ export type ISharedData = {
   languages: MDLanguages[];
   tb_links: MDTopbarLinks[];
   user_language: string;
-  tp_news: MDTopbarNews;
+  tp_news: MDTopbarNews[];
 };
 
 export const sharedDataContext = createContext<ISharedData>({} as ISharedData);
