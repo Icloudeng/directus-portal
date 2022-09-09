@@ -1,6 +1,10 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
-import { USER_LANG_COOKIE, USER_LANG_HEADER } from './constant/vars';
+import {
+  DEFAULT_USER_LANG,
+  USER_LANG_COOKIE,
+  USER_LANG_HEADER,
+} from './constant/vars';
 
 // This function can be marked `async` if using `await` inside
 export function middleware(request: NextRequest) {
@@ -9,7 +13,8 @@ export function middleware(request: NextRequest) {
   const cookie_lang = request.cookies.get(USER_LANG_COOKIE);
   const response = NextResponse.next();
 
-  const language = cookie_lang || (userLang ? userLang.split(',')[0] : 'en-US');
+  const language =
+    cookie_lang || (userLang ? userLang.split(',')[0] : DEFAULT_USER_LANG);
 
   response.headers.set(USER_LANG_HEADER, language);
 

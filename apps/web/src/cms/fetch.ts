@@ -1,7 +1,13 @@
 import { Sort, Filter, Directus, TypeMap } from '@directus/sdk';
 import { cms_url, getDirectusClient } from './directus';
-import { IMAGE_PRESETS } from '@/constant/cms';
-import { DRTStatus, MDTranslation } from '@/types/directus';
+import { DRTStatus, MDTranslation, MDQueryFields } from '@/types/directus';
+
+type Query<T> = {
+  fields?: MDQueryFields<T>;
+  limit?: number;
+  sort?: Sort<T>;
+  filter?: Filter<T>;
+};
 
 function hasFile<T = unknown>(
   access_token: string,
@@ -44,16 +50,22 @@ function hasFiles<T>(
   return datas.map((data) => hasFile<T>(access_token, data, imageKey, preset));
 }
 
-async function getDatas<T = unknown>(
-  model: string,
-  limit?: number,
-  sort?: Sort<T>,
-  filter?: Filter<T>
-) {
+async function getDatas<T = unknown>(model: string, query: Query<T> = {}) {
   const directus = await getDirectusClient();
-  const res = await directus
-    .items<string, T>(model)
-    .readByQuery({ limit, sort, filter });
+  let translations_fields: string[] = [];
+
+  if (query.fields && Array.isArray(query.fields)) {
+    translations_fields = query.fields
+      .filter((f: string) => f.startsWith('translations.'))
+      .map((f: string) => f.replace('translations.', ''));
+
+    const qry: any = query;
+    qry.fields = query.fields.filter(
+      (f: string) => !f.startsWith('translations.')
+    );
+  }
+
+  const res = await directus.items<string, T>(model).readByQuery(query);
 
   const data = res.data;
 
@@ -62,7 +74,7 @@ async function getDatas<T = unknown>(
   for (const key in data) {
     const object: any = data[key];
     if (object?.translations) {
-      await parseTranslations(directus, model, object);
+      await parseTranslations(directus, model, object, translations_fields);
     }
   }
 
@@ -71,13 +83,20 @@ async function getDatas<T = unknown>(
 
 async function parseTranslations<
   T extends { translations: number[] } | { [x: string]: any }
->(directus: Directus<TypeMap>, model: string, object: T) {
+>(
+  directus: Directus<TypeMap>,
+  model: string,
+  object: T,
+  translations_fields: string[]
+) {
   const translations: { [x: string]: any } = {};
 
   for (const tran_id of object.translations) {
     const data = await directus
       .items<string, MDTranslation>(model + '_translations')
-      .readOne(tran_id);
+      .readOne(tran_id, {
+        fields: translations_fields,
+      });
     if (data?.languages_code && !translations[data?.languages_code]) {
       translations[data?.languages_code] = data;
     }
@@ -90,15 +109,15 @@ async function parseTranslations<
 
 function getPublishedDatas<T extends DRTStatus>(
   model: string,
-  limit?: number,
-  sort?: Sort<T>,
-  filter?: Filter<T>
+  query: Query<T> = {}
 ) {
-  return getDatas(model, limit, sort, {
-    status: {
-      _in: ['published'],
+  return getDatas<T>(model, {
+    filter: {
+      status: {
+        _in: ['published'],
+      },
     },
-    ...(filter ? filter : {}),
+    ...query,
   });
 }
 
