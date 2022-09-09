@@ -85,7 +85,7 @@ export const TopBar: React.FC<ITopBar> = ({ message, href }) => {
 function TopbarNews() {
   const { tp_news } = useSharedData();
   const data = useMut(tp_news)[0];
-  const title = data.translations?.title || '';
+  const title = data?.translations?.title || '';
 
   return (
     <>
