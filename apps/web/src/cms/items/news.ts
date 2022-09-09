@@ -33,4 +33,6 @@ export function getMDTopbarNews() {
   });
 }
 
-export function getMDNews() {}
+export function getMDNews() {
+  console.log('get news');
+}
