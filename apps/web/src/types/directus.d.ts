@@ -25,6 +25,11 @@ export type MDWithTranslation<T = unknown> = {
   } & T)[];
 };
 
+export type MDWithPoint = {
+  coordinates: [number, number];
+  type: string;
+};
+
 export type MDWithAsset = {
   id: string;
   src?: string;

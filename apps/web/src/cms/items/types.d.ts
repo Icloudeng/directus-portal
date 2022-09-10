@@ -3,6 +3,7 @@ import {
   MDWithTranslation,
   MDWithUserTranslation,
   MDWithAsset,
+  MDWithPoint,
 } from '@/types/directus';
 import type { ID } from '@directus/sdk';
 
@@ -72,4 +73,38 @@ type MDFooterLinkFieldTrans = {
 
 export type MDFooterLink = MDFooterLinkField &
   MDWithTranslation<MDFooterLinkFieldTrans> &
+  DRTStatus;
+
+//  ------------------ company details types  ---------------------
+
+type MDSocial = {
+  social_name: string;
+  icon: MDWithAsset;
+  link: string;
+} & DRTStatus;
+
+type MDAddress = {
+  address_name: string;
+  phone?: string;
+  working_days?: string;
+  working_time?: string;
+  localization: MDWithPoint;
+} & DRTStatus;
+
+type MDCompanyDetailField = {
+  company_name?: string;
+  support_email?: string;
+  email?: string;
+  website?: string;
+  logo?: MDWithAsset;
+  addresses: MDAddress[];
+  socials: MDSocial[];
+};
+
+type MDCompanyDetailFieldTrans = {
+  slogan?: string;
+};
+
+export type MDCompanyDetail = MDWithTranslation<MDCompanyDetailFieldTrans> &
+  MDCompanyDetailField &
   DRTStatus;

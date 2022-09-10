@@ -1,7 +1,7 @@
 version: '3.8'
 services:
   db:
-    image: postgres:12-alpine
+    image: postgis/postgis:12-3.2-alpine
     environment:
       POSTGRES_USER: root
       POSTGRES_PASSWORD: root
@@ -10,6 +10,11 @@ services:
       - icloudeng_portal
     ports:
       - "5432:5432"
+    volumes:
+      - db-data:/var/lib/postgresql/data
 
 networks:
   icloudeng_portal: {}
+
+volumes:
+  db-data:
