@@ -42,4 +42,8 @@
 - name: PostgreSQL | Adds postgis extension to the database {{ database }}
   community.postgresql.postgresql_ext:
     name: postgis
+    login_user: "{{ database }}"
+    login_password: "{{ database_password }}"
+    cascade: yes
     db: "{{ database }}"
+    state: present
