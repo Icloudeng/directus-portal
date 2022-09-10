@@ -1,9 +1,11 @@
 import {
   DRTQueryT,
   DRTStatus,
+  MDQueryFields,
   MDWithAsset,
   QueryWithTranslation,
 } from '@/types/directus';
+import { Filter, Sort } from '@directus/sdk';
 import { cms_url } from './directus';
 
 export const qWithStatus: DRTQueryT<DRTStatus> = {
@@ -66,6 +68,29 @@ export function qWithAssets<T extends { [x: string]: MDWithAsset }>(
   return datas.map((data) =>
     qWithAsset<typeof data>(access_token, data, imageKey, preset)
   );
+}
+
+type Query<T> = {
+  fields?: MDQueryFields<T>;
+  limit?: number;
+  sort?: Sort<T>;
+  filter?: Filter<T>;
+};
+
+export function qWithOption<T = unknown>(option: Query<T> = {}) {
+  return option;
+}
+
+export function qWithPublishedStatus<T>(option: Query<T> = {}) {
+  return {
+    ...option,
+    filter: {
+      status: {
+        _in: ['published'],
+      },
+      ...(option.filter || {}),
+    },
+  };
 }
 
 // status: {

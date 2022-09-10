@@ -1,7 +1,12 @@
 import { CMS_MODELS } from '@/constant/cms';
 import { jsonToGraphQLQuery } from 'json-to-graphql-query';
 import { getDirectusClient } from '../directus';
-import { qWithAsset, qWithStatus, qWithTranslations } from '../gql-query';
+import {
+  qWithAsset,
+  qWithPublishedStatus,
+  qWithStatus,
+  qWithTranslations,
+} from '../gql-query';
 import { MDFooterLink, MDLanguage, MDTopbarLink, MDTopbarNew } from './types';
 
 const gql_query = jsonToGraphQLQuery({
@@ -15,31 +20,34 @@ const gql_query = jsonToGraphQLQuery({
       },
     },
     [CMS_MODELS.topbar_links]: {
-      ...qWithStatus,
+      __args: qWithPublishedStatus(),
       label: true,
       url: true,
       external: true,
+      ...qWithStatus,
       ...qWithTranslations({
         name: true,
       }),
     },
     [CMS_MODELS.news]: {
-      __args: {
+      __args: qWithPublishedStatus({
         limit: 1,
         sort: ['-date_created'],
-      },
+      }),
       ...qWithStatus,
       ...qWithTranslations({
         title: true,
       }),
     },
     [CMS_MODELS.footer_links]: {
+      __args: qWithPublishedStatus(),
       label: true,
       ...qWithStatus,
       ...qWithTranslations({
         name: true,
       }),
       links: {
+        __args: qWithPublishedStatus(),
         url: true,
         external: true,
         ...qWithStatus,

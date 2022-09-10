@@ -19,7 +19,7 @@ export const LangList = ({ icon_flag, name, code }: Partial<MDLanguage>) => {
         <span>
           <NextImage
             useSkeleton
-            src={icon_flag?.src!}
+            src={icon_flag?.src || ''}
             width='15'
             height='15'
             alt='Icon'
