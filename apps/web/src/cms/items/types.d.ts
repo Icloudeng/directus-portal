@@ -3,6 +3,7 @@ import {
   MDWithTranslation,
   MDWithUserTranslation,
   MDWithAsset,
+  MDWithPoint,
 } from '@/types/directus';
 import type { ID } from '@directus/sdk';
 
@@ -87,6 +88,7 @@ type MDAddress = {
   phone?: string;
   working_days?: string;
   working_time?: string;
+  localization: MDWithPoint;
 } & DRTStatus;
 
 type MDCompanyDetailField = {

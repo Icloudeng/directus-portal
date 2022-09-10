@@ -30,10 +30,16 @@ export function qWithTranslations<T extends { [x: string]: boolean }>(
   };
 }
 
+export function qWithQueryAsset() {
+  return {
+    id: true,
+  };
+}
+
 export function qWithAsset<T extends { [x: string]: MDWithAsset | unknown }>(
   access_token: string,
   data: T,
-  imageKey = 'image',
+  imageKey: keyof T = 'image',
   preset?: string | [number, number]
 ) {
   if (!data[imageKey]) return data;
