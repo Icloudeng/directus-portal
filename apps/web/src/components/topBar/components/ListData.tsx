@@ -1,8 +1,8 @@
-import { MDLanguage } from '@/cms/items';
 import NextImage from '@/components/NextImage';
 import { useCallback } from 'react';
 import { setCookie } from 'cookies-next';
 import { USER_LANG_COOKIE } from '@/constant/vars';
+import { MDLanguage } from '@/cms/items/types';
 
 export const LangList = ({ icon_flag, name, code }: Partial<MDLanguage>) => {
   const changeUserLang = useCallback(() => {
@@ -19,7 +19,7 @@ export const LangList = ({ icon_flag, name, code }: Partial<MDLanguage>) => {
         <span>
           <NextImage
             useSkeleton
-            src={icon_flag!}
+            src={icon_flag?.src || ''}
             width='15'
             height='15'
             alt='Icon'
