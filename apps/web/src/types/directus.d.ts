@@ -1,22 +1,49 @@
 import type { ID, PartialItem, QueryOne } from '@directus/sdk';
 
 export type DRTStatus = {
-  id: ID,
+  id: ID;
   status: 'published' | 'draft' | 'archived';
   date_created: string;
   date_updated?: string;
 };
 
-export type MDWithTranslation<T> = {
-  translations: Partial<{
-    [lang: string]: T;
-  }>;
+export type DRTQueryT<T> = {
+  [key in keyof T]: boolean;
+};
+
+type RecursiveObject<T> = T extends Date ? never : T extends object ? T : never;
+export type BooleanValues<TModel> = {
+  [Key in keyof TModel]: TModel[Key] extends RecursiveObject<TModel[Key]>
+    ? BooleanValues<TModel[Key]>
+    : string;
+};
+
+export type MDWithTranslation<T = unknown> = {
+  translations: ({
+    id: ID;
+    languages_code: { code: string; name: string };
+  } & T)[];
+};
+
+export type MDWithAsset = {
+  id: string;
+  src?: string;
+};
+
+export type QueryWithTranslation<T> = {
+  translations: T & {
+    id: boolean;
+    languages_code: {
+      code: boolean;
+      name: boolean;
+    };
+  };
 };
 
 type I_MDWithUserTranslation<T> = {
   [k in keyof T]: k extends 'translations'
-    ? T[k] extends PartialItem<{ [lang: string]: infer R }> | undefined
-      ? R | undefined
+    ? T[k] extends (infer L)[] | undefined
+      ? L | undefined
       : never
     : T[k];
 };

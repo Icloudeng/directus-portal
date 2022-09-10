@@ -1,17 +1,8 @@
 import { createContext, useContext } from 'react';
-import {
-  MDLanguage,
-  MDTopbarNew,
-  MDTopbarLink,
-  MDFooterLinkRes,
-} from '@/cms/items';
+import { QShareDataType } from '@/cms/items';
 
-export type ISharedData = {
-  languages: MDLanguage[];
-  tb_links: MDTopbarLink[];
+export type ISharedData = QShareDataType & {
   user_language: string;
-  tp_news: MDTopbarNew[];
-  footer_links: MDFooterLinkRes[];
 };
 
 export const sharedDataContext = createContext<ISharedData>({} as ISharedData);

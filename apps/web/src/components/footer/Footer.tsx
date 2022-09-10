@@ -8,8 +8,8 @@ import { Subscribe } from './components/Subscribe';
 import { TermsConditions } from './components/TermsConditions';
 
 export const Footer = () => {
-  const { footer_links: datas } = useSharedData();
-  const footer_links = useMut(datas);
+  const { FooterLinks } = useSharedData();
+  const footer_links = useMut(FooterLinks);
 
   return (
     <div className='sm:px-10 py-10 text-gray-300'>
@@ -43,9 +43,7 @@ export const Footer = () => {
             ))}
           </div>
         </div>
-
         <Subscribe />
-
         <TermsConditions />
       </div>
     </div>

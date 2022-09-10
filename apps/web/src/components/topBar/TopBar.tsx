@@ -58,7 +58,7 @@ export const TopBar: React.FC<ITopBar> = ({ message, href }) => {
                 <span>
                   <NextImage
                     useSkeleton
-                    src={language.icon_flag}
+                    src={language.icon_flag.src!}
                     width='15'
                     height='15'
                     alt='Icon'
@@ -83,8 +83,8 @@ export const TopBar: React.FC<ITopBar> = ({ message, href }) => {
 };
 
 function TopbarNews() {
-  const { tp_news } = useSharedData();
-  const data = useMut(tp_news)[0];
+  const { News } = useSharedData();
+  const data = useMut(News)[0];
   const title = data?.translations?.title || '';
 
   return (
@@ -106,8 +106,8 @@ function TopbarNews() {
 }
 
 function TopbarLinks() {
-  const { tb_links } = useSharedData();
-  const datas = useMut(tb_links);
+  const { TopbarLinks } = useSharedData();
+  const datas = useMut(TopbarLinks);
 
   return (
     <ul className='no-underline hidden sm:flex gap-5 text-xs text-textDark list-none'>
