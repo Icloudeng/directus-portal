@@ -40,6 +40,6 @@
     state: present
 
 - name: PostgreSQL | Adds postgis extension to the database {{ database }}
-  postgresql_ext:
+  community.postgresql.postgresql_ext:
     name: postgis
     db: "{{ database }}"
