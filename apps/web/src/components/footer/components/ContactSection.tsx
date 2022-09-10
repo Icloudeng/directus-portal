@@ -69,8 +69,13 @@ export const ContactSection = () => {
 
       <div className='flex items-center gap-5 text-primary-400 mt-1'>
         {$data?.socials.length
-          ? $data?.socials.map(({ link, icon, id }) => (
-              <SocialMedia key={id} href={link} icon={icon.src || ''} />
+          ? $data?.socials.map(({ link, icon, id, social_name }) => (
+              <SocialMedia
+                key={id}
+                href={link}
+                title={social_name}
+                icon={icon.src || ''}
+              />
             ))
           : socialMediaData.map(({ href, icon }, i) => (
               <SocialMedia key={i} href={href} icon={icon} />
