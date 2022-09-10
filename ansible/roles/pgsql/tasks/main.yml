@@ -40,6 +40,8 @@
     state: present
 
 - name: PostgreSQL | Adds postgis extension to the database {{ database }}
+  become: true
+  become_user: postgres
   community.postgresql.postgresql_ext:
     name: postgis
     login_user: "{{ database }}"
