@@ -1,5 +1,5 @@
-import getConfig from 'next/config';
 import { Directus } from '@directus/sdk';
+import getConfig from 'next/config';
 
 const { publicRuntimeConfig, serverRuntimeConfig } = getConfig();
 const { directus_url, cms_url: _cms_url } = publicRuntimeConfig;

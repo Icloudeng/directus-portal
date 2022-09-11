@@ -1,6 +1,7 @@
+import UnstyledLink from '@/components/links/UnstyledLink';
+
 import { MDFooterLink } from '@/cms/items/types';
 import { useMut } from '@/cms/mut';
-import UnstyledLink from '@/components/links/UnstyledLink';
 
 export const FooterItemLinks = ({
   title,

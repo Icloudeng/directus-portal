@@ -1,5 +1,6 @@
-import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
+import { NextResponse } from 'next/server';
+
 import {
   DEFAULT_USER_LANG,
   USER_LANG_COOKIE,

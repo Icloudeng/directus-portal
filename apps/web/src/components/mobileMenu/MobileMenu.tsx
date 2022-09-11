@@ -5,12 +5,12 @@ import { VscChevronDown } from 'react-icons/vsc';
 import { ReactPortal } from '@/lib/reactPortal';
 
 import { navbarData } from '@/models/navbarData';
+import { mergeRefs } from '@/utils/merge-refs';
 
 import ButtonLink from '../links/ButtonLink';
 import UnstyledLink from '../links/UnstyledLink';
 
 import { INavBarMenuList } from '@/types/navbarTypes';
-import { mergeRefs } from '@/utils/merge-refs';
 
 export const NavBarMenuList = ({
   title,

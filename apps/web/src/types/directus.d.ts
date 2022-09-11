@@ -1,4 +1,4 @@
-import type { ID, PartialItem, QueryOne } from '@directus/sdk';
+import type { ID, QueryOne } from '@directus/sdk';
 
 export type DRTStatus = {
   id: ID;

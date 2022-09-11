@@ -10,9 +10,11 @@ import { GoMailRead } from 'react-icons/go';
 
 import UnstyledLink from '@/components/links/UnstyledLink';
 
-import { SocialMedia } from './SocialMedia';
 import { useSharedData } from '@/store';
+
 import { useMut } from '@/cms/mut';
+
+import { SocialMedia } from './SocialMedia';
 
 const socialMediaData = [
   { href: '#', icon: <FaFacebookF fontSize={17} /> },

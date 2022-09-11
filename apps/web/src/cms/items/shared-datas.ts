@@ -1,5 +1,14 @@
-import { CMS_MODELS } from '@/constant/cms';
 import { jsonToGraphQLQuery } from 'json-to-graphql-query';
+
+import { CMS_MODELS } from '@/constant/cms';
+
+import {
+  MDCompanyDetail,
+  MDFooterLink,
+  MDLanguage,
+  MDTopbarLink,
+  MDTopbarNew,
+} from './types';
 import { getDirectusClient } from '../directus';
 import {
   qWithAsset,
@@ -8,13 +17,6 @@ import {
   qWithStatus,
   qWithTranslations,
 } from '../gql-query';
-import {
-  MDCompanyDetail,
-  MDFooterLink,
-  MDLanguage,
-  MDTopbarLink,
-  MDTopbarNew,
-} from './types';
 
 const gql_query = jsonToGraphQLQuery({
   query: {

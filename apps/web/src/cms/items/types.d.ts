@@ -1,11 +1,11 @@
+import type { ID } from '@directus/sdk';
+
 import {
   DRTStatus,
-  MDWithTranslation,
-  MDWithUserTranslation,
   MDWithAsset,
   MDWithPoint,
+  MDWithTranslation,
 } from '@/types/directus';
-import type { ID } from '@directus/sdk';
 
 // --------------- language model types -------------
 
