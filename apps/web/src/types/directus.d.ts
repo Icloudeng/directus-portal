@@ -25,10 +25,15 @@ export type MDWithTranslation<T = unknown> = {
   } & T)[];
 };
 
-export type MDWithPoint = {
-  coordinates: [number, number];
-  type: string;
-};
+export type MDWithPoint =
+  | {
+      coordinates: [number, number][];
+      type: 'LineString' | 'Polygon';
+    }
+  | {
+      coordinates: [number, number];
+      type: 'Point';
+    };
 
 export type MDWithAsset = {
   id: string;

@@ -11,6 +11,7 @@ import { MDWithTranslation, MDWithUserTranslation } from '@/types/directus';
 export function useMut<
   T extends MDWithTranslation<any> | MDWithTranslation<any>[]
 >(datas: T, lang?: string) {
+  if (!datas) return datas;
   const { user_language } = useSharedData();
   return mut(datas, lang || user_language);
 }
