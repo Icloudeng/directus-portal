@@ -71,9 +71,8 @@ export const NavBarMenuList = ({
   const chevron = <VscChevronDown className='submenu-show__chevron text-xl' />;
 
   return (
-    // eslint-disable-next-line @typescript-eslint/no-empty-function
     <li
-      onClick={subMenu ? onMouseClick : () => {}}
+      onClick={subMenu ? onMouseClick : undefined}
       className={`menu-top__item border-b-[1px] px-8 w-full ${
         subMenu && 'relative dropdown'
       } hover:text-primary-400`}
