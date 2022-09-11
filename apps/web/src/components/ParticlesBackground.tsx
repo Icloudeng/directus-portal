@@ -1,23 +1,22 @@
-import { useCallback } from "react";
-import Particles from "react-tsparticles"
-import { loadFull } from "tsparticles";
+import { useCallback } from 'react';
+import Particles from 'react-tsparticles';
+import { loadFull } from 'tsparticles';
 
 export const ParticlesBackground = () => {
-
-  const particlesInit = useCallback(async (engine: Engine) => {
+  const particlesInit = useCallback(async (engine: any) => {
     console.log(engine);
 
     await loadFull(engine);
   }, []);
 
-  const particlesLoaded = useCallback(async (container: Container | undefined) => {
+  const particlesLoaded = useCallback(async (container: any) => {
     await console.log(container);
   }, []);
 
   return (
     <Particles
       className='fixed -z-10'
-      id="tsparticles"
+      id='tsparticles'
       init={particlesInit}
       loaded={particlesLoaded}
       options={{
@@ -26,11 +25,11 @@ export const ParticlesBackground = () => {
           events: {
             onClick: {
               enable: true,
-              mode: "push",
+              mode: 'push',
             },
             onHover: {
               enable: true,
-              mode: "repulse",
+              mode: 'repulse',
             },
             resize: true,
           },
@@ -46,10 +45,10 @@ export const ParticlesBackground = () => {
         },
         particles: {
           color: {
-            value: "#ffffff",
+            value: '#ffffff',
           },
           links: {
-            color: "#ffffff",
+            color: '#ffffff',
             distance: 150,
             enable: true,
             opacity: 0.1,
@@ -59,10 +58,10 @@ export const ParticlesBackground = () => {
             enable: true,
           },
           move: {
-            direction: "none",
+            direction: 'none',
             enable: true,
             outModes: {
-              default: "bounce",
+              default: 'bounce',
             },
             random: false,
             speed: 2,
@@ -79,7 +78,7 @@ export const ParticlesBackground = () => {
             value: 0.5,
           },
           shape: {
-            type: "polygon",
+            type: 'polygon',
           },
           size: {
             value: { min: 1, max: 5 },

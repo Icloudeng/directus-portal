@@ -36,7 +36,7 @@ export const ContactSection = () => {
       </p>
       <div className='flex flex-col gap-5'>
         <div className='space-y-4'>
-          {$data?.addresses.map(
+          {$data?.addresses?.map(
             ({ id, address_name, working_days, working_time, phone }) => {
               return (
                 <div className='space-y-1 mb-4' key={id}>
@@ -68,8 +68,8 @@ export const ContactSection = () => {
       )}
 
       <div className='flex items-center gap-5 text-primary-400 mt-1'>
-        {$data?.socials.length
-          ? $data?.socials.map(({ link, icon, id, social_name }) => (
+        {$data?.socials?.length
+          ? $data?.socials?.map(({ link, icon, id, social_name }) => (
               <SocialMedia
                 key={id}
                 href={link}
