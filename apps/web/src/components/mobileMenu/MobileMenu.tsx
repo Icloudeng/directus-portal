@@ -10,6 +10,7 @@ import ButtonLink from '../links/ButtonLink';
 import UnstyledLink from '../links/UnstyledLink';
 
 import { INavBarMenuList } from '@/types/navbarTypes';
+import { mergeRefs } from '@/utils/merge-refs';
 
 export const NavBarMenuList = ({
   title,
@@ -93,16 +94,16 @@ export const NavBarMenuList = ({
 };
 
 export const MobileMenu = forwardRef<HTMLDivElement>((props, ref) => {
-  const mobMenu = useRef(() => document.querySelector('.mobile__menu'));
+  const mobMenuEl = useRef<HTMLDivElement>(null);
   const onMouseClick = () => {
     document.body.classList.remove('mobile__model-open');
-    mobMenu.current()?.classList.remove('mobile__menu-active');
+    mobMenuEl.current?.classList.remove('mobile__menu-active');
   };
 
   return (
     <ReactPortal containerId='#layout__container'>
       <div
-        ref={ref}
+        ref={mergeRefs([ref, mobMenuEl])}
         className='mobile__menu hidden fixed bg-white max-w-[496px] w-full top-0 sd:top-[40px] right-0 h-full z-50 shadow-lg ring-1 ring-black ring-opacity-5'
       >
         <div className='relative h-full flex items-start justify-between gap-4 pb-[21rem]'>
