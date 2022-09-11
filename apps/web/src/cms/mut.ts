@@ -11,7 +11,6 @@ import { MDWithTranslation, MDWithUserTranslation } from '@/types/directus';
 export function useMut<
   T extends MDWithTranslation<any> | MDWithTranslation<any>[]
 >(datas: T, lang?: string) {
-  if (!datas) return datas;
   const { user_language } = useSharedData();
   return mut(datas, lang || user_language);
 }
@@ -27,7 +26,7 @@ export function mut<
   T extends MDWithTranslation<unknown> | MDWithTranslation<unknown>[]
 >(datas: T, lang: string): MDWithUserTranslation<T> {
   if (Array.isArray(datas)) {
-    datas.forEach((data) => translate(data, lang));
+    datas?.forEach((data) => translate(data, lang));
   } else {
     translate(datas, lang);
   }
@@ -39,7 +38,7 @@ const translate = (
   data: MDWithTranslation<unknown> & { translated?: boolean },
   lang: string
 ) => {
-  if (!data.translations || data.translated) {
+  if (!data || !data.translations || data.translated) {
     return data;
   }
   const translations = data.translations;

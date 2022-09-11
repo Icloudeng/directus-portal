@@ -111,11 +111,11 @@ export async function getGqlSharedData(
 
   const { languages, CompanyDetails } = res.data;
 
-  languages.forEach((lang) => qWithAsset(access_token, lang, 'icon_flag'));
+  languages?.forEach((lang) => qWithAsset(access_token, lang, 'icon_flag'));
 
   if (CompanyDetails) {
     qWithAsset(access_token, CompanyDetails, 'logo');
-    CompanyDetails.socials.forEach((social) =>
+    CompanyDetails?.socials?.forEach((social) =>
       qWithAsset(access_token, social, 'icon', [50, 50])
     );
   }
