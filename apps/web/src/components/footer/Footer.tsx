@@ -32,7 +32,7 @@ const FooterItemLinksData = [
 
 export const Footer = () => {
   return (
-    <div className='sm:px-10 py-10 text-gray-300'>
+    <div className='sm:px-10 py-10 text-gray-300 z-0 bg-[#313b4d]'>
       <div className="x-container-fluid flex flex-col gap-5 divide-y-2 divide-gray-800">
         <div className="top-footer flex flex-col items-center gap-12 py-10">
           <h1 className='text-center'>
