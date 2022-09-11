@@ -6,7 +6,7 @@
   lineinfile:
     path: "{{ env_file }}"
     regexp: "^PUBLIC_URL="
-    line: "PUBLIC_URL={{ admin_domain }}/"
+    line: '"PUBLIC_URL={{ admin_domain }}/"'
 
 - name: App CMS .env config | ADMIN_EMAIL
   lineinfile:
