@@ -5,6 +5,7 @@ import NextImage from "@/components/NextImage"
 import Vulnerability from "~/images/vulnerability.png";
 
 export const HeroSection = () => {
+
     return (
         <div className="x-container flex flex-col sd:flex-row items-center justify-between text-white sm:px-7 md:px-9 gap-3">
             <div className="hero-left flex flex-col sd:w-1/2 gap-7">
@@ -35,7 +36,7 @@ export const HeroSection = () => {
                     of cloud computing services solutions to leverage
                     and speed-up development in different areas.</span>
             </div>
-            <div className="hero-right flex items-center justify-end sd:w-1/2">
+            <div className="hero-right flex items-center justify-end max-w-xs sd:max-w-full sd:w-1/2">
                 <NextImage
                     useSkeleton
                     src={Vulnerability.src}
