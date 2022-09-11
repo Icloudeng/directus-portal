@@ -4,9 +4,7 @@ import { HeroSection } from '@/components/sections/hero/HeroSection';
 import { UnderHeroSection } from '@/components/sections/underHero/UnderHeroSection';
 import Seo from '@/components/Seo';
 
-
 export default function HomePage() {
-
   return (
     <Layout>
       <Seo templateTitle='Home' />
@@ -19,12 +17,35 @@ export default function HomePage() {
           <UnderHeroSection />
         </section>
         <section className='py-10 bg-[#f5f7fa]'>
-          <h1>Hello from Cloud IT Engineering portal Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur numquam provident cum, fugit, rerum iste voluptates, nulla repudiandae mollitia similique dignissimos temporibus suscipit deleniti facilis! Porro obcaecati voluptatibus iste nesciunt!
-            Hello from Cloud IT Engineering portal Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur numquam provident cum, fugit, rerum iste voluptates, nulla repudiandae mollitia similique dignissimos temporibus suscipit deleniti facilis! Porro obcaecati voluptatibus iste nesciunt!
-            Hello from Cloud IT Engineering portal Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur numquam provident cum, fugit, rerum iste voluptates, nulla repudiandae mollitia similique dignissimos temporibus suscipit deleniti facilis! Porro obcaecati voluptatibus iste nesciunt!
-            Hello from Cloud IT Engineering portal Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur numquam provident cum, fugit, rerum iste voluptates, nulla repudiandae mollitia similique dignissimos temporibus suscipit deleniti facilis! Porro obcaecati voluptatibus iste nesciunt!
-            Hello from Cloud IT Engineering portal Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur numquam provident cum, fugit, rerum iste voluptates, nulla repudiandae mollitia similique dignissimos temporibus suscipit deleniti facilis! Porro obcaecati voluptatibus iste nesciunt!
-            Hello from Cloud IT Engineering portal Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur numquam provident cum, fugit, rerum iste voluptates, nulla repudiandae mollitia similique dignissimos temporibus suscipit deleniti facilis! Porro obcaecati voluptatibus iste nesciunt!</h1>
+          <h1>
+            Hello from Cloud IT Engineering portal Lorem ipsum dolor sit amet
+            consectetur adipisicing elit. Aspernatur numquam provident cum,
+            fugit, rerum iste voluptates, nulla repudiandae mollitia similique
+            dignissimos temporibus suscipit deleniti facilis! Porro obcaecati
+            voluptatibus iste nesciunt! Hello from Cloud IT Engineering portal
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur
+            numquam provident cum, fugit, rerum iste voluptates, nulla
+            repudiandae mollitia similique dignissimos temporibus suscipit
+            deleniti facilis! Porro obcaecati voluptatibus iste nesciunt! Hello
+            from Cloud IT Engineering portal Lorem ipsum dolor sit amet
+            consectetur adipisicing elit. Aspernatur numquam provident cum,
+            fugit, rerum iste voluptates, nulla repudiandae mollitia similique
+            dignissimos temporibus suscipit deleniti facilis! Porro obcaecati
+            voluptatibus iste nesciunt! Hello from Cloud IT Engineering portal
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur
+            numquam provident cum, fugit, rerum iste voluptates, nulla
+            repudiandae mollitia similique dignissimos temporibus suscipit
+            deleniti facilis! Porro obcaecati voluptatibus iste nesciunt! Hello
+            from Cloud IT Engineering portal Lorem ipsum dolor sit amet
+            consectetur adipisicing elit. Aspernatur numquam provident cum,
+            fugit, rerum iste voluptates, nulla repudiandae mollitia similique
+            dignissimos temporibus suscipit deleniti facilis! Porro obcaecati
+            voluptatibus iste nesciunt! Hello from Cloud IT Engineering portal
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur
+            numquam provident cum, fugit, rerum iste voluptates, nulla
+            repudiandae mollitia similique dignissimos temporibus suscipit
+            deleniti facilis! Porro obcaecati voluptatibus iste nesciunt!
+          </h1>
         </section>
       </main>
     </Layout>

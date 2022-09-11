@@ -5,12 +5,12 @@ import { VscChevronDown } from 'react-icons/vsc';
 import { ReactPortal } from '@/lib/reactPortal';
 
 import { navbarData } from '@/models/navbarData';
+import { mergeRefs } from '@/utils/merge-refs';
 
 import ButtonLink from '../links/ButtonLink';
 import UnstyledLink from '../links/UnstyledLink';
 
 import { INavBarMenuList } from '@/types/navbarTypes';
-import { mergeRefs } from '@/utils/merge-refs';
 
 export const NavBarMenuList = ({
   title,
@@ -71,9 +71,8 @@ export const NavBarMenuList = ({
   const chevron = <VscChevronDown className='submenu-show__chevron text-xl' />;
 
   return (
-    // eslint-disable-next-line @typescript-eslint/no-empty-function
     <li
-      onClick={subMenu ? onMouseClick : () => {}}
+      onClick={subMenu ? onMouseClick : undefined}
       className={`menu-top__item border-b-[1px] px-8 w-full ${
         subMenu && 'relative dropdown'
       } hover:text-primary-400`}

@@ -1,12 +1,16 @@
-import { AppProps } from 'next/app';
-import '@/styles/globals.css';
-import ChatwootWidget from '@/components/services/chatwoot';
-import { ISharedData, SharedDataProvider } from '@/store';
-import { getDirectusAuthToken } from '@/cms/directus';
-import { useEffect } from 'react';
 import { GetServerSidePropsContext } from 'next';
-import { USER_LANG_HEADER } from '@/constant/vars';
+import { AppProps } from 'next/app';
+import { useEffect } from 'react';
+
+import '@/styles/globals.css';
+
+import ChatwootWidget from '@/components/services/chatwoot';
+
+import { ISharedData, SharedDataProvider } from '@/store';
+
+import { getDirectusAuthToken } from '@/cms/directus';
 import { getGqlSharedData } from '@/cms/items';
+import { USER_LANG_HEADER } from '@/constant/vars';
 
 function MyApp({
   Component,

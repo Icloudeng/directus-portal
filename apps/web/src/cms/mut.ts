@@ -1,5 +1,7 @@
-import { DEFAULT_USER_LANG } from '@/constant/vars';
 import { useSharedData } from '@/store';
+
+import { DEFAULT_USER_LANG } from '@/constant/vars';
+
 import { MDWithTranslation, MDWithUserTranslation } from '@/types/directus';
 
 /**
@@ -9,7 +11,7 @@ import { MDWithTranslation, MDWithUserTranslation } from '@/types/directus';
  * @returns
  */
 export function useMut<
-  T extends MDWithTranslation<any> | MDWithTranslation<any>[]
+  T extends MDWithTranslation<unknown> | MDWithTranslation<unknown>[]
 >(datas: T, lang?: string) {
   const { user_language } = useSharedData();
   return mut(datas, lang || user_language);
@@ -31,7 +33,7 @@ export function mut<
     translate(datas, lang);
   }
 
-  return datas as any;
+  return datas as MDWithUserTranslation<T>;
 }
 
 const translate = (

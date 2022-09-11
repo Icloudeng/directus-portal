@@ -1,8 +1,10 @@
-import NextImage from '@/components/NextImage';
-import { useCallback } from 'react';
 import { setCookie } from 'cookies-next';
-import { USER_LANG_COOKIE } from '@/constant/vars';
+import { useCallback } from 'react';
+
+import NextImage from '@/components/NextImage';
+
 import { MDLanguage } from '@/cms/items/types';
+import { USER_LANG_COOKIE } from '@/constant/vars';
 
 export const LangList = ({ icon_flag, name, code }: Partial<MDLanguage>) => {
   const changeUserLang = useCallback(() => {

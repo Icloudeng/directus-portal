@@ -1,11 +1,15 @@
 import React, { useEffect } from 'react';
 import { VscChevronDown, VscChevronRight } from 'react-icons/vsc';
+
 import UnstyledLink from '@/components/links/UnstyledLink';
 import NextImage from '@/components/NextImage';
 import { LangList } from '@/components/topBar/components/ListData';
-import { ITopBar } from '@/types/topBarTypes';
+
 import { useSharedData } from '@/store';
+
 import { useMut } from '@/cms/mut';
+
+import { ITopBar } from '@/types/topBarTypes';
 
 export const TopBar: React.FC<ITopBar> = ({ message, href }) => {
   const { languages, user_language } = useSharedData();
