@@ -15,6 +15,9 @@
     name:
       - postgresql-{{ postgresql_version }}
       - postgresql-contrib
+      - gnupg2
+      - postgis
+      - postgresql-{{ postgresql_version }}-postgis-3
       - libpq-dev
       - python3-psycopg2
     state: present

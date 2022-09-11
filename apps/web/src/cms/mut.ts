@@ -1,7 +1,6 @@
 import { DEFAULT_USER_LANG } from '@/constant/vars';
-import { sharedDataContext } from '@/store';
+import { useSharedData } from '@/store';
 import { MDWithTranslation, MDWithUserTranslation } from '@/types/directus';
-import { useContext } from 'react';
 
 /**
  * Return datas with translation from user language
@@ -12,7 +11,7 @@ import { useContext } from 'react';
 export function useMut<
   T extends MDWithTranslation<any> | MDWithTranslation<any>[]
 >(datas: T, lang?: string) {
-  const { user_language } = useContext(sharedDataContext);
+  const { user_language } = useSharedData();
   return mut(datas, lang || user_language);
 }
 
@@ -24,10 +23,10 @@ export function useMut<
  * @returns
  */
 export function mut<
-  T extends MDWithTranslation<any> | MDWithTranslation<any>[]
+  T extends MDWithTranslation<unknown> | MDWithTranslation<unknown>[]
 >(datas: T, lang: string): MDWithUserTranslation<T> {
   if (Array.isArray(datas)) {
-    datas.forEach((data) => translate(data, lang));
+    datas?.forEach((data) => translate(data, lang));
   } else {
     translate(datas, lang);
   }
@@ -35,20 +34,26 @@ export function mut<
   return datas as any;
 }
 
-const translate = (data: any, lang: string) => {
-  if (!data.translations || data.translated) {
+const translate = (
+  data: MDWithTranslation<unknown> & { translated?: boolean },
+  lang: string
+) => {
+  if (!data || !data.translations || data.translated) {
     return data;
   }
   const translations = data.translations;
-  const default_lang = Object.keys(translations)[0] || '';
+  const default_lang = translations[0]?.languages_code.code || '';
   const default_user_lang = DEFAULT_USER_LANG;
 
-  if (translations[lang]) {
-    data.translations = translations[lang];
-  } else if (translations[default_user_lang]) {
-    data.translations = translations[default_user_lang];
-  } else if (translations[default_lang]) {
-    data.translations = translations[default_lang];
+  const find = ($lang: string) =>
+    translations.find((trans) => {
+      const code = trans.languages_code.code;
+      return code === $lang;
+    }) as any;
+
+  for (const nlang of [lang, default_user_lang, default_lang]) {
+    data.translations = find(nlang);
+    if (data.translations) break;
   }
 
   data.translated = true;

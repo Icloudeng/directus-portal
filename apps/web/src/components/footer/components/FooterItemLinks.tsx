@@ -1,16 +1,33 @@
-import UnstyledLink from "@/components/links/UnstyledLink"
+import { MDFooterLink } from '@/cms/items/types';
+import { useMut } from '@/cms/mut';
+import UnstyledLink from '@/components/links/UnstyledLink';
 
-import { IFooterItemLinks } from "@/types/footerTypes"
+export const FooterItemLinks = ({
+  title,
+  links,
+}: {
+  title: string;
+  links: MDFooterLink['links'];
+}) => {
+  const items = useMut(links);
 
-export const FooterItemLinks = ({ bigTitle, childItems }: IFooterItemLinks) => {
-    return (
-      <div className="flex flex-col gap-4">
-        <p className='text-primary-400 font-medium'>{bigTitle}</p>
-        <div className='flex flex-col text-sm text-gray-400 gap-2'>
-          {childItems.map(({ smallTitle, href }, i) => {
-            return <UnstyledLink key={i} href={href} className='hover:text-gray-300'>{smallTitle}</UnstyledLink>
-          })}
-        </div>
+  return (
+    <div className='flex flex-col gap-4'>
+      <p className='text-primary-400 font-medium'>{title}</p>
+      <div className='flex flex-col text-sm text-gray-400 gap-2'>
+        {items.map(({ translations, url, id, external }) => {
+          return (
+            <UnstyledLink
+              key={id}
+              href={url}
+              target={external ? '_blank' : undefined}
+              className='hover:text-gray-300'
+            >
+              {translations?.name}
+            </UnstyledLink>
+          );
+        })}
       </div>
-    )
-  }
+    </div>
+  );
+};

@@ -33,6 +33,7 @@ importers:
       eslint-plugin-unused-imports: ^2.0.0
       husky: ^7.0.4
       jest: ^27.5.1
+      json-to-graphql-query: ^2.2.4
       lint-staged: ^12.5.0
       next: ^12.2.4
       next-sitemap: ^2.5.28
@@ -53,6 +54,7 @@ importers:
       '@directus/sdk': 10.1.4
       clsx: 1.2.1
       cookies-next: 2.1.1
+      json-to-graphql-query: 2.2.4
       next: 12.2.4_biqbaboplfbrettd7655fr4n2y
       next-themes: 0.2.0_vyccxgqxcnj5vudpssiumaxlme
       react: 18.2.0
@@ -8616,6 +8618,10 @@ packages:
     resolution: {integrity: sha512-ZClg6AaYvamvYEE82d3Iyd3vSSIjQ+odgjaTzRuO3s7toCdFKczob2i0zCh7JE8kWn17yvAWhUVxvqGwUalsRA==}
     dev: false
     optional: true
+
+  /json-to-graphql-query/2.2.4:
+    resolution: {integrity: sha512-vNvsOKDSlEqYCzejI1xHS9Hm738dSnG4Upy09LUGqyybZXSIIb7NydDphB/6WxW2EEVpPU4JeU/Yo63Nw9dEJg==}
+    dev: false
 
   /json2csv/5.0.7:
     resolution: {integrity: sha512-YRZbUnyaJZLZUJSRi2G/MqahCyRv9n/ds+4oIetjDF3jWQA7AG7iSeKTiZiCNqtMZM7HDyt0e/W6lEnoGEmMGA==}
