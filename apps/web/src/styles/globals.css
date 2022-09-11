@@ -32,6 +32,9 @@
   --color-primary-900: rgb(var(--tw-color-primary-900)); /* #1e3a8a */
   /* #endregion  /**======== Primary Color =========== */
 }
+body {
+  -webkit-font-smoothing: antialiased
+}
 
 @layer base {
   /* inter var - latin */
@@ -147,7 +150,21 @@
   transition: 0.3s ease;
 }
 
+.menu-top__item.dropdown .menu-top__link.active + .submenu__mob {
+  /* opacity: 1; */
+  display: block;
+  /* transition: 0.3s ease; */
+}
+
 .menu-top__item.dropdown .menu-top__link.active .submenu-show__chevron {
   transform: rotateX(180deg);
   transition: 0.3s ease;
+}
+
+.mobile__menu.mobile__menu-active {
+  display: block;
+}
+
+body.mobile__model-open {
+  overflow: hidden;
 }
