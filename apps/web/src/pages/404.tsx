@@ -1,8 +1,9 @@
+import { GetStaticPropsContext } from 'next';
 import { RiAlarmWarningFill } from 'react-icons/ri';
 
 import ArrowLink from '@/components/links/ArrowLink';
 import Seo from '@/components/Seo';
-import { GetStaticPropsContext } from 'next';
+
 import { getServerSideTranslations } from '@/utils/server-translation';
 
 export default function NotFoundPage() {
