@@ -1,6 +1,6 @@
 import { GetServerSidePropsContext } from 'next';
-import { appWithTranslation } from 'next-i18next';
 import { AppProps } from 'next/app';
+import { appWithTranslation } from 'next-i18next';
 import { useEffect } from 'react';
 
 import '@/styles/globals.css';
@@ -34,7 +34,7 @@ MyApp.getInitialProps = async ({
   ctx: GetServerSidePropsContext;
 }) => {
   const access_token = await getDirectusAuthToken();
-  let { data } = await getGqlSharedData(access_token);
+  const { data } = await getGqlSharedData(access_token);
 
   if (data) {
     data.languages = data.languages.filter((lang) =>

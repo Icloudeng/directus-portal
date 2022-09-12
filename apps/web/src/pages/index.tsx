@@ -1,10 +1,12 @@
+import { GetStaticPropsContext } from 'next';
+
 import Layout from '@/components/layout/Layout';
 import { ParticlesBackground } from '@/components/ParticlesBackground';
 import { HeroSection } from '@/components/sections/hero/HeroSection';
 import { UnderHeroSection } from '@/components/sections/underHero/UnderHeroSection';
 import Seo from '@/components/Seo';
+
 import { getServerSideTranslations } from '@/utils/server-translation';
-import { GetStaticPropsContext } from 'next';
 
 export default function HomePage() {
   return (

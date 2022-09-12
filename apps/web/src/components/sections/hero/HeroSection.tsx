@@ -1,9 +1,9 @@
+import { useTranslation } from 'next-i18next';
 import { TypeAnimation } from 'react-type-animation';
 
 import NextImage from '@/components/NextImage';
 
 import Vulnerability from '~/images/vulnerability.png';
-import { useTranslation } from 'next-i18next';
 
 export const HeroSection = () => {
   const { t } = useTranslation('home');
