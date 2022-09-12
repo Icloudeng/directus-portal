@@ -12,6 +12,8 @@ import { ISharedData, SharedDataProvider } from '@/store';
 import { getDirectusAuthToken } from '@/cms/directus';
 import { getGqlSharedData } from '@/cms/items';
 
+import { PHASE_PRODUCTION_BUILD } from 'next/constants';
+
 function MyApp({
   Component,
   pageProps,
@@ -33,6 +35,11 @@ MyApp.getInitialProps = async ({
 }: {
   ctx: GetServerSidePropsContext;
 }) => {
+  if (process.env.NEXT_PHASE === PHASE_PRODUCTION_BUILD) {
+    return {
+      props: {},
+    };
+  }
   const access_token = await getDirectusAuthToken();
   const { data } = await getGqlSharedData(access_token);
 
