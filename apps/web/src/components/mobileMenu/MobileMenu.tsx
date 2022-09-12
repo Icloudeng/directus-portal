@@ -22,9 +22,6 @@ export const NavBarMenuList = ({
   const onMouseClick = () => {
     btnRef.current?.classList.toggle('active');
   };
-  // const onMouseOut = () => {
-  //     btnRef.current?.classList.remove('active');
-  // }
 
   const withDropdown = (
     <div className='submenu__mob hidden'>
@@ -92,7 +89,7 @@ export const NavBarMenuList = ({
   );
 };
 
-export const MobileMenu = forwardRef<HTMLDivElement>((props, ref) => {
+export const MobileMenu = forwardRef<HTMLDivElement>((_, ref) => {
   const mobMenuEl = useRef<HTMLDivElement>(null);
   const onMouseClick = () => {
     document.body.classList.remove('mobile__model-open');

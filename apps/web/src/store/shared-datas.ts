@@ -3,7 +3,7 @@ import { createContext, useContext } from 'react';
 import { QShareDataType } from '@/cms/items';
 
 export type ISharedData = QShareDataType & {
-  user_language: string;
+  locale: string;
 };
 
 export const sharedDataContext = createContext<ISharedData>({} as ISharedData);

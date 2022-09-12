@@ -1,7 +1,5 @@
 import { useSharedData } from '@/store';
 
-import { DEFAULT_USER_LANG } from '@/constant/vars';
-
 import { MDWithTranslation, MDWithUserTranslation } from '@/types/directus';
 
 /**
@@ -13,8 +11,8 @@ import { MDWithTranslation, MDWithUserTranslation } from '@/types/directus';
 export function useMut<
   T extends MDWithTranslation<unknown> | MDWithTranslation<unknown>[]
 >(datas: T, lang?: string) {
-  const { user_language } = useSharedData();
-  return mut(datas, lang || user_language);
+  const { locale } = useSharedData();
+  return mut(datas, lang || locale);
 }
 
 /**
@@ -44,16 +42,15 @@ const translate = (
     return data;
   }
   const translations = data.translations;
-  const default_lang = translations[0]?.languages_code.code || '';
-  const default_user_lang = DEFAULT_USER_LANG;
+  const default_lang = translations[0]?.languages_code?.code || '';
 
   const find = ($lang: string) =>
     translations.find((trans) => {
-      const code = trans.languages_code.code;
+      const code = trans.languages_code?.code;
       return code === $lang;
     }) as any;
 
-  for (const nlang of [lang, default_user_lang, default_lang]) {
+  for (const nlang of [lang, default_lang]) {
     data.translations = find(nlang);
     if (data.translations) break;
   }

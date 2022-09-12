@@ -11,7 +11,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   };
   return (
     <div id='layout__container' className={styles.wrapper}>
-      <TopBar message='Introducing new platform for data analysis' href='#' />
+      <TopBar />
       <Navbar />
       <div className={styles.mainContainer}>{children}</div>
       {/* <h4 className='layout dark:text-green-600'>Footer</h4> */}
