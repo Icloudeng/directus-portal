@@ -1,4 +1,3 @@
-import { useRef } from 'react';
 import { AiOutlineMenuFold } from 'react-icons/ai';
 
 import { useScrollPosition } from '@/hooks/useScrollPosition';
@@ -10,16 +9,15 @@ import NextImage from '@/components/NextImage';
 import { navbarData } from '@/models/navbarData';
 
 import { NavBarMenuList } from './components/SubMenu';
-import { MobileMenu } from '../mobileMenu/MobileMenu';
 
 import Logo from '~/images/icloudenglogo.png';
 
 export const Navbar = () => {
-  const mobMenuRef = useRef<HTMLDivElement>(null);
   const pagePosition = useScrollPosition();
   const onMouseClick = () => {
+    const sidebarEl = document.querySelector('#mob--menu-El');
     document.body.classList.add('mobile__model-open');
-    mobMenuRef.current?.classList.add('mobile__menu-active');
+    sidebarEl?.classList.add('mobile__menu-active');
   };
 
   return (
@@ -74,12 +72,12 @@ export const Navbar = () => {
           </div>
         </div>
         <div
+          id='nav__burger'
           onClick={onMouseClick}
           className='nav__burger block ml-3 xl:hidden cursor-pointer'
         >
           <AiOutlineMenuFold className='submenu-burger text-4xl' />
         </div>
-        <MobileMenu ref={mobMenuRef} />
       </div>
     </div>
   );

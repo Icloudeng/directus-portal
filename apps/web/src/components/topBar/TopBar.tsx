@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { VscChevronDown, VscChevronRight } from 'react-icons/vsc';
 
 import UnstyledLink from '@/components/links/UnstyledLink';
@@ -8,29 +8,15 @@ import { LangList } from '@/components/topBar/components/ListData';
 import { useSharedData } from '@/store';
 
 import { useMut } from '@/cms/mut';
+import { useOutsideClick } from '@/hooks/useOutsideClick';
 
 export const TopBar: React.FC = () => {
   const { languages, locale } = useSharedData();
-  const langRef = React.useRef<HTMLElement>(null);
+  const { targetEl } = useOutsideClick((el) => el.classList.remove('active'));
 
   const toggleLang = () => {
-    langRef.current?.classList.toggle('active');
+    targetEl.current?.classList.toggle('active');
   };
-
-  useEffect(() => {
-    if (!langRef.current) return;
-    const navEl = langRef.current!;
-    const onBodyClick = (ev: MouseEvent) => {
-      if (!navEl.contains(ev.target! as Node)) {
-        navEl.classList.remove('active');
-      }
-    };
-
-    document.body.addEventListener('click', onBodyClick);
-    return () => {
-      document.body.removeEventListener('click', onBodyClick);
-    };
-  }, []);
 
   const language = languages.find((lg) => lg.code === locale);
 
@@ -52,7 +38,7 @@ export const TopBar: React.FC = () => {
         </div>
         <div className='text-xs text-textDark h-full relative flex items-center'>
           {language && (
-            <nav ref={langRef} className='lang-switcher block'>
+            <nav ref={targetEl} className='lang-switcher block'>
               <button
                 type='button'
                 onClick={toggleLang}
