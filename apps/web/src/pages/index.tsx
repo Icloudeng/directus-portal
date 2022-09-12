@@ -18,11 +18,11 @@ export default function HomePage() {
         {/* <section className='py-10 bg-white'>
           <UnderHeroSection />
         </section> */}
-        <section className='py-10 bg-white'>
+        <section className='py-10 bg-[#f5f7fa]'>
           <CloudComputing />
         </section>
 
-        <section className='py-10 bg-[#f5f7fa]'>
+        <section className='py-10 bg-white'>
           <h1>
             Hello from Cloud IT Engineering portal Lorem ipsum dolor sit amet
             consectetur adipisicing elit. Aspernatur numquam provident cum,
