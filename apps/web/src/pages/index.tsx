@@ -1,8 +1,8 @@
 import { GetServerSidePropsContext } from 'next';
 
 import Layout from '@/components/layout/Layout';
+import { CloudComputing } from '@/components/sections/cloudComputing/CloudComputing';
 import { HeroSection } from '@/components/sections/hero/HeroSection';
-import { UnderHeroSection } from '@/components/sections/underHero/UnderHeroSection';
 import Seo from '@/components/Seo';
 
 import { getServerSideTranslations } from '@/utils/server-translation';
@@ -18,8 +18,10 @@ export default function HomePage() {
         {/* <section className='py-10 bg-white'>
           <UnderHeroSection />
         </section> */}
-        <section className='py-10 bg-white'> </section>
-        
+        <section className='py-10 bg-white'>
+          <CloudComputing />
+        </section>
+
         <section className='py-10 bg-[#f5f7fa]'>
           <h1>
             Hello from Cloud IT Engineering portal Lorem ipsum dolor sit amet
