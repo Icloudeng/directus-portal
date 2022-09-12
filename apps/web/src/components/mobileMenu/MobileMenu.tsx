@@ -100,7 +100,7 @@ export const MobileMenu = forwardRef<HTMLDivElement>((_, ref) => {
     <ReactPortal containerId='#layout__container'>
       <div
         ref={mergeRefs([ref, mobMenuEl])}
-        className='mobile__menu hidden fixed bg-white max-w-[496px] w-full top-0 sd:top-[40px] right-0 h-full z-50 shadow-lg ring-1 ring-black ring-opacity-5'
+        className='mobile__menu xl:hidden translate-x-[37rem] transition-all duration-500 fixed bg-white max-w-[496px] w-full top-0 sd:top-[41px] right-0 h-full z-50 shadow-lg ring-1 ring-black ring-opacity-5'
       >
         <div className='relative h-full flex items-start justify-between gap-4 pb-[21rem]'>
           <div className='w-full h-full overflow-y-auto flex flex-col items-center justify-between font-normal mt-24'>
