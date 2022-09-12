@@ -107,6 +107,19 @@ body {
   .min-h-main {
     @apply min-h-[calc(100vh-56px)];
   }
+
+  /* Class to apply on mobile navbar */
+  @media (max-width: 1400px) {
+    .mobile__menu.mobile__menu-active {
+      @apply translate-x-[0rem]
+    }
+    body.mobile__model-open {
+      overflow: hidden;
+    }
+    body.mobile__model-open .bg-overlay {
+      display: block;
+    }
+  }
 }
 
 @layer utilities {
@@ -160,10 +173,25 @@ body {
   transition: 0.3s ease;
 }
 
-.mobile__menu.mobile__menu-active {
+/* .mobile__menu.mobile__menu-active {
   display: block;
-}
+} */
 
-body.mobile__model-open {
+/* body.mobile__model-open {
   overflow: hidden;
-}
+} */
+
+
+/* .translate-x-\[37rem\] {
+  --tw-translate-x: 37rem;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+} */
+
+/* @media (max-width: 1400px) {
+  .mobile__menu.mobile__menu-active {
+    @apply translate-x-[37rem]
+  }
+  body.mobile__model-open {
+    overflow: hidden;
+  }
+} */
