@@ -3528,7 +3528,7 @@ fields:
       is_generated: false
       is_nullable: true
       is_primary_key: false
-      is_unique: true
+      is_unique: false
       max_length: 255
       name: title
       numeric_precision: null
