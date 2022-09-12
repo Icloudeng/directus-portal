@@ -1,4 +1,4 @@
-import { GetStaticPropsContext } from 'next';
+import { GetServerSidePropsContext } from 'next';
 
 import Layout from '@/components/layout/Layout';
 import { ParticlesBackground } from '@/components/ParticlesBackground';
@@ -56,7 +56,7 @@ export default function HomePage() {
   );
 }
 
-export async function getStaticProps({ locale }: GetStaticPropsContext) {
+export async function getServerSideProps({ locale }: GetServerSidePropsContext) {
   return {
     props: {
       ...(await getServerSideTranslations(locale!, ['home'])),

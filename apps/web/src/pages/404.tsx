@@ -1,4 +1,4 @@
-import { GetStaticPropsContext } from 'next';
+import { GetServerSidePropsContext } from 'next';
 import { RiAlarmWarningFill } from 'react-icons/ri';
 
 import ArrowLink from '@/components/links/ArrowLink';
@@ -29,7 +29,7 @@ export default function NotFoundPage() {
   );
 }
 
-export async function getStaticProps({ locale }: GetStaticPropsContext) {
+export async function getServerSideProps({ locale }: GetServerSidePropsContext) {
   return {
     props: {
       ...(await getServerSideTranslations(locale!)),
