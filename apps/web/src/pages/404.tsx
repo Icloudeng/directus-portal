@@ -1,9 +1,10 @@
 import { GetServerSidePropsContext } from 'next';
+import { useTranslation } from 'next-i18next';
 import { RiAlarmWarningFill } from 'react-icons/ri';
 
 import ArrowLink from '@/components/links/ArrowLink';
 import Seo from '@/components/Seo';
-import { useTranslation } from 'next-i18next';
+
 import { getServerSideTranslations } from '@/utils/server-translation';
 
 export default function NotFoundPage() {
