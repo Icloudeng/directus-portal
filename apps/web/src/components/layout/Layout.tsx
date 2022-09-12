@@ -17,6 +17,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       {/* <h4 className='layout dark:text-green-600'>Footer</h4> */}
       <Footer />
       {/* <MobileMenu /> */}
+      <div className="bg-overlay hidden fixed top-0 left-0 bg-green-300 bg-black/60 w-full h-full z-40"></div>
     </div>
   );
 }
