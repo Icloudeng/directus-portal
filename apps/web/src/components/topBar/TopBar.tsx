@@ -21,9 +21,10 @@ export const TopBar: React.FC<ITopBar> = ({ message, href }) => {
 
   useEffect(() => {
     if (!langRef.current) return;
+    const navEl = langRef.current!;
     const onBodyClick = (ev: MouseEvent) => {
-      if (!langRef.current?.contains(ev.target! as Node)) {
-        langRef.current?.classList.remove('active');
+      if (!navEl.contains(ev.target! as Node)) {
+        navEl.classList.remove('active');
       }
     };
 
@@ -40,11 +41,11 @@ export const TopBar: React.FC<ITopBar> = ({ message, href }) => {
       <div className='h-10 flex items-center justify-start'>
         <div className='flex flex-1 items-center mr-auto overflow-hidden flex-nowrap'>
           <div className=' h-5 px-2 border border-primary-400 flex items-center justify-center rounded-sm'>
-            <a href='/news/'>
+            <UnstyledLink href='/news/'>
               <span className='uppercase text-[0.6rem] text-primary-400'>
                 news
               </span>
-            </a>
+            </UnstyledLink>
           </div>
           <TopbarNews />
         </div>

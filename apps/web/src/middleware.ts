@@ -19,6 +19,8 @@ export function middleware(request: NextRequest) {
     return;
   }
 
+  const locale = request.nextUrl.locale;
+
   const header = request.headers;
   const userLang = header.get('Accept-Language');
   const cookie_lang = request.cookies.get(USER_LANG_COOKIE);

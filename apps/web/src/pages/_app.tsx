@@ -1,4 +1,5 @@
 import { GetServerSidePropsContext } from 'next';
+import { appWithTranslation } from 'next-i18next';
 import { AppProps } from 'next/app';
 import { useEffect } from 'react';
 
@@ -41,4 +42,4 @@ MyApp.getInitialProps = async ({ ctx }: { ctx: GetServerSidePropsContext }) => {
   };
 };
 
-export default MyApp;
+export default appWithTranslation(MyApp);

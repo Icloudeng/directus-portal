@@ -1,10 +1,13 @@
 import Button from '@/components/buttons/Button';
+import { useTranslation } from 'next-i18next';
 
 export const Subscribe = () => {
+  const { t } = useTranslation();
+
   return (
     <div className='flex flex-col gap-7 lg:flex-row items-center justify-center lg:gap-44 px-10 py-10'>
       <div className='flex flex-col items-center gap-4'>
-        <p className='text-2xl font-bold'>Join our mailing list</p>
+        <p className='text-2xl font-bold'>{t('Join our mailing list')}</p>
         <p className='text-xs max-w-md text-center uppercase font-extralight'>
           Sign up to receive updates on new product announcements, Gift ideas,
           special promotions, sales and more
