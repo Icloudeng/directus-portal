@@ -3681,7 +3681,7 @@ fields:
       note: null
       options: null
       readonly: false
-      required: true
+      required: false
       sort: 4
       special:
         - file

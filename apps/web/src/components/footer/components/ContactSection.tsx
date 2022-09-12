@@ -16,14 +16,14 @@ import { useMut } from '@/cms/mut';
 
 import { SocialMedia } from './SocialMedia';
 
-const socialMediaData = [
-  { href: '#', icon: <FaFacebookF fontSize={17} /> },
-  { href: '#', icon: <FaTwitter fontSize={17} /> },
-  { href: '#', icon: <FaInstagram fontSize={17} /> },
-  { href: '#', icon: <FaYoutube fontSize={17} /> },
-  { href: '#', icon: <FaDiscord fontSize={17} /> },
-  { href: '#', icon: <FaLinkedinIn fontSize={17} /> },
-];
+const socialIcons: { [x: string]: JSX.Element } = {
+  facebook: <FaFacebookF fontSize={17} />,
+  twitter: <FaTwitter fontSize={17} />,
+  instagram: <FaInstagram fontSize={17} />,
+  youtube: <FaYoutube fontSize={17} />,
+  discord: <FaDiscord fontSize={17} />,
+  linkedin: <FaLinkedinIn fontSize={17} />,
+};
 
 export const ContactSection = () => {
   const { CompanyDetails } = useSharedData();
@@ -70,18 +70,18 @@ export const ContactSection = () => {
       )}
 
       <div className='flex items-center gap-5 text-primary-400 mt-1'>
-        {$data?.socials?.length
-          ? $data?.socials?.map(({ link, icon, id, social_name }) => (
-              <SocialMedia
-                key={id}
-                href={link}
-                title={social_name}
-                icon={icon.src || ''}
-              />
-            ))
-          : socialMediaData.map(({ href, icon }, i) => (
-              <SocialMedia key={i} href={href} icon={icon} />
-            ))}
+        {$data?.socials?.map(({ link, icon, id, social_name }) => (
+          <SocialMedia
+            key={id}
+            href={link}
+            title={social_name}
+            icon={
+              icon?.src
+                ? icon.src
+                : socialIcons[social_name.toLowerCase()] || ''
+            }
+          />
+        ))}
       </div>
     </div>
   );

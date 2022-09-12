@@ -1,5 +1,9 @@
+const { i18n } = require('./next-i18next.config');
+
 /** @type {import('next').NextConfig} */
 module.exports = {
+  i18n,
+
   eslint: {
     dirs: ['src'],
   },
@@ -20,13 +24,6 @@ module.exports = {
   },
 
   reactStrictMode: true,
-
-  // Uncoment to add domain whitelist
-  // images: {
-  //   domains: [
-  //     'res.cloudinary.com',
-  //   ],
-  // },
 
   // SVGR
   webpack(config) {

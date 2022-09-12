@@ -3,6 +3,8 @@ import { ParticlesBackground } from '@/components/ParticlesBackground';
 import { HeroSection } from '@/components/sections/hero/HeroSection';
 import { UnderHeroSection } from '@/components/sections/underHero/UnderHeroSection';
 import Seo from '@/components/Seo';
+import { getServerSideTranslations } from '@/utils/server-translation';
+import { GetStaticPropsContext } from 'next';
 
 export default function HomePage() {
   return (
@@ -50,4 +52,12 @@ export default function HomePage() {
       </main>
     </Layout>
   );
+}
+
+export async function getStaticProps({ locale }: GetStaticPropsContext) {
+  return {
+    props: {
+      ...(await getServerSideTranslations(locale!, ['home'])),
+    },
+  };
 }

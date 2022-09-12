@@ -79,7 +79,7 @@ export type MDFooterLink = MDFooterLinkField &
 
 type MDSocial = {
   social_name: string;
-  icon: MDWithAsset;
+  icon?: MDWithAsset;
   link: string;
 } & DRTStatus;
 

@@ -1,22 +1,22 @@
-import { setCookie } from 'cookies-next';
-import { useCallback } from 'react';
+import { useRouter } from 'next/router';
 
 import NextImage from '@/components/NextImage';
 
 import { MDLanguage } from '@/cms/items/types';
-import { USER_LANG_COOKIE } from '@/constant/vars';
 
 export const LangList = ({ icon_flag, name, code }: Partial<MDLanguage>) => {
-  const changeUserLang = useCallback(() => {
-    setCookie(USER_LANG_COOKIE, code);
-    window.location.reload();
-  }, [code]);
+  const router = useRouter();
+
+  const onToggleLanguageClick = (newLocale: string) => {
+    const { pathname, asPath, query } = router;
+    router.push({ pathname, query }, asPath, { locale: newLocale });
+  };
 
   return (
     <div className='lang-switcher__item px-5 py-2 hover:bg-textGray'>
       <a
         className='flex items-center gap-[6px] cursor-pointer'
-        onClick={changeUserLang}
+        onClick={() => onToggleLanguageClick(code || '')}
       >
         <span>
           <NextImage

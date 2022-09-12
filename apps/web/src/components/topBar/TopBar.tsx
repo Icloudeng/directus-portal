@@ -9,10 +9,8 @@ import { useSharedData } from '@/store';
 
 import { useMut } from '@/cms/mut';
 
-import { ITopBar } from '@/types/topBarTypes';
-
-export const TopBar: React.FC<ITopBar> = ({ message, href }) => {
-  const { languages, user_language } = useSharedData();
+export const TopBar: React.FC = () => {
+  const { languages, locale } = useSharedData();
   const langRef = React.useRef<HTMLElement>(null);
 
   const toggleLang = () => {
@@ -21,9 +19,10 @@ export const TopBar: React.FC<ITopBar> = ({ message, href }) => {
 
   useEffect(() => {
     if (!langRef.current) return;
+    const navEl = langRef.current!;
     const onBodyClick = (ev: MouseEvent) => {
-      if (!langRef.current?.contains(ev.target! as Node)) {
-        langRef.current?.classList.remove('active');
+      if (!navEl.contains(ev.target! as Node)) {
+        navEl.classList.remove('active');
       }
     };
 
@@ -33,18 +32,18 @@ export const TopBar: React.FC<ITopBar> = ({ message, href }) => {
     };
   }, []);
 
-  const language = languages.find((lg) => lg.code === user_language);
+  const language = languages.find((lg) => lg.code === locale);
 
   return (
     <div className='hidden sd:block border-b border-b-textGray bg-white px-10'>
       <div className='h-10 flex items-center justify-start'>
         <div className='flex flex-1 items-center mr-auto overflow-hidden flex-nowrap'>
           <div className=' h-5 px-2 border border-primary-400 flex items-center justify-center rounded-sm'>
-            <a href='/news/'>
+            <UnstyledLink href='/news/'>
               <span className='uppercase text-[0.6rem] text-primary-400'>
                 news
               </span>
-            </a>
+            </UnstyledLink>
           </div>
           <TopbarNews />
         </div>
@@ -52,13 +51,13 @@ export const TopBar: React.FC<ITopBar> = ({ message, href }) => {
           <TopbarLinks />
         </div>
         <div className='text-xs text-textDark h-full relative flex items-center'>
-          <nav ref={langRef} className='lang-switcher block'>
-            <button
-              type='button'
-              onClick={toggleLang}
-              className='flex items-center gap-[6px]'
-            >
-              {language && (
+          {language && (
+            <nav ref={langRef} className='lang-switcher block'>
+              <button
+                type='button'
+                onClick={toggleLang}
+                className='flex items-center gap-[6px]'
+              >
                 <span>
                   <NextImage
                     useSkeleton
@@ -68,18 +67,19 @@ export const TopBar: React.FC<ITopBar> = ({ message, href }) => {
                     alt='Icon'
                   />
                 </span>
-              )}
-              <span className='flex items-center gap-[1px]'>
-                <span>{language?.name}</span>
-                <VscChevronDown className='lang-switcher__chevron text-textDark text-sm' />
-              </span>
-            </button>
-            <div className='lang-switcher__submenu absolute flex flex-col gap-[1px] border border-b-textGray py-2 top-full -left-5 bg-white z-50 invisible opacity-0'>
-              {languages.map((lang, i) => (
-                <LangList key={i} {...lang} />
-              ))}
-            </div>
-          </nav>
+
+                <span className='flex items-center gap-[1px]'>
+                  <span>{language?.name}</span>
+                  <VscChevronDown className='lang-switcher__chevron text-textDark text-sm' />
+                </span>
+              </button>
+              <div className='lang-switcher__submenu absolute flex flex-col gap-[1px] border border-b-textGray py-2 top-full -left-5 bg-white z-50 invisible opacity-0'>
+                {languages.map((lang, i) => (
+                  <LangList key={i} {...lang} />
+                ))}
+              </div>
+            </nav>
+          )}
         </div>
       </div>
     </div>

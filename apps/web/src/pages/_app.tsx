@@ -1,4 +1,5 @@
 import { GetServerSidePropsContext } from 'next';
+import { appWithTranslation } from 'next-i18next';
 import { AppProps } from 'next/app';
 import { useEffect } from 'react';
 
@@ -10,7 +11,6 @@ import { ISharedData, SharedDataProvider } from '@/store';
 
 import { getDirectusAuthToken } from '@/cms/directus';
 import { getGqlSharedData } from '@/cms/items';
-import { USER_LANG_HEADER } from '@/constant/vars';
 
 function MyApp({
   Component,
@@ -28,17 +28,26 @@ function MyApp({
   );
 }
 
-MyApp.getInitialProps = async ({ ctx }: { ctx: GetServerSidePropsContext }) => {
+MyApp.getInitialProps = async ({
+  ctx: { locale, locales },
+}: {
+  ctx: GetServerSidePropsContext;
+}) => {
   const access_token = await getDirectusAuthToken();
-  const user_language = ctx.res.getHeader(USER_LANG_HEADER) as string;
-  const { data } = await getGqlSharedData(access_token);
+  let { data } = await getGqlSharedData(access_token);
+
+  if (data) {
+    data.languages = data.languages.filter((lang) =>
+      locales!.includes(lang.code)
+    );
+  }
 
   return {
     datas: {
-      user_language,
+      locale,
       ...(data || {}),
     },
   };
 };
 
-export default MyApp;
+export default appWithTranslation(MyApp);
