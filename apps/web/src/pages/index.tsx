@@ -15,9 +15,11 @@ export default function HomePage() {
         <section className='hero-section py-10'>
           <HeroSection />
         </section>
-        <section className='py-10 bg-white'>
+        {/* <section className='py-10 bg-white'>
           <UnderHeroSection />
-        </section>
+        </section> */}
+        <section className='py-10 bg-white'> </section>
+        
         <section className='py-10 bg-[#f5f7fa]'>
           <h1>
             Hello from Cloud IT Engineering portal Lorem ipsum dolor sit amet
