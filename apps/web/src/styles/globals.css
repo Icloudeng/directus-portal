@@ -111,7 +111,7 @@ body {
   /* Class to apply on mobile navbar */
   @media (max-width: 1400px) {
     .mobile__menu.mobile__menu-active {
-      @apply translate-x-[0rem]
+      @apply translate-x-[0rem];
     }
     body.mobile__model-open {
       overflow: hidden;
@@ -173,6 +173,14 @@ body {
   transition: 0.3s ease;
 }
 
+.mobile__model-open .topbar--line {
+  position: relative;
+  z-index: 50;
+}
+
+.mobile__model-open .layout--header {
+  transform: translateY(0px);
+}
 /* .mobile__menu.mobile__menu-active {
   display: block;
 } */
@@ -180,7 +188,6 @@ body {
 /* body.mobile__model-open {
   overflow: hidden;
 } */
-
 
 /* .translate-x-\[37rem\] {
   --tw-translate-x: 37rem;
@@ -196,20 +203,20 @@ body {
   }
 } */
 
-button[data-testid=carousel-left-control] span {
+button[data-testid='carousel-left-control'] span {
   background-color: #60a5fa;
   border: 1px solid white;
 }
 
-button[data-testid=carousel-right-control] span {
+button[data-testid='carousel-right-control'] span {
   background-color: #60a5fa;
   border: 1px solid white;
 }
 
-button[data-testid=carousel-left-control]:hover svg {
+button[data-testid='carousel-left-control']:hover svg {
   color: #93c5fd;
 }
 
-button[data-testid=carousel-right-control]:hover svg {
+button[data-testid='carousel-right-control']:hover svg {
   color: #93c5fd;
 }
