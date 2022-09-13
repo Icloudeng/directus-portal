@@ -49,9 +49,9 @@ body {
       U+2215, U+FEFF, U+FFFD;
   }
 
-  .cursor-newtab {
+  /* .cursor-newtab {
     cursor: url('/images/new-tab.png') 10 10, pointer;
-  }
+  } */
 
   /* #region  /**=========== Typography =========== */
   .h0 {
