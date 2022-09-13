@@ -9,7 +9,7 @@ module.exports = {
   },
 
   images: {
-    domains: ['localhost', 'portaladmin.coding.icloudeng.xyz', '127.0.0.1'],
+    domains: ['localhost', 'portaladmin.coding.icloudeng.xyz', '127.0.0.1', 'flowbite.com'],
   },
 
   publicRuntimeConfig: {

@@ -195,3 +195,21 @@ body {
     overflow: hidden;
   }
 } */
+
+button[data-testid=carousel-left-control] span {
+  background-color: #60a5fa;
+  border: 1px solid white;
+}
+
+button[data-testid=carousel-right-control] span {
+  background-color: #60a5fa;
+  border: 1px solid white;
+}
+
+button[data-testid=carousel-left-control]:hover svg {
+  color: #93c5fd;
+}
+
+button[data-testid=carousel-right-control]:hover svg {
+  color: #93c5fd;
+}
