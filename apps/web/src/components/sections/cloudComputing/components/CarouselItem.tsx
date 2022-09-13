@@ -4,7 +4,7 @@ import ButtonLink from "@/components/links/ButtonLink"
 
 export const CarouselItem = () => {
     return (
-        <div className="duration-700 ease-in-out absolute inset-0 transition-all transform translate-x-0 z-20" data-carousel-item="">
+        <div className="duration-700 ease-in-out embla__slide transition-all transform translate-x-0 z-20" data-carousel-item="">
             <div className="w-full h-full flex flex-col items-center bg-white rounded-lg border shadow-md md:flex-row hover:bg-gray-50">
                 <div className="image-container relative md:h-[31rem] w-full flex flex-[1.2] flex-col justify-between p-24 md:p-4">
                     <Image
