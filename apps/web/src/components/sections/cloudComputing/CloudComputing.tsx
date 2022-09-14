@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 
-import { useCustomerEmblaCarousel } from '@/hooks/useCustomerEmblaCarousel';
+import { useCustomerEmblaCarousel } from '@/hooks/useCustomEmblaCarousel';
 
 import { CarouselData } from '@/models/carouselModel';
 
