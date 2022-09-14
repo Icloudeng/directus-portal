@@ -1,30 +1,61 @@
 /* eslint-disable react/no-unescaped-entities */
 
-import { Carousel } from "flowbite-react"
+import { useCustomerEmblaCarousel } from '@/hooks/useCustomEmblaCarousel';
 
-import { CarouselItem } from "./components/CarouselItem"
+import { CarouselData } from '@/models/carouselModel';
+
+import { DotButton, NextButton, PrevButton } from './components/CarouselButtons';
+import { CarouselItem } from './components/CarouselItem';
+
 
 export const CloudComputing = () => {
 
+    const {
+        viewportRef,
+        scrollPrev,
+        scrollNext,
+        prevBtnEnabled,
+        nextBtnEnabled,
+        selectedIndex,
+        scrollSnaps,
+        scrollTo
+    } = useCustomerEmblaCarousel()
+
     return (
-        <div className="container max-w-7xl mx-auto py-10 flex flex-col items-center gap-10">
-            <div className="flex flex-col items-center justify-center gap-7 mb-7">
+        <div className='x-container max-w-7xl mx-auto py-10 flex flex-col items-center gap-10 px-12'>
+            <div className='flex flex-col items-center justify-center gap-7 mb-7'>
                 <h1>What's Cloud Computing</h1>
-                <span className="max-w-xl text-center">Managing a cloud infrastructure has never been so enjoyable. It's lightning-fast and stunning simple.</span>
+                <span className='max-w-xl text-center'>
+                    Managing a cloud infrastructure has never been so enjoyable. It's
+                    lightning-fast and stunning simple.
+                </span>
             </div>
-            <div className="w-full h-[29rem]">
-                <Carousel slideInterval={5000}>
-                    <div className="container__block max-w-5xl w-full grid grid-cols-1 sd:grid-cols-2 gap-16 lg:flex items-center justify-center lg:gap-10 px-4">
-                        <CarouselItem />
+            <div className='w-full'>
+                <div id='default-carousel' className='relative'>
+                    {/* <!-- Carousel wrapper --> */}
+                    <div className='overflow-hidden w-full' ref={viewportRef}>
+                        <div className='flex w-full h-[47rem] ss:h-[40rem] sm:h-[30rem]'>
+                            {CarouselData.map(({ bigTitle, description, href, items, imgSrc }, index) => (
+                                <CarouselItem 
+                                    key={index} 
+                                    bigTitle={bigTitle} 
+                                    description={description} 
+                                    href={href} items={items} 
+                                    imgSrc={imgSrc} />
+                            ))}
+                        </div>
                     </div>
-                    <div className="container__block max-w-5xl w-full grid grid-cols-1 sd:grid-cols-2 gap-16 lg:flex items-center justify-center lg:gap-10 px-4">
-                        <CarouselItem />
+                    {/* <!-- Slider indicators --> */}
+                    <div className='absolute z-30 flex space-x-3 -translate-x-1/2 -bottom-10 left-1/2'>
+                        {scrollSnaps.map((_, index) => (
+                            <DotButton key={index} position={index} selected={index === selectedIndex} onClick={() => scrollTo(index)} />
+                        ))}
                     </div>
-                    <div className="container__block max-w-5xl w-full grid grid-cols-1 sd:grid-cols-2 gap-16 lg:flex items-center justify-center lg:gap-10 px-4">
-                        <CarouselItem />
-                    </div>
-                </Carousel>
+                    {/* <!-- Slider controls --> */}
+                    <PrevButton enabled={prevBtnEnabled} onClick={scrollPrev} />
+                    <NextButton enabled={nextBtnEnabled} onClick={scrollNext} />
+                </div>
             </div>
         </div>
-    )
-}
+    );
+};
