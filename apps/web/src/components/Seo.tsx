@@ -16,7 +16,7 @@ const defaultMeta = {
    */
   // image: 'https://tsnext-tw.thcl.dev/images/large-og.png',
 
-  image: '/images/icloudeng-banner.jpg',
+  image: '~/images/icloudeng-banner.jpg',
 };
 
 type SeoProps = {

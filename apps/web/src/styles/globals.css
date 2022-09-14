@@ -49,9 +49,9 @@ body {
       U+2215, U+FEFF, U+FFFD;
   }
 
-  .cursor-newtab {
+  /* .cursor-newtab {
     cursor: url('/images/new-tab.png') 10 10, pointer;
-  }
+  } */
 
   /* #region  /**=========== Typography =========== */
   .h0 {
@@ -185,38 +185,18 @@ body {
   display: block;
 } */
 
-/* body.mobile__model-open {
-  overflow: hidden;
-} */
-
-/* .translate-x-\[37rem\] {
-  --tw-translate-x: 37rem;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-} */
-
-/* @media (max-width: 1400px) {
-  .mobile__menu.mobile__menu-active {
-    @apply translate-x-[37rem]
-  }
-  body.mobile__model-open {
-    overflow: hidden;
-  }
-} */
-
-button[data-testid='carousel-left-control'] span {
-  background-color: #60a5fa;
-  border: 1px solid white;
+/* Next js image responsiveness */
+.image-container {
+  width: 100%;
 }
 
-button[data-testid='carousel-right-control'] span {
-  background-color: #60a5fa;
-  border: 1px solid white;
+.image-container > div {
+  position: unset !important;
 }
 
-button[data-testid='carousel-left-control']:hover svg {
-  color: #93c5fd;
-}
-
-button[data-testid='carousel-right-control']:hover svg {
-  color: #93c5fd;
+.image-container .image {
+  object-fit: contain;
+  width: 100% !important;
+  position: relative !important;
+  height: unset !important;
 }
