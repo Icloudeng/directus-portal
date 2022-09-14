@@ -14,14 +14,14 @@ export const Subscribe = () => {
           special promotions, sales and more
         </p>
       </div>
-      <form className='flex items-center gap-5'>
+      <form className='flex flex-col ss:flex-row items-center gap-5'>
         <input
           placeholder='Enter your email'
           className='border-none font-extralight bg-transparent ring-1 ring-primary-400 rounded-sm h-12 w-[20rem] px-2 font-base outline-none focus:ring-2'
         />
         <Button
           type='button'
-          className='py-[.7rem] px-8 font-light bg-primary-400 rounded-sm hover:bg-primary-500'
+          className='w-full ss:w-min flex items-center justify-center py-[.7rem] px-8 font-light bg-primary-400 rounded-sm hover:bg-primary-500'
         >
           Subscribe
         </Button>
