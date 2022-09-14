@@ -35,8 +35,13 @@ export const CloudComputing = () => {
                     {/* <!-- Carousel wrapper --> */}
                     <div className='overflow-hidden w-full' ref={viewportRef}>
                         <div className='flex w-full h-[47rem] ss:h-[40rem] sm:h-[30rem]'>
-                            {CarouselData.map(({ bigTitle, description, href, items }, index) => (
-                                <CarouselItem key={index} bigTitle={bigTitle} description={description} href={href} items={items} />
+                            {CarouselData.map(({ bigTitle, description, href, items, imgSrc }, index) => (
+                                <CarouselItem 
+                                    key={index} 
+                                    bigTitle={bigTitle} 
+                                    description={description} 
+                                    href={href} items={items} 
+                                    imgSrc={imgSrc} />
                             ))}
                         </div>
                     </div>

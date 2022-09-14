@@ -5,14 +5,14 @@ import ButtonLink from "@/components/links/ButtonLink"
 import { ICarouselData } from "@/types/carouselTypes"
 
 
-export const CarouselItem = ({ bigTitle, description, href, items }:ICarouselData) => {
+export const CarouselItem = ({ bigTitle, description, href, items, imgSrc }:ICarouselData) => {
     return (
         <div className="duration-700 ease-in-out relative shrink-0 grow-0 basis-full max-w-full ml-[10px] transition-all transform translate-x-0 z-20" data-carousel-item="">
             <div className="w-full h-full flex flex-col items-center bg-white rounded-lg border shadow-md md:flex-row hover:bg-gray-50">
                 <div className="image-container relative md:h-[31rem] w-full flex flex-[1.2] flex-col justify-between p-24 md:p-4">
                     <Image
                         className="image object-cover rounded-t-lg md:rounded-sm md:rounded-l-lg"
-                        src="https://images.unsplash.com/photo-1577760258779-e787a1733016?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+                        src={imgSrc}
                         layout="fill"
                         objectFit="cover"
                         alt='hero banner image'
