@@ -12,7 +12,7 @@ export const HeroSection = () => {
     <div className='x-container flex flex-col sd:flex-row items-center justify-between text-white sm:px-7 md:px-9 gap-3'>
       <div className='hero-left flex flex-col sd:w-1/2 gap-7'>
         <div className='flex flex-col items-center sd:items-start gap-4 sm:gap-7'>
-          <h1 className='font-extrabold text-4xl sd:text-2xl sm:text-[2.2rem] md:text-[2.7rem] -mb-4'>
+          <h1 className='font-extrabold text-4xl sd:text-2xl sm:text-[2.2rem] md:text-[2.7rem] -mb-4 text-center'>
             We bring solutions{' '}
           </h1>
           <TypeAnimation

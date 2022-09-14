@@ -20,7 +20,7 @@ export const TermsConditions = () => {
           Use of Cookies
         </UnstyledLink>
       </div>
-      <span className='flex items-center gap-7'>
+      <span className='flex flex-col xs:flex-row items-center gap-7 '>
         <FaCcMastercard fontSize={22} />
         <FaCcVisa fontSize={22} />
         <FaCcPaypal fontSize={22} />

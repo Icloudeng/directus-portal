@@ -173,7 +173,17 @@ body {
   transition: 0.3s ease;
 }
 
-/*  comments */
+.mobile__model-open .topbar--line {
+  position: relative;
+  z-index: 50;
+}
+
+.mobile__model-open .layout--header {
+  transform: translateY(0px);
+}
+/* .mobile__menu.mobile__menu-active {
+  display: block;
+} */
 
 /* Next js image responsiveness */
 .image-container {

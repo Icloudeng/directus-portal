@@ -22,9 +22,9 @@ export const CloudComputing = () => {
     } = useCustomerEmblaCarousel()
 
     return (
-        <div className='x-container max-w-7xl mx-auto py-10 flex flex-col items-center gap-10 px-12'>
+        <div className='x-container max-w-7xl mx-auto py-10 flex flex-col items-center gap-10 ss:px-12'>
             <div className='flex flex-col items-center justify-center gap-7 mb-7'>
-                <h1>What's Cloud Computing</h1>
+                <h1 className='text-center'>What's Cloud Computing</h1>
                 <span className='max-w-xl text-center'>
                     Managing a cloud infrastructure has never been so enjoyable. It's
                     lightning-fast and stunning simple.
