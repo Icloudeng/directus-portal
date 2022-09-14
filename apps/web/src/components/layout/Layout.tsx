@@ -14,7 +14,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <div className={'flex-1 flex flex-col justify-center'}>{children}</div>
       <Footer />
       <MobileMenu />
-      <div className='bg-overlay hidden fixed top-0 left-0 bg-green-300 bg-black/60 w-full h-full z-40'></div>
+      <div className='bg-overlay hidden fixed top-0 sd:top-10 left-0 bg-green-300 bg-black/60 w-full h-full z-40' />
     </div>
   );
 }

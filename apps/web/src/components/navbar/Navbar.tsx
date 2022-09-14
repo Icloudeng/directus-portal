@@ -22,7 +22,7 @@ export const Navbar = () => {
 
   return (
     <div
-      className={`h-[70px] xl:h-[100px] flex items-center xl:px-10 z-40 transition-all ease-in-out duration-100 ${
+      className={`h-[70px] xl:h-[100px] flex items-center xl:px-10 transition-all ease-in-out duration-100 ${
         pagePosition > 40
           ? 'xl:h-[70px] shadow-sm backdrop-blur-sm bg-white/90 text-black'
           : 'xl:hover:bg-white xl:hover:text-black text-white'

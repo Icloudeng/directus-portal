@@ -21,11 +21,11 @@ export const Footer = () => {
             <span className='text-primary-400'>Start your innovation</span>{' '}
             today with cloud
           </h1>
-          <div className='flex items-center gap-7'>
+          <div className='flex flex-col ss:flex-row items-center gap-7'>
             <span>Take first step right now</span>
             <ButtonLink
               href='#'
-              className='py-[.7rem] px-10 font-normal rounded-none'
+              className='py-[.7rem] px-10 font-normal rounded-none text-center'
               variant='primary'
             >
               Get started

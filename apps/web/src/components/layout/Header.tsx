@@ -17,7 +17,7 @@ export default function Header() {
   }, []);
   return (
     <header
-      className={`fixed left-0 top-0 right-0 z-30 transition-transform translate-y-0 layout--header ${
+      className={`fixed left-0 top-0 right-0 z-40 transition-transform translate-y-0 layout--header ${
         deltaY > 0 ? 'sd:-translate-y-[41px]' : ''
       }`}
     >
