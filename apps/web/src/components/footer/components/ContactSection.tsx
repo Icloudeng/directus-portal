@@ -32,7 +32,9 @@ export const ContactSection = () => {
 
   return (
     <div className='middle-right text-sm flex-1 flex flex-col gap-5'>
-      <p className='max-w-[24rem] mb-3'>{$data?.translations?.slogan}</p>
+      {$data?.translations?.slogan && (
+        <p className='max-w-[24rem] mb-3'>{$data?.translations?.slogan}</p>
+      )}
       <p className='font-bold uppercase underline underline-offset-8'>
         Contact Us :
       </p>

@@ -11,7 +11,7 @@ export const Submenu = (props: NavbarLinkSubmenu) => {
   return (
     <div
       className={`flex w-[17rem] ${
-        featured ? 'flex-col p-7' : 'items-center justify-between bg-white'
+        featured ? 'flex-col p-7' : 'items-start justify-between bg-white'
       }`}
     >
       <div

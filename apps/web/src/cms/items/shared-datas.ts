@@ -9,6 +9,7 @@ import {
   MDNavbarLink,
   MDTopbarLink,
   MDTopbarNew,
+  NavbarLinkSubmenu,
 } from './types';
 import { getDirectusClient } from '../directus';
 import {
@@ -98,7 +99,9 @@ const gql_query = jsonToGraphQLQuery({
       url: true,
       external: true,
       submenus: {
-        __args: qWithPublishedStatus(),
+        __args: qWithPublishedStatus<NavbarLinkSubmenu>({
+          sort: ['-featured', 'date_created'],
+        }),
         featured: true,
         items: {
           __args: qWithPublishedStatus(),

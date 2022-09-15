@@ -23,35 +23,18 @@ export default function HomePage() {
         </section>
 
         <section className='py-10 bg-white'>
-          <h1>
-            Hello from Cloud IT Engineering portal Lorem ipsum dolor sit amet
-            consectetur adipisicing elit. Aspernatur numquam provident cum,
-            fugit, rerum iste voluptates, nulla repudiandae mollitia similique
-            dignissimos temporibus suscipit deleniti facilis! Porro obcaecati
-            voluptatibus iste nesciunt! Hello from Cloud IT Engineering portal
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur
-            numquam provident cum, fugit, rerum iste voluptates, nulla
-            repudiandae mollitia similique dignissimos temporibus suscipit
-            deleniti facilis! Porro obcaecati voluptatibus iste nesciunt! Hello
-            from Cloud IT Engineering portal Lorem ipsum dolor sit amet
-            consectetur adipisicing elit. Aspernatur numquam provident cum,
-            fugit, rerum iste voluptates, nulla repudiandae mollitia similique
-            dignissimos temporibus suscipit deleniti facilis! Porro obcaecati
-            voluptatibus iste nesciunt! Hello from Cloud IT Engineering portal
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur
-            numquam provident cum, fugit, rerum iste voluptates, nulla
-            repudiandae mollitia similique dignissimos temporibus suscipit
-            deleniti facilis! Porro obcaecati voluptatibus iste nesciunt! Hello
-            from Cloud IT Engineering portal Lorem ipsum dolor sit amet
-            consectetur adipisicing elit. Aspernatur numquam provident cum,
-            fugit, rerum iste voluptates, nulla repudiandae mollitia similique
-            dignissimos temporibus suscipit deleniti facilis! Porro obcaecati
-            voluptatibus iste nesciunt! Hello from Cloud IT Engineering portal
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur
-            numquam provident cum, fugit, rerum iste voluptates, nulla
-            repudiandae mollitia similique dignissimos temporibus suscipit
-            deleniti facilis! Porro obcaecati voluptatibus iste nesciunt!
-          </h1>
+          <div className='x-container max-w-7xl mx-auto py-10 flex flex-col items-center gap-10 ss:px-12'>
+            <div className='flex flex-col items-center justify-center gap-7 mb-7'>
+              <h1 className='text-center'>How easy is cloud computing</h1>
+              <span className='max-w-xl text-center'>
+                A new study confirms what most of us have said for years: cloud
+                computing has a high degree of difficulty. However, worthwhile
+                endeavours are rarely easy. Unexpected cloud complexity has put
+                so much stress on the newly formed clouds groups that they have
+                risked outages and breaches
+              </span>
+            </div>
+          </div>
         </section>
       </main>
     </Layout>
