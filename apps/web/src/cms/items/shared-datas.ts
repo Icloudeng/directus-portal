@@ -6,6 +6,7 @@ import {
   MDCompanyDetail,
   MDFooterLink,
   MDLanguage,
+  MDNavbarLink,
   MDTopbarLink,
   MDTopbarNew,
 } from './types';
@@ -91,6 +92,35 @@ const gql_query = jsonToGraphQLQuery({
         slogan: true,
       }),
     },
+    [CMS_MODELS.navbar_links]: {
+      __args: qWithPublishedStatus(),
+      label: true,
+      url: true,
+      external: true,
+      submenus: {
+        __args: qWithPublishedStatus(),
+        featured: true,
+        items: {
+          __args: qWithPublishedStatus(),
+          url: true,
+          external: true,
+          icon_svg: true,
+          ...qWithTranslations({
+            name: true,
+            description: true,
+          }),
+          ...qWithStatus,
+        },
+        ...qWithTranslations({
+          name: true,
+        }),
+        ...qWithStatus,
+      },
+      ...qWithTranslations({
+        name: true,
+      }),
+      ...qWithStatus,
+    },
   },
 });
 
@@ -100,6 +130,7 @@ export type QShareDataType = {
   News: MDTopbarNew[];
   FooterLinks: MDFooterLink[];
   CompanyDetails: MDCompanyDetail;
+  NavbarLinks: MDNavbarLink[];
 };
 
 export async function getGqlSharedData(

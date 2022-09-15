@@ -145,6 +145,10 @@ body {
   .animated-underline:focus-visible {
     background-size: 0 2px, 100% 2px;
   }
+
+  .nav__parent:has(.nav__menu:hover) {
+    @apply bg-white text-black;
+  }
 }
 
 .lang-switcher.active .lang-switcher__submenu {

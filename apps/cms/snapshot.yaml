@@ -4292,6 +4292,7 @@ fields:
       interface: input
       note: null
       options:
+        softLength: 30
         trim: true
       readonly: false
       required: false

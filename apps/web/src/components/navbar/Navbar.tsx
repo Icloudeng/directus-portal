@@ -22,13 +22,13 @@ export const Navbar = () => {
 
   return (
     <div
-      className={`h-[70px] xl:h-[100px] flex items-center xl:px-10 transition-all ease-in-out duration-100 ${
+      className={`nav__parent h-[70px] xl:h-[100px] flex items-center xl:px-10 transition-all ease-in-out duration-100 ${
         pagePosition > 40
           ? 'xl:h-[70px] shadow-sm backdrop-blur-sm bg-white/90 text-black'
-          : 'xl:hover:bg-white xl:hover:text-black text-white'
+          : 'text-white'
       }`}
     >
-      <div className='relative x-container-fluid flex items-center justify-between gap-4'>
+      <div className='relative x-container-fluid flex items-center justify-between gap-4 h-full'>
         <div className='nav__logo xl:w-[20%]'>
           <UnstyledLink href='#'>
             <NextImage
@@ -40,8 +40,8 @@ export const Navbar = () => {
             />
           </UnstyledLink>
         </div>
-        <div className='w-full flex items-center justify-between font-normal'>
-          <div className='hidden nav__menu xl:flex items-center xl:hover:bg-white'>
+        <div className='w-full flex items-center justify-between font-normal h-full'>
+          <div className='hidden nav__menu xl:flex items-center h-full'>
             <ul className='menu-top flex items-center gap-9'>
               {navbarData.map((menu, i) => (
                 <NavBarMenuList
@@ -56,7 +56,7 @@ export const Navbar = () => {
           </div>
           <div className='hidden nav__buttons md:flex items-center flex-1 xl:flex-0 justify-end gap-5 ml-3'>
             <ButtonLink
-              className='py-[4px] text-center text-sm font-light rounded-sm'
+              className='py-[4px] text-center text-sm font-light rounded-sm hover:p'
               href='#'
               variant='outline'
             >
