@@ -111,7 +111,7 @@ export type MDCompanyDetail = MDWithTranslation<MDCompanyDetailFieldTrans> &
 
 //  ------------------ Navbar Links types  ---------------------
 
-type NavbarLinkSubmenuItem = MDWithTranslation<{
+export type NavbarLinkSubmenuItem = MDWithTranslation<{
   name: string;
   description: string;
 }> & {
@@ -120,7 +120,7 @@ type NavbarLinkSubmenuItem = MDWithTranslation<{
   external: boolean;
 } & DRTStatus;
 
-type NavbarLinkSubmenu = MDWithTranslation<{ name?: string }> & {
+export type NavbarLinkSubmenu = MDWithTranslation<{ name?: string }> & {
   featured: boolean;
   items: NavbarLinkSubmenuItem[];
 } & DRTStatus;

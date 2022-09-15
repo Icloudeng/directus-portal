@@ -3124,6 +3124,7 @@ fields:
       note: null
       options:
         language: xml
+        lineWrapping: true
       readonly: false
       required: false
       sort: 4
@@ -3134,7 +3135,7 @@ fields:
       width: full
     schema:
       comment: null
-      data_type: character varying
+      data_type: text
       default_value: null
       foreign_key_column: null
       foreign_key_schema: null
@@ -3145,13 +3146,13 @@ fields:
       is_nullable: true
       is_primary_key: false
       is_unique: false
-      max_length: 255
+      max_length: null
       name: icon_svg
       numeric_precision: null
       numeric_scale: null
       schema: public
       table: NavbarLinkSubmenuItems
-    type: string
+    type: text
   - collection: NavbarLinkSubmenuItems
     field: id
     meta:
@@ -4651,6 +4652,7 @@ fields:
       note: null
       options:
         enableSelect: false
+        template: "{{id}}\_--\_{{translations.name}}"
       readonly: false
       required: false
       sort: 6
