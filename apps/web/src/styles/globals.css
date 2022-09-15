@@ -120,6 +120,14 @@ body {
       display: block;
     }
   }
+
+  .nav__parent:has(.nav__menu:hover) {
+    @apply bg-white text-black;
+  }
+
+  .navbar__link-icon svg {
+    @apply flex-shrink-0 h-6 w-6 text-primary-400;
+  }
 }
 
 @layer utilities {

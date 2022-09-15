@@ -33,9 +33,9 @@ export const Footer = () => {
           </div>
         </div>
 
-        <div className='middle-footer flex items-start justify-center py-10'>
+        <div className='middle-footer flex items-start justify-center py-10 divide-x-[1px] divide-gray-300'>
           <ContactSection />
-          <div className='middle-left grid grid-cols-1 ss:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:flex items-start justify-center gap-20 sm:flex-[2.7] flex-[3.6] ml-3 border-l-[1px] border-gray-300 px-4'>
+          <div className='middle-left grid grid-cols-1 ss:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:flex items-start justify-start gap-20 sm:flex-[2.7] flex-[3.6] ml-3 px-4'>
             {footer_links.map(({ id, links, translations }) => (
               <FooterItemLinks
                 key={id}

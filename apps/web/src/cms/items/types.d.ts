@@ -108,3 +108,29 @@ type MDCompanyDetailFieldTrans = {
 export type MDCompanyDetail = MDWithTranslation<MDCompanyDetailFieldTrans> &
   MDCompanyDetailField &
   DRTStatus;
+
+//  ------------------ Navbar Links types  ---------------------
+
+export type NavbarLinkSubmenuItem = MDWithTranslation<{
+  name: string;
+  description: string;
+}> & {
+  icon_svg?: string;
+  url: string;
+  external: boolean;
+} & DRTStatus;
+
+export type NavbarLinkSubmenu = MDWithTranslation<{ name?: string }> & {
+  featured: boolean;
+  items: NavbarLinkSubmenuItem[];
+} & DRTStatus;
+
+export type MDNavbarLink = {
+  label: string;
+  url?: string;
+  external: boolean;
+  submenus: NavbarLinkSubmenu[];
+} & MDWithTranslation<{
+  name: string;
+}> &
+  DRTStatus;
