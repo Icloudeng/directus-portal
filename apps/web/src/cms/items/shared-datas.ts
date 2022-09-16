@@ -1,4 +1,4 @@
-import { jsonToGraphQLQuery } from 'json-to-graphql-query';
+import { jsonToGraphQLQuery, VariableType } from 'json-to-graphql-query';
 
 import { CMS_MODELS } from '@/constant/cms';
 
@@ -7,6 +7,7 @@ import {
   MDFooterLink,
   MDLanguage,
   MDNavbarLink,
+  MDPageDetail,
   MDTopbarLink,
   MDTopbarNew,
   NavbarLinkSubmenu,
@@ -124,6 +125,32 @@ const gql_query = jsonToGraphQLQuery({
       }),
       ...qWithStatus,
     },
+    __variables: {
+      request_pathname: 'String = "/"',
+    },
+    [CMS_MODELS.page_details]: {
+      __args: qWithPublishedStatus<MDPageDetail>({
+        limit: 1,
+        filter: {
+          url: {
+            _eq: new VariableType('request_pathname'),
+          },
+        },
+      }),
+      label: true,
+      url: true,
+      keywords: true,
+      theme_color: true,
+      image: qWithQueryAsset({
+        width: true,
+        height: true,
+      }),
+      ...qWithTranslations({
+        title: true,
+        description: true,
+      }),
+      ...qWithStatus,
+    },
   },
 });
 
@@ -134,18 +161,25 @@ export type QShareDataType = {
   FooterLinks: MDFooterLink[];
   CompanyDetails: MDCompanyDetail;
   NavbarLinks: MDNavbarLink[];
+  Page_Details: MDPageDetail;
 };
 
+/**
+ * This must be called at getInitialProps function
+ */
 export async function getGqlSharedData(
-  access_token: string | undefined | null
+  access_token: string | undefined | null,
+  request_pathname: string
 ) {
   const directus = await getDirectusClient();
 
-  const res = await directus.graphql.items<QShareDataType>(gql_query);
+  const res = await directus.graphql.items<QShareDataType>(gql_query, {
+    request_pathname,
+  });
 
   if (!res.data || !access_token) return res;
 
-  const { languages, CompanyDetails } = res.data;
+  const { languages, CompanyDetails, Page_Details } = res.data;
 
   languages?.forEach((lang) => qWithAsset(access_token, lang, 'icon_flag'));
 
@@ -154,6 +188,13 @@ export async function getGqlSharedData(
     CompanyDetails?.socials?.forEach((social) =>
       qWithAsset(access_token, social, 'icon', [50, 50])
     );
+  }
+
+  if (Page_Details) {
+    res.data.Page_Details = (Page_Details as unknown as MDPageDetail[])[0];
+    if (res.data.Page_Details) {
+      qWithAsset(access_token, res.data.Page_Details, 'image');
+    }
   }
 
   return res;

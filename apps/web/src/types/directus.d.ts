@@ -35,7 +35,7 @@ export type MDWithPoint =
       type: 'Point';
     };
 
-export type MDWithAsset = {
+export type MDWithAsset<T = {}> = T & {
   id: string;
   src?: string;
 };

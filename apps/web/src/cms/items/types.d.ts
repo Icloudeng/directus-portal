@@ -134,3 +134,20 @@ export type MDNavbarLink = {
   name: string;
 }> &
   DRTStatus;
+
+//  ------------------ Page details Links types  ---------------------
+
+export type MDPageDetail = {
+  label: string;
+  url: string;
+  image: MDWithAsset<{
+    width: number;
+    height: number;
+  }>;
+  keywords: string[];
+  theme_color?: string;
+} & MDWithTranslation<{
+  title: string;
+  description?: string;
+}> &
+  DRTStatus;

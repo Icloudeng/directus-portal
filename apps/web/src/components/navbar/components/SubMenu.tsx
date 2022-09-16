@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import isSvg from 'is-svg';
 
 import UnstyledLink from '@/components/links/UnstyledLink';
@@ -6,7 +6,9 @@ import { NavbarLinkSubmenu, NavbarLinkSubmenuItem } from '@/cms/items/types';
 import { useMut } from '@/cms/mut';
 
 export const Submenu = (props: NavbarLinkSubmenu) => {
-  const { featured, translations, items } = useMut({ ...props });
+  const { featured, translations, items } = useMut(
+    useMemo(() => ({ ...props }), [props])
+  );
 
   return (
     <div
@@ -45,9 +47,9 @@ export const Submenu = (props: NavbarLinkSubmenu) => {
 };
 
 const SubmenuItem = (props: NavbarLinkSubmenuItem & { featured: boolean }) => {
-  const { featured, url, icon_svg, translations, external } = useMut({
-    ...props,
-  });
+  const { featured, url, icon_svg, translations, external } = useMut(
+    useMemo(() => ({ ...props }), [props])
+  );
 
   return (
     <UnstyledLink
