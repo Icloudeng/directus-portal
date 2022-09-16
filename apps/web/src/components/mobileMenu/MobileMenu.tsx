@@ -2,6 +2,8 @@ import React, { forwardRef, useCallback, useRef } from 'react';
 import { GrClose } from 'react-icons/gr';
 import { VscChevronDown } from 'react-icons/vsc';
 
+import { useOutsideClick } from '@/hooks/useOutsideClick';
+
 import { navbarData } from '@/models/navbarData';
 import { mergeRefs } from '@/utils/merge-refs';
 
@@ -9,7 +11,6 @@ import ButtonLink from '../links/ButtonLink';
 import UnstyledLink from '../links/UnstyledLink';
 
 import { INavBarMenuList } from '@/types/navbarTypes';
-import { useOutsideClick } from '@/hooks/useOutsideClick';
 
 export const NavBarMenuList = ({ title, link, subMenu }: INavBarMenuList) => {
   const btnRef = useRef<HTMLButtonElement>(null);
