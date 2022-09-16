@@ -13,13 +13,13 @@ export const cms_url = _cms_url as string;
 export async function getDirectusClient() {
   if (await directus.auth.token) return directus;
 
-  if (directus_email && directus_password) {
+  if (directus_token) {
+    await directus.auth.static(directus_token);
+  } else if (directus_email && directus_password) {
     await directus.auth.login({
       email: directus_email,
       password: directus_password,
     });
-  } else if (directus_token) {
-    await directus.auth.static(directus_token);
   }
 
   return directus;

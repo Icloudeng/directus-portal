@@ -159,9 +159,9 @@ export type QShareDataType = {
   TopbarLinks: MDTopbarLink[];
   News: MDTopbarNew[];
   FooterLinks: MDFooterLink[];
-  CompanyDetails: MDCompanyDetail;
   NavbarLinks: MDNavbarLink[];
-  Page_Details: MDPageDetail;
+  CompanyDetails?: MDCompanyDetail;
+  Page_Details?: MDPageDetail;
 };
 
 /**
