@@ -1,7 +1,7 @@
 import { GetServerSidePropsContext } from 'next';
 
 import Layout from '@/components/layout/Layout';
-import { CloudComputing } from '@/components/sections/cloudComputing/CloudComputing';
+import { CloudComputing } from '@/components/sections/cloud-computing/CloudComputing';
 import { HeroSection } from '@/components/sections/hero/HeroSection';
 import Seo from '@/components/Seo';
 
