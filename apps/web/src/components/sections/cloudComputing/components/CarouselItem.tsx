@@ -26,13 +26,13 @@ export const CarouselItem = ({ bigTitle, description, href, items, imgSrc }:ICar
                     <div className="flex flex-col sd:flex-row items-center justify-between md:block">
                         <div className="mb-7">
                             <h6 className="mb-3 text-center sd:text-start text-lg font-semibold tracking-tight text-gray-900">{items.title}</h6>
-                            <ul className="list-disc ml-5 text-xs sd:text-sm text-gray-400">
+                            <ul className="list-disc max-w-xs ss:max-w-sm ml-5 text-xs sd:text-sm text-gray-400">
                                 {items.itemsList.map((item, index) => (
                                     <li key={index}>{item}</li>
                                 ))}
                             </ul>
                         </div>
-                        <ButtonLink variant='outline' href={href} className="float-right text-center text-sm font-base rounded-sm">Read More</ButtonLink>
+                        <ButtonLink variant='outline' href={href} className="float-right ml-5 text-center text-sm font-base rounded-sm">Read More</ButtonLink>
                     </div>
                 </div>
             </div>
