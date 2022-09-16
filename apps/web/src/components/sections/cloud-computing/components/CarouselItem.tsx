@@ -16,6 +16,7 @@ export const CarouselItem = ({ bigTitle, description, href, items, imgSrc }:ICar
                         layout="fill"
                         objectFit="cover"
                         alt='hero banner image'
+                        loading="lazy"
                     />
                 </div>
                 <div className="flex flex-[2] flex-col justify-between p-5 md:p-16 leading-normal">
