@@ -21,8 +21,8 @@ type SeoProps = {
 
 export default function Seo(props: SeoProps) {
   const router = useRouter();
-  const { Page_Details } = useSharedData();
-  const page = useMut(Page_Details);
+  const data = useSharedData();
+  const page = useMut(data?.Page_Details);
 
   const $title = page?.translations?.title;
   const $description = page?.translations?.description;
