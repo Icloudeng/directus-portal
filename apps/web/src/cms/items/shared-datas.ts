@@ -144,6 +144,7 @@ const gql_query = jsonToGraphQLQuery({
       image: qWithQueryAsset({
         width: true,
         height: true,
+        type: true,
       }),
       ...qWithTranslations({
         title: true,
