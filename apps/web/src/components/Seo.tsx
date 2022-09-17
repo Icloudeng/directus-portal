@@ -1,3 +1,5 @@
+import { useMut } from '@/cms/mut';
+import { useSharedData } from '@/store';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 
@@ -6,16 +8,9 @@ const defaultMeta = {
   siteName: 'icloudeng',
   description:
     'Cloud IT Engineering LTD, a giant cloud computing solution provider',
-  /** Without additional '/' on the end, e.g. https://theodorusclarence.com */
   url: 'https://coding.icloudeng.xyz',
   type: 'website',
   robots: 'follow, index',
-  /**
-   * No need to be filled, will be populated with openGraph function
-   * If you wish to use a normal image, just specify the path below
-   */
-  // image: 'https://tsnext-tw.thcl.dev/images/large-og.png',
-
   image: '~/images/icloudeng-banner.jpg',
 };
 
@@ -26,33 +21,58 @@ type SeoProps = {
 
 export default function Seo(props: SeoProps) {
   const router = useRouter();
+  const { Page_Details } = useSharedData();
+  const page = useMut(Page_Details);
+
+  const $title = page?.translations?.title;
+  const $description = page?.translations?.description;
+  const $image = page?.image;
+
   const meta = {
     ...defaultMeta,
     ...props,
   };
-  meta['title'] = props.templateTitle
-    ? `${props.templateTitle} | ${meta.siteName}`
-    : meta.title;
+
+  meta['title'] =
+    $title || props.templateTitle
+      ? `${$title || props.templateTitle} | ${meta.siteName}`
+      : meta.title;
 
   return (
     <Head>
       <title>{meta.title}</title>
       <meta name='robots' content={meta.robots} />
-      <meta content={meta.description} name='description' />
-      <meta property='og:url' content={`${meta.url}${router.asPath}`} />
-      <link rel='canonical' href={`${meta.url}${router.asPath}`} />
+      <meta content={$description || meta.description} name='description' />
+      <link rel='canonical' href={`${meta.url}${page?.url || router.asPath}`} />
       {/* Open Graph */}
+      <meta
+        property='og:url'
+        content={`${meta.url}${page?.url || router.asPath}`}
+      />
       <meta property='og:type' content={meta.type} />
       <meta property='og:site_name' content={meta.siteName} />
-      <meta property='og:description' content={meta.description} />
-      <meta property='og:title' content={meta.title} />
-      <meta name='image' property='og:image' content={meta.image} />
+      <meta
+        property='og:description'
+        content={$description || meta.description}
+      />
+      <meta property='og:title' content={$title || meta.title} />
+      <meta property='og:image' content={$image?.src || meta.image} />
+      {$image?.type && <meta property='og:image:type' content={$image?.type} />}
+      {$image?.width && (
+        <meta property='og:image:width' content={$image?.width.toString()} />
+      )}
+      {$image?.height && (
+        <meta property='og:image:height' content={$image?.height.toString()} />
+      )}
       {/* Twitter */}
       <meta name='twitter:card' content='summary_large_image' />
       <meta name='twitter:site' content='@th_clarence' />
-      <meta name='twitter:title' content={meta.title} />
-      <meta name='twitter:description' content={meta.description} />
-      <meta name='twitter:image' content={meta.image} />
+      <meta name='twitter:title' content={$title || meta.title} />
+      <meta
+        name='twitter:description'
+        content={$description || meta.description}
+      />
+      <meta name='twitter:image' content={$image?.src || meta.image} />
       {meta.date && (
         <>
           <meta property='article:published_time' content={meta.date} />
@@ -78,7 +98,7 @@ export default function Seo(props: SeoProps) {
         name='msapplication-TileImage'
         content='/favicon/ms-icon-144x144.png'
       />
-      <meta name='theme-color' content='#ffffff' />
+      <meta name='theme-color' content={page?.theme_color || '#ffffff'} />
     </Head>
   );
 }

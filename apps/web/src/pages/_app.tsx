@@ -30,7 +30,7 @@ function MyApp({
 }
 
 MyApp.getInitialProps = async ({
-  ctx: { locale, locales },
+  ctx: { locale, locales, req },
 }: {
   ctx: GetServerSidePropsContext;
 }) => {
@@ -39,8 +39,10 @@ MyApp.getInitialProps = async ({
       props: {},
     };
   }
+  const url = new URL(req.url!, `http://${req.headers.host}`);
+
   const access_token = await getDirectusAuthToken();
-  const { data } = await getGqlSharedData(access_token);
+  const { data } = await getGqlSharedData(access_token, url.pathname);
 
   if (data) {
     data.languages = data.languages.filter((lang) =>

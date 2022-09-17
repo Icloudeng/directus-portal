@@ -32,9 +32,10 @@ export function qWithTranslations<T extends { [x: string]: boolean }>(
   };
 }
 
-export function qWithQueryAsset() {
+export function qWithQueryAsset(moreFields = {}) {
   return {
     id: true,
+    ...moreFields,
   };
 }
 
@@ -100,7 +101,3 @@ export function qWithPublishedStatus<T>(option: Query<T> = {}) {
     },
   };
 }
-
-// status: {
-//   _in: ['published'],
-// },

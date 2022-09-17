@@ -2,15 +2,21 @@ import { useSharedData } from '@/store';
 
 import { MDWithTranslation, MDWithUserTranslation } from '@/types/directus';
 
+type ReturnType<P> = P extends undefined
+  ? MDWithUserTranslation<Exclude<P, 'undefined'>> | undefined
+  : MDWithUserTranslation<P>;
+
+type ParamsType =
+  | MDWithTranslation<unknown>
+  | MDWithTranslation<unknown>[]
+  | undefined;
 /**
  * Return datas with translation from user language
  *
  * @param datas
  * @returns
  */
-export function useMut<
-  T extends MDWithTranslation<unknown> | MDWithTranslation<unknown>[]
->(datas: T, lang?: string) {
+export function useMut<T extends ParamsType>(datas: T, lang?: string) {
   const { locale } = useSharedData();
   return mut(datas, lang || locale);
 }
@@ -22,16 +28,17 @@ export function useMut<
  * @param lang
  * @returns
  */
-export function mut<
-  T extends MDWithTranslation<unknown> | MDWithTranslation<unknown>[]
->(datas: T, lang: string): MDWithUserTranslation<T> {
+export function mut<T extends ParamsType>(
+  datas: T,
+  lang: string
+): ReturnType<T> {
   if (Array.isArray(datas)) {
     datas?.forEach((data) => translate(data, lang));
   } else {
-    translate(datas, lang);
+    translate(datas!, lang);
   }
 
-  return datas as MDWithUserTranslation<T>;
+  return datas as ReturnType<T>;
 }
 
 const translate = (
