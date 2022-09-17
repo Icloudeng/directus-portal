@@ -17,8 +17,8 @@ type ParamsType =
  * @returns
  */
 export function useMut<T extends ParamsType>(datas: T, lang?: string) {
-  const { locale } = useSharedData();
-  return mut(datas, lang || locale);
+  const data = useSharedData();
+  return mut(datas, lang || data?.locale);
 }
 
 /**
