@@ -265,7 +265,7 @@ collections:
       archive_app_filter: true
       archive_field: null
       archive_value: null
-      collapse: open
+      collapse: closed
       collection: Home_Page
       color: null
       display_template: null
@@ -685,7 +685,7 @@ collections:
       archive_app_filter: true
       archive_field: null
       archive_value: null
-      collapse: open
+      collapse: closed
       collection: pages
       color: '#FFA439'
       display_template: null
