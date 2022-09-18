@@ -1,3 +1,4 @@
+import { useRef } from 'react';
 import { AiOutlineMenuFold } from 'react-icons/ai';
 import { VscChevronDown } from 'react-icons/vsc';
 
@@ -7,11 +8,13 @@ import ButtonLink from '@/components/links/ButtonLink';
 import UnstyledLink from '@/components/links/UnstyledLink';
 import NextImage from '@/components/NextImage';
 
-import Logo from '~/images/icloudenglogo.png';
 import { useSharedData } from '@/store';
+
 import { useMut } from '@/cms/mut';
-import { useRef } from 'react';
+
 import { Submenu } from './components/SubMenu';
+
+import Logo from '~/images/icloudenglogo.png';
 
 export const Navbar = () => {
   const pagePosition = useScrollPosition();
@@ -47,7 +50,7 @@ export const Navbar = () => {
           </div>
           <div className='hidden nav__buttons md:flex items-center flex-1 xl:flex-0 justify-end gap-5 ml-3'>
             <ButtonLink
-              className='py-[4px] text-center text-sm font-light rounded-sm hover:p'
+              className='py-[4px] text-center text-sm font-light rounded-sm'
               href='#'
               variant='outline'
             >
