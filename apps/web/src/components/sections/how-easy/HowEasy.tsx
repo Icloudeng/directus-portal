@@ -14,7 +14,7 @@ export const HowEasy = () => {
             <div className='w-full h-full flex flex-col md:flex-row items-center justify-center'>
                 <div className='easy__left flex-1 flex flex-col mr-2 p-7'>
                     <div className='flex flex-col items-center md:items-start gap-7'>
-                        <h6 className='mb-3 text-center md:text-start text-lg font-semibold tracking-tight text-primary-500'>Icloueng Makes It Simple to Embrace the Cloud</h6>
+                        <h6 className='mb-3 text-center md:text-start text-lg font-semibold tracking-tight'>Icloueng Makes It Simple to Embrace the Cloud</h6>
                         <div className='flex flex-col gap-3'>
                             <span className='max-w-sm ss:max-w-lg'>We take a hands-on approach to designing and implementing cloud solutions that make sense for the needs of your organization. We’ll help you assess if and when a move to the cloud is right and create a smooth transition for your team.</span>
                             <ul className='list-disc max-w-xs ss:max-w-sm ml-5 text-xs sd:text-sm text-gray-400'>
@@ -42,7 +42,7 @@ export const HowEasy = () => {
                 </div>
                 <div className='easy__right flex-1 flex flex-col md:flex-col-reverse ml-2 p-7'>
                     <div className='flex flex-col items-center md:items-start gap-7'>
-                        <h6 className='mb-3 text-center md:text-start text-lg font-semibold tracking-tight text-primary-500'>Icloueng Makes It Simple to Embrace the Cloud</h6>
+                        <h6 className='mb-3 text-center md:text-start text-lg font-semibold tracking-tight'>Icloueng Makes It Simple to Embrace the Cloud</h6>
                         <div className='flex flex-col gap-3'>
                             <span className='max-w-sm ss:max-w-lg'>We take a hands-on approach to designing and implementing cloud solutions that make sense for the needs of your organization. We’ll help you assess if and when a move to the cloud is right and create a smooth transition for your team.</span>
                             <ul className='list-disc max-w-xs ss:max-w-sm ml-5 text-xs sd:text-sm text-gray-400'>
