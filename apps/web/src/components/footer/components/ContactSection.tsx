@@ -28,19 +28,18 @@ const socialIcons: { [x: string]: JSX.Element } = {
 export const ContactSection = () => {
   const { CompanyDetails } = useSharedData();
   const data = useMut(CompanyDetails);
-  const $data = data as typeof data | undefined;
 
   return (
     <div className='middle-right text-sm flex-1 flex flex-col gap-5'>
-      {$data?.translations?.slogan && (
-        <p className='max-w-[24rem] mb-3'>{$data?.translations?.slogan}</p>
+      {data?.translations?.slogan && (
+        <p className='max-w-[24rem] mb-3'>{data?.translations?.slogan}</p>
       )}
       <p className='font-bold uppercase underline underline-offset-8'>
         Contact Us :
       </p>
       <div className='flex flex-col gap-5'>
         <div className='space-y-4'>
-          {$data?.addresses?.map(
+          {data?.addresses?.map(
             ({ id, address_name, working_days, working_time, phone }) => {
               return (
                 <div className='space-y-1 mb-4' key={id}>
@@ -57,22 +56,22 @@ export const ContactSection = () => {
         <span>Local call rate</span>
       </div>
 
-      {$data?.support_email && (
+      {data?.support_email && (
         <div className='flex items-center gap-2 mt-3'>
           <GoMailRead fontSize={20} />
           <span>
             <UnstyledLink
               className='hover:text-primary-400'
-              href={'mailto:' + $data?.support_email}
+              href={'mailto:' + data?.support_email}
             >
-              {$data?.support_email}
+              {data?.support_email}
             </UnstyledLink>
           </span>
         </div>
       )}
 
       <div className='flex items-center gap-5 text-primary-400 mt-1'>
-        {$data?.socials?.map(({ link, icon, id, social_name }) => (
+        {data?.socials?.map(({ link, icon, id, social_name }) => (
           <SocialMedia
             key={id}
             href={link}

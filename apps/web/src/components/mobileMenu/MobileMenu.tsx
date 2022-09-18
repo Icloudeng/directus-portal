@@ -1,90 +1,125 @@
-import React, { forwardRef, useCallback, useRef } from 'react';
+import React, { forwardRef, useMemo, useRef } from 'react';
 import { GrClose } from 'react-icons/gr';
+import isSvg from 'is-svg';
 import { VscChevronDown } from 'react-icons/vsc';
-
-import { useOutsideClick } from '@/hooks/useOutsideClick';
-
-import { navbarData } from '@/models/navbarData';
 import { mergeRefs } from '@/utils/merge-refs';
 
 import ButtonLink from '../links/ButtonLink';
 import UnstyledLink from '../links/UnstyledLink';
 
-import { INavBarMenuList } from '@/types/navbarTypes';
+import { useOutsideClick } from '@/hooks/useOutsideClick';
+import { useSharedData } from '@/store';
+import { useMut } from '@/cms/mut';
+import { I_MDWithUserTranslation } from '@/types/directus';
+import {
+  MDNavbarLink,
+  NavbarLinkSubmenu,
+  NavbarLinkSubmenuItem,
+} from '@/cms/items/types';
 
-export const NavBarMenuList = ({ title, link, subMenu }: INavBarMenuList) => {
+const SubmenuItem = (props: NavbarLinkSubmenuItem & { featured?: boolean }) => {
+  const { id, url, external, featured, icon_svg, translations } = useMut(
+    useMemo(() => ({ ...props }), [props])
+  );
+
+  return (
+    <UnstyledLink
+      key={id}
+      href={url}
+      target={external ? '_blank' : undefined}
+      className='-m-3 p-3 flex items-start navbar__link-icon'
+    >
+      {!featured && icon_svg && (
+        <>
+          {isSvg(icon_svg) && (
+            <span dangerouslySetInnerHTML={{ __html: icon_svg }} />
+          )}
+        </>
+      )}
+      <div className='ml-4'>
+        <p className='text-sm text-gray-500 hover:text-gray-900 '>
+          {translations?.name}
+        </p>
+      </div>
+    </UnstyledLink>
+  );
+};
+
+const SubMenu = (props: NavbarLinkSubmenu) => {
+  const { translations, featured, items } = useMut(
+    useMemo(() => ({ ...props }), [props])
+  );
+
+  return (
+    <div className='flex items-center justify-between'>
+      <div className='flex flex-col'>
+        <span className='text-sm text-gray-300 uppercase mb-1 mt-3'>
+          {translations?.name?.toUpperCase() || (featured ? 'FEATURED' : '')}
+        </span>
+        <div className='flex flex-col items-start py-4 gap-3'>
+          {items.map((item) => {
+            return <SubmenuItem key={item.id} featured={featured} {...item} />;
+          })}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+function Submenu({
+  submenus,
+  translations,
+  url,
+  external,
+}: I_MDWithUserTranslation<MDNavbarLink>) {
+  const hasMenu = submenus.length > 0;
   const btnRef = useRef<HTMLButtonElement>(null);
   const onMouseClick = () => {
     btnRef.current?.classList.toggle('active');
   };
 
-  const withDropdown = (
-    <div className='submenu__mob hidden'>
-      <div className='flex flex-col ring-opacity-5 min-h-full'>
-        {subMenu?.map(({ title, featured, items }, i) => (
-          <div key={i} className='flex items-center justify-between'>
-            <div className='flex flex-col'>
-              <span className='text-sm text-gray-300 uppercase mb-1 mt-3'>
-                {featured ? 'FEATURED' : title}
-              </span>
-              <div className='flex flex-col items-start py-4 gap-3'>
-                {items.map(
-                  ({ title, icon, description, link, external }, i) => {
-                    return (
-                      <UnstyledLink
-                        key={i}
-                        href={link}
-                        className='-m-3 p-3 flex items-start'
-                      >
-                        {featured
-                          ? null
-                          : icon &&
-                            React.createElement(icon, {
-                              className: 'flex-shrink-0 h-3 w-3 text-[#889fbe]',
-                            })}
-                        <div className='ml-4'>
-                          <p className='text-sm text-gray-500 hover:text-gray-900 '>
-                            {title}
-                          </p>
-                          {/* <p className="mt-1 text-xs text-gray-400 font-normal">{description}</p> */}
-                        </div>
-                      </UnstyledLink>
-                    );
-                  }
-                )}
-              </div>
+  return (
+    <>
+      <li
+        onClick={hasMenu ? onMouseClick : undefined}
+        className={`menu-top__item border-b-[1px] px-8 w-full ${
+          hasMenu && 'relative dropdown'
+        } hover:text-primary-400`}
+      >
+        <button
+          ref={btnRef}
+          type='button'
+          className='menu-top__link w-full flex items-center justify-between my-5'
+        >
+          {url ? (
+            <UnstyledLink target={external ? '_blank' : undefined} href={url}>
+              {translations?.name}
+            </UnstyledLink>
+          ) : (
+            <a className='cursor-pointer'>{translations?.name}</a>
+          )}
+
+          {hasMenu && (
+            <VscChevronDown className='submenu-show__chevron text-primary-500 text-sm' />
+          )}
+        </button>
+        {hasMenu && (
+          <div className='submenu__mob hidden'>
+            <div className='flex flex-col ring-opacity-5 min-h-full'>
+              {submenus.map((submenu) => {
+                return <SubMenu key={submenu.id} {...submenu} />;
+              })}
             </div>
           </div>
-        ))}
-      </div>
-    </div>
+        )}
+      </li>
+    </>
   );
-
-  const chevron = <VscChevronDown className='submenu-show__chevron text-xl' />;
-
-  return (
-    <li
-      onClick={subMenu ? onMouseClick : undefined}
-      className={`menu-top__item border-b-[1px] px-8 w-full ${
-        subMenu && 'relative dropdown'
-      } hover:text-primary-400`}
-    >
-      <button
-        ref={btnRef}
-        type='button'
-        className='menu-top__link w-full flex items-center justify-between my-5'
-      >
-        <UnstyledLink className='text-lg' href={link}>
-          {title}
-        </UnstyledLink>
-        {subMenu && chevron}
-      </button>
-      {subMenu && withDropdown}
-    </li>
-  );
-};
+}
 
 export const MobileMenu = forwardRef<HTMLDivElement>((_, ref) => {
+  const { NavbarLinks } = useSharedData();
+  const links = useMut(NavbarLinks);
   const { targetEl } = useOutsideClick(onClickOuside);
 
   function onClickOuside(el: HTMLElement, nodeTarget: HTMLElement) {
@@ -120,15 +155,9 @@ export const MobileMenu = forwardRef<HTMLDivElement>((_, ref) => {
               <GrClose className='bg-red-50 rounded-sm' size={25} />
             </span>
             <ul className='menu-top flex flex-col items-center w-full'>
-              {navbarData.map((menu, i) => (
-                <NavBarMenuList
-                  key={i}
-                  title={menu.title}
-                  link={menu.link}
-                  external={menu.external}
-                  subMenu={menu.subMenu}
-                />
-              ))}
+              {links.map((menu) => {
+                return <Submenu key={menu.id} {...menu} />;
+              })}
             </ul>
           </div>
           <div className='nav__buttons absolute bottom-32 w-full flex flex-col-reverse items-center justify-end gap-3 ml-3 px-7'>

@@ -35,9 +35,10 @@ export type MDWithPoint =
       type: 'Point';
     };
 
-export type MDWithAsset = {
+export type MDWithAsset<T = unknown> = T & {
   id: string;
   src?: string;
+  type?: string;
 };
 
 export type QueryWithTranslation<T> = {
