@@ -30,11 +30,11 @@ export const CloudComputing = () => {
                     lightning-fast and stunning simple.
                 </span>
             </div>
-            <div className='w-full'>
-                <div id='default-carousel' className='relative'>
+            <div className='w-full h-full'>
+                <div id='default-carousel' className='relative h-full'>
                     {/* <!-- Carousel wrapper --> */}
-                    <div className='overflow-hidden w-full' ref={viewportRef}>
-                        <div className='flex w-full h-[47rem] ss:h-[40rem] sm:h-[30rem]'>
+                    <div className='overflow-hidden w-full h-full' ref={viewportRef}>
+                        <div className='flex w-full h-full'>
                             {CarouselData.map(({ bigTitle, description, href, items, imgSrc }, index) => (
                                 <CarouselItem 
                                     key={index} 
