@@ -25,9 +25,9 @@ export const TopBar: React.FC = () => {
       <div className='h-10 flex items-center justify-start'>
         <div className='flex flex-1 items-center mr-auto overflow-hidden flex-nowrap'>
           <div className=' h-5 px-2 border border-primary-400 flex items-center justify-center rounded-sm'>
-              <span className='uppercase text-[0.6rem] text-primary-400'>
-                news
-              </span>
+            <span className='uppercase text-[0.6rem] text-primary-400'>
+              news
+            </span>
           </div>
           <TopbarNews />
         </div>
@@ -72,16 +72,17 @@ export const TopBar: React.FC = () => {
 
 function TopbarNews() {
   const { News } = useSharedData();
-  const data = useMut(News)[0];
-  const title = data?.translations?.title || '';
+  const data = useMut(News);
+  const $data = data[0] as typeof data[0] | undefined;
+  const title = $data?.translations?.title || '';
 
   return (
     <>
-      {data && (
+      {$data && (
         <>
           <UnstyledLink
             title={title}
-            href={'/news/' + data.id}
+            href={'/news/' + $data.id}
             className='animated-underline mx-3 text-xs flex items-center justify-start text-textDark'
           >
             {title.length > 50 ? title.substring(0, 50) + '...' : title}
