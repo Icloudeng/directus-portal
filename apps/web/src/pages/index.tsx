@@ -4,12 +4,12 @@ import Layout from '@/components/layout/Layout';
 import { CloudComputing } from '@/components/sections/cloud-computing/CloudComputing';
 import { HeroSection } from '@/components/sections/hero/HeroSection';
 import { HowEasy } from '@/components/sections/how-easy/HowEasy';
+import { IntelligentSystem } from '@/components/sections/intelligent-system/IntelligentSystem';
 import Seo from '@/components/Seo';
 
-import { getServerSideTranslations } from '@/utils/server-translation';
 import { getDirectusAuthToken } from '@/cms/directus';
 import { getGqlHomeHero, QHomeHeroType } from '@/cms/items/home-hero';
-import { useEffect } from 'react';
+import { getServerSideTranslations } from '@/utils/server-translation';
 
 export default function HomePage({ HomeHero }: Partial<QHomeHeroType>) {
   return (
@@ -26,6 +26,10 @@ export default function HomePage({ HomeHero }: Partial<QHomeHeroType>) {
 
         <section className='py-10 bg-white'>
           <HowEasy />
+        </section>
+
+        <section className='py-10 bg-[#f5f7fa]'>
+          <IntelligentSystem />
         </section>
       </main>
     </Layout>
