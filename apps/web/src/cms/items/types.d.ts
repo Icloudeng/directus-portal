@@ -151,3 +151,14 @@ export type MDPageDetail = {
   description?: string;
 }> &
   DRTStatus;
+
+// ---------------- Home Page, Hero section -------------------------
+export type MDHomePageHero = {
+  image: MDWithAsset;
+  disposition: 'text_left' | 'text_right';
+} & MDWithTranslation<{
+  title: string;
+  description: string;
+  trailing_titles: string[];
+}> &
+  DRTStatus;

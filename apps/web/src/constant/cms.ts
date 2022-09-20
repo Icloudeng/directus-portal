@@ -22,4 +22,5 @@ export const CMS_MODELS = modelsWithTranslation({
   company_details: 'CompanyDetails',
   navbar_links: 'NavbarLinks',
   page_details: 'Page_Details',
+  home_hero: 'HomeHero',
 });
