@@ -8,10 +8,19 @@ import Seo from '@/components/Seo';
 
 import { getServerSideTranslations } from '@/utils/server-translation';
 import { getDirectusAuthToken } from '@/cms/directus';
-import { getGqlHomeHero, QHomeHeroType } from '@/cms/items/home-hero';
+import {
+  getGqlHomeQueries,
+  QHomeHeroQueriesType,
+} from '@/cms/items/home-queries';
 import { useEffect } from 'react';
 
-export default function HomePage({ HomeHero }: Partial<QHomeHeroType>) {
+export default function HomePage(props: Partial<QHomeHeroQueriesType>) {
+  const { HomeHero } = props;
+
+  useEffect(() => {
+    console.log(props);
+  }, []);
+
   return (
     <Layout>
       <Seo templateTitle='Home' />
@@ -36,12 +45,12 @@ export async function getServerSideProps({
   locale,
 }: GetServerSidePropsContext) {
   const access_token = await getDirectusAuthToken();
-  const { data } = await getGqlHomeHero(access_token);
+  const res = await getGqlHomeQueries(access_token).catch(console.error);
 
   return {
     props: {
       ...(await getServerSideTranslations(locale!, ['home'])),
-      ...(data || {}),
+      ...(res?.data || {}),
     },
   };
 }

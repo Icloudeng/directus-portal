@@ -13,14 +13,21 @@ function modelsWithTranslation<T>(models: T): WithTranslation<T> {
   return $models as WithTranslation<T>;
 }
 
-export const CMS_MODELS = modelsWithTranslation({
-  languages: 'languages',
-  topbar_links: 'TopbarLinks',
-  news: 'News',
-  footer_links: 'FooterLinks',
-  footer_link_items: 'FooterLinkItems',
-  company_details: 'CompanyDetails',
-  navbar_links: 'NavbarLinks',
-  page_details: 'Page_Details',
-  home_hero: 'HomeHero',
-});
+export const CMS_MODELS = {
+  ...modelsWithTranslation({
+    languages: 'languages',
+    topbar_links: 'TopbarLinks',
+    news: 'News',
+    footer_links: 'FooterLinks',
+    footer_link_items: 'FooterLinkItems',
+    company_details: 'CompanyDetails',
+    navbar_links: 'NavbarLinks',
+    page_details: 'Page_Details',
+    home_hero: 'HomeHero',
+    home_sections: 'HomeSections',
+  }),
+  generics: {
+    page_sections: 'PageSections',
+  },
+  section_templates: {},
+};
