@@ -3358,48 +3358,6 @@ fields:
       table: HomeHero
     type: uuid
   - collection: HomeHero
-    field: label
-    meta:
-      collection: HomeHero
-      conditions: null
-      display: null
-      display_options: null
-      field: label
-      group: null
-      hidden: false
-      interface: input
-      note: null
-      options:
-        trim: true
-      readonly: false
-      required: true
-      sort: 2
-      special: null
-      translations: null
-      validation: null
-      validation_message: null
-      width: full
-    schema:
-      comment: null
-      data_type: character varying
-      default_value: null
-      foreign_key_column: null
-      foreign_key_schema: null
-      foreign_key_table: null
-      generation_expression: null
-      has_auto_increment: false
-      is_generated: false
-      is_nullable: true
-      is_primary_key: false
-      is_unique: false
-      max_length: 255
-      name: label
-      numeric_precision: null
-      numeric_scale: null
-      schema: public
-      table: HomeHero
-    type: string
-  - collection: HomeHero
     field: status
     meta:
       collection: HomeHero
