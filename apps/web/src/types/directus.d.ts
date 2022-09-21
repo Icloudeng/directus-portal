@@ -64,7 +64,8 @@ type ValueOf<T> = T[keyof T];
 export type MDQueryFields<T> = ValueOf<Pick<QueryOne<T>, 'fields'>>;
 
 export type WithTranslation<T> = T & {
-  [k in keyof T as `${string & k}_translations`]: T[k];
+  [k in keyof T as `${string & k}_translations`]: `${string &
+    T[k]}_translations`;
 };
 
 export type MDWithUserTranslation<T> = T extends (infer P)[]
@@ -74,4 +75,10 @@ export type MDWithUserTranslation<T> = T extends (infer P)[]
 export type MDTranslation = {
   [x: string]: string;
   languages_code: string;
+};
+
+export type MDHasM2A<T, C = string> = {
+  id: ID;
+  collection: C;
+  item: T;
 };

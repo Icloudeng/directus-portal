@@ -1,4 +1,5 @@
 import { CMS_MODELS } from '@/constant/cms';
+import { ID } from '@directus/sdk';
 import { jsonToGraphQLQuery } from 'json-to-graphql-query';
 import { getDirectusClient } from '../directus';
 import {
@@ -7,6 +8,7 @@ import {
   qWithStatus,
   qWithTranslations,
 } from '../gql-query';
+import { M2APageSection, pageSectionQuery } from '../page-sections';
 import { MDHomePageHero } from './types';
 
 const gql_query = jsonToGraphQLQuery({
@@ -21,27 +23,20 @@ const gql_query = jsonToGraphQLQuery({
       }),
       ...qWithStatus,
     },
-    // [CMS_MODELS.home_sections]: {
-    //   id: true,
-    //   sections: {
-    //     id: true,
-    //     collection: true,
-    //     item: {
-    //       __on: {
-    //          __typeName: CMS_MODELS.generics.page_sections,
-    //         id: true,
-    //         ...qWithTranslations({
-    //           title: true,
-    //           description: true,
-    //         }),
-    //       },
-    //     },
-    //   },
-    // },
+    [CMS_MODELS.home_sections]: {
+      id: true,
+      sections: pageSectionQuery,
+    },
   },
 });
 
-export type QHomeHeroQueriesType = { HomeHero: MDHomePageHero };
+export type QHomeHeroQueriesType = {
+  [CMS_MODELS.home_hero]: MDHomePageHero;
+  [CMS_MODELS.home_sections]: {
+    id: ID;
+    sections: M2APageSection[];
+  };
+};
 
 export async function getGqlHomeQueries(
   access_token: string | undefined | null

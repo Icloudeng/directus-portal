@@ -8,10 +8,7 @@ import Seo from '@/components/Seo';
 
 import { getServerSideTranslations } from '@/utils/server-translation';
 import { getDirectusAuthToken } from '@/cms/directus';
-import {
-  getGqlHomeQueries,
-  QHomeHeroQueriesType,
-} from '@/cms/items/home-queries';
+import { getGqlHomeQueries, QHomeHeroQueriesType } from '@/cms/items';
 import { useEffect } from 'react';
 
 export default function HomePage(props: Partial<QHomeHeroQueriesType>) {

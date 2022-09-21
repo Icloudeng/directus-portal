@@ -264,7 +264,7 @@ collections:
       accountability: all
       archive_app_filter: true
       archive_field: null
-      archive_value: archived
+      archive_value: null
       collapse: open
       collection: HomeSections
       color: null
@@ -278,7 +278,7 @@ collections:
       sort: 3
       sort_field: null
       translations: null
-      unarchive_value: draft
+      unarchive_value: null
     schema:
       comment: null
       name: HomeSections
@@ -565,6 +565,30 @@ collections:
       comment: null
       name: PageSections
       schema: public
+  - collection: PageSections_contents
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: PageSections_contents
+      color: null
+      display_template: null
+      group: generics
+      hidden: true
+      icon: import_export
+      item_duplication_fields: null
+      note: null
+      singleton: false
+      sort: 3
+      sort_field: null
+      translations: null
+      unarchive_value: null
+    schema:
+      comment: null
+      name: PageSections_contents
+      schema: public
   - collection: PageSections_translations
     meta:
       accountability: all
@@ -637,6 +661,102 @@ collections:
       comment: null
       name: Page_Details_translations
       schema: public
+  - collection: ST_NavTabs
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: status
+      archive_value: archived
+      collapse: open
+      collection: ST_NavTabs
+      color: null
+      display_template: null
+      group: Section_Templates
+      hidden: true
+      icon: null
+      item_duplication_fields: null
+      note: null
+      singleton: false
+      sort: 3
+      sort_field: sort
+      translations: null
+      unarchive_value: draft
+    schema:
+      comment: null
+      name: ST_NavTabs
+      schema: public
+  - collection: ST_NavTabs_translations
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: ST_NavTabs_translations
+      color: null
+      display_template: null
+      group: Section_Templates
+      hidden: true
+      icon: import_export
+      item_duplication_fields: null
+      note: null
+      singleton: false
+      sort: 4
+      sort_field: null
+      translations: null
+      unarchive_value: null
+    schema:
+      comment: null
+      name: ST_NavTabs_translations
+      schema: public
+  - collection: ST_Values
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: status
+      archive_value: archived
+      collapse: open
+      collection: ST_Values
+      color: null
+      display_template: null
+      group: Section_Templates
+      hidden: true
+      icon: null
+      item_duplication_fields: null
+      note: null
+      singleton: false
+      sort: 1
+      sort_field: sort
+      translations: null
+      unarchive_value: draft
+    schema:
+      comment: null
+      name: ST_Values
+      schema: public
+  - collection: ST_Values_translations
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: ST_Values_translations
+      color: null
+      display_template: null
+      group: Section_Templates
+      hidden: true
+      icon: import_export
+      item_duplication_fields: null
+      note: null
+      singleton: false
+      sort: 2
+      sort_field: null
+      translations: null
+      unarchive_value: null
+    schema:
+      comment: null
+      name: ST_Values_translations
+      schema: public
   - collection: Section_Templates
     meta:
       accountability: all
@@ -653,7 +773,7 @@ collections:
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: 3
+      sort: 4
       sort_field: null
       translations: null
       unarchive_value: null
@@ -3913,7 +4033,7 @@ fields:
       options: null
       readonly: true
       required: false
-      sort: 6
+      sort: 5
       special:
         - date-created
       translations: null
@@ -4065,7 +4185,7 @@ fields:
         template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
       readonly: true
       required: false
-      sort: 5
+      sort: 4
       special:
         - user-created
       translations: null
@@ -4107,7 +4227,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: 3
+      sort: null
       special: null
       translations: null
       validation: null
@@ -4148,7 +4268,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: 5
+      sort: null
       special: null
       translations: null
       validation: null
@@ -4189,7 +4309,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: 1
+      sort: null
       special: null
       translations: null
       validation: null
@@ -4230,7 +4350,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: 4
+      sort: null
       special: null
       translations: null
       validation: null
@@ -6975,6 +7095,249 @@ fields:
       table: News_translations
     type: string
   - collection: PageSections
+    field: background_color
+    meta:
+      collection: PageSections
+      conditions: null
+      display: null
+      display_options: null
+      field: background_color
+      group: null
+      hidden: false
+      interface: select-color
+      note: null
+      options:
+        opacity: true
+        presets: null
+      readonly: false
+      required: false
+      sort: 5
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: character varying
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: 255
+      name: background_color
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: PageSections
+    type: string
+  - collection: PageSections
+    field: background_image
+    meta:
+      collection: PageSections
+      conditions: null
+      display: null
+      display_options: null
+      field: background_image
+      group: null
+      hidden: false
+      interface: file-image
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 4
+      special:
+        - file
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: directus_files
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: background_image
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: PageSections
+    type: uuid
+  - collection: PageSections
+    field: background_svg
+    meta:
+      collection: PageSections
+      conditions: null
+      display: null
+      display_options: null
+      field: background_svg
+      group: null
+      hidden: false
+      interface: input-code
+      note: null
+      options:
+        language: xml
+        lineWrapping: true
+        template: <svg></svg>
+      readonly: false
+      required: false
+      sort: 6
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: background_svg
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: PageSections
+    type: text
+  - collection: PageSections
+    field: container
+    meta:
+      collection: PageSections
+      conditions: null
+      display: null
+      display_options: null
+      field: container
+      group: null
+      hidden: false
+      interface: boolean
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 8
+      special:
+        - cast-boolean
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: boolean
+      default_value: true
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: container
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: PageSections
+    type: boolean
+  - collection: PageSections
+    field: contents
+    meta:
+      collection: PageSections
+      conditions: null
+      display: null
+      display_options: null
+      field: contents
+      group: null
+      hidden: false
+      interface: list-m2a
+      note: null
+      options:
+        enableSelect: false
+      readonly: false
+      required: false
+      sort: 9
+      special:
+        - m2a
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema: null
+    type: alias
+  - collection: PageSections
+    field: custom_css
+    meta:
+      collection: PageSections
+      conditions: null
+      display: null
+      display_options: null
+      field: custom_css
+      group: null
+      hidden: false
+      interface: input-code
+      note: null
+      options:
+        language: css
+        lineWrapping: true
+        template: |-
+          div {
+             color: red;
+          }
+      readonly: false
+      required: false
+      sort: 7
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: custom_css
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: PageSections
+    type: text
+  - collection: PageSections
     field: date_created
     meta:
       collection: PageSections
@@ -6990,7 +7353,7 @@ fields:
       options: null
       readonly: true
       required: false
-      sort: 6
+      sort: 13
       special:
         - date-created
       translations: null
@@ -7033,7 +7396,7 @@ fields:
       options: null
       readonly: true
       required: false
-      sort: 8
+      sort: 15
       special:
         - date-updated
       translations: null
@@ -7103,6 +7466,48 @@ fields:
       table: PageSections
     type: uuid
   - collection: PageSections
+    field: label
+    meta:
+      collection: PageSections
+      conditions: null
+      display: null
+      display_options: null
+      field: label
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        trim: true
+      readonly: false
+      required: true
+      sort: 2
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: character varying
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: 255
+      name: label
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: PageSections
+    type: string
+  - collection: PageSections
     field: sort
     meta:
       collection: PageSections
@@ -7117,7 +7522,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: 4
+      sort: 11
       special: null
       translations: null
       validation: null
@@ -7179,7 +7584,7 @@ fields:
             value: archived
       readonly: false
       required: false
-      sort: 3
+      sort: 10
       special: null
       translations: null
       validation: null
@@ -7222,7 +7627,7 @@ fields:
         userLanguage: true
       readonly: false
       required: false
-      sort: 2
+      sort: 3
       special:
         - translations
       translations: null
@@ -7247,7 +7652,7 @@ fields:
         template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
       readonly: true
       required: false
-      sort: 5
+      sort: 12
       special:
         - user-created
       translations: null
@@ -7290,7 +7695,7 @@ fields:
         template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
       readonly: true
       required: false
-      sort: 7
+      sort: 14
       special:
         - user-updated
       translations: null
@@ -7317,6 +7722,170 @@ fields:
       schema: public
       table: PageSections
     type: uuid
+  - collection: PageSections_contents
+    field: PageSections_id
+    meta:
+      collection: PageSections_contents
+      conditions: null
+      display: null
+      display_options: null
+      field: PageSections_id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: PageSections
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: PageSections_id
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: PageSections_contents
+    type: uuid
+  - collection: PageSections_contents
+    field: collection
+    meta:
+      collection: PageSections_contents
+      conditions: null
+      display: null
+      display_options: null
+      field: collection
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: character varying
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: 255
+      name: collection
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: PageSections_contents
+    type: string
+  - collection: PageSections_contents
+    field: id
+    meta:
+      collection: PageSections_contents
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: integer
+      default_value: nextval('"PageSections_contents_id_seq"'::regclass)
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: true
+      is_generated: false
+      is_nullable: false
+      is_primary_key: true
+      is_unique: true
+      max_length: null
+      name: id
+      numeric_precision: 32
+      numeric_scale: 0
+      schema: public
+      table: PageSections_contents
+    type: integer
+  - collection: PageSections_contents
+    field: item
+    meta:
+      collection: PageSections_contents
+      conditions: null
+      display: null
+      display_options: null
+      field: item
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: character varying
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: 255
+      name: item
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: PageSections_contents
+    type: string
   - collection: PageSections_translations
     field: PageSections_id
     meta:
@@ -7371,7 +7940,8 @@ fields:
       interface: input-multiline
       note: null
       options:
-        softLength: 497
+        placeholder: Description
+        softLength: 500
         trim: true
       readonly: false
       required: false
@@ -8254,6 +8824,1327 @@ fields:
       numeric_scale: null
       schema: public
       table: Page_Details_translations
+    type: string
+  - collection: ST_NavTabs
+    field: date_created
+    meta:
+      collection: ST_NavTabs
+      conditions: null
+      display: datetime
+      display_options:
+        relative: true
+      field: date_created
+      group: null
+      hidden: true
+      interface: datetime
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: 8
+      special:
+        - date-created
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      comment: null
+      data_type: timestamp with time zone
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: date_created
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: ST_NavTabs
+    type: timestamp
+  - collection: ST_NavTabs
+    field: date_updated
+    meta:
+      collection: ST_NavTabs
+      conditions: null
+      display: datetime
+      display_options:
+        relative: true
+      field: date_updated
+      group: null
+      hidden: true
+      interface: datetime
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: 10
+      special:
+        - date-updated
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      comment: null
+      data_type: timestamp with time zone
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: date_updated
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: ST_NavTabs
+    type: timestamp
+  - collection: ST_NavTabs
+    field: id
+    meta:
+      collection: ST_NavTabs
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: 1
+      special:
+        - uuid
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: false
+      is_primary_key: true
+      is_unique: true
+      max_length: null
+      name: id
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: ST_NavTabs
+    type: uuid
+  - collection: ST_NavTabs
+    field: pagination_buttons
+    meta:
+      collection: ST_NavTabs
+      conditions: null
+      display: null
+      display_options: null
+      field: pagination_buttons
+      group: null
+      hidden: false
+      interface: boolean
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 4
+      special:
+        - cast-boolean
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: boolean
+      default_value: true
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: pagination_buttons
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: ST_NavTabs
+    type: boolean
+  - collection: ST_NavTabs
+    field: sort
+    meta:
+      collection: ST_NavTabs
+      conditions: null
+      display: null
+      display_options: null
+      field: sort
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 6
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: integer
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: sort
+      numeric_precision: 32
+      numeric_scale: 0
+      schema: public
+      table: ST_NavTabs
+    type: integer
+  - collection: ST_NavTabs
+    field: status
+    meta:
+      collection: ST_NavTabs
+      conditions: null
+      display: labels
+      display_options:
+        choices:
+          - text: $t:published
+            value: published
+            foreground: '#FFFFFF'
+            background: var(--primary)
+          - text: $t:draft
+            value: draft
+            foreground: '#18222F'
+            background: '#D3DAE4'
+          - text: $t:archived
+            value: archived
+            foreground: '#FFFFFF'
+            background: var(--warning)
+        showAsDot: true
+      field: status
+      group: null
+      hidden: false
+      interface: select-dropdown
+      note: null
+      options:
+        choices:
+          - text: $t:published
+            value: published
+          - text: $t:draft
+            value: draft
+          - text: $t:archived
+            value: archived
+      readonly: false
+      required: false
+      sort: 5
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: character varying
+      default_value: draft
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: false
+      is_primary_key: false
+      is_unique: false
+      max_length: 255
+      name: status
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: ST_NavTabs
+    type: string
+  - collection: ST_NavTabs
+    field: translations
+    meta:
+      collection: ST_NavTabs
+      conditions: null
+      display: null
+      display_options: null
+      field: translations
+      group: null
+      hidden: false
+      interface: translations
+      note: null
+      options:
+        languageField: code
+        userLanguage: true
+      readonly: false
+      required: true
+      sort: 2
+      special:
+        - translations
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema: null
+    type: alias
+  - collection: ST_NavTabs
+    field: type
+    meta:
+      collection: ST_NavTabs
+      conditions: null
+      display: null
+      display_options: null
+      field: type
+      group: null
+      hidden: false
+      interface: select-dropdown
+      note: null
+      options:
+        choices:
+          - text: horizontal
+            value: horizontal
+          - text: vertical
+            value: vertical
+        placeholder: Navtab type
+      readonly: false
+      required: true
+      sort: 3
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: character varying
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: 255
+      name: type
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: ST_NavTabs
+    type: string
+  - collection: ST_NavTabs
+    field: user_created
+    meta:
+      collection: ST_NavTabs
+      conditions: null
+      display: user
+      display_options: null
+      field: user_created
+      group: null
+      hidden: true
+      interface: select-dropdown-m2o
+      note: null
+      options:
+        template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
+      readonly: true
+      required: false
+      sort: 7
+      special:
+        - user-created
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: directus_users
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: user_created
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: ST_NavTabs
+    type: uuid
+  - collection: ST_NavTabs
+    field: user_updated
+    meta:
+      collection: ST_NavTabs
+      conditions: null
+      display: user
+      display_options: null
+      field: user_updated
+      group: null
+      hidden: true
+      interface: select-dropdown-m2o
+      note: null
+      options:
+        template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
+      readonly: true
+      required: false
+      sort: 9
+      special:
+        - user-updated
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: directus_users
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: user_updated
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: ST_NavTabs
+    type: uuid
+  - collection: ST_NavTabs_translations
+    field: ST_NavTabs_id
+    meta:
+      collection: ST_NavTabs_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: ST_NavTabs_id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 4
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: ST_NavTabs
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: ST_NavTabs_id
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: ST_NavTabs_translations
+    type: uuid
+  - collection: ST_NavTabs_translations
+    field: content
+    meta:
+      collection: ST_NavTabs_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: content
+      group: null
+      hidden: false
+      interface: input-rich-text-md
+      note: null
+      options:
+        imageToken: ADF4C191632F2D16F1325AF7C24CD
+        placeholder: Tab Content
+      readonly: false
+      required: true
+      sort: 3
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: content
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: ST_NavTabs_translations
+    type: text
+  - collection: ST_NavTabs_translations
+    field: id
+    meta:
+      collection: ST_NavTabs_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 1
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: integer
+      default_value: nextval('"ST_NavTabs_translations_id_seq"'::regclass)
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: true
+      is_generated: false
+      is_nullable: false
+      is_primary_key: true
+      is_unique: true
+      max_length: null
+      name: id
+      numeric_precision: 32
+      numeric_scale: 0
+      schema: public
+      table: ST_NavTabs_translations
+    type: integer
+  - collection: ST_NavTabs_translations
+    field: languages_code
+    meta:
+      collection: ST_NavTabs_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: languages_code
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 5
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: character varying
+      default_value: null
+      foreign_key_column: code
+      foreign_key_schema: public
+      foreign_key_table: languages
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: 255
+      name: languages_code
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: ST_NavTabs_translations
+    type: string
+  - collection: ST_NavTabs_translations
+    field: name
+    meta:
+      collection: ST_NavTabs_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: name
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        placeholder: Tab Name
+        trim: true
+      readonly: false
+      required: true
+      sort: 2
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: character varying
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: 255
+      name: name
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: ST_NavTabs_translations
+    type: string
+  - collection: ST_Values
+    field: date_created
+    meta:
+      collection: ST_Values
+      conditions: null
+      display: datetime
+      display_options:
+        relative: true
+      field: date_created
+      group: null
+      hidden: true
+      interface: datetime
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: 9
+      special:
+        - date-created
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      comment: null
+      data_type: timestamp with time zone
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: date_created
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: ST_Values
+    type: timestamp
+  - collection: ST_Values
+    field: date_updated
+    meta:
+      collection: ST_Values
+      conditions: null
+      display: datetime
+      display_options:
+        relative: true
+      field: date_updated
+      group: null
+      hidden: true
+      interface: datetime
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: 11
+      special:
+        - date-updated
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      comment: null
+      data_type: timestamp with time zone
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: date_updated
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: ST_Values
+    type: timestamp
+  - collection: ST_Values
+    field: flexible
+    meta:
+      collection: ST_Values
+      conditions: null
+      display: null
+      display_options: null
+      field: flexible
+      group: null
+      hidden: false
+      interface: boolean
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 5
+      special:
+        - cast-boolean
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: boolean
+      default_value: false
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: flexible
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: ST_Values
+    type: boolean
+  - collection: ST_Values
+    field: icon_bg_color
+    meta:
+      collection: ST_Values
+      conditions: null
+      display: null
+      display_options: null
+      field: icon_bg_color
+      group: null
+      hidden: false
+      interface: select-color
+      note: null
+      options:
+        opacity: true
+      readonly: false
+      required: false
+      sort: 4
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: character varying
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: 255
+      name: icon_bg_color
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: ST_Values
+    type: string
+  - collection: ST_Values
+    field: icon_svg
+    meta:
+      collection: ST_Values
+      conditions: null
+      display: null
+      display_options: null
+      field: icon_svg
+      group: null
+      hidden: false
+      interface: input-code
+      note: null
+      options:
+        language: xml
+        lineWrapping: true
+        template: <svg></svg>
+      readonly: false
+      required: true
+      sort: 3
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: icon_svg
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: ST_Values
+    type: text
+  - collection: ST_Values
+    field: id
+    meta:
+      collection: ST_Values
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: 1
+      special:
+        - uuid
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: false
+      is_primary_key: true
+      is_unique: true
+      max_length: null
+      name: id
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: ST_Values
+    type: uuid
+  - collection: ST_Values
+    field: sort
+    meta:
+      collection: ST_Values
+      conditions: null
+      display: null
+      display_options: null
+      field: sort
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 7
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: integer
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: sort
+      numeric_precision: 32
+      numeric_scale: 0
+      schema: public
+      table: ST_Values
+    type: integer
+  - collection: ST_Values
+    field: status
+    meta:
+      collection: ST_Values
+      conditions: null
+      display: labels
+      display_options:
+        choices:
+          - text: $t:published
+            value: published
+            foreground: '#FFFFFF'
+            background: var(--primary)
+          - text: $t:draft
+            value: draft
+            foreground: '#18222F'
+            background: '#D3DAE4'
+          - text: $t:archived
+            value: archived
+            foreground: '#FFFFFF'
+            background: var(--warning)
+        showAsDot: true
+      field: status
+      group: null
+      hidden: false
+      interface: select-dropdown
+      note: null
+      options:
+        choices:
+          - text: $t:published
+            value: published
+          - text: $t:draft
+            value: draft
+          - text: $t:archived
+            value: archived
+      readonly: false
+      required: false
+      sort: 6
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: character varying
+      default_value: draft
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: false
+      is_primary_key: false
+      is_unique: false
+      max_length: 255
+      name: status
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: ST_Values
+    type: string
+  - collection: ST_Values
+    field: translations
+    meta:
+      collection: ST_Values
+      conditions: null
+      display: null
+      display_options: null
+      field: translations
+      group: null
+      hidden: false
+      interface: translations
+      note: null
+      options:
+        languageField: code
+        userLanguage: true
+      readonly: false
+      required: true
+      sort: 2
+      special:
+        - translations
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema: null
+    type: alias
+  - collection: ST_Values
+    field: user_created
+    meta:
+      collection: ST_Values
+      conditions: null
+      display: user
+      display_options: null
+      field: user_created
+      group: null
+      hidden: true
+      interface: select-dropdown-m2o
+      note: null
+      options:
+        template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
+      readonly: true
+      required: false
+      sort: 8
+      special:
+        - user-created
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: directus_users
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: user_created
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: ST_Values
+    type: uuid
+  - collection: ST_Values
+    field: user_updated
+    meta:
+      collection: ST_Values
+      conditions: null
+      display: user
+      display_options: null
+      field: user_updated
+      group: null
+      hidden: true
+      interface: select-dropdown-m2o
+      note: null
+      options:
+        template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
+      readonly: true
+      required: false
+      sort: 10
+      special:
+        - user-updated
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: directus_users
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: user_updated
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: ST_Values
+    type: uuid
+  - collection: ST_Values_translations
+    field: ST_Values_id
+    meta:
+      collection: ST_Values_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: ST_Values_id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 4
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: ST_Values
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: ST_Values_id
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: ST_Values_translations
+    type: uuid
+  - collection: ST_Values_translations
+    field: description
+    meta:
+      collection: ST_Values_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: description
+      group: null
+      hidden: false
+      interface: input-multiline
+      note: null
+      options:
+        placeholder: Value Description
+        trim: true
+      readonly: false
+      required: true
+      sort: 3
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: description
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: ST_Values_translations
+    type: text
+  - collection: ST_Values_translations
+    field: id
+    meta:
+      collection: ST_Values_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 1
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: integer
+      default_value: nextval('"ST_Values_translations_id_seq"'::regclass)
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: true
+      is_generated: false
+      is_nullable: false
+      is_primary_key: true
+      is_unique: true
+      max_length: null
+      name: id
+      numeric_precision: 32
+      numeric_scale: 0
+      schema: public
+      table: ST_Values_translations
+    type: integer
+  - collection: ST_Values_translations
+    field: languages_code
+    meta:
+      collection: ST_Values_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: languages_code
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 5
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: character varying
+      default_value: null
+      foreign_key_column: code
+      foreign_key_schema: public
+      foreign_key_table: languages
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: 255
+      name: languages_code
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: ST_Values_translations
+    type: string
+  - collection: ST_Values_translations
+    field: name
+    meta:
+      collection: ST_Values_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: name
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        placeholder: Value Name
+        trim: true
+      readonly: false
+      required: true
+      sort: 2
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: character varying
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: 255
+      name: name
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: ST_Values_translations
     type: string
   - collection: Socials
     field: company_details_id
@@ -10497,6 +12388,28 @@ relations:
       on_update: NO ACTION
       table: News_translations
   - collection: PageSections
+    field: background_image
+    meta:
+      junction_field: null
+      many_collection: PageSections
+      many_field: background_image
+      one_allowed_collections: null
+      one_collection: directus_files
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    related_collection: directus_files
+    schema:
+      column: background_image
+      constraint_name: pagesections_background_image_foreign
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: directus_files
+      on_delete: SET NULL
+      on_update: NO ACTION
+      table: PageSections
+  - collection: PageSections
     field: user_created
     meta:
       junction_field: null
@@ -10540,6 +12453,44 @@ relations:
       on_delete: NO ACTION
       on_update: NO ACTION
       table: PageSections
+  - collection: PageSections_contents
+    field: PageSections_id
+    meta:
+      junction_field: item
+      many_collection: PageSections_contents
+      many_field: PageSections_id
+      one_allowed_collections: null
+      one_collection: PageSections
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: contents
+      sort_field: null
+    related_collection: PageSections
+    schema:
+      column: PageSections_id
+      constraint_name: pagesections_contents_pagesections_id_foreign
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: PageSections
+      on_delete: SET NULL
+      on_update: NO ACTION
+      table: PageSections_contents
+  - collection: PageSections_contents
+    field: item
+    meta:
+      junction_field: PageSections_id
+      many_collection: PageSections_contents
+      many_field: item
+      one_allowed_collections:
+        - ST_NavTabs
+        - ST_Values
+      one_collection: null
+      one_collection_field: collection
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    related_collection: null
+    schema: null
   - collection: PageSections_translations
     field: PageSections_id
     meta:
@@ -10694,6 +12645,182 @@ relations:
       on_delete: SET NULL
       on_update: NO ACTION
       table: Page_Details_translations
+  - collection: ST_NavTabs
+    field: user_created
+    meta:
+      junction_field: null
+      many_collection: ST_NavTabs
+      many_field: user_created
+      one_allowed_collections: null
+      one_collection: directus_users
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    related_collection: directus_users
+    schema:
+      column: user_created
+      constraint_name: st_navtabs_user_created_foreign
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: directus_users
+      on_delete: NO ACTION
+      on_update: NO ACTION
+      table: ST_NavTabs
+  - collection: ST_NavTabs
+    field: user_updated
+    meta:
+      junction_field: null
+      many_collection: ST_NavTabs
+      many_field: user_updated
+      one_allowed_collections: null
+      one_collection: directus_users
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    related_collection: directus_users
+    schema:
+      column: user_updated
+      constraint_name: st_navtabs_user_updated_foreign
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: directus_users
+      on_delete: NO ACTION
+      on_update: NO ACTION
+      table: ST_NavTabs
+  - collection: ST_NavTabs_translations
+    field: ST_NavTabs_id
+    meta:
+      junction_field: languages_code
+      many_collection: ST_NavTabs_translations
+      many_field: ST_NavTabs_id
+      one_allowed_collections: null
+      one_collection: ST_NavTabs
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: translations
+      sort_field: null
+    related_collection: ST_NavTabs
+    schema:
+      column: ST_NavTabs_id
+      constraint_name: st_navtabs_translations_st_navtabs_id_foreign
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: ST_NavTabs
+      on_delete: SET NULL
+      on_update: NO ACTION
+      table: ST_NavTabs_translations
+  - collection: ST_NavTabs_translations
+    field: languages_code
+    meta:
+      junction_field: ST_NavTabs_id
+      many_collection: ST_NavTabs_translations
+      many_field: languages_code
+      one_allowed_collections: null
+      one_collection: languages
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    related_collection: languages
+    schema:
+      column: languages_code
+      constraint_name: st_navtabs_translations_languages_code_foreign
+      foreign_key_column: code
+      foreign_key_schema: public
+      foreign_key_table: languages
+      on_delete: SET NULL
+      on_update: NO ACTION
+      table: ST_NavTabs_translations
+  - collection: ST_Values
+    field: user_created
+    meta:
+      junction_field: null
+      many_collection: ST_Values
+      many_field: user_created
+      one_allowed_collections: null
+      one_collection: directus_users
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    related_collection: directus_users
+    schema:
+      column: user_created
+      constraint_name: st_values_user_created_foreign
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: directus_users
+      on_delete: NO ACTION
+      on_update: NO ACTION
+      table: ST_Values
+  - collection: ST_Values
+    field: user_updated
+    meta:
+      junction_field: null
+      many_collection: ST_Values
+      many_field: user_updated
+      one_allowed_collections: null
+      one_collection: directus_users
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    related_collection: directus_users
+    schema:
+      column: user_updated
+      constraint_name: st_values_user_updated_foreign
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: directus_users
+      on_delete: NO ACTION
+      on_update: NO ACTION
+      table: ST_Values
+  - collection: ST_Values_translations
+    field: ST_Values_id
+    meta:
+      junction_field: languages_code
+      many_collection: ST_Values_translations
+      many_field: ST_Values_id
+      one_allowed_collections: null
+      one_collection: ST_Values
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: translations
+      sort_field: null
+    related_collection: ST_Values
+    schema:
+      column: ST_Values_id
+      constraint_name: st_values_translations_st_values_id_foreign
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: ST_Values
+      on_delete: SET NULL
+      on_update: NO ACTION
+      table: ST_Values_translations
+  - collection: ST_Values_translations
+    field: languages_code
+    meta:
+      junction_field: ST_Values_id
+      many_collection: ST_Values_translations
+      many_field: languages_code
+      one_allowed_collections: null
+      one_collection: languages
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    related_collection: languages
+    schema:
+      column: languages_code
+      constraint_name: st_values_translations_languages_code_foreign
+      foreign_key_column: code
+      foreign_key_schema: public
+      foreign_key_table: languages
+      on_delete: SET NULL
+      on_update: NO ACTION
+      table: ST_Values_translations
   - collection: Socials
     field: company_details_id
     meta:

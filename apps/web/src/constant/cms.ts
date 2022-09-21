@@ -25,9 +25,12 @@ export const CMS_MODELS = {
     page_details: 'Page_Details',
     home_hero: 'HomeHero',
     home_sections: 'HomeSections',
-  }),
+  } as const),
   generics: {
     page_sections: 'PageSections',
-  },
-  section_templates: {},
+  } as const,
+  section_templates: {
+    st_values: 'ST_Values',
+    st_navtabs: 'ST_NavTabs',
+  } as const,
 };
