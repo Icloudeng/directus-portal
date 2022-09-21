@@ -1,11 +1,11 @@
 import { useTranslation } from 'next-i18next';
+import { useMemo } from 'react';
 import { TypeAnimation } from 'react-type-animation';
 
 import NextImage from '@/components/NextImage';
 
 import { MDHomePageHero } from '@/cms/items/types';
 import { useMut } from '@/cms/mut';
-import { useMemo } from 'react';
 
 export const HeroSection = ({ data }: { data: MDHomePageHero }) => {
   const { t } = useTranslation('home');

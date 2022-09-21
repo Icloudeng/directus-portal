@@ -52,10 +52,16 @@ module.exports = {
             backgroundPosition: '700px 0',
           },
         },
+        blink: {
+          '50%': {
+            opacity: 0,
+          },
+        },
       },
       animation: {
         flicker: 'flicker 3s linear infinite',
         shimmer: 'shimmer 1.3s linear infinite',
+        blink: 'blink .7s linear infinite',
       },
     },
     screens: {

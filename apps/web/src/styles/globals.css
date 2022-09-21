@@ -128,6 +128,14 @@ body {
   .navbar__link-icon svg {
     @apply flex-shrink-0 h-6 w-6 text-primary-400;
   }
+
+  .end-cursor::after {
+    content: '-';
+    @apply absolute -bottom-[.3em] ml-1;
+  }
+  .end-cursor.blinking-cursor::after {
+    @apply animate-blink;
+  }
 }
 
 @layer utilities {
@@ -207,4 +215,8 @@ body {
   width: 100% !important;
   position: relative !important;
   height: unset !important;
+}
+
+.intelligent-system::-webkit-scrollbar {
+  display: none;
 }

@@ -58,8 +58,8 @@ export const HowEasy = () => {
                     <div className="mt-10 md:mb-10">
                         <div className="image-container relative h-[21rem]">
                             <Image
-                                className="image object-cover rounded-t-lg md:rounded-sm md:rounded-l-lg"
-                                src='https://flowbite.com/docs/images/blog/image-2.jpg'
+                                className="image object-cover rounded-t-lg md:rounded-sm md:rounded-r-lg"
+                                src='https://flowbite.com/docs/images/blog/image-1.jpg'
                                 layout="fill"
                                 objectFit="cover"
                                 alt='hero banner image'

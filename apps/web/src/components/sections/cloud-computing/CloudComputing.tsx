@@ -19,15 +19,16 @@ export const CloudComputing = () => {
         selectedIndex,
         scrollSnaps,
         scrollTo
-    } = useCustomerEmblaCarousel()
+    } = useCustomerEmblaCarousel();
 
     return (
         <div className='x-container max-w-7xl mx-auto py-10 flex flex-col items-center gap-10 ss:px-12'>
             <div className='flex flex-col items-center justify-center gap-7 mb-7'>
                 <h1 className='text-center'>What's Cloud Computing</h1>
                 <span className='max-w-xl text-center'>
-                    Managing a cloud infrastructure has never been so enjoyable. It's
-                    lightning-fast and stunning simple.
+                Cloud computing is the on-demand availability of computer system resources, 
+                especially data storage and computing power, 
+                without direct active management by the user. 
                 </span>
             </div>
             <div className='w-full h-full'>
