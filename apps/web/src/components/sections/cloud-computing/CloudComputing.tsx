@@ -19,7 +19,7 @@ export const CloudComputing = () => {
         selectedIndex,
         scrollSnaps,
         scrollTo
-    } = useCustomerEmblaCarousel()
+    } = useCustomerEmblaCarousel();
 
     return (
         <div className='x-container max-w-7xl mx-auto py-10 flex flex-col items-center gap-10 ss:px-12'>
