@@ -42,6 +42,7 @@ const q_ST = [
     pagination_buttons: true,
     prev_next_buttons: true,
     readmore_url: true,
+    disposition: true,
     ...qWithTranslations({
       title: true,
       markdown_content: true,
@@ -127,6 +128,7 @@ type ST_CardCarousel = MDHasM2A<
     pagination_buttons: boolean;
     prev_next_buttons: boolean;
     readmore_url?: string;
+    disposition: 'text_left' | 'text_right';
   } & MDWithTranslation<{
     title: string;
     markdown_content: string;
