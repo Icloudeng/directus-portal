@@ -9395,6 +9395,7 @@ fields:
       note: null
       options:
         imageToken: 7232582587F199354495BF6DDF472
+        softLength: 800
       readonly: false
       required: true
       sort: 3
