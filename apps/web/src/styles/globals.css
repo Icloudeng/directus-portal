@@ -216,3 +216,7 @@ body {
   position: relative !important;
   height: unset !important;
 }
+
+.intelligent-system::-webkit-scrollbar {
+  display: none;
+}
