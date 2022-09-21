@@ -156,13 +156,13 @@ const gql_query = jsonToGraphQLQuery({
 });
 
 export type QShareDataType = {
-  languages: MDLanguage[];
-  TopbarLinks: MDTopbarLink[];
-  News: MDTopbarNew[];
-  FooterLinks: MDFooterLink[];
-  NavbarLinks: MDNavbarLink[];
-  CompanyDetails?: MDCompanyDetail;
-  Page_Details?: MDPageDetail;
+  [CMS_MODELS.languages]: MDLanguage[];
+  [CMS_MODELS.topbar_links]: MDTopbarLink[];
+  [CMS_MODELS.news]: MDTopbarNew[];
+  [CMS_MODELS.footer_links]: MDFooterLink[];
+  [CMS_MODELS.navbar_links]: MDNavbarLink[];
+  [CMS_MODELS.company_details]?: MDCompanyDetail;
+  [CMS_MODELS.page_details]?: MDPageDetail;
 };
 
 /**
