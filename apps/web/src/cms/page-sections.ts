@@ -32,7 +32,7 @@ const q_ST = [
     pagination_buttons: true,
     ...qWithTranslations({
       name: true,
-      content: true,
+      markdown_content: true,
     }),
     ...qWithStatus,
   },
@@ -88,7 +88,7 @@ type ST_NavTab = MDHasM2A<
     pagination_buttons: boolean;
   } & MDWithTranslation<{
     name: string;
-    content: string;
+    markdown_content: string;
   }> &
     DRTStatus,
   ST_V<'st_navtabs'>
