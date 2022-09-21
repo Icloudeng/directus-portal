@@ -32,5 +32,7 @@ export const CMS_MODELS = {
   section_templates: {
     st_values: 'ST_Values',
     st_navtabs: 'ST_NavTabs',
+    st_card_carousels: 'ST_CardCarousels',
+    st_card_image_carousels: 'ST_CardImageCarousels',
   } as const,
 };
