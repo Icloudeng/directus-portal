@@ -21,7 +21,7 @@ type NewsTransField = {
   title: string;
   languages_code: string;
   summary: string;
-  content: string;
+  markdown_content: string;
 };
 
 type NewsField = {
