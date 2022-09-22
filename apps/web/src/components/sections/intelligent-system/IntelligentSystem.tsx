@@ -36,11 +36,11 @@ export const IntelligentSystem = () => {
                     </div>
                 </div>
                 {/* <!-- Slider indicators --> */}
-                {/* <div className='absolute z-30 flex space-x-3 -translate-x-1/2 -bottom-10 left-1/2'>
+                <div className='ss:hidden absolute z-30 flex space-x-3 -translate-x-1/2 -bottom-10 left-1/2'>
                     {scrollSnaps.map((_, index) => (
                         <DotButton key={index} position={index} selected={index === selectedIndex} onClick={() => scrollTo(index)} />
                     ))}
-                </div> */}
+                </div>
                 {/* <!-- Slider controls --> */}
                 <PrevButton enabled={prevBtnEnabled} onClick={scrollPrev} />
                 <NextButton enabled={nextBtnEnabled} onClick={scrollNext} />
