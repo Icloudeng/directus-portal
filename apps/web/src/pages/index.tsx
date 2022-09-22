@@ -11,9 +11,10 @@ import { getDirectusAuthToken } from '@/cms/directus';
 import { getGqlHomeQueries, QHomeHeroQueriesType } from '@/cms/items';
 import { useEffect } from 'react';
 import { getServerSideTranslations } from '@/utils/server-translation';
+import { PageSections } from '@/components/sections/page-sections';
 
 export default function HomePage(props: Partial<QHomeHeroQueriesType>) {
-  const { HomeHero } = props;
+  const { HomeHero, HomeSections } = props;
 
   useEffect(() => {
     console.log(props);
@@ -38,6 +39,8 @@ export default function HomePage(props: Partial<QHomeHeroQueriesType>) {
         <section className='py-10 bg-[#f5f7fa]'>
           <IntelligentSystem />
         </section>
+
+        {HomeSections && <PageSections sections={HomeSections.sections} />}
       </main>
     </Layout>
   );

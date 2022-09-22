@@ -6,6 +6,7 @@ import {
   MDWithTranslation,
 } from '@/types/directus';
 import {
+  qWithAsset,
   qWithPublishedStatus,
   qWithQueryAsset,
   qWithStatus,
@@ -61,6 +62,16 @@ const q_ST = [
     }),
     ...qWithStatus,
   },
+  {
+    __typeName: section_templates.st_sided_contents,
+    image: qWithQueryAsset(),
+    disposition: true,
+    ...qWithTranslations({
+      title: true,
+      markdown_content: true,
+    }),
+    ...qWithStatus,
+  },
 ];
 
 export const pageSectionQuery = {
@@ -91,13 +102,51 @@ export const pageSectionQuery = {
   },
 };
 
+export function pageSectionsWithAssets(
+  access_token: string,
+  sections: M2APageSection[]
+) {
+  const $sections = [...sections];
+  const psAssets = (sections: M2APageSection[]) => {
+    const section = sections.pop();
+    if (!section) return;
+    qWithAsset(access_token, section.item, 'background_image');
+
+    const stAssets = (s_templates: PS_Content[]) => {
+      const st = s_templates.pop();
+      if (!st) return;
+      let imgKey = 'image';
+
+      switch (st.collection) {
+        case 'ST_CardCarousels':
+          imgKey = <keyof ST_CardCarousel['item']>'image';
+          break;
+        case 'ST_CardImageCarousels':
+          imgKey = <keyof ST_CardImageCarousel['item']>'image';
+          break;
+        case 'ST_SidedContents':
+          imgKey = <keyof ST_SidedContent['item']>'image';
+          break;
+      }
+
+      qWithAsset(access_token, st.item, imgKey as any);
+    };
+
+    stAssets([...section.item.contents]);
+
+    psAssets(sections);
+  };
+
+  psAssets($sections);
+}
+
 // --------------------------------------------------------------------//
 // ----------------------------  Types ------------------//
 // --------------------------------------------------------------------//
 
 //------------------- Section templates --------------------//
 
-type ST_Value = MDHasM2A<
+export type ST_Value = MDHasM2A<
   {
     icon_svg: string;
     icon_bg_color?: string;
@@ -110,7 +159,7 @@ type ST_Value = MDHasM2A<
   ST_V<'st_values'>
 >;
 
-type ST_NavTab = MDHasM2A<
+export type ST_NavTab = MDHasM2A<
   {
     type: 'horizontal' | 'vertical';
     pagination_buttons: boolean;
@@ -122,7 +171,7 @@ type ST_NavTab = MDHasM2A<
   ST_V<'st_navtabs'>
 >;
 
-type ST_CardCarousel = MDHasM2A<
+export type ST_CardCarousel = MDHasM2A<
   {
     image?: MDWithAsset;
     pagination_buttons: boolean;
@@ -137,7 +186,7 @@ type ST_CardCarousel = MDHasM2A<
   ST_V<'st_card_carousels'>
 >;
 
-type ST_CardImageCarousel = MDHasM2A<
+export type ST_CardImageCarousel = MDHasM2A<
   {
     image: MDWithAsset;
     pagination_buttons: boolean;
@@ -151,7 +200,25 @@ type ST_CardImageCarousel = MDHasM2A<
   ST_V<'st_card_image_carousels'>
 >;
 
+export type ST_SidedContent = MDHasM2A<
+  {
+    image: MDWithAsset;
+    disposition: boolean;
+  } & MDWithTranslation<{
+    title: string;
+    markdown_content: string;
+  }> &
+    DRTStatus,
+  ST_V<'st_sided_contents'>
+>;
+
 //------------------- Page Sections --------------------//
+type PS_Content =
+  | ST_Value
+  | ST_NavTab
+  | ST_CardCarousel
+  | ST_CardImageCarousel
+  | ST_SidedContent;
 
 export type M2APageSection = MDHasM2A<
   {
@@ -160,7 +227,7 @@ export type M2APageSection = MDHasM2A<
     background_svg?: string;
     custom_css?: string;
     container: boolean;
-    contents: (ST_Value | ST_NavTab | ST_CardCarousel | ST_CardImageCarousel)[];
+    contents: PS_Content[];
   } & MDWithTranslation<{
     title: string;
     description: string;

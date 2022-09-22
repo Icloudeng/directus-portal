@@ -8,7 +8,11 @@ import {
   qWithStatus,
   qWithTranslations,
 } from '../gql-query';
-import { M2APageSection, pageSectionQuery } from '../page-sections';
+import {
+  M2APageSection,
+  pageSectionQuery,
+  pageSectionsWithAssets,
+} from '../page-sections';
 import { MDHomePageHero } from './types';
 
 const gql_query = jsonToGraphQLQuery({
@@ -46,9 +50,11 @@ export async function getGqlHomeQueries(
   const res = await directus.graphql.items<QHomeHeroQueriesType>(gql_query);
 
   if (!res.data || !access_token) return res;
-  const { HomeHero } = res.data;
+  const { HomeHero, HomeSections } = res.data;
 
   if (HomeHero) qWithAsset(access_token, HomeHero, 'image');
+
+  if (HomeSections) pageSectionsWithAssets(access_token, HomeSections.sections);
 
   return res;
 }
