@@ -26,7 +26,7 @@ const ST_COMPONENTS: {
 };
 
 function st(condition: any, style: string) {
-  return !!condition ? style : '';
+  return !condition ? '' : style;
 }
 
 function PageSection({ section }: { section: M2APageSection }) {
