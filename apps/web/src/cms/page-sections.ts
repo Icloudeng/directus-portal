@@ -61,6 +61,16 @@ const q_ST = [
     }),
     ...qWithStatus,
   },
+  {
+    __typeName: section_templates.st_sided_contents,
+    image: qWithQueryAsset(),
+    disposition: true,
+    ...qWithTranslations({
+      title: true,
+      markdown_content: true,
+    }),
+    ...qWithStatus,
+  },
 ];
 
 export const pageSectionQuery = {
@@ -151,6 +161,18 @@ type ST_CardImageCarousel = MDHasM2A<
   ST_V<'st_card_image_carousels'>
 >;
 
+type ST_SidedContent = MDHasM2A<
+  {
+    image: MDWithAsset;
+    disposition: boolean;
+  } & MDWithTranslation<{
+    title: string;
+    markdown_content: string;
+  }> &
+    DRTStatus,
+  ST_V<'st_sided_contents'>
+>;
+
 //------------------- Page Sections --------------------//
 
 export type M2APageSection = MDHasM2A<
@@ -160,7 +182,13 @@ export type M2APageSection = MDHasM2A<
     background_svg?: string;
     custom_css?: string;
     container: boolean;
-    contents: (ST_Value | ST_NavTab | ST_CardCarousel | ST_CardImageCarousel)[];
+    contents: (
+      | ST_Value
+      | ST_NavTab
+      | ST_CardCarousel
+      | ST_CardImageCarousel
+      | ST_SidedContent
+    )[];
   } & MDWithTranslation<{
     title: string;
     description: string;
