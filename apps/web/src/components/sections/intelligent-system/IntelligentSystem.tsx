@@ -1,11 +1,13 @@
-
 import { useCustomerEmblaCarousel } from '@/hooks/useCustomEmblaCarousel';
 
 import { SnapItemData } from '@/models/snapItemModel';
 
 import { SnapItem } from './components/SnapItem';
-import { DotButton, NextButton, PrevButton } from '../cloud-computing/components/CarouselButtons';
-
+import {
+  DotButton,
+  NextButton,
+  PrevButton,
+} from '../cloud-computing/components/CarouselButtons';
 
 export const IntelligentSystem = () => {
     const {
@@ -17,7 +19,7 @@ export const IntelligentSystem = () => {
         selectedIndex,
         scrollSnaps,
         scrollTo
-    } = useCustomerEmblaCarousel();
+    } = useCustomerEmblaCarousel(1);
     return (
         <div className='x-container max-w-7xl mx-auto py-10 flex flex-col items-center gap-10 ss:px-12'>
             <div className='flex flex-col items-center justify-center gap-7'>

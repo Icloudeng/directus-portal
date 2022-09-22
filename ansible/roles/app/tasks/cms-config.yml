@@ -2,11 +2,19 @@
   set_fact:
     env_file: "{{ root_path }}/apps/cms/.env"
 
-- name: App CMS .env config | PUBLIC_URL
+- name: App CMS .env config | PUBLIC_URL (letsencrypt == true)
   lineinfile:
     path: "{{ env_file }}"
     regexp: "^PUBLIC_URL="
-    line: '"PUBLIC_URL={{ admin_domain }}/"'
+    line: 'PUBLIC_URL="https://{{ admin_domain }}/"'
+  when: letsencrypt == true
+
+- name: App CMS .env config | PUBLIC_URL (letsencrypt == false)
+  lineinfile:
+    path: "{{ env_file }}"
+    regexp: "^PUBLIC_URL="
+    line: 'PUBLIC_URL="http://{{ admin_domain }}/"'
+  when: letsencrypt == false
 
 - name: App CMS .env config | ADMIN_EMAIL
   lineinfile:

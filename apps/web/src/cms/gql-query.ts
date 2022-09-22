@@ -9,6 +9,7 @@ import {
   MDWithAsset,
   QueryWithTranslation,
 } from '@/types/directus';
+import { CMS_MODELS } from '@/constant/cms';
 
 export const qWithStatus: DRTQueryT<DRTStatus> = {
   id: true,
@@ -32,7 +33,7 @@ export function qWithTranslations<T extends { [x: string]: boolean }>(
   };
 }
 
-export function qWithQueryAsset(moreFields = {}) {
+export function qWithQueryAsset(moreFields: { [x: string]: boolean } = {}) {
   return {
     id: true,
     ...moreFields,

@@ -220,3 +220,10 @@ body {
 .intelligent-system::-webkit-scrollbar {
   display: none;
 }
+
+/* ------------------------ Page section styles -------------------------- */
+@layer components {
+  .page__section-bg-svg svg {
+    @apply w-full h-full;
+  }
+}

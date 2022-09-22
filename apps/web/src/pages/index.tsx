@@ -8,10 +8,18 @@ import { IntelligentSystem } from '@/components/sections/intelligent-system/Inte
 import Seo from '@/components/Seo';
 
 import { getDirectusAuthToken } from '@/cms/directus';
-import { getGqlHomeHero, QHomeHeroType } from '@/cms/items/home-hero';
+import { getGqlHomeQueries, QHomeHeroQueriesType } from '@/cms/items';
+import { useEffect } from 'react';
 import { getServerSideTranslations } from '@/utils/server-translation';
+import { PageSections } from '@/components/sections/page-sections';
 
-export default function HomePage({ HomeHero }: Partial<QHomeHeroType>) {
+export default function HomePage(props: Partial<QHomeHeroQueriesType>) {
+  const { HomeHero, HomeSections } = props;
+
+  useEffect(() => {
+    console.log(props);
+  }, []);
+
   return (
     <Layout>
       <Seo templateTitle='Home' />
@@ -31,6 +39,8 @@ export default function HomePage({ HomeHero }: Partial<QHomeHeroType>) {
         <section className='py-10 bg-[#f5f7fa]'>
           <IntelligentSystem />
         </section>
+
+        {HomeSections && <PageSections sections={HomeSections.sections} />}
       </main>
     </Layout>
   );
@@ -40,12 +50,12 @@ export async function getServerSideProps({
   locale,
 }: GetServerSidePropsContext) {
   const access_token = await getDirectusAuthToken();
-  const { data } = await getGqlHomeHero(access_token);
+  const res = await getGqlHomeQueries(access_token).catch(console.error);
 
   return {
     props: {
       ...(await getServerSideTranslations(locale!, ['home'])),
-      ...(data || {}),
+      ...(res?.data || {}),
     },
   };
 }
