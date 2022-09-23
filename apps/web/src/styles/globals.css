@@ -223,7 +223,12 @@ body {
 
 /* ------------------------ Page section styles -------------------------- */
 @layer components {
-  .page__section-bg-svg svg {
+  .page__section-bg-svg svg,
+  .st_flexible_icon svg {
     @apply w-full h-full;
+  }
+
+  .st_value_icon svg {
+    @apply w-[20px] h-[20px];
   }
 }

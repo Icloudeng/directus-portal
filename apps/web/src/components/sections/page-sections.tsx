@@ -1,9 +1,11 @@
 import { useMut } from '@/cms/mut';
 import { M2APageSection } from '@/cms/page-sections';
 import { CMS_MODELS } from '@/constant/cms';
-import { VALID_CSS, VALID_HEX_COLOR } from '@/utils/regex';
+import { VALID_CSS } from '@/utils/regex';
+import { testHexColor } from '@/utils/tests';
 import isSvg from 'is-svg';
 import React, { FunctionComponent, useMemo } from 'react';
+import { HasSvgText } from '../HasSvgText';
 import {
   ST_ValuesFC,
   ST_NavTabsFC,
@@ -35,9 +37,7 @@ function PageSection({ section }: { section: M2APageSection }) {
   const styleId = `cstyle-${classId}`;
   const { background_color, background_svg, background_image } = section.item;
 
-  const bg_color = VALID_HEX_COLOR.test(background_color || '')
-    ? background_color
-    : undefined;
+  const bg_color = testHexColor(background_color);
 
   const hasSvg = background_svg && isSvg(background_svg);
 
@@ -68,7 +68,11 @@ function PageSection({ section }: { section: M2APageSection }) {
       return {
         st_key: key,
         st_value: st_value,
-        items: item.contents.filter((k) => k.collection === st_value),
+        items: item.contents
+          .filter((k) => k.collection === st_value)
+          .filter((k) =>
+            k.item.status ? k.item.status === 'published' : true
+          ),
       };
     });
   }, [item.contents]);
@@ -109,12 +113,10 @@ function PageSection({ section }: { section: M2APageSection }) {
         data-g-template={section.collection}
       >
         {hasSvg && (
-          <>
-            <div
-              className='page__section-bg-svg absolute left-0 right-0 top-0 bottom-0 w-full h-full -z-10'
-              dangerouslySetInnerHTML={{ __html: background_svg }}
-            />
-          </>
+          <HasSvgText
+            className='page__section-bg-svg absolute left-0 right-0 top-0 bottom-0 w-full h-full -z-10 block'
+            svgText={background_svg}
+          />
         )}
 
         <div
@@ -151,9 +153,11 @@ function PageSection({ section }: { section: M2APageSection }) {
 export function PageSections({ sections }: { sections: M2APageSection[] }) {
   return (
     <>
-      {sections.map((section) => (
-        <PageSection key={section.id} section={section} />
-      ))}
+      {sections
+        .filter((f) => f.item.status === 'published')
+        .map((section) => (
+          <PageSection key={section.id} section={section} />
+        ))}
     </>
   );
 }

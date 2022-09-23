@@ -1,6 +1,5 @@
 import React, { forwardRef, useMemo, useRef } from 'react';
 import { GrClose } from 'react-icons/gr';
-import isSvg from 'is-svg';
 import { VscChevronDown } from 'react-icons/vsc';
 import { mergeRefs } from '@/utils/merge-refs';
 
@@ -16,6 +15,7 @@ import {
   NavbarLinkSubmenu,
   NavbarLinkSubmenuItem,
 } from '@/cms/items/types';
+import { HasSvgText } from '../HasSvgText';
 
 const SubmenuItem = (props: NavbarLinkSubmenuItem & { featured?: boolean }) => {
   const { id, url, external, featured, icon_svg, translations } = useMut(
@@ -29,13 +29,7 @@ const SubmenuItem = (props: NavbarLinkSubmenuItem & { featured?: boolean }) => {
       target={external ? '_blank' : undefined}
       className='-m-3 p-3 flex items-start navbar__link-icon'
     >
-      {!featured && icon_svg && (
-        <>
-          {isSvg(icon_svg) && (
-            <span dangerouslySetInnerHTML={{ __html: icon_svg }} />
-          )}
-        </>
-      )}
+      {!featured && <HasSvgText svgText={icon_svg} />}
       <div className='ml-4'>
         <p className='text-sm text-gray-500 hover:text-gray-900 '>
           {translations?.name}
