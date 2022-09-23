@@ -231,4 +231,46 @@ body {
   .st_value_icon svg {
     @apply w-[20px] h-[20px];
   }
+
+  .st_carousel {
+    p {
+      @apply mb-3 font-normal text-gray-700;
+    }
+
+    ul {
+      @apply list-disc max-w-xs ss:max-w-sm ml-5 text-xs sd:text-sm text-gray-400;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      @apply mb-3 text-center sd:text-start text-lg font-semibold tracking-tight text-gray-900;
+    }
+
+    table {
+      @apply w-full text-sm text-left text-gray-500;
+    }
+    thead {
+      @apply text-xs text-gray-700 uppercase bg-gray-50;
+      th {
+        @apply py-3 px-6;
+      }
+    }
+
+    tbody {
+      tr {
+        @apply bg-white border-b;
+        td:first-child {
+          @apply py-4 px-6 font-medium text-gray-900 whitespace-nowrap;
+        }
+
+        td:not(:first-child) {
+          @apply py-4 px-6;
+        }
+      }
+    }
+  }
 }
