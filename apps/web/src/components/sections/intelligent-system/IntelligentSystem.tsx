@@ -1,13 +1,14 @@
 import { useCustomerEmblaCarousel } from '@/hooks/useCustomEmblaCarousel';
 
-import { SnapItemData } from '@/models/snapItemModel';
-
-import { SnapItem } from './components/SnapItem';
 import {
   DotButton,
   NextButton,
   PrevButton,
-} from '../cloud-computing/components/CarouselButtons';
+} from '@/components/carouselButtons/CarouselButtons';
+
+import { SnapItemData } from '@/models/snapItemModel';
+
+import { SnapItem } from './components/SnapItem';
 
 export const IntelligentSystem = () => {
     const {
