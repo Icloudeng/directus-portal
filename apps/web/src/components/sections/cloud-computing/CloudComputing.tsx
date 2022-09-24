@@ -2,9 +2,10 @@
 
 import { useCustomerEmblaCarousel } from '@/hooks/useCustomEmblaCarousel';
 
+import { DotButton, NextButton, PrevButton } from '@/components/carouselButtons/CarouselButtons';
+
 import { CarouselData } from '@/models/carouselModel';
 
-import { DotButton, NextButton, PrevButton } from './components/CarouselButtons';
 import { CarouselItem } from './components/CarouselItem';
 
 
