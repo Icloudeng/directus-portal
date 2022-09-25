@@ -11,7 +11,7 @@ import {
   DotButton,
   NextButton,
   PrevButton,
-} from '../cloud-computing/components/CarouselButtons';
+} from '@/components/carouselButtons/CarouselButtons';
 
 export function ST_CardCarouselsFC({ items }: { items: ST_CardCarousel[] }) {
   const first = items[0];
