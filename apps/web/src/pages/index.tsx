@@ -1,18 +1,18 @@
 import { GetServerSidePropsContext } from 'next';
+import { useEffect } from 'react';
 
 import Layout from '@/components/layout/Layout';
 import { CloudComputing } from '@/components/sections/cloud-computing/CloudComputing';
 import { HeroSection } from '@/components/sections/hero/HeroSection';
 import { HowEasy } from '@/components/sections/how-easy/HowEasy';
 import { IntelligentSystem } from '@/components/sections/intelligent-system/IntelligentSystem';
+import { PageSections } from '@/components/sections/page-sections';
+import { SupportBusiness } from '@/components/sections/support-business/SupportBusiness';
 import Seo from '@/components/Seo';
 
 import { getDirectusAuthToken } from '@/cms/directus';
 import { getGqlHomeQueries, QHomeHeroQueriesType } from '@/cms/items';
-import { useEffect } from 'react';
 import { getServerSideTranslations } from '@/utils/server-translation';
-import { PageSections } from '@/components/sections/page-sections';
-import { UnderHeroSection } from '@/components/sections/under-hero/UnderHeroSection';
 
 export default function HomePage(props: Partial<QHomeHeroQueriesType>) {
   const { HomeHero, HomeSections } = props;
@@ -44,6 +44,9 @@ export default function HomePage(props: Partial<QHomeHeroQueriesType>) {
         {/* <section className='py-10 bg-[#f5f7fa]'>
           <UnderHeroSection />
         </section> */}
+        <section className='py-10 bg-white'>
+          <SupportBusiness />
+        </section>
 
         {HomeSections && <PageSections sections={HomeSections.sections} />}
       </main>
