@@ -41,6 +41,9 @@ export default function HomePage(props: Partial<QHomeHeroQueriesType>) {
           <IntelligentSystem />
         </section>
 
+        {/* <section className='py-10 bg-[#f5f7fa]'>
+          <UnderHeroSection />
+        </section> */}
         <section className='py-10 bg-white'>
           <SupportBusiness />
         </section>

@@ -1,7 +1,7 @@
 import useEmblaCarousel from 'embla-carousel-react';
 import { useCallback, useEffect, useState } from 'react';
 
-export const useCustomerEmblaCarousel = (startIndex?: number) => {
+export const useCustomerEmblaCarousel = (startIndex = 0) => {
   const [viewportRef, embla] = useEmblaCarousel({ loop: false, startIndex });
 
   const scrollPrev = useCallback(() => embla && embla.scrollPrev(), [embla]);

@@ -1,9 +1,9 @@
 import React, { useMemo } from 'react';
-import isSvg from 'is-svg';
 
 import UnstyledLink from '@/components/links/UnstyledLink';
 import { NavbarLinkSubmenu, NavbarLinkSubmenuItem } from '@/cms/items/types';
 import { useMut } from '@/cms/mut';
+import { HasSvgText } from '@/components/HasSvgText';
 
 export const Submenu = React.memo((props: NavbarLinkSubmenu) => {
   const { featured, translations, items } = useMut(
@@ -59,13 +59,7 @@ const SubmenuItem = (props: NavbarLinkSubmenuItem & { featured: boolean }) => {
         featured ? 'hover:bg-primary-100' : 'hover:bg-gray-50 navbar__link-icon'
       } animated-underline`}
     >
-      {!featured && icon_svg && (
-        <>
-          {isSvg(icon_svg) && (
-            <span dangerouslySetInnerHTML={{ __html: icon_svg }} />
-          )}
-        </>
-      )}
+      {!featured && <HasSvgText svgText={icon_svg} />}
 
       <div className='ml-4'>
         <p className='text-sm font-bold text-gray-900'>{translations?.name}</p>

@@ -12,7 +12,7 @@ export const HowEasy = () => {
                 </span>
             </div>
             <div className='w-full h-full flex flex-col md:flex-row items-center justify-center'>
-                <div className='easy__left flex-1 flex flex-col mr-2 p-7'>
+                <div className='easy__left flex-1 flex flex-col mr-2 ss:p-7'>
                     <div className='flex flex-col items-center md:items-start gap-7'>
                         <h6 className='mb-3 text-center md:text-start text-lg font-semibold tracking-tight'>Icloueng Makes It Simple to Embrace the Cloud</h6>
                         <div className='flex flex-col gap-3'>
@@ -40,7 +40,7 @@ export const HowEasy = () => {
                         </div>
                     </div>
                 </div>
-                <div className='easy__right flex-1 flex flex-col md:flex-col-reverse ml-2 p-7'>
+                <div className='easy__right flex-1 flex flex-col md:flex-col-reverse ml-2 ss:p-7'>
                     <div className='flex flex-col items-center md:items-start gap-7'>
                         <h6 className='mb-3 text-center md:text-start text-lg font-semibold tracking-tight'>Icloueng Makes It Simple to Embrace the Cloud</h6>
                         <div className='flex flex-col gap-3'>

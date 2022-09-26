@@ -16,7 +16,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "directus": "9.18.0",
+    "@directus/sdk": "^10.1.4",
+    "directus": "9.18.1",
     "postgres": "^3.2.4"
   }
 }

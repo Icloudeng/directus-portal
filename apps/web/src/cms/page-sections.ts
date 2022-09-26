@@ -56,6 +56,7 @@ const q_ST = [
     pagination_buttons: true,
     prev_next_buttons: true,
     readmore_url: true,
+    initial_index: true,
     ...qWithTranslations({
       title: true,
       description: true,
@@ -110,6 +111,7 @@ export function pageSectionsWithAssets(
   const psAssets = (sections: M2APageSection[]) => {
     const section = sections.pop();
     if (!section) return;
+
     qWithAsset(access_token, section.item, 'background_image');
 
     const stAssets = (s_templates: PS_Content[]) => {
@@ -130,10 +132,10 @@ export function pageSectionsWithAssets(
       }
 
       qWithAsset(access_token, st.item, imgKey as any);
+      stAssets(s_templates);
     };
 
     stAssets([...section.item.contents]);
-
     psAssets(sections);
   };
 
@@ -192,6 +194,7 @@ export type ST_CardImageCarousel = MDHasM2A<
     pagination_buttons: boolean;
     prev_next_buttons: boolean;
     readmore_url?: string;
+    initial_index: number;
   } & MDWithTranslation<{
     title: string;
     description: string;

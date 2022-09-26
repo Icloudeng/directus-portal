@@ -1,5 +1,5 @@
 version: 1
-directus: 9.18.0
+directus: 9.18.1
 collections:
   - collection: Addresses
     meta:
@@ -9763,7 +9763,7 @@ fields:
       options: null
       readonly: true
       required: false
-      sort: 10
+      sort: 11
       special:
         - date-created
       translations: null
@@ -9806,7 +9806,7 @@ fields:
       options: null
       readonly: true
       required: false
-      sort: 12
+      sort: 13
       special:
         - date-updated
       translations: null
@@ -9918,6 +9918,48 @@ fields:
       table: ST_CardImageCarousels
     type: uuid
   - collection: ST_CardImageCarousels
+    field: initial_index
+    meta:
+      collection: ST_CardImageCarousels
+      conditions: null
+      display: null
+      display_options: null
+      field: initial_index
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        min: 0
+      readonly: false
+      required: true
+      sort: 6
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: integer
+      default_value: 0
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: initial_index
+      numeric_precision: 32
+      numeric_scale: 0
+      schema: public
+      table: ST_CardImageCarousels
+    type: integer
+  - collection: ST_CardImageCarousels
     field: pagination_buttons
     meta:
       collection: ST_CardImageCarousels
@@ -10017,7 +10059,7 @@ fields:
         trim: true
       readonly: false
       required: false
-      sort: 6
+      sort: 7
       special: null
       translations: null
       validation: null
@@ -10058,7 +10100,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: 8
+      sort: 9
       special: null
       translations: null
       validation: null
@@ -10120,7 +10162,7 @@ fields:
             value: archived
       readonly: false
       required: false
-      sort: 7
+      sort: 8
       special: null
       translations: null
       validation: null
@@ -10188,7 +10230,7 @@ fields:
         template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
       readonly: true
       required: false
-      sort: 9
+      sort: 10
       special:
         - user-created
       translations: null
@@ -10231,7 +10273,7 @@ fields:
         template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
       readonly: true
       required: false
-      sort: 11
+      sort: 12
       special:
         - user-updated
       translations: null
@@ -11295,7 +11337,7 @@ fields:
       note: null
       options: null
       readonly: false
-      required: true
+      required: false
       sort: 3
       special:
         - file
