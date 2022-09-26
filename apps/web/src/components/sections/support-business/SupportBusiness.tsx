@@ -1,6 +1,46 @@
-import Skeleton from "@/components/Skeleton"
+import Image from 'next/image';
+import { useEffect } from "react"
+
+import Skeleton from "@/components/Skeleton";
+
+import { Accordion,AccordionChild } from "./components/Accordion"
+import { SupportBusinessItemList } from "./components/SupportBusinessItemList"
+
+const ISBItemData = [
+    {
+        accordion: [
+            {
+                title: 'Ultra-fast deploy',
+                text: 'To reduce the time it takes to deploy VMs, we keep them in a dedicated, renewable pool. When you create a VM, the control panel requests this pool. It reduces the average deployment time to 40 seconds.',
+                // imgUlr: 'https://flowbite.com/docs/images/blog/image-2.jpg',
+                active: false,
+                clName: '',
+            },
+            {
+                title: 'Freeze Protection',
+                text: 'A control panel is designed within the Single Page Application architecture. After the first page has been loaded, all pages load instantly, without lag. Focus entirely on your project.',
+                // imgUlr: 'https://flowbite.com/docs/images/blog/image-2.jpg',
+                active: true,
+                clName: '',
+            },
+            {
+                title: '2FA guard',
+                text: 'We bring you the best options for protecting your control panel. You can set up two-factor authentication via mobile app or SMS, right in the panel settings.',
+                // imgUlr: 'https://flowbite.com/docs/images/blog/image-2.jpg',
+                active: false,
+                clName: '',
+            },
+        ],
+        img: [
+            { imgUlr: 'https://flowbite.com/docs/images/blog/image-2.jpg', active: true, clName: 'active' },
+            { imgUlr: 'https://flowbite.com/docs/images/blog/image-1.jpg', active: false, clName: '', },
+            { imgUlr: 'https://flowbite.com/docs/images/blog/image-4.jpg', active: false, clName: '', },
+        ]
+    }
+]
 
 export const SupportBusiness = () => {
+
     return (
         <div className='x-container max-w-7xl mx-auto py-10 flex flex-col items-center gap-10 ss:px-12'>
             <div className='flex flex-col items-center justify-center gap-7'>
@@ -12,43 +52,14 @@ export const SupportBusiness = () => {
                 </span>
             </div>
 
-            <div className="accordion__top-container pt-5 w-full">
+            {/* <div className="accordion__top-container pt-5 w-full">
                 <div className="relative w-full accordion__main-container">
-                    <ul className="w-full flex flex-col items-center">
-                        <li className="accordion__list w-full flex-col-reverse sm:flex-row flex items-start gap-12">
-                            <div className="accordion__list-contents w-full text-content flex-[1.3] flex flex-col items-start gap-7 sm:border-l-[1px]">
-                                <div className="accordion__list-contents-texts w-full flex-1 flex flex-col items-center sm:items-start gap-5 sm:border-l-[1px] border-primary-400 pl-7">
-                                    <h3 className="cursor-pointer sm:text-inherit text-black hover:text-black">Ultra-fast deploy</h3>
-                                    <span className="sm:max-w-sm text-center sm:text-start">
-                                        A control panel is designed within the Single Page Application architecture.
-                                        After the first page has been loaded, all pages load instantly, without lag.
-                                        Focus entirely on your project.
-                                    </span>
-                                </div>
-                                <div className="hidden accordion__list-contents-texts sm:flex-1 sm:flex flex-col items-center sm:items-start gap-5 pl-7">
-                                    <h3 className="cursor-pointer text-black/60 hover:text-black">Freeze Protection</h3>
-                                    <span className="hidden sm:max-w-sm text-center sm:text-start">
-                                        A control panel is designed within the Single Page Application architecture.
-                                        After the first page has been loaded, all pages load instantly, without lag.
-                                        Focus entirely on your project.
-                                    </span>
-                                </div>
-                                <div className="hidden accordion__list-contents-texts flex-1 sm:flex flex-col items-center sm:items-start gap-5 pl-7">
-                                    <h3 className="cursor-pointer text-black/60 hover:text-black">2FA guard</h3>
-                                    <span className="hidden sm:max-w-sm text-center sm:text-start">
-                                        A control panel is designed within the Single Page Application architecture.
-                                        After the first page has been loaded, all pages load instantly, without lag.
-                                        Focus entirely on your project.
-                                    </span>
-                                </div>
-                            </div>
-                            <div className="img-content sm:flex-[2] relative w-full h-[20rem]">
-                                <Skeleton className="accordion__list-contents-img absolute inset-0 bg-primary-50" />
-                                <Skeleton className="accordion__list-contents-img hidden absolute inset-0 bg-red-50" />
-                                <Skeleton className="accordion__list-contents-img hidden absolute inset-0 bg-yellow-50" />
-                            </div>
-                        </li>
-                    </ul>
+                    <div className="w-full flex flex-col items-center">
+                        {ISBItemData.map(({ accordion, img }, index) => (
+                            <SupportBusinessItemList key={index} accordion={accordion} img={img} />
+                        ))}
+                    </div>
+                    
                     <div className="relative float-right mt-10">
                         <button
                             type='button'
@@ -81,7 +92,38 @@ export const SupportBusiness = () => {
                         </button>
                     </div>
                 </div>
-            </div>
+            </div> */}
+
+            <Accordion>
+            <AccordionChild title="Ultra-fast deploy" description="To reduce the time it takes to deploy VMs, we keep them in a dedicated, renewable pool. When you create a VM, the control panel requests this pool. It reduces the average deployment time to 40 seconds.">
+                    <Image
+                        className='image object-cover'
+                        src={'https://flowbite.com/docs/images/blog/image-2.jpg'}
+                        layout="fill"
+                        objectFit="cover"
+                        alt='accordion image'
+                    />
+                </AccordionChild>
+                <AccordionChild title="Freeze Protection" description="A control panel is designed within the Single Page Application architecture. After the first page has been loaded, all pages load instantly, without lag. Focus entirely on your project.">
+                    <Image
+                        className='image object-cover'
+                        src={'https://flowbite.com/docs/images/blog/image-1.jpg'}
+                        layout="fill"
+                        objectFit="cover"
+                        alt='accordion image'
+                    />
+                </AccordionChild>
+
+                <AccordionChild title="2FA guard" description="We bring you the best options for protecting your control panel. You can set up two-factor authentication via mobile app or SMS, right in the panel settings.">
+                    <Image
+                        className='image object-cover'
+                        src={'https://flowbite.com/docs/images/blog/image-4.jpg'}
+                        layout="fill"
+                        objectFit="cover"
+                        alt='accordion image'
+                    />
+                </AccordionChild>
+            </Accordion>
 
         </div>
     )
