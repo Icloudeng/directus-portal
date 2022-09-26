@@ -17,6 +17,9 @@ import {
 const { section_templates } = CMS_MODELS;
 type ST = typeof section_templates;
 
+/**
+ * All components of the section template should be added here following the key-value convention
+ */
 const ST_COMPONENTS: {
   [k in keyof ST]: FunctionComponent<{ items: any }>;
 } = {
@@ -27,8 +30,23 @@ const ST_COMPONENTS: {
   st_sided_contents: ST_SidedContentsFC,
 };
 
+// ------------------------------ ---------------------- ------------------//
+// ------------------------------Page Sections Component ------------------//
+// ------------------------------ ---------------------- ------------------//
+
 function st(condition: any, style: string) {
   return !condition ? '' : style;
+}
+
+function fc(css: string) {
+  return css
+    .replace(/\n/g, '')
+    .split(';')
+    .map((c) => c.trim())
+    .join(';')
+    .split('{')
+    .map((c) => c.trim())
+    .join('{');
 }
 
 function PageSection({ section }: { section: M2APageSection }) {
@@ -50,10 +68,23 @@ function PageSection({ section }: { section: M2APageSection }) {
     const css = match_css
       .map((text) => {
         const stl = text.trim().replace(/^\n*/, '');
-        if (stl.startsWith('self')) {
-          return `.${classId}${stl.substring('self'.length, stl.length)}`;
+        const fg = stl.indexOf('{');
+        if (fg < 0) {
+          return `.${classId} ${stl}`;
         }
-        return `.${classId} ${stl}`;
+        const selectors = stl
+          .substring(0, fg)
+          .split(',')
+          .map((select) => {
+            const nsl = select.trim();
+            if (nsl.startsWith('self')) {
+              return `.${classId}${nsl.substring('self'.length, nsl.length)}`;
+            }
+            return `.${classId} ${nsl}`;
+          })
+          .join(',');
+
+        return selectors + stl.substring(fg, stl.length);
       })
       .join('')
       .trim();
@@ -82,22 +113,24 @@ function PageSection({ section }: { section: M2APageSection }) {
       {(style || bg_color) && (
         <style key={styleId} jsx global>
           {`
-            ${style || ''}
-            ${st(
-              bg_color,
-              `.${classId}:before {
-              content: '';
-              position: absolute;
-              display: block;
-              width: 100%;
-              height: 100%;
-              top: 0;
-              left: 0;
-              right: 0;
-              bottom: 0;
-              z-index: -9;
-              background-color: ${bg_color};
-            }`
+            ${fc(
+              (style || '') +
+                st(
+                  bg_color,
+                  `.${classId}:before {
+                content: '';
+                position: absolute;
+                display: block;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                z-index: -9;
+                background-color: ${bg_color};
+              }`
+                )
             )}
           `}
         </style>
@@ -111,6 +144,7 @@ function PageSection({ section }: { section: M2APageSection }) {
               : undefined,
         }}
         data-g-template={section.collection}
+        data-ps-id={section.item.id}
       >
         {hasSvg && (
           <HasSvgText
@@ -122,7 +156,7 @@ function PageSection({ section }: { section: M2APageSection }) {
         <div
           className={`${
             item.container ? 'x-container ss:px-12' : ''
-          } page__section-container max-w-7xl mx-auto py-10 flex flex-col items-center gap-10`}
+          } page__section-container py-10 flex flex-col items-center gap-10`}
         >
           <div className='flex flex-col items-center justify-center gap-7 mb-7 page__section-titles'>
             <h1 className='text-center'>{item.translations?.title}</h1>

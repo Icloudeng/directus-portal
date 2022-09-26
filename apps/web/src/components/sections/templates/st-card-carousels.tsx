@@ -29,15 +29,15 @@ export function ST_CardCarouselsFC({ items }: { items: ST_CardCarousel[] }) {
   return (
     <>
       {items.length === 1 ? (
-        <CarouselItem {...items[0]} />
+        <CarouselItem {...first} />
       ) : (
         <div className='w-full h-full'>
           <div className='relative h-full'>
             {/* <!-- Carousel wrapper --> */}
             <div className='overflow-hidden w-full h-full' ref={viewportRef}>
               <div className='flex w-full h-full'>
-                {items.map((item) => (
-                  <CarouselItem key={item.id} {...item} />
+                {items.map((data) => (
+                  <CarouselItem key={data.item.id} {...data} />
                 ))}
               </div>
             </div>
