@@ -142,6 +142,20 @@ export function pageSectionsWithAssets(
   psAssets($sections);
 }
 
+export function pageSectionPublished<
+  T extends { [x: string]: any; sections: M2APageSection[] }
+>(data: T) {
+  data.sections = data.sections.filter(
+    ({ item }) => item.status === 'published'
+  );
+
+  data.sections.forEach(({ item }) => {
+    item.contents = item.contents.filter(
+      (citem) => citem.item.status === 'published'
+    );
+  });
+}
+
 // --------------------------------------------------------------------//
 // ----------------------------  Types ------------------//
 // --------------------------------------------------------------------//
