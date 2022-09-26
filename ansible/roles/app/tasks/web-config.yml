@@ -1,0 +1,9 @@
+- name: App WEB .env config
+  set_fact:
+    env_file: "{{ root_path }}/apps/web/.env"
+
+- name: App WEB .env config | DIRECTUS_STATIC_TOKEN
+  lineinfile:
+    path: "{{ env_file }}"
+    regexp: "^DIRECTUS_STATIC_TOKEN="
+    line: "DIRECTUS_STATIC_TOKEN={{ app_user_token }}"
