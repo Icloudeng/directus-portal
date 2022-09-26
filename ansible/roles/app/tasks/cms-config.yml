@@ -28,6 +28,24 @@
     regexp: "^ADMIN_PASSWORD="
     line: "ADMIN_PASSWORD={{ portaladmin_password }}"
 
+- name: App CMS .env config | APP_USER_EMAIL
+  lineinfile:
+    path: "{{ env_file }}"
+    regexp: "^APP_USER_EMAIL="
+    line: "APP_USER_EMAIL={{ appuser_email }}"
+
+- name: App CMS .env config | APP_USER_PASSWORD
+  lineinfile:
+    path: "{{ env_file }}"
+    regexp: "^APP_USER_PASSWORD="
+    line: "APP_USER_PASSWORD={{ portaladmin_password }}"
+
+- name: App CMS .env config | APP_USER_TOKEN
+  lineinfile:
+    path: "{{ env_file }}"
+    regexp: "^APP_USER_TOKEN="
+    line: "APP_USER_TOKEN={{ app_user_token }}"
+
 - name: App CMS .env config | DB_DATABASE
   lineinfile:
     path: "{{ env_file }}"

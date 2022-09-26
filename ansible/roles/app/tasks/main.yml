@@ -22,6 +22,7 @@
     chdir: "{{ root_path }}"
 
 - include_tasks: cms-config.yml
+- include_tasks: web-config.yml
 
 # CMS App
 #
@@ -37,6 +38,12 @@
   args:
     chdir: "{{ root_path }}/apps/cms"
     removes: "{{ root_path }}/apps/cms/snapshot.yaml"
+
+- name: CMS App | Create App User
+  become: false
+  command: "node create-app-user.js"
+  args:
+    chdir: "{{ root_path }}/apps/cms"
 
 - name: CMS App | Delete old pm2 process
   command: "pm2 delete {{ admin_domain }}"
