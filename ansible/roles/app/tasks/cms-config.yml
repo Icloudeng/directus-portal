@@ -95,4 +95,12 @@
       # Rate Limiter
       RATE_LIMITER_REDIS_HOST=127.0.0.1
       RATE_LIMITER_REDIS_PORT=6379
+      # Cors
+      CORS_ENABLED=false
+      CORS_ORIGIN="array:http://localhost,http://127.0.0.1,https://{{ admin_domain }}"
+      CORS_METHODS=GET,POST,PATCH,DELETE
+      CORS_ALLOWED_HEADERS=Content-Type,Authorization
+      CORS_EXPOSED_HEADERS=Content-Range
+      CORS_CREDENTIALS=false
+      CORS_MAX_AGE=18000
     state: present

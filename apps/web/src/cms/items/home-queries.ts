@@ -10,6 +10,7 @@ import {
 } from '../gql-query';
 import {
   M2APageSection,
+  pageSectionPublished,
   pageSectionQuery,
   pageSectionsWithAssets,
 } from '../page-sections';
@@ -54,7 +55,10 @@ export async function getGqlHomeQueries(
 
   if (HomeHero) qWithAsset(access_token, HomeHero, 'image');
 
-  if (HomeSections) pageSectionsWithAssets(access_token, HomeSections.sections);
+  if (HomeSections) {
+    pageSectionPublished(HomeSections);
+    pageSectionsWithAssets(access_token, HomeSections.sections);
+  }
 
   return res;
 }
