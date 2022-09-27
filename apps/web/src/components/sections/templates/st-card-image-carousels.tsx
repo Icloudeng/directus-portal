@@ -73,14 +73,13 @@ export function ST_CardImageCarouselsFC({
 
 function CarouselItem({
   item,
-  collection,
   active,
 }: ST_CardImageCarousel & { active: boolean }) {
   const { image, translations, readmore_url } = useMut(item);
   const { t } = useTranslation();
 
   return (
-    <div className='snap-center w-full' data-s-template={collection}>
+    <div className='snap-center w-full'>
       <div
         className={`relative flex-shrink-0 max-w[95vw] w-full overflow-hidden rounded-3xl ${
           !active ? '' : 'scale-[.85]'

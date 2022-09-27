@@ -233,7 +233,9 @@ body {
     @apply w-[20px] h-[20px];
   }
 
-  .st_carousel {
+  .markdown__content {
+    /* &.st_carousel {
+  } */
     p {
       @apply mb-3 font-normal text-gray-700;
     }

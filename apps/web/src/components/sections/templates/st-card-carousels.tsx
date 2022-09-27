@@ -2,9 +2,6 @@ import { ST_CardCarousel } from '@/cms/page-sections';
 import Image from 'next/image';
 import { useMut } from '@/cms/mut';
 import ButtonLink from '@/components/links/ButtonLink';
-import ReactMarkdown from 'react-markdown';
-import remarkBreaks from 'remark-breaks';
-import remarkGfm from 'remark-gfm';
 import { useTranslation } from 'next-i18next';
 import { useCustomerEmblaCarousel } from '@/hooks/useCustomEmblaCarousel';
 import {
@@ -12,6 +9,7 @@ import {
   NextButton,
   PrevButton,
 } from '@/components/carouselButtons/CarouselButtons';
+import { MarkdownContent } from '@/components/react-markdown/MarkdownContent';
 
 export function ST_CardCarouselsFC({ items }: { items: ST_CardCarousel[] }) {
   const first = items[0];
@@ -68,7 +66,7 @@ export function ST_CardCarouselsFC({ items }: { items: ST_CardCarousel[] }) {
   );
 }
 
-export const CarouselItem = ({ item, collection }: ST_CardCarousel) => {
+export const CarouselItem = ({ item }: ST_CardCarousel) => {
   const { t } = useTranslation();
   const { translations, image, readmore_url, disposition } = useMut(item);
 
@@ -98,9 +96,9 @@ export const CarouselItem = ({ item, collection }: ST_CardCarousel) => {
       </div>
 
       <div className='markdown__content st_carousel'>
-        <ReactMarkdown remarkPlugins={[remarkBreaks, remarkGfm]}>
+        <MarkdownContent>
           {translations?.markdown_content || ''}
-        </ReactMarkdown>
+        </MarkdownContent>
       </div>
       {readmore_url && (
         <div className='mt-1'>
@@ -116,11 +114,7 @@ export const CarouselItem = ({ item, collection }: ST_CardCarousel) => {
     </div>
   );
   return (
-    <div
-      className='duration-700 ease-in-out relative shrink-0 grow-0 basis-full max-w-full ml-[10px] transition-all transform translate-x-0 z-20'
-      data-carousel-item=''
-      data-s-template={collection}
-    >
+    <div className='duration-700 ease-in-out relative shrink-0 grow-0 basis-full max-w-full ml-[10px] transition-all transform translate-x-0 z-20'>
       <div className='w-full h-full flex flex-col items-center bg-white rounded-lg border shadow-md md:flex-row hover:bg-gray-50'>
         {disposition === 'text_left' ? (
           <>

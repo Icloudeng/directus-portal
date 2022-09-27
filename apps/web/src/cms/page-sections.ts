@@ -73,6 +73,17 @@ const q_ST = [
     }),
     ...qWithStatus,
   },
+  {
+    __typeName: section_templates.st_nav_accordions,
+    image: qWithQueryAsset(),
+    prev_next_buttons: true,
+    ...qWithTranslations({
+      title: true,
+      description: true,
+      markdown_content: true,
+    }),
+    ...qWithStatus,
+  },
 ];
 
 export const pageSectionQuery = {
@@ -229,13 +240,26 @@ export type ST_SidedContent = MDHasM2A<
   ST_V<'st_sided_contents'>
 >;
 
+export type ST_NavAccordion = MDHasM2A<
+  {
+    image?: MDWithAsset;
+    prev_next_buttons: boolean;
+  } & MDWithTranslation<{
+    title: string;
+    description?: string;
+    markdown_content?: string;
+  }> &
+    DRTStatus,
+  ST_V<'st_nav_accordions'>
+>;
 //------------------- Page Sections --------------------//
 type PS_Content =
   | ST_Value
   | ST_NavTab
   | ST_CardCarousel
   | ST_CardImageCarousel
-  | ST_SidedContent;
+  | ST_SidedContent
+  | ST_NavAccordion;
 
 export type M2APageSection = MDHasM2A<
   {
