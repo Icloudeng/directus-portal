@@ -12,6 +12,7 @@ import {
   ST_CardCarouselsFC,
   ST_CardImageCarouselsFC,
   ST_SidedContentsFC,
+  ST_NavAccordionsFC,
 } from './templates';
 
 const { section_templates } = CMS_MODELS;
@@ -28,6 +29,7 @@ const ST_COMPONENTS: {
   st_card_carousels: ST_CardCarouselsFC,
   st_card_image_carousels: ST_CardImageCarouselsFC,
   st_sided_contents: ST_SidedContentsFC,
+  st_nav_accordions: ST_NavAccordionsFC,
 };
 
 // ------------------------------ ---------------------- ------------------//
