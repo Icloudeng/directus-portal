@@ -1,6 +1,7 @@
+import React, { FunctionComponent, PropsWithChildren, useState } from 'react'
+
 import { DotButton } from '@/components/carouselButtons/CarouselButtons';
 import Skeleton from '@/components/Skeleton'
-import React, { FunctionComponent, PropsWithChildren, useState } from 'react'
 
 type Props = {
     defaultSelected?: React.Key;
