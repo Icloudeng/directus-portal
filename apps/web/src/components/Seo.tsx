@@ -1,7 +1,9 @@
-import { useMut } from '@/cms/mut';
-import { useSharedData } from '@/store';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
+
+import { useSharedData } from '@/store';
+
+import { useMut } from '@/cms/mut';
 
 const defaultMeta = {
   title: 'icloudeng',
@@ -11,7 +13,7 @@ const defaultMeta = {
   url: 'https://coding.icloudeng.xyz',
   type: 'website',
   robots: 'follow, index',
-  image: '~/images/icloudeng-banner.jpg',
+  image: '/images/icloudeng-banner.jpg',
 };
 
 type SeoProps = {
