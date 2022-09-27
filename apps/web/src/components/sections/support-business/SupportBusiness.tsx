@@ -3,41 +3,9 @@ import { useEffect } from "react"
 
 import Skeleton from "@/components/Skeleton";
 
-import { Accordion,AccordionChild } from "./components/Accordion"
+import { Accordion, AccordionChild } from "./components/Accordion"
 import { SupportBusinessItemList } from "./components/SupportBusinessItemList"
 
-const ISBItemData = [
-    {
-        accordion: [
-            {
-                title: 'Ultra-fast deploy',
-                text: 'To reduce the time it takes to deploy VMs, we keep them in a dedicated, renewable pool. When you create a VM, the control panel requests this pool. It reduces the average deployment time to 40 seconds.',
-                // imgUlr: 'https://flowbite.com/docs/images/blog/image-2.jpg',
-                active: false,
-                clName: '',
-            },
-            {
-                title: 'Freeze Protection',
-                text: 'A control panel is designed within the Single Page Application architecture. After the first page has been loaded, all pages load instantly, without lag. Focus entirely on your project.',
-                // imgUlr: 'https://flowbite.com/docs/images/blog/image-2.jpg',
-                active: true,
-                clName: '',
-            },
-            {
-                title: '2FA guard',
-                text: 'We bring you the best options for protecting your control panel. You can set up two-factor authentication via mobile app or SMS, right in the panel settings.',
-                // imgUlr: 'https://flowbite.com/docs/images/blog/image-2.jpg',
-                active: false,
-                clName: '',
-            },
-        ],
-        img: [
-            { imgUlr: 'https://flowbite.com/docs/images/blog/image-2.jpg', active: true, clName: 'active' },
-            { imgUlr: 'https://flowbite.com/docs/images/blog/image-1.jpg', active: false, clName: '', },
-            { imgUlr: 'https://flowbite.com/docs/images/blog/image-4.jpg', active: false, clName: '', },
-        ]
-    }
-]
 
 export const SupportBusiness = () => {
 
@@ -59,7 +27,7 @@ export const SupportBusiness = () => {
                             <SupportBusinessItemList key={index} accordion={accordion} img={img} />
                         ))}
                     </div>
-                    
+
                     <div className="relative float-right mt-10">
                         <button
                             type='button'
@@ -94,8 +62,8 @@ export const SupportBusiness = () => {
                 </div>
             </div> */}
 
-            <Accordion>
-            <AccordionChild title="Ultra-fast deploy" description="To reduce the time it takes to deploy VMs, we keep them in a dedicated, renewable pool. When you create a VM, the control panel requests this pool. It reduces the average deployment time to 40 seconds.">
+            <Accordion >
+                <AccordionChild title="Ultra-fast deploy" description="To reduce the time it takes to deploy VMs, we keep them in a dedicated, renewable pool. When you create a VM, the control panel requests this pool. It reduces the average deployment time to 40 seconds.">
                     <Image
                         className='image object-cover'
                         src={'https://flowbite.com/docs/images/blog/image-2.jpg'}
@@ -124,7 +92,6 @@ export const SupportBusiness = () => {
                     />
                 </AccordionChild>
             </Accordion>
-
         </div>
     )
 }
