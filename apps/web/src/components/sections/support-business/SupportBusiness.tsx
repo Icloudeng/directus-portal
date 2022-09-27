@@ -62,7 +62,7 @@ export const SupportBusiness = () => {
                 </div>
             </div> */}
 
-            <Accordion >
+            <Accordion loader>
                 <AccordionChild title="Ultra-fast deploy" description="To reduce the time it takes to deploy VMs, we keep them in a dedicated, renewable pool. When you create a VM, the control panel requests this pool. It reduces the average deployment time to 40 seconds.">
                     <Image
                         className='image object-cover'
