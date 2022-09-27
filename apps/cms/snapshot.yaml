@@ -7345,7 +7345,9 @@ fields:
       note: null
       options:
         opacity: true
-        presets: null
+        presets:
+          - name: Gray Color
+            color: '#F5F7FA'
       readonly: false
       required: false
       sort: 5

@@ -5,7 +5,8 @@ import Skeleton from '@/components/Skeleton'
 
 type Props = {
     defaultSelected?: React.Key;
-    loader?: boolean
+    loader?: boolean;
+    prev_next_buttons?: boolean;
 }
 export const Accordion: FunctionComponent<PropsWithChildren<Props>> = ({ children, defaultSelected, loader }) => {
     const arrChildren = React.Children.toArray(children)
@@ -118,7 +119,7 @@ export const Accordion: FunctionComponent<PropsWithChildren<Props>> = ({ childre
 
 export function AccordionChild({ children, ...props }: PropsWithChildren<{ title: React.ReactNode, description?: React.ReactNode }>) {
     const { active } = props as any
-    return <div className={`transition-all ${!active ? 'invisible opacity-0' : ''} absolute inset-0`}>
+    return <div className={`transition-all ${!active ? 'hidden' : ''}`}>
         {children}
     </div>
 }

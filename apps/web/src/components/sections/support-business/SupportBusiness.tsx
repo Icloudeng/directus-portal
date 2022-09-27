@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-import { Accordion, AccordionChild } from "./components/Accordion"
+import { Accordion, AccordionChild } from "src/components/accordion/Accordion"
 
 
 export const SupportBusiness = () => {

@@ -18,10 +18,7 @@ function ItemValue({ item }: { item: ST_Value }) {
   const color = testHexColor(icon_bg_color);
 
   return (
-    <div
-      className='block__item flex flex-col items-center gap-7'
-      data-s-template={item.collection}
-    >
+    <div className='block__item flex flex-col items-center gap-7'>
       <span
         className='bg-primary-50 px-3 py-3 rounded-full'
         style={{ backgroundColor: color }}
