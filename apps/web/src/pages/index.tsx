@@ -13,6 +13,7 @@ import Seo from '@/components/Seo';
 import { getDirectusAuthToken } from '@/cms/directus';
 import { getGqlHomeQueries, QHomeHeroQueriesType } from '@/cms/items';
 import { getServerSideTranslations } from '@/utils/server-translation';
+import { JobsCreation } from '@/components/sections/jobs-creation/JobsCreation';
 
 export default function HomePage(props: Partial<QHomeHeroQueriesType>) {
   const { HomeHero, HomeSections } = props;
@@ -46,6 +47,10 @@ export default function HomePage(props: Partial<QHomeHeroQueriesType>) {
         </section> */}
         <section className='py-10 bg-white'>
           <SupportBusiness />
+        </section>
+
+        <section className='py-10 bg-[#f5f7fa]'>
+          <JobsCreation />
         </section>
 
         {HomeSections && <PageSections sections={HomeSections.sections} />}
