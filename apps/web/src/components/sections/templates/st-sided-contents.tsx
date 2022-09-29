@@ -44,9 +44,11 @@ function SidedContent({ item }: ST_SidedContent) {
       }
     >
       <div className='flex flex-col items-center md:items-start gap-7'>
-        <h6 className='mb-2 text-center md:text-start text-lg font-semibold tracking-tight'>
-          {translations?.title}
-        </h6>
+        {translations?.title && (
+            <h6 className='mb-2 text-center md:text-start text-lg font-semibold tracking-tight'>
+                {translations?.title}
+            </h6>
+        )}
         <div className='markdown__content'>
           <MarkdownContent>
             {translations?.markdown_content || ''}
