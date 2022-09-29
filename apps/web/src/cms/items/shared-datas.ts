@@ -44,6 +44,7 @@ const gql_query = jsonToGraphQLQuery({
                 limit: 1,
                 sort: ['-date_created'],
             }),
+            slug: true,
             ...qWithStatus,
             ...qWithTranslations({
                 title: true,

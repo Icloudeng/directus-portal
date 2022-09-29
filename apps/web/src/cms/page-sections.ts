@@ -230,8 +230,8 @@ export type ST_CardImageCarousel = MDHasM2A<
 
 export type ST_SidedContent = MDHasM2A<
   {
-    image: MDWithAsset;
-    disposition: boolean;
+    image?: MDWithAsset;
+    disposition: 'text_top' | 'text_bottom';
   } & MDWithTranslation<{
     title: string;
     markdown_content: string;
