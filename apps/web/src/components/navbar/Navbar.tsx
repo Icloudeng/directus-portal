@@ -16,6 +16,8 @@ import { Submenu } from './components/SubMenu';
 
 import Logo from '~/images/icloudenglogo.png';
 import { useTranslation } from 'next-i18next';
+import type { I_MDWithUserTranslation } from '@/types/directus';
+import type { MDNavbarLink } from '@/cms/items/types';
 
 export const Navbar = () => {
   const pagePosition = useScrollPosition();
@@ -84,6 +86,27 @@ function NavBarLinks() {
   const links = useMut(NavbarLinks);
   const pagePosition = useScrollPosition();
 
+  return (
+    <ul className='menu-top flex items-center gap-9'>
+      {links.map((link) => {
+        return (
+          <NavbarLink key={link.id} {...link} pagePosition={pagePosition} />
+        );
+      })}
+    </ul>
+  );
+}
+
+function NavbarLink({
+  submenus,
+  id,
+  translations,
+  url,
+  external,
+  pagePosition,
+}: I_MDWithUserTranslation<MDNavbarLink> & { pagePosition: number }) {
+  const hasSubmenus = submenus.length > 0;
+
   const btnRef = useRef<HTMLButtonElement>(null);
   const onMouseHover = () => {
     btnRef.current?.classList.add('active');
@@ -93,55 +116,45 @@ function NavBarLinks() {
   };
 
   return (
-    <ul className='menu-top flex items-center gap-9'>
-      {links.map(({ submenus, id, translations, url, external }) => {
-        const hasSubmenus = submenus.length > 0;
-        return (
-          <li
-            key={id}
-            onMouseOver={hasSubmenus ? onMouseHover : undefined}
-            onMouseOut={hasSubmenus ? onMouseOut : undefined}
-            className={`menu-top__item ${
-              hasSubmenus ? 'relative dropdown' : ''
-            } hover:text-primary-400`}
-          >
-            <button
-              ref={btnRef}
-              type='button'
-              className='menu-top__link flex items-center gap-1'
-            >
-              {url ? (
-                <UnstyledLink
-                  target={external ? '_blank' : undefined}
-                  href={url}
-                >
-                  {translations?.name}
-                </UnstyledLink>
-              ) : (
-                <a className='cursor-pointer'>{translations?.name}</a>
-              )}
+    <li
+      key={id}
+      onMouseOver={hasSubmenus ? onMouseHover : undefined}
+      onMouseOut={hasSubmenus ? onMouseOut : undefined}
+      className={`menu-top__item ${
+        hasSubmenus ? 'relative dropdown' : ''
+      } hover:text-primary-400`}
+    >
+      <button
+        ref={btnRef}
+        type='button'
+        className='menu-top__link flex items-center gap-1'
+      >
+        {url ? (
+          <UnstyledLink target={external ? '_blank' : undefined} href={url}>
+            {translations?.name}
+          </UnstyledLink>
+        ) : (
+          <a className='cursor-pointer'>{translations?.name}</a>
+        )}
 
-              {hasSubmenus && (
-                <VscChevronDown className='submenu-show__chevron text-primary-500 text-sm' />
-              )}
-            </button>
+        {hasSubmenus && (
+          <VscChevronDown className='submenu-show__chevron text-primary-500 text-sm' />
+        )}
+      </button>
 
-            {hasSubmenus && (
-              <div
-                className={`submenu absolute rounded-3xl pt-[2.5rem] ${
-                  pagePosition > 40 ? 'top-[.45rem]' : 'top-[1.4rem]'
-                } -left-[100%] invisible opacity-0`}
-              >
-                <div className='flex rounded-lg shadow-lg bg-primary-50 ring-1 ring-black divide-x-[1px] ring-opacity-5 overflow-hidden'>
-                  {submenus.map((submenu) => {
-                    return <Submenu key={submenu.id} {...submenu} />;
-                  })}
-                </div>
-              </div>
-            )}
-          </li>
-        );
-      })}
-    </ul>
+      {hasSubmenus && (
+        <div
+          className={`submenu absolute rounded-3xl pt-[2.5rem] ${
+            pagePosition > 40 ? 'top-[.45rem]' : 'top-[1.4rem]'
+          } -left-[100%] invisible opacity-0`}
+        >
+          <div className='flex rounded-lg shadow-lg bg-primary-50 ring-1 ring-black divide-x-[1px] ring-opacity-5 overflow-hidden'>
+            {submenus.map((submenu) => {
+              return <Submenu key={submenu.id} {...submenu} />;
+            })}
+          </div>
+        </div>
+      )}
+    </li>
   );
 }
