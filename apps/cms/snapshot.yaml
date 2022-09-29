@@ -5473,7 +5473,7 @@ fields:
       note: null
       options:
         enableSelect: false
-        template: "{{translations.name}}\_--\_{{url}}"
+        template: "{{url}}\_--\_{{status}}"
       readonly: false
       required: true
       sort: 5
@@ -6238,7 +6238,7 @@ fields:
       note: null
       options:
         enableSelect: false
-        template: "{{id}}\_--\_{{translations.name}}"
+        template: "{{id}}\_--\_{{status}}"
       readonly: false
       required: false
       sort: 6
