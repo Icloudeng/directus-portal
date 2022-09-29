@@ -68,10 +68,6 @@ export const HowEasy = () => {
                         </div>
                     </div>
                 </div>
-                
-                <div className='easy__right'>
-                    <div className=''></div>
-                </div>
             </div>
         </div>
     )

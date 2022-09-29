@@ -15,9 +15,11 @@ import { useMut } from '@/cms/mut';
 import { Submenu } from './components/SubMenu';
 
 import Logo from '~/images/icloudenglogo.png';
+import { useTranslation } from 'next-i18next';
 
 export const Navbar = () => {
   const pagePosition = useScrollPosition();
+  const { t } = useTranslation();
   const onMouseClick = () => {
     const sidebarEl = document.querySelector('#mob--menu-El');
     document.body.classList.add('mobile__model-open');
@@ -54,14 +56,14 @@ export const Navbar = () => {
               href='#'
               variant='outline'
             >
-              Contact Us
+              {t('Contact Us')}
             </ButtonLink>
             <ButtonLink
               className='py-[4px] text-center text-sm font-light rounded-sm'
               href='#'
               variant='primary'
             >
-              Get Started
+              {t('Get Started')}
             </ButtonLink>
           </div>
         </div>

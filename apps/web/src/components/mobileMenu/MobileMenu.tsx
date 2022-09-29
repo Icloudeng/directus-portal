@@ -16,6 +16,7 @@ import {
   NavbarLinkSubmenuItem,
 } from '@/cms/items/types';
 import { HasSvgText } from '../HasSvgText';
+import { useTranslation } from 'next-i18next';
 
 const SubmenuItem = (props: NavbarLinkSubmenuItem & { featured?: boolean }) => {
   const { id, url, external, featured, icon_svg, translations } = useMut(
@@ -115,6 +116,7 @@ export const MobileMenu = forwardRef<HTMLDivElement>((_, ref) => {
   const { NavbarLinks } = useSharedData();
   const links = useMut(NavbarLinks);
   const { targetEl } = useOutsideClick(onClickOuside);
+  const { t } = useTranslation();
 
   function onClickOuside(el: HTMLElement, nodeTarget: HTMLElement) {
     const burger = document.querySelector('#nav__burger');
@@ -160,14 +162,14 @@ export const MobileMenu = forwardRef<HTMLDivElement>((_, ref) => {
               href='#'
               variant='outline'
             >
-              Contact Us
+              {t('Contact Us')}
             </ButtonLink>
             <ButtonLink
               className='w-full py-3 flex items-center justify-center text-base font-normal rounded-sm'
               href='#'
               variant='primary'
             >
-              Get Started
+              {t('Get Started')}
             </ButtonLink>
           </div>
         </div>

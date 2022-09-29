@@ -8,27 +8,31 @@ import { ContactSection } from './components/ContactSection';
 import { FooterItemLinks } from './components/FooterItemLinks';
 import { Subscribe } from './components/Subscribe';
 import { TermsConditions } from './components/TermsConditions';
+import { useTranslation } from 'next-i18next';
 
 export const Footer = () => {
   const { FooterLinks } = useSharedData();
   const footer_links = useMut(FooterLinks);
+  const { t } = useTranslation();
 
   return (
     <div className='sm:px-10 py-10 text-gray-300 z-0 bg-[#313b4d]'>
       <div className='x-container-fluid flex flex-col gap-5 divide-y-2 divide-gray-800'>
         <div className='top-footer flex flex-col items-center gap-12 py-10'>
           <h1 className='text-center'>
-            <span className='text-primary-400'>Start your innovation</span>{' '}
-            today with cloud
+            <span className='text-primary-400'>
+              {t('Start your innovation')}
+            </span>{' '}
+            {t('today with cloud')}
           </h1>
           <div className='flex flex-col ss:flex-row items-center gap-7'>
-            <span>Take first step right now</span>
+            <span>{t('Take first step right now')}</span>
             <ButtonLink
               href='#'
               className='py-[.7rem] px-10 font-normal rounded-none text-center'
               variant='primary'
             >
-              Get started
+              {t('Get started')}
             </ButtonLink>
           </div>
         </div>

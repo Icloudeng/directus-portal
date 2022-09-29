@@ -15,6 +15,7 @@ import { useSharedData } from '@/store';
 import { useMut } from '@/cms/mut';
 
 import { SocialMedia } from './SocialMedia';
+import { useTranslation } from 'next-i18next';
 
 const socialIcons: { [x: string]: JSX.Element } = {
   facebook: <FaFacebookF fontSize={17} />,
@@ -28,6 +29,7 @@ const socialIcons: { [x: string]: JSX.Element } = {
 export const ContactSection = () => {
   const { CompanyDetails } = useSharedData();
   const data = useMut(CompanyDetails);
+  const { t } = useTranslation();
 
   return (
     <div className='middle-right text-sm flex-1 flex flex-col gap-5'>
@@ -35,7 +37,7 @@ export const ContactSection = () => {
         <p className='max-w-[24rem] mb-3'>{data?.translations?.slogan}</p>
       )}
       <p className='font-bold uppercase underline underline-offset-8'>
-        Contact Us :
+        {t('Contact Us')} :
       </p>
       <div className='flex flex-col gap-5'>
         <div className='space-y-4'>
@@ -53,7 +55,7 @@ export const ContactSection = () => {
             }
           )}
         </div>
-        <span>Local call rate</span>
+        <span>{t('Local call rate')}</span>
       </div>
 
       {data?.support_email && (

@@ -27,12 +27,14 @@ type NewsTransField = {
 type NewsField = {
   label: string;
   tags: string[];
+  slug: string;
   image: MDWithAsset;
 };
 
 export type MDNews = MDWithTranslation<NewsTransField> & NewsField & DRTStatus;
 
 export type MDTopbarNew = Pick<DRTStatus, 'id' | 'date_created' | 'status'> &
+  Pick<NewsField, 'slug'> &
   MDWithTranslation<Pick<NewsTransField, 'title' | 'languages_code'>>;
 
 // ----------------------- TopbarLinks model type --------------

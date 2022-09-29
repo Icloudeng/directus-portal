@@ -9,10 +9,12 @@ import { useSharedData } from '@/store';
 
 import { useMut } from '@/cms/mut';
 import { useOutsideClick } from '@/hooks/useOutsideClick';
+import { useTranslation } from 'next-i18next';
 
 export const TopBar: React.FC = () => {
   const { languages, locale } = useSharedData();
   const { targetEl } = useOutsideClick((el) => el.classList.remove('active'));
+  const { t } = useTranslation();
 
   const toggleLang = () => {
     targetEl.current?.classList.toggle('active');
@@ -26,7 +28,7 @@ export const TopBar: React.FC = () => {
         <div className='flex flex-1 items-center mr-auto overflow-hidden flex-nowrap'>
           <div className=' h-5 px-2 border border-primary-400 flex items-center justify-center rounded-sm'>
             <span className='uppercase text-[0.6rem] text-primary-400'>
-              news
+              {t('TOPBAR_NEWS')}
             </span>
           </div>
           <TopbarNews />
@@ -82,7 +84,7 @@ function TopbarNews() {
         <>
           <UnstyledLink
             title={title}
-            href={'/news/' + $data.id}
+            href={'/news/' + $data.slug}
             className='animated-underline mx-3 text-xs flex items-center justify-start text-textDark'
           >
             {title.length > 50 ? title.substring(0, 50) + '...' : title}
