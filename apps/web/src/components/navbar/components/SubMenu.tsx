@@ -33,7 +33,7 @@ export const Submenu = React.memo((props: NavbarLinkSubmenu) => {
         <div
           className={`${
             featured
-              ? 'flex flex-col items-center justify-center flex-1 h-full gap-10'
+              ? 'flex flex-col items-start justify-center flex-1 h-full gap-10'
               : 'relative grid gap-6 px-5 py-6 sm:gap-6 sm:p-8'
           }`}
         >
