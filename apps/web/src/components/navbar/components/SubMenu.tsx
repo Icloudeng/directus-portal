@@ -1,14 +1,12 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 
 import UnstyledLink from '@/components/links/UnstyledLink';
 import { NavbarLinkSubmenu, NavbarLinkSubmenuItem } from '@/cms/items/types';
 import { useMut } from '@/cms/mut';
 import { HasSvgText } from '@/components/HasSvgText';
 
-export const Submenu = React.memo((props: NavbarLinkSubmenu) => {
-  const { featured, translations, items } = useMut(
-    useMemo(() => ({ ...props }), [props])
-  );
+export const Submenu = React.memo(({ data }: { data: NavbarLinkSubmenu }) => {
+  const { featured, translations, items } = useMut(data);
 
   return (
     <div
@@ -38,7 +36,9 @@ export const Submenu = React.memo((props: NavbarLinkSubmenu) => {
           }`}
         >
           {items.map((item) => {
-            return <SubmenuItem key={item.id} {...item} featured={featured} />;
+            return (
+              <SubmenuItem key={item.id} data={item} featured={featured} />
+            );
           })}
         </div>
       </div>
@@ -46,10 +46,11 @@ export const Submenu = React.memo((props: NavbarLinkSubmenu) => {
   );
 });
 
-const SubmenuItem = (props: NavbarLinkSubmenuItem & { featured: boolean }) => {
-  const { featured, url, icon_svg, translations, external } = useMut(
-    useMemo(() => ({ ...props }), [props])
-  );
+const SubmenuItem = ({
+  data,
+  featured,
+}: { data: NavbarLinkSubmenuItem } & { featured: boolean }) => {
+  const { url, icon_svg, translations, external } = useMut(data);
 
   return (
     <UnstyledLink

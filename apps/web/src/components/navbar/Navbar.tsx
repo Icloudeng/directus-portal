@@ -150,7 +150,7 @@ function NavbarLink({
         >
           <div className='flex rounded-lg shadow-lg bg-primary-50 ring-1 ring-black divide-x-[1px] ring-opacity-5 overflow-hidden'>
             {submenus.map((submenu) => {
-              return <Submenu key={submenu.id} {...submenu} />;
+              return <Submenu key={submenu.id} data={submenu} />;
             })}
           </div>
         </div>

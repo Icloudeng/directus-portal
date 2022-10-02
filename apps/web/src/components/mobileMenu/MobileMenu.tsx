@@ -1,4 +1,4 @@
-import React, { forwardRef, useMemo, useRef } from 'react';
+import { forwardRef, useRef } from 'react';
 import { GrClose } from 'react-icons/gr';
 import { VscChevronDown } from 'react-icons/vsc';
 import { mergeRefs } from '@/utils/merge-refs';
@@ -18,10 +18,11 @@ import {
 import { HasSvgText } from '../HasSvgText';
 import { useTranslation } from 'next-i18next';
 
-const SubmenuItem = (props: NavbarLinkSubmenuItem & { featured?: boolean }) => {
-  const { id, url, external, featured, icon_svg, translations } = useMut(
-    useMemo(() => ({ ...props }), [props])
-  );
+const SubmenuItem = ({
+  data,
+  featured,
+}: { data: NavbarLinkSubmenuItem } & { featured?: boolean }) => {
+  const { id, url, external, icon_svg, translations } = useMut(data);
 
   return (
     <UnstyledLink
@@ -40,10 +41,8 @@ const SubmenuItem = (props: NavbarLinkSubmenuItem & { featured?: boolean }) => {
   );
 };
 
-const SubMenu = (props: NavbarLinkSubmenu) => {
-  const { translations, featured, items } = useMut(
-    useMemo(() => ({ ...props }), [props])
-  );
+const SubMenu = ({ data }: { data: NavbarLinkSubmenu }) => {
+  const { translations, featured, items } = useMut(data);
 
   return (
     <div className='flex items-center justify-between'>
@@ -53,7 +52,9 @@ const SubMenu = (props: NavbarLinkSubmenu) => {
         </span>
         <div className='flex flex-col items-start py-4 gap-3'>
           {items.map((item) => {
-            return <SubmenuItem key={item.id} featured={featured} {...item} />;
+            return (
+              <SubmenuItem key={item.id} featured={featured} data={item} />
+            );
           })}
         </div>
       </div>
@@ -102,7 +103,7 @@ function Submenu({
           <div className='submenu__mob hidden'>
             <div className='flex flex-col ring-opacity-5 min-h-full'>
               {submenus.map((submenu) => {
-                return <SubMenu key={submenu.id} {...submenu} />;
+                return <SubMenu key={submenu.id} data={submenu} />;
               })}
             </div>
           </div>
