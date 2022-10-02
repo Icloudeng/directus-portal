@@ -56,7 +56,7 @@ const SubmenuItem = ({
     <UnstyledLink
       href={url}
       target={external ? '_blank' : undefined}
-      className={`-m-3 p-3 flex items-start rounded-lg ${
+      className={`-m-3 p-3 flex items-start rounded-lg w-full ${
         featured ? 'hover:bg-primary-100' : 'hover:bg-gray-50 navbar__link-icon'
       } animated-underline`}
     >
