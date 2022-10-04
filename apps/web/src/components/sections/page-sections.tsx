@@ -174,7 +174,7 @@ function PageSection({ section }: { section: M2APageSection }) {
               return (
                 <React.Fragment key={content.st_value}>
                   {STComponent && items.length > 0 && (
-                    <div className='w-full' data-st-content={content.st_value}>
+                    <div className={`w-full st__content-${content.st_value}`}>
                       <STComponent items={items} />
                     </div>
                   )}
