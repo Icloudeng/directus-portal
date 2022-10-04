@@ -68,7 +68,7 @@
   lineinfile:
     path: "{{ env_file }}"
     regexp: "^CACHE_ENABLED="
-    line: "CACHE_ENABLED=true"
+    line: "CACHE_ENABLED=false"
 
 - name: App CMS .env config | RATE_LIMITER_ENABLED
   lineinfile:
@@ -85,7 +85,7 @@
 - name: App CMS .env config | Redis
   blockinfile:
     path: "{{ env_file }}"
-    insertafter: "CACHE_ENABLED=true"
+    insertafter: "CACHE_ENABLED=false"
     block: |
       CACHE_STORE=redis
       CACHE_REDIS_HOST=127.0.0.1
