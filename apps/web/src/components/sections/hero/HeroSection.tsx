@@ -6,8 +6,22 @@ import NextImage from '@/components/NextImage';
 
 import { MDHomePageHero } from '@/cms/items/types';
 import { useMut } from '@/cms/mut';
+import Image from 'next/image';
+import { useCustomerEmblaCarousel } from '@/hooks/useCustomEmblaCarousel';
+import { DotButton } from '@/components/carouselButtons/CarouselButtons';
 
 export const HeroSection = ({ data }: { data: MDHomePageHero }) => {
+  const {
+    viewportRef,
+    scrollPrev,
+    scrollNext,
+    prevBtnEnabled,
+    nextBtnEnabled,
+    selectedIndex,
+    scrollSnaps,
+    scrollTo
+  } = useCustomerEmblaCarousel();
+
   const { t } = useTranslation('home');
   const { translations, image, disposition } = useMut(data);
   const trailing_titles = translations?.trailing_titles;
@@ -45,15 +59,37 @@ export const HeroSection = ({ data }: { data: MDHomePageHero }) => {
   );
 
   const contentImage = (
-    <div className='hero-right flex items-center justify-end max-w-xs sd:max-w-full sd:w-1/2'>
-      <NextImage
-        useSkeleton
+    <div id='default-carousel' className='relative hero-right flex items-center justify-end h-80 max-w-xs sd:max-w-full sd:w-1/2 bg-green-300'>
+      <div className='overflow-hidden w-full h-full' ref={viewportRef}>
+        <div className='flex w-full h-full'>
+          {
+          [1,2,4].map((elem, index) => (
+            <Image
+              key={index}
+              className='absolute image object-cover'
+              src={`https://flowbite.com/docs/images/blog/image-${elem}.jpg`}
+              layout="fill"
+              objectFit="cover"
+              alt='accordion image'
+            />
+          )) 
+          }
+        </div>
+
+      </div>
+      <div className='absolute z-30 flex space-x-3 -translate-x-1/2 -bottom-10 left-1/2'>
+        {scrollSnaps.map((_, index) => (
+          <DotButton key={index} position={index} selected={index === selectedIndex} onClick={() => scrollTo(index)} />
+        ))}
+      </div>
+      {/* <Image
+        // useSkeleton
         src={image.src!}
-        imgClassName='!z-0'
+        className='image !z-0'
         width={500}
         height={376}
         alt='hero banner image'
-      />
+      /> */}
     </div>
   );
 
