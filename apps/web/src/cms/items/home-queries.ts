@@ -11,6 +11,10 @@ const gql_query = jsonToGraphQLQuery({
         [CMS_MODELS.home_hero]: {
             disposition: true,
             image: qWithQueryAsset(),
+            images: {
+                id: true,
+                directus_files_id: qWithQueryAsset()
+            },
             ...qWithTranslations({
                 title: true,
                 description: true,
@@ -43,7 +47,10 @@ export async function getGqlHomeQueries(
     if (!res.data || !access_token) return res;
     const { HomeHero, HomeSections } = res.data;
 
-    if (HomeHero) qWithAsset(access_token, HomeHero, 'image');
+    if (HomeHero) {
+        qWithAsset(access_token, HomeHero, 'image')
+        HomeHero.images.forEach((image) => qWithAsset(access_token, image, 'directus_files_id'))
+    };
 
     if (HomeSections) {
         pageSectionPublished(HomeSections);

@@ -157,6 +157,7 @@ export type MDPageDetail = {
 // ---------------- Home Page, Hero section -------------------------
 export type MDHomePageHero = {
   image: MDWithAsset;
+  images: { id: ID; directus_files_id: MDWithAsset }[];
   disposition: 'text_left' | 'text_right';
 } & MDWithTranslation<{
   title: string;
