@@ -235,6 +235,30 @@ collections:
       comment: null
       name: HomeHero
       schema: public
+  - collection: HomeHero_files
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: HomeHero_files
+      color: null
+      display_template: null
+      group: Home_Page
+      hidden: true
+      icon: import_export
+      item_duplication_fields: null
+      note: null
+      singleton: false
+      sort: 3
+      sort_field: null
+      translations: null
+      unarchive_value: null
+    schema:
+      comment: null
+      name: HomeHero_files
+      schema: public
   - collection: HomeHero_translations
     meta:
       accountability: all
@@ -275,7 +299,7 @@ collections:
       item_duplication_fields: null
       note: null
       singleton: true
-      sort: 3
+      sort: 4
       sort_field: null
       translations: null
       unarchive_value: null
@@ -299,7 +323,7 @@ collections:
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: 4
+      sort: 5
       sort_field: null
       translations: null
       unarchive_value: null
@@ -3759,7 +3783,7 @@ fields:
       options: null
       readonly: false
       required: true
-      sort: 4
+      sort: 3
       special:
         - file
       translations: null
@@ -3786,6 +3810,31 @@ fields:
       schema: public
       table: HomeHero
     type: uuid
+  - collection: HomeHero
+    field: images
+    meta:
+      collection: HomeHero
+      conditions: null
+      display: null
+      display_options: null
+      field: images
+      group: null
+      hidden: false
+      interface: files
+      note: null
+      options:
+        template: null
+      readonly: false
+      required: false
+      sort: 4
+      special:
+        - files
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema: null
+    type: alias
   - collection: HomeHero
     field: status
     meta:
@@ -3863,7 +3912,7 @@ fields:
       options: null
       readonly: false
       required: true
-      sort: 3
+      sort: 2
       special:
         - translations
       translations: null
@@ -3958,6 +4007,129 @@ fields:
       schema: public
       table: HomeHero
     type: uuid
+  - collection: HomeHero_files
+    field: HomeHero_id
+    meta:
+      collection: HomeHero_files
+      conditions: null
+      display: null
+      display_options: null
+      field: HomeHero_id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: HomeHero
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: HomeHero_id
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: HomeHero_files
+    type: uuid
+  - collection: HomeHero_files
+    field: directus_files_id
+    meta:
+      collection: HomeHero_files
+      conditions: null
+      display: null
+      display_options: null
+      field: directus_files_id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: directus_files
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: directus_files_id
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: HomeHero_files
+    type: uuid
+  - collection: HomeHero_files
+    field: id
+    meta:
+      collection: HomeHero_files
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: integer
+      default_value: nextval('"HomeHero_files_id_seq"'::regclass)
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: true
+      is_generated: false
+      is_nullable: false
+      is_primary_key: true
+      is_unique: true
+      max_length: null
+      name: id
+      numeric_precision: 32
+      numeric_scale: 0
+      schema: public
+      table: HomeHero_files
+    type: integer
   - collection: HomeHero_translations
     field: HomeHero_id
     meta:
@@ -8735,7 +8907,7 @@ fields:
       interface: input
       note: null
       options:
-        placeholder: Page URL
+        placeholder: Page URL (eg. /, /pricing, /about)
         trim: true
       readonly: false
       required: true
@@ -14984,6 +15156,50 @@ relations:
       on_delete: NO ACTION
       on_update: NO ACTION
       table: HomeHero
+  - collection: HomeHero_files
+    field: HomeHero_id
+    meta:
+      junction_field: directus_files_id
+      many_collection: HomeHero_files
+      many_field: HomeHero_id
+      one_allowed_collections: null
+      one_collection: HomeHero
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: images
+      sort_field: null
+    related_collection: HomeHero
+    schema:
+      column: HomeHero_id
+      constraint_name: homehero_files_homehero_id_foreign
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: HomeHero
+      on_delete: SET NULL
+      on_update: NO ACTION
+      table: HomeHero_files
+  - collection: HomeHero_files
+    field: directus_files_id
+    meta:
+      junction_field: HomeHero_id
+      many_collection: HomeHero_files
+      many_field: directus_files_id
+      one_allowed_collections: null
+      one_collection: directus_files
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    related_collection: directus_files
+    schema:
+      column: directus_files_id
+      constraint_name: homehero_files_directus_files_id_foreign
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: directus_files
+      on_delete: SET NULL
+      on_update: NO ACTION
+      table: HomeHero_files
   - collection: HomeHero_translations
     field: HomeHero_id
     meta:

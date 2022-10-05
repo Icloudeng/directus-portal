@@ -1,5 +1,5 @@
 import { useTranslation } from 'next-i18next';
-import { useMemo } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { TypeAnimation } from 'react-type-animation';
 
 import NextImage from '@/components/NextImage';
@@ -7,31 +7,28 @@ import NextImage from '@/components/NextImage';
 import { MDHomePageHero } from '@/cms/items/types';
 import { useMut } from '@/cms/mut';
 import Image from 'next/image';
-import { useCustomerEmblaCarousel } from '@/hooks/useCustomEmblaCarousel';
-import { DotButton } from '@/components/carouselButtons/CarouselButtons';
+
+type AccType =
+  | ((element: HTMLElement | null) => void | Promise<void>)
+  | string
+  | number;
 
 export const HeroSection = ({ data }: { data: MDHomePageHero }) => {
-  const {
-    viewportRef,
-    scrollPrev,
-    scrollNext,
-    prevBtnEnabled,
-    nextBtnEnabled,
-    selectedIndex,
-    scrollSnaps,
-    scrollTo
-  } = useCustomerEmblaCarousel();
-
   const { t } = useTranslation('home');
-  const { translations, image, disposition } = useMut(data);
+  const { translations, image, images, disposition } = useMut(data);
   const trailing_titles = translations?.trailing_titles;
+  const [imageKey, setImageKey] = useState(0);
+
+  const onTypingProgress = useCallback((index: number) => {
+    return () => setImageKey(index);
+  }, []);
 
   const trailingTitles = useMemo(() => {
     if (!trailing_titles) return [];
-    return trailing_titles.reduce((acc, value) => {
-      acc.push(value, 1000);
+    return trailing_titles.reduce((acc, value, index) => {
+      acc.push(onTypingProgress(index), value, 1000);
       return acc;
-    }, [] as (string | number)[]);
+    }, [] as AccType[]);
   }, [trailing_titles]);
 
   const contentText = (
@@ -41,13 +38,11 @@ export const HeroSection = ({ data }: { data: MDHomePageHero }) => {
           {translations?.title}{' '}
         </h1>
         <TypeAnimation
-          // Same String at the start will only be typed once, initially
           sequence={trailingTitles}
-          speed={30} // Custom Speed from 1-99 - Default Speed: 40
-          // style={{ fontSize: '2em' }}
+          speed={40}
           className='font-extrabold leading-[1.3] text-4xl sd:text-2xl sm:text-[2.2rem] md:text-[2.7rem] md:leading-[3rem]'
-          wrapper='h2' // Animation will be rendered as a <span>
-          repeat={Infinity} // Repeat this Animation Sequence infinitely
+          wrapper='h2'
+          repeat={Infinity}
           cursor={true}
         />
       </div>
@@ -59,38 +54,55 @@ export const HeroSection = ({ data }: { data: MDHomePageHero }) => {
   );
 
   const contentImage = (
-    <div id='default-carousel' className='relative hero-right flex items-center justify-end h-80 max-w-xs sd:max-w-full sd:w-1/2 bg-green-300'>
-      <div className='overflow-hidden w-full h-full' ref={viewportRef}>
-        <div className='flex w-full h-full'>
-          {
-          [1,2,4].map((elem, index) => (
-            <Image
-              key={index}
-              className='absolute image object-cover'
-              src={`https://flowbite.com/docs/images/blog/image-${elem}.jpg`}
-              layout="fill"
-              objectFit="cover"
-              alt='accordion image'
-            />
-          )) 
-          }
-        </div>
+    <>
+      {images.length > 0 ? (
+        <div className='relative hero-right flex items-center justify-end h-80 max-w-xs sd:max-w-full sd:w-1/2'>
+          <div className='overflow-hidden w-full h-full'>
+            <div className='flex w-full h-full relative'>
+              {images.map(({ directus_files_id: { id, src } }, index) => {
+                const len = images.length - 1;
+                const actived =
+                  imageKey > len && imageKey > index
+                    ? true
+                    : imageKey === index;
 
-      </div>
-      <div className='absolute z-30 flex space-x-3 -translate-x-1/2 -bottom-10 left-1/2'>
-        {scrollSnaps.map((_, index) => (
-          <DotButton key={index} position={index} selected={index === selectedIndex} onClick={() => scrollTo(index)} />
-        ))}
-      </div>
-      {/* <Image
-        // useSkeleton
-        src={image.src!}
-        className='image !z-0'
-        width={500}
-        height={376}
-        alt='hero banner image'
-      /> */}
-    </div>
+                return (
+                  <div
+                    key={id}
+                    className={`absolute transition-opacity duration-300 inset-0 ${
+                      actived ? 'opacity-100' : 'opacity-0'
+                    }`}
+                  >
+                    <Image
+                      className='image object-cover'
+                      src={src!}
+                      layout='fill'
+                      objectFit='cover'
+                      alt='accordion image'
+                    />
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      ) : (
+        <>
+          {image && (
+            <div className='hero-right flex items-center justify-end max-w-xs sd:max-w-full sd:w-1/2'>
+              <NextImage
+                useSkeleton
+                src={image.src!}
+                imgClassName='!z-0'
+                width={500}
+                height={376}
+                alt='hero banner image'
+              />
+            </div>
+          )}
+        </>
+      )}
+    </>
   );
 
   return (
