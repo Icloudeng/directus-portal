@@ -6,6 +6,7 @@ import {
   MDWithPoint,
   MDWithTranslation,
 } from '@/types/directus';
+import { M2APageSection } from '../page-sections';
 
 // --------------- language model types -------------
 
@@ -139,7 +140,7 @@ export type MDNavbarLink = {
 
 //  ------------------ Page details Links types  ---------------------
 
-export type MDPageDetail = {
+export type MDPage = {
   label: string;
   url: string;
   image: MDWithAsset<{
@@ -148,6 +149,7 @@ export type MDPageDetail = {
   }>;
   keywords: string[];
   theme_color?: string;
+  sections: M2APageSection[];
 } & MDWithTranslation<{
   title: string;
   description?: string;

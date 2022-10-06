@@ -1,13 +1,12 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 
-import { useSharedData } from '@/store';
-
 import { useMut } from '@/cms/mut';
+import { MDPage } from '@/cms/items/types';
 
 const defaultMeta = {
-  title: 'icloudeng',
-  siteName: 'icloudeng',
+  title: 'Icloudeng',
+  siteName: 'Icloudeng',
   description:
     'Cloud IT Engineering LTD, a giant cloud computing solution provider',
   url: 'https://coding.icloudeng.xyz',
@@ -19,12 +18,12 @@ const defaultMeta = {
 type SeoProps = {
   date?: string;
   templateTitle?: string;
+  dynamicPage?: MDPage;
 } & Partial<typeof defaultMeta>;
 
-export default function Seo(props: SeoProps) {
+export default function Seo({ dynamicPage, ...props }: SeoProps) {
   const router = useRouter();
-  const data = useSharedData();
-  const page = useMut(data?.Page_Details);
+  const page = useMut(dynamicPage);
 
   const $title = page?.translations?.title;
   const $description = page?.translations?.description;
