@@ -10,7 +10,6 @@ import { PageSections } from '@/components/sections/page-sections';
 import { SupportBusiness } from '@/components/sections/support-business/SupportBusiness';
 import Seo from '@/components/Seo';
 
-import { getDirectusAuthToken } from '@/cms/directus';
 import { getGqlHomeQueries, QHomeHeroQueriesType } from '@/cms/items';
 import { getServerSideTranslations } from '@/utils/server-translation';
 import { JobsCreation } from '@/components/sections/jobs-creation/JobsCreation';
@@ -24,7 +23,7 @@ export default function HomePage(props: Partial<QHomeHeroQueriesType>) {
 
   return (
     <Layout>
-      <Seo templateTitle='Home' />
+      <Seo />
       <main className='z-0'>
         <section className='hero-section py-10'>
           {HomeHero && <HeroSection data={HomeHero} />}
@@ -62,8 +61,7 @@ export default function HomePage(props: Partial<QHomeHeroQueriesType>) {
 export async function getServerSideProps({
   locale,
 }: GetServerSidePropsContext) {
-  const access_token = await getDirectusAuthToken();
-  const res = await getGqlHomeQueries(access_token).catch(console.error);
+  const res = await getGqlHomeQueries().catch(console.error);
 
   return {
     props: {

@@ -10,7 +10,6 @@ import ChatwootWidget from '@/components/services/chatwoot';
 
 import { ISharedData, SharedDataProvider } from '@/store';
 
-import { getDirectusAuthToken } from '@/cms/directus';
 import { getGqlSharedData } from '@/cms/items';
 
 function MyApp({
@@ -30,7 +29,7 @@ function MyApp({
 }
 
 MyApp.getInitialProps = async ({
-  ctx: { locale, locales, req },
+  ctx: { locale, locales },
 }: {
   ctx: GetServerSidePropsContext;
 }) => {
@@ -39,10 +38,8 @@ MyApp.getInitialProps = async ({
       props: {},
     };
   }
-  const url = new URL(req.url!, `http://${req.headers.host}`);
 
-  const access_token = await getDirectusAuthToken();
-  const { data } = await getGqlSharedData(access_token, url.pathname);
+  const { data } = await getGqlSharedData();
 
   if (data) {
     data.languages = data.languages.filter((lang) =>

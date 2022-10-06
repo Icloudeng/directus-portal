@@ -22,7 +22,7 @@ export const CMS_MODELS = {
     footer_link_items: 'FooterLinkItems',
     company_details: 'CompanyDetails',
     navbar_links: 'NavbarLinks',
-    page_details: 'Page_Details',
+    pages: 'Pages',
     home_hero: 'HomeHero',
     home_sections: 'HomeSections',
   } as const),
