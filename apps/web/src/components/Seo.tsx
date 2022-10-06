@@ -45,6 +45,9 @@ export default function Seo({ dynamicPage, ...props }: SeoProps) {
       <meta name='robots' content={meta.robots} />
       <meta content={$description || meta.description} name='description' />
       <link rel='canonical' href={`${meta.url}${page?.url || router.asPath}`} />
+      {page?.keywords && page.keywords.length > 0 && (
+        <meta name='keywords' content={page.keywords.join(', ')} />
+      )}
       {/* Open Graph */}
       <meta
         property='og:url'
