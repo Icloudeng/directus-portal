@@ -9,7 +9,7 @@ import { getServerSideTranslations } from '@/utils/server-translation';
 import {
   getGqlDynamicPages,
   QDynamicPagesType,
-} from '@/cms/items/dynamic-pages';
+} from '@/cms/items';
 import { EmptyCanvasSvg } from '@/components/svgs/EmptyCanvas';
 import { useTranslation } from 'next-i18next';
 import { useRouter } from 'next/router';
