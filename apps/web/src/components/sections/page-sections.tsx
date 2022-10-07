@@ -142,7 +142,7 @@ function PageSection({
                 right: 0;
                 bottom: 0;
                 z-index: -9;
-                background-color: ${bg_color};
+                background-color: ${bg_color} !important;
               }`
                 )
             )}
