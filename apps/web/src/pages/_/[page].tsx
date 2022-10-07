@@ -6,10 +6,7 @@ import { PageSections } from '@/components/sections/page-sections';
 import Seo from '@/components/Seo';
 
 import { getServerSideTranslations } from '@/utils/server-translation';
-import {
-  getGqlDynamicPages,
-  QDynamicPagesType,
-} from '@/cms/items';
+import { getGqlDynamicPages, QDynamicPagesType } from '@/cms/items';
 import { EmptyCanvasSvg } from '@/components/svgs/EmptyCanvas';
 import { useTranslation } from 'next-i18next';
 import { useRouter } from 'next/router';
@@ -28,21 +25,19 @@ export default function HomePage(props: QDynamicPagesType) {
   return (
     <Layout>
       <Seo dynamicPage={page} />
-      <main className='z-0'>
-        {page.sections.length === 0 && (
-          <div className={`relative py-10 bg-white isolate`}>
-            <div className='flex justify-center'>
-              <div className='rounded-[10%]'>
-                <EmptyCanvasSvg />
-              </div>
+      {page.sections.length === 0 && (
+        <div className={`relative py-10 bg-white isolate`}>
+          <div className='flex justify-center'>
+            <div className='rounded-[10%]'>
+              <EmptyCanvasSvg />
             </div>
-            <h4 className='text-center my-24'>
-              {t('NO_CONTENT_FOUND', { page: query.page })}
-            </h4>
           </div>
-        )}
-        {page && <PageSections sections={page.sections} />}
-      </main>
+          <h4 className='text-center my-24'>
+            {t('NO_CONTENT_FOUND', { page: query.page })}
+          </h4>
+        </div>
+      )}
+      {page && <PageSections sections={page.sections} />}
     </Layout>
   );
 }

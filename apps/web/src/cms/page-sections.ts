@@ -85,6 +85,14 @@ const q_ST = [
     }),
     ...qWithStatus,
   },
+  {
+    __typeName: section_templates.st_clean_heros,
+    ...qWithTranslations({
+      title: true,
+      description: true,
+    }),
+    ...qWithStatus,
+  },
 ];
 
 export const pageSectionQuery = {
@@ -171,10 +179,11 @@ export function pageSectionPublished<
 // --------------------------------------------------------------------//
 // ----------------------------  Types ------------------//
 // --------------------------------------------------------------------//
-
+export type ISharedObject = { [x: string]: any };
 export type STemplates_Props<T> = {
   items: T[];
-  mutableObject: { [x: string]: any };
+  sectionClass: string;
+  sharedObject: ISharedObject;
 };
 
 //------------------- Section templates --------------------//
@@ -258,6 +267,15 @@ export type ST_NavAccordion = MDHasM2A<
   }> &
     DRTStatus,
   ST_V<'st_nav_accordions'>
+>;
+
+export type ST_CleanHero = MDHasM2A<
+  MDWithTranslation<{
+    title: string;
+    description?: string;
+  }> &
+    DRTStatus,
+  ST_V<'st_clean_heros'>
 >;
 //------------------- Page Sections --------------------//
 type PS_Content =

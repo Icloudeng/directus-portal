@@ -24,36 +24,35 @@ export default function HomePage(props: Partial<QHomeHeroQueriesType>) {
   return (
     <Layout>
       <Seo />
-      <main className='z-0'>
-        <section className='hero-section py-10'>
-          {HomeHero && <HeroSection data={HomeHero} />}
-        </section>
 
-        <section className='py-10 bg-[#f5f7fa]'>
-          <CloudComputing />
-        </section>
+      <section className='hero-section py-10'>
+        {HomeHero && <HeroSection data={HomeHero} />}
+      </section>
 
-        <section className='py-10 bg-white'>
-          <HowEasy />
-        </section>
+      <section className='py-10 bg-[#f5f7fa]'>
+        <CloudComputing />
+      </section>
 
-        <section className='py-10 bg-[#f5f7fa]'>
-          <IntelligentSystem />
-        </section>
+      <section className='py-10 bg-white'>
+        <HowEasy />
+      </section>
 
-        {/* <section className='py-10 bg-[#f5f7fa]'>
+      <section className='py-10 bg-[#f5f7fa]'>
+        <IntelligentSystem />
+      </section>
+
+      {/* <section className='py-10 bg-[#f5f7fa]'>
           <UnderHeroSection />
         </section> */}
-        <section className='py-10 bg-white'>
-          <SupportBusiness />
-        </section>
+      <section className='py-10 bg-white'>
+        <SupportBusiness />
+      </section>
 
-        <section className='py-10 bg-[#f5f7fa]'>
-          <JobsCreation />
-        </section>
+      <section className='py-10 bg-[#f5f7fa]'>
+        <JobsCreation />
+      </section>
 
-        {HomeSections && <PageSections sections={HomeSections.sections} />}
-      </main>
+      {HomeSections && <PageSections sections={HomeSections.sections} />}
     </Layout>
   );
 }
