@@ -81,6 +81,9 @@
   args:
     chdir: "{{ root_path }}/apps/web"
 
+- name: PM2 | Save the app list to be restored at reboot
+  command: "pm2 save"
+
 - name: Reload nginx
   service:
     name: nginx
