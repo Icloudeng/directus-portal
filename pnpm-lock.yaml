@@ -23,6 +23,7 @@ importers:
       '@tailwindcss/forms': ^0.5.2
       '@testing-library/jest-dom': ^5.16.5
       '@testing-library/react': ^13.3.0
+      '@types/lodash': ^4.14.186
       '@types/react': ^18.0.21
       '@types/react-dom': ^18.0.6
       '@typescript-eslint/eslint-plugin': ^5.32.0
@@ -42,6 +43,7 @@ importers:
       jest: ^27.5.1
       json-to-graphql-query: ^2.2.4
       lint-staged: ^12.5.0
+      lodash: ^4.17.21
       next: ^12.2.4
       next-i18next: ^12.0.1
       next-sitemap: ^2.5.28
@@ -67,6 +69,7 @@ importers:
       flowbite: 1.5.3
       is-svg: 4.3.2
       json-to-graphql-query: 2.2.4
+      lodash: 4.17.21
       next: 12.2.4_biqbaboplfbrettd7655fr4n2y
       next-i18next: 12.0.1_vyccxgqxcnj5vudpssiumaxlme
       next-themes: 0.2.0_vyccxgqxcnj5vudpssiumaxlme
@@ -85,6 +88,7 @@ importers:
       '@tailwindcss/forms': 0.5.2_tailwindcss@3.1.8
       '@testing-library/jest-dom': 5.16.5
       '@testing-library/react': 13.3.0_biqbaboplfbrettd7655fr4n2y
+      '@types/lodash': 4.14.186
       '@types/react': 18.0.21
       '@types/react-dom': 18.0.6
       '@typescript-eslint/eslint-plugin': 5.33.0_njno5y7ry2l2lcmiu4tywxkwnq
@@ -3858,6 +3862,10 @@ packages:
 
   /@types/json5/0.0.29:
     resolution: {integrity: sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==}
+    dev: true
+
+  /@types/lodash/4.14.186:
+    resolution: {integrity: sha512-eHcVlLXP0c2FlMPm56ITode2AgLMSa6aJ05JTTbYbI+7EMkCEE5qk2E41d5g2lCVTqRe0GnnRFurmlCsDODrPw==}
     dev: true
 
   /@types/mdast/3.0.10:
