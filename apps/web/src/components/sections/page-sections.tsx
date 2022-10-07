@@ -1,10 +1,14 @@
 import { useMut } from '@/cms/mut';
-import { M2APageSection } from '@/cms/page-sections';
+import {
+  ISharedObject,
+  M2APageSection,
+  STemplates_Props,
+} from '@/cms/page-sections';
 import { CMS_MODELS } from '@/constant/cms';
 import { VALID_CSS } from '@/utils/regex';
 import { testHexColor } from '@/utils/tests';
 import isSvg from 'is-svg';
-import React, { FunctionComponent, useMemo } from 'react';
+import React, { FunctionComponent, useMemo, useRef } from 'react';
 import { HasSvgText } from '../HasSvgText';
 import {
   ST_ValuesFC,
@@ -13,6 +17,7 @@ import {
   ST_CardImageCarouselsFC,
   ST_SidedContentsFC,
   ST_NavAccordionsFC,
+  ST_CleanHerosFC,
 } from './templates';
 
 const { section_templates } = CMS_MODELS;
@@ -22,7 +27,7 @@ type ST = typeof section_templates;
  * All components of the section template should be added here following the key-value convention
  */
 const ST_COMPONENTS: {
-  [k in keyof ST]: FunctionComponent<{ items: any }>;
+  [k in keyof ST]: FunctionComponent<STemplates_Props<any>>;
 } = {
   st_values: ST_ValuesFC,
   st_navtabs: ST_NavTabsFC,
@@ -30,6 +35,7 @@ const ST_COMPONENTS: {
   st_card_image_carousels: ST_CardImageCarouselsFC,
   st_sided_contents: ST_SidedContentsFC,
   st_nav_accordions: ST_NavAccordionsFC,
+  st_clean_heros: ST_CleanHerosFC,
 };
 
 // ------------------------------ ---------------------- ------------------//
@@ -51,7 +57,13 @@ function fc(css: string) {
     .join('{');
 }
 
-function PageSection({ section }: { section: M2APageSection }) {
+function PageSection({
+  section,
+  sharedObject,
+}: {
+  section: M2APageSection;
+  sharedObject: ISharedObject;
+}) {
   const item = useMut(section.item);
   const classId = `${section.collection}-${item.id}`;
   const styleId = `cstyle-${classId}`;
@@ -161,10 +173,15 @@ function PageSection({ section }: { section: M2APageSection }) {
           } page__section-container py-10 flex flex-col items-center gap-10`}
         >
           <div className='flex flex-col items-center justify-center gap-7 mb-7 page__section-titles'>
-            <h1 className='text-center'>{item.translations?.title}</h1>
-            <span className='max-w-xl text-center'>
-              {item.translations?.description}
-            </span>
+            {item.translations?.title && (
+              <h1 className='text-center'>{item.translations?.title}</h1>
+            )}
+
+            {item.translations?.description && (
+              <span className='max-w-xl text-center'>
+                {item.translations?.description}
+              </span>
+            )}
           </div>
 
           <div className='page__section-content w-full'>
@@ -175,7 +192,11 @@ function PageSection({ section }: { section: M2APageSection }) {
                 <React.Fragment key={content.st_value}>
                   {STComponent && items.length > 0 && (
                     <div className={`w-full st__content-${content.st_value}`}>
-                      <STComponent items={items} />
+                      <STComponent
+                        items={items}
+                        sectionClass={classId}
+                        sharedObject={sharedObject}
+                      />
                     </div>
                   )}
                 </React.Fragment>
@@ -189,12 +210,17 @@ function PageSection({ section }: { section: M2APageSection }) {
 }
 
 export function PageSections({ sections }: { sections: M2APageSection[] }) {
+  const sharedObject = useRef({} as ISharedObject);
   return (
     <>
       {sections
         .filter((f) => f.item.status === 'published')
         .map((section) => (
-          <PageSection key={section.id} section={section} />
+          <PageSection
+            key={section.id}
+            section={section}
+            sharedObject={sharedObject.current}
+          />
         ))}
     </>
   );

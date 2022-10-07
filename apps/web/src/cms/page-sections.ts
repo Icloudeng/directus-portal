@@ -21,6 +21,7 @@ const q_ST = [
     icon_svg: true,
     icon_bg_color: true,
     flexible: true,
+    rows: true,
     ...qWithTranslations({
       name: true,
       description: true,
@@ -81,6 +82,14 @@ const q_ST = [
       title: true,
       description: true,
       markdown_content: true,
+    }),
+    ...qWithStatus,
+  },
+  {
+    __typeName: section_templates.st_clean_heros,
+    ...qWithTranslations({
+      title: true,
+      description: true,
     }),
     ...qWithStatus,
   },
@@ -170,6 +179,12 @@ export function pageSectionPublished<
 // --------------------------------------------------------------------//
 // ----------------------------  Types ------------------//
 // --------------------------------------------------------------------//
+export type ISharedObject = { [x: string]: any };
+export type STemplates_Props<T> = {
+  items: T[];
+  sectionClass: string;
+  sharedObject: ISharedObject;
+};
 
 //------------------- Section templates --------------------//
 
@@ -178,6 +193,7 @@ export type ST_Value = MDHasM2A<
     icon_svg: string;
     icon_bg_color?: string;
     flexible: boolean;
+    rows: 'dynamic' | '2';
   } & MDWithTranslation<{
     name: string;
     description: string;
@@ -251,6 +267,15 @@ export type ST_NavAccordion = MDHasM2A<
   }> &
     DRTStatus,
   ST_V<'st_nav_accordions'>
+>;
+
+export type ST_CleanHero = MDHasM2A<
+  MDWithTranslation<{
+    title: string;
+    description?: string;
+  }> &
+    DRTStatus,
+  ST_V<'st_clean_heros'>
 >;
 //------------------- Page Sections --------------------//
 type PS_Content =

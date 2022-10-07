@@ -1,10 +1,11 @@
-import { ST_SidedContent } from '@/cms/page-sections';
-import { useEffect } from 'react';
+import type { STemplates_Props, ST_SidedContent } from '@/cms/page-sections';
 import Image from 'next/image';
 import { useMut } from '@/cms/mut';
 import { MarkdownContent } from '@/components/react-markdown/MarkdownContent';
 
-export function ST_SidedContentsFC({ items }: { items: ST_SidedContent[] }) {
+export function ST_SidedContentsFC({
+  items,
+}: STemplates_Props<ST_SidedContent>) {
   const groupedItems = items.reduce((acc, item) => {
     const last = acc[acc.length - 1];
     if (!last || last.length === 2) {
@@ -45,9 +46,9 @@ function SidedContent({ item }: ST_SidedContent) {
     >
       <div className='flex flex-col items-center md:items-start gap-7'>
         {translations?.title && (
-            <h6 className='mb-2 text-center md:text-start text-lg font-semibold tracking-tight'>
-                {translations?.title}
-            </h6>
+          <h6 className='mb-2 text-center md:text-start text-lg font-semibold tracking-tight'>
+            {translations?.title}
+          </h6>
         )}
         <div className='markdown__content'>
           <MarkdownContent>

@@ -1,4 +1,4 @@
-import { ST_CardCarousel } from '@/cms/page-sections';
+import type { STemplates_Props, ST_CardCarousel } from '@/cms/page-sections';
 import Image from 'next/image';
 import { useMut } from '@/cms/mut';
 import ButtonLink from '@/components/links/ButtonLink';
@@ -11,7 +11,9 @@ import {
 } from '@/components/carouselButtons/CarouselButtons';
 import { MarkdownContent } from '@/components/react-markdown/MarkdownContent';
 
-export function ST_CardCarouselsFC({ items }: { items: ST_CardCarousel[] }) {
+export function ST_CardCarouselsFC({
+  items,
+}: STemplates_Props<ST_CardCarousel>) {
   const first = items[0];
   const {
     viewportRef,

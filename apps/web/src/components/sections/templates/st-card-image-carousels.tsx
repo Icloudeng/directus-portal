@@ -1,5 +1,8 @@
 import Image from 'next/image';
-import { ST_CardImageCarousel } from '@/cms/page-sections';
+import type {
+  STemplates_Props,
+  ST_CardImageCarousel,
+} from '@/cms/page-sections';
 import {
   DotButton,
   NextButton,
@@ -12,9 +15,7 @@ import { useTranslation } from 'next-i18next';
 
 export function ST_CardImageCarouselsFC({
   items,
-}: {
-  items: ST_CardImageCarousel[];
-}) {
+}: STemplates_Props<ST_CardImageCarousel>) {
   const first = items[0];
   const {
     viewportRef,

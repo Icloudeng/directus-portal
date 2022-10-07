@@ -36,5 +36,6 @@ export const CMS_MODELS = {
     st_card_image_carousels: 'ST_CardImageCarousels',
     st_sided_contents: 'ST_SidedContents',
     st_nav_accordions: 'ST_NavAccordions',
+    st_clean_heros: 'ST_CleanHeros',
   } as const,
 };
