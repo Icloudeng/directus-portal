@@ -21,6 +21,7 @@ const q_ST = [
     icon_svg: true,
     icon_bg_color: true,
     flexible: true,
+    rows: true,
     ...qWithTranslations({
       name: true,
       description: true,
@@ -171,6 +172,11 @@ export function pageSectionPublished<
 // ----------------------------  Types ------------------//
 // --------------------------------------------------------------------//
 
+export type STemplates_Props<T> = {
+  items: T[];
+  mutableObject: { [x: string]: any };
+};
+
 //------------------- Section templates --------------------//
 
 export type ST_Value = MDHasM2A<
@@ -178,6 +184,7 @@ export type ST_Value = MDHasM2A<
     icon_svg: string;
     icon_bg_color?: string;
     flexible: boolean;
+    rows: 'dynamic' | '2';
   } & MDWithTranslation<{
     name: string;
     description: string;

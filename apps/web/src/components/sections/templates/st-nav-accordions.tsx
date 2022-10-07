@@ -1,12 +1,13 @@
 import { mut } from '@/cms/mut';
 import Image from 'next/image';
-
-import { ST_NavAccordion } from '@/cms/page-sections';
+import type { STemplates_Props, ST_NavAccordion } from '@/cms/page-sections';
 import { Accordion, AccordionChild } from '@/components/accordion/Accordion';
 import { useSharedData } from '@/store';
 import { MarkdownContent } from '@/components/react-markdown/MarkdownContent';
 
-export function ST_NavAccordionsFC({ items }: { items: ST_NavAccordion[] }) {
+export function ST_NavAccordionsFC({
+  items,
+}: STemplates_Props<ST_NavAccordion>) {
   const { locale } = useSharedData();
   const first = items[0];
 

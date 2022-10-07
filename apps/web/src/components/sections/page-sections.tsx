@@ -1,10 +1,10 @@
 import { useMut } from '@/cms/mut';
-import { M2APageSection } from '@/cms/page-sections';
+import { M2APageSection, STemplates_Props } from '@/cms/page-sections';
 import { CMS_MODELS } from '@/constant/cms';
 import { VALID_CSS } from '@/utils/regex';
 import { testHexColor } from '@/utils/tests';
 import isSvg from 'is-svg';
-import React, { FunctionComponent, useMemo } from 'react';
+import React, { FunctionComponent, useMemo, useRef } from 'react';
 import { HasSvgText } from '../HasSvgText';
 import {
   ST_ValuesFC,
@@ -22,7 +22,7 @@ type ST = typeof section_templates;
  * All components of the section template should be added here following the key-value convention
  */
 const ST_COMPONENTS: {
-  [k in keyof ST]: FunctionComponent<{ items: any }>;
+  [k in keyof ST]: FunctionComponent<STemplates_Props<any>>;
 } = {
   st_values: ST_ValuesFC,
   st_navtabs: ST_NavTabsFC,
@@ -56,6 +56,7 @@ function PageSection({ section }: { section: M2APageSection }) {
   const classId = `${section.collection}-${item.id}`;
   const styleId = `cstyle-${classId}`;
   const { background_color, background_svg, background_image } = section.item;
+  const mutableObject = useRef({} as { [x: string]: any });
 
   const bg_color = testHexColor(background_color);
 
@@ -175,7 +176,10 @@ function PageSection({ section }: { section: M2APageSection }) {
                 <React.Fragment key={content.st_value}>
                   {STComponent && items.length > 0 && (
                     <div className={`w-full st__content-${content.st_value}`}>
-                      <STComponent items={items} />
+                      <STComponent
+                        items={items}
+                        mutableObject={mutableObject.current}
+                      />
                     </div>
                   )}
                 </React.Fragment>
