@@ -56,7 +56,7 @@ export const HeroSection = ({ data }: { data: MDHomePageHero }) => {
   const contentImage = (
     <>
       {images.length > 0 ? (
-        <div className='relative hero-right flex items-center justify-end h-80 max-w-xs sd:max-w-full sd:w-1/2'>
+        <div className='relative hero-right flex items-center justify-end h-80 max-w-xs sd:max-w-full w-full sd:w-1/2'>
           <div className='overflow-hidden w-full h-full'>
             <div className='flex w-full h-full relative'>
               {images.map(({ directus_files_id: { id, src } }, index) => {
