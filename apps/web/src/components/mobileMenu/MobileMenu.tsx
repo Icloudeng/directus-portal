@@ -1,4 +1,4 @@
-import { forwardRef, useRef } from 'react';
+import { forwardRef, useCallback, useEffect, useRef } from 'react';
 import { GrClose } from 'react-icons/gr';
 import { VscChevronDown } from 'react-icons/vsc';
 import { mergeRefs } from '@/utils/merge-refs';
@@ -17,6 +17,7 @@ import {
 } from '@/cms/items/types';
 import { HasSvgText } from '../HasSvgText';
 import { useTranslation } from 'next-i18next';
+import { Router } from 'next/router';
 
 const SubmenuItem = ({
   data,
@@ -126,15 +127,19 @@ export const MobileMenu = forwardRef<HTMLDivElement>((_, ref) => {
       burger !== nodeTarget &&
       !burger?.contains(nodeTarget)
     ) {
-      document.body.classList.remove('mobile__model-open');
-      el.classList.remove('mobile__menu-active');
+      onMouseClick();
     }
   }
 
-  const onMouseClick = () => {
+  const onMouseClick = useCallback(() => {
     document.body.classList.remove('mobile__model-open');
     targetEl.current?.classList.remove('mobile__menu-active');
-  };
+  }, [targetEl.current]);
+
+  useEffect(() => {
+    Router.events.on('routeChangeComplete', onMouseClick);
+    Router.events.on('routeChangeError', onMouseClick);
+  }, []);
 
   return (
     <div
