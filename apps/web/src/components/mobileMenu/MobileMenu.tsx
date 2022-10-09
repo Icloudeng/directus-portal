@@ -139,6 +139,10 @@ export const MobileMenu = forwardRef<HTMLDivElement>((_, ref) => {
   useEffect(() => {
     Router.events.on('routeChangeComplete', onMouseClick);
     Router.events.on('routeChangeError', onMouseClick);
+    return () => {
+        Router.events.off('routeChangeComplete', onMouseClick);
+        Router.events.off('routeChangeError', onMouseClick);
+    }
   }, []);
 
   return (
