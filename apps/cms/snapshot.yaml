@@ -9027,15 +9027,17 @@ fields:
       interface: input
       note: null
       options:
-        placeholder: Page URL (eg.  pricing, about)
-        slug: true
+        placeholder: Page URL (eg.  pricing/, about/, solutions/vm/)
         trim: true
       readonly: false
       required: true
       sort: 3
       special: null
       translations: null
-      validation: null
+      validation:
+        _and:
+          - url:
+              _regex: ^(?!\/)[a-z0-9-\/]*(\/)$
       validation_message: null
       width: full
     schema:
