@@ -11,7 +11,7 @@ import { EmptyCanvasSvg } from '@/components/svgs/EmptyCanvas';
 import { useTranslation } from 'next-i18next';
 import { useRouter } from 'next/router';
 
-export default function HomePage(props: QDynamicPagesType) {
+export default function Page(props: QDynamicPagesType) {
   const { Pages } = props;
   const page = Pages[0]!;
 
