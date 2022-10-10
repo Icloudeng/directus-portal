@@ -11,7 +11,7 @@ import { EmptyCanvasSvg } from '@/components/svgs/EmptyCanvas';
 import { useTranslation } from 'next-i18next';
 import { useRouter } from 'next/router';
 
-export default function HomePage(props: QDynamicPagesType) {
+export default function Page(props: QDynamicPagesType) {
   const { Pages } = props;
   const page = Pages[0]!;
 
@@ -46,9 +46,11 @@ export async function getServerSideProps({
   locale,
   query,
 }: GetServerSidePropsContext) {
-  const { page } = query;
+  const page = query.page!;
+  let pathname = (page as string[]).join('/');
+  pathname = pathname.endsWith('/') ? pathname : pathname + '/';
 
-  const res = await getGqlDynamicPages(page as string).catch(console.error);
+  const res = await getGqlDynamicPages(pathname).catch(console.error);
 
   if (!res || !res.data?.Pages[0]) {
     return {
