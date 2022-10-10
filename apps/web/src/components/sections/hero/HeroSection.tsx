@@ -35,16 +35,16 @@ export const HeroSection = ({ data }: { data: MDHomePageHero }) => {
     <div className='hero-left flex flex-col sd:w-1/2 gap-7'>
       <div className='flex flex-col items-center sd:items-start gap-4 sm:gap-7'>
         <h1 className='font-extrabold text-4xl sd:text-2xl sm:text-[2.2rem] md:text-[2.7rem] -mb-4 text-center sd:text-start md:leading-[3rem]'>
-          {translations?.title}{' '}
+          <span className='block'>{translations?.title}</span>
+          <TypeAnimation
+            sequence={trailingTitles}
+            speed={40}
+            className='font-extrabold leading-[1.3] text-4xl sd:text-2xl sm:text-[2.2rem] md:text-[2.7rem] md:leading-[3rem]'
+            wrapper='span'
+            repeat={Infinity}
+            cursor={true}
+          />
         </h1>
-        <TypeAnimation
-          sequence={trailingTitles}
-          speed={40}
-          className='font-extrabold leading-[1.3] text-4xl sd:text-2xl sm:text-[2.2rem] md:text-[2.7rem] md:leading-[3rem]'
-          wrapper='h2'
-          repeat={Infinity}
-          cursor={true}
-        />
       </div>
 
       <span className='text-gray-300 text-center sd:text-start max-w-lg leading-[1.5] sm:text-[1rem] md:text-[20px] sd:w-[95%]'>
