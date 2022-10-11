@@ -68,7 +68,7 @@ export function ST_CardCarouselsFC({
   );
 }
 
-export const CarouselItem = ({ item }: ST_CardCarousel) => {
+const CarouselItem = ({ item }: ST_CardCarousel) => {
   const { t } = useTranslation();
   const { translations, image, readmore_url, disposition } = useMut(item);
 
