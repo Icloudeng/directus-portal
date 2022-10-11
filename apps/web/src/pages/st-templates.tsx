@@ -76,7 +76,7 @@ export default function Page() {
   );
 }
 
-export async function getStaticProps({ locale }: GetServerSidePropsContext) {
+export async function getServerSideProps({ locale }: GetServerSidePropsContext) {
   return {
     props: {
       ...(await getServerSideTranslations(locale!)),
