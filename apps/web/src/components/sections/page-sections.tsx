@@ -18,6 +18,7 @@ import {
   ST_SidedContentsFC,
   ST_NavAccordionsFC,
   ST_CleanHerosFC,
+  ST_PageAsideMenusFC,
 } from './templates';
 
 const { section_templates } = CMS_MODELS;
@@ -36,6 +37,7 @@ const ST_COMPONENTS: {
   st_sided_contents: ST_SidedContentsFC,
   st_nav_accordions: ST_NavAccordionsFC,
   st_clean_heros: ST_CleanHerosFC,
+  st_page_aside_menus: ST_PageAsideMenusFC,
 };
 
 // ------------------------------ ---------------------- ------------------//
