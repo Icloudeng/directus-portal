@@ -1,14 +1,10 @@
 import { useMut } from '@/cms/mut';
 import { STemplates_Props, ST_SimpleCardLink } from '@/cms/page-sections';
 import Button from '@/components/buttons/Button';
-import { useEffect } from 'react';
 
 export function ST_SimpleCardLinksFC({
   items,
 }: STemplates_Props<ST_SimpleCardLink>) {
-  useEffect(() => {
-    console.log(items);
-  }, []);
   return (
     <div className='flex justify-center items-stretch relative flex-wrap'>
       {items.map((data) => {
