@@ -5,6 +5,7 @@ import {
   ST_NavAccordion,
   ST_NavTab,
   ST_SidedContent,
+  ST_SimpleCardLink,
   ST_Value,
 } from '@/cms/page-sections';
 import { DRTStatus } from '@/types/directus';
@@ -181,6 +182,7 @@ export const DumpNavAccordion: ST_NavAccordion[] = [
     id: getId(),
     item: {
       ...dumpDRTStatus(),
+      id: 1222,
       prev_next_buttons: true,
       image: {
         id: getId(),
@@ -203,6 +205,7 @@ export const DumpNavAccordion: ST_NavAccordion[] = [
     id: getId(),
     item: {
       ...dumpDRTStatus(),
+      id: 1223,
       prev_next_buttons: true,
       image: {
         id: getId(),
@@ -225,6 +228,7 @@ export const DumpNavAccordion: ST_NavAccordion[] = [
     id: getId(),
     item: {
       ...dumpDRTStatus(),
+      id: 1225,
       prev_next_buttons: true,
       image: {
         id: getId(),
@@ -390,4 +394,121 @@ export const DumpValue: ST_Value[] = [
   },
 ];
 
-export const DumpNavTab: ST_NavTab[] = [];
+export const DumpNavTab: ST_NavTab[] = [
+  {
+    id: getId(),
+    collection: 'ST_NavTabs',
+    item: {
+      ...dumpDRTStatus(),
+      disposition: 'text_left',
+      translations: [
+        {
+          id: getId(),
+          languages_code,
+          name: 'Template',
+          markdown_content: `
+        ### Title
+        We take a hands-on approach to designing and implementing cloud solutions that make sense for the needs of your organization. We’ll help you assess if and when a move to the cloud is right and create a smooth transition for your team.
+
+        - Require extra IT support
+        - Adherence to industry compliance
+        - Increase maintenance costs
+        - Require a greater capital investment
+        - Increase the risk of data loss
+        - Limit your company’s ability to scale
+        `.replace(/\n\s+/g, '\n'),
+        },
+      ],
+    },
+  },
+  {
+    id: getId(),
+    collection: 'ST_NavTabs',
+    item: {
+      ...dumpDRTStatus(),
+      disposition: 'text_left',
+      image: {
+        id: getId(),
+        src: 'https://flowbite.com/docs/images/blog/image-4.jpg',
+      },
+      translations: [
+        {
+          id: getId(),
+          languages_code,
+          name: 'About',
+          markdown_content: `
+        ### Title2
+        We take a hands-on approach to designing and implementing cloud solutions that make sense for the needs of your organization.
+
+        - Require extra IT support
+        - Adherence to industry compliance
+        - Increase maintenance costs
+        - Require a greater capital investment
+        - Increase the risk of data loss
+        - Limit your company’s ability to scale
+        `.replace(/\n\s+/g, '\n'),
+        },
+      ],
+    },
+  },
+];
+
+export const DumpSimpleCardLink: ST_SimpleCardLink[] = [
+  {
+    id: getId(),
+    collection: 'ST_SimpleCardLinks',
+    item: {
+      ...dumpDRTStatus(),
+      external: false,
+      url: '/',
+      translations: [
+        {
+          id: getId(),
+          languages_code,
+          title: 'About Serverspace',
+          description:
+            'Learn more about Serverspace and the main benefits of a cloud provider.',
+          button_text: 'Explore',
+        },
+      ],
+    },
+  },
+  {
+    id: getId(),
+    collection: 'ST_SimpleCardLinks',
+    item: {
+      ...dumpDRTStatus(),
+      external: false,
+      url: '/',
+      translations: [
+        {
+          id: getId(),
+          languages_code,
+          title: 'About Serverspace',
+          description:
+            'Learn more about Serverspace and the main benefits of a cloud provider.',
+          button_text: 'Explore',
+        },
+      ],
+    },
+  },
+  {
+    id: getId(),
+    collection: 'ST_SimpleCardLinks',
+    item: {
+      ...dumpDRTStatus(),
+      external: false,
+      url: '/',
+      translations: [
+        {
+          id: getId(),
+          languages_code,
+          title: 'About Serverspace',
+          description:
+            'Learn more about Serverspace and the main benefits of a cloud provider.',
+          button_text: 'Explore',
+        },
+      ],
+    },
+  },
+];

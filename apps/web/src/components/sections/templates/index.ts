@@ -5,3 +5,5 @@ export * from './st-card-image-carousels';
 export * from './st-sided-contents';
 export * from './st-nav-accordions';
 export * from './st-clean-heros';
+export * from './st-page-aside-menus';
+export * from './st-simple-card-links'

@@ -37,5 +37,7 @@ export const CMS_MODELS = {
     st_sided_contents: 'ST_SidedContents',
     st_nav_accordions: 'ST_NavAccordions',
     st_clean_heros: 'ST_CleanHeros',
+    st_page_aside_menus: 'ST_PageAsideMenus',
+    st_simple_card_links: 'ST_SimpleCardLinks',
   } as const,
 };

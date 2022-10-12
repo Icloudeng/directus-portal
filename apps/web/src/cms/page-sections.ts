@@ -15,7 +15,9 @@ import {
 
 const { section_templates, generics } = CMS_MODELS;
 
-const q_ST = [
+type Query = { __typeName: ST_Vls; [x: string]: unknown }[];
+
+const q_ST: Query = [
   {
     __typeName: section_templates.st_values,
     icon_svg: true,
@@ -30,8 +32,8 @@ const q_ST = [
   },
   {
     __typeName: section_templates.st_navtabs,
-    type: true,
-    pagination_buttons: true,
+    image: qWithQueryAsset(),
+    disposition: true,
     ...qWithTranslations({
       name: true,
       markdown_content: true,
@@ -90,6 +92,27 @@ const q_ST = [
     ...qWithTranslations({
       title: true,
       description: true,
+    }),
+    ...qWithStatus,
+  },
+  {
+    __typeName: section_templates.st_page_aside_menus,
+    plan_pricing: true,
+    ...qWithTranslations({
+      title: true,
+      menu_name: true,
+      markdown_content: true,
+    }),
+    ...qWithStatus,
+  },
+  {
+    __typeName: section_templates.st_simple_card_links,
+    url: true,
+    external: true,
+    ...qWithTranslations({
+      title: true,
+      description: true,
+      button_text: true,
     }),
     ...qWithStatus,
   },
@@ -204,8 +227,8 @@ export type ST_Value = MDHasM2A<
 
 export type ST_NavTab = MDHasM2A<
   {
-    type: 'horizontal' | 'vertical';
-    pagination_buttons: boolean;
+    image?: MDWithAsset;
+    disposition: 'text_left' | 'text_right';
   } & MDWithTranslation<{
     name: string;
     markdown_content: string;
@@ -277,6 +300,32 @@ export type ST_CleanHero = MDHasM2A<
     DRTStatus,
   ST_V<'st_clean_heros'>
 >;
+
+export type ST_PageAsideMenu = MDHasM2A<
+  {
+    plan_pricing: ('flexible_plans' | 'fixed_plans' | 'plans_comparisons')[];
+  } & MDWithTranslation<{
+    menu_name: string;
+    title: string;
+    markdown_content?: string;
+  }> &
+    DRTStatus,
+  ST_V<'st_page_aside_menus'>
+>;
+
+export type ST_SimpleCardLink = MDHasM2A<
+  {
+    url: string;
+    external: boolean;
+  } & MDWithTranslation<{
+    title: string;
+    description: string;
+    button_text: string;
+  }> &
+    DRTStatus,
+  ST_V<'st_simple_card_links'>
+>;
+
 //------------------- Page Sections --------------------//
 type PS_Content =
   | ST_Value
@@ -284,7 +333,8 @@ type PS_Content =
   | ST_CardCarousel
   | ST_CardImageCarousel
   | ST_SidedContent
-  | ST_NavAccordion;
+  | ST_NavAccordion
+  | ST_PageAsideMenu;
 
 export type M2APageSection = MDHasM2A<
   {
@@ -305,6 +355,7 @@ export type M2APageSection = MDHasM2A<
 // ---------------- Generics ---------------
 type ST = typeof section_templates;
 type ST_V<K extends keyof ST> = ST[K];
+type ST_Vls = ST[keyof ST];
 
 type GE = typeof generics;
 type GE_V<K extends keyof GE> = GE[K];
