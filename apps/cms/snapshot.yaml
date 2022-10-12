@@ -12361,7 +12361,7 @@ fields:
       options: null
       readonly: true
       required: false
-      sort: 8
+      sort: 9
       special:
         - date-created
       translations: null
@@ -12404,7 +12404,7 @@ fields:
       options: null
       readonly: true
       required: false
-      sort: 10
+      sort: 11
       special:
         - date-updated
       translations: null
@@ -12474,34 +12474,34 @@ fields:
       table: ST_NavTabs
     type: uuid
   - collection: ST_NavTabs
-    field: pagination_buttons
+    field: image
     meta:
       collection: ST_NavTabs
       conditions: null
       display: null
       display_options: null
-      field: pagination_buttons
+      field: image
       group: null
       hidden: false
-      interface: boolean
+      interface: file-image
       note: null
       options: null
       readonly: false
       required: false
-      sort: 4
+      sort: 3
       special:
-        - cast-boolean
+        - file
       translations: null
       validation: null
       validation_message: null
       width: full
     schema:
       comment: null
-      data_type: boolean
-      default_value: true
-      foreign_key_column: null
-      foreign_key_schema: null
-      foreign_key_table: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: directus_files
       generation_expression: null
       has_auto_increment: false
       is_generated: false
@@ -12509,12 +12509,12 @@ fields:
       is_primary_key: false
       is_unique: false
       max_length: null
-      name: pagination_buttons
+      name: image
       numeric_precision: null
       numeric_scale: null
       schema: public
       table: ST_NavTabs
-    type: boolean
+    type: uuid
   - collection: ST_NavTabs
     field: sort
     meta:
@@ -12530,7 +12530,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: 6
+      sort: 7
       special: null
       translations: null
       validation: null
@@ -12592,7 +12592,7 @@ fields:
             value: archived
       readonly: false
       required: false
-      sort: 5
+      sort: 6
       special: null
       translations: null
       validation: null
@@ -12665,7 +12665,7 @@ fields:
         placeholder: Navtab type
       readonly: false
       required: true
-      sort: 3
+      sort: 4
       special: null
       translations: null
       validation: null
@@ -12707,7 +12707,7 @@ fields:
         template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
       readonly: true
       required: false
-      sort: 7
+      sort: 8
       special:
         - user-created
       translations: null
@@ -12750,7 +12750,7 @@ fields:
         template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
       readonly: true
       required: false
-      sort: 9
+      sort: 10
       special:
         - user-updated
       translations: null
@@ -18034,6 +18034,28 @@ relations:
       on_delete: SET NULL
       on_update: NO ACTION
       table: ST_NavAccordions_translations
+  - collection: ST_NavTabs
+    field: image
+    meta:
+      junction_field: null
+      many_collection: ST_NavTabs
+      many_field: image
+      one_allowed_collections: null
+      one_collection: directus_files
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    related_collection: directus_files
+    schema:
+      column: image
+      constraint_name: st_navtabs_image_foreign
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: directus_files
+      on_delete: SET NULL
+      on_update: NO ACTION
+      table: ST_NavTabs
   - collection: ST_NavTabs
     field: user_created
     meta:

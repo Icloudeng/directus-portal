@@ -217,7 +217,7 @@ export type ST_Value = MDHasM2A<
 export type ST_NavTab = MDHasM2A<
   {
     type: 'horizontal' | 'vertical';
-    pagination_buttons: boolean;
+    image?: MDWithAsset;
   } & MDWithTranslation<{
     name: string;
     markdown_content: string;
