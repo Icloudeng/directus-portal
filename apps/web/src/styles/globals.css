@@ -235,7 +235,7 @@ body {
 
   .markdown__content {
     /* &.st_carousel {
-  } */
+    } */
     p {
       @apply mb-3 font-normal text-gray-700;
     }
@@ -244,13 +244,26 @@ body {
       @apply list-disc max-w-xs ss:max-w-sm ml-5 text-xs sd:text-sm text-gray-400;
     }
 
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-      @apply mb-3 text-center sd:text-start text-lg font-semibold tracking-tight text-gray-900;
+    &:not(.default__typo) {
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        @apply mb-3 text-center sd:text-start text-lg font-semibold tracking-tight text-gray-900;
+      }
+    }
+
+    &.default__typo {
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        @apply mb-3 text-center sd:text-start font-semibold tracking-tight text-gray-900;
+      }
     }
 
     table {
@@ -272,6 +285,27 @@ body {
 
         td:not(:first-child) {
           @apply py-4 px-6;
+        }
+      }
+    }
+  }
+
+  .nav__tabs {
+    .tabs__head {
+      & > div:not(.active):hover {
+        @apply text-primary-400;
+      }
+      .active {
+        &::before {
+          content: '';
+          position: absolute;
+          bottom: 0px;
+          height: 1px;
+          transform: scale(1);
+          display: block;
+          transition: transform 0.2s ease-in-out;
+          transform-origin: 50%;
+          @apply bg-primary-400 inset-x-0;
         }
       }
     }

@@ -7488,7 +7488,7 @@ fields:
       interface: input-rich-text-md
       note: null
       options:
-        imageToken: CDA7E7122588816DC957171233DBC
+        imageToken: mdzjETutYM06z9ch56CmFkjIOWZCwraG
         placeholder: null
       readonly: false
       required: true
@@ -10260,7 +10260,7 @@ fields:
       interface: input-rich-text-md
       note: null
       options:
-        imageToken: E6B95D55D4181C941958DF25DBCB1
+        imageToken: mdzjETutYM06z9ch56CmFkjIOWZCwraG
         softLength: 800
         toolbar:
           - blockquote
@@ -12261,7 +12261,7 @@ fields:
       interface: input-rich-text-md
       note: null
       options:
-        imageToken: E5277C9DB3CE84BFEC4BD3984E5B2
+        imageToken: mdzjETutYM06z9ch56CmFkjIOWZCwraG
         softLength: 800
         toolbar:
           - blockquote
@@ -12361,7 +12361,7 @@ fields:
       options: null
       readonly: true
       required: false
-      sort: 9
+      sort: 8
       special:
         - date-created
       translations: null
@@ -12404,7 +12404,7 @@ fields:
       options: null
       readonly: true
       required: false
-      sort: 11
+      sort: 10
       special:
         - date-updated
       translations: null
@@ -12431,6 +12431,52 @@ fields:
       schema: public
       table: ST_NavTabs
     type: timestamp
+  - collection: ST_NavTabs
+    field: disposition
+    meta:
+      collection: ST_NavTabs
+      conditions: null
+      display: null
+      display_options: null
+      field: disposition
+      group: null
+      hidden: false
+      interface: select-dropdown
+      note: null
+      options:
+        choices:
+          - text: Text Left
+            value: text_left
+          - text: Text Right
+            value: text_right
+      readonly: false
+      required: true
+      sort: 4
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: character varying
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: 255
+      name: disposition
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: ST_NavTabs
+    type: string
   - collection: ST_NavTabs
     field: id
     meta:
@@ -12530,7 +12576,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: 7
+      sort: 6
       special: null
       translations: null
       validation: null
@@ -12592,7 +12638,7 @@ fields:
             value: archived
       readonly: false
       required: false
-      sort: 6
+      sort: 5
       special: null
       translations: null
       validation: null
@@ -12645,53 +12691,6 @@ fields:
     schema: null
     type: alias
   - collection: ST_NavTabs
-    field: type
-    meta:
-      collection: ST_NavTabs
-      conditions: null
-      display: null
-      display_options: null
-      field: type
-      group: null
-      hidden: false
-      interface: select-dropdown
-      note: null
-      options:
-        choices:
-          - text: horizontal
-            value: horizontal
-          - text: vertical
-            value: vertical
-        placeholder: Navtab type
-      readonly: false
-      required: true
-      sort: 4
-      special: null
-      translations: null
-      validation: null
-      validation_message: null
-      width: full
-    schema:
-      comment: null
-      data_type: character varying
-      default_value: null
-      foreign_key_column: null
-      foreign_key_schema: null
-      foreign_key_table: null
-      generation_expression: null
-      has_auto_increment: false
-      is_generated: false
-      is_nullable: true
-      is_primary_key: false
-      is_unique: false
-      max_length: 255
-      name: type
-      numeric_precision: null
-      numeric_scale: null
-      schema: public
-      table: ST_NavTabs
-    type: string
-  - collection: ST_NavTabs
     field: user_created
     meta:
       collection: ST_NavTabs
@@ -12707,7 +12706,7 @@ fields:
         template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
       readonly: true
       required: false
-      sort: 8
+      sort: 7
       special:
         - user-created
       translations: null
@@ -12750,7 +12749,7 @@ fields:
         template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
       readonly: true
       required: false
-      sort: 10
+      sort: 9
       special:
         - user-updated
       translations: null
@@ -12913,7 +12912,7 @@ fields:
       interface: input-rich-text-md
       note: null
       options:
-        imageToken: 7232582587F199354495BF6DDF472
+        imageToken: mdzjETutYM06z9ch56CmFkjIOWZCwraG
         softLength: 800
       readonly: false
       required: true
@@ -13515,7 +13514,7 @@ fields:
       interface: input-rich-text-md
       note: null
       options:
-        imageToken: B346C1E37B3BED26C9596B59926EE
+        imageToken: mdzjETutYM06z9ch56CmFkjIOWZCwraG
         toolbar:
           - blockquote
           - bold
@@ -14220,7 +14219,7 @@ fields:
       interface: input-rich-text-md
       note: null
       options:
-        imageToken: 196EDEB2668391CA89E3E9FAA7926
+        imageToken: mdzjETutYM06z9ch56CmFkjIOWZCwraG
         softLength: 800
         toolbar:
           - blockquote

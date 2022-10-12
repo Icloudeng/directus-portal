@@ -64,19 +64,21 @@ export default function Page() {
         <Sts.ST_ValuesFC items={DumpValue} sectionClass='' sharedObject={{}} />
       </section>
 
-      {/* <section className='py-10 x-container'>
+      <section className='py-10 x-container'>
         <h3 className='my-9 text-center'>ST_NavTabsFC </h3>
         <Sts.ST_NavTabsFC
           items={DumpNavTab}
           sectionClass=''
           sharedObject={{}}
         />
-      </section> */}
+      </section>
     </div>
   );
 }
 
-export async function getServerSideProps({ locale }: GetServerSidePropsContext) {
+export async function getServerSideProps({
+  locale,
+}: GetServerSidePropsContext) {
   return {
     props: {
       ...(await getServerSideTranslations(locale!)),

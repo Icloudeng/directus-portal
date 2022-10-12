@@ -17,10 +17,6 @@ import { JobsCreation } from '@/components/sections/jobs-creation/JobsCreation';
 export default function HomePage(props: Partial<QHomeHeroQueriesType>) {
   const { HomeHero, HomeSections } = props;
 
-  useEffect(() => {
-    console.log(props);
-  }, []);
-
   return (
     <Layout>
       <Seo />

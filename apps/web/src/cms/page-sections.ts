@@ -32,8 +32,8 @@ const q_ST: Query = [
   },
   {
     __typeName: section_templates.st_navtabs,
-    type: true,
-    pagination_buttons: true,
+    image: qWithQueryAsset(),
+    disposition: true,
     ...qWithTranslations({
       name: true,
       markdown_content: true,
@@ -216,8 +216,8 @@ export type ST_Value = MDHasM2A<
 
 export type ST_NavTab = MDHasM2A<
   {
-    type: 'horizontal' | 'vertical';
     image?: MDWithAsset;
+    disposition: 'text_left' | 'text_right';
   } & MDWithTranslation<{
     name: string;
     markdown_content: string;
