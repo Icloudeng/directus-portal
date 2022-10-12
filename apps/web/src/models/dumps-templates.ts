@@ -5,6 +5,7 @@ import {
   ST_NavAccordion,
   ST_NavTab,
   ST_SidedContent,
+  ST_SimpleCardLink,
   ST_Value,
 } from '@/cms/page-sections';
 import { DRTStatus } from '@/types/directus';
@@ -446,6 +447,66 @@ export const DumpNavTab: ST_NavTab[] = [
         - Increase the risk of data loss
         - Limit your company’s ability to scale
         `.replace(/\n\s+/g, '\n'),
+        },
+      ],
+    },
+  },
+];
+
+export const DumpSimpleCardLink: ST_SimpleCardLink[] = [
+  {
+    id: getId(),
+    collection: 'ST_SimpleCardLinks',
+    item: {
+      ...dumpDRTStatus(),
+      external: false,
+      url: '/',
+      translations: [
+        {
+          id: getId(),
+          languages_code,
+          title: 'About Serverspace',
+          description:
+            'Learn more about Serverspace and the main benefits of a cloud provider.',
+          button_text: 'Explore',
+        },
+      ],
+    },
+  },
+  {
+    id: getId(),
+    collection: 'ST_SimpleCardLinks',
+    item: {
+      ...dumpDRTStatus(),
+      external: false,
+      url: '/',
+      translations: [
+        {
+          id: getId(),
+          languages_code,
+          title: 'About Serverspace',
+          description:
+            'Learn more about Serverspace and the main benefits of a cloud provider.',
+          button_text: 'Explore',
+        },
+      ],
+    },
+  },
+  {
+    id: getId(),
+    collection: 'ST_SimpleCardLinks',
+    item: {
+      ...dumpDRTStatus(),
+      external: false,
+      url: '/',
+      translations: [
+        {
+          id: getId(),
+          languages_code,
+          title: 'About Serverspace',
+          description:
+            'Learn more about Serverspace and the main benefits of a cloud provider.',
+          button_text: 'Explore',
         },
       ],
     },

@@ -105,6 +105,17 @@ const q_ST: Query = [
     }),
     ...qWithStatus,
   },
+  {
+    __typeName: section_templates.st_simple_card_links,
+    url: true,
+    external: true,
+    ...qWithTranslations({
+      title: true,
+      description: true,
+      button_text: true,
+    }),
+    ...qWithStatus,
+  },
 ];
 
 export const pageSectionQuery = {
@@ -300,6 +311,19 @@ export type ST_PageAsideMenu = MDHasM2A<
   }> &
     DRTStatus,
   ST_V<'st_page_aside_menus'>
+>;
+
+export type ST_SimpleCardLink = MDHasM2A<
+  {
+    url: string;
+    external: boolean;
+  } & MDWithTranslation<{
+    title: string;
+    description: string;
+    button_text: string;
+  }> &
+    DRTStatus,
+  ST_V<'st_simple_card_links'>
 >;
 
 //------------------- Page Sections --------------------//

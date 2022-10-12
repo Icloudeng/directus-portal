@@ -310,4 +310,9 @@ body {
       }
     }
   }
+
+  .sm__card-link {
+    box-shadow: 0 1px 1px rgb(98 112 143 / 6%), 0 2px 1px rgb(98 112 143 / 4%),
+      0 1px 3px rgb(98 112 143 / 8%);
+  }
 }

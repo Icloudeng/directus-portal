@@ -8,6 +8,7 @@ import {
   DumpNavAccordion,
   DumpNavTab,
   DumpSidedContent,
+  DumpSimpleCardLink,
   DumpValue,
 } from '@/models/dumps-templates';
 
@@ -65,9 +66,18 @@ export default function Page() {
       </section>
 
       <section className='py-10 x-container'>
-        <h3 className='my-9 text-center'>ST_NavTabsFC </h3>
+        <h3 className='my-9 text-center'>ST NavTabs </h3>
         <Sts.ST_NavTabsFC
           items={DumpNavTab}
+          sectionClass=''
+          sharedObject={{}}
+        />
+      </section>
+
+      <section className='py-10 x-container'>
+        <h3 className='my-9 text-center'>ST SimpleCardLinks </h3>
+        <Sts.ST_SimpleCardLinksFC
+          items={DumpSimpleCardLink}
           sectionClass=''
           sharedObject={{}}
         />
