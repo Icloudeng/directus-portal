@@ -1,6 +1,7 @@
 import { useMut } from '@/cms/mut';
 import { STemplates_Props, ST_SimpleCardLink } from '@/cms/page-sections';
 import Button from '@/components/buttons/Button';
+import UnstyledLink from '@/components/links/UnstyledLink';
 
 export function ST_SimpleCardLinksFC({
   items,
@@ -17,9 +18,10 @@ export function ST_SimpleCardLinksFC({
 function CardLink({ item }: ST_SimpleCardLink) {
   const { translations } = useMut(item);
   return (
-    <a
+    <UnstyledLink
       href={item.url}
       target={item.external ? '_blank' : undefined}
+      rel='noreferrer'
       className='sm__card-link w-full border lg:w-[calc(25%_-_20px)] hover:shadow-lg sd:w-[calc(50%_-_20px)] bg-white mx-[10px] mt-0 mb-[20px] p-[20px] lg:py-[23px] lg:px-[30px] transition-all flex flex-col rounded-[2px] relative items-center justify-start'
     >
       <div className='flex h-full justify-start flex-col items-center'>
@@ -38,6 +40,6 @@ function CardLink({ item }: ST_SimpleCardLink) {
           </Button>
         </div>
       </div>
-    </a>
+    </UnstyledLink>
   );
 }
