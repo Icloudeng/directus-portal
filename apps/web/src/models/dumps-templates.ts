@@ -181,6 +181,7 @@ export const DumpNavAccordion: ST_NavAccordion[] = [
     id: getId(),
     item: {
       ...dumpDRTStatus(),
+      id: 1222,
       prev_next_buttons: true,
       image: {
         id: getId(),
@@ -203,6 +204,7 @@ export const DumpNavAccordion: ST_NavAccordion[] = [
     id: getId(),
     item: {
       ...dumpDRTStatus(),
+      id: 1223,
       prev_next_buttons: true,
       image: {
         id: getId(),
@@ -225,6 +227,7 @@ export const DumpNavAccordion: ST_NavAccordion[] = [
     id: getId(),
     item: {
       ...dumpDRTStatus(),
+      id: 1225,
       prev_next_buttons: true,
       image: {
         id: getId(),

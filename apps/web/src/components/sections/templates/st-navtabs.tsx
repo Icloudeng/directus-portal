@@ -67,7 +67,7 @@ function Tabs({ children }: PropsWithChildren) {
 
   return (
     <div className='nav__tabs flex flex-col'>
-      <div className='tabs__head w-max flex items-center justify-center mx-auto border-b border-[#dae1eb] mb-[40px] lg:mb-[60px] overflow-x-auto'>
+      <div className='tabs__head w-max max-w-full flex items-center justify-center mx-auto border-b border-[#dae1eb] mb-[40px] lg:mb-[60px] overflow-x-auto'>
         {titles.map(({ title, index }, i) => {
           return (
             <div
