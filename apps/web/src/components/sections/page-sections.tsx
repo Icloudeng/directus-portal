@@ -10,37 +10,33 @@ import { testHexColor } from '@/utils/tests';
 import isSvg from 'is-svg';
 import React, { FunctionComponent, useMemo, useRef } from 'react';
 import { HasSvgText } from '../HasSvgText';
-import {
-  ST_ValuesFC,
-  ST_NavTabsFC,
-  ST_CardCarouselsFC,
-  ST_CardImageCarouselsFC,
-  ST_SidedContentsFC,
-  ST_NavAccordionsFC,
-  ST_CleanHerosFC,
-  ST_PageAsideMenusFC,
-  ST_SimpleCardLinksFC,
-} from './templates';
+import * as stfc from './templates';
 
 const { section_templates } = CMS_MODELS;
 type ST = typeof section_templates;
 
+type TST_FC = {
+  +readonly [k in keyof ST]: FunctionComponent<STemplates_Props<any>>;
+};
+
+const fcs = Object.create(stfc);
 /**
  * All components of the section template should be added here following the key-value convention
  */
-const ST_COMPONENTS: {
-  [k in keyof ST]: FunctionComponent<STemplates_Props<any>>;
-} = {
-  st_values: ST_ValuesFC,
-  st_navtabs: ST_NavTabsFC,
-  st_card_carousels: ST_CardCarouselsFC,
-  st_card_image_carousels: ST_CardImageCarouselsFC,
-  st_sided_contents: ST_SidedContentsFC,
-  st_nav_accordions: ST_NavAccordionsFC,
-  st_clean_heros: ST_CleanHerosFC,
-  st_page_aside_menus: ST_PageAsideMenusFC,
-  st_simple_card_links: ST_SimpleCardLinksFC,
-};
+const ST_COMPONENTS = (Object.keys(section_templates) as (keyof ST)[]).reduce(
+  (acc, stkey) => {
+    const stvalue = section_templates[stkey];
+    const component = fcs[stvalue + 'FC'];
+    if (!component) {
+      throw new Error(
+        `Cannot find component corresponding to ${stvalue}'s template`
+      );
+    }
+    acc[stkey] = component;
+    return acc;
+  },
+  {} as { [x: string]: any }
+) as TST_FC;
 
 // ------------------------------ ---------------------- ------------------//
 // ------------------------------Page Sections Component ------------------//

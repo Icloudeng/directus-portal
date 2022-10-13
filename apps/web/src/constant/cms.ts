@@ -39,5 +39,6 @@ export const CMS_MODELS = {
     st_clean_heros: 'ST_CleanHeros',
     st_page_aside_menus: 'ST_PageAsideMenus',
     st_simple_card_links: 'ST_SimpleCardLinks',
+    st_buttons: 'ST_Buttons',
   } as const,
 };
