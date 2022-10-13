@@ -2,6 +2,7 @@ import { getServerSideTranslations } from '@/utils/server-translation';
 import { GetServerSidePropsContext } from 'next';
 import * as Sts from '@/components/sections/templates';
 import {
+  DumpButton,
   DumpCardCarousel,
   DumpCardImageCarousel,
   DumpCleanHero,
@@ -74,8 +75,17 @@ export default function Page() {
         />
       </section>
 
-      <section className='py-10 x-container'>
-        <h3 className='my-9 text-center'>ST SimpleCardLinks </h3>
+      <section className='py-14 x-container'>
+        <h3 className='my-9 text-center'>ST Buttons </h3>
+        <Sts.ST_ButtonsFC
+          items={DumpButton}
+          sectionClass=''
+          sharedObject={{}}
+        />
+      </section>
+
+      <section className='py-14 x-container'>
+        <h3 className='my-9 text-center'>ST SimpleCardLink </h3>
         <Sts.ST_SimpleCardLinksFC
           items={DumpSimpleCardLink}
           sectionClass=''

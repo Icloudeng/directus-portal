@@ -1,4 +1,5 @@
 import {
+  ST_Button,
   ST_CardCarousel,
   ST_CardImageCarousel,
   ST_CleanHero,
@@ -512,3 +513,32 @@ export const DumpSimpleCardLink: ST_SimpleCardLink[] = [
     },
   },
 ];
+
+export const DumpButton: ST_Button[] = [
+  'outline',
+  'primary',
+  'ghost',
+  'light',
+  'dark',
+].map((variant: any) => {
+  return {
+    id: getId(),
+    collection: 'ST_Buttons',
+    item: {
+      ...dumpDRTStatus(),
+      url: '/-/sign-up',
+      external: false,
+      variant: variant,
+      translations: [
+        {
+          id: getId(),
+          languages_code: {
+            code: 'en',
+            name: 'English',
+          },
+          button_text: variant,
+        },
+      ],
+    },
+  };
+});

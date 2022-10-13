@@ -15,10 +15,12 @@ import {
 
 const { section_templates, generics } = CMS_MODELS;
 
-type Query = { __typeName: ST_Vls; [x: string]: unknown }[];
+type Query = {
+  [k in ST_Vls]: { __typeName: k; [x: string]: unknown };
+};
 
-const q_ST: Query = [
-  {
+const q_ST: Query = {
+  [section_templates.st_values]: {
     __typeName: section_templates.st_values,
     icon_svg: true,
     icon_bg_color: true,
@@ -30,7 +32,7 @@ const q_ST: Query = [
     }),
     ...qWithStatus,
   },
-  {
+  [section_templates.st_navtabs]: {
     __typeName: section_templates.st_navtabs,
     image: qWithQueryAsset(),
     disposition: true,
@@ -40,7 +42,7 @@ const q_ST: Query = [
     }),
     ...qWithStatus,
   },
-  {
+  [section_templates.st_card_carousels]: {
     __typeName: section_templates.st_card_carousels,
     image: qWithQueryAsset(),
     pagination_buttons: true,
@@ -53,7 +55,7 @@ const q_ST: Query = [
     }),
     ...qWithStatus,
   },
-  {
+  [section_templates.st_card_image_carousels]: {
     __typeName: section_templates.st_card_image_carousels,
     image: qWithQueryAsset(),
     pagination_buttons: true,
@@ -66,7 +68,7 @@ const q_ST: Query = [
     }),
     ...qWithStatus,
   },
-  {
+  [section_templates.st_sided_contents]: {
     __typeName: section_templates.st_sided_contents,
     image: qWithQueryAsset(),
     disposition: true,
@@ -76,7 +78,7 @@ const q_ST: Query = [
     }),
     ...qWithStatus,
   },
-  {
+  [section_templates.st_nav_accordions]: {
     __typeName: section_templates.st_nav_accordions,
     image: qWithQueryAsset(),
     prev_next_buttons: true,
@@ -87,7 +89,7 @@ const q_ST: Query = [
     }),
     ...qWithStatus,
   },
-  {
+  [section_templates.st_clean_heros]: {
     __typeName: section_templates.st_clean_heros,
     ...qWithTranslations({
       title: true,
@@ -95,7 +97,7 @@ const q_ST: Query = [
     }),
     ...qWithStatus,
   },
-  {
+  [section_templates.st_page_aside_menus]: {
     __typeName: section_templates.st_page_aside_menus,
     plan_pricing: true,
     ...qWithTranslations({
@@ -105,7 +107,7 @@ const q_ST: Query = [
     }),
     ...qWithStatus,
   },
-  {
+  [section_templates.st_simple_card_links]: {
     __typeName: section_templates.st_simple_card_links,
     url: true,
     external: true,
@@ -116,7 +118,17 @@ const q_ST: Query = [
     }),
     ...qWithStatus,
   },
-];
+  [section_templates.st_buttons]: {
+    __typeName: section_templates.st_buttons,
+    url: true,
+    external: true,
+    variant: true,
+    ...qWithTranslations({
+      button_text: true,
+    }),
+    ...qWithStatus,
+  },
+};
 
 export const pageSectionQuery = {
   id: true,
@@ -139,7 +151,7 @@ export const pageSectionQuery = {
         id: true,
         collection: true,
         item: {
-          __on: q_ST,
+          __on: Object.values(q_ST),
         },
       },
     },
@@ -326,6 +338,18 @@ export type ST_SimpleCardLink = MDHasM2A<
   ST_V<'st_simple_card_links'>
 >;
 
+export type ST_Button = MDHasM2A<
+  {
+    url: string;
+    external: boolean;
+    variant?: 'primary' | 'outline' | 'ghost' | 'light' | 'dark';
+  } & MDWithTranslation<{
+    button_text: string;
+  }> &
+    DRTStatus,
+  ST_V<'st_buttons'>
+>;
+
 //------------------- Page Sections --------------------//
 type PS_Content =
   | ST_Value
@@ -334,7 +358,8 @@ type PS_Content =
   | ST_CardImageCarousel
   | ST_SidedContent
   | ST_NavAccordion
-  | ST_PageAsideMenu;
+  | ST_PageAsideMenu
+  | ST_Button;
 
 export type M2APageSection = MDHasM2A<
   {
