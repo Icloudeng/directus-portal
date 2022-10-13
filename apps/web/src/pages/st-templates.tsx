@@ -83,6 +83,15 @@ export default function Page() {
           sharedObject={{}}
         />
       </section>
+
+      <section className='py-14 x-container'>
+        <h3 className='my-9 text-center'>ST SimpleCardLink </h3>
+        <Sts.ST_SimpleCardLinksFC
+          items={DumpSimpleCardLink}
+          sectionClass=''
+          sharedObject={{}}
+        />
+      </section>
     </div>
   );
 }
