@@ -172,19 +172,14 @@ export function pageSectionsWithAssets(
     const stAssets = (s_templates: PS_Content[]) => {
       const st = s_templates.pop();
       if (!st) return;
-      let imgKey = 'image';
+      // Actually all templates modeles uses image key for assets
+      const imgKey = 'image';
 
-      switch (st.collection) {
-        case 'ST_CardCarousels':
-          imgKey = <keyof ST_CardCarousel['item']>'image';
-          break;
-        case 'ST_CardImageCarousels':
-          imgKey = <keyof ST_CardImageCarousel['item']>'image';
-          break;
-        case 'ST_SidedContents':
-          imgKey = <keyof ST_SidedContent['item']>'image';
-          break;
-      }
+      //   switch (st.collection) {
+      //     case 'ST_CardCarousels':
+      //       imgKey = <keyof ST_CardCarousel['item']>'image';
+      //       break;
+      //   }
 
       qWithAsset(access_token, st.item, imgKey as any);
       stAssets(s_templates);
