@@ -324,7 +324,7 @@ collections:
       note: null
       singleton: false
       sort: 5
-      sort_field: null
+      sort_field: sort
       translations: null
       unarchive_value: null
     schema:
@@ -678,7 +678,7 @@ collections:
       note: null
       singleton: false
       sort: 9
-      sort_field: null
+      sort_field: sort
       translations: null
       unarchive_value: null
     schema:
@@ -4956,6 +4956,47 @@ fields:
       schema: public
       table: HomeSections_sections
     type: string
+  - collection: HomeSections_sections
+    field: sort
+    meta:
+      collection: HomeSections_sections
+      conditions: null
+      display: null
+      display_options: null
+      field: sort
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: integer
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: sort
+      numeric_precision: 32
+      numeric_scale: 0
+      schema: public
+      table: HomeSections_sections
+    type: integer
   - collection: NavbarLinkSubmenuItems
     field: date_created
     meta:
@@ -9515,6 +9556,47 @@ fields:
       schema: public
       table: Pages_sections
     type: string
+  - collection: Pages_sections
+    field: sort
+    meta:
+      collection: Pages_sections
+      conditions: null
+      display: null
+      display_options: null
+      field: sort
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: integer
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: sort
+      numeric_precision: 32
+      numeric_scale: 0
+      schema: public
+      table: Pages_sections
+    type: integer
   - collection: Pages_translations
     field: Pages_id
     meta:

@@ -1,5 +1,7 @@
 import { useMut } from '@/cms/mut';
 import type { STemplates_Props, ST_CleanHero } from '@/cms/page-sections';
+import Router from 'next/router';
+import { useEffect } from 'react';
 
 export function ST_CleanHerosFC({
   items,
@@ -11,6 +13,16 @@ export function ST_CleanHerosFC({
   if (!sharedObject[first.collection]) {
     sharedObject[first.collection] = first.item.id;
   }
+
+  useEffect(() => {
+    const routerChangeStart = () => {
+      delete sharedObject[first.collection];
+    };
+    Router.events.on('routeChangeStart', routerChangeStart);
+    return () => {
+      Router.events.off('routeChangeStart', routerChangeStart);
+    };
+  }, []);
 
   return (
     <>
