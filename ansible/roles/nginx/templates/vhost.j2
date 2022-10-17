@@ -67,7 +67,7 @@ server {
         # add_header X-Cache-Status $upstream_cache_status;
     }
 
-    location ~ ^/assets\/.+\.(jpe?g|png|gif|ico)$ {
+    location ~ ^/(assets|images|fonts)\/.+\.(jpe?g|png|gif|ico|svgz?|ttf|ttc|otf|eot|woff2?)$ {
         proxy_cache STATIC;
         proxy_ignore_headers Cache-Control;
         proxy_cache_valid 60m;
