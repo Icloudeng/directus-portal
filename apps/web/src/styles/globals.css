@@ -139,6 +139,10 @@ body {
     @apply animate-blink;
   }
   
+  .image-zoom-active {
+    @apply border-2 border-primary-400;
+  }
+  
 }
 
 @layer utilities {
