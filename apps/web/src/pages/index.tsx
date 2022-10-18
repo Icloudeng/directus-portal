@@ -13,6 +13,7 @@ import Seo from '@/components/Seo';
 import { getGqlHomeQueries, QHomeHeroQueriesType } from '@/cms/items';
 import { getServerSideTranslations } from '@/utils/server-translation';
 import { JobsCreation } from '@/components/sections/jobs-creation/JobsCreation';
+import { CrossCardAnimation } from '@/components/sections/cross-card-animation/CrossCardAnimation';
 
 export default function HomePage(props: Partial<QHomeHeroQueriesType>) {
   const { HomeHero, HomeSections } = props;
@@ -23,6 +24,10 @@ export default function HomePage(props: Partial<QHomeHeroQueriesType>) {
 
       <section className='hero-section py-10'>
         {HomeHero && <HeroSection data={HomeHero} />}
+      </section>
+
+      <section className='py-10 bg-white'>
+        <CrossCardAnimation />
       </section>
 
       <section className='py-10 bg-[#f5f7fa]'>
