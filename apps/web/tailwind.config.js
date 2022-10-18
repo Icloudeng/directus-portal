@@ -57,11 +57,35 @@ module.exports = {
             opacity: 0,
           },
         },
+        streamleft: {
+          '0%': {
+            transform: 'translateX(0%)',
+          },
+          '50%': {
+            transform: 'translateX(25%)',
+          },
+          '100%': {
+            transform: 'translateX(50%)',
+          },
+        },
+        streamright: {
+          '100%': {
+            transform: 'translateX(-50%)',
+          },
+          '50%': {
+            transform: 'translateX(-25%)',
+          },
+          '0%': {
+            transform: 'translateX(0%)',
+          },
+        },
       },
       animation: {
         flicker: 'flicker 3s linear infinite',
         shimmer: 'shimmer 1.3s linear infinite',
         blink: 'blink .7s linear infinite',
+        streamleft: 'streamleft  15s linear infinite forwards',
+        streamright: 'streamright 15s linear 0s infinite normal none running'
       },
     },
     screens: {
