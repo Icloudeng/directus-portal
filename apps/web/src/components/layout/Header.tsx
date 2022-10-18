@@ -16,15 +16,15 @@ export default function Header() {
     }
   }, []);
 
-  const throttleScroll = useCallback(() => {
-    lastScrollY.current = window.scrollY;
-  }, []);
-
   useEffect(() => {
+    const throttleScroll = throttle(() => {
+      lastScrollY.current = window.scrollY;
+    }, 100);
+
     setTimeout(() => {
       lastScrollY.current = window.scrollY;
       window.addEventListener('scroll', onScroll);
-      window.addEventListener('scroll', throttle(throttleScroll, 100));
+      window.addEventListener('scroll', throttleScroll);
     }, 0);
     return () => {
       window.removeEventListener('scroll', onScroll);

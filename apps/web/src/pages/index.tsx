@@ -1,5 +1,4 @@
 import { GetServerSidePropsContext } from 'next';
-import { useEffect } from 'react';
 
 import Layout from '@/components/layout/Layout';
 import { CloudComputing } from '@/components/sections/cloud-computing/CloudComputing';
@@ -13,7 +12,6 @@ import Seo from '@/components/Seo';
 import { getGqlHomeQueries, QHomeHeroQueriesType } from '@/cms/items';
 import { getServerSideTranslations } from '@/utils/server-translation';
 import { JobsCreation } from '@/components/sections/jobs-creation/JobsCreation';
-import { HTagScroll } from '@/components/sections/more-template/htag-scroll/HTagScroll';
 
 export default function HomePage(props: Partial<QHomeHeroQueriesType>) {
   const { HomeHero, HomeSections } = props;
@@ -22,7 +20,7 @@ export default function HomePage(props: Partial<QHomeHeroQueriesType>) {
     <Layout>
       <Seo />
 
-      {/* <section className='hero-section py-10'>
+      <section className='hero-section py-10'>
         {HomeHero && <HeroSection data={HomeHero} />}
       </section>
 
@@ -36,21 +34,18 @@ export default function HomePage(props: Partial<QHomeHeroQueriesType>) {
 
       <section className='py-10 bg-[#f5f7fa]'>
         <IntelligentSystem />
-      </section> */}
+      </section>
 
       {/* <section className='py-10 bg-[#f5f7fa]'>
-          <UnderHeroSection />
-        </section> */}
-      {/* <section className='py-10 bg-white'>
+        <UnderHeroSection />
+      </section> */}
+
+      <section className='py-10 bg-white'>
         <SupportBusiness />
       </section>
 
       <section className='py-10 bg-[#f5f7fa]'>
         <JobsCreation />
-      </section> */}
-
-      <section className='py-10 bg-white'>
-        <HTagScroll />
       </section>
 
       {HomeSections && <PageSections sections={HomeSections.sections} />}
