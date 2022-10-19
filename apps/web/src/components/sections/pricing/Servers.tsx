@@ -1,5 +1,5 @@
-import { CheckCircle } from "./CheckCircle"
-import { DynamicInput } from "./DynamicInput"
+import { DynamicInput } from "@/components/ui/DynamicInput"
+import { CheckCircle } from "../../ui/CheckCircle"
 
 export const Servers = () => {
     return (

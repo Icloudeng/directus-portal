@@ -13,7 +13,7 @@ type AccType =
   | string
   | number;
 
-export const HeroSection = ({ data }: { data: MDHomePageHero }) => {
+export const HomeHeroSection = ({ data }: { data: MDHomePageHero }) => {
   const { t } = useTranslation('home');
   const { translations, image, images, disposition } = useMut(data);
   const trailing_titles = translations?.trailing_titles;

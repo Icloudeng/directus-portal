@@ -2,7 +2,7 @@ import { GetServerSidePropsContext } from 'next';
 
 import Layout from '@/components/layout/Layout';
 import { CloudComputing } from '@/components/sections/cloud-computing/CloudComputing';
-import { HeroSection } from '@/components/sections/hero/HeroSection';
+import { HomeHeroSection } from '@/components/sections/hero/HomeHeroSection';
 import { HowEasy } from '@/components/sections/how-easy/HowEasy';
 import { IntelligentSystem } from '@/components/sections/intelligent-system/IntelligentSystem';
 import { PageSections } from '@/components/sections/page-sections';
@@ -21,7 +21,7 @@ export default function HomePage(props: Partial<QHomeHeroQueriesType>) {
       <Seo />
 
       <section className='hero-section py-10'>
-        {HomeHero && <HeroSection data={HomeHero} />}
+        {HomeHero && <HomeHeroSection data={HomeHero} />}
       </section>
 
       <section className='py-10 bg-[#f5f7fa]'>
