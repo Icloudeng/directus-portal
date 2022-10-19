@@ -2235,7 +2235,7 @@ fields:
         template: "{{address_name}}\_--\_{{status}}"
       readonly: false
       required: false
-      sort: 4
+      sort: 5
       special:
         - o2m
       translations: null
@@ -2288,6 +2288,53 @@ fields:
       table: CompanyDetails
     type: string
   - collection: CompanyDetails
+    field: currency
+    meta:
+      collection: CompanyDetails
+      conditions: null
+      display: null
+      display_options: null
+      field: currency
+      group: null
+      hidden: false
+      interface: select-dropdown
+      note: null
+      options:
+        allowOther: true
+        choices:
+          - text: USD ($)
+            value: $
+          - text: EUR (€)
+            value: €
+      readonly: false
+      required: true
+      sort: 4
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: character varying
+      default_value: $
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: 255
+      name: currency
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: CompanyDetails
+    type: string
+  - collection: CompanyDetails
     field: date_created
     meta:
       collection: CompanyDetails
@@ -2303,7 +2350,7 @@ fields:
       options: null
       readonly: true
       required: false
-      sort: 12
+      sort: 13
       special:
         - date-created
       translations: null
@@ -2346,7 +2393,7 @@ fields:
       options: null
       readonly: true
       required: false
-      sort: 14
+      sort: 15
       special:
         - date-updated
       translations: null
@@ -2390,7 +2437,7 @@ fields:
         trim: true
       readonly: false
       required: false
-      sort: 5
+      sort: 6
       special: null
       translations: null
       validation: null
@@ -2473,7 +2520,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: 8
+      sort: 9
       special:
         - file
       translations: null
@@ -2516,7 +2563,7 @@ fields:
         template: "{{social_name}}\_---\_{{status}}"
       readonly: false
       required: false
-      sort: 9
+      sort: 10
       special:
         - o2m
       translations: null
@@ -2561,7 +2608,7 @@ fields:
             value: archived
       readonly: false
       required: false
-      sort: 10
+      sort: 11
       special: null
       translations: null
       validation: null
@@ -2604,7 +2651,7 @@ fields:
         trim: true
       readonly: false
       required: false
-      sort: 6
+      sort: 7
       special: null
       translations: null
       validation: null
@@ -2671,7 +2718,7 @@ fields:
         template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
       readonly: true
       required: false
-      sort: 11
+      sort: 12
       special:
         - user-created
       translations: null
@@ -2714,7 +2761,7 @@ fields:
         template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
       readonly: true
       required: false
-      sort: 13
+      sort: 14
       special:
         - user-updated
       translations: null
@@ -2758,7 +2805,7 @@ fields:
         trim: true
       readonly: false
       required: false
-      sort: 7
+      sort: 8
       special: null
       translations: null
       validation: null
@@ -3009,7 +3056,7 @@ fields:
       options:
         max: 16
         min: 1
-        placeholder: Minimum Computer CPU (Core)
+        placeholder: Computer CPU (Core)
       readonly: false
       required: true
       sort: 5
@@ -3226,7 +3273,7 @@ fields:
       options:
         max: 48
         min: 1
-        placeholder: Minimum Computer RAM
+        placeholder: Computer RAM
       readonly: false
       required: true
       sort: 4
@@ -3311,7 +3358,7 @@ fields:
       options:
         max: 1000
         min: 25
-        placeholder: Minimum Computer Disk (SSD)
+        placeholder: Computer Disk (SSD)
         step: 10
       readonly: false
       required: true
@@ -3682,6 +3729,95 @@ fields:
       table: FixedPlans_translations
     type: string
   - collection: FlexiblePlans
+    field: cpu
+    meta:
+      collection: FlexiblePlans
+      conditions: null
+      display: null
+      display_options: null
+      field: cpu
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        max: 16
+        min: 1
+        placeholder: Computer CPU (Core)
+      readonly: false
+      required: true
+      sort: 4
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      comment: null
+      data_type: integer
+      default_value: 1
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: cpu
+      numeric_precision: 32
+      numeric_scale: 0
+      schema: public
+      table: FlexiblePlans
+    type: integer
+  - collection: FlexiblePlans
+    field: cpu_cost_hour
+    meta:
+      collection: FlexiblePlans
+      conditions: null
+      display: null
+      display_options: null
+      field: cpu_cost_hour
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        max: 50
+        min: 0.001
+        placeholder: CPU Hourly price
+        step: 0.003
+      readonly: false
+      required: true
+      sort: 5
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      comment: null
+      data_type: numeric
+      default_value: 0.001
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: cpu_cost_hour
+      numeric_precision: 10
+      numeric_scale: 5
+      schema: public
+      table: FlexiblePlans
+    type: decimal
+  - collection: FlexiblePlans
     field: date_created
     meta:
       collection: FlexiblePlans
@@ -3697,7 +3833,7 @@ fields:
       options: null
       readonly: true
       required: false
-      sort: 5
+      sort: 10
       special:
         - date-created
       translations: null
@@ -3740,7 +3876,7 @@ fields:
       options: null
       readonly: true
       required: false
-      sort: 7
+      sort: 12
       special:
         - date-updated
       translations: null
@@ -3810,6 +3946,184 @@ fields:
       table: FlexiblePlans
     type: uuid
   - collection: FlexiblePlans
+    field: ram
+    meta:
+      collection: FlexiblePlans
+      conditions: null
+      display: null
+      display_options: null
+      field: ram
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        max: 48
+        min: 1
+        placeholder: Computer RAM
+      readonly: false
+      required: true
+      sort: 2
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      comment: null
+      data_type: integer
+      default_value: 1
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: ram
+      numeric_precision: 32
+      numeric_scale: 0
+      schema: public
+      table: FlexiblePlans
+    type: integer
+  - collection: FlexiblePlans
+    field: ram_cost_hour
+    meta:
+      collection: FlexiblePlans
+      conditions: null
+      display: null
+      display_options: null
+      field: ram_cost_hour
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        max: 50
+        min: 0.001
+        placeholder: RAM Hourly price
+        step: 0.002
+      readonly: false
+      required: true
+      sort: 3
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      comment: null
+      data_type: numeric
+      default_value: 0.001
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: ram_cost_hour
+      numeric_precision: 10
+      numeric_scale: 5
+      schema: public
+      table: FlexiblePlans
+    type: decimal
+  - collection: FlexiblePlans
+    field: ssd
+    meta:
+      collection: FlexiblePlans
+      conditions: null
+      display: null
+      display_options: null
+      field: ssd
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        max: 1000
+        min: 25
+        placeholder: Computer Disk (SSD)
+      readonly: false
+      required: true
+      sort: 6
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      comment: null
+      data_type: bigint
+      default_value: 25
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: ssd
+      numeric_precision: 64
+      numeric_scale: 0
+      schema: public
+      table: FlexiblePlans
+    type: bigInteger
+  - collection: FlexiblePlans
+    field: ssd_cost_hour
+    meta:
+      collection: FlexiblePlans
+      conditions: null
+      display: null
+      display_options: null
+      field: ssd_cost_hour
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        max: 50
+        min: 0.001
+        placeholder: Disk (SSD) Hourly price
+        step: 0.002
+      readonly: false
+      required: true
+      sort: 7
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      comment: null
+      data_type: numeric
+      default_value: 0.001
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: ssd_cost_hour
+      numeric_precision: 10
+      numeric_scale: 5
+      schema: public
+      table: FlexiblePlans
+    type: decimal
+  - collection: FlexiblePlans
     field: status
     meta:
       collection: FlexiblePlans
@@ -3845,7 +4159,7 @@ fields:
             value: archived
       readonly: false
       required: false
-      sort: 3
+      sort: 8
       special: null
       translations: null
       validation: null
@@ -3887,7 +4201,7 @@ fields:
         template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
       readonly: true
       required: false
-      sort: 4
+      sort: 9
       special:
         - user-created
       translations: null
@@ -3930,7 +4244,7 @@ fields:
         template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
       readonly: true
       required: false
-      sort: 6
+      sort: 11
       special:
         - user-updated
       translations: null

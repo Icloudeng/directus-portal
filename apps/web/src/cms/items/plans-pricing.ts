@@ -21,6 +21,12 @@ const queries = jsonToGraphQLQuery({
   query: <TQuery>{
     flexible_plans: {
       __aliasFor: plans_pricing.flexible_plans,
+      ram: true,
+      ram_cost_hour: true,
+      cpu: true,
+      cpu_cost_hour: true,
+      ssd: true,
+      ssd_cost_hour: true,
       ...qWithStatus,
     },
     fixed_plans: {

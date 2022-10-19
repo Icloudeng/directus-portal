@@ -103,6 +103,7 @@ type MDCompanyDetailField = {
   logo?: MDWithAsset;
   addresses: MDAddress[];
   socials: MDSocial[];
+  currency: '$' | '€' | string;
 };
 
 type MDCompanyDetailFieldTrans = {
@@ -184,10 +185,14 @@ export type PlansPricingContent = {
   machine_templates: MDMachineTemplate[];
 };
 
-export type MDFlexiblePlan = { [x: string]: any } & MDWithTranslation<{
-  [x: string]: any;
-}> &
-  DRTStatus;
+export type MDFlexiblePlan = {
+  ram: number;
+  ram_cost_hour: number;
+  cpu: number;
+  cpu_cost_hour: number;
+  ssd: number;
+  ssd_cost_hour: number;
+} & DRTStatus;
 
 export type MDFixedPlan = {
   platforms: string[];
