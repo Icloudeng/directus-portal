@@ -1,7 +1,7 @@
 import { mut } from '@/cms/mut';
 import { STemplates_Props, ST_NavTab } from '@/cms/page-sections';
-import { MarkdownContent } from '@/components/react-markdown/MarkdownContent';
-import { Tabs, TabsPane } from '@/components/tabs/tabs';
+import { MarkdownContent } from '@/components/ui/react-markdown/MarkdownContent';
+import { Tabs, TabsPane } from '@/components/ui/tabs/tabs';
 import { useSharedData } from '@/store';
 import Image from 'next/image';
 

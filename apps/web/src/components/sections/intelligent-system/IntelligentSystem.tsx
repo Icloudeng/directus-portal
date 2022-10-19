@@ -4,7 +4,7 @@ import {
   DotButton,
   NextButton,
   PrevButton,
-} from '@/components/carouselButtons/CarouselButtons';
+} from '@/components/ui/carouselButtons/CarouselButtons';
 
 import { SnapItemData } from '@/models/snapItemModel';
 

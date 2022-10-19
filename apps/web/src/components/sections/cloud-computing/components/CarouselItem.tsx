@@ -1,6 +1,6 @@
 import Image from "next/image"
 
-import ButtonLink from "@/components/links/ButtonLink"
+import ButtonLink from "@/components/ui/links/ButtonLink"
 
 import { ICarouselData } from "@/types/carouselTypes"
 

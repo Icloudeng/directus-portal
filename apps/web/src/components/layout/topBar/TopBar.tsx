@@ -1,9 +1,9 @@
 import React from 'react';
 import { VscChevronDown, VscChevronRight } from 'react-icons/vsc';
 
-import UnstyledLink from '@/components/links/UnstyledLink';
-import NextImage from '@/components/NextImage';
-import { LangList } from '@/components/topBar/components/ListData';
+import UnstyledLink from '@/components/ui/links/UnstyledLink';
+import NextImage from '@/components/ui/NextImage';
+import { LangList } from '@/components/layout/topBar/components/ListData';
 
 import { useSharedData } from '@/store';
 

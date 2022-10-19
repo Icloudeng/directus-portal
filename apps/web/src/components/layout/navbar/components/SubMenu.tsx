@@ -1,9 +1,9 @@
 import React from 'react';
 
-import UnstyledLink from '@/components/links/UnstyledLink';
+import UnstyledLink from '@/components/ui/links/UnstyledLink';
 import { NavbarLinkSubmenu, NavbarLinkSubmenuItem } from '@/cms/items/types';
 import { useMut } from '@/cms/mut';
-import { HasSvgText } from '@/components/HasSvgText';
+import { HasSvgText } from '@/components/ui/HasSvgText';
 
 export const Submenu = React.memo(({ data }: { data: NavbarLinkSubmenu }) => {
   const { featured, translations, items } = useMut(data);

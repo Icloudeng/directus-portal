@@ -1,4 +1,4 @@
-import ButtonLink from '@/components/links/ButtonLink';
+import ButtonLink from '@/components/ui/links/ButtonLink';
 
 import { useSharedData } from '@/store';
 

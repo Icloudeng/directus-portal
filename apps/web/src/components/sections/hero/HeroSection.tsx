@@ -2,7 +2,7 @@ import { useTranslation } from 'next-i18next';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { TypeAnimation } from 'react-type-animation';
 
-import NextImage from '@/components/NextImage';
+import NextImage from '@/components/ui/NextImage';
 
 import { MDHomePageHero } from '@/cms/items/types';
 import { useMut } from '@/cms/mut';

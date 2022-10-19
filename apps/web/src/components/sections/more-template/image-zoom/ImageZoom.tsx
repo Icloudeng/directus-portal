@@ -4,7 +4,7 @@ import ReactPlayer from 'react-player'
 
 import { useHasMounted } from '@/hooks/useHasMounted'
 
-import Skeleton from '@/components/Skeleton'
+import Skeleton from '@/components/ui/Skeleton'
 
 type IImagesLink = {
     type: string;

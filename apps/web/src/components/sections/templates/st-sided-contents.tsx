@@ -1,7 +1,7 @@
 import type { STemplates_Props, ST_SidedContent } from '@/cms/page-sections';
 import Image from 'next/image';
 import { useMut } from '@/cms/mut';
-import { MarkdownContent } from '@/components/react-markdown/MarkdownContent';
+import { MarkdownContent } from '@/components/ui/react-markdown/MarkdownContent';
 
 export function ST_SidedContentsFC({
   items,

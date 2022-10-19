@@ -1,6 +1,6 @@
 import { FaCcMastercard, FaCcPaypal, FaCcVisa } from 'react-icons/fa';
 
-import UnstyledLink from '@/components/links/UnstyledLink';
+import UnstyledLink from '@/components/ui/links/UnstyledLink';
 import { useTranslation } from 'next-i18next';
 
 export const TermsConditions = () => {

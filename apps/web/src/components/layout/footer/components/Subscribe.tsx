@@ -1,6 +1,6 @@
 import { useTranslation } from 'next-i18next';
 
-import Button from '@/components/buttons/Button';
+import Button from '@/components/ui/buttons/Button';
 
 export const Subscribe = () => {
   const { t } = useTranslation();

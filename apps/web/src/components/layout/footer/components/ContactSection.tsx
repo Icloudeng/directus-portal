@@ -8,7 +8,7 @@ import {
 } from 'react-icons/fa';
 import { GoMailRead } from 'react-icons/go';
 
-import UnstyledLink from '@/components/links/UnstyledLink';
+import UnstyledLink from '@/components/ui/links/UnstyledLink';
 
 import { useSharedData } from '@/store';
 

@@ -1,4 +1,4 @@
-import Button from "@/components/buttons/Button"
+import Button from "@/components/ui/buttons/Button"
 
 import { DynamicInput } from './DynamicInput';
 import { ReactSelector } from './ReactSelector';

@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 
-import NextImage from '@/components/NextImage';
+import NextImage from '@/components/ui/NextImage';
 
 import { MDLanguage } from '@/cms/items/types';
 

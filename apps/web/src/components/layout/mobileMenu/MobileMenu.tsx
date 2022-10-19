@@ -3,8 +3,8 @@ import { GrClose } from 'react-icons/gr';
 import { VscChevronDown } from 'react-icons/vsc';
 import { mergeRefs } from '@/utils/merge-refs';
 
-import ButtonLink from '../links/ButtonLink';
-import UnstyledLink from '../links/UnstyledLink';
+import ButtonLink from '../../ui/links/ButtonLink';
+import UnstyledLink from '../../ui/links/UnstyledLink';
 
 import { useOutsideClick } from '@/hooks/useOutsideClick';
 import { useSharedData } from '@/store';
@@ -15,7 +15,7 @@ import {
   NavbarLinkSubmenu,
   NavbarLinkSubmenuItem,
 } from '@/cms/items/types';
-import { HasSvgText } from '../HasSvgText';
+import { HasSvgText } from '../../ui/HasSvgText';
 import { useTranslation } from 'next-i18next';
 import { Router } from 'next/router';
 

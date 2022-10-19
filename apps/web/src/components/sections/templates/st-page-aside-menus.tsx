@@ -3,10 +3,9 @@ import { STemplates_Props, ST_PageAsideMenu } from '@/cms/page-sections';
 import {
   AsideMenu,
   AsideMenuContent,
-} from '@/components/aside-menu/aside-menu';
-import { MarkdownContent } from '@/components/react-markdown/MarkdownContent';
+} from '@/components/ui/aside-menu/aside-menu';
+import { MarkdownContent } from '@/components/ui/react-markdown/MarkdownContent';
 import { useSharedData } from '@/store';
-import { useEffect } from 'react';
 
 export function ST_PageAsideMenusFC({
   items,
