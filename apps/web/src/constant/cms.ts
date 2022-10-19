@@ -31,6 +31,7 @@ export const CMS_MODELS = {
     fixed_plans: 'FixedPlans',
     plans_comparisons: 'PlansComparisons',
     machine_templates: 'MachineTemplates',
+    platforms: 'Platforms',
   } as const,
   generics: {
     page_sections: 'PageSections',

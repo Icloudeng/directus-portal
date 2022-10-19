@@ -180,6 +180,7 @@ export type PlansPricingContent = {
   flexible_plans?: MDFlexiblePlan | null;
   fixed_plans?: MDFixedPlan[];
   plans_comparisons?: MDPlansComparison[];
+  platforms?: MDPlatform[];
   machine_templates: MDMachineTemplate[];
 };
 
@@ -187,3 +188,4 @@ export type MDFlexiblePlan = {} & MDWithTranslation<{}> & DRTStatus;
 export type MDFixedPlan = {} & MDWithTranslation<{}> & DRTStatus;
 export type MDPlansComparison = {} & MDWithTranslation<{}> & DRTStatus;
 export type MDMachineTemplate = {} & MDWithTranslation<{}> & DRTStatus;
+export type MDPlatform = {} & MDWithTranslation<{}> & DRTStatus;
