@@ -3,6 +3,7 @@ import { jsonToGraphQLQuery } from 'json-to-graphql-query';
 import { getDirectusClient } from '../directus';
 import {
   qWithPublishedStatus,
+  qWithQueryAsset,
   qWithStatus,
   qWithTranslations,
 } from '../gql-query';
@@ -24,22 +25,28 @@ const queries = jsonToGraphQLQuery({
     },
     fixed_plans: {
       __aliasFor: plans_pricing.fixed_plans,
-      __args: qWithPublishedStatus({}),
+      __args: qWithPublishedStatus(),
       ...qWithStatus,
     },
     plans_comparisons: {
       __aliasFor: plans_pricing.plans_comparisons,
-      __args: qWithPublishedStatus({}),
+      __args: qWithPublishedStatus(),
       ...qWithStatus,
     },
     machine_templates: {
       __aliasFor: plans_pricing.machine_templates,
-      __args: qWithPublishedStatus({}),
+      __args: qWithPublishedStatus(),
       ...qWithStatus,
     },
     platforms: {
       __aliasFor: plans_pricing.platforms,
-      __args: qWithPublishedStatus({}),
+      __args: qWithPublishedStatus(),
+      name: true,
+      icon_svg: true,
+      icon: qWithQueryAsset(),
+      ram: true,
+      cpu: true,
+      ssd: true,
       ...qWithStatus,
     },
   },

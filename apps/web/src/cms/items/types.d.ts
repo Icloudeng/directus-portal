@@ -208,7 +208,21 @@ export type MDPlatform = {
   name: string;
   icon_svg?: string;
   icon?: MDWithAsset;
+  category?: string;
+  ram: number;
+  cpu: number;
+  ssd: number;
 } & MDWithTranslation<{
+  description?: string;
+}> &
+  DRTStatus;
+
+export type MDPlatformCategory = {
+  name: string;
+  icon_svg?: string;
+  icon?: MDWithAsset;
+} & MDWithTranslation<{
+  name?: string;
   description?: string;
 }> &
   DRTStatus;
