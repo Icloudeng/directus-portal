@@ -1,4 +1,4 @@
-import UnstyledLink from '@/components/links/UnstyledLink';
+import UnstyledLink from "@/components/ui/links/UnstyledLink";
 
 type ISquareCard = {
     cardText: string;
