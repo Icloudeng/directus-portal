@@ -3,14 +3,17 @@ import React, {
   PropsWithChildren,
   useCallback,
   useEffect,
+  useRef,
   useState,
 } from 'react';
 import throttle from 'lodash/throttle';
 import capitalize from 'lodash/capitalize';
+import debounce from 'lodash/debounce';
 
 export function AsideMenu({ children }: PropsWithChildren) {
   const [active, setActive] = useState(0);
   const arrChildren = React.Children.toArray(children);
+  const hasClickScroll = useRef(false);
 
   const titles = arrChildren
     .map((child, index) => {
@@ -45,6 +48,7 @@ export function AsideMenu({ children }: PropsWithChildren) {
       .filter(Boolean);
 
     const onScroll = throttle(() => {
+      if (hasClickScroll.current) return;
       const screenY = window.scrollY + window.innerHeight / 2;
       const rects = elements.map((el) => {
         const middle =
@@ -73,6 +77,15 @@ export function AsideMenu({ children }: PropsWithChildren) {
       const cel = document.getElementById('label-' + href);
       if (!cel) return;
       const rect = cel.getBoundingClientRect()!;
+      hasClickScroll.current = true;
+
+      const onScroll = debounce(() => {
+        window.removeEventListener('scroll', onScroll);
+        setActive(index);
+        hasClickScroll.current = false;
+      }, 101);
+      window.addEventListener('scroll', onScroll);
+
       window.scroll({
         top:
           rect.y > 0
