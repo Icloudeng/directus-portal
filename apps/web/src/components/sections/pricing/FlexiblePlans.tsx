@@ -5,7 +5,9 @@ import {
 } from '@/cms/items/types';
 import Button from '@/components/ui/buttons/Button';
 import { DynamicInput } from '@/components/ui/DynamicInput';
-import { ReactSelector } from '@/components/ui/ReactSelector';
+import { HasSvgOrImage, ReactSelector } from '@/components/ui/ReactSelector';
+import { useTranslation } from 'next-i18next';
+import { useState } from 'react';
 
 type Props = {
   flexible_plans: MDFlexiblePlan;
@@ -13,85 +15,125 @@ type Props = {
   platforms: MDPlatform[];
 };
 
+const useFlexiblePlans = ({
+  machine_templates,
+  platforms,
+  flexible_plans,
+}: Props) => {
+  let defaultValueMT = machine_templates.findIndex((t) => t.default);
+  defaultValueMT = defaultValueMT === -1 ? 0 : defaultValueMT;
+
+  const [cpus, setCpus] = useState(flexible_plans.cpu);
+  const [rams, setRams] = useState(flexible_plans.ram);
+  const [ssds, setSsds] = useState(flexible_plans.ssd);
+
+  return {
+    defaultValueMT,
+    cpus,
+    rams,
+    ssds,
+  };
+};
+
 export const FlexiblePlans = ({
   flexible_plans,
   machine_templates,
   platforms,
 }: Props) => {
+  const { t } = useTranslation();
+
+  const { defaultValueMT, cpus, rams, ssds } = useFlexiblePlans({
+    flexible_plans,
+    machine_templates,
+    platforms,
+  });
+
+  const template_options = machine_templates.map((tm) => {
+    return {
+      label: (
+        <>
+          <HasSvgOrImage icon={tm.icon} icon_svg={tm.icon_svg} />
+          <span>{tm.name}</span>
+        </>
+      ),
+      value: tm,
+    };
+  });
+
+  const platforms_options = platforms.map((tm) => {
+    return {
+      label: (
+        <>
+          <HasSvgOrImage icon={tm.icon} icon_svg={tm.icon_svg} />
+          <span>{tm.name}</span>
+        </>
+      ),
+      value: tm,
+    };
+  });
+
   return (
     <div className='section__bock border space-y-5 shadow-sm drop-shadow-sm rounded-sm p-10'>
-      <h4>Flexible plan</h4>
+      <h4>{t('Flexible plan')}</h4>
       <div className='block-calculator h-full'>
         <div className='calculator_wrapper h-full flex items-stretch'>
           <div className='calculator__left h-full flex-[1.5] flex flex-col gap-7 mr-3 pr-2'>
             <div className='calculator__form-field flex items-center'>
               <label className='text-sm min-w-[10rem]' htmlFor=''>
-                Template
+                {t('Templates')}
               </label>
-              <ReactSelector />
+              <ReactSelector
+                initialValue={template_options.at(defaultValueMT) || null}
+                options={template_options}
+              />
             </div>
             <div className='calculator__form-field flex items-center'>
               <label className='text-sm min-w-[10rem]' htmlFor=''>
-                Location
+                {t('Platforms')}
               </label>
-              <ReactSelector />
+              <ReactSelector isMulti options={platforms_options} />
             </div>
             <div className='calculator__form-field flex items-center'>
               <label className='text-sm min-w-[10rem]' htmlFor=''>
-                RAM
+                {t('RAM')}
               </label>
               <div className='custom-select w-full'>
                 <DynamicInput
-                  initValue={1}
+                  initValue={rams}
                   unit='GB'
                   textCenter={false}
                   textSize='text-normal'
                   withRange
                   stepValue={1}
                   minValue={1}
-                  maxValue={12}
+                  maxValue={48}
                 />
               </div>
             </div>
             <div className='calculator__form-field flex items-center'>
               <label className='text-sm min-w-[10rem]' htmlFor=''>
-                CPU
+                {t('CPU')}
               </label>
               <div className='custom-select w-full'>
                 <DynamicInput
-                  initValue={1}
+                  initValue={cpus}
                   unit='Core'
                   textCenter={false}
                   textSize='text-normal'
                   withRange
                   stepValue={2}
                   minValue={1}
-                  maxValue={13}
+                  maxValue={16}
                 />
               </div>
             </div>
             <div className='calculator__form-field flex items-center'>
               <label className='text-sm min-w-[10rem]' htmlFor=''>
-                Bandwidth
+                {t('SSD')}
               </label>
               <div className='custom-select w-full'>
                 <DynamicInput
-                  initValue={1}
-                  unit='Mbps'
-                  textCenter={false}
-                  textSize='text-normal'
-                  minValue={1}
-                  maxValue={12}
-                />
-              </div>
-            </div>
-            <div className='calculator__form-field flex items-center'>
-              <label className='text-sm min-w-[10rem]' htmlFor=''>
-                SSD
-              </label>
-              <div className='custom-select w-full'>
-                <DynamicInput
-                  initValue={25}
+                  initValue={ssds}
                   unit='GB'
                   textCenter={false}
                   textSize='text-normal'

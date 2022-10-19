@@ -218,6 +218,7 @@ export type MDMachineTemplate = {
   name: string;
   icon_svg?: string;
   icon?: MDWithAsset;
+  default: boolean;
   cost_hour: number;
 } & DRTStatus;
 

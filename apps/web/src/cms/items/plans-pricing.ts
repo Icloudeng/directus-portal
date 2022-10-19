@@ -2,6 +2,7 @@ import { CMS_MODELS } from '@/constant/cms';
 import { jsonToGraphQLQuery } from 'json-to-graphql-query';
 import { getDirectusClient } from '../directus';
 import {
+  qWithAsset,
   qWithPublishedStatus,
   qWithQueryAsset,
   qWithStatus,
@@ -60,6 +61,7 @@ const queries = jsonToGraphQLQuery({
       icon_svg: true,
       icon: qWithQueryAsset(),
       cost_hour: true,
+      default: true,
       ...qWithStatus,
     },
     platforms: {
@@ -78,9 +80,21 @@ const queries = jsonToGraphQLQuery({
 
 export async function getGqlPlansPricingQueries() {
   const directus = await getDirectusClient();
+  const access_token = await directus.auth.token;
+
   const res = await directus.graphql
     .items<PlansPricingContent>(queries)
     .catch(console.error);
+
+  if (res?.data && access_token) {
+    const { machine_templates, platforms } = res.data;
+    machine_templates.forEach((item) => {
+      qWithAsset(access_token, item, 'icon');
+    });
+    platforms?.forEach((item) => {
+      qWithAsset(access_token, item, 'icon');
+    });
+  }
 
   return res?.data;
 }

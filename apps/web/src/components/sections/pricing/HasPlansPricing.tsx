@@ -1,4 +1,5 @@
 import { MPlansPricing, PlansPricingContent } from '@/cms/items/types';
+import { useEffect } from 'react';
 import { FixedPlans } from './FixedPlans';
 import { FlexiblePlans } from './FlexiblePlans';
 import { PlansComparisons } from './PlansComparisons';
@@ -9,6 +10,10 @@ type Props = {
 };
 
 export function HasPlansPricing({ contents }: Props) {
+    useEffect(() => {
+        console.log(contents);
+
+    }, [])
   if (!contents) return <></>;
 
   const {
