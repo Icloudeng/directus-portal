@@ -1,4 +1,8 @@
-import { MDFlexiblePlan, MDMachineTemplate } from '@/cms/items/types';
+import {
+  MDFlexiblePlan,
+  MDMachineTemplate,
+  MDPlatform,
+} from '@/cms/items/types';
 import Button from '@/components/ui/buttons/Button';
 import { DynamicInput } from '@/components/ui/DynamicInput';
 import { ReactSelector } from '@/components/ui/ReactSelector';
@@ -6,9 +10,14 @@ import { ReactSelector } from '@/components/ui/ReactSelector';
 type Props = {
   flexible_plans: MDFlexiblePlan;
   machine_templates: MDMachineTemplate[];
+  platforms: MDPlatform[];
 };
 
-export const FlexiblePlans = ({ flexible_plans, machine_templates }: Props) => {
+export const FlexiblePlans = ({
+  flexible_plans,
+  machine_templates,
+  platforms,
+}: Props) => {
   return (
     <div className='section__bock border space-y-5 shadow-sm drop-shadow-sm rounded-sm p-10'>
       <h4>Flexible plan</h4>
