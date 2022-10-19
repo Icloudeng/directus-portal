@@ -73,6 +73,7 @@ const gql_query = jsonToGraphQLQuery({
       support_email: true,
       email: true,
       website: true,
+      currency: true,
       socials: {
         __args: qWithPublishedStatus(),
         social_name: true,

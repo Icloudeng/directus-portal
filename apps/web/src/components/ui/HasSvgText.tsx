@@ -1,20 +1,23 @@
 import isSvg from 'is-svg';
-import { DetailedHTMLProps, HTMLAttributes } from 'react';
+import React, { DetailedHTMLProps, HTMLAttributes } from 'react';
 
 type SpanProps = DetailedHTMLProps<
   HTMLAttributes<HTMLSpanElement>,
   HTMLSpanElement
 >;
 
-export function HasSvgText(props: SpanProps & { svgText: string | undefined }) {
-  const newProps = { ...props };
-  const { svgText } = newProps;
-  delete newProps.svgText;
+export function HasSvgText({
+  svgText,
+  fallback,
+  ...props
+}: SpanProps & { svgText: string | undefined; fallback?: React.ReactNode }) {
+  const valid = svgText && isSvg(svgText);
   return (
     <>
-      {svgText && isSvg(svgText) && (
-        <span {...newProps} dangerouslySetInnerHTML={{ __html: svgText }} />
+      {valid && (
+        <span {...props} dangerouslySetInnerHTML={{ __html: svgText }} />
       )}
+      {!valid && <span {...props}>{fallback}</span>}
     </>
   );
 }

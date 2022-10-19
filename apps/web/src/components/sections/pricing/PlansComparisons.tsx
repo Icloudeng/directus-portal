@@ -1,5 +1,6 @@
 import { MDPlansComparison } from '@/cms/items/types';
 import { DynamicInput } from '@/components/ui/DynamicInput';
+import { useTranslation } from 'next-i18next';
 import { CheckCircle } from '../../ui/CheckCircle';
 
 export const PlansComparisons = ({
@@ -7,6 +8,7 @@ export const PlansComparisons = ({
 }: {
   plans_comparisons: MDPlansComparison[];
 }) => {
+  const { t } = useTranslation()
   return (
     <div className='section__bock border space-y-5 shadow-sm drop-shadow-sm rounded-sm p-10'>
       <div className='block-calculator h-full'>
@@ -32,13 +34,13 @@ export const PlansComparisons = ({
                     </div>
                   </th>
                   <th className='sticky top-0 text-sm leading-6 font-semibold text-slate-700 bg-white p-0'>
-                    <div className='py-3 text-center pr-2'>Basic</div>
+                    <div className='py-3 text-center pr-2'>{t("Basic")}</div>
                   </th>
                   <th className='sticky top-0 text-sm leading-6 font-semibold text-slate-700 bg-white p-0'>
-                    <div className='py-3 text-center pr-2'>Extended</div>
+                    <div className='py-3 text-center pr-2'>{t("Extended")}</div>
                   </th>
                   <th className='sticky top-0 text-sm leading-6 font-semibold text-slate-700 bg-white p-0'>
-                    <div className='py-3 text-center pr-2'>Pro</div>
+                    <div className='py-3 text-center pr-2'>{t("Pro")}</div>
                   </th>
                 </tr>
               </thead>

@@ -1,35 +1,47 @@
+import { MDWithAsset } from '@/types/directus';
 import React, { useState } from 'react';
 import Select from 'react-select';
+import { HasSvgText } from './HasSvgText';
 
-const options = [
-  { value: 'Windows Svr 2019 Std X64', label: 'Windows Svr 2019 Std X64' },
-  { value: 'Centos 8.3 X64', label: 'Centos 8.3 X64' },
-  { value: 'Ubuntu 20.04 X64', label: 'Ubuntu 20.04 X64' },
-  { value: 'Debian 10.7 X64', label: 'Debian 10.7 X64' },
-  { value: 'Ubuntu 18.04 X64', label: 'Ubuntu 18.04 X64' },
-  { value: 'FreeBSD 13.0 X64', label: 'FreeBSD 13.0 X64' },
-  { value: 'Oracle 8.6 X64', label: 'Oracle 8.6 X64' },
-];
+type Params = Parameters<Select>;
 
-export const ReactSelector = () => {
-  const [selectedOption, setSelectedOption] = useState<any>(null);
+type Props = {
+  onChange?: (value: any) => void;
+  initialValue?: any;
+} & Pick<Params[0], 'isMulti' | 'isSearchable' | 'options'>;
+
+export function HasSvgOrImage({
+  icon,
+  icon_svg,
+}: {
+  icon_svg?: string;
+  icon?: MDWithAsset;
+}) {
+  return (
+    <HasSvgText
+      className='inline-flex mr-2 w-4 h-4'
+      fallback={<>{icon && <img src={icon.src} className='w-full h-full' />}</>}
+      svgText={icon_svg}
+    />
+  );
+}
+
+export const ReactSelector = ({ onChange, initialValue, ...props }: Props) => {
+  const [selectedOption, setSelectedOption] = useState<any>(
+    initialValue || null
+  );
   const id = React.useId();
 
   const handleChange = (selectedOption: any) => {
     setSelectedOption(selectedOption);
+    onChange && onChange(selectedOption);
   };
 
   const customStyles = {
-    container: (provided: any, state: any) => ({
-      ...provided,
-      // border: '1px solid green',
-      // color: state.isSelected ? 'red' : 'blue',
-      // padding: 20,
-    }),
     control: (provided: any, state: any) => ({
       ...provided,
       width: 'w-full',
-      height: '2.9rem',
+      minHeight: '2.9rem',
       borderRadius: '2px',
       border: state.isFocused && '1px solid var(--color-primary-400)',
       ':hover': {
@@ -39,7 +51,6 @@ export const ReactSelector = () => {
     singleValue: (provided: any, state: any) => {
       const opacity = state.isDisabled ? 0.5 : 1;
       const transition = 'opacity 300ms';
-
       return { ...provided, opacity, transition };
     },
     option: (provided: any, state: any) => ({
@@ -56,8 +67,8 @@ export const ReactSelector = () => {
         value={selectedOption}
         instanceId={id}
         onChange={handleChange}
-        options={options}
         styles={customStyles}
+        {...props}
       />
     </div>
   );

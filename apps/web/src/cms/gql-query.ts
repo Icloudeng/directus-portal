@@ -9,7 +9,6 @@ import {
   MDWithAsset,
   QueryWithTranslation,
 } from '@/types/directus';
-import { CMS_MODELS } from '@/constant/cms';
 
 export const qWithStatus: DRTQueryT<DRTStatus> = {
   id: true,
@@ -72,7 +71,7 @@ export function qWithAsset<T extends { [x: string]: MDWithAsset | unknown }>(
 export function qWithAssets<T extends { [x: string]: MDWithAsset }>(
   access_token: string,
   datas: T[],
-  imageKey = 'image',
+  imageKey: keyof T = 'image',
   preset?: string | [number, number]
 ): T[] {
   return datas.map((data) =>

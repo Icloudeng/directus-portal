@@ -448,30 +448,6 @@ collections:
       comment: null
       name: MachineTemplates
       schema: public
-  - collection: MachineTemplates_translations
-    meta:
-      accountability: all
-      archive_app_filter: true
-      archive_field: null
-      archive_value: null
-      collapse: open
-      collection: MachineTemplates_translations
-      color: null
-      display_template: null
-      group: Plans_And_Pricing
-      hidden: true
-      icon: import_export
-      item_duplication_fields: null
-      note: null
-      singleton: false
-      sort: 7
-      sort_field: null
-      translations: null
-      unarchive_value: null
-    schema:
-      comment: null
-      name: MachineTemplates_translations
-      schema: public
   - collection: Navbar
     meta:
       accountability: all
@@ -898,6 +874,54 @@ collections:
       translations: null
       unarchive_value: null
     schema: null
+  - collection: PlatformCategories
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: status
+      archive_value: archived
+      collapse: open
+      collection: PlatformCategories
+      color: null
+      display_template: null
+      group: Plans_And_Pricing
+      hidden: false
+      icon: null
+      item_duplication_fields: null
+      note: null
+      singleton: false
+      sort: 8
+      sort_field: sort
+      translations: null
+      unarchive_value: draft
+    schema:
+      comment: null
+      name: PlatformCategories
+      schema: public
+  - collection: PlatformCategories_translations
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: PlatformCategories_translations
+      color: null
+      display_template: null
+      group: Plans_And_Pricing
+      hidden: true
+      icon: import_export
+      item_duplication_fields: null
+      note: null
+      singleton: false
+      sort: 9
+      sort_field: null
+      translations: null
+      unarchive_value: null
+    schema:
+      comment: null
+      name: PlatformCategories_translations
+      schema: public
   - collection: Platforms
     meta:
       accountability: all
@@ -914,7 +938,7 @@ collections:
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: 8
+      sort: 10
       sort_field: sort
       translations: null
       unarchive_value: draft
@@ -938,7 +962,7 @@ collections:
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: 9
+      sort: 11
       sort_field: null
       translations: null
       unarchive_value: null
@@ -2211,7 +2235,7 @@ fields:
         template: "{{address_name}}\_--\_{{status}}"
       readonly: false
       required: false
-      sort: 4
+      sort: 5
       special:
         - o2m
       translations: null
@@ -2264,6 +2288,53 @@ fields:
       table: CompanyDetails
     type: string
   - collection: CompanyDetails
+    field: currency
+    meta:
+      collection: CompanyDetails
+      conditions: null
+      display: null
+      display_options: null
+      field: currency
+      group: null
+      hidden: false
+      interface: select-dropdown
+      note: null
+      options:
+        allowOther: true
+        choices:
+          - text: USD ($)
+            value: $
+          - text: EUR (€)
+            value: €
+      readonly: false
+      required: true
+      sort: 4
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: character varying
+      default_value: $
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: 255
+      name: currency
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: CompanyDetails
+    type: string
+  - collection: CompanyDetails
     field: date_created
     meta:
       collection: CompanyDetails
@@ -2279,7 +2350,7 @@ fields:
       options: null
       readonly: true
       required: false
-      sort: 12
+      sort: 13
       special:
         - date-created
       translations: null
@@ -2322,7 +2393,7 @@ fields:
       options: null
       readonly: true
       required: false
-      sort: 14
+      sort: 15
       special:
         - date-updated
       translations: null
@@ -2366,7 +2437,7 @@ fields:
         trim: true
       readonly: false
       required: false
-      sort: 5
+      sort: 6
       special: null
       translations: null
       validation: null
@@ -2449,7 +2520,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: 8
+      sort: 9
       special:
         - file
       translations: null
@@ -2492,7 +2563,7 @@ fields:
         template: "{{social_name}}\_---\_{{status}}"
       readonly: false
       required: false
-      sort: 9
+      sort: 10
       special:
         - o2m
       translations: null
@@ -2537,7 +2608,7 @@ fields:
             value: archived
       readonly: false
       required: false
-      sort: 10
+      sort: 11
       special: null
       translations: null
       validation: null
@@ -2580,7 +2651,7 @@ fields:
         trim: true
       readonly: false
       required: false
-      sort: 6
+      sort: 7
       special: null
       translations: null
       validation: null
@@ -2647,7 +2718,7 @@ fields:
         template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
       readonly: true
       required: false
-      sort: 11
+      sort: 12
       special:
         - user-created
       translations: null
@@ -2690,7 +2761,7 @@ fields:
         template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
       readonly: true
       required: false
-      sort: 13
+      sort: 14
       special:
         - user-updated
       translations: null
@@ -2734,7 +2805,7 @@ fields:
         trim: true
       readonly: false
       required: false
-      sort: 7
+      sort: 8
       special: null
       translations: null
       validation: null
@@ -2926,6 +2997,95 @@ fields:
       table: CompanyDetails_translations
     type: text
   - collection: FixedPlans
+    field: cost_hour
+    meta:
+      collection: FixedPlans
+      conditions: null
+      display: null
+      display_options: null
+      field: cost_hour
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        max: 50
+        min: 0.001
+        placeholder: Hourly price
+        step: 0.01
+      readonly: false
+      required: true
+      sort: 7
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: numeric
+      default_value: 0.01
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: cost_hour
+      numeric_precision: 10
+      numeric_scale: 5
+      schema: public
+      table: FixedPlans
+    type: decimal
+  - collection: FixedPlans
+    field: cpu
+    meta:
+      collection: FixedPlans
+      conditions: null
+      display: null
+      display_options: null
+      field: cpu
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        max: 16
+        min: 1
+        placeholder: Computer CPU (Core)
+      readonly: false
+      required: true
+      sort: 5
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      comment: null
+      data_type: integer
+      default_value: 1
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: cpu
+      numeric_precision: 32
+      numeric_scale: 0
+      schema: public
+      table: FixedPlans
+    type: integer
+  - collection: FixedPlans
     field: date_created
     meta:
       collection: FixedPlans
@@ -2941,7 +3101,7 @@ fields:
       options: null
       readonly: true
       required: false
-      sort: 6
+      sort: 11
       special:
         - date-created
       translations: null
@@ -2984,7 +3144,7 @@ fields:
       options: null
       readonly: true
       required: false
-      sort: 8
+      sort: 13
       special:
         - date-updated
       translations: null
@@ -3054,6 +3214,95 @@ fields:
       table: FixedPlans
     type: uuid
   - collection: FixedPlans
+    field: platforms
+    meta:
+      collection: FixedPlans
+      conditions: null
+      display: null
+      display_options: null
+      field: platforms
+      group: null
+      hidden: false
+      interface: tags
+      note: null
+      options:
+        alphabetize: true
+        capitalization: auto-format
+        placeholder: Platforms List
+      readonly: false
+      required: true
+      sort: 3
+      special:
+        - cast-json
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: json
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: platforms
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: FixedPlans
+    type: json
+  - collection: FixedPlans
+    field: ram
+    meta:
+      collection: FixedPlans
+      conditions: null
+      display: null
+      display_options: null
+      field: ram
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        max: 48
+        min: 1
+        placeholder: Computer RAM
+      readonly: false
+      required: true
+      sort: 4
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      comment: null
+      data_type: integer
+      default_value: 2
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: ram
+      numeric_precision: 32
+      numeric_scale: 0
+      schema: public
+      table: FixedPlans
+    type: integer
+  - collection: FixedPlans
     field: sort
     meta:
       collection: FixedPlans
@@ -3068,7 +3317,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: 4
+      sort: 9
       special: null
       translations: null
       validation: null
@@ -3089,6 +3338,51 @@ fields:
       is_unique: false
       max_length: null
       name: sort
+      numeric_precision: 32
+      numeric_scale: 0
+      schema: public
+      table: FixedPlans
+    type: integer
+  - collection: FixedPlans
+    field: ssd
+    meta:
+      collection: FixedPlans
+      conditions: null
+      display: null
+      display_options: null
+      field: ssd
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        max: 1000
+        min: 25
+        placeholder: Computer Disk (SSD)
+        step: 10
+      readonly: false
+      required: true
+      sort: 6
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: integer
+      default_value: 25
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: ssd
       numeric_precision: 32
       numeric_scale: 0
       schema: public
@@ -3130,7 +3424,7 @@ fields:
             value: archived
       readonly: false
       required: false
-      sort: 3
+      sort: 8
       special: null
       translations: null
       validation: null
@@ -3172,7 +3466,7 @@ fields:
         languageField: code
         userLanguage: true
       readonly: false
-      required: true
+      required: false
       sort: 2
       special:
         - translations
@@ -3198,7 +3492,7 @@ fields:
         template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
       readonly: true
       required: false
-      sort: 5
+      sort: 10
       special:
         - user-created
       translations: null
@@ -3241,7 +3535,7 @@ fields:
         template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
       readonly: true
       required: false
-      sort: 7
+      sort: 12
       special:
         - user-updated
       translations: null
@@ -3283,7 +3577,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: null
+      sort: 3
       special: null
       translations: null
       validation: null
@@ -3324,7 +3618,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: null
+      sort: 1
       special: null
       translations: null
       validation: null
@@ -3365,7 +3659,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: null
+      sort: 4
       special: null
       translations: null
       validation: null
@@ -3391,6 +3685,138 @@ fields:
       schema: public
       table: FixedPlans_translations
     type: string
+  - collection: FixedPlans_translations
+    field: name
+    meta:
+      collection: FixedPlans_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: name
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        placeholder: Plan Name
+        trim: true
+      readonly: false
+      required: false
+      sort: 2
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: character varying
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: 255
+      name: name
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: FixedPlans_translations
+    type: string
+  - collection: FlexiblePlans
+    field: cpu
+    meta:
+      collection: FlexiblePlans
+      conditions: null
+      display: null
+      display_options: null
+      field: cpu
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        max: 16
+        min: 1
+        placeholder: Computer CPU (Core)
+      readonly: false
+      required: true
+      sort: 4
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      comment: null
+      data_type: integer
+      default_value: 1
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: cpu
+      numeric_precision: 32
+      numeric_scale: 0
+      schema: public
+      table: FlexiblePlans
+    type: integer
+  - collection: FlexiblePlans
+    field: cpu_cost_hour
+    meta:
+      collection: FlexiblePlans
+      conditions: null
+      display: null
+      display_options: null
+      field: cpu_cost_hour
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        max: 50
+        min: 0.001
+        placeholder: CPU Hourly price
+        step: 0.003
+      readonly: false
+      required: true
+      sort: 5
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      comment: null
+      data_type: numeric
+      default_value: 0.001
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: cpu_cost_hour
+      numeric_precision: 10
+      numeric_scale: 5
+      schema: public
+      table: FlexiblePlans
+    type: decimal
   - collection: FlexiblePlans
     field: date_created
     meta:
@@ -3407,7 +3833,7 @@ fields:
       options: null
       readonly: true
       required: false
-      sort: 5
+      sort: 10
       special:
         - date-created
       translations: null
@@ -3450,7 +3876,7 @@ fields:
       options: null
       readonly: true
       required: false
-      sort: 7
+      sort: 12
       special:
         - date-updated
       translations: null
@@ -3520,6 +3946,184 @@ fields:
       table: FlexiblePlans
     type: uuid
   - collection: FlexiblePlans
+    field: ram
+    meta:
+      collection: FlexiblePlans
+      conditions: null
+      display: null
+      display_options: null
+      field: ram
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        max: 48
+        min: 1
+        placeholder: Computer RAM
+      readonly: false
+      required: true
+      sort: 2
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      comment: null
+      data_type: integer
+      default_value: 1
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: ram
+      numeric_precision: 32
+      numeric_scale: 0
+      schema: public
+      table: FlexiblePlans
+    type: integer
+  - collection: FlexiblePlans
+    field: ram_cost_hour
+    meta:
+      collection: FlexiblePlans
+      conditions: null
+      display: null
+      display_options: null
+      field: ram_cost_hour
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        max: 50
+        min: 0.001
+        placeholder: RAM Hourly price
+        step: 0.002
+      readonly: false
+      required: true
+      sort: 3
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      comment: null
+      data_type: numeric
+      default_value: 0.001
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: ram_cost_hour
+      numeric_precision: 10
+      numeric_scale: 5
+      schema: public
+      table: FlexiblePlans
+    type: decimal
+  - collection: FlexiblePlans
+    field: ssd
+    meta:
+      collection: FlexiblePlans
+      conditions: null
+      display: null
+      display_options: null
+      field: ssd
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        max: 1000
+        min: 25
+        placeholder: Computer Disk (SSD)
+      readonly: false
+      required: true
+      sort: 6
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      comment: null
+      data_type: bigint
+      default_value: 25
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: ssd
+      numeric_precision: 64
+      numeric_scale: 0
+      schema: public
+      table: FlexiblePlans
+    type: bigInteger
+  - collection: FlexiblePlans
+    field: ssd_cost_hour
+    meta:
+      collection: FlexiblePlans
+      conditions: null
+      display: null
+      display_options: null
+      field: ssd_cost_hour
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        max: 50
+        min: 0.001
+        placeholder: Disk (SSD) Hourly price
+        step: 0.002
+      readonly: false
+      required: true
+      sort: 7
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      comment: null
+      data_type: numeric
+      default_value: 0.001
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: ssd_cost_hour
+      numeric_precision: 10
+      numeric_scale: 5
+      schema: public
+      table: FlexiblePlans
+    type: decimal
+  - collection: FlexiblePlans
     field: status
     meta:
       collection: FlexiblePlans
@@ -3555,7 +4159,7 @@ fields:
             value: archived
       readonly: false
       required: false
-      sort: 3
+      sort: 8
       special: null
       translations: null
       validation: null
@@ -3597,7 +4201,7 @@ fields:
         template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
       readonly: true
       required: false
-      sort: 4
+      sort: 9
       special:
         - user-created
       translations: null
@@ -3640,7 +4244,7 @@ fields:
         template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
       readonly: true
       required: false
-      sort: 6
+      sort: 11
       special:
         - user-updated
       translations: null
@@ -5980,6 +6584,51 @@ fields:
       table: HomeSections_sections
     type: integer
   - collection: MachineTemplates
+    field: cost_hour
+    meta:
+      collection: MachineTemplates
+      conditions: null
+      display: null
+      display_options: null
+      field: cost_hour
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        max: 10
+        min: 0.001
+        placeholder: Hourly price
+        step: 0.001
+      readonly: false
+      required: true
+      sort: 6
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: numeric
+      default_value: 0.001
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: cost_hour
+      numeric_precision: 10
+      numeric_scale: 5
+      schema: public
+      table: MachineTemplates
+    type: decimal
+  - collection: MachineTemplates
     field: date_created
     meta:
       collection: MachineTemplates
@@ -5995,7 +6644,7 @@ fields:
       options: null
       readonly: true
       required: false
-      sort: 6
+      sort: 10
       special:
         - date-created
       translations: null
@@ -6038,7 +6687,7 @@ fields:
       options: null
       readonly: true
       required: false
-      sort: 8
+      sort: 12
       special:
         - date-updated
       translations: null
@@ -6065,6 +6714,134 @@ fields:
       schema: public
       table: MachineTemplates
     type: timestamp
+  - collection: MachineTemplates
+    field: default
+    meta:
+      collection: MachineTemplates
+      conditions: null
+      display: null
+      display_options: null
+      field: default
+      group: null
+      hidden: false
+      interface: boolean
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 5
+      special:
+        - cast-boolean
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: boolean
+      default_value: false
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: default
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: MachineTemplates
+    type: boolean
+  - collection: MachineTemplates
+    field: icon
+    meta:
+      collection: MachineTemplates
+      conditions: null
+      display: null
+      display_options: null
+      field: icon
+      group: null
+      hidden: false
+      interface: file-image
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 4
+      special:
+        - file
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: directus_files
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: icon
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: MachineTemplates
+    type: uuid
+  - collection: MachineTemplates
+    field: icon_svg
+    meta:
+      collection: MachineTemplates
+      conditions: null
+      display: null
+      display_options: null
+      field: icon_svg
+      group: null
+      hidden: false
+      interface: input-code
+      note: null
+      options:
+        language: xml
+        lineWrapping: true
+        template: <svg></svg>
+      readonly: false
+      required: false
+      sort: 3
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: icon_svg
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: MachineTemplates
+    type: text
   - collection: MachineTemplates
     field: id
     meta:
@@ -6108,6 +6885,49 @@ fields:
       table: MachineTemplates
     type: uuid
   - collection: MachineTemplates
+    field: name
+    meta:
+      collection: MachineTemplates
+      conditions: null
+      display: null
+      display_options: null
+      field: name
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        placeholder: Template Name (e.g Ubuntu 20.04 X64, Debian 10.7 X64 etc)
+        trim: true
+      readonly: false
+      required: true
+      sort: 2
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: character varying
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: 255
+      name: name
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: MachineTemplates
+    type: string
+  - collection: MachineTemplates
     field: sort
     meta:
       collection: MachineTemplates
@@ -6122,7 +6942,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: 4
+      sort: 8
       special: null
       translations: null
       validation: null
@@ -6184,7 +7004,7 @@ fields:
             value: archived
       readonly: false
       required: false
-      sort: 3
+      sort: 7
       special: null
       translations: null
       validation: null
@@ -6211,32 +7031,6 @@ fields:
       table: MachineTemplates
     type: string
   - collection: MachineTemplates
-    field: translations
-    meta:
-      collection: MachineTemplates
-      conditions: null
-      display: null
-      display_options: null
-      field: translations
-      group: null
-      hidden: false
-      interface: translations
-      note: null
-      options:
-        languageField: code
-        userLanguage: true
-      readonly: false
-      required: true
-      sort: 2
-      special:
-        - translations
-      translations: null
-      validation: null
-      validation_message: null
-      width: full
-    schema: null
-    type: alias
-  - collection: MachineTemplates
     field: user_created
     meta:
       collection: MachineTemplates
@@ -6252,7 +7046,7 @@ fields:
         template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
       readonly: true
       required: false
-      sort: 5
+      sort: 9
       special:
         - user-created
       translations: null
@@ -6295,7 +7089,7 @@ fields:
         template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
       readonly: true
       required: false
-      sort: 7
+      sort: 11
       special:
         - user-updated
       translations: null
@@ -6322,129 +7116,6 @@ fields:
       schema: public
       table: MachineTemplates
     type: uuid
-  - collection: MachineTemplates_translations
-    field: MachineTemplates_id
-    meta:
-      collection: MachineTemplates_translations
-      conditions: null
-      display: null
-      display_options: null
-      field: MachineTemplates_id
-      group: null
-      hidden: true
-      interface: null
-      note: null
-      options: null
-      readonly: false
-      required: false
-      sort: null
-      special: null
-      translations: null
-      validation: null
-      validation_message: null
-      width: full
-    schema:
-      comment: null
-      data_type: uuid
-      default_value: null
-      foreign_key_column: id
-      foreign_key_schema: public
-      foreign_key_table: MachineTemplates
-      generation_expression: null
-      has_auto_increment: false
-      is_generated: false
-      is_nullable: true
-      is_primary_key: false
-      is_unique: false
-      max_length: null
-      name: MachineTemplates_id
-      numeric_precision: null
-      numeric_scale: null
-      schema: public
-      table: MachineTemplates_translations
-    type: uuid
-  - collection: MachineTemplates_translations
-    field: id
-    meta:
-      collection: MachineTemplates_translations
-      conditions: null
-      display: null
-      display_options: null
-      field: id
-      group: null
-      hidden: true
-      interface: null
-      note: null
-      options: null
-      readonly: false
-      required: false
-      sort: null
-      special: null
-      translations: null
-      validation: null
-      validation_message: null
-      width: full
-    schema:
-      comment: null
-      data_type: integer
-      default_value: nextval('"MachineTemplates_translations_id_seq"'::regclass)
-      foreign_key_column: null
-      foreign_key_schema: null
-      foreign_key_table: null
-      generation_expression: null
-      has_auto_increment: true
-      is_generated: false
-      is_nullable: false
-      is_primary_key: true
-      is_unique: true
-      max_length: null
-      name: id
-      numeric_precision: 32
-      numeric_scale: 0
-      schema: public
-      table: MachineTemplates_translations
-    type: integer
-  - collection: MachineTemplates_translations
-    field: languages_code
-    meta:
-      collection: MachineTemplates_translations
-      conditions: null
-      display: null
-      display_options: null
-      field: languages_code
-      group: null
-      hidden: true
-      interface: null
-      note: null
-      options: null
-      readonly: false
-      required: false
-      sort: null
-      special: null
-      translations: null
-      validation: null
-      validation_message: null
-      width: full
-    schema:
-      comment: null
-      data_type: character varying
-      default_value: null
-      foreign_key_column: code
-      foreign_key_schema: public
-      foreign_key_table: languages
-      generation_expression: null
-      has_auto_increment: false
-      is_generated: false
-      is_nullable: true
-      is_primary_key: false
-      is_unique: false
-      max_length: 255
-      name: languages_code
-      numeric_precision: null
-      numeric_scale: null
-      schema: public
-      table: MachineTemplates_translations
-    type: string
   - collection: NavbarLinkSubmenuItems
     field: date_created
     meta:
@@ -11255,6 +11926,54 @@ fields:
       table: Pages_translations
     type: string
   - collection: PlansComparisons
+    field: basic
+    meta:
+      collection: PlansComparisons
+      conditions: null
+      display: null
+      display_options: null
+      field: basic
+      group: null
+      hidden: false
+      interface: select-dropdown
+      note: null
+      options:
+        allowOther: true
+        choices:
+          - text: Checked
+            value: checked
+          - text: Unchecked
+            value: unchecked
+        placeholder: Basic Plan
+      readonly: false
+      required: true
+      sort: 3
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: character varying
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: 255
+      name: basic
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: PlansComparisons
+    type: string
+  - collection: PlansComparisons
     field: date_created
     meta:
       collection: PlansComparisons
@@ -11270,7 +11989,7 @@ fields:
       options: null
       readonly: true
       required: false
-      sort: 6
+      sort: 9
       special:
         - date-created
       translations: null
@@ -11313,7 +12032,7 @@ fields:
       options: null
       readonly: true
       required: false
-      sort: 8
+      sort: 11
       special:
         - date-updated
       translations: null
@@ -11340,6 +12059,54 @@ fields:
       schema: public
       table: PlansComparisons
     type: timestamp
+  - collection: PlansComparisons
+    field: extended
+    meta:
+      collection: PlansComparisons
+      conditions: null
+      display: null
+      display_options: null
+      field: extended
+      group: null
+      hidden: false
+      interface: select-dropdown
+      note: null
+      options:
+        allowOther: true
+        choices:
+          - text: Checked
+            value: checked
+          - text: Unchecked
+            value: unchecked
+        placeholder: Extended Plan
+      readonly: false
+      required: true
+      sort: 4
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: character varying
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: 255
+      name: extended
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: PlansComparisons
+    type: string
   - collection: PlansComparisons
     field: id
     meta:
@@ -11383,6 +12150,54 @@ fields:
       table: PlansComparisons
     type: uuid
   - collection: PlansComparisons
+    field: pro
+    meta:
+      collection: PlansComparisons
+      conditions: null
+      display: null
+      display_options: null
+      field: pro
+      group: null
+      hidden: false
+      interface: select-dropdown
+      note: null
+      options:
+        allowOther: true
+        choices:
+          - text: Checked
+            value: checked
+          - text: Unchecked
+            value: unchecked
+        placeholder: Pro Plan
+      readonly: false
+      required: true
+      sort: 5
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: character varying
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: 255
+      name: pro
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: PlansComparisons
+    type: string
+  - collection: PlansComparisons
     field: sort
     meta:
       collection: PlansComparisons
@@ -11397,7 +12212,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: 4
+      sort: 7
       special: null
       translations: null
       validation: null
@@ -11459,7 +12274,7 @@ fields:
             value: archived
       readonly: false
       required: false
-      sort: 3
+      sort: 6
       special: null
       translations: null
       validation: null
@@ -11527,7 +12342,7 @@ fields:
         template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
       readonly: true
       required: false
-      sort: 5
+      sort: 8
       special:
         - user-created
       translations: null
@@ -11570,7 +12385,7 @@ fields:
         template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
       readonly: true
       required: false
-      sort: 7
+      sort: 10
       special:
         - user-updated
       translations: null
@@ -11612,7 +12427,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: null
+      sort: 3
       special: null
       translations: null
       validation: null
@@ -11653,7 +12468,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: null
+      sort: 1
       special: null
       translations: null
       validation: null
@@ -11694,7 +12509,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: null
+      sort: 4
       special: null
       translations: null
       validation: null
@@ -11720,6 +12535,819 @@ fields:
       schema: public
       table: PlansComparisons_translations
     type: string
+  - collection: PlansComparisons_translations
+    field: name
+    meta:
+      collection: PlansComparisons_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: name
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        placeholder: Comparison Name
+        softLength: 200
+        trim: true
+      readonly: false
+      required: true
+      sort: 2
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: character varying
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: 255
+      name: name
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: PlansComparisons_translations
+    type: string
+  - collection: PlatformCategories
+    field: date_created
+    meta:
+      collection: PlatformCategories
+      conditions: null
+      display: datetime
+      display_options:
+        relative: true
+      field: date_created
+      group: null
+      hidden: true
+      interface: datetime
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: 9
+      special:
+        - date-created
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      comment: null
+      data_type: timestamp with time zone
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: date_created
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: PlatformCategories
+    type: timestamp
+  - collection: PlatformCategories
+    field: date_updated
+    meta:
+      collection: PlatformCategories
+      conditions: null
+      display: datetime
+      display_options:
+        relative: true
+      field: date_updated
+      group: null
+      hidden: true
+      interface: datetime
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: 11
+      special:
+        - date-updated
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      comment: null
+      data_type: timestamp with time zone
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: date_updated
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: PlatformCategories
+    type: timestamp
+  - collection: PlatformCategories
+    field: icon
+    meta:
+      collection: PlatformCategories
+      conditions: null
+      display: null
+      display_options: null
+      field: icon
+      group: null
+      hidden: false
+      interface: file-image
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 5
+      special:
+        - file
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: directus_files
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: icon
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: PlatformCategories
+    type: uuid
+  - collection: PlatformCategories
+    field: icon_svg
+    meta:
+      collection: PlatformCategories
+      conditions: null
+      display: null
+      display_options: null
+      field: icon_svg
+      group: null
+      hidden: false
+      interface: input-code
+      note: null
+      options:
+        language: xml
+        template: <svg></svg>
+      readonly: false
+      required: false
+      sort: 4
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: icon_svg
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: PlatformCategories
+    type: text
+  - collection: PlatformCategories
+    field: id
+    meta:
+      collection: PlatformCategories
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: 1
+      special:
+        - uuid
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: false
+      is_primary_key: true
+      is_unique: true
+      max_length: null
+      name: id
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: PlatformCategories
+    type: uuid
+  - collection: PlatformCategories
+    field: name
+    meta:
+      collection: PlatformCategories
+      conditions: null
+      display: null
+      display_options: null
+      field: name
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        placeholder: Category Name
+        trim: true
+      readonly: false
+      required: true
+      sort: 2
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: character varying
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: true
+      max_length: 255
+      name: name
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: PlatformCategories
+    type: string
+  - collection: PlatformCategories
+    field: sort
+    meta:
+      collection: PlatformCategories
+      conditions: null
+      display: null
+      display_options: null
+      field: sort
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 7
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: integer
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: sort
+      numeric_precision: 32
+      numeric_scale: 0
+      schema: public
+      table: PlatformCategories
+    type: integer
+  - collection: PlatformCategories
+    field: status
+    meta:
+      collection: PlatformCategories
+      conditions: null
+      display: labels
+      display_options:
+        choices:
+          - text: $t:published
+            value: published
+            foreground: '#FFFFFF'
+            background: var(--primary)
+          - text: $t:draft
+            value: draft
+            foreground: '#18222F'
+            background: '#D3DAE4'
+          - text: $t:archived
+            value: archived
+            foreground: '#FFFFFF'
+            background: var(--warning)
+        showAsDot: true
+      field: status
+      group: null
+      hidden: false
+      interface: select-dropdown
+      note: null
+      options:
+        choices:
+          - text: $t:published
+            value: published
+          - text: $t:draft
+            value: draft
+          - text: $t:archived
+            value: archived
+      readonly: false
+      required: false
+      sort: 6
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: character varying
+      default_value: draft
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: false
+      is_primary_key: false
+      is_unique: false
+      max_length: 255
+      name: status
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: PlatformCategories
+    type: string
+  - collection: PlatformCategories
+    field: translations
+    meta:
+      collection: PlatformCategories
+      conditions: null
+      display: null
+      display_options: null
+      field: translations
+      group: null
+      hidden: false
+      interface: translations
+      note: null
+      options:
+        languageField: code
+        userLanguage: true
+      readonly: false
+      required: false
+      sort: 3
+      special:
+        - translations
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema: null
+    type: alias
+  - collection: PlatformCategories
+    field: user_created
+    meta:
+      collection: PlatformCategories
+      conditions: null
+      display: user
+      display_options: null
+      field: user_created
+      group: null
+      hidden: true
+      interface: select-dropdown-m2o
+      note: null
+      options:
+        template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
+      readonly: true
+      required: false
+      sort: 8
+      special:
+        - user-created
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: directus_users
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: user_created
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: PlatformCategories
+    type: uuid
+  - collection: PlatformCategories
+    field: user_updated
+    meta:
+      collection: PlatformCategories
+      conditions: null
+      display: user
+      display_options: null
+      field: user_updated
+      group: null
+      hidden: true
+      interface: select-dropdown-m2o
+      note: null
+      options:
+        template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
+      readonly: true
+      required: false
+      sort: 10
+      special:
+        - user-updated
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: directus_users
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: user_updated
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: PlatformCategories
+    type: uuid
+  - collection: PlatformCategories_translations
+    field: PlatformCategories_id
+    meta:
+      collection: PlatformCategories_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: PlatformCategories_id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 4
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: PlatformCategories
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: PlatformCategories_id
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: PlatformCategories_translations
+    type: uuid
+  - collection: PlatformCategories_translations
+    field: description
+    meta:
+      collection: PlatformCategories_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: description
+      group: null
+      hidden: false
+      interface: input-multiline
+      note: null
+      options:
+        softLength: 300
+        trim: true
+      readonly: false
+      required: false
+      sort: 3
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: description
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: PlatformCategories_translations
+    type: text
+  - collection: PlatformCategories_translations
+    field: id
+    meta:
+      collection: PlatformCategories_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 1
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: integer
+      default_value: nextval('"PlatformCategories_translations_id_seq"'::regclass)
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: true
+      is_generated: false
+      is_nullable: false
+      is_primary_key: true
+      is_unique: true
+      max_length: null
+      name: id
+      numeric_precision: 32
+      numeric_scale: 0
+      schema: public
+      table: PlatformCategories_translations
+    type: integer
+  - collection: PlatformCategories_translations
+    field: languages_code
+    meta:
+      collection: PlatformCategories_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: languages_code
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 5
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: character varying
+      default_value: null
+      foreign_key_column: code
+      foreign_key_schema: public
+      foreign_key_table: languages
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: 255
+      name: languages_code
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: PlatformCategories_translations
+    type: string
+  - collection: PlatformCategories_translations
+    field: name
+    meta:
+      collection: PlatformCategories_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: name
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        placeholder: null
+      readonly: false
+      required: false
+      sort: 2
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: character varying
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: 255
+      name: name
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: PlatformCategories_translations
+    type: string
+  - collection: Platforms
+    field: category
+    meta:
+      collection: Platforms
+      conditions: null
+      display: null
+      display_options: null
+      field: category
+      group: null
+      hidden: false
+      interface: input-autocomplete-api
+      note: null
+      options:
+        placeholder: Platform Category
+        rate: 200
+        textPath: name
+        url: /searchable/platform-categories?q={{value}}
+        valuePath: ref
+      readonly: false
+      required: false
+      sort: 4
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: character varying
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: 255
+      name: category
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: Platforms
+    type: string
+  - collection: Platforms
+    field: cpu
+    meta:
+      collection: Platforms
+      conditions: null
+      display: null
+      display_options: null
+      field: cpu
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        max: 16
+        min: 1
+        placeholder: Minimum Computer CPU (Core)
+      readonly: false
+      required: true
+      sort: 8
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      comment: null
+      data_type: integer
+      default_value: 1
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: cpu
+      numeric_precision: 32
+      numeric_scale: 0
+      schema: public
+      table: Platforms
+    type: integer
   - collection: Platforms
     field: date_created
     meta:
@@ -11736,7 +13364,7 @@ fields:
       options: null
       readonly: true
       required: false
-      sort: 6
+      sort: 13
       special:
         - date-created
       translations: null
@@ -11779,7 +13407,7 @@ fields:
       options: null
       readonly: true
       required: false
-      sort: 8
+      sort: 15
       special:
         - date-updated
       translations: null
@@ -11806,6 +13434,92 @@ fields:
       schema: public
       table: Platforms
     type: timestamp
+  - collection: Platforms
+    field: icon
+    meta:
+      collection: Platforms
+      conditions: null
+      display: null
+      display_options: null
+      field: icon
+      group: null
+      hidden: false
+      interface: file
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 6
+      special:
+        - file
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: directus_files
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: icon
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: Platforms
+    type: uuid
+  - collection: Platforms
+    field: icon_svg
+    meta:
+      collection: Platforms
+      conditions: null
+      display: null
+      display_options: null
+      field: icon_svg
+      group: null
+      hidden: false
+      interface: input-code
+      note: null
+      options:
+        language: xml
+        lineWrapping: true
+        template: <svg></svg>
+      readonly: false
+      required: false
+      sort: 5
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: icon_svg
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: Platforms
+    type: text
   - collection: Platforms
     field: id
     meta:
@@ -11849,6 +13563,93 @@ fields:
       table: Platforms
     type: uuid
   - collection: Platforms
+    field: name
+    meta:
+      collection: Platforms
+      conditions: null
+      display: null
+      display_options: null
+      field: name
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        placeholder: Platform Name
+        trim: true
+      readonly: false
+      required: true
+      sort: 2
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: character varying
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: 255
+      name: name
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: Platforms
+    type: string
+  - collection: Platforms
+    field: ram
+    meta:
+      collection: Platforms
+      conditions: null
+      display: null
+      display_options: null
+      field: ram
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        max: 48
+        min: 1
+        placeholder: Minimum Computer RAM
+      readonly: false
+      required: true
+      sort: 7
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      comment: null
+      data_type: integer
+      default_value: 2
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: ram
+      numeric_precision: 32
+      numeric_scale: 0
+      schema: public
+      table: Platforms
+    type: integer
+  - collection: Platforms
     field: sort
     meta:
       collection: Platforms
@@ -11863,7 +13664,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: 4
+      sort: 11
       special: null
       translations: null
       validation: null
@@ -11884,6 +13685,51 @@ fields:
       is_unique: false
       max_length: null
       name: sort
+      numeric_precision: 32
+      numeric_scale: 0
+      schema: public
+      table: Platforms
+    type: integer
+  - collection: Platforms
+    field: ssd
+    meta:
+      collection: Platforms
+      conditions: null
+      display: null
+      display_options: null
+      field: ssd
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        max: 1000
+        min: 25
+        placeholder: Minimum Computer Disk (SSD)
+        step: 10
+      readonly: false
+      required: true
+      sort: 9
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: integer
+      default_value: 25
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: ssd
       numeric_precision: 32
       numeric_scale: 0
       schema: public
@@ -11925,7 +13771,7 @@ fields:
             value: archived
       readonly: false
       required: false
-      sort: 3
+      sort: 10
       special: null
       translations: null
       validation: null
@@ -11966,8 +13812,8 @@ fields:
       options:
         userLanguage: true
       readonly: false
-      required: true
-      sort: 2
+      required: false
+      sort: 3
       special:
         - translations
       translations: null
@@ -11992,7 +13838,7 @@ fields:
         template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
       readonly: true
       required: false
-      sort: 5
+      sort: 12
       special:
         - user-created
       translations: null
@@ -12035,7 +13881,7 @@ fields:
         template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
       readonly: true
       required: false
-      sort: 7
+      sort: 14
       special:
         - user-updated
       translations: null
@@ -12077,7 +13923,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: null
+      sort: 3
       special: null
       translations: null
       validation: null
@@ -12104,6 +13950,49 @@ fields:
       table: Platforms_translations
     type: uuid
   - collection: Platforms_translations
+    field: description
+    meta:
+      collection: Platforms_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: description
+      group: null
+      hidden: false
+      interface: input-multiline
+      note: null
+      options:
+        softLength: 300
+        trim: true
+      readonly: false
+      required: false
+      sort: 2
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: description
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: Platforms_translations
+    type: text
+  - collection: Platforms_translations
     field: id
     meta:
       collection: Platforms_translations
@@ -12118,7 +14007,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: null
+      sort: 1
       special: null
       translations: null
       validation: null
@@ -12159,7 +14048,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: null
+      sort: 4
       special: null
       translations: null
       validation: null
@@ -21339,6 +23228,28 @@ relations:
     related_collection: null
     schema: null
   - collection: MachineTemplates
+    field: icon
+    meta:
+      junction_field: null
+      many_collection: MachineTemplates
+      many_field: icon
+      one_allowed_collections: null
+      one_collection: directus_files
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    related_collection: directus_files
+    schema:
+      column: icon
+      constraint_name: machinetemplates_icon_foreign
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: directus_files
+      on_delete: SET NULL
+      on_update: NO ACTION
+      table: MachineTemplates
+  - collection: MachineTemplates
     field: user_created
     meta:
       junction_field: null
@@ -21382,50 +23293,6 @@ relations:
       on_delete: NO ACTION
       on_update: NO ACTION
       table: MachineTemplates
-  - collection: MachineTemplates_translations
-    field: MachineTemplates_id
-    meta:
-      junction_field: languages_code
-      many_collection: MachineTemplates_translations
-      many_field: MachineTemplates_id
-      one_allowed_collections: null
-      one_collection: MachineTemplates
-      one_collection_field: null
-      one_deselect_action: nullify
-      one_field: translations
-      sort_field: null
-    related_collection: MachineTemplates
-    schema:
-      column: MachineTemplates_id
-      constraint_name: machinetemplates_translations_machinetemplates_id_foreign
-      foreign_key_column: id
-      foreign_key_schema: public
-      foreign_key_table: MachineTemplates
-      on_delete: SET NULL
-      on_update: NO ACTION
-      table: MachineTemplates_translations
-  - collection: MachineTemplates_translations
-    field: languages_code
-    meta:
-      junction_field: MachineTemplates_id
-      many_collection: MachineTemplates_translations
-      many_field: languages_code
-      one_allowed_collections: null
-      one_collection: languages
-      one_collection_field: null
-      one_deselect_action: nullify
-      one_field: null
-      sort_field: null
-    related_collection: languages
-    schema:
-      column: languages_code
-      constraint_name: machinetemplates_translations_languages_code_foreign
-      foreign_key_column: code
-      foreign_key_schema: public
-      foreign_key_table: languages
-      on_delete: SET NULL
-      on_update: NO ACTION
-      table: MachineTemplates_translations
   - collection: NavbarLinkSubmenuItems
     field: navbar_link_submenus_id
     meta:
@@ -22236,6 +24103,138 @@ relations:
       on_delete: SET NULL
       on_update: NO ACTION
       table: PlansComparisons_translations
+  - collection: PlatformCategories
+    field: icon
+    meta:
+      junction_field: null
+      many_collection: PlatformCategories
+      many_field: icon
+      one_allowed_collections: null
+      one_collection: directus_files
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    related_collection: directus_files
+    schema:
+      column: icon
+      constraint_name: platformcategories_icon_foreign
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: directus_files
+      on_delete: SET NULL
+      on_update: NO ACTION
+      table: PlatformCategories
+  - collection: PlatformCategories
+    field: user_created
+    meta:
+      junction_field: null
+      many_collection: PlatformCategories
+      many_field: user_created
+      one_allowed_collections: null
+      one_collection: directus_users
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    related_collection: directus_users
+    schema:
+      column: user_created
+      constraint_name: platformcategories_user_created_foreign
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: directus_users
+      on_delete: NO ACTION
+      on_update: NO ACTION
+      table: PlatformCategories
+  - collection: PlatformCategories
+    field: user_updated
+    meta:
+      junction_field: null
+      many_collection: PlatformCategories
+      many_field: user_updated
+      one_allowed_collections: null
+      one_collection: directus_users
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    related_collection: directus_users
+    schema:
+      column: user_updated
+      constraint_name: platformcategories_user_updated_foreign
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: directus_users
+      on_delete: NO ACTION
+      on_update: NO ACTION
+      table: PlatformCategories
+  - collection: PlatformCategories_translations
+    field: PlatformCategories_id
+    meta:
+      junction_field: languages_code
+      many_collection: PlatformCategories_translations
+      many_field: PlatformCategories_id
+      one_allowed_collections: null
+      one_collection: PlatformCategories
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: translations
+      sort_field: null
+    related_collection: PlatformCategories
+    schema:
+      column: PlatformCategories_id
+      constraint_name: platformcategories_translations_platformcat__e9d6cf3_foreign
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: PlatformCategories
+      on_delete: SET NULL
+      on_update: NO ACTION
+      table: PlatformCategories_translations
+  - collection: PlatformCategories_translations
+    field: languages_code
+    meta:
+      junction_field: PlatformCategories_id
+      many_collection: PlatformCategories_translations
+      many_field: languages_code
+      one_allowed_collections: null
+      one_collection: languages
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    related_collection: languages
+    schema:
+      column: languages_code
+      constraint_name: platformcategories_translations_languages_code_foreign
+      foreign_key_column: code
+      foreign_key_schema: public
+      foreign_key_table: languages
+      on_delete: SET NULL
+      on_update: NO ACTION
+      table: PlatformCategories_translations
+  - collection: Platforms
+    field: icon
+    meta:
+      junction_field: null
+      many_collection: Platforms
+      many_field: icon
+      one_allowed_collections: null
+      one_collection: directus_files
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    related_collection: directus_files
+    schema:
+      column: icon
+      constraint_name: platforms_icon_foreign
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: directus_files
+      on_delete: SET NULL
+      on_update: NO ACTION
+      table: Platforms
   - collection: Platforms
     field: user_created
     meta:

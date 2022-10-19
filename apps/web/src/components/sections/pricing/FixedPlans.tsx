@@ -1,5 +1,6 @@
 import { MDFixedPlan, MDMachineTemplate } from '@/cms/items/types';
 import { ReactSelector } from '@/components/ui/ReactSelector';
+import { useTranslation } from 'next-i18next';
 
 type Props = {
   fixed_plans: MDFixedPlan[];
@@ -7,9 +8,10 @@ type Props = {
 };
 
 export const FixedPlans = ({ fixed_plans, machine_templates }: Props) => {
+  const { t } = useTranslation()
   return (
     <div className='section__bock border space-y-5 shadow-sm drop-shadow-sm rounded-sm p-10'>
-      <h4>Fixed plan</h4>
+      <h4>{t("Fixed plan")}</h4>
       <div className='block-calculator h-full'>
         <div className='calculator_wrapper h-full flex items-stretch'>
           <div className='calculator__left w-full h-full flex-[1.5] flex flex-col gap-7 mr-3 pr-2'>

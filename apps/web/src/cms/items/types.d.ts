@@ -103,6 +103,7 @@ type MDCompanyDetailField = {
   logo?: MDWithAsset;
   addresses: MDAddress[];
   socials: MDSocial[];
+  currency: '$' | '€' | string;
 };
 
 type MDCompanyDetailFieldTrans = {
@@ -184,8 +185,62 @@ export type PlansPricingContent = {
   machine_templates: MDMachineTemplate[];
 };
 
-export type MDFlexiblePlan = {[x:string]: any} & MDWithTranslation<{[x:string]: any}> & DRTStatus;
-export type MDFixedPlan = {[x:string]: any} & MDWithTranslation<{[x:string]: any}> & DRTStatus;
-export type MDPlansComparison = {[x:string]: any} & MDWithTranslation<{[x:string]: any}> & DRTStatus;
-export type MDMachineTemplate = {[x:string]: any} & MDWithTranslation<{[x:string]: any}> & DRTStatus;
-export type MDPlatform = {[x:string]: any} & MDWithTranslation<{[x:string]: any}> & DRTStatus;
+export type MDFlexiblePlan = {
+  ram: number;
+  ram_cost_hour: number;
+  cpu: number;
+  cpu_cost_hour: number;
+  ssd: number;
+  ssd_cost_hour: number;
+} & DRTStatus;
+
+export type MDFixedPlan = {
+  platforms: string[];
+  ram: number;
+  cpu: number;
+  ssd: number;
+  cost_hour: number;
+} & MDWithTranslation<{
+  name: string;
+}> &
+  DRTStatus;
+
+export type MDPlansComparison = {
+  basic: string;
+  extended: string;
+  pro: string;
+} & MDWithTranslation<{
+  name: string;
+}> &
+  DRTStatus;
+
+export type MDMachineTemplate = {
+  name: string;
+  icon_svg?: string;
+  icon?: MDWithAsset;
+  default: boolean;
+  cost_hour: number;
+} & DRTStatus;
+
+export type MDPlatform = {
+  name: string;
+  icon_svg?: string;
+  icon?: MDWithAsset;
+  category?: string;
+  ram: number;
+  cpu: number;
+  ssd: number;
+} & MDWithTranslation<{
+  description?: string;
+}> &
+  DRTStatus;
+
+export type MDPlatformCategory = {
+  name: string;
+  icon_svg?: string;
+  icon?: MDWithAsset;
+} & MDWithTranslation<{
+  name?: string;
+  description?: string;
+}> &
+  DRTStatus;
