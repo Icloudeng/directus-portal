@@ -199,10 +199,12 @@ export type MDPlansComparison = { [x: string]: any } & MDWithTranslation<{
 }> &
   DRTStatus;
 
-export type MDMachineTemplate = { [x: string]: any } & MDWithTranslation<{
-  [x: string]: any;
-}> &
-  DRTStatus;
+export type MDMachineTemplate = {
+  name: string;
+  icon_svg?: string;
+  icon?: MDWithAsset;
+  cost_hour: number;
+} & DRTStatus;
 
 export type MDPlatform = {
   name: string;

@@ -448,30 +448,6 @@ collections:
       comment: null
       name: MachineTemplates
       schema: public
-  - collection: MachineTemplates_translations
-    meta:
-      accountability: all
-      archive_app_filter: true
-      archive_field: null
-      archive_value: null
-      collapse: open
-      collection: MachineTemplates_translations
-      color: null
-      display_template: null
-      group: Plans_And_Pricing
-      hidden: true
-      icon: import_export
-      item_duplication_fields: null
-      note: null
-      singleton: false
-      sort: 7
-      sort_field: null
-      translations: null
-      unarchive_value: null
-    schema:
-      comment: null
-      name: MachineTemplates_translations
-      schema: public
   - collection: Navbar
     meta:
       accountability: all
@@ -6028,6 +6004,50 @@ fields:
       table: HomeSections_sections
     type: integer
   - collection: MachineTemplates
+    field: cost_hour
+    meta:
+      collection: MachineTemplates
+      conditions: null
+      display: null
+      display_options: null
+      field: cost_hour
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        max: 10
+        min: 0.001
+        step: 0.001
+      readonly: false
+      required: true
+      sort: 5
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: numeric
+      default_value: 0.001
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: cost_hour
+      numeric_precision: 10
+      numeric_scale: 5
+      schema: public
+      table: MachineTemplates
+    type: decimal
+  - collection: MachineTemplates
     field: date_created
     meta:
       collection: MachineTemplates
@@ -6043,7 +6063,7 @@ fields:
       options: null
       readonly: true
       required: false
-      sort: 6
+      sort: 9
       special:
         - date-created
       translations: null
@@ -6086,7 +6106,7 @@ fields:
       options: null
       readonly: true
       required: false
-      sort: 8
+      sort: 11
       special:
         - date-updated
       translations: null
@@ -6113,6 +6133,92 @@ fields:
       schema: public
       table: MachineTemplates
     type: timestamp
+  - collection: MachineTemplates
+    field: icon
+    meta:
+      collection: MachineTemplates
+      conditions: null
+      display: null
+      display_options: null
+      field: icon
+      group: null
+      hidden: false
+      interface: file-image
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 4
+      special:
+        - file
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: directus_files
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: icon
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: MachineTemplates
+    type: uuid
+  - collection: MachineTemplates
+    field: icon_svg
+    meta:
+      collection: MachineTemplates
+      conditions: null
+      display: null
+      display_options: null
+      field: icon_svg
+      group: null
+      hidden: false
+      interface: input-code
+      note: null
+      options:
+        language: xml
+        lineWrapping: true
+        template: <svg></svg>
+      readonly: false
+      required: false
+      sort: 3
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: character varying
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: 255
+      name: icon_svg
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: MachineTemplates
+    type: string
   - collection: MachineTemplates
     field: id
     meta:
@@ -6156,6 +6262,49 @@ fields:
       table: MachineTemplates
     type: uuid
   - collection: MachineTemplates
+    field: name
+    meta:
+      collection: MachineTemplates
+      conditions: null
+      display: null
+      display_options: null
+      field: name
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        placeholder: Template Name (e.g Ubuntu 20.04 X64, Debian 10.7 X64 etc)
+        trim: true
+      readonly: false
+      required: true
+      sort: 2
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: character varying
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: 255
+      name: name
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: MachineTemplates
+    type: string
+  - collection: MachineTemplates
     field: sort
     meta:
       collection: MachineTemplates
@@ -6170,7 +6319,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: 4
+      sort: 7
       special: null
       translations: null
       validation: null
@@ -6232,7 +6381,7 @@ fields:
             value: archived
       readonly: false
       required: false
-      sort: 3
+      sort: 6
       special: null
       translations: null
       validation: null
@@ -6259,32 +6408,6 @@ fields:
       table: MachineTemplates
     type: string
   - collection: MachineTemplates
-    field: translations
-    meta:
-      collection: MachineTemplates
-      conditions: null
-      display: null
-      display_options: null
-      field: translations
-      group: null
-      hidden: false
-      interface: translations
-      note: null
-      options:
-        languageField: code
-        userLanguage: true
-      readonly: false
-      required: true
-      sort: 2
-      special:
-        - translations
-      translations: null
-      validation: null
-      validation_message: null
-      width: full
-    schema: null
-    type: alias
-  - collection: MachineTemplates
     field: user_created
     meta:
       collection: MachineTemplates
@@ -6300,7 +6423,7 @@ fields:
         template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
       readonly: true
       required: false
-      sort: 5
+      sort: 8
       special:
         - user-created
       translations: null
@@ -6343,7 +6466,7 @@ fields:
         template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
       readonly: true
       required: false
-      sort: 7
+      sort: 10
       special:
         - user-updated
       translations: null
@@ -6370,129 +6493,6 @@ fields:
       schema: public
       table: MachineTemplates
     type: uuid
-  - collection: MachineTemplates_translations
-    field: MachineTemplates_id
-    meta:
-      collection: MachineTemplates_translations
-      conditions: null
-      display: null
-      display_options: null
-      field: MachineTemplates_id
-      group: null
-      hidden: true
-      interface: null
-      note: null
-      options: null
-      readonly: false
-      required: false
-      sort: null
-      special: null
-      translations: null
-      validation: null
-      validation_message: null
-      width: full
-    schema:
-      comment: null
-      data_type: uuid
-      default_value: null
-      foreign_key_column: id
-      foreign_key_schema: public
-      foreign_key_table: MachineTemplates
-      generation_expression: null
-      has_auto_increment: false
-      is_generated: false
-      is_nullable: true
-      is_primary_key: false
-      is_unique: false
-      max_length: null
-      name: MachineTemplates_id
-      numeric_precision: null
-      numeric_scale: null
-      schema: public
-      table: MachineTemplates_translations
-    type: uuid
-  - collection: MachineTemplates_translations
-    field: id
-    meta:
-      collection: MachineTemplates_translations
-      conditions: null
-      display: null
-      display_options: null
-      field: id
-      group: null
-      hidden: true
-      interface: null
-      note: null
-      options: null
-      readonly: false
-      required: false
-      sort: null
-      special: null
-      translations: null
-      validation: null
-      validation_message: null
-      width: full
-    schema:
-      comment: null
-      data_type: integer
-      default_value: nextval('"MachineTemplates_translations_id_seq"'::regclass)
-      foreign_key_column: null
-      foreign_key_schema: null
-      foreign_key_table: null
-      generation_expression: null
-      has_auto_increment: true
-      is_generated: false
-      is_nullable: false
-      is_primary_key: true
-      is_unique: true
-      max_length: null
-      name: id
-      numeric_precision: 32
-      numeric_scale: 0
-      schema: public
-      table: MachineTemplates_translations
-    type: integer
-  - collection: MachineTemplates_translations
-    field: languages_code
-    meta:
-      collection: MachineTemplates_translations
-      conditions: null
-      display: null
-      display_options: null
-      field: languages_code
-      group: null
-      hidden: true
-      interface: null
-      note: null
-      options: null
-      readonly: false
-      required: false
-      sort: null
-      special: null
-      translations: null
-      validation: null
-      validation_message: null
-      width: full
-    schema:
-      comment: null
-      data_type: character varying
-      default_value: null
-      foreign_key_column: code
-      foreign_key_schema: public
-      foreign_key_table: languages
-      generation_expression: null
-      has_auto_increment: false
-      is_generated: false
-      is_nullable: true
-      is_primary_key: false
-      is_unique: false
-      max_length: 255
-      name: languages_code
-      numeric_precision: null
-      numeric_scale: null
-      schema: public
-      table: MachineTemplates_translations
-    type: string
   - collection: NavbarLinkSubmenuItems
     field: date_created
     meta:
@@ -22418,6 +22418,28 @@ relations:
     related_collection: null
     schema: null
   - collection: MachineTemplates
+    field: icon
+    meta:
+      junction_field: null
+      many_collection: MachineTemplates
+      many_field: icon
+      one_allowed_collections: null
+      one_collection: directus_files
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    related_collection: directus_files
+    schema:
+      column: icon
+      constraint_name: machinetemplates_icon_foreign
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: directus_files
+      on_delete: SET NULL
+      on_update: NO ACTION
+      table: MachineTemplates
+  - collection: MachineTemplates
     field: user_created
     meta:
       junction_field: null
@@ -22461,50 +22483,6 @@ relations:
       on_delete: NO ACTION
       on_update: NO ACTION
       table: MachineTemplates
-  - collection: MachineTemplates_translations
-    field: MachineTemplates_id
-    meta:
-      junction_field: languages_code
-      many_collection: MachineTemplates_translations
-      many_field: MachineTemplates_id
-      one_allowed_collections: null
-      one_collection: MachineTemplates
-      one_collection_field: null
-      one_deselect_action: nullify
-      one_field: translations
-      sort_field: null
-    related_collection: MachineTemplates
-    schema:
-      column: MachineTemplates_id
-      constraint_name: machinetemplates_translations_machinetemplates_id_foreign
-      foreign_key_column: id
-      foreign_key_schema: public
-      foreign_key_table: MachineTemplates
-      on_delete: SET NULL
-      on_update: NO ACTION
-      table: MachineTemplates_translations
-  - collection: MachineTemplates_translations
-    field: languages_code
-    meta:
-      junction_field: MachineTemplates_id
-      many_collection: MachineTemplates_translations
-      many_field: languages_code
-      one_allowed_collections: null
-      one_collection: languages
-      one_collection_field: null
-      one_deselect_action: nullify
-      one_field: null
-      sort_field: null
-    related_collection: languages
-    schema:
-      column: languages_code
-      constraint_name: machinetemplates_translations_languages_code_foreign
-      foreign_key_column: code
-      foreign_key_schema: public
-      foreign_key_table: languages
-      on_delete: SET NULL
-      on_update: NO ACTION
-      table: MachineTemplates_translations
   - collection: NavbarLinkSubmenuItems
     field: navbar_link_submenus_id
     meta:
