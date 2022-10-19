@@ -194,8 +194,12 @@ export type MDFixedPlan = { [x: string]: any } & MDWithTranslation<{
 }> &
   DRTStatus;
 
-export type MDPlansComparison = { [x: string]: any } & MDWithTranslation<{
-  [x: string]: any;
+export type MDPlansComparison = {
+  basic: string;
+  extended: string;
+  pro: string;
+} & MDWithTranslation<{
+  name: string;
 }> &
   DRTStatus;
 

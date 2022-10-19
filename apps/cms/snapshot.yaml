@@ -11303,6 +11303,54 @@ fields:
       table: Pages_translations
     type: string
   - collection: PlansComparisons
+    field: basic
+    meta:
+      collection: PlansComparisons
+      conditions: null
+      display: null
+      display_options: null
+      field: basic
+      group: null
+      hidden: false
+      interface: select-dropdown
+      note: null
+      options:
+        allowOther: true
+        choices:
+          - text: Checked
+            value: checked
+          - text: Unchecked
+            value: unchecked
+        placeholder: Basic Plan
+      readonly: false
+      required: true
+      sort: 3
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: character varying
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: 255
+      name: basic
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: PlansComparisons
+    type: string
+  - collection: PlansComparisons
     field: date_created
     meta:
       collection: PlansComparisons
@@ -11318,7 +11366,7 @@ fields:
       options: null
       readonly: true
       required: false
-      sort: 6
+      sort: 9
       special:
         - date-created
       translations: null
@@ -11361,7 +11409,7 @@ fields:
       options: null
       readonly: true
       required: false
-      sort: 8
+      sort: 11
       special:
         - date-updated
       translations: null
@@ -11388,6 +11436,54 @@ fields:
       schema: public
       table: PlansComparisons
     type: timestamp
+  - collection: PlansComparisons
+    field: extended
+    meta:
+      collection: PlansComparisons
+      conditions: null
+      display: null
+      display_options: null
+      field: extended
+      group: null
+      hidden: false
+      interface: select-dropdown
+      note: null
+      options:
+        allowOther: true
+        choices:
+          - text: Checked
+            value: checked
+          - text: Unchecked
+            value: unchecked
+        placeholder: Extended Plan
+      readonly: false
+      required: true
+      sort: 4
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: character varying
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: 255
+      name: extended
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: PlansComparisons
+    type: string
   - collection: PlansComparisons
     field: id
     meta:
@@ -11431,6 +11527,54 @@ fields:
       table: PlansComparisons
     type: uuid
   - collection: PlansComparisons
+    field: pro
+    meta:
+      collection: PlansComparisons
+      conditions: null
+      display: null
+      display_options: null
+      field: pro
+      group: null
+      hidden: false
+      interface: select-dropdown
+      note: null
+      options:
+        allowOther: true
+        choices:
+          - text: Checked
+            value: checked
+          - text: Unchecked
+            value: unchecked
+        placeholder: Pro Plan
+      readonly: false
+      required: true
+      sort: 5
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: character varying
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: 255
+      name: pro
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: PlansComparisons
+    type: string
+  - collection: PlansComparisons
     field: sort
     meta:
       collection: PlansComparisons
@@ -11445,7 +11589,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: 4
+      sort: 7
       special: null
       translations: null
       validation: null
@@ -11507,7 +11651,7 @@ fields:
             value: archived
       readonly: false
       required: false
-      sort: 3
+      sort: 6
       special: null
       translations: null
       validation: null
@@ -11575,7 +11719,7 @@ fields:
         template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
       readonly: true
       required: false
-      sort: 5
+      sort: 8
       special:
         - user-created
       translations: null
@@ -11618,7 +11762,7 @@ fields:
         template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
       readonly: true
       required: false
-      sort: 7
+      sort: 10
       special:
         - user-updated
       translations: null
@@ -11660,7 +11804,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: null
+      sort: 3
       special: null
       translations: null
       validation: null
@@ -11701,7 +11845,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: null
+      sort: 1
       special: null
       translations: null
       validation: null
@@ -11742,7 +11886,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: null
+      sort: 4
       special: null
       translations: null
       validation: null
@@ -11763,6 +11907,50 @@ fields:
       is_unique: false
       max_length: 255
       name: languages_code
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: PlansComparisons_translations
+    type: string
+  - collection: PlansComparisons_translations
+    field: name
+    meta:
+      collection: PlansComparisons_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: name
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        placeholder: Comparison Name
+        softLength: 200
+        trim: true
+      readonly: false
+      required: true
+      sort: 2
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: character varying
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: 255
+      name: name
       numeric_precision: null
       numeric_scale: null
       schema: public
