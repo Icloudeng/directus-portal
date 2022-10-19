@@ -39,6 +39,13 @@
     chdir: "{{ root_path }}/apps/cms"
     removes: "{{ root_path }}/apps/cms/snapshot.yaml"
 
+- name: CMS App | Directus Extensions Build
+  become: false
+  command: pnpm -r extension-build
+  ignore_errors: true
+  args:
+    chdir: "{{ root_path }}/apps/cms"
+
 - name: CMS App | Create App User
   become: false
   command: "node create-app-user.js"

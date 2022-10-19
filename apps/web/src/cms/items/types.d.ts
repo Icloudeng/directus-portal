@@ -184,8 +184,31 @@ export type PlansPricingContent = {
   machine_templates: MDMachineTemplate[];
 };
 
-export type MDFlexiblePlan = {[x:string]: any} & MDWithTranslation<{[x:string]: any}> & DRTStatus;
-export type MDFixedPlan = {[x:string]: any} & MDWithTranslation<{[x:string]: any}> & DRTStatus;
-export type MDPlansComparison = {[x:string]: any} & MDWithTranslation<{[x:string]: any}> & DRTStatus;
-export type MDMachineTemplate = {[x:string]: any} & MDWithTranslation<{[x:string]: any}> & DRTStatus;
-export type MDPlatform = {[x:string]: any} & MDWithTranslation<{[x:string]: any}> & DRTStatus;
+export type MDFlexiblePlan = { [x: string]: any } & MDWithTranslation<{
+  [x: string]: any;
+}> &
+  DRTStatus;
+
+export type MDFixedPlan = { [x: string]: any } & MDWithTranslation<{
+  [x: string]: any;
+}> &
+  DRTStatus;
+
+export type MDPlansComparison = { [x: string]: any } & MDWithTranslation<{
+  [x: string]: any;
+}> &
+  DRTStatus;
+
+export type MDMachineTemplate = { [x: string]: any } & MDWithTranslation<{
+  [x: string]: any;
+}> &
+  DRTStatus;
+
+export type MDPlatform = {
+  name: string;
+  icon_svg?: string;
+  icon?: MDWithAsset;
+} & MDWithTranslation<{
+  description?: string;
+}> &
+  DRTStatus;
