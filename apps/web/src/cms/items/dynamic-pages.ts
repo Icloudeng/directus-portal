@@ -12,6 +12,7 @@ import {
   pageSectionPublished,
   pageSectionQuery,
   pageSectionsWithAssets,
+  pageSectionWithPlansPricing,
 } from '../page-sections';
 import { MDPage } from './types';
 
@@ -70,6 +71,7 @@ export async function getGqlDynamicPages(request_pathname: string) {
     qWithAsset(access_token, page, 'image');
     pageSectionPublished(page);
     pageSectionsWithAssets(access_token, page.sections);
+    await pageSectionWithPlansPricing(page);
   }
 
   return res;

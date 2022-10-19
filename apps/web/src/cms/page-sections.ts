@@ -12,6 +12,8 @@ import {
   qWithStatus,
   qWithTranslations,
 } from './gql-query';
+import { getGqlPlansPricingQueries } from './items';
+import { MPlansPricing, PlansPricingContent } from './items/types';
 
 const { section_templates, generics } = CMS_MODELS;
 
@@ -128,6 +130,11 @@ const q_ST: Query = {
     }),
     ...qWithStatus,
   },
+  [section_templates.st_plans_pricing]: {
+    __typeName: section_templates.st_plans_pricing,
+    plan_pricing: true,
+    ...qWithStatus,
+  },
 };
 
 export const pageSectionQuery = {
@@ -204,6 +211,43 @@ export function pageSectionPublished<
       (citem) => citem.item.status === 'published'
     );
   });
+}
+
+export async function pageSectionWithPlansPricing<
+  T extends { [x: string]: any; sections: M2APageSection[] }
+>(data: T) {
+  let memo_content = null as PlansPricingContent | null | undefined;
+  for (const section of data.sections) {
+    for (const content of section.item.contents) {
+      // Select templates with plans_pricing request
+      const sts: ST_Vls[] = [
+        section_templates['st_page_aside_menus'],
+        section_templates['st_plans_pricing'],
+      ];
+      const has = sts.includes(content.collection);
+      if (!has) continue;
+      const ncontent = content as ST_PageAsideMenu | ST_PlansPricing;
+      const plan_pricing = ncontent.item.plan_pricing;
+      if (
+        !plan_pricing ||
+        plan_pricing.length === 0 ||
+        memo_content === undefined
+      ) {
+        continue;
+      }
+
+      memo_content = memo_content
+        ? memo_content
+        : await getGqlPlansPricingQueries();
+
+      if (!memo_content) continue;
+
+      ncontent.item.plan_pricing_contents = {} as PlansPricingContent;
+      plan_pricing.forEach((key) => {
+        ncontent.item.plan_pricing_contents![key] = memo_content![key] as any;
+      });
+    }
+  }
 }
 
 // --------------------------------------------------------------------//
@@ -310,7 +354,8 @@ export type ST_CleanHero = MDHasM2A<
 
 export type ST_PageAsideMenu = MDHasM2A<
   {
-    plan_pricing: ('flexible_plans' | 'fixed_plans' | 'plans_comparisons')[];
+    plan_pricing?: MPlansPricing[];
+    plan_pricing_contents?: PlansPricingContent;
   } & MDWithTranslation<{
     menu_name: string;
     title: string;
@@ -345,6 +390,14 @@ export type ST_Button = MDHasM2A<
   ST_V<'st_buttons'>
 >;
 
+export type ST_PlansPricing = MDHasM2A<
+  {
+    plan_pricing?: MPlansPricing[];
+    plan_pricing_contents?: PlansPricingContent;
+  } & DRTStatus,
+  ST_V<'st_plans_pricing'>
+>;
+
 //------------------- Page Sections --------------------//
 type PS_Content =
   | ST_Value
@@ -354,7 +407,10 @@ type PS_Content =
   | ST_SidedContent
   | ST_NavAccordion
   | ST_PageAsideMenu
-  | ST_Button;
+  | ST_Button
+  | ST_SimpleCardLink
+  | ST_CleanHero
+  | ST_PlansPricing;
 
 export type M2APageSection = MDHasM2A<
   {

@@ -6,6 +6,7 @@ import {
 } from '@/components/aside-menu/aside-menu';
 import { MarkdownContent } from '@/components/react-markdown/MarkdownContent';
 import { useSharedData } from '@/store';
+import { useEffect } from 'react';
 
 export function ST_PageAsideMenusFC({
   items,
@@ -15,9 +16,10 @@ export function ST_PageAsideMenusFC({
   return (
     <AsideMenu>
       {items.map((aside, i) => {
-        const { translations } = mut(aside.item, locale);
+        const { translations, id } = mut(aside.item, locale);
         return (
           <AsideMenuContent
+            key={id}
             menuTitle={translations?.menu_name || 'Menu-' + i}
             title={translations?.title}
           >

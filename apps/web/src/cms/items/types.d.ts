@@ -7,6 +7,7 @@ import {
   MDWithTranslation,
 } from '@/types/directus';
 import { M2APageSection } from '../page-sections';
+import type { CMS_MODELS } from '@/constant/cms';
 
 // --------------- language model types -------------
 
@@ -167,3 +168,20 @@ export type MDHomePageHero = {
   trailing_titles: string[];
 }> &
   DRTStatus;
+
+// ---------------- Plans Pricing -------------------------
+
+export type TPlansPricing = typeof CMS_MODELS.plans_pricing;
+
+export type MPlansPricing = keyof TPlansPricing;
+export type VPlansPricing = TPlansPricing[keyof TPlansPricing];
+
+export type PlansPricingContent = {
+  flexible_plans?: FlexiblePlan | null;
+  fixed_plans?: MDFixedPlan[];
+  plans_comparisons?: PlansComparison[];
+};
+
+export type FlexiblePlan = {} & MDWithTranslation<{}> & DRTStatus;
+export type MDFixedPlan = {} & MDWithTranslation<{}> & DRTStatus;
+export type PlansComparison = {} & MDWithTranslation<{}> & DRTStatus;

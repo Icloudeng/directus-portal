@@ -6,7 +6,7 @@ import React, {
   useState,
 } from 'react';
 import throttle from 'lodash/throttle';
-import debounce from 'lodash/debounce';
+import capitalize from 'lodash/capitalize';
 
 export function AsideMenu({ children }: PropsWithChildren) {
   const [active, setActive] = useState(0);
@@ -73,11 +73,6 @@ export function AsideMenu({ children }: PropsWithChildren) {
       const cel = document.getElementById('label-' + href);
       if (!cel) return;
       const rect = cel.getBoundingClientRect()!;
-      const onScroll = debounce(() => {
-        window.removeEventListener('scroll', onScroll);
-        setActive(index);
-      }, 101);
-      window.addEventListener('scroll', onScroll);
       window.scroll({
         top:
           rect.y > 0
@@ -90,7 +85,7 @@ export function AsideMenu({ children }: PropsWithChildren) {
 
   return (
     <div className='flex items-start mt-9'>
-      <aside className='sticky top-56 container__nav flex-1'>
+      <aside className='sticky hidden lg:block top-56 container__nav flex-1'>
         <ul className='aside-menu border-l'>
           {titles.map(({ title, index, href }, i) => {
             return (
@@ -105,7 +100,7 @@ export function AsideMenu({ children }: PropsWithChildren) {
                   href={'#' + href}
                   className='pl-7'
                 >
-                  {title}
+                  {capitalize(title)}
                 </UnstyledLink>
               </li>
             );
