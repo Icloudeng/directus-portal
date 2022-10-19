@@ -7,7 +7,7 @@ import Seo from '@/components/Seo';
 
 import { getServerSideTranslations } from '@/utils/server-translation';
 import { getGqlDynamicPages, QDynamicPagesType } from '@/cms/items';
-import { EmptyCanvasSvg } from '@/components/svgs/EmptyCanvas';
+import { EmptyCanvasSvg } from '@/components/ui/svgs/EmptyCanvas';
 import { useTranslation } from 'next-i18next';
 import { useRouter } from 'next/router';
 

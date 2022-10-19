@@ -1,6 +1,6 @@
 import { useMut } from '@/cms/mut';
 import { STemplates_Props, ST_Button } from '@/cms/page-sections';
-import ButtonLink from '@/components/links/ButtonLink';
+import ButtonLink from '@/components/ui/links/ButtonLink';
 
 export function ST_ButtonsFC({ items }: STemplates_Props<ST_Button>) {
   return (

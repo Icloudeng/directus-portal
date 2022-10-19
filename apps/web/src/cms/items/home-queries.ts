@@ -13,6 +13,7 @@ import {
   pageSectionPublished,
   pageSectionQuery,
   pageSectionsWithAssets,
+  pageSectionWithPlansPricing,
 } from '../page-sections';
 import { MDHomePageHero } from './types';
 
@@ -66,6 +67,7 @@ export async function getGqlHomeQueries() {
   if (HomeSections) {
     pageSectionPublished(HomeSections);
     pageSectionsWithAssets(access_token, HomeSections.sections);
+    await pageSectionWithPlansPricing(HomeSections);
   }
 
   return res;

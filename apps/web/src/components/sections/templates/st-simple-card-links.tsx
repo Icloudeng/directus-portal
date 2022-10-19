@@ -1,7 +1,7 @@
 import { useMut } from '@/cms/mut';
 import { STemplates_Props, ST_SimpleCardLink } from '@/cms/page-sections';
-import Button from '@/components/buttons/Button';
-import UnstyledLink from '@/components/links/UnstyledLink';
+import Button from '@/components/ui/buttons/Button';
+import UnstyledLink from '@/components/ui/links/UnstyledLink';
 
 export function ST_SimpleCardLinksFC({
   items,

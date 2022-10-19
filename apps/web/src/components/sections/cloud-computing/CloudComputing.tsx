@@ -2,7 +2,7 @@
 
 import { useCustomerEmblaCarousel } from '@/hooks/useCustomEmblaCarousel';
 
-import { DotButton, NextButton, PrevButton } from '@/components/carouselButtons/CarouselButtons';
+import { DotButton, NextButton, PrevButton } from '@/components/ui/carouselButtons/CarouselButtons';
 
 import { CarouselData } from '@/models/carouselModel';
 
@@ -27,9 +27,9 @@ export const CloudComputing = () => {
             <div className='flex flex-col items-center justify-center gap-7 mb-7'>
                 <h1 className='text-center'>What's Cloud Computing</h1>
                 <span className='max-w-xl text-center'>
-                Cloud computing is the on-demand availability of computer system resources, 
-                especially data storage and computing power, 
-                without direct active management by the user. 
+                Cloud computing is the on-demand availability of computer system resources,
+                especially data storage and computing power,
+                without direct active management by the user.
                 </span>
             </div>
             <div className='w-full h-full'>
@@ -38,11 +38,11 @@ export const CloudComputing = () => {
                     <div className='overflow-hidden w-full h-full' ref={viewportRef}>
                         <div className='flex w-full h-full'>
                             {CarouselData.map(({ bigTitle, description, href, items, imgSrc }, index) => (
-                                <CarouselItem 
-                                    key={index} 
-                                    bigTitle={bigTitle} 
-                                    description={description} 
-                                    href={href} items={items} 
+                                <CarouselItem
+                                    key={index}
+                                    bigTitle={bigTitle}
+                                    description={description}
+                                    href={href} items={items}
                                     imgSrc={imgSrc} />
                             ))}
                         </div>

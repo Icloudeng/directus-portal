@@ -1,15 +1,15 @@
 import type { STemplates_Props, ST_CardCarousel } from '@/cms/page-sections';
 import Image from 'next/image';
 import { useMut } from '@/cms/mut';
-import ButtonLink from '@/components/links/ButtonLink';
+import ButtonLink from '@/components/ui/links/ButtonLink';
 import { useTranslation } from 'next-i18next';
 import { useCustomerEmblaCarousel } from '@/hooks/useCustomEmblaCarousel';
 import {
   DotButton,
   NextButton,
   PrevButton,
-} from '@/components/carouselButtons/CarouselButtons';
-import { MarkdownContent } from '@/components/react-markdown/MarkdownContent';
+} from '@/components/ui/carouselButtons/CarouselButtons';
+import { MarkdownContent } from '@/components/ui/react-markdown/MarkdownContent';
 
 export function ST_CardCarouselsFC({
   items,

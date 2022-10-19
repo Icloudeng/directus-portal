@@ -2,7 +2,7 @@ import { GetServerSidePropsContext } from 'next';
 import { useTranslation } from 'next-i18next';
 import { RiAlarmWarningFill } from 'react-icons/ri';
 
-import ArrowLink from '@/components/links/ArrowLink';
+import ArrowLink from '@/components/ui/links/ArrowLink';
 import Seo from '@/components/Seo';
 
 import { getServerSideTranslations } from '@/utils/server-translation';

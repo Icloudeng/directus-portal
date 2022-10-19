@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { Navbar } from '../navbar/Navbar';
-import { TopBar } from '../topBar/TopBar';
+import { Navbar } from './navbar/Navbar';
+import { TopBar } from './topBar/TopBar';
 import throttle from 'lodash/throttle';
 
 export default function Header() {
@@ -16,15 +16,15 @@ export default function Header() {
     }
   }, []);
 
-  const throttleScroll = useCallback(() => {
-    lastScrollY.current = window.scrollY;
-  }, []);
-
   useEffect(() => {
+    const throttleScroll = throttle(() => {
+      lastScrollY.current = window.scrollY;
+    }, 100);
+
     setTimeout(() => {
       lastScrollY.current = window.scrollY;
       window.addEventListener('scroll', onScroll);
-      window.addEventListener('scroll', throttle(throttleScroll, 100));
+      window.addEventListener('scroll', throttleScroll);
     }, 0);
     return () => {
       window.removeEventListener('scroll', onScroll);

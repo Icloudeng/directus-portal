@@ -9,7 +9,7 @@ import { VALID_CSS } from '@/utils/regex';
 import { testHexColor } from '@/utils/tests';
 import isSvg from 'is-svg';
 import React, { FunctionComponent, useMemo, useRef } from 'react';
-import { HasSvgText } from '../HasSvgText';
+import { HasSvgText } from '../ui/HasSvgText';
 import * as stfc from './templates';
 
 const { section_templates } = CMS_MODELS;

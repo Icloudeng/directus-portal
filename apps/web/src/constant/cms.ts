@@ -26,6 +26,13 @@ export const CMS_MODELS = {
     home_hero: 'HomeHero',
     home_sections: 'HomeSections',
   } as const),
+  plans_pricing: {
+    flexible_plans: 'FlexiblePlans',
+    fixed_plans: 'FixedPlans',
+    plans_comparisons: 'PlansComparisons',
+    machine_templates: 'MachineTemplates',
+    platforms: 'Platforms',
+  } as const,
   generics: {
     page_sections: 'PageSections',
   } as const,
@@ -40,5 +47,6 @@ export const CMS_MODELS = {
     st_page_aside_menus: 'ST_PageAsideMenus',
     st_simple_card_links: 'ST_SimpleCardLinks',
     st_buttons: 'ST_Buttons',
+    st_plans_pricing: 'ST_PlansPricing',
   } as const,
 };

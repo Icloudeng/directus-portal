@@ -1,6 +1,6 @@
 import Header from './Header';
-import { Footer } from '../footer/Footer';
-import { MobileMenu } from '../mobileMenu/MobileMenu';
+import { Footer } from './footer/Footer';
+import { MobileMenu } from './mobileMenu/MobileMenu';
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (

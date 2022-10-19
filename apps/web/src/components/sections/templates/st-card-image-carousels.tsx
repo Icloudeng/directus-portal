@@ -7,10 +7,10 @@ import {
   DotButton,
   NextButton,
   PrevButton,
-} from '@/components/carouselButtons/CarouselButtons';
+} from '@/components/ui/carouselButtons/CarouselButtons';
 import { useCustomerEmblaCarousel } from '@/hooks/useCustomEmblaCarousel';
 import { useMut } from '@/cms/mut';
-import ButtonLink from '@/components/links/ButtonLink';
+import ButtonLink from '@/components/ui/links/ButtonLink';
 import { useTranslation } from 'next-i18next';
 
 export function ST_CardImageCarouselsFC({
