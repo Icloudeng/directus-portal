@@ -26,6 +26,14 @@ const queries = jsonToGraphQLQuery({
     fixed_plans: {
       __aliasFor: plans_pricing.fixed_plans,
       __args: qWithPublishedStatus(),
+      ...qWithTranslations({
+        name: true,
+      }),
+      platforms: true,
+      ram: true,
+      cpu: true,
+      ssd: true,
+      cost_hour: true,
       ...qWithStatus,
     },
     plans_comparisons: {

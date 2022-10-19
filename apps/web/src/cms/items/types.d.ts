@@ -189,8 +189,14 @@ export type MDFlexiblePlan = { [x: string]: any } & MDWithTranslation<{
 }> &
   DRTStatus;
 
-export type MDFixedPlan = { [x: string]: any } & MDWithTranslation<{
-  [x: string]: any;
+export type MDFixedPlan = {
+  platforms: string[];
+  ram: number;
+  cpu: number;
+  ssd: number;
+  cost_hour: number;
+} & MDWithTranslation<{
+  name: string;
 }> &
   DRTStatus;
 

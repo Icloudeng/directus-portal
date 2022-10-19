@@ -2950,6 +2950,95 @@ fields:
       table: CompanyDetails_translations
     type: text
   - collection: FixedPlans
+    field: cost_hour
+    meta:
+      collection: FixedPlans
+      conditions: null
+      display: null
+      display_options: null
+      field: cost_hour
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        max: 50
+        min: 0.001
+        placeholder: Hourly price
+        step: 0.01
+      readonly: false
+      required: true
+      sort: 7
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: numeric
+      default_value: 0.01
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: cost_hour
+      numeric_precision: 10
+      numeric_scale: 5
+      schema: public
+      table: FixedPlans
+    type: decimal
+  - collection: FixedPlans
+    field: cpu
+    meta:
+      collection: FixedPlans
+      conditions: null
+      display: null
+      display_options: null
+      field: cpu
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        max: 16
+        min: 1
+        placeholder: Minimum Computer CPU (Core)
+      readonly: false
+      required: true
+      sort: 5
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      comment: null
+      data_type: integer
+      default_value: 1
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: cpu
+      numeric_precision: 32
+      numeric_scale: 0
+      schema: public
+      table: FixedPlans
+    type: integer
+  - collection: FixedPlans
     field: date_created
     meta:
       collection: FixedPlans
@@ -2965,7 +3054,7 @@ fields:
       options: null
       readonly: true
       required: false
-      sort: 6
+      sort: 11
       special:
         - date-created
       translations: null
@@ -3008,7 +3097,7 @@ fields:
       options: null
       readonly: true
       required: false
-      sort: 8
+      sort: 13
       special:
         - date-updated
       translations: null
@@ -3078,6 +3167,95 @@ fields:
       table: FixedPlans
     type: uuid
   - collection: FixedPlans
+    field: platforms
+    meta:
+      collection: FixedPlans
+      conditions: null
+      display: null
+      display_options: null
+      field: platforms
+      group: null
+      hidden: false
+      interface: tags
+      note: null
+      options:
+        alphabetize: true
+        capitalization: auto-format
+        placeholder: Platforms List
+      readonly: false
+      required: true
+      sort: 3
+      special:
+        - cast-json
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: json
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: platforms
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: FixedPlans
+    type: json
+  - collection: FixedPlans
+    field: ram
+    meta:
+      collection: FixedPlans
+      conditions: null
+      display: null
+      display_options: null
+      field: ram
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        max: 48
+        min: 1
+        placeholder: Minimum Computer RAM
+      readonly: false
+      required: true
+      sort: 4
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      comment: null
+      data_type: integer
+      default_value: 2
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: ram
+      numeric_precision: 32
+      numeric_scale: 0
+      schema: public
+      table: FixedPlans
+    type: integer
+  - collection: FixedPlans
     field: sort
     meta:
       collection: FixedPlans
@@ -3092,7 +3270,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: 4
+      sort: 9
       special: null
       translations: null
       validation: null
@@ -3113,6 +3291,51 @@ fields:
       is_unique: false
       max_length: null
       name: sort
+      numeric_precision: 32
+      numeric_scale: 0
+      schema: public
+      table: FixedPlans
+    type: integer
+  - collection: FixedPlans
+    field: ssd
+    meta:
+      collection: FixedPlans
+      conditions: null
+      display: null
+      display_options: null
+      field: ssd
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        max: 1000
+        min: 25
+        placeholder: Minimum Computer Disk (SSD)
+        step: 10
+      readonly: false
+      required: true
+      sort: 6
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: integer
+      default_value: 25
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: ssd
       numeric_precision: 32
       numeric_scale: 0
       schema: public
@@ -3154,7 +3377,7 @@ fields:
             value: archived
       readonly: false
       required: false
-      sort: 3
+      sort: 8
       special: null
       translations: null
       validation: null
@@ -3196,7 +3419,7 @@ fields:
         languageField: code
         userLanguage: true
       readonly: false
-      required: true
+      required: false
       sort: 2
       special:
         - translations
@@ -3222,7 +3445,7 @@ fields:
         template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
       readonly: true
       required: false
-      sort: 5
+      sort: 10
       special:
         - user-created
       translations: null
@@ -3265,7 +3488,7 @@ fields:
         template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
       readonly: true
       required: false
-      sort: 7
+      sort: 12
       special:
         - user-updated
       translations: null
@@ -3307,7 +3530,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: null
+      sort: 3
       special: null
       translations: null
       validation: null
@@ -3348,7 +3571,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: null
+      sort: 1
       special: null
       translations: null
       validation: null
@@ -3389,7 +3612,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: null
+      sort: 4
       special: null
       translations: null
       validation: null
@@ -3410,6 +3633,49 @@ fields:
       is_unique: false
       max_length: 255
       name: languages_code
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: FixedPlans_translations
+    type: string
+  - collection: FixedPlans_translations
+    field: name
+    meta:
+      collection: FixedPlans_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: name
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        placeholder: Plan Name
+        trim: true
+      readonly: false
+      required: false
+      sort: 2
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: character varying
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: 255
+      name: name
       numeric_precision: null
       numeric_scale: null
       schema: public
@@ -6018,6 +6284,7 @@ fields:
       options:
         max: 10
         min: 0.001
+        placeholder: Hourly price
         step: 0.001
       readonly: false
       required: true
@@ -12695,7 +12962,7 @@ fields:
       interface: input
       note: null
       options:
-        max: 12
+        max: 16
         min: 1
         placeholder: Minimum Computer CPU (Core)
       readonly: false
