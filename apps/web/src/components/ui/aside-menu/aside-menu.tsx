@@ -78,13 +78,26 @@ export function AsideMenu({ children }: PropsWithChildren) {
       if (!cel) return;
       const rect = cel.getBoundingClientRect()!;
       hasClickScroll.current = true;
+      let scrollHasStarted = false;
 
       const onScroll = debounce(() => {
         window.removeEventListener('scroll', onScroll);
         setActive(index);
         hasClickScroll.current = false;
       }, 101);
+
+      const onScrollHasStarted = () => {
+        window.removeEventListener('scroll', onScrollHasStarted);
+        scrollHasStarted = true;
+      };
       window.addEventListener('scroll', onScroll);
+      window.addEventListener('scroll', onScrollHasStarted);
+      window.setTimeout(() => {
+        if (!scrollHasStarted) {
+          hasClickScroll.current = false;
+          scrollHasStarted = false;
+        }
+      }, 101);
 
       window.scroll({
         top:

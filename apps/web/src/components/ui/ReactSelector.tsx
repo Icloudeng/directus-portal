@@ -52,6 +52,7 @@ export const ReactSelector = () => {
   return (
     <div className='custom-select w-full'>
       <Select
+        isSearchable={false}
         value={selectedOption}
         instanceId={id}
         onChange={handleChange}

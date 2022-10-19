@@ -32,6 +32,11 @@ const queries = jsonToGraphQLQuery({
       __args: qWithPublishedStatus({}),
       ...qWithStatus,
     },
+    machine_templates: {
+      __aliasFor: plans_pricing.machine_templates,
+      __args: qWithPublishedStatus({}),
+      ...qWithStatus,
+    },
   },
 });
 

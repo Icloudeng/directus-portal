@@ -243,6 +243,7 @@ export async function pageSectionWithPlansPricing<
       if (!memo_content) continue;
 
       ncontent.item.plan_pricing_contents = {} as PlansPricingContent;
+      plan_pricing.push('machine_templates');
       plan_pricing.forEach((key) => {
         ncontent.item.plan_pricing_contents![key] = memo_content![key] as any;
       });
