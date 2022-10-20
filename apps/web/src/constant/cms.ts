@@ -48,5 +48,6 @@ export const CMS_MODELS = {
     st_simple_card_links: 'ST_SimpleCardLinks',
     st_buttons: 'ST_Buttons',
     st_plans_pricing: 'ST_PlansPricing',
+    st_platforms: 'ST_Platforms',
   } as const,
 };
