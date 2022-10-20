@@ -452,6 +452,26 @@ export type M2APageSection = MDHasM2A<
   GE_V<'page_sections'>
 >;
 
+export type MDPageSectionsCategory = {
+  name: boolean;
+} & DRTStatus;
+
+export type M2AReusablePageSection = MDHasM2A<
+  {
+    page_section: string;
+    section?: M2APageSection;
+  } & DRTStatus,
+  GE_V<'reusable_page_sections'>
+>;
+
+export type M2AReusablePageSectionsCategory = MDHasM2A<
+  {
+    section_category: string;
+    sections?: M2APageSection[];
+  } & DRTStatus,
+  GE_V<'reusable_page_sections_categories'>
+>;
+
 // ---------------- Generics ---------------
 type ST = typeof section_templates;
 type ST_V<K extends keyof ST> = ST[K];

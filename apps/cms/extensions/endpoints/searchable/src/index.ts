@@ -14,70 +14,69 @@ type Handler = (
 export default defineEndpoint((router, { services, exceptions }) => {
   const { ItemsService } = services;
   const { ServiceUnavailableException } = exceptions;
-  const common = {
+  const $common = (options = {}) => ({
     sort: ["name"],
     fields: ["id", "name"],
     limit: 15,
-  };
-  // Platforms searchable
-  const platform_handler: Handler = (req, res, next) => {
-    const platformService = new ItemsService("Platforms", {
-      schema: req.schema,
-      accountability: req.accountability,
-    });
+    filter: {
+      status: {
+        _in: ["published"],
+      },
+    },
+    ...options,
+  });
 
-    platformService
-      .readByQuery({
-        ...common,
-        filter: <Filter<{ [x: string]: any }>>{
-          name: {
-            _contains: req.query.q,
-          },
-          status: {
-            _in: ["published"],
-          },
-        },
-      })
-      .then((results: Array<any>) => {
-        results.forEach((item) => {
-          item.ref = `${item.name} -- ${item.id}`;
-        });
-        res.json(results);
-      })
-      .catch((error: { message: any }) => {
-        return next(new ServiceUnavailableException(error.message));
+  const searchable_handler = (
+    service_name: string,
+    common: any,
+    searchable = "name"
+  ) => {
+    return function handler(req, res, next) {
+      const service = new ItemsService(service_name, {
+        schema: req.schema,
+        accountability: req.accountability,
       });
-  };
 
-  const platform_categories_handler: Handler = (req, res, next) => {
-    const platformCategoryService = new ItemsService("PlatformCategories", {
-      schema: req.schema,
-      accountability: req.accountability,
-    });
-
-    platformCategoryService
-      .readByQuery({
-        ...common,
-        filter: <Filter<{ [x: string]: any }>>{
-          name: {
-            _contains: req.query.q,
+      service
+        .readByQuery({
+          ...common,
+          filter: <Filter<{ [x: string]: any }>>{
+            [searchable]: {
+              _contains: req.query.q,
+            },
+            ...(common?.filter || {}),
           },
-          status: {
-            _in: ["published"],
-          },
-        },
-      })
-      .then((results: Array<any>) => {
-        results.forEach((item) => {
-          item.ref = `${item.name} -- ${item.id}`;
+        })
+        .then((results: Array<any>) => {
+          results.forEach((item) => {
+            item.ref = `${item[searchable]} -- ${item.id}`;
+          });
+          res.json(results);
+        })
+        .catch((error: { message: any }) => {
+          return next(new ServiceUnavailableException(error.message));
         });
-        res.json(results);
-      })
-      .catch((error: { message: any }) => {
-        return next(new ServiceUnavailableException(error.message));
-      });
+    } as Handler;
   };
 
-  router.get("/platforms", platform_handler);
-  router.get("/platform-categories", platform_categories_handler);
+  router.get(
+    "/platforms",
+    searchable_handler("Platforms", $common({ filter: {} }))
+  );
+  router.get(
+    "/platform-categories",
+    searchable_handler("PlatformCategories", $common({ filter: {} }))
+  );
+  router.get(
+    "/page-sections-categories",
+    searchable_handler("PageSectionsCategories", $common({ filter: {} }))
+  );
+  router.get(
+    "/page-sections",
+    searchable_handler(
+      "PageSections",
+      $common({ sort: ["label"], fields: ["id", "label"], filter: {} }),
+      "label"
+    )
+  );
 });
