@@ -1,6 +1,7 @@
 import {
   M2APageSection,
   PS_Content,
+  ST_MediaTab,
   ST_PageAsideMenu,
   ST_PlansPricing,
   ST_Vls,
@@ -37,15 +38,15 @@ export function pageSectionsWithAssets(
       const st = s_templates.pop();
       if (!st) return;
       // Actually all templates modeles uses image key for assets
-      const imgKey = 'image';
+      let assetKey = 'image';
 
-      //   switch (st.collection) {
-      //     case 'ST_CardCarousels':
-      //       imgKey = <keyof ST_CardCarousel['item']>'image';
-      //       break;
-      //   }
+      switch (st.collection) {
+        case 'ST_MediaTabs':
+          assetKey = <keyof ST_MediaTab['item']>'media';
+          break;
+      }
 
-      qWithAsset(access_token, st.item, imgKey as any);
+      qWithAsset(access_token, st.item, assetKey as any);
       stAssets(s_templates);
     };
 
