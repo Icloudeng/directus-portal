@@ -113,11 +113,7 @@ function PageSection({
       return {
         st_key: key,
         st_value: st_value,
-        items: item.contents
-          .filter((k) => k.collection === st_value)
-          .filter((k) =>
-            k.item.status ? k.item.status === 'published' : true
-          ),
+        items: item.contents.filter((k) => k.collection === st_value),
       };
     });
   }, [item.contents]);
@@ -213,15 +209,13 @@ export function PageSections({ sections }: { sections: M2APageSection[] }) {
   const sharedObject = useRef({} as ISharedObject);
   return (
     <>
-      {sections
-        .filter((f) => f.item.status === 'published')
-        .map((section) => (
-          <PageSection
-            key={section.id}
-            section={section}
-            sharedObject={sharedObject.current}
-          />
-        ))}
+      {sections.map((section) => (
+        <PageSection
+          key={section.id}
+          section={section}
+          sharedObject={sharedObject.current}
+        />
+      ))}
     </>
   );
 }
