@@ -10152,7 +10152,11 @@ fields:
       sort: 3
       special: null
       translations: null
-      validation: null
+      validation:
+        _and:
+          - category:
+              _regex: >-
+                ^(.*)\s+\-\-\s+(([0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12})|[0-9]+)$
       validation_message: null
       width: full
     schema:
@@ -13805,7 +13809,11 @@ fields:
       sort: 4
       special: null
       translations: null
-      validation: null
+      validation:
+        _and:
+          - category:
+              _regex: >-
+                ^(.*)\s+\-\-\s+(([0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12})|[0-9]+)$
       validation_message: null
       width: full
     schema:
@@ -14749,7 +14757,11 @@ fields:
       sort: 2
       special: null
       translations: null
-      validation: null
+      validation:
+        _and:
+          - page_section:
+              _regex: >-
+                ^(.*)\s+\-\-\s+(([0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12})|[0-9]+)$
       validation_message: null
       width: full
     schema:
@@ -15112,7 +15124,11 @@ fields:
       sort: 2
       special: null
       translations: null
-      validation: null
+      validation:
+        _and:
+          - section_category:
+              _regex: >-
+                ^(.*)\s+\-\-\s+(([0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12})|[0-9]+)$
       validation_message: null
       width: full
     schema:
