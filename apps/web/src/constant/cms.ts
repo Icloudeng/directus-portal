@@ -52,5 +52,6 @@ export const CMS_MODELS = {
     st_buttons: 'ST_Buttons',
     st_plans_pricing: 'ST_PlansPricing',
     st_platforms: 'ST_Platforms',
+    st_media_tabs: 'ST_MediaTabs',
   } as const,
 };

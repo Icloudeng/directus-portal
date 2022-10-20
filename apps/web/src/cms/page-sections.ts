@@ -6,13 +6,11 @@ import {
   MDWithTranslation,
 } from '@/types/directus';
 import {
-  qWithAsset,
   qWithPublishedStatus,
   qWithQueryAsset,
   qWithStatus,
   qWithTranslations,
 } from './gql-query';
-import { getGqlPlansPricingQueries } from './items';
 import {
   MDPlatform,
   MDPlatformCategory,
@@ -145,6 +143,18 @@ const q_ST: Query = {
     include_platforms: true,
     ...qWithStatus,
   },
+  [section_templates.st_media_tabs]: {
+    __typeName: section_templates.st_media_tabs,
+    disposition: true,
+    media: qWithQueryAsset({ type: true }),
+    media_url: true,
+    ...qWithTranslations({
+      tab_name: true,
+      title: true,
+      description: true,
+    }),
+    ...qWithStatus,
+  },
 };
 
 export const pageSectionQuery = {
@@ -174,95 +184,6 @@ export const pageSectionQuery = {
     },
   },
 };
-
-export function pageSectionsWithAssets(
-  access_token: string,
-  sections: M2APageSection[]
-) {
-  const $sections = [...sections];
-  const psAssets = (sections: M2APageSection[]) => {
-    const section = sections.pop();
-    if (!section) return;
-
-    qWithAsset(access_token, section.item, 'background_image');
-
-    const stAssets = (s_templates: PS_Content[]) => {
-      const st = s_templates.pop();
-      if (!st) return;
-      // Actually all templates modeles uses image key for assets
-      const imgKey = 'image';
-
-      //   switch (st.collection) {
-      //     case 'ST_CardCarousels':
-      //       imgKey = <keyof ST_CardCarousel['item']>'image';
-      //       break;
-      //   }
-
-      qWithAsset(access_token, st.item, imgKey as any);
-      stAssets(s_templates);
-    };
-
-    stAssets([...section.item.contents]);
-    psAssets(sections);
-  };
-
-  psAssets($sections);
-}
-
-export function pageSectionPublished<
-  T extends { [x: string]: any; sections: M2APageSection[] }
->(data: T) {
-  data.sections = data.sections.filter(
-    ({ item }) => item.status === 'published'
-  );
-
-  data.sections.forEach(({ item }) => {
-    item.contents = item.contents.filter(
-      (citem) => citem.item.status === 'published'
-    );
-  });
-}
-
-export async function pageSectionWithPlansPricing<
-  T extends { [x: string]: any; sections: M2APageSection[] }
->(data: T) {
-  let memo_content = null as PlansPricingContent | null | undefined;
-  for (const section of data.sections) {
-    for (const content of section.item.contents) {
-      // Select templates with plans_pricing request
-      const sts: ST_Vls[] = [
-        section_templates['st_page_aside_menus'],
-        section_templates['st_plans_pricing'],
-      ];
-      const has = sts.includes(content.collection);
-      if (!has) continue;
-      const ncontent = content as ST_PageAsideMenu | ST_PlansPricing;
-      const plan_pricing = ncontent.item.plan_pricing;
-      if (
-        !plan_pricing ||
-        plan_pricing.length === 0 ||
-        memo_content === undefined
-      ) {
-        continue;
-      }
-
-      memo_content = memo_content
-        ? memo_content
-        : await getGqlPlansPricingQueries();
-
-      if (!memo_content) continue;
-
-      ncontent.item.plan_pricing_contents = {} as PlansPricingContent;
-      plan_pricing.push('machine_templates');
-      if (plan_pricing.includes('flexible_plans')) {
-        plan_pricing.push('platforms');
-      }
-      plan_pricing.forEach((key) => {
-        ncontent.item.plan_pricing_contents![key] = memo_content![key] as any;
-      });
-    }
-  }
-}
 
 // --------------------------------------------------------------------//
 // ----------------------------  Types ------------------//
@@ -421,8 +342,22 @@ export type ST_Platform = MDHasM2A<
   ST_V<'st_platforms'>
 >;
 
+export type ST_MediaTab = MDHasM2A<
+  {
+    disposition: 'text_top' | 'text_bottom';
+    media?: MDWithAsset;
+    media_url?: string;
+  } & MDWithTranslation<{
+    tab_name: string;
+    title?: string;
+    description?: string;
+  }> &
+    DRTStatus,
+  ST_V<'st_media_tabs'>
+>;
+
 //------------------- Page Sections --------------------//
-type PS_Content =
+export type PS_Content =
   | ST_Value
   | ST_NavTab
   | ST_CardCarousel
@@ -434,7 +369,8 @@ type PS_Content =
   | ST_SimpleCardLink
   | ST_CleanHero
   | ST_PlansPricing
-  | ST_Platform;
+  | ST_Platform
+  | ST_MediaTab;
 
 export type M2APageSection = MDHasM2A<
   {
@@ -475,7 +411,7 @@ export type M2AReusablePageSectionsCategory = MDHasM2A<
 // ---------------- Generics ---------------
 type ST = typeof section_templates;
 type ST_V<K extends keyof ST> = ST[K];
-type ST_Vls = ST[keyof ST];
+export type ST_Vls = ST[keyof ST];
 
 type GE = typeof generics;
 type GE_V<K extends keyof GE> = GE[K];
