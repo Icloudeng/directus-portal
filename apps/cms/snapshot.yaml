@@ -747,7 +747,7 @@ collections:
       note: null
       singleton: false
       sort: 3
-      sort_field: sort
+      sort_field: null
       translations: null
       unarchive_value: null
     schema:
