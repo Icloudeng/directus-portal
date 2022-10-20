@@ -18360,7 +18360,11 @@ fields:
       sort: 4
       special: null
       translations: null
-      validation: null
+      validation:
+        _and:
+          - media_url:
+              _regex: >-
+                ^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$
       validation_message: null
       width: full
     schema:
