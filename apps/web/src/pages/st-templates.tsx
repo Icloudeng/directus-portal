@@ -6,6 +6,7 @@ import {
   DumpCardCarousel,
   DumpCardImageCarousel,
   DumpCleanHero,
+  DumpMediaTabs,
   DumpNavAccordion,
   DumpNavTab,
   DumpSidedContent,
@@ -88,6 +89,15 @@ export default function Page() {
         <h3 className='my-9 text-center'>ST SimpleCardLink </h3>
         <Sts.ST_SimpleCardLinksFC
           items={DumpSimpleCardLink}
+          sectionClass=''
+          sharedObject={{}}
+        />
+      </section>
+
+      <section className='py-14 x-container'>
+        <h3 className='my-9 text-center'>ST MediaTabs </h3>
+        <Sts.ST_MediaTabsFC
+          items={DumpMediaTabs}
           sectionClass=''
           sharedObject={{}}
         />
