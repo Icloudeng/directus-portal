@@ -9,3 +9,4 @@ export * from './st-page-aside-menus';
 export * from './st-simple-card-links';
 export * from './st-buttons';
 export * from './st-plans-pricing';
+export * from './st-platforms';

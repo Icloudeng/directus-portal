@@ -13,7 +13,12 @@ import {
   qWithTranslations,
 } from './gql-query';
 import { getGqlPlansPricingQueries } from './items';
-import { MPlansPricing, PlansPricingContent } from './items/types';
+import {
+  MDPlatform,
+  MDPlatformCategory,
+  MPlansPricing,
+  PlansPricingContent,
+} from './items/types';
 
 const { section_templates, generics } = CMS_MODELS;
 
@@ -133,6 +138,11 @@ const q_ST: Query = {
   [section_templates.st_plans_pricing]: {
     __typeName: section_templates.st_plans_pricing,
     plan_pricing: true,
+    ...qWithStatus,
+  },
+  [section_templates.st_platforms]: {
+    __typeName: section_templates.st_platforms,
+    include_platforms: true,
     ...qWithStatus,
   },
 };
@@ -402,6 +412,15 @@ export type ST_PlansPricing = MDHasM2A<
   ST_V<'st_plans_pricing'>
 >;
 
+export type ST_Platform = MDHasM2A<
+  {
+    include_platforms: true;
+    platforms?: MDPlatform[];
+    categories?: MDPlatformCategory[];
+  } & DRTStatus,
+  ST_V<'st_platforms'>
+>;
+
 //------------------- Page Sections --------------------//
 type PS_Content =
   | ST_Value
@@ -414,7 +433,8 @@ type PS_Content =
   | ST_Button
   | ST_SimpleCardLink
   | ST_CleanHero
-  | ST_PlansPricing;
+  | ST_PlansPricing
+  | ST_Platform;
 
 export type M2APageSection = MDHasM2A<
   {
@@ -430,6 +450,26 @@ export type M2APageSection = MDHasM2A<
   }> &
     DRTStatus,
   GE_V<'page_sections'>
+>;
+
+export type MDPageSectionsCategory = {
+  name: boolean;
+} & DRTStatus;
+
+export type M2AReusablePageSection = MDHasM2A<
+  {
+    page_section: string;
+    section?: M2APageSection;
+  } & DRTStatus,
+  GE_V<'reusable_page_sections'>
+>;
+
+export type M2AReusablePageSectionsCategory = MDHasM2A<
+  {
+    section_category: string;
+    sections?: M2APageSection[];
+  } & DRTStatus,
+  GE_V<'reusable_page_sections_categories'>
 >;
 
 // ---------------- Generics ---------------

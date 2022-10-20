@@ -35,6 +35,9 @@ export const CMS_MODELS = {
   } as const,
   generics: {
     page_sections: 'PageSections',
+    page_sections_categories: 'PageSectionsCategories',
+    reusable_page_sections: 'ReusablePageSections',
+    reusable_page_sections_categories: 'ReusablePageSectionsCategories',
   } as const,
   section_templates: {
     st_values: 'ST_Values',
@@ -48,5 +51,6 @@ export const CMS_MODELS = {
     st_simple_card_links: 'ST_SimpleCardLinks',
     st_buttons: 'ST_Buttons',
     st_plans_pricing: 'ST_PlansPricing',
+    st_platforms: 'ST_Platforms',
   } as const,
 };
