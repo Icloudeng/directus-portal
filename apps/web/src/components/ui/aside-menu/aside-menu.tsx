@@ -145,16 +145,20 @@ export function AsideMenuContent({
   children,
   menuTitle,
   title,
+  className,
   ...props
 }: PropsWithChildren<{
   menuTitle: string;
   title?: string;
+  className?: string;
 }>) {
   const { href, last } = props as any;
   return (
     <div
       id={href}
-      className={`content-section flex flex-col gap-8 ${!last ? 'mb-20' : ''}`}
+      className={`content-section flex flex-col gap-8 ${className || ''} ${
+        !last ? 'mb-20' : ''
+      }`}
     >
       <div className='header--container'>
         <div className='section__header max-w-2xl space-y-5'>

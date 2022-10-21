@@ -6,7 +6,6 @@ import {
 } from '@/components/ui/aside-menu/aside-menu';
 import { MarkdownContent } from '@/components/ui/react-markdown/MarkdownContent';
 import { useSharedData } from '@/store';
-import { useEffect } from 'react';
 import { HasPlansPricing } from '../pricing/HasPlansPricing';
 
 export function ST_PageAsideMenusFC({
