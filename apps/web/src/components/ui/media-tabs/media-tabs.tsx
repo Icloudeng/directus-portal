@@ -23,7 +23,7 @@ export function MediaTabs({ children }: PropsWithChildren) {
 
   return (
     <div className='w-full flex flex-col items-center gap-5'>
-      <div className='tab-container flex items-center px-10 gap-3'>
+      <div className='tab-container flex items-center justify-center mb-3 flex-wrap px-10 gap-3'>
         {titles.map(({ title, index }) => {
           return (
             <Button
