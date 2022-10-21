@@ -37,6 +37,7 @@ function HasMediaPlayer({ item: { media, media_url } }: ST_MediaTab) {
             />
           ) : (
             <ReactPlayer
+              controls={true}
               fallback={
                 <Skeleton className='absolute inset-0 text-primary-500 rounded-xl -z-[1]' />
               }
