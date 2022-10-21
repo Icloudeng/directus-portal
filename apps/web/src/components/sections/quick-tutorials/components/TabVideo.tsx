@@ -106,7 +106,7 @@ export const TabVideo = () => {
                     </span>
                 </div>
                 <div className="video-wrapper w-full ">
-                    <div className="video-container relative w-full h-[37rem] z-[1]">
+                    <div className="video-container relative w-full h-[18rem] xs:h-[22rem] sd:h-[28rem] md:h-[31rem] lg:h-[37rem] z-[1]">
                         <Skeleton className="absolute inset-0 text-primary-500 rounded-xl -z-[1]" />
                         {
                             mounted &&
