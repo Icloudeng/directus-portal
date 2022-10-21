@@ -4,6 +4,7 @@ import {
   MediaTabs,
   MediaTabsPane,
 } from '@/components/ui/media-tabs/media-tabs';
+import { PlyrReact } from '@/components/ui/plyr-react';
 import Skeleton from '@/components/ui/Skeleton';
 import { useHasMounted } from '@/hooks/useHasMounted';
 import { useSharedData } from '@/store';
@@ -17,13 +18,33 @@ function HasMediaPlayer({ item: { media, media_url } }: ST_MediaTab) {
     return <></>;
   }
   const showVideo = media?.type?.startsWith('video') ? media.src : media_url;
+
   return (
     <div className='video-wrapper w-full mb-5'>
-      <div className='video-container relative w-full h-[37rem] z-[1]'>
-        <Skeleton className='absolute inset-0 text-primary-500 rounded-xl -z-[1]' />
-        {showVideo && mounted && (
-          <ReactPlayer url={showVideo} width='100%' height='100%' />
-        )}
+      <div
+        className={`video-container relative w-full ${
+          !media?.src ? 'h-[15rem] ss:h-[27rem] md:h-[37rem]' : ''
+        }  z-[1]`}
+      >
+        {showVideo &&
+          mounted &&
+          (media?.src ? (
+            <PlyrReact
+              source={{
+                type: 'video',
+                sources: [{ src: showVideo, type: media?.type }],
+              }}
+            />
+          ) : (
+            <ReactPlayer
+              fallback={
+                <Skeleton className='absolute inset-0 text-primary-500 rounded-xl -z-[1]' />
+              }
+              url={showVideo}
+              width='100%'
+              height='100%'
+            />
+          ))}
 
         {media?.type?.startsWith('image') && (
           <Image
