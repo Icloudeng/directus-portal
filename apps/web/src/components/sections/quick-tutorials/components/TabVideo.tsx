@@ -85,7 +85,7 @@ export const TabVideo = () => {
     return (
         <div className="w-full flex flex-col items-center gap-5">
             {/* <h2>Getting Started</h2> */}
-            <div className="tab-container flex items-center px-10 gap-3">
+            <div className="tab-container flex items-center px-10 gap-3 mb-3 flex-wrap justify-center">
                 {
                     TabButtonData2.map(({ btnTitle, cardTitle, cardDescription, videoLink }, index) => (
                         // <TabButton key={index} btnText={el} handleClick={() => handleBtnClick(index)} />
@@ -106,7 +106,7 @@ export const TabVideo = () => {
                     </span>
                 </div>
                 <div className="video-wrapper w-full ">
-                    <div className="video-container relative w-full h-[37rem] z-[1]">
+                    <div className="video-container relative w-full h-[18rem] xs:h-[22rem] sd:h-[28rem] md:h-[31rem] lg:h-[37rem] z-[1]">
                         <Skeleton className="absolute inset-0 text-primary-500 rounded-xl -z-[1]" />
                         {
                             mounted &&
