@@ -10,10 +10,10 @@ export const PlansComparisons = ({
 }) => {
   const { t } = useTranslation()
   return (
-    <div className='section__bock border space-y-5 shadow-sm drop-shadow-sm rounded-sm p-10'>
+    <div className='section__bock max-w-sm xs:max-w-md ss:max-w-lg sd:max-w-none mx-auto border space-y-5 shadow-sm drop-shadow-sm rounded-sm p-10 overflow-x-auto'>
       <div className='block-calculator h-full'>
         <div className='calculator_wrapper h-full flex items-stretch'>
-          <div className='calculator__left w-full h-full flex flex-col gap-7 mr-3 pr-2'>
+          <div className='calculator__left w-full flex flex-col gap-7'>
             <table className='w-full text-left border-collapse'>
               <thead>
                 <tr className='border-b-2 border-slate-200'>
