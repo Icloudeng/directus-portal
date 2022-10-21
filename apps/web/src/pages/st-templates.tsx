@@ -6,8 +6,10 @@ import {
   DumpCardCarousel,
   DumpCardImageCarousel,
   DumpCleanHero,
+  DumpMediaTabs,
   DumpNavAccordion,
   DumpNavTab,
+  DumpPageAsideMenus,
   DumpSidedContent,
   DumpSimpleCardLink,
   DumpValue,
@@ -17,7 +19,7 @@ export default function Page() {
   return (
     <div>
       <section className='py-10 x-container'>
-        <h3 className='my-9 text-center'>ST CardCarousels </h3>
+        <h3 className='my-9'>ST CardCarousels </h3>
         <Sts.ST_CardCarouselsFC
           items={DumpCardCarousel}
           sectionClass=''
@@ -26,7 +28,7 @@ export default function Page() {
       </section>
 
       <section className='py-10 mb-20 x-container'>
-        <h3 className='my-9 text-center'>ST CardImageCarousels </h3>
+        <h3 className='my-9'>ST CardImageCarousels </h3>
         <Sts.ST_CardImageCarouselsFC
           items={DumpCardImageCarousel}
           sectionClass=''
@@ -44,7 +46,7 @@ export default function Page() {
       </section>
 
       <section className='py-10 x-container'>
-        <h3 className='my-9 text-center'>ST NavAccordions </h3>
+        <h3 className='my-9'>ST NavAccordions </h3>
         <Sts.ST_NavAccordionsFC
           items={DumpNavAccordion}
           sectionClass=''
@@ -53,7 +55,7 @@ export default function Page() {
       </section>
 
       <section className='py-10 x-container'>
-        <h3 className='my-9 text-center'>ST SidedContents </h3>
+        <h3 className='my-9'>ST SidedContents </h3>
         <Sts.ST_SidedContentsFC
           items={DumpSidedContent}
           sectionClass=''
@@ -62,12 +64,12 @@ export default function Page() {
       </section>
 
       <section className='py-10 x-container'>
-        <h3 className='my-9 text-center'>ST Values </h3>
+        <h3 className='my-9'>ST Values </h3>
         <Sts.ST_ValuesFC items={DumpValue} sectionClass='' sharedObject={{}} />
       </section>
 
       <section className='py-10 x-container'>
-        <h3 className='my-9 text-center'>ST NavTabs </h3>
+        <h3 className='my-9'>ST NavTabs </h3>
         <Sts.ST_NavTabsFC
           items={DumpNavTab}
           sectionClass=''
@@ -76,7 +78,7 @@ export default function Page() {
       </section>
 
       <section className='py-14 x-container'>
-        <h3 className='my-9 text-center'>ST Buttons </h3>
+        <h3 className='my-9'>ST Buttons </h3>
         <Sts.ST_ButtonsFC
           items={DumpButton}
           sectionClass=''
@@ -85,9 +87,27 @@ export default function Page() {
       </section>
 
       <section className='py-14 x-container'>
-        <h3 className='my-9 text-center'>ST SimpleCardLink </h3>
+        <h3 className='my-9'>ST SimpleCardLink </h3>
         <Sts.ST_SimpleCardLinksFC
           items={DumpSimpleCardLink}
+          sectionClass=''
+          sharedObject={{}}
+        />
+      </section>
+
+      <section className='py-14 x-container'>
+        <h3 className='my-9'>ST MediaTabs </h3>
+        <Sts.ST_MediaTabsFC
+          items={DumpMediaTabs}
+          sectionClass=''
+          sharedObject={{}}
+        />
+      </section>
+
+      <section className='py-14 x-container'>
+        <h3 className='my-9'>ST PageAsideMenus </h3>
+        <Sts.ST_PageAsideMenusFC
+          items={DumpPageAsideMenus}
           sectionClass=''
           sharedObject={{}}
         />

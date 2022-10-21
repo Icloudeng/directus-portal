@@ -10,3 +10,4 @@ export * from './st-simple-card-links';
 export * from './st-buttons';
 export * from './st-plans-pricing';
 export * from './st-platforms';
+export * from './st-media-tabs';

@@ -8,13 +8,8 @@ import {
   qWithStatus,
   qWithTranslations,
 } from '../gql-query';
-import {
-  M2APageSection,
-  pageSectionPublished,
-  pageSectionQuery,
-  pageSectionsWithAssets,
-  pageSectionWithPlansPricing,
-} from '../page-sections';
+import { M2APageSection, pageSectionQuery } from '../page-sections';
+import { pageSectionsAdapters } from '../page-sections-adapters';
 import { MDHomePageHero } from './types';
 
 const gql_query = jsonToGraphQLQuery({
@@ -64,11 +59,7 @@ export async function getGqlHomeQueries() {
     );
   }
 
-  if (HomeSections) {
-    pageSectionPublished(HomeSections);
-    pageSectionsWithAssets(access_token, HomeSections.sections);
-    await pageSectionWithPlansPricing(HomeSections);
-  }
+  await pageSectionsAdapters(HomeSections, access_token);
 
   return res;
 }

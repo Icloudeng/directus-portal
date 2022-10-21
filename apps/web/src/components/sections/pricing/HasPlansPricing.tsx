@@ -10,10 +10,6 @@ type Props = {
 };
 
 export function HasPlansPricing({ contents }: Props) {
-    useEffect(() => {
-        console.log(contents);
-
-    }, [])
   if (!contents) return <></>;
 
   const {

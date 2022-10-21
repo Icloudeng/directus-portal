@@ -3,8 +3,10 @@ import {
   ST_CardCarousel,
   ST_CardImageCarousel,
   ST_CleanHero,
+  ST_MediaTab,
   ST_NavAccordion,
   ST_NavTab,
+  ST_PageAsideMenu,
   ST_SidedContent,
   ST_SimpleCardLink,
   ST_Value,
@@ -542,3 +544,198 @@ export const DumpButton: ST_Button[] = [
     },
   };
 });
+
+export const DumpMediaTabs: ST_MediaTab[] = [
+  {
+    id: '30',
+    collection: 'ST_MediaTabs',
+    item: {
+      disposition: 'text_top',
+      media: undefined,
+      media_url: 'https://youtu.be/mxT233EdY5c',
+      translations: [
+        {
+          id: '1',
+          languages_code: {
+            code: 'en',
+            name: 'English',
+          },
+          tab_name: 'Get stared',
+          title: 'Cloud Computing',
+          description:
+            'In this video we run through a quick overview of what is cloud computing.',
+        },
+      ],
+      id: '73a10e60-cc62-4939-9d87-74af8d9b41ed',
+      status: 'published',
+      date_created: '2022-10-20T22:46:33.584Z',
+      date_updated: '2022-10-20T23:31:42.660Z',
+    },
+  },
+  {
+    id: '31',
+    collection: 'ST_MediaTabs',
+    item: {
+      disposition: 'text_top',
+      translations: [
+        {
+          id: '2',
+          languages_code: {
+            code: 'en',
+            name: 'English',
+          },
+          tab_name: 'Media',
+          title: 'Media',
+          description:
+            "In this video you'll learn how to import media, save media to your global libraries & use our stock integrations.",
+        },
+      ],
+      id: '2652b0f1-61b9-43e5-9e57-ec51d592733b',
+      status: 'published',
+      date_created: '2022-10-20T22:46:33.654Z',
+    },
+  },
+  {
+    id: '32',
+    collection: 'ST_MediaTabs',
+    item: {
+      disposition: 'text_top',
+      translations: [
+        {
+          id: '3',
+          languages_code: {
+            code: 'en',
+            name: 'English',
+          },
+          tab_name: 'Group',
+          title: 'Working with Groups',
+          description:
+            "In this video you'll learn how to create groups, mask groups & adjust the boundaries for groups.",
+        },
+      ],
+      id: 'bc066ff4-725b-41c1-956e-faa4e56b019b',
+      status: 'published',
+      date_created: '2022-10-20T22:46:33.718Z',
+    },
+  },
+  {
+    id: '33',
+    collection: 'ST_MediaTabs',
+    item: {
+      disposition: 'text_top',
+      translations: [
+        {
+          id: '4',
+          languages_code: {
+            code: 'en',
+            name: 'English',
+          },
+          tab_name: 'Motion Presets',
+          title: 'Working with Motion Presets',
+          description:
+            "In this video you'll learn how to add animations to any layer with pre-built animations. You'll also discover how to create & save your own animations!",
+        },
+      ],
+      id: 'a0f545ac-b8c6-47eb-bb95-ede2a98ff85e',
+      status: 'published',
+      date_created: '2022-10-20T22:46:33.781Z',
+      date_updated: '2022-10-20T23:25:31.154Z',
+    },
+  },
+  {
+    id: '34',
+    collection: 'ST_MediaTabs',
+    item: {
+      disposition: 'text_top',
+      translations: [
+        {
+          id: '5',
+          languages_code: {
+            code: 'en',
+            name: 'English',
+          },
+          tab_name: 'Publishing',
+          title: 'Exporting & Render Queue',
+          description:
+            "In this video you'll learn how to export your videos, publish a specific frame as an image and how the render queue works.",
+        },
+      ],
+      id: '03c829a7-7372-4d62-b0e4-b74e47b29adb',
+      status: 'published',
+      date_created: '2022-10-20T22:46:33.843Z',
+    },
+  },
+];
+
+export const DumpPageAsideMenus: ST_PageAsideMenu[] = [
+  {
+    id: '26',
+    collection: 'ST_PageAsideMenus',
+    item: {
+      plan_pricing: [],
+      translations: [
+        {
+          id: '1',
+          languages_code: {
+            code: 'en',
+            name: 'English',
+          },
+          title: 'vStack cloud',
+          menu_name: 'COMPUTE',
+          markdown_content:
+            "Cost-effective and developer-friendly solution. It's a great choice for the fastest deploying your applications. Learn more\n\n",
+        },
+      ],
+      id: 'dbbb9f80-4794-4ba7-a656-10fea2dfa66c',
+      status: 'published',
+      date_created: '2022-10-18T12:46:28.545Z',
+      date_updated: '2022-10-19T09:52:54.652Z',
+    },
+  },
+  {
+    id: '27',
+    collection: 'ST_PageAsideMenus',
+    item: {
+      plan_pricing: [],
+      translations: [
+        {
+          id: '2',
+          languages_code: {
+            code: 'en',
+            name: 'English',
+          },
+          title: 'Managed',
+          menu_name: 'SERVICES',
+          markdown_content:
+            'Cloud servers’ maintenance and support by Serverspace technical experts. Learn more\n\n',
+        },
+      ],
+      id: '30eecfdf-7d18-4eae-bf69-33f3186f6da2',
+      status: 'published',
+      date_created: '2022-10-18T12:46:28.628Z',
+      date_updated: '2022-10-19T11:01:44.526Z',
+    },
+  },
+  {
+    id: '28',
+    collection: 'ST_PageAsideMenus',
+    item: {
+      translations: [
+        {
+          id: '3',
+          languages_code: {
+            code: 'en',
+            name: 'English',
+          },
+          title: 'Object storage',
+          menu_name: 'STORAGE',
+          markdown_content:
+            'Unlimited storage that is compatible with S3 and Swift API. Auto scaling depending on the data volume. Learn more\n\n',
+        },
+      ],
+      id: '1b748f1d-d653-4de1-b17e-4883d986f018',
+      status: 'published',
+      date_created: '2022-10-18T12:46:28.711Z',
+    },
+  },
+];

@@ -8,12 +8,8 @@ import {
   qWithStatus,
   qWithTranslations,
 } from '../gql-query';
-import {
-  pageSectionPublished,
-  pageSectionQuery,
-  pageSectionsWithAssets,
-  pageSectionWithPlansPricing,
-} from '../page-sections';
+import { pageSectionQuery } from '../page-sections';
+import { pageSectionsAdapters } from '../page-sections-adapters';
 import { MDPage } from './types';
 
 const gql_query = jsonToGraphQLQuery({
@@ -67,12 +63,8 @@ export async function getGqlDynamicPages(request_pathname: string) {
 
   const page = Pages[0];
 
-  if (page) {
-    qWithAsset(access_token, page, 'image');
-    pageSectionPublished(page);
-    pageSectionsWithAssets(access_token, page.sections);
-    await pageSectionWithPlansPricing(page);
-  }
+  if (page) qWithAsset(access_token, page, 'image');
+  await pageSectionsAdapters(page, access_token);
 
   return res;
 }
