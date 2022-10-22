@@ -10323,7 +10323,8 @@ fields:
       collection: PageSections
       conditions: null
       display: null
-      display_options: null
+      display_options:
+        template: null
       field: contents
       group: section_contents
       hidden: false
@@ -26373,7 +26374,7 @@ relations:
       one_collection_field: null
       one_deselect_action: nullify
       one_field: sections
-      sort_field: null
+      sort_field: sort
     related_collection: HomeSections
     schema:
       column: HomeSections_id
@@ -27006,7 +27007,7 @@ relations:
       one_collection_field: null
       one_deselect_action: nullify
       one_field: contents
-      sort_field: null
+      sort_field: sort
     related_collection: PageSections
     schema:
       column: PageSections_id
@@ -27166,7 +27167,7 @@ relations:
       one_collection_field: null
       one_deselect_action: nullify
       one_field: sections
-      sort_field: null
+      sort_field: sort
     related_collection: Pages
     schema:
       column: Pages_id
