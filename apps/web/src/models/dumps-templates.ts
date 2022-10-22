@@ -9,6 +9,7 @@ import {
   ST_PageAsideMenu,
   ST_SidedContent,
   ST_SimpleCardLink,
+  ST_StreamableCard,
   ST_Value,
 } from '@/cms/page-sections';
 import { DRTStatus } from '@/types/directus';
@@ -551,8 +552,6 @@ export const DumpMediaTabs: ST_MediaTab[] = [
     collection: 'ST_MediaTabs',
     item: {
       disposition: 'text_top',
-      media: undefined,
-      media_url: 'https://youtu.be/mxT233EdY5c',
       translations: [
         {
           id: '1',
@@ -562,6 +561,8 @@ export const DumpMediaTabs: ST_MediaTab[] = [
           },
           tab_name: 'Get stared',
           title: 'Cloud Computing',
+          media: undefined,
+          media_url: 'https://youtu.be/mxT233EdY5c',
           description:
             'In this video we run through a quick overview of what is cloud computing.',
         },
@@ -736,6 +737,90 @@ export const DumpPageAsideMenus: ST_PageAsideMenu[] = [
       id: '1b748f1d-d653-4de1-b17e-4883d986f018',
       status: 'published',
       date_created: '2022-10-18T12:46:28.711Z',
+    },
+  },
+];
+
+export const DumpStreamableCards: ST_StreamableCard[] = [
+  {
+    id: '35',
+    collection: 'ST_StreamableCards',
+    item: {
+      stream_direction: 'stream_left',
+      translations: [
+        {
+          id: '1',
+          languages_code: {
+            code: 'en',
+            name: 'English',
+          },
+          name: 'Slack',
+        },
+      ],
+      id: '20abdd0d-9404-4b94-9e24-17bd82305e2a',
+      status: 'published',
+      date_created: '2022-10-22T06:31:55.716Z',
+    },
+  },
+  {
+    id: '36',
+    collection: 'ST_StreamableCards',
+    item: {
+      stream_direction: 'stream_left',
+      translations: [
+        {
+          id: '2',
+          languages_code: {
+            code: 'en',
+            name: 'English',
+          },
+          name: 'Gitlab',
+        },
+      ],
+      id: 'd6eae1a5-c978-4076-bbea-b3f14da31d29',
+      status: 'published',
+      date_created: '2022-10-22T06:38:12.426Z',
+    },
+  },
+  {
+    id: '37',
+    collection: 'ST_StreamableCards',
+    item: {
+      stream_direction: 'stream_right',
+      translations: [
+        {
+          id: '3',
+          languages_code: {
+            code: 'en',
+            name: 'English',
+          },
+          name: 'Whatfix',
+        },
+      ],
+      id: 'c25c0981-4a54-49fd-b903-5b95b15ea900',
+      status: 'published',
+      date_created: '2022-10-22T07:18:40.216Z',
+      date_updated: '2022-10-22T07:19:07.415Z',
+    },
+  },
+  {
+    id: '38',
+    collection: 'ST_StreamableCards',
+    item: {
+      stream_direction: 'stream_right',
+      translations: [
+        {
+          id: '4',
+          languages_code: {
+            code: 'en',
+            name: 'English',
+          },
+          name: 'Parabol',
+        },
+      ],
+      id: 'c94ebff4-8ff6-406d-8fe7-ac9a648efa78',
+      status: 'published',
+      date_created: '2022-10-22T07:18:40.288Z',
     },
   },
 ];

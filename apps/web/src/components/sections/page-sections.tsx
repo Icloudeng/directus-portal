@@ -146,7 +146,9 @@ function PageSection({
         </style>
       )}
       <div
-        className={`relative py-10 bg-white isolate page__section ${classId}`}
+        className={`relative ${
+          !item.container ? 'overflow-hidden' : ''
+        } py-10 bg-white isolate page__section ${classId}`}
         style={{
           backgroundImage:
             background_image?.src && !hasSvg

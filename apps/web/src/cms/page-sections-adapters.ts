@@ -1,12 +1,11 @@
 import {
   M2APageSection,
   PS_Content,
-  ST_MediaTab,
   ST_PageAsideMenu,
   ST_PlansPricing,
   ST_Vls,
 } from './page-sections';
-import { qWithAsset } from './gql-query';
+import { qWithAsset, qWithAssets } from './gql-query';
 import { CMS_MODELS } from '@/constant/cms';
 import { PlansPricingContent } from './items/types';
 import { getGqlPlansPricingQueries } from './items';
@@ -37,16 +36,17 @@ export function pageSectionsWithAssets(
     const stAssets = (s_templates: PS_Content[]) => {
       const st = s_templates.pop();
       if (!st) return;
-      // Actually all templates modeles uses image key for assets
-      let assetKey = 'image';
 
       switch (st.collection) {
         case 'ST_MediaTabs':
-          assetKey = <keyof ST_MediaTab['item']>'media';
+          qWithAssets(access_token, st.item.translations, 'media');
+          break;
+        default:
+          // Actually all templates modeles uses image as default key for assets
+          qWithAsset(access_token, st.item, 'image' as any);
           break;
       }
 
-      qWithAsset(access_token, st.item, assetKey as any);
       stAssets(s_templates);
     };
 

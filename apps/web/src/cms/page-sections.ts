@@ -146,12 +146,22 @@ const q_ST: Query = {
   [section_templates.st_media_tabs]: {
     __typeName: section_templates.st_media_tabs,
     disposition: true,
-    media: qWithQueryAsset({ type: true }),
-    media_url: true,
     ...qWithTranslations({
       tab_name: true,
       title: true,
       description: true,
+      media: qWithQueryAsset({ type: true }),
+      media_url: true,
+    }),
+    ...qWithStatus,
+  },
+  [section_templates.st_streamable_cards]: {
+    __typeName: section_templates.st_streamable_cards,
+    stream_direction: true,
+    image: qWithQueryAsset(),
+    image_svg: true,
+    ...qWithTranslations({
+      name: true,
     }),
     ...qWithStatus,
   },
@@ -345,17 +355,30 @@ export type ST_Platform = MDHasM2A<
 export type ST_MediaTab = MDHasM2A<
   {
     disposition: 'text_top' | 'text_bottom';
-    media?: MDWithAsset;
-    media_url?: string;
   } & MDWithTranslation<{
     tab_name: string;
     title?: string;
     description?: string;
+    media?: MDWithAsset;
+    media_url?: string;
   }> &
     DRTStatus,
   ST_V<'st_media_tabs'>
 >;
 
+export type ST_StreamableCard = MDHasM2A<
+  {
+    stream_direction: 'stream_left' | 'stream_right';
+    image?: MDWithAsset;
+    image_svg?: string;
+  } & MDWithTranslation<{
+    name: string;
+  }> &
+    DRTStatus,
+  ST_V<'st_streamable_cards'>
+>;
+
+// strean_direction
 //------------------- Page Sections --------------------//
 export type PS_Content =
   | ST_Value
@@ -370,7 +393,8 @@ export type PS_Content =
   | ST_CleanHero
   | ST_PlansPricing
   | ST_Platform
-  | ST_MediaTab;
+  | ST_MediaTab
+  | ST_StreamableCard;
 
 export type M2APageSection = MDHasM2A<
   {

@@ -17,9 +17,9 @@ export const qWithStatus: DRTQueryT<DRTStatus> = {
   date_updated: true,
 };
 
-export function qWithTranslations<T extends { [x: string]: boolean }>(
-  fields: T
-): QueryWithTranslation<T> {
+export function qWithTranslations<
+  T extends { [x: string]: boolean | { [x: string]: boolean } }
+>(fields: T): QueryWithTranslation<T> {
   return {
     translations: {
       id: true,
@@ -68,15 +68,13 @@ export function qWithAsset<T extends { [x: string]: MDWithAsset | unknown }>(
   return data;
 }
 
-export function qWithAssets<T extends { [x: string]: MDWithAsset }>(
+export function qWithAssets<T extends { [x: string]: MDWithAsset | unknown }>(
   access_token: string,
   datas: T[],
   imageKey: keyof T = 'image',
   preset?: string | [number, number]
 ): T[] {
-  return datas.map((data) =>
-    qWithAsset<typeof data>(access_token, data, imageKey, preset)
-  );
+  return datas.map((data) => qWithAsset(access_token, data, imageKey, preset));
 }
 
 type Query<T> = {
