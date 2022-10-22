@@ -10870,7 +10870,7 @@ fields:
       options: null
       readonly: true
       required: false
-      sort: 6
+      sort: 7
       special:
         - date-created
       translations: null
@@ -10913,7 +10913,7 @@ fields:
       options: null
       readonly: true
       required: false
-      sort: 8
+      sort: 9
       special:
         - date-updated
       translations: null
@@ -10986,7 +10986,7 @@ fields:
     field: name
     meta:
       collection: PageSectionsCategories
-      conditions: null
+      conditions: []
       display: formatted-value
       display_options: null
       field: name
@@ -11026,6 +11026,34 @@ fields:
       table: PageSectionsCategories
     type: string
   - collection: PageSectionsCategories
+    field: notice-9xof5j
+    meta:
+      collection: PageSectionsCategories
+      conditions: null
+      display: null
+      display_options: null
+      field: notice-9xof5j
+      group: null
+      hidden: false
+      interface: presentation-notice
+      note: null
+      options:
+        color: warning
+        icon: notification_important
+        text: Don't edit me once you created me
+      readonly: false
+      required: false
+      sort: 3
+      special:
+        - alias
+        - no-data
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema: null
+    type: alias
+  - collection: PageSectionsCategories
     field: sort
     meta:
       collection: PageSectionsCategories
@@ -11040,7 +11068,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: 4
+      sort: 5
       special: null
       translations: null
       validation: null
@@ -11102,7 +11130,7 @@ fields:
             value: archived
       readonly: false
       required: false
-      sort: 3
+      sort: 4
       special: null
       translations: null
       validation: null
@@ -11144,7 +11172,7 @@ fields:
         template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
       readonly: true
       required: false
-      sort: 5
+      sort: 6
       special:
         - user-created
       translations: null
@@ -11187,7 +11215,7 @@ fields:
         template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
       readonly: true
       required: false
-      sort: 7
+      sort: 8
       special:
         - user-updated
       translations: null
