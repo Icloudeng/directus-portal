@@ -10100,7 +10100,7 @@ fields:
       display: null
       display_options: null
       field: background_color
-      group: null
+      group: customizations
       hidden: false
       interface: select-color
       note: null
@@ -10113,7 +10113,7 @@ fields:
             color: '#313B4D'
       readonly: false
       required: false
-      sort: 6
+      sort: 3
       special: null
       translations: null
       validation: null
@@ -10147,14 +10147,14 @@ fields:
       display: null
       display_options: null
       field: background_image
-      group: null
+      group: customizations
       hidden: false
       interface: file-image
       note: null
       options: null
       readonly: false
       required: false
-      sort: 5
+      sort: 1
       special:
         - file
       translations: null
@@ -10189,7 +10189,7 @@ fields:
       display: null
       display_options: null
       field: background_svg
-      group: null
+      group: customizations
       hidden: false
       interface: input-code
       note: null
@@ -10199,7 +10199,7 @@ fields:
         template: <svg></svg>
       readonly: false
       required: false
-      sort: 7
+      sort: 2
       special: null
       translations: null
       validation: null
@@ -10245,7 +10245,7 @@ fields:
         valuePath: ref
       readonly: false
       required: false
-      sort: 3
+      sort: 4
       special: null
       translations: null
       validation:
@@ -10283,14 +10283,14 @@ fields:
       display: null
       display_options: null
       field: container
-      group: null
+      group: customizations
       hidden: false
       interface: boolean
       note: null
       options: null
       readonly: false
       required: false
-      sort: 9
+      sort: 5
       special:
         - cast-boolean
       translations: null
@@ -10325,7 +10325,7 @@ fields:
       display: null
       display_options: null
       field: contents
-      group: null
+      group: section_contents
       hidden: false
       interface: list-m2a
       note: null
@@ -10333,7 +10333,7 @@ fields:
         enableSelect: false
       readonly: false
       required: false
-      sort: 10
+      sort: 1
       special:
         - m2a
       translations: null
@@ -10350,7 +10350,7 @@ fields:
       display: null
       display_options: null
       field: custom_css
-      group: null
+      group: customizations
       hidden: false
       interface: input-code
       note: null
@@ -10360,7 +10360,7 @@ fields:
         template: "* { \n\tcolor: #fff; \n}"
       readonly: false
       required: false
-      sort: 8
+      sort: 4
       special: null
       translations: null
       validation: null
@@ -10387,6 +10387,33 @@ fields:
       table: PageSections
     type: text
   - collection: PageSections
+    field: customizations
+    meta:
+      collection: PageSections
+      conditions: null
+      display: null
+      display_options: null
+      field: customizations
+      group: null
+      hidden: false
+      interface: group-detail
+      note: null
+      options:
+        start: closed
+      readonly: false
+      required: false
+      sort: 6
+      special:
+        - alias
+        - group
+        - no-data
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema: null
+    type: alias
+  - collection: PageSections
     field: date_created
     meta:
       collection: PageSections
@@ -10402,7 +10429,7 @@ fields:
       options: null
       readonly: true
       required: false
-      sort: 14
+      sort: 10
       special:
         - date-created
       translations: null
@@ -10445,7 +10472,7 @@ fields:
       options: null
       readonly: true
       required: false
-      sort: 16
+      sort: 12
       special:
         - date-updated
       translations: null
@@ -10472,6 +10499,33 @@ fields:
       schema: public
       table: PageSections
     type: timestamp
+  - collection: PageSections
+    field: headers
+    meta:
+      collection: PageSections
+      conditions: null
+      display: null
+      display_options: null
+      field: headers
+      group: null
+      hidden: false
+      interface: group-detail
+      note: null
+      options:
+        start: closed
+      readonly: false
+      required: false
+      sort: 5
+      special:
+        - alias
+        - group
+        - no-data
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema: null
+    type: alias
   - collection: PageSections
     field: id
     meta:
@@ -10558,6 +10612,33 @@ fields:
       table: PageSections
     type: string
   - collection: PageSections
+    field: section_contents
+    meta:
+      collection: PageSections
+      conditions: null
+      display: null
+      display_options: null
+      field: section_contents
+      group: null
+      hidden: false
+      interface: group-detail
+      note: null
+      options:
+        start: closed
+      readonly: false
+      required: false
+      sort: 7
+      special:
+        - alias
+        - group
+        - no-data
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema: null
+    type: alias
+  - collection: PageSections
     field: sort
     meta:
       collection: PageSections
@@ -10572,7 +10653,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: 12
+      sort: 8
       special: null
       translations: null
       validation: null
@@ -10634,7 +10715,7 @@ fields:
             value: archived
       readonly: false
       required: false
-      sort: 11
+      sort: 3
       special: null
       translations: null
       validation: null
@@ -10668,7 +10749,7 @@ fields:
       display: null
       display_options: null
       field: translations
-      group: null
+      group: headers
       hidden: false
       interface: translations
       note: null
@@ -10677,7 +10758,7 @@ fields:
         userLanguage: true
       readonly: false
       required: false
-      sort: 4
+      sort: 1
       special:
         - translations
       translations: null
@@ -10702,7 +10783,7 @@ fields:
         template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
       readonly: true
       required: false
-      sort: 13
+      sort: 9
       special:
         - user-created
       translations: null
@@ -10745,7 +10826,7 @@ fields:
         template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
       readonly: true
       required: false
-      sort: 15
+      sort: 11
       special:
         - user-updated
       translations: null
