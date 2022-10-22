@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import ReactPlayer from 'react-player'
 
 import { useHasMounted } from '@/hooks/useHasMounted'
@@ -37,37 +37,33 @@ const imagesLink = [
 export const ImageZoom = () => {
     const {mounted} = useHasMounted();
 
-    const [imgDirection, setImageDirection] = useState<any>(null);
     const [activeIndex, setActiveIndex] = useState<number>(0);
-    // const [activeItem, setActiveIndex] = useState<{index:number, urlLink:string}>({index:0, urlLink:''});
+
+    const imgData = useRef(
+        () => document.querySelectorAll('.img-direction')
+    );
     const [bigImgUrl, setBigImgUrl] = useState<IImagesLink>(imagesLink[activeIndex])
 
-    const getImg = async () => {
-        const img = await document.querySelectorAll('.img-direction')
-        setImageDirection(img)
-    }
-
     useEffect(() => {
-        getImg();
-        if (imgDirection !== null) {
-            imgDirection[activeIndex].classList.add('image-zoom-active')
-            setBigImgUrl(imagesLink[activeIndex])
-            // setBigImgUrl(imgDirection[activeIndex].firstChild.firstChild.src)
-        }
-    }, [imgDirection, activeIndex])
+        // getImg();
+        const element = Array.from(imgData.current()).at(activeIndex)
+        element?.classList.add('image-zoom-active')
+        setBigImgUrl(imagesLink[activeIndex])
+
+    }, [activeIndex])
 
 
 
     const handleChange: any = (itemLink: IImagesLink, index: number) => {
-
-        imgDirection.forEach((val: any) => {
+        const elements = Array.from(imgData.current())
+        elements.forEach((val: any) => {
             val.classList.remove('image-zoom-active')
         })
 
-        imgDirection[index].classList.add('image-zoom-active')
+        elements.at(index)?.classList.add('image-zoom-active')
+
         setActiveIndex(index)
         setBigImgUrl(itemLink)
-        // console.log(bigImgUrl);
 
     }
 
