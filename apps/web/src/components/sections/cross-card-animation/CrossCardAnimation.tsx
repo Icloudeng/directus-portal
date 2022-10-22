@@ -1,7 +1,6 @@
 
-import { RectCard } from './components/RectCard';
-import { SquareCard } from './components/SquareCard';
 
+import { RectCard } from '@/components/ui/cards/RectCard';
 import boxImg from '~/images/box.png';
 import gitlabImg from '~/images/gitlab.png';
 import parabolicImg from '~/images/parabolic.png';
@@ -52,7 +51,7 @@ export const CrossCardAnimation = () => {
                     <RectCard cardLogo={slackImg.src} cardText='Slack' />
                 </div>
             </div>
-            
+
             {/* <div className="flex flex-col gap-3">
                 <h4>Salesforce</h4>
                 <div className="grid grid-cols-4 gap-5">

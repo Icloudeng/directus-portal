@@ -53,5 +53,6 @@ export const CMS_MODELS = {
     st_plans_pricing: 'ST_PlansPricing',
     st_platforms: 'ST_Platforms',
     st_media_tabs: 'ST_MediaTabs',
+    st_streamable_cards: 'ST_StreamableCards',
   } as const,
 };

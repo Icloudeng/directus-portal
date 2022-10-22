@@ -12,6 +12,7 @@ import {
   DumpPageAsideMenus,
   DumpSidedContent,
   DumpSimpleCardLink,
+  DumpStreamableCards,
   DumpValue,
 } from '@/models/dumps-templates';
 
@@ -108,6 +109,17 @@ export default function Page() {
         <h3 className='my-9'>ST PageAsideMenus </h3>
         <Sts.ST_PageAsideMenusFC
           items={DumpPageAsideMenus}
+          sectionClass=''
+          sharedObject={{}}
+        />
+      </section>
+
+      <section className='py-14 overflow-hidden'>
+        <div className='x-container'>
+          <h3 className='my-9'>ST StreamableCards</h3>
+        </div>
+        <Sts.ST_StreamableCardsFC
+          items={DumpStreamableCards}
           sectionClass=''
           sharedObject={{}}
         />

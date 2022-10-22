@@ -8,10 +8,17 @@ import { PlyrReact } from '@/components/ui/plyr-react';
 import Skeleton from '@/components/ui/Skeleton';
 import { useHasMounted } from '@/hooks/useHasMounted';
 import { useSharedData } from '@/store';
+import { MDWithAsset } from '@/types/directus';
 import Image from 'next/image';
 import ReactPlayer from 'react-player';
 
-function HasMediaPlayer({ item: { media, media_url } }: ST_MediaTab) {
+function HasMediaPlayer({
+  media,
+  media_url,
+}: {
+  media_url: string | undefined;
+  media: MDWithAsset | undefined;
+}) {
   const { mounted } = useHasMounted();
 
   if (!media && !media_url) {
@@ -77,7 +84,10 @@ export function ST_MediaTabsFC({ items }: STemplates_Props<ST_MediaTab>) {
             description={translations?.description}
             disposition={disposition}
           >
-            <HasMediaPlayer {...data} />
+            <HasMediaPlayer
+              media={translations?.media}
+              media_url={translations?.media_url}
+            />
           </MediaTabsPane>
         );
       })}
