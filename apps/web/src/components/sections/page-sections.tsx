@@ -60,12 +60,14 @@ function fc(css: string) {
 function PageSection({
   section,
   sharedObject,
+  index,
 }: {
   section: M2APageSection;
   sharedObject: ISharedObject;
+  index: number;
 }) {
   const item = useMut(section.item);
-  const classId = `${section.collection}-${item.id}`;
+  const classId = `${section.collection}${index}-${item.id}`;
   const styleId = `cstyle-${classId}`;
   const { background_color, background_svg, background_image } = section.item;
 
@@ -211,9 +213,10 @@ export function PageSections({ sections }: { sections: M2APageSection[] }) {
   const sharedObject = useRef({} as ISharedObject);
   return (
     <>
-      {sections.map((section) => (
+      {sections.map((section, index) => (
         <PageSection
-          key={section.id}
+          key={`${section.id}${index}`}
+          index={index}
           section={section}
           sharedObject={sharedObject.current}
         />

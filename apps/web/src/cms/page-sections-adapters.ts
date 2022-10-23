@@ -1,5 +1,8 @@
 import {
   M2APageSection,
+  M2APageSectionReusable,
+  M2AReusablePageSection,
+  M2AReusablePageSectionsCategory,
   PS_Content,
   ST_PageAsideMenu,
   ST_PlansPricing,
@@ -8,21 +11,67 @@ import {
 import { qWithAsset, qWithAssets } from './gql-query';
 import { CMS_MODELS } from '@/constant/cms';
 import { PlansPricingContent } from './items/types';
-import { getGqlPlansPricingQueries } from './items';
+import { getGqlPageSections, getGqlPlansPricingQueries } from './items';
 
-const { section_templates } = CMS_MODELS;
+const {
+  section_templates,
+  generics: {
+    reusable_page_sections,
+    reusable_page_sections_categories,
+    page_sections,
+  },
+} = CMS_MODELS;
 
 export async function pageSectionsAdapters<
   T extends { [x: string]: any; sections: M2APageSection[] }
 >(data: T | undefined, access_token: string) {
   if (data) {
+    await pageSectionExtractReusableM2A(data); // this must be called at top of any others functions
     pageSectionPublished(data);
     pageSectionsWithAssets(access_token, data.sections);
     await pageSectionWithPlansPricing(data);
   }
 }
 
-export function pageSectionsWithAssets(
+async function pageSectionExtractReusableM2A<
+  T extends { [x: string]: any; sections: M2APageSection[] }
+>(data: T) {
+  const sections = data.sections as M2APageSectionReusable[];
+
+  const reusable_sections = sections
+    .filter((item) => item.collection === reusable_page_sections)
+    .map((item) => {
+      return (item as M2AReusablePageSection).item.page_section;
+    })
+    .map((ps) => ps.split('--')[1].trim());
+
+  const reusable_section_categories = sections
+    .filter((item) => item.collection === reusable_page_sections_categories)
+    .map((item) => {
+      return (item as M2AReusablePageSectionsCategory).item.section_category;
+    });
+
+  data.sections = data.sections.filter(
+    (item) => item.collection === page_sections
+  );
+
+  if (reusable_section_categories.length > 0 || reusable_sections.length > 0) {
+    const sections = await getGqlPageSections(
+      reusable_sections,
+      reusable_section_categories
+    );
+
+    if (!sections || sections.PageSections.length === 0) return;
+
+    const new_sections = sections.PageSections.map((item, i) => {
+      return { item: item, id: `${item.id}_${i}`, collection: page_sections };
+    });
+
+    data.sections.push(...new_sections);
+  }
+}
+
+function pageSectionsWithAssets(
   access_token: string,
   sections: M2APageSection[]
 ) {
@@ -57,12 +106,16 @@ export function pageSectionsWithAssets(
   psAssets($sections);
 }
 
-export function pageSectionPublished<
+function pageSectionPublished<
   T extends { [x: string]: any; sections: M2APageSection[] }
 >(data: T) {
-  data.sections = data.sections.filter(
-    ({ item }) => item.status === 'published'
-  );
+  data.sections = data.sections.filter(({ item }) => {
+    const reusable = item.category !== undefined;
+    if (reusable && item.status !== 'draft') {
+      return true;
+    }
+    return item.status === 'published';
+  });
 
   data.sections.forEach(({ item }) => {
     item.contents = item.contents.filter(
@@ -71,7 +124,7 @@ export function pageSectionPublished<
   });
 }
 
-export async function pageSectionWithPlansPricing<
+async function pageSectionWithPlansPricing<
   T extends { [x: string]: any; sections: M2APageSection[] }
 >(data: T) {
   let memo_content = null as PlansPricingContent | null | undefined;
