@@ -84,9 +84,10 @@ async function pageSectionExtractReusableM2A<
             }
             break;
           case reusable_page_sections_categories:
-            const { section_category } = section.item;
-            const { category } = rs_section;
-            if (category && section_category.includes(category)) {
+            if (
+              rs_section.category &&
+              section.item.section_category.includes(rs_section.category)
+            ) {
               if (!section.item.sections) {
                 section.item.sections = [];
               }
