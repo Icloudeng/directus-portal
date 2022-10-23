@@ -91,7 +91,7 @@ export const FlexiblePlans = ({
               <label className='text-sm min-w-[10rem]' htmlFor=''>
                 {t('Platforms')}
               </label>
-              <ReactSelector isMulti options={platforms_options} />
+              <ReactSelector isSearchable isMulti options={platforms_options} />
             </div>
             <div className='calculator__form-field flex items-center'>
               <label className='text-sm min-w-[10rem]' htmlFor=''>
