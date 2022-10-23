@@ -19,6 +19,7 @@ import {
 } from './items/types';
 
 const { section_templates, generics } = CMS_MODELS;
+const { page_sections_categories } = generics;
 
 type Query = {
   [k in ST_Vls]: { __typeName: k; [x: string]: unknown };
@@ -168,10 +169,7 @@ const q_ST: Query = {
 };
 
 type PSQuery = {
-  [k in Extract<
-    GE_Vls,
-    'PageSections' | 'ReusablePageSections' | 'ReusablePageSectionsCategories'
-  >]: {
+  [k in Exclude<GE_Vls, typeof page_sections_categories>]: {
     __typeName: k;
     [x: string]: unknown;
   };
