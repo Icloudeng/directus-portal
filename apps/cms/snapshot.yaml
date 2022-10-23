@@ -692,13 +692,13 @@ collections:
       collection: PageSections
       color: null
       display_template: null
-      group: generics
-      hidden: true
+      group: Page
+      hidden: false
       icon: null
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: 1
+      sort: 5
       sort_field: sort
       translations: null
       unarchive_value: draft
@@ -740,13 +740,13 @@ collections:
       collection: PageSections_contents
       color: null
       display_template: null
-      group: generics
+      group: Page
       hidden: true
       icon: import_export
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: 3
+      sort: 7
       sort_field: null
       translations: null
       unarchive_value: null
@@ -764,13 +764,13 @@ collections:
       collection: PageSections_translations
       color: null
       display_template: null
-      group: generics
+      group: Page
       hidden: true
       icon: import_export
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: 2
+      sort: 6
       sort_field: null
       translations: null
       unarchive_value: null
@@ -1031,7 +1031,7 @@ collections:
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: 4
+      sort: 1
       sort_field: sort
       translations: null
       unarchive_value: draft
@@ -1055,7 +1055,7 @@ collections:
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: 5
+      sort: 2
       sort_field: sort
       translations: null
       unarchive_value: draft
@@ -1703,7 +1703,7 @@ collections:
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: 6
+      sort: 3
       sort_field: null
       translations: null
       unarchive_value: null

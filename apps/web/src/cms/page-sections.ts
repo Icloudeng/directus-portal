@@ -167,31 +167,57 @@ const q_ST: Query = {
   },
 };
 
+type PSQuery = {
+  [k in Extract<
+    GE_Vls,
+    'PageSections' | 'ReusablePageSections' | 'ReusablePageSectionsCategories'
+  >]: {
+    __typeName: k;
+    [x: string]: unknown;
+  };
+};
+
+export const pageSectionItemsQuery: PSQuery = {
+  [generics.page_sections]: {
+    __typeName: CMS_MODELS.generics.page_sections,
+    __args: qWithPublishedStatus(),
+    background_image: qWithQueryAsset(),
+    background_color: true,
+    background_svg: true,
+    custom_css: true,
+    container: true,
+    ...qWithTranslations({
+      title: true,
+      description: true,
+    }),
+    ...qWithStatus,
+    contents: {
+      id: true,
+      collection: true,
+      item: {
+        __on: Object.values(q_ST),
+      },
+    },
+  },
+  [generics.reusable_page_sections]: {
+    __typeName: CMS_MODELS.generics.reusable_page_sections,
+    __args: qWithPublishedStatus(),
+    page_section: true,
+    ...qWithStatus,
+  },
+  [generics.reusable_page_sections_categories]: {
+    __typeName: CMS_MODELS.generics.reusable_page_sections_categories,
+    section_category: true,
+    __args: qWithPublishedStatus(),
+    ...qWithStatus,
+  },
+};
+
 export const pageSectionQuery = {
   id: true,
   collection: true,
   item: {
-    __on: {
-      __typeName: CMS_MODELS.generics.page_sections,
-      __args: qWithPublishedStatus(),
-      background_image: qWithQueryAsset(),
-      background_color: true,
-      background_svg: true,
-      custom_css: true,
-      container: true,
-      ...qWithTranslations({
-        title: true,
-        description: true,
-      }),
-      ...qWithStatus,
-      contents: {
-        id: true,
-        collection: true,
-        item: {
-          __on: Object.values(q_ST),
-        },
-      },
-    },
+    __on: Object.values(pageSectionItemsQuery),
   },
 };
 
@@ -403,6 +429,7 @@ export type M2APageSection = MDHasM2A<
     background_svg?: string;
     custom_css?: string;
     container: boolean;
+    category?: string;
     contents: PS_Content[];
   } & MDWithTranslation<{
     title: string;
@@ -411,6 +438,11 @@ export type M2APageSection = MDHasM2A<
     DRTStatus,
   GE_V<'page_sections'>
 >;
+
+export type M2APageSectionReusable =
+  | M2AReusablePageSection
+  | M2AReusablePageSectionsCategory
+  | M2APageSection;
 
 export type MDPageSectionsCategory = {
   name: boolean;
@@ -439,3 +471,4 @@ export type ST_Vls = ST[keyof ST];
 
 type GE = typeof generics;
 type GE_V<K extends keyof GE> = GE[K];
+export type GE_Vls = GE[keyof GE];
