@@ -83,7 +83,7 @@ export const FlexiblePlans = ({
                 {t('Templates')}
               </label>
               <ReactSelector
-                initialValue={template_options.at(defaultValueMT) || null}
+                initialValue={template_options[defaultValueMT] || null}
                 options={template_options}
               />
             </div>
