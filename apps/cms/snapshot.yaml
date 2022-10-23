@@ -686,7 +686,7 @@ collections:
     meta:
       accountability: all
       archive_app_filter: true
-      archive_field: status
+      archive_field: null
       archive_value: archived
       collapse: open
       collection: PageSections
@@ -10536,7 +10536,7 @@ fields:
       display_options: null
       field: id
       group: null
-      hidden: true
+      hidden: false
       interface: input
       note: null
       options: null

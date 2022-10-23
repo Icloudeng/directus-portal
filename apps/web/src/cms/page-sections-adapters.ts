@@ -12,6 +12,7 @@ import { qWithAsset, qWithAssets } from './gql-query';
 import { CMS_MODELS } from '@/constant/cms';
 import { PlansPricingContent } from './items/types';
 import { getGqlPageSections, getGqlPlansPricingQueries } from './items';
+import cloneDeep from 'lodash/cloneDeep';
 
 const {
   section_templates,
@@ -21,6 +22,8 @@ const {
     page_sections,
   },
 } = CMS_MODELS;
+
+const { st_media_tabs } = section_templates;
 
 export async function pageSectionsAdapters<
   T extends { [x: string]: any; sections: M2APageSection[] }
@@ -39,36 +42,82 @@ async function pageSectionExtractReusableM2A<
   const sections = data.sections as M2APageSectionReusable[];
 
   const reusable_sections = sections
-    .filter((item) => item.collection === reusable_page_sections)
+    .filter(({ item, collection }) => {
+      return (
+        item.status === 'published' && collection === reusable_page_sections
+      );
+    })
     .map((item) => {
       return (item as M2AReusablePageSection).item.page_section;
     })
     .map((ps) => ps.split('--')[1].trim());
 
   const reusable_section_categories = sections
-    .filter((item) => item.collection === reusable_page_sections_categories)
+    .filter(({ item, collection }) => {
+      return (
+        collection === reusable_page_sections_categories &&
+        item.status === 'published'
+      );
+    })
     .map((item) => {
       return (item as M2AReusablePageSectionsCategory).item.section_category;
     });
 
-  data.sections = data.sections.filter(
-    (item) => item.collection === page_sections
-  );
-
   if (reusable_section_categories.length > 0 || reusable_sections.length > 0) {
-    const sections = await getGqlPageSections(
+    const rs_sections = await getGqlPageSections(
       reusable_sections,
       reusable_section_categories
     );
 
-    if (!sections || sections.PageSections.length === 0) return;
+    if (!rs_sections || rs_sections.PageSections.length === 0) return;
 
-    const new_sections = sections.PageSections.map((item, i) => {
-      return { item: item, id: `${item.id}_${i}`, collection: page_sections };
+    rs_sections.PageSections.forEach((rs_section, rs_i) => {
+      sections.forEach((section, i) => {
+        switch (section.collection) {
+          case reusable_page_sections:
+            if (section.item.page_section.includes(rs_section.id.toString())) {
+              section.item.section = cloneDeep({
+                item: rs_section,
+                id: `${section.id}_${rs_i}_${i}`,
+                collection: page_sections,
+              });
+            }
+            break;
+          case reusable_page_sections_categories:
+            const { section_category } = section.item;
+            const { category } = rs_section;
+            if (category && section_category.includes(category)) {
+              if (!section.item.sections) {
+                section.item.sections = [];
+              }
+              section.item.sections.push(
+                cloneDeep({
+                  item: rs_section,
+                  id: `${section.id}_${rs_i}_${i}`,
+                  collection: page_sections,
+                })
+              );
+            }
+            break;
+        }
+      });
     });
-
-    data.sections.push(...new_sections);
   }
+
+  data.sections = sections.reduce((acc, item) => {
+    switch (item.collection) {
+      case page_sections:
+        acc.push(item);
+        break;
+      case reusable_page_sections:
+        item.item.section && acc.push(item.item.section);
+        break;
+      case reusable_page_sections_categories:
+        item.item.sections && acc.push(...item.item.sections);
+        break;
+    }
+    return acc;
+  }, [] as M2APageSection[]);
 }
 
 function pageSectionsWithAssets(
@@ -87,7 +136,7 @@ function pageSectionsWithAssets(
       if (!st) return;
 
       switch (st.collection) {
-        case 'ST_MediaTabs':
+        case st_media_tabs:
           qWithAssets(access_token, st.item.translations, 'media');
           break;
         default:
