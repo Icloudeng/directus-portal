@@ -375,7 +375,11 @@ input[type='range']::-webkit-slider-thumb {
   }
 }
 
+<<<<<<< HEAD
 /* .btn-tab-direction.btn-tab-active {
+=======
+.btn-tab-active {
+>>>>>>> origin/main
   background-color: #60a5fa;
   color: white;
 } */
