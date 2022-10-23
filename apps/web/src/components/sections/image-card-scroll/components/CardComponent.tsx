@@ -14,7 +14,7 @@ export const CardComponent = (props:ISnapItem) => {
                     <div className="flex items-center justify-center w-full px-4">
                         <h2 className="mb-3 text-center text-xl font-semibold tracking-tight text-white">
                             {title}
-                        </h2>s
+                        </h2>
                     </div>
                 </div>
             </div>
