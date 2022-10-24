@@ -28,7 +28,7 @@ export default defineEndpoint((router, { services, exceptions }) => {
 
   const searchable_handler = (
     service_name: string,
-    common: any,
+    common: any = {},
     searchable = "name"
   ) => {
     return function handler(req, res, next) {

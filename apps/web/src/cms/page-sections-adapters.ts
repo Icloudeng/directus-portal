@@ -1,6 +1,7 @@
 import {
   M2APageSection,
   M2APageSectionReusable,
+  M2AReusablePageSection,
   M2AReusablePageSectionsCategory,
   PS_Content,
   ST_PageAsideMenu,
@@ -15,7 +16,11 @@ import cloneDeep from 'lodash/cloneDeep';
 
 const {
   section_templates,
-  generics: { reusable_page_sections_categories, page_sections },
+  generics: {
+    reusable_page_sections,
+    reusable_page_sections_categories,
+    page_sections,
+  },
 } = CMS_MODELS;
 
 const { st_media_tabs } = section_templates;
@@ -36,6 +41,17 @@ async function pageSectionExtractReusableM2A<
 >(data: T) {
   const sections = data.sections as M2APageSectionReusable[];
 
+  const reusable_sections = sections
+    .filter(({ item, collection }) => {
+      return (
+        item.status === 'published' && collection === reusable_page_sections
+      );
+    })
+    .map((item) => {
+      return (item as M2AReusablePageSection).item.page_section;
+    })
+    .map((ps) => ps.split('--')[1].trim());
+
   const reusable_section_categories = sections
     .filter(({ item, collection }) => {
       return (
@@ -47,14 +63,26 @@ async function pageSectionExtractReusableM2A<
       return (item as M2AReusablePageSectionsCategory).item.section_category;
     });
 
-  if (reusable_section_categories.length > 0) {
-    const rs_sections = await getGqlPageSections(reusable_section_categories);
+  if (reusable_section_categories.length > 0 || reusable_sections.length > 0) {
+    const rs_sections = await getGqlPageSections(
+      reusable_sections,
+      reusable_section_categories
+    );
 
     if (!rs_sections || rs_sections.PageSections.length === 0) return;
 
     rs_sections.PageSections.forEach((rs_section, rs_i) => {
       sections.forEach((section, i) => {
         switch (section.collection) {
+          case reusable_page_sections:
+            if (section.item.page_section.includes(rs_section.id.toString())) {
+              section.item.section = cloneDeep({
+                item: rs_section,
+                id: `${section.id}_${rs_i}_${i}`,
+                collection: page_sections,
+              });
+            }
+            break;
           case reusable_page_sections_categories:
             if (
               rs_section.category &&
@@ -81,6 +109,9 @@ async function pageSectionExtractReusableM2A<
     switch (item.collection) {
       case page_sections:
         acc.push(item);
+        break;
+      case reusable_page_sections:
+        item.item.section && acc.push(item.item.section);
         break;
       case reusable_page_sections_categories:
         item.item.sections && acc.push(...item.item.sections);
