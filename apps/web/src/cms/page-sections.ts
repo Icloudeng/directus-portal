@@ -197,6 +197,12 @@ export const pageSectionItemsQuery: PSQuery = {
       },
     },
   },
+  [generics.reusable_page_sections]: {
+    __typeName: CMS_MODELS.generics.reusable_page_sections,
+    __args: qWithPublishedStatus(),
+    page_section: true,
+    ...qWithStatus,
+  },
   [generics.reusable_page_sections_categories]: {
     __typeName: CMS_MODELS.generics.reusable_page_sections_categories,
     section_category: true,
@@ -432,12 +438,21 @@ export type M2APageSection = MDHasM2A<
 >;
 
 export type M2APageSectionReusable =
+  | M2AReusablePageSection
   | M2AReusablePageSectionsCategory
   | M2APageSection;
 
 export type MDPageSectionsCategory = {
   name: boolean;
 } & DRTStatus;
+
+export type M2AReusablePageSection = MDHasM2A<
+  {
+    page_section: string;
+    section?: M2APageSection;
+  } & DRTStatus,
+  GE_V<'reusable_page_sections'>
+>;
 
 export type M2AReusablePageSectionsCategory = MDHasM2A<
   {
