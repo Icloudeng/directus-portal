@@ -8,7 +8,7 @@ type IRectCard = {
 
 export const RectCard = ({ cardText, cardLogo }: IRectCard) => {
   return (
-    <div className='flex items-center justify-center gap-2 bg-[#f5f7fa] shadow-md w-48 p-6 rounded-lg mr-8'>
+    <div className='flex items-center justify-center gap-2 bg-[#f5f7fa] shadow-md min-w-[14rem] h-28 p-5 rounded-lg mr-8'>
       {cardLogo && (
         <div className='relative w-7 h-7 rounded-sm'>
           {typeof cardLogo === 'string' ? (

@@ -68,6 +68,17 @@ module.exports = {
             transform: 'translateX(50%)',
           },
         },
+        streamleftmob: {
+          '0%': {
+            transform: 'translateX(0%)',
+          },
+          '50%': {
+            transform: 'translateX(150%)',
+          },
+          '100%': {
+            transform: 'translateX(310%)',
+          },
+        },
         streamright: {
           '100%': {
             transform: 'translateX(-50%)',
@@ -79,13 +90,27 @@ module.exports = {
             transform: 'translateX(0%)',
           },
         },
+        streamrightmob: {
+          '100%': {
+            transform: 'translateX(-310%)',
+          },
+          '50%': {
+            transform: 'translateX(-150%)',
+          },
+          '0%': {
+            transform: 'translateX(0%)',
+          },
+        },
       },
       animation: {
         flicker: 'flicker 3s linear infinite',
         shimmer: 'shimmer 1.3s linear infinite',
         blink: 'blink .7s linear infinite',
         streamleft: 'streamleft  15s linear infinite forwards',
-        streamright: 'streamright 15s linear 0s infinite normal none running'
+        streamright: 'streamright 15s linear 0s infinite normal none running',
+        streamleftmob: 'streamleftmob  10s linear infinite forwards',
+        streamrightmob: 'streamrightmob 10s linear 0s infinite normal none running',
+
       },
     },
     screens: {

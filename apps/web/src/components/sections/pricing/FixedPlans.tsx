@@ -10,7 +10,7 @@ type Props = {
 export const FixedPlans = ({ fixed_plans, machine_templates }: Props) => {
   const { t } = useTranslation()
   return (
-    <div className='section__bock max-w-sm xs:max-w-md ss:max-w-lg sd:max-w-none mx-auto  border space-y-5 shadow-sm drop-shadow-sm rounded-sm p-10 overflow-x-scroll'>
+    <div className='section__bock max-w-sm xs:max-w-md ss:max-w-lg sd:max-w-none mx-auto  border space-y-5 shadow-sm drop-shadow-sm rounded-sm p-10 overflow-x-auto'>
       <h4>{t("Fixed plan")}</h4>
       <div className='block-calculator h-full'>
         <div className='calculator_wrapper h-full flex items-stretch'>

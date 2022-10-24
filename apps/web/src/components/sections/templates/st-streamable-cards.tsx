@@ -1,9 +1,12 @@
-import { mut } from '@/cms/mut';
-import { STemplates_Props, ST_StreamableCard } from '@/cms/page-sections';
+import { useMemo } from 'react';
+
 import { RectCard } from '@/components/ui/cards/RectCard';
 import { HasSvgText } from '@/components/ui/HasSvgText';
+
 import { useSharedData } from '@/store';
-import { useMemo } from 'react';
+
+import { mut } from '@/cms/mut';
+import { ST_StreamableCard,STemplates_Props } from '@/cms/page-sections';
 
 type GroupedItem = {
   [k in ST_StreamableCard['item']['stream_direction']]: ST_StreamableCard[];
@@ -47,8 +50,8 @@ export function ST_StreamableCardsFC({
             key={i}
             className={`w-full flex ${
               stream_direction === 'stream_left'
-                ? 'items-end justify-end animate-streamleft'
-                : 'items-start justify-start animate-streamright'
+                ? 'items-end justify-end animate-streamleftmob sm:animate-streamleft'
+                : 'items-start justify-start animate-streamrightmob sm:animate-streamright'
             }`}
           >
             {group.map(({ item, id }) => {
