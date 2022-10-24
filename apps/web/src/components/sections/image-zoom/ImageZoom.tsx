@@ -98,7 +98,7 @@ export const ImageZoom = () => {
         })}
       </div>
       <div className='img-zoom__view w-full h-full'>
-        <div className='relative h-[22rem] w-full  lg:w-[40rem] rounded-sm z-[1]'>
+        <div className='relative h-[22rem] w-full  lg:w-1/2 rounded-sm z-[1]'>
           <Skeleton className='absolute inset-0 bg-primary-100 -z-[1]' />
           {bigImgUrl.type === 'image' ? (
             <Image

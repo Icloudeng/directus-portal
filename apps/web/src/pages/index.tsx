@@ -14,6 +14,7 @@ import Seo from '@/components/Seo';
 
 import { getGqlHomeQueries, QHomeHeroQueriesType } from '@/cms/items';
 import { getServerSideTranslations } from '@/utils/server-translation';
+import { ImageZoom } from '@/components/sections/image-zoom/ImageZoom';
 
 export default function HomePage(props: Partial<QHomeHeroQueriesType>) {
   const { HomeHero, HomeSections } = props;
@@ -56,6 +57,12 @@ export default function HomePage(props: Partial<QHomeHeroQueriesType>) {
 
       <section className='py-10 bg-[#f5f7fa]'>
         <JobsCreation />
+      </section>
+
+      <section className='py-10 bg-white'>
+        <div className='x-container'>
+          <ImageZoom />
+        </div>
       </section>
 
       {HomeSections && <PageSections sections={HomeSections.sections} />}
