@@ -17,9 +17,6 @@ function MyApp({
   pageProps,
   datas,
 }: AppProps & { datas: ISharedData }) {
-  useEffect(() => {
-    console.log(datas);
-  }, []);
   return (
     <SharedDataProvider value={datas}>
       <Component {...pageProps} />

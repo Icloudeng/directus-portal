@@ -36,7 +36,6 @@ export const CMS_MODELS = {
   generics: {
     page_sections: 'PageSections',
     page_sections_categories: 'PageSectionsCategories',
-    reusable_page_sections: 'ReusablePageSections',
     reusable_page_sections_categories: 'ReusablePageSectionsCategories',
   } as const,
   section_templates: {
