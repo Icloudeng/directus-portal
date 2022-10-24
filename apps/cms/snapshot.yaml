@@ -10221,7 +10221,7 @@ fields:
         valuePath: ref
       readonly: false
       required: false
-      sort: 4
+      sort: 5
       special: null
       translations: null
       validation:
@@ -10379,7 +10379,7 @@ fields:
         start: closed
       readonly: false
       required: false
-      sort: 6
+      sort: 7
       special:
         - alias
         - group
@@ -10406,7 +10406,7 @@ fields:
       options: null
       readonly: true
       required: false
-      sort: 10
+      sort: 11
       special:
         - date-created
       translations: null
@@ -10449,7 +10449,7 @@ fields:
       options: null
       readonly: true
       required: false
-      sort: 12
+      sort: 13
       special:
         - date-updated
       translations: null
@@ -10492,7 +10492,7 @@ fields:
         start: closed
       readonly: false
       required: false
-      sort: 5
+      sort: 6
       special:
         - alias
         - group
@@ -10518,7 +10518,7 @@ fields:
       options: null
       readonly: true
       required: false
-      sort: 1
+      sort: 2
       special:
         - uuid
       translations: null
@@ -10562,7 +10562,7 @@ fields:
         trim: true
       readonly: false
       required: true
-      sort: 2
+      sort: 3
       special: null
       translations: null
       validation: null
@@ -10589,6 +10589,32 @@ fields:
       table: PageSections
     type: string
   - collection: PageSections
+    field: notice-bzaipk
+    meta:
+      collection: PageSections
+      conditions: null
+      display: null
+      display_options: null
+      field: notice-bzaipk
+      group: null
+      hidden: false
+      interface: presentation-notice
+      note: null
+      options:
+        text: Page Sections
+      readonly: false
+      required: false
+      sort: 1
+      special:
+        - alias
+        - no-data
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema: null
+    type: alias
+  - collection: PageSections
     field: section_contents
     meta:
       collection: PageSections
@@ -10604,7 +10630,7 @@ fields:
         start: closed
       readonly: false
       required: false
-      sort: 7
+      sort: 8
       special:
         - alias
         - group
@@ -10630,7 +10656,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: 8
+      sort: 9
       special: null
       translations: null
       validation: null
@@ -10692,7 +10718,7 @@ fields:
             value: archived
       readonly: false
       required: false
-      sort: 3
+      sort: 4
       special: null
       translations: null
       validation: null
@@ -10760,7 +10786,7 @@ fields:
         template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
       readonly: true
       required: false
-      sort: 9
+      sort: 10
       special:
         - user-created
       translations: null
@@ -10803,7 +10829,7 @@ fields:
         template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
       readonly: true
       required: false
-      sort: 11
+      sort: 12
       special:
         - user-updated
       translations: null
