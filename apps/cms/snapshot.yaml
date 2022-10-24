@@ -1048,7 +1048,7 @@ collections:
       collapse: open
       collection: ST_Buttons
       color: null
-      display_template: null
+      display_template: "{{status}}\_{{id}}"
       group: Section_Templates
       hidden: true
       icon: null
@@ -1096,7 +1096,7 @@ collections:
       collapse: open
       collection: ST_CardCarousels
       color: null
-      display_template: null
+      display_template: "{{status}}\_{{id}}"
       group: Section_Templates
       hidden: true
       icon: null
@@ -1144,7 +1144,7 @@ collections:
       collapse: open
       collection: ST_CardImageCarousels
       color: null
-      display_template: null
+      display_template: "{{status}}\_{{id}}"
       group: Section_Templates
       hidden: true
       icon: null
@@ -1192,7 +1192,7 @@ collections:
       collapse: open
       collection: ST_CleanHeros
       color: null
-      display_template: null
+      display_template: "{{status}}\_{{id}}"
       group: Section_Templates
       hidden: true
       icon: null
@@ -1240,7 +1240,7 @@ collections:
       collapse: open
       collection: ST_MediaTabs
       color: null
-      display_template: null
+      display_template: "{{status}}\_{{id}}"
       group: Section_Templates
       hidden: true
       icon: null
@@ -1288,7 +1288,7 @@ collections:
       collapse: open
       collection: ST_NavAccordions
       color: null
-      display_template: null
+      display_template: "{{status}}\_{{id}}"
       group: Section_Templates
       hidden: true
       icon: null
@@ -1336,7 +1336,7 @@ collections:
       collapse: open
       collection: ST_NavTabs
       color: null
-      display_template: null
+      display_template: "{{status}}\_{{id}}"
       group: Section_Templates
       hidden: true
       icon: null
@@ -1384,7 +1384,7 @@ collections:
       collapse: open
       collection: ST_PageAsideMenus
       color: null
-      display_template: null
+      display_template: "{{status}}\_{{id}}"
       group: Section_Templates
       hidden: true
       icon: null
@@ -1432,7 +1432,7 @@ collections:
       collapse: open
       collection: ST_PlansPricing
       color: null
-      display_template: null
+      display_template: "{{status}}\_{{id}}"
       group: Section_Templates
       hidden: true
       icon: null
@@ -1456,7 +1456,7 @@ collections:
       collapse: open
       collection: ST_Platforms
       color: null
-      display_template: null
+      display_template: "{{status}}\_{{id}}"
       group: Section_Templates
       hidden: true
       icon: null
@@ -1480,7 +1480,7 @@ collections:
       collapse: open
       collection: ST_SidedContents
       color: null
-      display_template: null
+      display_template: "{{status}}\_{{id}}"
       group: Section_Templates
       hidden: true
       icon: null
@@ -1528,7 +1528,7 @@ collections:
       collapse: open
       collection: ST_SimpleCardLinks
       color: null
-      display_template: null
+      display_template: "{{status}}\_{{id}}"
       group: Section_Templates
       hidden: true
       icon: null
@@ -1576,7 +1576,7 @@ collections:
       collapse: open
       collection: ST_StreamableCards
       color: null
-      display_template: null
+      display_template: "{{status}}\_{{id}}"
       group: Section_Templates
       hidden: true
       icon: null
@@ -1624,7 +1624,7 @@ collections:
       collapse: open
       collection: ST_Values
       color: null
-      display_template: null
+      display_template: "{{status}}\_{{id}}"
       group: Section_Templates
       hidden: true
       icon: null
