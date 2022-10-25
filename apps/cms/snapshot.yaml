@@ -1,5 +1,5 @@
 version: 1
-directus: 9.19.1
+directus: 9.19.2
 collections:
   - collection: Addresses
     meta:
@@ -89,7 +89,7 @@ collections:
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: 5
+      sort: 6
       sort_field: null
       translations: null
       unarchive_value: null
@@ -419,7 +419,7 @@ collections:
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: 6
+      sort: 7
       sort_field: null
       translations: null
       unarchive_value: null
@@ -434,13 +434,13 @@ collections:
       collection: MachineTemplates
       color: null
       display_template: null
-      group: Plans_And_Pricing
+      group: Platform
       hidden: false
       icon: null
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: 6
+      sort: 5
       sort_field: sort
       translations: null
       unarchive_value: draft
@@ -629,7 +629,7 @@ collections:
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: 8
+      sort: 9
       sort_field: sort
       translations: null
       unarchive_value: draft
@@ -653,7 +653,7 @@ collections:
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: 9
+      sort: 10
       sort_field: null
       translations: null
       unarchive_value: null
@@ -677,7 +677,7 @@ collections:
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: 7
+      sort: 8
       sort_field: null
       translations: null
       unarchive_value: null
@@ -919,6 +919,27 @@ collections:
       translations: null
       unarchive_value: null
     schema: null
+  - collection: Platform
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: Platform
+      color: '#FFFFFF'
+      display_template: null
+      group: null
+      hidden: false
+      icon: folder
+      item_duplication_fields: null
+      note: null
+      singleton: false
+      sort: 5
+      sort_field: null
+      translations: null
+      unarchive_value: null
+    schema: null
   - collection: PlatformCategories
     meta:
       accountability: all
@@ -929,13 +950,13 @@ collections:
       collection: PlatformCategories
       color: null
       display_template: null
-      group: Plans_And_Pricing
+      group: Platform
       hidden: false
       icon: null
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: 8
+      sort: 3
       sort_field: sort
       translations: null
       unarchive_value: draft
@@ -953,13 +974,13 @@ collections:
       collection: PlatformCategories_translations
       color: null
       display_template: null
-      group: Plans_And_Pricing
+      group: Platform
       hidden: true
       icon: import_export
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: 9
+      sort: 4
       sort_field: null
       translations: null
       unarchive_value: null
@@ -977,13 +998,13 @@ collections:
       collection: Platforms
       color: null
       display_template: null
-      group: Plans_And_Pricing
+      group: Platform
       hidden: false
       icon: null
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: 10
+      sort: 1
       sort_field: sort
       translations: null
       unarchive_value: draft
@@ -1001,13 +1022,13 @@ collections:
       collection: Platforms_translations
       color: null
       display_template: null
-      group: Plans_And_Pricing
+      group: Platform
       hidden: true
       icon: import_export
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: 11
+      sort: 2
       sort_field: null
       translations: null
       unarchive_value: null
@@ -1865,7 +1886,7 @@ collections:
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: 11
+      sort: 12
       sort_field: null
       translations: null
       unarchive_value: null
@@ -1886,7 +1907,7 @@ collections:
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: 10
+      sort: 11
       sort_field: null
       translations: null
       unarchive_value: null
@@ -18891,7 +18912,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: null
+      sort: 5
       special: null
       translations: null
       validation: null
@@ -18932,7 +18953,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: null
+      sort: 1
       special: null
       translations: null
       validation: null
@@ -18973,7 +18994,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: null
+      sort: 6
       special: null
       translations: null
       validation: null
@@ -18994,6 +19015,150 @@ fields:
       is_unique: false
       max_length: 255
       name: languages_code
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: ST_HoverableMediaMenus_translations
+    type: string
+  - collection: ST_HoverableMediaMenus_translations
+    field: markdown_content
+    meta:
+      collection: ST_HoverableMediaMenus_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: markdown_content
+      group: null
+      hidden: false
+      interface: input-rich-text-md
+      note: null
+      options:
+        imageToken: mdzjETutYM06z9ch56CmFkjIOWZCwraG
+        toolbar:
+          - blockquote
+          - bold
+          - bullist
+          - code
+          - empty
+          - heading
+          - italic
+          - link
+          - numlist
+          - strikethrough
+          - table
+      readonly: false
+      required: true
+      sort: 4
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: markdown_content
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: ST_HoverableMediaMenus_translations
+    type: text
+  - collection: ST_HoverableMediaMenus_translations
+    field: media
+    meta:
+      collection: ST_HoverableMediaMenus_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: media
+      group: null
+      hidden: false
+      interface: file
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 2
+      special:
+        - file
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: directus_files
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: media
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: ST_HoverableMediaMenus_translations
+    type: uuid
+  - collection: ST_HoverableMediaMenus_translations
+    field: media_url
+    meta:
+      collection: ST_HoverableMediaMenus_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: media_url
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        placeholder: External Media URL
+        softLength: 300
+        trim: true
+      readonly: false
+      required: false
+      sort: 3
+      special: null
+      translations: null
+      validation:
+        _and:
+          - media_url:
+              _regex: >-
+                ^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: character varying
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: 255
+      name: media_url
       numeric_precision: null
       numeric_scale: null
       schema: public
@@ -29123,6 +29288,28 @@ relations:
       foreign_key_column: code
       foreign_key_schema: public
       foreign_key_table: languages
+      on_delete: SET NULL
+      on_update: NO ACTION
+      table: ST_HoverableMediaMenus_translations
+  - collection: ST_HoverableMediaMenus_translations
+    field: media
+    meta:
+      junction_field: null
+      many_collection: ST_HoverableMediaMenus_translations
+      many_field: media
+      one_allowed_collections: null
+      one_collection: directus_files
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    related_collection: directus_files
+    schema:
+      column: media
+      constraint_name: st_hoverablemediamenus_translations_media_foreign
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: directus_files
       on_delete: SET NULL
       on_update: NO ACTION
       table: ST_HoverableMediaMenus_translations
