@@ -140,9 +140,6 @@ function pageSectionsWithAssets(
         case st_media_tabs:
           qWithAssets(access_token, st.item.translations, 'media');
           break;
-        case st_hoverable_media_menus:
-          qWithAssets(access_token, st.item.translations, 'media');
-          break;
         default:
           // Actually all templates modeles uses image as default key for assets
           qWithAsset(access_token, st.item, 'image' as any);

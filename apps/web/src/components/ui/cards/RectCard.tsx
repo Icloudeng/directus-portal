@@ -17,7 +17,7 @@ export const RectCard = ({ cardText, cardLogo }: IRectCard) => {
               src={cardLogo}
               layout='fill'
               objectFit='cover'
-              alt='hero banner image'
+              alt='Image'
               loading='lazy'
             />
           ) : (

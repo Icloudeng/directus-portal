@@ -168,9 +168,8 @@ const q_ST: Query = {
   },
   [section_templates.st_hoverable_media_menus]: {
     __typeName: section_templates.st_hoverable_media_menus,
+    image: qWithQueryAsset({ type: true }),
     ...qWithTranslations({
-      media: qWithQueryAsset({ type: true }),
-      media_url: true,
       markdown_content: true,
     }),
     ...qWithStatus,
@@ -412,9 +411,7 @@ export type ST_StreamableCard = MDHasM2A<
 >;
 
 export type ST_HoverableMediaMenu = MDHasM2A<
-  MDWithTranslation<{
-    media?: MDWithAsset;
-    media_url?: string;
+  { image: MDWithAsset } & MDWithTranslation<{
     markdown_content?: string;
   }> &
     DRTStatus,

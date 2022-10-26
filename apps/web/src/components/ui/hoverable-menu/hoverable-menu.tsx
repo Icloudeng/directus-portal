@@ -1,12 +1,11 @@
 import React from 'react';
 import { PropsWithChildren, useState } from 'react';
 import { MDWithAsset } from '@/types/directus';
-import { HasMediaPlayer } from '../HasMediaPlayer';
 import Skeleton from '../Skeleton';
+import Image from 'next/image';
 
 type HoverableMenusItemProps = {
-  media_url: string | undefined;
-  media: MDWithAsset | undefined;
+  image: MDWithAsset;
 };
 
 export function HoverableMenus({ children }: PropsWithChildren) {
@@ -16,8 +15,7 @@ export function HoverableMenus({ children }: PropsWithChildren) {
   const titles = arrChildren.map((child, index) => {
     const node = child as React.ReactElement<HoverableMenusItemProps>;
     return {
-      media: node.props.media,
-      media_url: node.props.media_url,
+      image: node.props.image,
       index,
     };
   });
@@ -32,14 +30,25 @@ export function HoverableMenus({ children }: PropsWithChildren) {
   return (
     <div className='flex items-center gap-3'>
       <div className='img-zoom__carousel flex flex-col gap-1'>
-        {titles.map(({ index, media, media_url }) => {
+        {titles.map(({ index, image }) => {
           return (
             <div
               onMouseOver={() => setActive(index)}
               key={index}
-              className='img-direction relative h-[4rem] max-h-[4rem] w-[3rem] max-w-[3rem] rounded-sm'
+              className={`${
+                active === index ? 'image-zoom-active' : ''
+              } img-direction relative h-[4rem] max-h-[4rem] w-[3rem] max-w-[3rem] rounded-sm`}
             >
-              <HasMediaPlayer media={media} media_url={media_url} />
+              {image && (
+                <Image
+                  className='image object-cover'
+                  src={image.src!}
+                  layout='fill'
+                  objectFit='cover'
+                  alt='Image'
+                  loading='lazy'
+                />
+              )}
             </div>
           );
         })}
@@ -52,19 +61,24 @@ export function HoverableMenus({ children }: PropsWithChildren) {
 
 export function HoverableMenusItem({
   children,
-  media,
-  media_url,
+  image,
   ...props
 }: PropsWithChildren<HoverableMenusItemProps>) {
   const { active } = props as any;
   return (
-    <div
-      className={`relative h-[22rem] w-full ${
-        active ? '' : 'hidden'
-      } lg:w-1/2 rounded-sm z-[1]`}
-    >
-      <Skeleton className='absolute inset-0 bg-primary-100 -z-[1]' />
-      <HasMediaPlayer media={media} media_url={media_url} />
+    <div className={`flex flex-col lg:flex-row ${active ? '' : 'hidden'}`}>
+      <div className={`relative h-[15rem] sm:h-[20rem] lg:h-[22rem] w-full  lg:w-1/2 rounded-sm z-[1]`}>
+        <Skeleton className='absolute inset-0 bg-primary-100 -z-[1]' />
+        <Image
+          className='image object-cover'
+          src={image.src!}
+          layout='fill'
+          objectFit='cover'
+          alt='Image'
+          loading='lazy'
+        />
+      </div>
+      <div className='lg:w-1/2 pl-0 lg:pl-4 mt-5 lg:mt-0'>{children}</div>
     </div>
   );
 }
