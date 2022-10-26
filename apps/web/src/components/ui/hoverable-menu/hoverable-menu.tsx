@@ -1,15 +1,23 @@
 import React from 'react';
 import { PropsWithChildren, useState } from 'react';
-import Button from '@/components/ui/buttons/Button';
+import { MDWithAsset } from '@/types/directus';
+import { HasMediaPlayer } from '../HasMediaPlayer';
+import Skeleton from '../Skeleton';
+
+type HoverableMenusItemProps = {
+  media_url: string | undefined;
+  media: MDWithAsset | undefined;
+};
 
 export function HoverableMenus({ children }: PropsWithChildren) {
   const [active, setActive] = useState(0);
   const arrChildren = React.Children.toArray(children);
 
   const titles = arrChildren.map((child, index) => {
-    const node = child as React.ReactElement;
+    const node = child as React.ReactElement<HoverableMenusItemProps>;
     return {
-      title: node.props.menuTitle,
+      media: node.props.media,
+      media_url: node.props.media_url,
       index,
     };
   });
@@ -22,67 +30,41 @@ export function HoverableMenus({ children }: PropsWithChildren) {
   });
 
   return (
-    <div className='w-full flex flex-col items-center gap-5'>
-      <div className='tab-container flex items-center justify-center mb-3 flex-wrap px-10 gap-3'>
-        {titles.map(({ title, index }) => {
+    <div className='flex items-center gap-3'>
+      <div className='img-zoom__carousel flex flex-col gap-1'>
+        {titles.map(({ index, media, media_url }) => {
           return (
-            <Button
+            <div
+              onMouseOver={() => setActive(index)}
               key={index}
-              onClick={() => setActive(index)}
-              className={`btn-tab-direction ${
-                index === active ? 'btn-tab-active' : ''
-              } py-3 font-semibold rounded-md border-none bg-[#f5f7fa] text-dark hover:bg-primary-400`}
+              className='img-direction relative h-[4rem] max-h-[4rem] w-[3rem] max-w-[3rem] rounded-sm'
             >
-              {title}
-            </Button>
+              <HasMediaPlayer media={media} media_url={media_url} />
+            </div>
           );
         })}
       </div>
 
-      <div className='w-full p-7 bg-[#f5f7fa] rounded-3xl'>{newChildren}</div>
+      <div className='img-zoom__view w-full h-full'>{newChildren}</div>
     </div>
   );
 }
 
 export function HoverableMenusItem({
   children,
-  menuTitle,
-  title,
-  description,
-  disposition,
+  media,
+  media_url,
   ...props
-}: PropsWithChildren<{
-  menuTitle: string;
-  title?: string;
-  description?: string;
-  disposition?: 'text_top' | 'text_bottom';
-}>) {
+}: PropsWithChildren<HoverableMenusItemProps>) {
   const { active } = props as any;
-  const text = (
-    <>
-      {(title || description) && (
-        <div className='flex flex-col items-center justify-center gap-7 mb-7'>
-          <h3 className='text-center'>{title}</h3>
-          {description && (
-            <span className='max-w-xl text-center'>{description}</span>
-          )}
-        </div>
-      )}
-    </>
-  );
   return (
-    <div className={`relative w-full ${active ? '' : 'hidden'}`}>
-      {disposition === 'text_bottom' ? (
-        <>
-          {children}
-          {text}
-        </>
-      ) : (
-        <>
-          {text}
-          {children}
-        </>
-      )}
+    <div
+      className={`relative h-[22rem] w-full ${
+        active ? '' : 'hidden'
+      } lg:w-1/2 rounded-sm z-[1]`}
+    >
+      <Skeleton className='absolute inset-0 bg-primary-100 -z-[1]' />
+      <HasMediaPlayer media={media} media_url={media_url} />
     </div>
   );
 }

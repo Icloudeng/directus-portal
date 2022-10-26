@@ -168,7 +168,6 @@ const q_ST: Query = {
   },
   [section_templates.st_hoverable_media_menus]: {
     __typeName: section_templates.st_hoverable_media_menus,
-    markdown_content: true,
     ...qWithTranslations({
       media: qWithQueryAsset({ type: true }),
       media_url: true,

@@ -59,11 +59,11 @@ export default function HomePage(props: Partial<QHomeHeroQueriesType>) {
         <JobsCreation />
       </section>
 
-      <section className='py-10 bg-white'>
+      {/* <section className='py-10 bg-white'>
         <div className='x-container'>
           <ImageZoom />
         </div>
-      </section>
+      </section> */}
 
       {HomeSections && <PageSections sections={HomeSections.sections} />}
     </Layout>

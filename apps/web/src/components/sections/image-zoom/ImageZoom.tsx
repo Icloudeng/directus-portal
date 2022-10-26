@@ -5,6 +5,10 @@ import ReactPlayer from 'react-player';
 import { useHasMounted } from '@/hooks/useHasMounted';
 
 import Skeleton from '@/components/ui/Skeleton';
+import {
+  HoverableMenus,
+  HoverableMenusItem,
+} from '@/components/ui/hoverable-menu/hoverable-menu';
 
 type IImagesLink = {
   type: string;
@@ -32,9 +36,9 @@ const imagesLink = [
     type: 'video',
     itemLink: 'https://www.youtube.com/watch?v=HtTUsOKjWyQ',
   },
-] as const;
+];
 
-export const ImageZoom = () => {
+export const _ImageZoom = () => {
   const { mounted } = useHasMounted();
 
   const [activeIndex, setActiveIndex] = useState<number>(0);
@@ -123,5 +127,34 @@ export const ImageZoom = () => {
         </div>
       </div>
     </div>
+  );
+};
+
+export const ImageZoom = () => {
+  return (
+    <>
+      <HoverableMenus>
+        <HoverableMenusItem
+          media_url={undefined}
+          media={{
+            id: '12222333',
+            src: 'http://localhost:8055/assets/66f8ee9e-a0e6-430f-93c8-031b03807430?access_token=mdzjETutYM06z9ch56CmFkjIOWZCwraG',
+            type: 'video/mp4',
+          }}
+        ></HoverableMenusItem>
+        {/*<HoverableMenusItem
+          media_url={'https://www.youtube.com/watch?v=HtTUsOKjWyQ'}
+          media={undefined}
+        ></HoverableMenusItem>
+        <HoverableMenusItem
+          media_url={'https://www.youtube.com/watch?v=HtTUsOKjWyQ'}
+          media={{
+            id: '4343',
+            src: 'https://flowbite.com/docs/images/blog/image-3.jpg',
+            type: 'image/jpg',
+          }}
+        ></HoverableMenusItem> */}
+      </HoverableMenus>
+    </>
   );
 };

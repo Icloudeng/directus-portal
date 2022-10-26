@@ -23,7 +23,7 @@ const {
   },
 } = CMS_MODELS;
 
-const { st_media_tabs } = section_templates;
+const { st_media_tabs, st_hoverable_media_menus } = section_templates;
 
 export async function pageSectionsAdapters<
   T extends { [x: string]: any; sections: M2APageSection[] }
@@ -138,6 +138,9 @@ function pageSectionsWithAssets(
 
       switch (st.collection) {
         case st_media_tabs:
+          qWithAssets(access_token, st.item.translations, 'media');
+          break;
+        case st_hoverable_media_menus:
           qWithAssets(access_token, st.item.translations, 'media');
           break;
         default:
