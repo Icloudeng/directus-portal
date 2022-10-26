@@ -1,3 +1,4 @@
+import { useTranslation } from 'next-i18next';
 import {
   FaDiscord,
   FaFacebookF,
@@ -15,7 +16,6 @@ import { useSharedData } from '@/store';
 import { useMut } from '@/cms/mut';
 
 import { SocialMedia } from './SocialMedia';
-import { useTranslation } from 'next-i18next';
 
 const socialIcons: { [x: string]: JSX.Element } = {
   facebook: <FaFacebookF fontSize={17} />,
@@ -32,9 +32,9 @@ export const ContactSection = () => {
   const { t } = useTranslation();
 
   return (
-    <div className='middle-right text-sm flex-1 flex flex-col gap-5'>
+    <div className='middle-right text-xs xs:text-sm flex-1 flex flex-col gap-5'>
       {data?.translations?.slogan && (
-        <p className='max-w-[24rem] mb-3'>{data?.translations?.slogan}</p>
+        <p className='max-w-[24rem] leading-5 mb-3'>{data?.translations?.slogan}</p>
       )}
       <p className='font-bold uppercase underline underline-offset-8'>
         {t('Contact Us')} :
