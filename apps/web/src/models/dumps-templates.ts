@@ -3,6 +3,7 @@ import {
   ST_CardCarousel,
   ST_CardImageCarousel,
   ST_CleanHero,
+  ST_HoverableMediaMenu,
   ST_MediaTab,
   ST_NavAccordion,
   ST_NavTab,
@@ -821,6 +822,61 @@ export const DumpStreamableCards: ST_StreamableCard[] = [
       id: 'c94ebff4-8ff6-406d-8fe7-ac9a648efa78',
       status: 'published',
       date_created: '2022-10-22T07:18:40.288Z',
+    },
+  },
+];
+
+export const DumpHoverableMediaMenus: ST_HoverableMediaMenu[] = [
+  {
+    id: '40',
+    collection: 'ST_HoverableMediaMenus',
+    item: {
+      image: {
+        id: '63ac466c-bc63-4e23-9050-3d7a3ff05a43',
+        type: 'image/webp',
+        src: 'https://flowbite.com/docs/images/blog/image-1.jpg',
+      },
+      translations: [
+        {
+          id: '1',
+          languages_code: {
+            code: 'en',
+            name: 'English',
+          },
+          markdown_content:
+            '# It is a long established\n\nIt is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using content here',
+        },
+      ],
+      id: 'ea9b59e4-dc3b-4587-926e-18e39c385f57',
+      status: 'published',
+      date_created: '2022-10-26T13:00:08.363Z',
+      date_updated: '2022-10-26T13:34:57.657Z',
+    },
+  },
+  {
+    id: '41',
+    collection: 'ST_HoverableMediaMenus',
+    item: {
+      image: {
+        id: '13d96468-bb41-49b8-a3c7-5670a0a3cb2f',
+        type: 'image/webp',
+        src: 'https://flowbite.com/docs/images/blog/image-2.jpg',
+      },
+      translations: [
+        {
+          id: '2',
+          languages_code: {
+            code: 'en',
+            name: 'English',
+          },
+          markdown_content:
+            '# We use an innovative\n\nWe use an innovative hyper-converged vStack platform. The platform is powered by Open Source technologies that provide fantastic performance. It is the first of its kind, the unique one.\n',
+        },
+      ],
+      id: '3cb918aa-76fc-47b9-ace1-71c15efbe89f',
+      status: 'published',
+      date_created: '2022-10-26T13:00:08.442Z',
+      date_updated: '2022-10-26T13:34:57.775Z',
     },
   },
 ];

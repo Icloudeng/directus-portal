@@ -82,7 +82,7 @@ const CarouselItem = ({ item }: ST_CardCarousel) => {
           src={image.src!}
           layout='fill'
           objectFit='cover'
-          alt='hero banner image'
+          alt='Image'
           loading='lazy'
         />
       )}

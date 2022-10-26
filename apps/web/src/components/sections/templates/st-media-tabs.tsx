@@ -1,30 +1,23 @@
 import { mut } from '@/cms/mut';
 import { STemplates_Props, ST_MediaTab } from '@/cms/page-sections';
+import { HasMediaPlayer } from '@/components/ui/HasMediaPlayer';
 import {
   MediaTabs,
   MediaTabsPane,
 } from '@/components/ui/media-tabs/media-tabs';
-import { PlyrReact } from '@/components/ui/plyr-react';
-import Skeleton from '@/components/ui/Skeleton';
-import { useHasMounted } from '@/hooks/useHasMounted';
 import { useSharedData } from '@/store';
 import { MDWithAsset } from '@/types/directus';
-import Image from 'next/image';
-import ReactPlayer from 'react-player';
 
-function HasMediaPlayer({
+function HasPlayer({
   media,
   media_url,
 }: {
   media_url: string | undefined;
   media: MDWithAsset | undefined;
 }) {
-  const { mounted } = useHasMounted();
-
   if (!media && !media_url) {
     return <></>;
   }
-  const showVideo = media?.type?.startsWith('video') ? media.src : media_url;
 
   return (
     <div className='video-wrapper w-full mb-5'>
@@ -33,37 +26,7 @@ function HasMediaPlayer({
           !media?.src ? 'h-[15rem] ss:h-[27rem] md:h-[37rem]' : ''
         }  z-[1]`}
       >
-        {showVideo &&
-          mounted &&
-          (media?.src ? (
-            <PlyrReact
-              source={{
-                type: 'video',
-                sources: [{ src: showVideo, type: media?.type }],
-              }}
-            />
-          ) : (
-            <ReactPlayer
-              controls={true}
-              fallback={
-                <Skeleton className='absolute inset-0 text-primary-500 rounded-xl -z-[1]' />
-              }
-              url={showVideo}
-              width='100%'
-              height='100%'
-            />
-          ))}
-
-        {media?.type?.startsWith('image') && (
-          <Image
-            className='image object-cover'
-            src={media.src!}
-            layout='fill'
-            objectFit='cover'
-            height='100%'
-            width='100%'
-          />
-        )}
+        <HasMediaPlayer media={media} media_url={media_url} />
       </div>
     </div>
   );
@@ -84,7 +47,7 @@ export function ST_MediaTabsFC({ items }: STemplates_Props<ST_MediaTab>) {
             description={translations?.description}
             disposition={disposition}
           >
-            <HasMediaPlayer
+            <HasPlayer
               media={translations?.media}
               media_url={translations?.media_url}
             />

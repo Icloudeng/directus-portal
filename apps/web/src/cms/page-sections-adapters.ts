@@ -23,7 +23,7 @@ const {
   },
 } = CMS_MODELS;
 
-const { st_media_tabs } = section_templates;
+const { st_media_tabs, st_hoverable_media_menus } = section_templates;
 
 export async function pageSectionsAdapters<
   T extends { [x: string]: any; sections: M2APageSection[] }

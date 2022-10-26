@@ -6,6 +6,7 @@ import {
   DumpCardCarousel,
   DumpCardImageCarousel,
   DumpCleanHero,
+  DumpHoverableMediaMenus,
   DumpMediaTabs,
   DumpNavAccordion,
   DumpNavTab,
@@ -120,6 +121,15 @@ export default function Page() {
         </div>
         <Sts.ST_StreamableCardsFC
           items={DumpStreamableCards}
+          sectionClass=''
+          sharedObject={{}}
+        />
+      </section>
+
+      <section className='py-14 x-container'>
+        <h3 className='my-9'>ST HoverableMediaMenus</h3>
+        <Sts.ST_HoverableMediaMenusFC
+          items={DumpHoverableMediaMenus}
           sectionClass=''
           sharedObject={{}}
         />

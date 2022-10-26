@@ -12,3 +12,4 @@ export * from './st-plans-pricing';
 export * from './st-platforms';
 export * from './st-media-tabs';
 export * from './st-streamable-cards';
+export * from './st-hoverable-media-menus';

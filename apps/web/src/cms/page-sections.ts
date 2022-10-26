@@ -166,6 +166,14 @@ const q_ST: Query = {
     }),
     ...qWithStatus,
   },
+  [section_templates.st_hoverable_media_menus]: {
+    __typeName: section_templates.st_hoverable_media_menus,
+    image: qWithQueryAsset({ type: true }),
+    ...qWithTranslations({
+      markdown_content: true,
+    }),
+    ...qWithStatus,
+  },
 };
 
 type PSQuery = {
@@ -402,6 +410,14 @@ export type ST_StreamableCard = MDHasM2A<
   ST_V<'st_streamable_cards'>
 >;
 
+export type ST_HoverableMediaMenu = MDHasM2A<
+  { image: MDWithAsset } & MDWithTranslation<{
+    markdown_content?: string;
+  }> &
+    DRTStatus,
+  ST_V<'st_hoverable_media_menus'>
+>;
+
 // strean_direction
 //------------------- Page Sections --------------------//
 export type PS_Content =
@@ -418,7 +434,8 @@ export type PS_Content =
   | ST_PlansPricing
   | ST_Platform
   | ST_MediaTab
-  | ST_StreamableCard;
+  | ST_StreamableCard
+  | ST_HoverableMediaMenu;
 
 export type M2APageSection = MDHasM2A<
   {
