@@ -15,7 +15,7 @@ export const FastServer = () => {
                     Virtual servers are running as efficiently as possible with any WordPress plugins and themes.
                 </span>
             </div>
-            <div className="relative flex items-center gap-32">
+            <div className="relative flex flex-wrap items-center justify-center gap-20 lg:gap-32">
                 <ServerElement logoLink={box} text='Monstroid2' />
                 <ServerElement logoLink={gitlab} text='Jetpack' />
                 <ServerElement logoLink={slack} text='Yoast SEO' />

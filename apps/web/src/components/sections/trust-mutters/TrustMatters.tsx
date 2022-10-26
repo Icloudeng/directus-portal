@@ -13,7 +13,7 @@ export const TrustMatters = () => {
             <div className='flex flex-col items-center justify-center gap-7 mb-7'>
                 <h1 className='text-center'>Your trust matters to us</h1>
             </div>
-            <div className="relative flex items-center gap-32">
+            <div className="relative flex items-center justify-center flex-wrap gap-20 lg:gap-32">
                 <Truster logoLink={surabooks} />
                 <Truster logoLink={ecom} />
                 <Truster logoLink={riskapp} />
