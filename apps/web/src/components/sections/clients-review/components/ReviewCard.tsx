@@ -7,7 +7,7 @@ export const ReviewCard = ({ review, reviewerName, reviewerPosition }:IReviewCar
     <div className="min-h-[32rem] shrink-0 grow-0 basis-full bg-white py-12 px-10 ss:px-12 sm:py-16 sm:px-24 shadow-sm rounded-sm">
         <div className="w-full h-full flex flex-col items-center gap-16">
             <div className="text-center max-w-3xl">
-                <q className="text-lg font-light">{review}</q>
+                <q className="xs:text-lg font-light">{review}</q>
             </div>
             <div className=" flex flex-col items-center justify-center">
                 {/* avatar */}
