@@ -22,7 +22,7 @@ export const FooterItemLinks = ({
               key={id}
               href={url}
               target={external ? '_blank' : undefined}
-              className='hover:text-gray-300'
+              className='hover:text-gray-300 text-xs xs:text-sm'
             >
               {translations?.name}
             </UnstyledLink>

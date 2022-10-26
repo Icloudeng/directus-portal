@@ -78,7 +78,7 @@ export default function HomePage(props: Partial<QHomeHeroQueriesType>) {
         <ImageGallery />
       </section>
 
-      {/* {HomeSections && <PageSections sections={HomeSections.sections} />} */}
+      {HomeSections && <PageSections sections={HomeSections.sections} />}
     </Layout>
   );
 }
