@@ -4191,12 +4191,12 @@ fields:
       group: null
       hidden: false
       interface: input
-      note: null
+      note: Min CPU
       options:
         max: 16
         min: 1
         placeholder: Computer CPU (Core)
-      readonly: false
+      readonly: true
       required: true
       sort: 4
       special: null
@@ -4235,12 +4235,12 @@ fields:
       group: null
       hidden: false
       interface: input
-      note: null
+      note: Per CPU
       options:
         max: 50
-        min: 0.001
+        min: 0.0001
         placeholder: CPU Hourly price
-        step: 0.003
+        step: 0.0001
       readonly: false
       required: true
       sort: 5
@@ -4252,7 +4252,7 @@ fields:
     schema:
       comment: null
       data_type: numeric
-      default_value: 0.001
+      default_value: 0.0003
       foreign_key_column: null
       foreign_key_schema: null
       foreign_key_table: null
@@ -4451,12 +4451,12 @@ fields:
       group: null
       hidden: false
       interface: input
-      note: null
+      note: Min RAM
       options:
         max: 48
         min: 1
         placeholder: Computer RAM
-      readonly: false
+      readonly: true
       required: true
       sort: 2
       special: null
@@ -4495,12 +4495,12 @@ fields:
       group: null
       hidden: false
       interface: input
-      note: null
+      note: Per RAM
       options:
         max: 50
-        min: 0.001
+        min: 0.0001
         placeholder: RAM Hourly price
-        step: 0.002
+        step: 0.0001
       readonly: false
       required: true
       sort: 3
@@ -4512,7 +4512,7 @@ fields:
     schema:
       comment: null
       data_type: numeric
-      default_value: 0.001
+      default_value: 0.0001
       foreign_key_column: null
       foreign_key_schema: null
       foreign_key_table: null
@@ -4540,12 +4540,13 @@ fields:
       group: null
       hidden: false
       interface: input
-      note: null
+      note: Min SSD
       options:
         max: 1000
         min: 25
         placeholder: Computer Disk (SSD)
-      readonly: false
+        step: 15
+      readonly: true
       required: true
       sort: 6
       special: null
@@ -4555,7 +4556,7 @@ fields:
       width: half
     schema:
       comment: null
-      data_type: bigint
+      data_type: integer
       default_value: 25
       foreign_key_column: null
       foreign_key_schema: null
@@ -4568,11 +4569,11 @@ fields:
       is_unique: false
       max_length: null
       name: ssd
-      numeric_precision: 64
+      numeric_precision: 32
       numeric_scale: 0
       schema: public
       table: FlexiblePlans
-    type: bigInteger
+    type: integer
   - collection: FlexiblePlans
     field: ssd_cost_hour
     meta:
@@ -4584,12 +4585,12 @@ fields:
       group: null
       hidden: false
       interface: input
-      note: null
+      note: Per SSD
       options:
         max: 50
-        min: 0.001
+        min: 0.00001
         placeholder: Disk (SSD) Hourly price
-        step: 0.002
+        step: 0.00001
       readonly: false
       required: true
       sort: 7
@@ -4601,7 +4602,7 @@ fields:
     schema:
       comment: null
       data_type: numeric
-      default_value: 0.001
+      default_value: 0.00001
       foreign_key_column: null
       foreign_key_schema: null
       foreign_key_table: null
@@ -14363,7 +14364,7 @@ fields:
         url: /searchable/platform-categories?q={{value}}
         valuePath: ref
       readonly: false
-      required: false
+      required: true
       sort: 4
       special: null
       translations: null
@@ -14454,7 +14455,7 @@ fields:
       options: null
       readonly: true
       required: false
-      sort: 13
+      sort: 15
       special:
         - date-created
       translations: null
@@ -14497,7 +14498,7 @@ fields:
       options: null
       readonly: true
       required: false
-      sort: 15
+      sort: 17
       special:
         - date-updated
       translations: null
@@ -14524,6 +14525,48 @@ fields:
       schema: public
       table: Platforms
     type: timestamp
+  - collection: Platforms
+    field: external_link
+    meta:
+      collection: Platforms
+      conditions: null
+      display: null
+      display_options: null
+      field: external_link
+      group: null
+      hidden: false
+      interface: boolean
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 11
+      special:
+        - cast-boolean
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      comment: null
+      data_type: boolean
+      default_value: false
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: external_link
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: Platforms
+    type: boolean
   - collection: Platforms
     field: icon
     meta:
@@ -14653,6 +14696,48 @@ fields:
       table: Platforms
     type: uuid
   - collection: Platforms
+    field: link
+    meta:
+      collection: Platforms
+      conditions: null
+      display: null
+      display_options: null
+      field: link
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        trim: true
+      readonly: false
+      required: false
+      sort: 10
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      comment: null
+      data_type: character varying
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: 255
+      name: link
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: Platforms
+    type: string
+  - collection: Platforms
     field: name
     meta:
       collection: Platforms
@@ -14754,7 +14839,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: 11
+      sort: 13
       special: null
       translations: null
       validation: null
@@ -14861,7 +14946,7 @@ fields:
             value: archived
       readonly: false
       required: false
-      sort: 10
+      sort: 12
       special: null
       translations: null
       validation: null
@@ -14928,7 +15013,7 @@ fields:
         template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
       readonly: true
       required: false
-      sort: 12
+      sort: 14
       special:
         - user-created
       translations: null
@@ -14971,7 +15056,7 @@ fields:
         template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
       readonly: true
       required: false
-      sort: 14
+      sort: 16
       special:
         - user-updated
       translations: null

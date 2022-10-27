@@ -233,6 +233,8 @@ export type MDPlatform = {
   ram: number;
   cpu: number;
   ssd: number;
+  link?: string;
+  external_link: boolean;
 } & MDWithTranslation<{
   description?: string;
 }> &

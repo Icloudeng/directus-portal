@@ -76,6 +76,8 @@ const queries = jsonToGraphQLQuery({
       ram: true,
       cpu: true,
       ssd: true,
+      link: true,
+      external_link: true,
       ...qWithStatus,
     },
   },

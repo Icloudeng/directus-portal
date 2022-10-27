@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai';
 
 type IDynamicInput = {
@@ -12,6 +12,7 @@ type IDynamicInput = {
   stepValue?: number;
   minValue: number;
   maxValue: number;
+  onChange?: (value: number) => any;
 };
 
 export const DynamicInput = ({
@@ -25,21 +26,33 @@ export const DynamicInput = ({
   textCenter = true,
   textSize = 'text-sm',
   fontWeight = '',
+  onChange,
 }: IDynamicInput) => {
   const [inputVal, setInputVal] = useState(initValue);
+
+  useEffect(() => {
+    setInputVal(minValue);
+  }, [minValue + minValue + stepValue]);
+
+  useEffect(() => {
+    onChange && onChange(inputVal);
+  }, [inputVal]);
 
   return (
     <div
       className={`dynamicInput relative w-full flex items-center ${inputHeight} border`}
     >
-      <span
+      <button
         onClick={() => {
-          inputVal > minValue && setInputVal(inputVal - stepValue);
+          setInputVal((value) => {
+            let v = value - stepValue;
+            return v >= minValue ? v : minValue;
+          });
         }}
-        className='w-7 h-7 hover:bg-primary-100 flex items-center justify-center text-center rounded-sm m-1 cursor-pointer'
+        className='w-7 h-7 text-gray-400 hover:bg-primary-100 flex items-center justify-center text-center rounded-sm m-1 cursor-pointer'
       >
-        <AiOutlineMinus className='text-gray-400' />
-      </span>
+        <AiOutlineMinus />
+      </button>
       <input
         className={`flex-1 h-full w-full ${textSize} ${
           textCenter && 'text-center'
@@ -52,22 +65,27 @@ export const DynamicInput = ({
         <input
           className='pricing-input-range absolute inset-x-0 bottom-2 -z-0'
           type='range'
-          onChange={() => null}
+          onChange={(e) => setInputVal(+e.target.value)}
           value={inputVal}
           min={minValue}
           max={maxValue}
           step={stepValue}
         />
       )}
-      <span
+      <button
         aria-disabled
         onClick={() => {
-          inputVal < maxValue && setInputVal(inputVal + stepValue);
+          setInputVal((value) => {
+            let v = value + stepValue;
+            return v <= maxValue ? v : maxValue;
+          });
         }}
         className='w-7 h-7 hover:bg-primary-100 flex items-center justify-center text-center rounded-sm m-1 cursor-pointer'
       >
-        <AiOutlinePlus className='text-gray-400' />
-      </span>
+        <span className='text-gray-400'>
+          <AiOutlinePlus />
+        </span>
+      </button>
     </div>
   );
 };
