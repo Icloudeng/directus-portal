@@ -11,6 +11,7 @@ import {
   ST_SidedContent,
   ST_SimpleCardLink,
   ST_StreamableCard,
+  ST_TransformedImageCarousel,
   ST_Value,
 } from '@/cms/page-sections';
 import { DRTStatus } from '@/types/directus';
@@ -877,6 +878,51 @@ export const DumpHoverableMediaMenus: ST_HoverableMediaMenu[] = [
       status: 'published',
       date_created: '2022-10-26T13:00:08.442Z',
       date_updated: '2022-10-26T13:34:57.775Z',
+    },
+  },
+];
+
+export const DumpTransformedImageCarousels: ST_TransformedImageCarousel[] = [
+  {
+    id: '42',
+    collection: 'ST_TransformedImageCarousels',
+    item: {
+      image: {
+        id: '63ac466c-bc63-4e23-9050-3d7a3ff05a43',
+        type: 'image/webp',
+        src: 'https://flowbite.com/docs/images/blog/image-1.jpg',
+      },
+      id: '3125b487-d1ac-45d6-94f1-b2298fa953a6',
+      status: 'published',
+      date_created: '2022-10-27T06:33:04.141Z',
+    },
+  },
+  {
+    id: '43',
+    collection: 'ST_TransformedImageCarousels',
+    item: {
+      image: {
+        id: 'f8bf372a-d571-4668-93f3-c9383341be0b',
+        type: 'image/jpeg',
+        src: 'https://flowbite.com/docs/images/blog/image-2.jpg',
+      },
+      id: '39b5fbb9-3d1e-405f-802f-88408028b425',
+      status: 'published',
+      date_created: '2022-10-27T06:33:04.185Z',
+    },
+  },
+  {
+    id: '44',
+    collection: 'ST_TransformedImageCarousels',
+    item: {
+      image: {
+        id: 'c3f19c78-7a77-4c06-bc54-82c4599f40f9',
+        type: 'image/jpeg',
+        src: 'https://flowbite.com/docs/images/blog/image-3.jpg',
+      },
+      id: '098bb1be-7939-4392-96b4-bf70ce1a7b81',
+      status: 'published',
+      date_created: '2022-10-27T06:33:04.220Z',
     },
   },
 ];

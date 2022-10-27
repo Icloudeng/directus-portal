@@ -14,6 +14,7 @@ import {
   DumpSidedContent,
   DumpSimpleCardLink,
   DumpStreamableCards,
+  DumpTransformedImageCarousels,
   DumpValue,
 } from '@/models/dumps-templates';
 
@@ -130,6 +131,15 @@ export default function Page() {
         <h3 className='my-9'>ST HoverableMediaMenus</h3>
         <Sts.ST_HoverableMediaMenusFC
           items={DumpHoverableMediaMenus}
+          sectionClass=''
+          sharedObject={{}}
+        />
+      </section>
+
+      <section className='py-14'>
+        <h3 className='my-9 x-container'>ST TransformedImageCarousels</h3>
+        <Sts.ST_TransformedImageCarouselsFC
+          items={DumpTransformedImageCarousels}
           sectionClass=''
           sharedObject={{}}
         />
