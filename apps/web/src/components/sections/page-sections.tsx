@@ -123,6 +123,7 @@ function PageSection({
   return (
     <>
       {(style || bg_color) && (
+        //@ts-ignore
         <style key={styleId} jsx global>
           {`
             ${fc(

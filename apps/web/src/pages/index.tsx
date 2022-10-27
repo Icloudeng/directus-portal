@@ -19,7 +19,6 @@ import { FastServer } from '@/components/sections/fast-server/FastServer';
 import { TrustMatters } from '@/components/sections/trust-mutters/TrustMatters';
 import { ImageGallery } from '@/components/sections/image-gallery/ImageGallery';
 import { BecomePartner } from '@/components/sections/become-partner/BecomePartner';
-import { ImageCardScroll } from '@/components/sections/image-card-scroll/ImageCardScroll';
 
 export default function HomePage(props: Partial<QHomeHeroQueriesType>) {
   const { HomeHero, HomeSections } = props;
@@ -82,10 +81,6 @@ export default function HomePage(props: Partial<QHomeHeroQueriesType>) {
 
       <section className='py-10 bg-white'>
         <BecomePartner />
-      </section>
-
-      <section className='py-10 bg-white'>
-        <ImageCardScroll />
       </section>
 
       {HomeSections && <PageSections sections={HomeSections.sections} />}

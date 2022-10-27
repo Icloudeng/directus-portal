@@ -55,5 +55,6 @@ export const CMS_MODELS = {
     st_media_tabs: 'ST_MediaTabs',
     st_streamable_cards: 'ST_StreamableCards',
     st_hoverable_media_menus: 'ST_HoverableMediaMenus',
+    st_transformed_image_carousels: 'ST_TransformedImageCarousels',
   } as const,
 };
