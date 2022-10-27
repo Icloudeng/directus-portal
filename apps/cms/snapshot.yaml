@@ -3529,12 +3529,25 @@ fields:
       field: platforms
       group: null
       hidden: false
-      interface: tags
+      interface: list
       note: null
       options:
-        alphabetize: true
-        capitalization: auto-format
-        placeholder: Platforms List
+        fields:
+          - field: platform
+            name: platform
+            type: string
+            meta:
+              field: platform
+              width: full
+              type: string
+              interface: input-autocomplete-api
+              note: Research the Platform
+              options:
+                url: /searchable/platforms?q={{value}}
+                rate: 200
+                textPath: name
+                valuePath: name
+                placeholder: null
       readonly: false
       required: true
       sort: 3
