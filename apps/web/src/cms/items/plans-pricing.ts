@@ -28,6 +28,7 @@ const queries = jsonToGraphQLQuery({
       cpu_cost_hour: true,
       ssd: true,
       ssd_cost_hour: true,
+      monthly_reduction: true,
       ...qWithStatus,
     },
     fixed_plans: {

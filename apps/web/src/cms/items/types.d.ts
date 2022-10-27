@@ -192,6 +192,7 @@ export type MDFlexiblePlan = {
   cpu_cost_hour: number;
   ssd: number;
   ssd_cost_hour: number;
+  monthly_reduction: number;
 } & DRTStatus;
 
 export type MDFixedPlan = {
