@@ -174,6 +174,11 @@ const q_ST: Query = {
     }),
     ...qWithStatus,
   },
+  [section_templates.st_transformed_image_carousels]: {
+    __typeName: section_templates.st_transformed_image_carousels,
+    image: qWithQueryAsset({ type: true }),
+    ...qWithStatus,
+  },
 };
 
 type PSQuery = {
@@ -418,6 +423,11 @@ export type ST_HoverableMediaMenu = MDHasM2A<
   ST_V<'st_hoverable_media_menus'>
 >;
 
+export type ST_TransformedImageCarousel = MDHasM2A<
+  { image: MDWithAsset } & DRTStatus,
+  ST_V<'st_transformed_image_carousels'>
+>;
+
 // strean_direction
 //------------------- Page Sections --------------------//
 export type PS_Content =
@@ -435,7 +445,8 @@ export type PS_Content =
   | ST_Platform
   | ST_MediaTab
   | ST_StreamableCard
-  | ST_HoverableMediaMenu;
+  | ST_HoverableMediaMenu
+  | ST_TransformedImageCarousel;
 
 export type M2APageSection = MDHasM2A<
   {
