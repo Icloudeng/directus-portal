@@ -8,7 +8,7 @@ type Params = Parameters<Select>;
 type Props = {
   onChange?: (value: any) => void;
   initialValue?: any;
-} & Pick<Params[0], 'isMulti' | 'isSearchable' | 'options'>;
+} & Partial<Pick<Params[0], 'isMulti' | 'isSearchable' | 'options'>>;
 
 export function HasSvgOrImage({
   icon,

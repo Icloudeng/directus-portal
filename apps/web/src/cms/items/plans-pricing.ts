@@ -37,6 +37,8 @@ const queries = jsonToGraphQLQuery({
         name: true,
       }),
       platforms: true,
+      type: true,
+      monthly_reduction: true,
       ram: true,
       cpu: true,
       ssd: true,

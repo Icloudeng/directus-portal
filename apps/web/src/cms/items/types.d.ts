@@ -195,7 +195,9 @@ export type MDFlexiblePlan = {
 } & DRTStatus;
 
 export type MDFixedPlan = {
-  platforms: string[];
+  platforms: { platform: string }[];
+  type: 'basic' | 'extended' | 'pro';
+  monthly_reduction: number;
   ram: number;
   cpu: number;
   ssd: number;
