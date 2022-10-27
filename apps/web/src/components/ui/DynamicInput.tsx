@@ -45,7 +45,7 @@ export const DynamicInput = ({
       <button
         onClick={() => {
           setInputVal((value) => {
-            let v = value - stepValue;
+            const v = value - stepValue;
             return v >= minValue ? v : minValue;
           });
         }}
@@ -76,7 +76,7 @@ export const DynamicInput = ({
         aria-disabled
         onClick={() => {
           setInputVal((value) => {
-            let v = value + stepValue;
+            const v = value + stepValue;
             return v <= maxValue ? v : maxValue;
           });
         }}
