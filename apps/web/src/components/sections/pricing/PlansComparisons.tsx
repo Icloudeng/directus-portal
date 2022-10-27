@@ -54,25 +54,25 @@ export const PlansComparisons = ({
   );
 };
 
+const hasCheck = (type: string) => type === 'checked' || type === 'unchecked';
 function Comparison({ item }: { item: MDPlansComparison }) {
   const { translations, basic, extended, pro } = useMut(item);
-  const hasCheck = (type: string) => type === 'checked' || type === 'unchecked';
   return (
     <tr>
-      <td className='py-2 pr-2 text-xs leading-6 whitespace-nowrap border-b border-slate-200'>
+      <td className='min-w-[5rem] py-2 pr-2 text-xs leading-6 whitespace-nowrap border-b border-slate-200'>
         {translations?.name}
       </td>
-      <td className='py-2 pr-2 text-xs text-center leading-6 whitespace-nowrap border-b border-slate-200'>
+      <td className='min-w-[5rem] py-2 pr-2 text-xs text-center leading-6 whitespace-nowrap border-b border-slate-200'>
         {hasCheck(basic) && <CheckCircle isChecked={basic === 'checked'} />}
         {!hasCheck(basic) && <span>{basic}</span>}
       </td>
-      <td className='py-2 pr-2 text-xs text-center leading-6 whitespace-nowrap border-b border-slate-200'>
+      <td className='min-w-[5rem] py-2 pr-2 text-xs text-center leading-6 whitespace-nowrap border-b border-slate-200'>
         {hasCheck(extended) && (
           <CheckCircle isChecked={extended === 'checked'} />
         )}
         {!hasCheck(extended) && <span>{extended}</span>}
       </td>
-      <td className='py-2 pr-2 text-xs text-center leading-6 whitespace-nowrap border-b border-slate-200'>
+      <td className='min-w-[5rem] py-2 pr-2 text-xs text-center leading-6 whitespace-nowrap border-b border-slate-200'>
         {hasCheck(pro) && <CheckCircle isChecked={pro === 'checked'} />}
         {!hasCheck(pro) && <span>{pro}</span>}
       </td>
