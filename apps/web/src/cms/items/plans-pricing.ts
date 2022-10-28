@@ -28,6 +28,7 @@ const queries = jsonToGraphQLQuery({
       cpu_cost_hour: true,
       ssd: true,
       ssd_cost_hour: true,
+      monthly_reduction: true,
       ...qWithStatus,
     },
     fixed_plans: {
@@ -37,6 +38,8 @@ const queries = jsonToGraphQLQuery({
         name: true,
       }),
       platforms: true,
+      type: true,
+      monthly_reduction: true,
       ram: true,
       cpu: true,
       ssd: true,
@@ -64,17 +67,6 @@ const queries = jsonToGraphQLQuery({
       default: true,
       ...qWithStatus,
     },
-    platforms: {
-      __aliasFor: plans_pricing.platforms,
-      __args: qWithPublishedStatus(),
-      name: true,
-      icon_svg: true,
-      icon: qWithQueryAsset(),
-      ram: true,
-      cpu: true,
-      ssd: true,
-      ...qWithStatus,
-    },
   },
 });
 
@@ -87,11 +79,8 @@ export async function getGqlPlansPricingQueries() {
     .catch(console.error);
 
   if (res?.data && access_token) {
-    const { machine_templates, platforms } = res.data;
+    const { machine_templates } = res.data;
     machine_templates.forEach((item) => {
-      qWithAsset(access_token, item, 'icon');
-    });
-    platforms?.forEach((item) => {
       qWithAsset(access_token, item, 'icon');
     });
   }

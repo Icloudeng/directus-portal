@@ -11,13 +11,8 @@ type Props = {
 export function HasPlansPricing({ contents }: Props) {
   if (!contents) return <></>;
 
-  const {
-    plans_comparisons,
-    fixed_plans,
-    flexible_plans,
-    machine_templates,
-    platforms,
-  } = contents;
+  const { plans_comparisons, fixed_plans, flexible_plans, machine_templates } =
+    contents;
 
   return (
     <>
@@ -26,7 +21,6 @@ export function HasPlansPricing({ contents }: Props) {
           <FlexiblePlans
             flexible_plans={flexible_plans}
             machine_templates={machine_templates || []}
-            platforms={platforms || []}
           />
         </div>
       )}

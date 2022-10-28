@@ -3321,7 +3321,7 @@ fields:
         step: 0.01
       readonly: false
       required: true
-      sort: 7
+      sort: 9
       special: null
       translations: null
       validation: null
@@ -3365,7 +3365,7 @@ fields:
         placeholder: Computer CPU (Core)
       readonly: false
       required: true
-      sort: 5
+      sort: 7
       special: null
       translations: null
       validation: null
@@ -3407,7 +3407,7 @@ fields:
       options: null
       readonly: true
       required: false
-      sort: 11
+      sort: 14
       special:
         - date-created
       translations: null
@@ -3450,7 +3450,7 @@ fields:
       options: null
       readonly: true
       required: false
-      sort: 13
+      sort: 16
       special:
         - date-updated
       translations: null
@@ -3520,6 +3520,91 @@ fields:
       table: FixedPlans
     type: uuid
   - collection: FixedPlans
+    field: label
+    meta:
+      collection: FixedPlans
+      conditions: null
+      display: null
+      display_options: null
+      field: label
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        trim: true
+      readonly: false
+      required: true
+      sort: 2
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: character varying
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: true
+      max_length: 255
+      name: label
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: FixedPlans
+    type: string
+  - collection: FixedPlans
+    field: monthly_reduction
+    meta:
+      collection: FixedPlans
+      conditions: null
+      display: null
+      display_options: null
+      field: monthly_reduction
+      group: null
+      hidden: false
+      interface: input
+      note: Percentage(%)
+      options:
+        max: 100
+        min: 0
+      readonly: false
+      required: true
+      sort: 10
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: integer
+      default_value: 0
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: monthly_reduction
+      numeric_precision: 32
+      numeric_scale: 0
+      schema: public
+      table: FixedPlans
+    type: integer
+  - collection: FixedPlans
     field: platforms
     meta:
       collection: FixedPlans
@@ -3529,15 +3614,28 @@ fields:
       field: platforms
       group: null
       hidden: false
-      interface: tags
+      interface: list
       note: null
       options:
-        alphabetize: true
-        capitalization: auto-format
-        placeholder: Platforms List
+        fields:
+          - field: platform
+            name: platform
+            type: string
+            meta:
+              field: platform
+              width: full
+              type: string
+              interface: input-autocomplete-api
+              note: Research the Platform
+              options:
+                url: /searchable/platforms?q={{value}}
+                rate: 200
+                textPath: name
+                valuePath: name
+                placeholder: null
       readonly: false
       required: true
-      sort: 3
+      sort: 4
       special:
         - cast-json
       translations: null
@@ -3582,7 +3680,7 @@ fields:
         placeholder: Computer RAM
       readonly: false
       required: true
-      sort: 4
+      sort: 6
       special: null
       translations: null
       validation: null
@@ -3623,7 +3721,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: 9
+      sort: 12
       special: null
       translations: null
       validation: null
@@ -3668,7 +3766,7 @@ fields:
         step: 10
       readonly: false
       required: true
-      sort: 6
+      sort: 8
       special: null
       translations: null
       validation: null
@@ -3730,7 +3828,7 @@ fields:
             value: archived
       readonly: false
       required: false
-      sort: 8
+      sort: 11
       special: null
       translations: null
       validation: null
@@ -3773,7 +3871,7 @@ fields:
         userLanguage: true
       readonly: false
       required: false
-      sort: 2
+      sort: 3
       special:
         - translations
       translations: null
@@ -3782,6 +3880,54 @@ fields:
       width: full
     schema: null
     type: alias
+  - collection: FixedPlans
+    field: type
+    meta:
+      collection: FixedPlans
+      conditions: null
+      display: null
+      display_options: null
+      field: type
+      group: null
+      hidden: false
+      interface: select-dropdown
+      note: null
+      options:
+        choices:
+          - text: Basic
+            value: basic
+          - text: Extended
+            value: extended
+          - text: Pro
+            value: pro
+      readonly: false
+      required: true
+      sort: 5
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: character varying
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: 255
+      name: type
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: FixedPlans
+    type: string
   - collection: FixedPlans
     field: user_created
     meta:
@@ -3798,7 +3944,7 @@ fields:
         template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
       readonly: true
       required: false
-      sort: 10
+      sort: 13
       special:
         - user-created
       translations: null
@@ -3841,7 +3987,7 @@ fields:
         template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
       readonly: true
       required: false
-      sort: 12
+      sort: 15
       special:
         - user-updated
       translations: null
@@ -4045,12 +4191,12 @@ fields:
       group: null
       hidden: false
       interface: input
-      note: null
+      note: Min CPU
       options:
         max: 16
         min: 1
         placeholder: Computer CPU (Core)
-      readonly: false
+      readonly: true
       required: true
       sort: 4
       special: null
@@ -4089,12 +4235,12 @@ fields:
       group: null
       hidden: false
       interface: input
-      note: null
+      note: Per CPU
       options:
         max: 50
-        min: 0.001
+        min: 0.0001
         placeholder: CPU Hourly price
-        step: 0.003
+        step: 0.0001
       readonly: false
       required: true
       sort: 5
@@ -4106,7 +4252,7 @@ fields:
     schema:
       comment: null
       data_type: numeric
-      default_value: 0.001
+      default_value: 0.0003
       foreign_key_column: null
       foreign_key_schema: null
       foreign_key_table: null
@@ -4139,7 +4285,7 @@ fields:
       options: null
       readonly: true
       required: false
-      sort: 10
+      sort: 11
       special:
         - date-created
       translations: null
@@ -4182,7 +4328,7 @@ fields:
       options: null
       readonly: true
       required: false
-      sort: 12
+      sort: 13
       special:
         - date-updated
       translations: null
@@ -4252,6 +4398,49 @@ fields:
       table: FlexiblePlans
     type: uuid
   - collection: FlexiblePlans
+    field: monthly_reduction
+    meta:
+      collection: FlexiblePlans
+      conditions: null
+      display: null
+      display_options: null
+      field: monthly_reduction
+      group: null
+      hidden: false
+      interface: input
+      note: Percentage(%)
+      options:
+        max: 100
+        min: 0
+      readonly: false
+      required: true
+      sort: 8
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: integer
+      default_value: 0
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: monthly_reduction
+      numeric_precision: 32
+      numeric_scale: 0
+      schema: public
+      table: FlexiblePlans
+    type: integer
+  - collection: FlexiblePlans
     field: ram
     meta:
       collection: FlexiblePlans
@@ -4262,12 +4451,12 @@ fields:
       group: null
       hidden: false
       interface: input
-      note: null
+      note: Min RAM
       options:
         max: 48
         min: 1
         placeholder: Computer RAM
-      readonly: false
+      readonly: true
       required: true
       sort: 2
       special: null
@@ -4306,12 +4495,12 @@ fields:
       group: null
       hidden: false
       interface: input
-      note: null
+      note: Per RAM
       options:
         max: 50
-        min: 0.001
+        min: 0.0001
         placeholder: RAM Hourly price
-        step: 0.002
+        step: 0.0001
       readonly: false
       required: true
       sort: 3
@@ -4323,7 +4512,7 @@ fields:
     schema:
       comment: null
       data_type: numeric
-      default_value: 0.001
+      default_value: 0.0001
       foreign_key_column: null
       foreign_key_schema: null
       foreign_key_table: null
@@ -4351,12 +4540,13 @@ fields:
       group: null
       hidden: false
       interface: input
-      note: null
+      note: Min SSD
       options:
         max: 1000
         min: 25
         placeholder: Computer Disk (SSD)
-      readonly: false
+        step: 15
+      readonly: true
       required: true
       sort: 6
       special: null
@@ -4366,7 +4556,7 @@ fields:
       width: half
     schema:
       comment: null
-      data_type: bigint
+      data_type: integer
       default_value: 25
       foreign_key_column: null
       foreign_key_schema: null
@@ -4379,11 +4569,11 @@ fields:
       is_unique: false
       max_length: null
       name: ssd
-      numeric_precision: 64
+      numeric_precision: 32
       numeric_scale: 0
       schema: public
       table: FlexiblePlans
-    type: bigInteger
+    type: integer
   - collection: FlexiblePlans
     field: ssd_cost_hour
     meta:
@@ -4395,12 +4585,12 @@ fields:
       group: null
       hidden: false
       interface: input
-      note: null
+      note: Per SSD
       options:
         max: 50
-        min: 0.001
+        min: 0.00001
         placeholder: Disk (SSD) Hourly price
-        step: 0.002
+        step: 0.00001
       readonly: false
       required: true
       sort: 7
@@ -4412,7 +4602,7 @@ fields:
     schema:
       comment: null
       data_type: numeric
-      default_value: 0.001
+      default_value: 0.00001
       foreign_key_column: null
       foreign_key_schema: null
       foreign_key_table: null
@@ -4465,7 +4655,7 @@ fields:
             value: archived
       readonly: false
       required: false
-      sort: 8
+      sort: 9
       special: null
       translations: null
       validation: null
@@ -4507,7 +4697,7 @@ fields:
         template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
       readonly: true
       required: false
-      sort: 9
+      sort: 10
       special:
         - user-created
       translations: null
@@ -4550,7 +4740,7 @@ fields:
         template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
       readonly: true
       required: false
-      sort: 11
+      sort: 12
       special:
         - user-updated
       translations: null
@@ -12802,7 +12992,7 @@ fields:
         placeholder: Basic Plan
       readonly: false
       required: true
-      sort: 3
+      sort: 4
       special: null
       translations: null
       validation: null
@@ -12844,7 +13034,7 @@ fields:
       options: null
       readonly: true
       required: false
-      sort: 9
+      sort: 10
       special:
         - date-created
       translations: null
@@ -12887,7 +13077,7 @@ fields:
       options: null
       readonly: true
       required: false
-      sort: 11
+      sort: 12
       special:
         - date-updated
       translations: null
@@ -12936,7 +13126,7 @@ fields:
         placeholder: Extended Plan
       readonly: false
       required: true
-      sort: 4
+      sort: 5
       special: null
       translations: null
       validation: null
@@ -13005,6 +13195,48 @@ fields:
       table: PlansComparisons
     type: uuid
   - collection: PlansComparisons
+    field: label
+    meta:
+      collection: PlansComparisons
+      conditions: null
+      display: null
+      display_options: null
+      field: label
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        trim: true
+      readonly: false
+      required: true
+      sort: 2
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: character varying
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: true
+      max_length: 255
+      name: label
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: PlansComparisons
+    type: string
+  - collection: PlansComparisons
     field: pro
     meta:
       collection: PlansComparisons
@@ -13026,7 +13258,7 @@ fields:
         placeholder: Pro Plan
       readonly: false
       required: true
-      sort: 5
+      sort: 6
       special: null
       translations: null
       validation: null
@@ -13067,7 +13299,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: 7
+      sort: 8
       special: null
       translations: null
       validation: null
@@ -13129,7 +13361,7 @@ fields:
             value: archived
       readonly: false
       required: false
-      sort: 6
+      sort: 7
       special: null
       translations: null
       validation: null
@@ -13172,7 +13404,7 @@ fields:
         userLanguage: true
       readonly: false
       required: true
-      sort: 2
+      sort: 3
       special:
         - translations
       translations: null
@@ -13197,7 +13429,7 @@ fields:
         template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
       readonly: true
       required: false
-      sort: 8
+      sort: 9
       special:
         - user-created
       translations: null
@@ -13240,7 +13472,7 @@ fields:
         template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
       readonly: true
       required: false
-      sort: 10
+      sort: 11
       special:
         - user-updated
       translations: null
@@ -14132,7 +14364,7 @@ fields:
         url: /searchable/platform-categories?q={{value}}
         valuePath: ref
       readonly: false
-      required: false
+      required: true
       sort: 4
       special: null
       translations: null
@@ -14223,7 +14455,7 @@ fields:
       options: null
       readonly: true
       required: false
-      sort: 13
+      sort: 15
       special:
         - date-created
       translations: null
@@ -14266,7 +14498,7 @@ fields:
       options: null
       readonly: true
       required: false
-      sort: 15
+      sort: 17
       special:
         - date-updated
       translations: null
@@ -14293,6 +14525,48 @@ fields:
       schema: public
       table: Platforms
     type: timestamp
+  - collection: Platforms
+    field: external_link
+    meta:
+      collection: Platforms
+      conditions: null
+      display: null
+      display_options: null
+      field: external_link
+      group: null
+      hidden: false
+      interface: boolean
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 11
+      special:
+        - cast-boolean
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      comment: null
+      data_type: boolean
+      default_value: false
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: external_link
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: Platforms
+    type: boolean
   - collection: Platforms
     field: icon
     meta:
@@ -14422,6 +14696,48 @@ fields:
       table: Platforms
     type: uuid
   - collection: Platforms
+    field: link
+    meta:
+      collection: Platforms
+      conditions: null
+      display: null
+      display_options: null
+      field: link
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        trim: true
+      readonly: false
+      required: false
+      sort: 10
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      comment: null
+      data_type: character varying
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: 255
+      name: link
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: Platforms
+    type: string
+  - collection: Platforms
     field: name
     meta:
       collection: Platforms
@@ -14456,7 +14772,7 @@ fields:
       is_generated: false
       is_nullable: true
       is_primary_key: false
-      is_unique: false
+      is_unique: true
       max_length: 255
       name: name
       numeric_precision: null
@@ -14523,7 +14839,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: 11
+      sort: 13
       special: null
       translations: null
       validation: null
@@ -14630,7 +14946,7 @@ fields:
             value: archived
       readonly: false
       required: false
-      sort: 10
+      sort: 12
       special: null
       translations: null
       validation: null
@@ -14697,7 +15013,7 @@ fields:
         template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
       readonly: true
       required: false
-      sort: 12
+      sort: 14
       special:
         - user-created
       translations: null
@@ -14740,7 +15056,7 @@ fields:
         template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
       readonly: true
       required: false
-      sort: 14
+      sort: 16
       special:
         - user-updated
       translations: null

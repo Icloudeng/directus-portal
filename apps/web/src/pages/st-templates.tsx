@@ -11,6 +11,7 @@ import {
   DumpNavAccordion,
   DumpNavTab,
   DumpPageAsideMenus,
+  DumpPlansPricing,
   DumpSidedContent,
   DumpSimpleCardLink,
   DumpStreamableCards,
@@ -140,6 +141,15 @@ export default function Page() {
         <h3 className='my-9 x-container'>ST TransformedImageCarousels</h3>
         <Sts.ST_TransformedImageCarouselsFC
           items={DumpTransformedImageCarousels}
+          sectionClass=''
+          sharedObject={{}}
+        />
+      </section>
+
+      <section className='py-14  x-container'>
+        <h3 className='my-9'>ST PlansPricing</h3>
+        <Sts.ST_PlansPricingFC
+          items={DumpPlansPricing}
           sectionClass=''
           sharedObject={{}}
         />

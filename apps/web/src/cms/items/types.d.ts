@@ -181,7 +181,6 @@ export type PlansPricingContent = {
   flexible_plans?: MDFlexiblePlan | null;
   fixed_plans?: MDFixedPlan[];
   plans_comparisons?: MDPlansComparison[];
-  platforms?: MDPlatform[];
   machine_templates: MDMachineTemplate[];
 };
 
@@ -192,10 +191,13 @@ export type MDFlexiblePlan = {
   cpu_cost_hour: number;
   ssd: number;
   ssd_cost_hour: number;
+  monthly_reduction: number;
 } & DRTStatus;
 
 export type MDFixedPlan = {
-  platforms: string[];
+  platforms: { platform: string }[];
+  type: 'basic' | 'extended' | 'pro';
+  monthly_reduction: number;
   ram: number;
   cpu: number;
   ssd: number;
@@ -230,6 +232,8 @@ export type MDPlatform = {
   ram: number;
   cpu: number;
   ssd: number;
+  link?: string;
+  external_link: boolean;
 } & MDWithTranslation<{
   description?: string;
 }> &

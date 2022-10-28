@@ -205,9 +205,6 @@ async function pageSectionWithPlansPricing<
 
       ncontent.item.plan_pricing_contents = {} as PlansPricingContent;
       plan_pricing.push('machine_templates');
-      if (plan_pricing.includes('flexible_plans')) {
-        plan_pricing.push('platforms');
-      }
       plan_pricing.forEach((key) => {
         ncontent.item.plan_pricing_contents![key] = memo_content![key] as any;
       });
