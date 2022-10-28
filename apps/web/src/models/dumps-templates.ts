@@ -3,6 +3,7 @@ import {
   ST_CardCarousel,
   ST_CardImageCarousel,
   ST_CleanHero,
+  ST_Gallery,
   ST_HoverableMediaMenu,
   ST_MediaTab,
   ST_NavAccordion,
@@ -1272,6 +1273,51 @@ export const DumpTestimonials: ST_Testimonial[] = [
       id: '7c1b9035-030f-4a15-a4af-1a8fa1fd6c2f',
       status: 'published',
       date_created: '2022-10-28T10:31:43.815Z',
+    },
+  },
+];
+
+export const DumpGallery: ST_Gallery[] = [
+  {
+    id: '48',
+    collection: 'ST_Gallery',
+    item: {
+      image: {
+        id: '13d96468-bb41-49b8-a3c7-5670a0a3cb2f',
+        type: 'image/webp',
+        src: 'https://flowbite.com/docs/images/blog/image-1.jpg',
+      },
+      id: 'abb9a478-c3e1-448d-8e8f-b4cc53e51631',
+      status: 'published',
+      date_created: '2022-10-28T11:40:54.609Z',
+    },
+  },
+  {
+    id: '49',
+    collection: 'ST_Gallery',
+    item: {
+      image: {
+        id: '3ebc59df-88e7-4d15-8a4c-61ba235ee004',
+        type: 'image/jpeg',
+        src: 'https://flowbite.com/docs/images/blog/image-2.jpg',
+      },
+      id: '0e5e660c-6cc4-4032-9081-fa6a80a7ec6d',
+      status: 'published',
+      date_created: '2022-10-28T11:40:54.653Z',
+    },
+  },
+  {
+    id: '50',
+    collection: 'ST_Gallery',
+    item: {
+      image: {
+        id: 'd7c60e1f-36aa-4a06-a482-3999382eea93',
+        type: 'image/jpeg',
+        src: 'https://flowbite.com/docs/images/blog/image-3.jpg',
+      },
+      id: '0a1dacdc-f431-4d39-9863-8ba867a43404',
+      status: 'published',
+      date_created: '2022-10-28T11:40:54.692Z',
     },
   },
 ];
