@@ -2752,7 +2752,7 @@ fields:
       options: null
       readonly: true
       required: false
-      sort: 13
+      sort: 14
       special:
         - date-created
       translations: null
@@ -2795,7 +2795,7 @@ fields:
       options: null
       readonly: true
       required: false
-      sort: 15
+      sort: 16
       special:
         - date-updated
       translations: null
@@ -2908,6 +2908,48 @@ fields:
       table: CompanyDetails
     type: uuid
   - collection: CompanyDetails
+    field: image
+    meta:
+      collection: CompanyDetails
+      conditions: null
+      display: null
+      display_options: null
+      field: image
+      group: null
+      hidden: false
+      interface: file-image
+      note: Company Image
+      options: null
+      readonly: false
+      required: false
+      sort: 10
+      special:
+        - file
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: directus_files
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: image
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: CompanyDetails
+    type: uuid
+  - collection: CompanyDetails
     field: logo
     meta:
       collection: CompanyDetails
@@ -2965,7 +3007,7 @@ fields:
         template: "{{social_name}}\_---\_{{status}}"
       readonly: false
       required: false
-      sort: 10
+      sort: 11
       special:
         - o2m
       translations: null
@@ -3010,7 +3052,7 @@ fields:
             value: archived
       readonly: false
       required: false
-      sort: 11
+      sort: 12
       special: null
       translations: null
       validation: null
@@ -3120,7 +3162,7 @@ fields:
         template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
       readonly: true
       required: false
-      sort: 12
+      sort: 13
       special:
         - user-created
       translations: null
@@ -3163,7 +3205,7 @@ fields:
         template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
       readonly: true
       required: false
-      sort: 14
+      sort: 15
       special:
         - user-updated
       translations: null
@@ -29193,6 +29235,28 @@ relations:
       on_delete: NO ACTION
       on_update: NO ACTION
       table: Addresses
+  - collection: CompanyDetails
+    field: image
+    meta:
+      junction_field: null
+      many_collection: CompanyDetails
+      many_field: image
+      one_allowed_collections: null
+      one_collection: directus_files
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    related_collection: directus_files
+    schema:
+      column: image
+      constraint_name: companydetails_image_foreign
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: directus_files
+      on_delete: SET NULL
+      on_update: NO ACTION
+      table: CompanyDetails
   - collection: CompanyDetails
     field: logo
     meta:

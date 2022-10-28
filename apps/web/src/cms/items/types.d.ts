@@ -101,6 +101,7 @@ type MDCompanyDetailField = {
   email?: string;
   website?: string;
   logo?: MDWithAsset;
+  image?: MDWithAsset;
   addresses: MDAddress[];
   socials: MDSocial[];
   currency: '$' | '€' | string;
