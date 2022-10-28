@@ -24,11 +24,11 @@ export const FixedPlans = ({ fixed_plans, machine_templates }: Props) => {
   const defaultM = template_options[defaultValueMT] || null;
 
   const [machine, setMachine] = useState<MDMachineTemplate | null>(
-    defaultM?.value || null
+    defaultM?.mt || null
   );
 
   const onChangeSelect = useCallback((value: typeof template_options[0]) => {
-    setMachine(value.value);
+    setMachine(value.mt);
   }, []);
 
   return (

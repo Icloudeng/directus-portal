@@ -67,19 +67,6 @@ const queries = jsonToGraphQLQuery({
       default: true,
       ...qWithStatus,
     },
-    platforms: {
-      __aliasFor: plans_pricing.platforms,
-      __args: qWithPublishedStatus(),
-      name: true,
-      icon_svg: true,
-      icon: qWithQueryAsset(),
-      ram: true,
-      cpu: true,
-      ssd: true,
-      link: true,
-      external_link: true,
-      ...qWithStatus,
-    },
   },
 });
 
@@ -92,11 +79,8 @@ export async function getGqlPlansPricingQueries() {
     .catch(console.error);
 
   if (res?.data && access_token) {
-    const { machine_templates, platforms } = res.data;
+    const { machine_templates } = res.data;
     machine_templates.forEach((item) => {
-      qWithAsset(access_token, item, 'icon');
-    });
-    platforms?.forEach((item) => {
       qWithAsset(access_token, item, 'icon');
     });
   }

@@ -25,13 +25,13 @@ export const CMS_MODELS = {
     pages: 'Pages',
     home_hero: 'HomeHero',
     home_sections: 'HomeSections',
+    platforms: 'Platforms',
   } as const),
   plans_pricing: {
     flexible_plans: 'FlexiblePlans',
     fixed_plans: 'FixedPlans',
     plans_comparisons: 'PlansComparisons',
     machine_templates: 'MachineTemplates',
-    platforms: 'Platforms',
   } as const,
   generics: {
     page_sections: 'PageSections',

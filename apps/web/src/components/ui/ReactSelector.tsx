@@ -1,6 +1,7 @@
 import { MDWithAsset } from '@/types/directus';
 import React, { useState } from 'react';
 import Select from 'react-select';
+import AsyncSelect from 'react-select/async';
 import { HasSvgText } from './HasSvgText';
 
 type Params = Parameters<Select>;
@@ -26,6 +27,29 @@ export function HasSvgOrImage({
   );
 }
 
+const customStyles = {
+  control: (provided: any, state: any) => ({
+    ...provided,
+    width: 'w-full',
+    minHeight: '2.9rem',
+    borderRadius: '2px',
+    border: state.isFocused && '1px solid var(--color-primary-400)',
+    ':hover': {
+      border: '1px solid var(--color-primary-500)',
+    },
+  }),
+  singleValue: (provided: any, state: any) => {
+    const opacity = state.isDisabled ? 0.5 : 1;
+    const transition = 'opacity 300ms';
+    return { ...provided, opacity, transition };
+  },
+  option: (provided: any, state: any) => ({
+    ...provided,
+    backgroundColor: state.isSelected && 'var(--color-primary-400)',
+    cursor: 'pointer',
+  }),
+};
+
 export const ReactSelector = ({ onChange, initialValue, ...props }: Props) => {
   const [selectedOption, setSelectedOption] = useState<any>(
     initialValue || null
@@ -35,29 +59,6 @@ export const ReactSelector = ({ onChange, initialValue, ...props }: Props) => {
   const handleChange = (selectedOption: any) => {
     setSelectedOption(selectedOption);
     onChange && onChange(selectedOption);
-  };
-
-  const customStyles = {
-    control: (provided: any, state: any) => ({
-      ...provided,
-      width: 'w-full',
-      minHeight: '2.9rem',
-      borderRadius: '2px',
-      border: state.isFocused && '1px solid var(--color-primary-400)',
-      ':hover': {
-        border: '1px solid var(--color-primary-500)',
-      },
-    }),
-    singleValue: (provided: any, state: any) => {
-      const opacity = state.isDisabled ? 0.5 : 1;
-      const transition = 'opacity 300ms';
-      return { ...provided, opacity, transition };
-    },
-    option: (provided: any, state: any) => ({
-      ...provided,
-      backgroundColor: state.isSelected && 'var(--color-primary-400)',
-      cursor: 'pointer',
-    }),
   };
 
   return (
@@ -73,3 +74,25 @@ export const ReactSelector = ({ onChange, initialValue, ...props }: Props) => {
     </div>
   );
 };
+
+type AsyncParams = Parameters<AsyncSelect>;
+
+type AsyncProps = {
+  onChange?: (value: any) => void;
+  initialValue?: any;
+} & AsyncParams[0];
+
+export function ReactAsyncSelect({ ...props }: AsyncProps) {
+  const id = React.useId();
+
+  return (
+    <AsyncSelect
+      instanceId={id}
+      styles={{
+        ...customStyles,
+        container: (styles) => ({ ...styles, width: '100%' }),
+      }}
+      {...props}
+    />
+  );
+}

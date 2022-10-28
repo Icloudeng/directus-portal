@@ -1,19 +1,22 @@
 import Button from '@/components/ui/buttons/Button';
 import { DynamicInput } from '@/components/ui/DynamicInput';
-import { ReactSelector } from '@/components/ui/ReactSelector';
+import { ReactAsyncSelect, ReactSelector } from '@/components/ui/ReactSelector';
 import { useSharedData } from '@/store';
 import { useTranslation } from 'next-i18next';
+import { useCallback } from 'react';
 import {
   FlexiblePlansProps,
   getMachineTemplateOptions,
   getPlatformOptions,
   useFlexiblePlans,
 } from './hooks';
+import { FiExternalLink } from 'react-icons/fi';
+import throttle from 'lodash/throttle';
+import { MDMachineTemplate, MDPlatform } from '@/cms/items/types';
 
 export const FlexiblePlans = ({
   flexible_plans,
   machine_templates,
-  platforms,
 }: FlexiblePlansProps) => {
   const { t } = useTranslation();
   const { CompanyDetails } = useSharedData();
@@ -32,16 +35,19 @@ export const FlexiblePlans = ({
     onCpusChange,
     onRamsChange,
     onSsdsChange,
-    hourly_cost,
     onMtChange,
+    onPlatformsSelectChange,
+    hourly_cost,
     true_monthly_cost,
     monthly_cost,
   } = useFlexiblePlans({
     flexible_plans,
-    defaultMT: defaultMT?.value || null,
+    defaultMT: defaultMT?.mt || null,
   });
 
-  const platforms_options = getPlatformOptions(platforms);
+  const onMtChangeV = useCallback(({ mt }: { mt: MDMachineTemplate }) => {
+    onMtChange(mt);
+  }, []);
 
   return (
     <div className='section__bock max-w-[90vw] mx-auto'>
@@ -56,19 +62,23 @@ export const FlexiblePlans = ({
                 </label>
                 <ReactSelector
                   initialValue={defaultMT}
-                  onChange={({ value }) => onMtChange(value)}
+                  onChange={onMtChangeV}
                   options={template_options}
                 />
               </div>
-              <div className='calculator__form-field flex items-center'>
-                <label className='text-xs xs:text-sm min-w-[5rem] xs:min-w-[7rem] sd:min-w-[10rem]'>
+
+              <div className='calculator__form-field custom-select flex items-center'>
+                <a
+                  href='#'
+                  target={'_blank'}
+                  className='text-xs xs:text-sm inline-flex items-center min-w-[5rem] xs:min-w-[7rem] sd:min-w-[10rem]'
+                >
                   {t('Platforms')}
-                </label>
-                <ReactSelector
-                  isSearchable
-                  isMulti
-                  options={platforms_options}
-                />
+                  <span className='ml-1'>
+                    <FiExternalLink />
+                  </span>
+                </a>
+                <PlatformsSelect onChange={onPlatformsSelectChange} />
               </div>
               <div className='calculator__form-field flex items-center'>
                 <label className='text-xs xs:text-sm min-w-[5rem] xs:min-w-[7rem] sd:min-w-[10rem]'>
@@ -129,15 +139,15 @@ export const FlexiblePlans = ({
               <div className='calc-price flex flex-col gap-3'>
                 <h2>
                   {currency} {monthly_cost}{' '}
-                  <span className='text-sm font-normal'>/mo</span>
+                  <span className='text-sm font-normal'>/{t('mo')}</span>
                 </h2>
                 {monthly_cost !== true_monthly_cost && (
                   <span className='opacity-60 line-through text-sm'>
-                    {currency} {true_monthly_cost} /mo
+                    {currency} {true_monthly_cost} /{t('mo')}
                   </span>
                 )}
                 <span className='price-hr'>
-                  {currency} {hourly_cost}/hr
+                  {currency} {hourly_cost}/{t('hr')}
                 </span>
               </div>
               <div className='ss:mt-auto'>
@@ -155,3 +165,36 @@ export const FlexiblePlans = ({
     </div>
   );
 };
+
+function PlatformsSelect({
+  onChange,
+}: {
+  onChange?: (platforms: MDPlatform[]) => any;
+}) {
+  const loadDatas = useCallback(async (inputValue: string) => {
+    const platforms = await fetch(`/api/platforms?q=${inputValue}`)
+      .then((res) => res.json())
+      .catch(console.error);
+    if (!platforms) return [];
+
+    return getPlatformOptions(platforms);
+  }, []);
+
+  const usePlatformChangeV = useCallback(
+    (values: any) => {
+      const $values = values as { platform: MDPlatform }[];
+      onChange && onChange($values.map((v) => v.platform));
+    },
+    [onChange]
+  );
+
+  return (
+    <ReactAsyncSelect
+      cacheOptions
+      isMulti
+      onChange={usePlatformChangeV}
+      loadOptions={throttle(loadDatas, 200)}
+      defaultOptions
+    />
+  );
+}

@@ -4,13 +4,19 @@ import {
   MDPlatform,
 } from '@/cms/items/types';
 import { HasSvgOrImage } from '@/components/ui/ReactSelector';
-import { useCallback, useState } from 'react';
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 import round from 'lodash/round';
+import cloneDeep from 'lodash/cloneDeep';
 
 export type FlexiblePlansProps = {
   flexible_plans: MDFlexiblePlan;
   machine_templates: MDMachineTemplate[];
-  platforms: MDPlatform[];
 };
 
 const g_options = {
@@ -50,7 +56,7 @@ export const useFlexiblePlans = ({ defaultMT, flexible_plans }: Params) => {
     monthly_reduction,
   } = flexible_plans;
 
-  const [options, setOptions] = useState({
+  const defaultOption = useRef({
     ram: {
       ...g_options.ram,
       minValue: ram,
@@ -65,7 +71,10 @@ export const useFlexiblePlans = ({ defaultMT, flexible_plans }: Params) => {
     },
   });
 
+  const [options, setOptions] = useState(defaultOption.current);
+
   const [mt, setMt] = useState(defaultMT);
+  const [platforms, setPlatforms] = useState<MDPlatform[]>([]);
 
   const [cpus, setCpus] = useState(cpu);
   const [rams, setRams] = useState(ram);
@@ -79,6 +88,36 @@ export const useFlexiblePlans = ({ defaultMT, flexible_plans }: Params) => {
     (value: MDMachineTemplate) => setMt(value),
     []
   );
+
+  const onPlatformsSelectChange = useCallback(
+    (values: MDPlatform[]) => setPlatforms(values),
+    []
+  );
+
+  useEffect(() => {
+    if (platforms.length === 0) {
+      setOptions(defaultOption.current);
+      return;
+    }
+    const $options = cloneDeep(defaultOption.current);
+    const newOptions = platforms.reduce((acc, platform) => {
+      const { ram, ssd, cpu } = acc;
+      if (platform.cpu > cpu.minValue) {
+        cpu.minValue = platform.cpu;
+      }
+
+      if (platform.ssd > ssd.minValue) {
+        ssd.minValue = platform.ssd;
+      }
+
+      if (platform.ram > ram.minValue) {
+        ram.minValue = platform.ram;
+      }
+      return acc;
+    }, $options);
+
+    setOptions(newOptions);
+  }, [platforms]);
 
   const $cpu_cost = cpu_cost_hour * cpus;
   const $ram_cost = ram_cost_hour * rams;
@@ -99,6 +138,7 @@ export const useFlexiblePlans = ({ defaultMT, flexible_plans }: Params) => {
     onRamsChange,
     onSsdsChange,
     onMtChange,
+    onPlatformsSelectChange,
     hourly_cost: round($hourly_cost, precision),
     true_monthly_cost: round($true_monthly_cost, precision - 1),
     monthly_cost: round($monthly_cost, precision - 1),
@@ -108,17 +148,18 @@ export const useFlexiblePlans = ({ defaultMT, flexible_plans }: Params) => {
 export function getMachineTemplateOptions(
   machine_templates: MDMachineTemplate[]
 ) {
-  const options = machine_templates.map((tm) => {
+  const options = machine_templates.map((mt) => {
     return {
       label: (
         <>
-          {(tm.icon || tm.icon_svg) && (
-            <HasSvgOrImage icon={tm.icon} icon_svg={tm.icon_svg} />
+          {(mt.icon || mt.icon_svg) && (
+            <HasSvgOrImage icon={mt.icon} icon_svg={mt.icon_svg} />
           )}
-          <span>{tm.name}</span>
+          <span>{mt.name}</span>
         </>
       ),
-      value: tm,
+      value: mt.id,
+      mt,
     };
   });
 
@@ -131,19 +172,18 @@ export function getMachineTemplateOptions(
 }
 
 export function getPlatformOptions(platforms: MDPlatform[]) {
-  const options = platforms.map((tm) => {
+  return platforms.map((platform) => {
     return {
       label: (
-        <>
-          {(tm.icon || tm.icon_svg) && (
-            <HasSvgOrImage icon={tm.icon} icon_svg={tm.icon_svg} />
+        <React.Fragment key={platform.id}>
+          {(platform.icon || platform.icon_svg) && (
+            <HasSvgOrImage icon={platform.icon} icon_svg={platform.icon_svg} />
           )}
-          <span>{tm.name}</span>
-        </>
+          <span>{platform.name}</span>
+        </React.Fragment>
       ),
-      value: tm,
+      value: platform.id,
+      platform,
     };
   });
-
-  return options;
 }

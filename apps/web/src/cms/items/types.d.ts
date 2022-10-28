@@ -181,7 +181,6 @@ export type PlansPricingContent = {
   flexible_plans?: MDFlexiblePlan | null;
   fixed_plans?: MDFixedPlan[];
   plans_comparisons?: MDPlansComparison[];
-  platforms?: MDPlatform[];
   machine_templates: MDMachineTemplate[];
 };
 
