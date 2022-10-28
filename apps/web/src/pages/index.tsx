@@ -14,7 +14,6 @@ import Seo from '@/components/Seo';
 
 import { getGqlHomeQueries, QHomeHeroQueriesType } from '@/cms/items';
 import { getServerSideTranslations } from '@/utils/server-translation';
-import { ClientReview } from '@/components/sections/clients-review/ClientReview';
 import { FastServer } from '@/components/sections/fast-server/FastServer';
 import { TrustMatters } from '@/components/sections/trust-mutters/TrustMatters';
 import { ImageGallery } from '@/components/sections/image-gallery/ImageGallery';
@@ -61,10 +60,6 @@ export default function HomePage(props: Partial<QHomeHeroQueriesType>) {
 
       <section className='py-10 bg-[#f5f7fa]'>
         <JobsCreation />
-      </section>
-
-      <section className='py-10 bg-white'>
-        <ClientReview />
       </section>
 
       <section className='py-10 bg-[#f5f7fa]'>

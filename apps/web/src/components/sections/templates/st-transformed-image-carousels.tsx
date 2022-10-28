@@ -27,7 +27,7 @@ export function ST_TransformedImageCarouselsFC({
 
   return (
     <div className='w-full relative h-full'>
-      <div className='absolute inset-0 x-container-fluid mx-auto ss:px-12'>
+      <div className='absolute inset-0  mx-auto px-20'>
         <div className='relative w-full h-full'>
           <PrevButton enabled={prevBtnEnabled} onClick={scrollPrev} />
           <NextButton enabled={nextBtnEnabled} onClick={scrollNext} />

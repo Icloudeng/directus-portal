@@ -22,7 +22,7 @@ const { section_templates, generics } = CMS_MODELS;
 const { page_sections_categories } = generics;
 
 type Query = {
-  [k in ST_Vls]: { __typeName: k; [x: string]: unknown };
+  [k in ST_Vls]: { __typeName: k; [x: string]: unknown } & typeof qWithStatus;
 };
 
 const q_ST: Query = {
@@ -177,6 +177,16 @@ const q_ST: Query = {
   [section_templates.st_transformed_image_carousels]: {
     __typeName: section_templates.st_transformed_image_carousels,
     image: qWithQueryAsset({ type: true }),
+    ...qWithStatus,
+  },
+  [section_templates.st_testimonials]: {
+    __typeName: section_templates.st_testimonials,
+    client_name: true,
+    client_post: true,
+    image: qWithQueryAsset({ type: true }),
+    ...qWithTranslations({
+      review_text: true,
+    }),
     ...qWithStatus,
   },
 };
@@ -428,6 +438,18 @@ export type ST_TransformedImageCarousel = MDHasM2A<
   ST_V<'st_transformed_image_carousels'>
 >;
 
+export type ST_Testimonial = MDHasM2A<
+  {
+    client_name: string;
+    client_post: string;
+    image?: MDWithAsset;
+  } & MDWithTranslation<{
+    review_text: string;
+  }> &
+    DRTStatus,
+  ST_V<'st_testimonials'>
+>;
+
 // strean_direction
 //------------------- Page Sections --------------------//
 export type PS_Content =
@@ -446,7 +468,8 @@ export type PS_Content =
   | ST_MediaTab
   | ST_StreamableCard
   | ST_HoverableMediaMenu
-  | ST_TransformedImageCarousel;
+  | ST_TransformedImageCarousel
+  | ST_Testimonial;
 
 export type M2APageSection = MDHasM2A<
   {

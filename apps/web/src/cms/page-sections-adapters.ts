@@ -23,7 +23,7 @@ const {
   },
 } = CMS_MODELS;
 
-const { st_media_tabs, st_hoverable_media_menus } = section_templates;
+const { st_media_tabs, st_testimonials } = section_templates;
 
 export async function pageSectionsAdapters<
   T extends { [x: string]: any; sections: M2APageSection[] }
@@ -139,6 +139,9 @@ function pageSectionsWithAssets(
       switch (st.collection) {
         case st_media_tabs:
           qWithAssets(access_token, st.item.translations, 'media');
+          break;
+        case st_testimonials:
+          qWithAsset(access_token, st.item, 'image', [71, 71]);
           break;
         default:
           // Actually all templates modeles uses image as default key for assets
