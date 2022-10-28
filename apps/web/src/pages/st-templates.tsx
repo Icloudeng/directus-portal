@@ -15,6 +15,7 @@ import {
   DumpSidedContent,
   DumpSimpleCardLink,
   DumpStreamableCards,
+  DumpTestimonials,
   DumpTransformedImageCarousels,
   DumpValue,
 } from '@/models/dumps-templates';
@@ -150,6 +151,15 @@ export default function Page() {
         <h3 className='my-9'>ST PlansPricing</h3>
         <Sts.ST_PlansPricingFC
           items={DumpPlansPricing}
+          sectionClass=''
+          sharedObject={{}}
+        />
+      </section>
+
+      <section className='py-14  x-container'>
+        <h3 className='my-9'>ST Testimonials</h3>
+        <Sts.ST_TestimonialsFC
+          items={DumpTestimonials}
           sectionClass=''
           sharedObject={{}}
         />
