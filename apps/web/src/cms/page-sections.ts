@@ -189,6 +189,11 @@ const q_ST: Query = {
     }),
     ...qWithStatus,
   },
+  [section_templates.st_gallery]: {
+    __typeName: section_templates.st_gallery,
+    image: qWithQueryAsset({ type: true }),
+    ...qWithStatus,
+  },
 };
 
 type PSQuery = {
@@ -450,6 +455,11 @@ export type ST_Testimonial = MDHasM2A<
   ST_V<'st_testimonials'>
 >;
 
+export type ST_Gallery = MDHasM2A<
+  { image: MDWithAsset } & DRTStatus,
+  ST_V<'st_gallery'>
+>;
+
 // strean_direction
 //------------------- Page Sections --------------------//
 export type PS_Content =
@@ -469,7 +479,8 @@ export type PS_Content =
   | ST_StreamableCard
   | ST_HoverableMediaMenu
   | ST_TransformedImageCarousel
-  | ST_Testimonial;
+  | ST_Testimonial
+  | ST_Gallery;
 
 export type M2APageSection = MDHasM2A<
   {
