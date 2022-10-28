@@ -194,6 +194,16 @@ const q_ST: Query = {
     image: qWithQueryAsset({ type: true }),
     ...qWithStatus,
   },
+  [section_templates.st_grouped_logos]: {
+    __typeName: section_templates.st_grouped_logos,
+    name: true,
+    image: qWithQueryAsset({
+      type: true,
+      width: true,
+      height: true,
+    }),
+    ...qWithStatus,
+  },
 };
 
 type PSQuery = {
@@ -460,6 +470,14 @@ export type ST_Gallery = MDHasM2A<
   ST_V<'st_gallery'>
 >;
 
+export type ST_GroupedLogo = MDHasM2A<
+  {
+    image: MDWithAsset;
+    name?: string;
+  } & DRTStatus,
+  ST_V<'st_grouped_logos'>
+>;
+
 // strean_direction
 //------------------- Page Sections --------------------//
 export type PS_Content =
@@ -480,7 +498,8 @@ export type PS_Content =
   | ST_HoverableMediaMenu
   | ST_TransformedImageCarousel
   | ST_Testimonial
-  | ST_Gallery;
+  | ST_Gallery
+  | ST_GroupedLogo;
 
 export type M2APageSection = MDHasM2A<
   {

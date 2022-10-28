@@ -58,5 +58,6 @@ export const CMS_MODELS = {
     st_transformed_image_carousels: 'ST_TransformedImageCarousels',
     st_testimonials: 'ST_Testimonials',
     st_gallery: 'ST_Gallery',
+    st_grouped_logos: 'ST_GroupedLogos',
   } as const,
 };
