@@ -7,6 +7,7 @@ import {
   DumpCardImageCarousel,
   DumpCleanHero,
   DumpGallery,
+  DumpGroupedLogos,
   DumpHoverableMediaMenus,
   DumpMediaTabs,
   DumpNavAccordion,
@@ -170,6 +171,15 @@ export default function Page() {
         <h3 className='my-9'>ST Gallery</h3>
         <Sts.ST_GalleryFC
           items={DumpGallery}
+          sectionClass=''
+          sharedObject={{}}
+        />
+      </section>
+
+      <section className='py-14  x-container'>
+        <h3 className='my-9'>ST GroupedLogos</h3>
+        <Sts.ST_GroupedLogosFC
+          items={DumpGroupedLogos}
           sectionClass=''
           sharedObject={{}}
         />

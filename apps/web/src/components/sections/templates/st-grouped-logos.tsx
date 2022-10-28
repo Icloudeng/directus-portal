@@ -1,5 +1,4 @@
 import { STemplates_Props, ST_GroupedLogo } from '@/cms/page-sections';
-import Image from 'next/image';
 
 export function ST_GroupedLogosFC({ items }: STemplates_Props<ST_GroupedLogo>) {
   const grouped = items.reduce((acc, item) => {

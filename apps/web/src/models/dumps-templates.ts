@@ -4,6 +4,7 @@ import {
   ST_CardImageCarousel,
   ST_CleanHero,
   ST_Gallery,
+  ST_GroupedLogo,
   ST_HoverableMediaMenu,
   ST_MediaTab,
   ST_NavAccordion,
@@ -1318,6 +1319,174 @@ export const DumpGallery: ST_Gallery[] = [
       id: '0a1dacdc-f431-4d39-9863-8ba867a43404',
       status: 'published',
       date_created: '2022-10-28T11:40:54.692Z',
+    },
+  },
+];
+
+export const DumpGroupedLogos: ST_GroupedLogo[] = [
+  {
+    id: '51',
+    collection: 'ST_GroupedLogos',
+    item: {
+      name: 'Monstroid2',
+      image: {
+        id: 'cf5d5910-9576-4e19-bd87-184d817b8c18',
+        type: 'image/webp',
+        width: 512,
+        height: 512,
+        src: require('~/images/box.png').default.src,
+      },
+      id: 'bea65272-8f3c-4d5b-9f41-1f7bcc79b9a0',
+      status: 'published',
+      date_created: '2022-10-28T16:57:17.935Z',
+    },
+  },
+  {
+    id: '52',
+    collection: 'ST_GroupedLogos',
+    item: {
+      name: 'Jetpack',
+      image: {
+        id: 'cbb689db-b488-4032-90d3-6a713a7bea80',
+        type: 'image/webp',
+        width: 512,
+        height: 512,
+        src: require('~/images/fingerprint.png').default.src,
+      },
+      id: '0c06b83c-690f-4aa2-a5b8-d72cdc1e39be',
+      status: 'published',
+      date_created: '2022-10-28T16:57:17.978Z',
+    },
+  },
+  {
+    id: '53',
+    collection: 'ST_GroupedLogos',
+    item: {
+      name: 'Yoast SEO',
+      image: {
+        id: 'e68fb95a-9122-4e2c-8bfb-2a8c0825fd84',
+        type: 'image/webp',
+        width: 512,
+        height: 512,
+        src: require('~/images/gitlab.png').default.src,
+      },
+      id: '0246913c-3a72-4f49-b18c-f66b2834e07c',
+      status: 'published',
+      date_created: '2022-10-28T16:57:18.018Z',
+    },
+  },
+  {
+    id: '54',
+    collection: 'ST_GroupedLogos',
+    item: {
+      name: 'Disqus Comments',
+      image: {
+        id: '65235211-12af-4646-87c7-40700fc8cdb7',
+        type: 'image/webp',
+        width: 512,
+        height: 512,
+        src: require('~/images/parabolic.png').default.src,
+      },
+      id: 'af432c58-d1f5-4792-9b62-0931cc4288ff',
+      status: 'published',
+      date_created: '2022-10-28T16:57:18.056Z',
+    },
+  },
+  {
+    id: '55',
+    collection: 'ST_GroupedLogos',
+    item: {
+      name: 'WooCommerce',
+      image: {
+        id: '75e5c78a-378e-49d4-a40c-7a65b7ad73b5',
+        type: 'image/webp',
+        width: 512,
+        height: 512,
+        src: require('~/images/slack.png').default.src,
+      },
+      id: '3923981f-cc9d-430e-aafc-cb80add3bed7',
+      status: 'published',
+      date_created: '2022-10-28T16:57:18.093Z',
+    },
+  },
+  {
+    id: '56',
+    collection: 'ST_GroupedLogos',
+    item: {
+      image: {
+        id: '06f63584-06f6-4c74-8e43-40f6d34dfdc4',
+        type: 'image/webp',
+        width: 1024,
+        height: 390,
+        src: require('~/images/surabooks.webp').default.src,
+      },
+      id: '6c8ff39a-e952-4955-815f-f9dbbccd4c0f',
+      status: 'published',
+      date_created: '2022-10-28T17:53:16.124Z',
+    },
+  },
+  {
+    id: '57',
+    collection: 'ST_GroupedLogos',
+    item: {
+      image: {
+        id: '7945db4d-0a0b-4494-8ea1-2590f08eed8a',
+        type: 'image/webp',
+        width: 175,
+        height: 32,
+        src: require('~/images/ecom.webp').default.src,
+      },
+      id: '0438269d-3b2d-4d82-82a7-9d07a452fa6a',
+      status: 'published',
+      date_created: '2022-10-28T17:53:16.163Z',
+    },
+  },
+  {
+    id: '58',
+    collection: 'ST_GroupedLogos',
+    item: {
+      image: {
+        id: '7e5e17d9-9048-4b3e-b28f-ea63b46036b1',
+        type: 'image/webp',
+        width: 535,
+        height: 126,
+        src: require('~/images/riskapp.webp').default.src,
+      },
+      id: '3ff4538c-7ccc-4345-9bf1-bd33d063ce69',
+      status: 'published',
+      date_created: '2022-10-28T17:53:16.201Z',
+    },
+  },
+  {
+    id: '59',
+    collection: 'ST_GroupedLogos',
+    item: {
+      image: {
+        id: '0607fbfc-fe3c-440e-9ff5-0883e40ead11',
+        type: 'image/webp',
+        width: 331,
+        height: 86,
+        src: require('~/images/techsolvo.webp').default.src,
+      },
+      id: 'd6d119c4-6e79-4e2c-be97-fd0acc3914c5',
+      status: 'published',
+      date_created: '2022-10-28T17:53:16.239Z',
+    },
+  },
+  {
+    id: '60',
+    collection: 'ST_GroupedLogos',
+    item: {
+      image: {
+        id: '026d1c29-5b63-4aa9-b34d-713825f5b190',
+        type: 'image/webp',
+        width: 362,
+        height: 87,
+        src: require('~/images/itgold.webp').default.src,
+      },
+      id: 'c74a3606-ceb1-4519-b823-cdc8da2d7086',
+      status: 'published',
+      date_created: '2022-10-28T17:53:16.275Z',
     },
   },
 ];
