@@ -14,7 +14,6 @@ import Seo from '@/components/Seo';
 
 import { getGqlHomeQueries, QHomeHeroQueriesType } from '@/cms/items';
 import { getServerSideTranslations } from '@/utils/server-translation';
-import { BecomePartner } from '@/components/sections/become-partner/BecomePartner';
 import { PlatformCategory } from '@/components/sections/platform-category/PlatformCategory';
 
 export default function HomePage(props: Partial<QHomeHeroQueriesType>) {
@@ -47,10 +46,6 @@ export default function HomePage(props: Partial<QHomeHeroQueriesType>) {
       <section className='py-10 bg-[#f5f7fa]'>
         <IntelligentSystem />
       </section>
-
-      {/* <section className='py-10 bg-[#f5f7fa]'>
-        <UnderHeroSection />
-      </section> */}
 
       <section className='py-10 bg-white'>
         <SupportBusiness />
