@@ -204,6 +204,10 @@ const q_ST: Query = {
     }),
     ...qWithStatus,
   },
+  [section_templates.st_become_partner_forms]: {
+    __typeName: section_templates.st_become_partner_forms,
+    ...qWithStatus,
+  },
 };
 
 type PSQuery = {
@@ -478,6 +482,11 @@ export type ST_GroupedLogo = MDHasM2A<
   ST_V<'st_grouped_logos'>
 >;
 
+export type ST_BecomePartnerForm = MDHasM2A<
+  DRTStatus,
+  ST_V<'st_become_partner_forms'>
+>;
+
 // strean_direction
 //------------------- Page Sections --------------------//
 export type PS_Content =
@@ -499,7 +508,8 @@ export type PS_Content =
   | ST_TransformedImageCarousel
   | ST_Testimonial
   | ST_Gallery
-  | ST_GroupedLogo;
+  | ST_GroupedLogo
+  | ST_BecomePartnerForm;
 
 export type M2APageSection = MDHasM2A<
   {

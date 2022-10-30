@@ -60,14 +60,6 @@ export default function HomePage(props: Partial<QHomeHeroQueriesType>) {
         <JobsCreation />
       </section>
 
-      <section className='py-10 bg-white'>
-        <BecomePartner />
-      </section>
-
-      {/* <section className='py-10 bg-white'>
-        <ImageCardScroll />
-      </section> */}
-
       <section className='py-10 bg-[#f5f7fa]'>
         <PlatformCategory />
       </section>

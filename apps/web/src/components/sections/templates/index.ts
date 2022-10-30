@@ -17,3 +17,4 @@ export * from './st-transformed-image-carousels';
 export * from './st-testimonials';
 export * from './st-gallery';
 export * from './st-grouped-logos';
+export * from './st-become-partner-forms';
