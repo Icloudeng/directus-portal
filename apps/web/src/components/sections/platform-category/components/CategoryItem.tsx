@@ -14,7 +14,7 @@ export const CategoryItem = ({text, icon, itemsNumber}:ICategoryItem) => {
                 {icon}
             </span>
             <span className='text-primary-400 font-medium hover:font-semibold'>{text}</span>
-            <span className='absolute right-20 text-primary-400'>({itemsNumber})</span>
+            <span className='hidden xl:block absolute right-7 text-primary-400'>({itemsNumber})</span>
         </UnstyledLink>
     </li>
   )

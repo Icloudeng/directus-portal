@@ -8,15 +8,24 @@ type ICategoryCard = {
   imgLink: string;
   title: string;
   text: string;
-  color: string;
+  cardColor: string;
+  shareIconColor: string
   cardLink: string;
   cardWidth?: string
 }
 
-export const CategoryCard = ({ imgLink, title, text, color, cardLink, cardWidth  }:ICategoryCard) => {
+export const CategoryCard = ({ imgLink, title, text, cardColor, shareIconColor, cardLink, cardWidth }: ICategoryCard) => {
   return (
-    <div className={`relative max-w-3xl w-full min-h-[25rem] ${cardWidth} bg-white rounded-lg border border-gray-200 shadow-md`}>
-      <UnstyledLink href={cardLink} className={`w-full h-full flex flex-col items-center rounded-lg ${'bg-'+color+'-300'}`}>
+    <div className={`max-w-3xl w-full max-h-[25rem] h-[23rem] ${cardWidth} bg-white rounded-lg border border-gray-200 shadow-md`}>
+      {/* <div className="absolute inset-0 h-full w-full bg-gradient-to-br from-black/75"></div> */}
+      <UnstyledLink href={cardLink} style={{ backgroundColor: cardColor }} className="relative w-full h-full flex flex-col items-center rounded-lg overflow-hidden ">
+        <Image
+          className='image object-cover rounded-lg blur-[55px]'
+          src={imgLink}
+          layout="fill"
+          objectFit="cover"
+          alt='accordion image'
+        />
         <div className="relative w-full h-1/2 flex-[1.5]">
           <Image
             className='image object-cover rounded-tl-lg rounded-tr-lg'
@@ -26,10 +35,10 @@ export const CategoryCard = ({ imgLink, title, text, color, cardLink, cardWidth 
             alt='accordion image'
           />
         </div>
-        <div className="relative p-5 flex-1">
-          <h3 className=" font-bold tracking-tight text-gray-900">{title}</h3>
+        <div className="relative p-3 flex-1 max-h-[50%] overflow-hidden m-1">
+          <h4 className=" font-bold tracking-tight text-white">{title}</h4>
 
-          <p className=" font-normal text-gray-700">{text}</p>
+          <p className="font-normal text-sm text-gray-200 text-ellipsis overflow-hidden p-1">{text}</p>
         </div>
       </UnstyledLink>
       <div className="absolute top-0 right-0 p-2 flex items-center gap-2">
@@ -40,7 +49,7 @@ export const CategoryCard = ({ imgLink, title, text, color, cardLink, cardWidth 
           <HiOutlineDotsHorizontal />
         </span>
       </div>
-      <span className="absolute bottom-2 right-2 p-2 bg-green-400 hover:bg-green-400/70 rounded-full cursor-pointer">
+      <span style={{ backgroundColor: shareIconColor }} className="absolute bottom-2 right-2 p-2 rounded-full cursor-pointer">
         <FaRegShareSquare className="text-white" />
       </span>
     </div>
