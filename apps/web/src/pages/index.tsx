@@ -20,6 +20,7 @@ import { TrustMatters } from '@/components/sections/trust-mutters/TrustMatters';
 import { ImageGallery } from '@/components/sections/image-gallery/ImageGallery';
 import { BecomePartner } from '@/components/sections/become-partner/BecomePartner';
 import { ImageCardScroll } from '@/components/sections/image-card-scroll/ImageCardScroll';
+import { PlatformCategory } from '@/components/sections/platform-category/PlatformCategory';
 
 export default function HomePage(props: Partial<QHomeHeroQueriesType>) {
   const { HomeHero, HomeSections } = props;
@@ -86,6 +87,10 @@ export default function HomePage(props: Partial<QHomeHeroQueriesType>) {
 
       <section className='py-10 bg-white'>
         <ImageCardScroll />
+      </section>
+
+      <section className='py-10 bg-[#f5f7fa]'>
+        <PlatformCategory />
       </section>
 
       {HomeSections && <PageSections sections={HomeSections.sections} />}
