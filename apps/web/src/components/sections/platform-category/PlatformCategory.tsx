@@ -7,7 +7,7 @@ export const PlatformCategory = () => {
   return (
     <div className='x-container max-w-7xl mx-auto py-10 flex flex-col items-center gap-10 ss:px-12'>
       <div className='w-full flex flex-col items-center justify-center gap-7 mb-7'>
-        <h1 className='text-center'>Find a Solution</h1>
+        <h1 className='text-center'>Tutorials</h1>
         <div className='max-w-xl  w-full text-center'>
           <InputWithIcon
             label="Search"
@@ -19,7 +19,7 @@ export const PlatformCategory = () => {
 
         <div className="w-full flex flex-col xl:flex-row items-center xl:items-start gap-5 pt-7">
           <div className="w-full xl:flex-1 flex items-center justify-center xl:block p-3 xl:p-0 overflow-x-auto">
-            <h4 className="mb-5 hidden xl:block">Solution categories</h4>
+            <h4 className="mb-5 hidden xl:block">Popular Topics</h4>
             <AllCategoryItems />
           </div>
           <div className="xl:flex-[3.7]">

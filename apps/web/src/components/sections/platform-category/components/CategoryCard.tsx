@@ -16,7 +16,7 @@ type ICategoryCard = {
 
 export const CategoryCard = ({ imgLink, title, text, cardColor, shareIconColor, cardLink, cardWidth }: ICategoryCard) => {
   return (
-    <div className={`max-w-3xl w-full max-h-[25rem] h-[23rem] ${cardWidth} bg-white rounded-lg border border-gray-200 shadow-md`}>
+    <div className={`max-w-3xl w-full max-h-[25rem] h-[22rem] ${cardWidth} bg-white rounded-lg border border-gray-200 shadow-md`}>
       {/* <div className="absolute inset-0 h-full w-full bg-gradient-to-br from-black/75"></div> */}
       <UnstyledLink href={cardLink} style={{ backgroundColor: cardColor }} className="relative w-full h-full flex flex-col items-center rounded-lg overflow-hidden ">
         <Image
