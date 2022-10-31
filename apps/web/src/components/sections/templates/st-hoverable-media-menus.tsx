@@ -5,7 +5,7 @@ import {
   HoverableMenusItem,
 } from '@/components/ui/hoverable-menu/hoverable-menu';
 import { MarkdownContent } from '@/components/ui/react-markdown/MarkdownContent';
-import { useSharedData } from '@/store';
+import { useSharedData } from '@/app/store';
 
 export function ST_HoverableMediaMenusFC({
   items,

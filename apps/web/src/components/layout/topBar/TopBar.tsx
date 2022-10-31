@@ -5,10 +5,10 @@ import UnstyledLink from '@/components/ui/links/UnstyledLink';
 import NextImage from '@/components/ui/NextImage';
 import { LangList } from '@/components/layout/topBar/components/ListData';
 
-import { useSharedData } from '@/store';
+import { useSharedData } from '@/app/store';
 
 import { useMut } from '@/cms/mut';
-import { useOutsideClick } from '@/hooks/useOutsideClick';
+import { useOutsideClick } from '@/app/hooks/useOutsideClick';
 import { useTranslation } from 'next-i18next';
 
 export const TopBar: React.FC = () => {

@@ -9,7 +9,7 @@ import {
   ST_Vls,
 } from './page-sections';
 import { qWithAsset, qWithAssets } from './gql-query';
-import { CMS_MODELS } from '@/constant/cms';
+import { CMS_MODELS } from '@/app/constant/cms';
 import { PlansPricingContent } from './items/types';
 import { getGqlPageSections, getGqlPlansPricingQueries } from './items';
 import cloneDeep from 'lodash/cloneDeep';
@@ -23,7 +23,7 @@ const {
   },
 } = CMS_MODELS;
 
-const { st_media_tabs, st_hoverable_media_menus } = section_templates;
+const { st_media_tabs, st_testimonials, st_grouped_logos } = section_templates;
 
 export async function pageSectionsAdapters<
   T extends { [x: string]: any; sections: M2APageSection[] }
@@ -140,6 +140,15 @@ function pageSectionsWithAssets(
         case st_media_tabs:
           qWithAssets(access_token, st.item.translations, 'media');
           break;
+        case st_testimonials:
+          qWithAsset(access_token, st.item, 'image', [71, 71]);
+          break;
+
+        // case st_grouped_logos:
+        //   qWithAsset(access_token, st.item, 'image', [71, 71]);
+        //   break;
+
+        //   st_grouped_logos
         default:
           // Actually all templates modeles uses image as default key for assets
           qWithAsset(access_token, st.item, 'image' as any);

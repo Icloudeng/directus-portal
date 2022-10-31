@@ -8,7 +8,7 @@ import '@/styles/globals.css';
 
 import ChatwootWidget from '@/components/services/chatwoot';
 
-import { ISharedData, SharedDataProvider } from '@/store';
+import { ISharedData, SharedDataProvider } from '@/app/store';
 
 import { getGqlSharedData } from '@/cms/items';
 

@@ -1,8 +1,11 @@
-import {
+/* eslint-disable */
+import type {
   ST_Button,
   ST_CardCarousel,
   ST_CardImageCarousel,
   ST_CleanHero,
+  ST_Gallery,
+  ST_GroupedLogo,
   ST_HoverableMediaMenu,
   ST_MediaTab,
   ST_NavAccordion,
@@ -12,10 +15,11 @@ import {
   ST_SidedContent,
   ST_SimpleCardLink,
   ST_StreamableCard,
+  ST_Testimonial,
   ST_TransformedImageCarousel,
   ST_Value,
 } from '@/cms/page-sections';
-import { DRTStatus } from '@/types/directus';
+import type { DRTStatus } from '@/types/directus';
 
 const getId = () => `${Math.random() * 10 ** 17}`;
 const dumpDRTStatus: () => DRTStatus = () => ({
@@ -1201,6 +1205,289 @@ export const DumpPlansPricing: ST_PlansPricing[] = [
           },
         ],
       },
+    },
+  },
+];
+
+export const DumpTestimonials: ST_Testimonial[] = [
+  {
+    id: '45',
+    collection: 'ST_Testimonials',
+    item: {
+      client_name: 'Vladmir Putin',
+      client_post: 'Telegram messenger, CEO',
+      translations: [
+        {
+          id: '1',
+          languages_code: {
+            code: 'en',
+            name: 'English',
+          },
+          review_text:
+            'I am Brazilian, and after testing several and several sites, both Brazilian and foreign, I arrived at the icloudeng and stayed, in the others it was not 1-2 months, bad service, instabilities and disproportionate price to what was offered, when trying the Serverspace, I fell in love, because it meets my needs without any problems and with practicality my needs.',
+        },
+      ],
+      id: '08e56e47-76fc-4f69-8980-631a91932f0d',
+      status: 'published',
+      date_created: '2022-10-28T10:31:43.669Z',
+      date_updated: '2022-10-28T11:19:44.418Z',
+    },
+  },
+  {
+    id: '46',
+    collection: 'ST_Testimonials',
+    item: {
+      client_name: 'Joe Biden',
+      client_post: 'Tesla LTD, Dir cab',
+      translations: [
+        {
+          id: '2',
+          languages_code: {
+            code: 'en',
+            name: 'English',
+          },
+          review_text:
+            'I use Icloudeng because provides very stable and fast servers. Also, your site provides many features to the user, and I can build a new server or delete the previous server whenever I want. Fully automatic, as well as full support. Thanks for the importance you give to the user.',
+        },
+      ],
+      id: 'd63e9c0f-af1a-4c54-9008-672589be785a',
+      status: 'published',
+      date_created: '2022-10-28T10:31:43.743Z',
+    },
+  },
+  {
+    id: '47',
+    collection: 'ST_Testimonials',
+    item: {
+      client_name: 'Emmanuel Macron',
+      client_post: 'RFI, Assistant',
+      translations: [
+        {
+          id: '3',
+          languages_code: {
+            code: 'en',
+            name: 'English',
+          },
+          review_text:
+            'Icloudeng has provided me Remote Desktop Services at a much cheaper price as compared to other providers in the market like AWS, Google Cloud or Microsoft Azure. Customer support is also helpful at most of the occasions.',
+        },
+      ],
+      id: '7c1b9035-030f-4a15-a4af-1a8fa1fd6c2f',
+      status: 'published',
+      date_created: '2022-10-28T10:31:43.815Z',
+    },
+  },
+];
+
+export const DumpGallery: ST_Gallery[] = [
+  {
+    id: '48',
+    collection: 'ST_Gallery',
+    item: {
+      image: {
+        id: '13d96468-bb41-49b8-a3c7-5670a0a3cb2f',
+        type: 'image/webp',
+        src: 'https://flowbite.com/docs/images/blog/image-1.jpg',
+      },
+      id: 'abb9a478-c3e1-448d-8e8f-b4cc53e51631',
+      status: 'published',
+      date_created: '2022-10-28T11:40:54.609Z',
+    },
+  },
+  {
+    id: '49',
+    collection: 'ST_Gallery',
+    item: {
+      image: {
+        id: '3ebc59df-88e7-4d15-8a4c-61ba235ee004',
+        type: 'image/jpeg',
+        src: 'https://flowbite.com/docs/images/blog/image-2.jpg',
+      },
+      id: '0e5e660c-6cc4-4032-9081-fa6a80a7ec6d',
+      status: 'published',
+      date_created: '2022-10-28T11:40:54.653Z',
+    },
+  },
+  {
+    id: '50',
+    collection: 'ST_Gallery',
+    item: {
+      image: {
+        id: 'd7c60e1f-36aa-4a06-a482-3999382eea93',
+        type: 'image/jpeg',
+        src: 'https://flowbite.com/docs/images/blog/image-3.jpg',
+      },
+      id: '0a1dacdc-f431-4d39-9863-8ba867a43404',
+      status: 'published',
+      date_created: '2022-10-28T11:40:54.692Z',
+    },
+  },
+];
+
+export const DumpGroupedLogos: ST_GroupedLogo[] = [
+  {
+    id: '51',
+    collection: 'ST_GroupedLogos',
+    item: {
+      name: 'Monstroid2',
+      image: {
+        id: 'cf5d5910-9576-4e19-bd87-184d817b8c18',
+        type: 'image/webp',
+        width: 512,
+        height: 512,
+        src: require('~/images/box.png').default.src,
+      },
+      id: 'bea65272-8f3c-4d5b-9f41-1f7bcc79b9a0',
+      status: 'published',
+      date_created: '2022-10-28T16:57:17.935Z',
+    },
+  },
+  {
+    id: '52',
+    collection: 'ST_GroupedLogos',
+    item: {
+      name: 'Jetpack',
+      image: {
+        id: 'cbb689db-b488-4032-90d3-6a713a7bea80',
+        type: 'image/webp',
+        width: 512,
+        height: 512,
+        src: require('~/images/fingerprint.png').default.src,
+      },
+      id: '0c06b83c-690f-4aa2-a5b8-d72cdc1e39be',
+      status: 'published',
+      date_created: '2022-10-28T16:57:17.978Z',
+    },
+  },
+  {
+    id: '53',
+    collection: 'ST_GroupedLogos',
+    item: {
+      name: 'Yoast SEO',
+      image: {
+        id: 'e68fb95a-9122-4e2c-8bfb-2a8c0825fd84',
+        type: 'image/webp',
+        width: 512,
+        height: 512,
+        src: require('~/images/gitlab.png').default.src,
+      },
+      id: '0246913c-3a72-4f49-b18c-f66b2834e07c',
+      status: 'published',
+      date_created: '2022-10-28T16:57:18.018Z',
+    },
+  },
+  {
+    id: '54',
+    collection: 'ST_GroupedLogos',
+    item: {
+      name: 'Disqus Comments',
+      image: {
+        id: '65235211-12af-4646-87c7-40700fc8cdb7',
+        type: 'image/webp',
+        width: 512,
+        height: 512,
+        src: require('~/images/parabolic.png').default.src,
+      },
+      id: 'af432c58-d1f5-4792-9b62-0931cc4288ff',
+      status: 'published',
+      date_created: '2022-10-28T16:57:18.056Z',
+    },
+  },
+  {
+    id: '55',
+    collection: 'ST_GroupedLogos',
+    item: {
+      name: 'WooCommerce',
+      image: {
+        id: '75e5c78a-378e-49d4-a40c-7a65b7ad73b5',
+        type: 'image/webp',
+        width: 512,
+        height: 512,
+        src: require('~/images/slack.png').default.src,
+      },
+      id: '3923981f-cc9d-430e-aafc-cb80add3bed7',
+      status: 'published',
+      date_created: '2022-10-28T16:57:18.093Z',
+    },
+  },
+  {
+    id: '56',
+    collection: 'ST_GroupedLogos',
+    item: {
+      image: {
+        id: '06f63584-06f6-4c74-8e43-40f6d34dfdc4',
+        type: 'image/webp',
+        width: 1024,
+        height: 390,
+        src: require('~/images/surabooks.webp').default.src,
+      },
+      id: '6c8ff39a-e952-4955-815f-f9dbbccd4c0f',
+      status: 'published',
+      date_created: '2022-10-28T17:53:16.124Z',
+    },
+  },
+  {
+    id: '57',
+    collection: 'ST_GroupedLogos',
+    item: {
+      image: {
+        id: '7945db4d-0a0b-4494-8ea1-2590f08eed8a',
+        type: 'image/webp',
+        width: 175,
+        height: 32,
+        src: require('~/images/ecom.webp').default.src,
+      },
+      id: '0438269d-3b2d-4d82-82a7-9d07a452fa6a',
+      status: 'published',
+      date_created: '2022-10-28T17:53:16.163Z',
+    },
+  },
+  {
+    id: '58',
+    collection: 'ST_GroupedLogos',
+    item: {
+      image: {
+        id: '7e5e17d9-9048-4b3e-b28f-ea63b46036b1',
+        type: 'image/webp',
+        width: 535,
+        height: 126,
+        src: require('~/images/riskapp.webp').default.src,
+      },
+      id: '3ff4538c-7ccc-4345-9bf1-bd33d063ce69',
+      status: 'published',
+      date_created: '2022-10-28T17:53:16.201Z',
+    },
+  },
+  {
+    id: '59',
+    collection: 'ST_GroupedLogos',
+    item: {
+      image: {
+        id: '0607fbfc-fe3c-440e-9ff5-0883e40ead11',
+        type: 'image/webp',
+        width: 331,
+        height: 86,
+        src: require('~/images/techsolvo.webp').default.src,
+      },
+      id: 'd6d119c4-6e79-4e2c-be97-fd0acc3914c5',
+      status: 'published',
+      date_created: '2022-10-28T17:53:16.239Z',
+    },
+  },
+  {
+    id: '60',
+    collection: 'ST_GroupedLogos',
+    item: {
+      image: {
+        id: '026d1c29-5b63-4aa9-b34d-713825f5b190',
+        type: 'image/webp',
+        width: 362,
+        height: 87,
+        src: require('~/images/itgold.webp').default.src,
+      },
+      id: 'c74a3606-ceb1-4519-b823-cdc8da2d7086',
+      status: 'published',
+      date_created: '2022-10-28T17:53:16.275Z',
     },
   },
 ];

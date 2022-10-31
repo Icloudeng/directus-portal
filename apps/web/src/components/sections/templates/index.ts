@@ -14,3 +14,7 @@ export * from './st-media-tabs';
 export * from './st-streamable-cards';
 export * from './st-hoverable-media-menus';
 export * from './st-transformed-image-carousels';
+export * from './st-testimonials';
+export * from './st-gallery';
+export * from './st-grouped-logos';
+export * from './st-become-partner-forms';

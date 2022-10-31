@@ -2,7 +2,7 @@ import { mut } from '@/cms/mut';
 import { STemplates_Props, ST_StreamableCard } from '@/cms/page-sections';
 import { RectCard } from '@/components/ui/cards/RectCard';
 import { HasSvgText } from '@/components/ui/HasSvgText';
-import { useSharedData } from '@/store';
+import { useSharedData } from '@/app/store';
 import { useMemo } from 'react';
 
 type GroupedItem = {

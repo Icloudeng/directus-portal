@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { useMut } from '@/cms/mut';
 import ButtonLink from '@/components/ui/links/ButtonLink';
 import { useTranslation } from 'next-i18next';
-import { useCustomerEmblaCarousel } from '@/hooks/useCustomEmblaCarousel';
+import { useCustomerEmblaCarousel } from '@/app/hooks/useCustomEmblaCarousel';
 import {
   DotButton,
   NextButton,

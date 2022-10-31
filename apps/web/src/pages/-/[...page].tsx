@@ -5,7 +5,7 @@ import Layout from '@/components/layout/Layout';
 import { PageSections } from '@/components/sections/page-sections';
 import Seo from '@/components/Seo';
 
-import { getServerSideTranslations } from '@/utils/server-translation';
+import { getServerSideTranslations } from '@/app/utils/server-translation';
 import { getGqlDynamicPages, QDynamicPagesType } from '@/cms/items';
 import { EmptyCanvasSvg } from '@/components/ui/svgs/EmptyCanvas';
 import { useTranslation } from 'next-i18next';

@@ -1,4 +1,4 @@
-import { CMS_MODELS } from '@/constant/cms';
+import { CMS_MODELS } from '@/app/constant/cms';
 import {
   DRTStatus,
   MDHasM2A,
@@ -22,7 +22,7 @@ const { section_templates, generics } = CMS_MODELS;
 const { page_sections_categories } = generics;
 
 type Query = {
-  [k in ST_Vls]: { __typeName: k; [x: string]: unknown };
+  [k in ST_Vls]: { __typeName: k; [x: string]: unknown } & typeof qWithStatus;
 };
 
 const q_ST: Query = {
@@ -177,6 +177,35 @@ const q_ST: Query = {
   [section_templates.st_transformed_image_carousels]: {
     __typeName: section_templates.st_transformed_image_carousels,
     image: qWithQueryAsset({ type: true }),
+    ...qWithStatus,
+  },
+  [section_templates.st_testimonials]: {
+    __typeName: section_templates.st_testimonials,
+    client_name: true,
+    client_post: true,
+    image: qWithQueryAsset({ type: true }),
+    ...qWithTranslations({
+      review_text: true,
+    }),
+    ...qWithStatus,
+  },
+  [section_templates.st_gallery]: {
+    __typeName: section_templates.st_gallery,
+    image: qWithQueryAsset({ type: true }),
+    ...qWithStatus,
+  },
+  [section_templates.st_grouped_logos]: {
+    __typeName: section_templates.st_grouped_logos,
+    name: true,
+    image: qWithQueryAsset({
+      type: true,
+      width: true,
+      height: true,
+    }),
+    ...qWithStatus,
+  },
+  [section_templates.st_become_partner_forms]: {
+    __typeName: section_templates.st_become_partner_forms,
     ...qWithStatus,
   },
 };
@@ -428,6 +457,36 @@ export type ST_TransformedImageCarousel = MDHasM2A<
   ST_V<'st_transformed_image_carousels'>
 >;
 
+export type ST_Testimonial = MDHasM2A<
+  {
+    client_name: string;
+    client_post: string;
+    image?: MDWithAsset;
+  } & MDWithTranslation<{
+    review_text: string;
+  }> &
+    DRTStatus,
+  ST_V<'st_testimonials'>
+>;
+
+export type ST_Gallery = MDHasM2A<
+  { image: MDWithAsset } & DRTStatus,
+  ST_V<'st_gallery'>
+>;
+
+export type ST_GroupedLogo = MDHasM2A<
+  {
+    image: MDWithAsset;
+    name?: string;
+  } & DRTStatus,
+  ST_V<'st_grouped_logos'>
+>;
+
+export type ST_BecomePartnerForm = MDHasM2A<
+  DRTStatus,
+  ST_V<'st_become_partner_forms'>
+>;
+
 // strean_direction
 //------------------- Page Sections --------------------//
 export type PS_Content =
@@ -446,7 +505,11 @@ export type PS_Content =
   | ST_MediaTab
   | ST_StreamableCard
   | ST_HoverableMediaMenu
-  | ST_TransformedImageCarousel;
+  | ST_TransformedImageCarousel
+  | ST_Testimonial
+  | ST_Gallery
+  | ST_GroupedLogo
+  | ST_BecomePartnerForm;
 
 export type M2APageSection = MDHasM2A<
   {

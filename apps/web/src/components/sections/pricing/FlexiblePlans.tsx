@@ -1,7 +1,7 @@
 import Button from '@/components/ui/buttons/Button';
 import { DynamicInput } from '@/components/ui/DynamicInput';
 import { ReactAsyncSelect, ReactSelector } from '@/components/ui/ReactSelector';
-import { useSharedData } from '@/store';
+import { useSharedData } from '@/app/store';
 import { useTranslation } from 'next-i18next';
 import { useCallback } from 'react';
 import {

@@ -2,7 +2,7 @@ import { mut } from '@/cms/mut';
 import Image from 'next/image';
 import type { STemplates_Props, ST_NavAccordion } from '@/cms/page-sections';
 import { Accordion, AccordionChild } from '@/components/ui/accordion/Accordion';
-import { useSharedData } from '@/store';
+import { useSharedData } from '@/app/store';
 import { MarkdownContent } from '@/components/ui/react-markdown/MarkdownContent';
 
 export function ST_NavAccordionsFC({

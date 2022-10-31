@@ -4,7 +4,7 @@ import { ReactSelector } from '@/components/ui/ReactSelector';
 
 import { MDFixedPlan, MDMachineTemplate } from '@/cms/items/types';
 import { getMachineTemplateOptions } from './hooks';
-import { useSharedData } from '@/store';
+import { useSharedData } from '@/app/store';
 import { useMut } from '@/cms/mut';
 import { useCallback, useState } from 'react';
 

@@ -13,12 +13,7 @@ import { SupportBusiness } from '@/components/sections/support-business/SupportB
 import Seo from '@/components/Seo';
 
 import { getGqlHomeQueries, QHomeHeroQueriesType } from '@/cms/items';
-import { getServerSideTranslations } from '@/utils/server-translation';
-import { ClientReview } from '@/components/sections/clients-review/ClientReview';
-import { FastServer } from '@/components/sections/fast-server/FastServer';
-import { TrustMatters } from '@/components/sections/trust-mutters/TrustMatters';
-import { ImageGallery } from '@/components/sections/image-gallery/ImageGallery';
-import { BecomePartner } from '@/components/sections/become-partner/BecomePartner';
+import { getServerSideTranslations } from '@/app/utils/server-translation';
 import { PlatformCategory } from '@/components/sections/platform-category/PlatformCategory';
 
 export default function HomePage(props: Partial<QHomeHeroQueriesType>) {
@@ -52,10 +47,6 @@ export default function HomePage(props: Partial<QHomeHeroQueriesType>) {
         <IntelligentSystem />
       </section>
 
-      {/* <section className='py-10 bg-[#f5f7fa]'>
-        <UnderHeroSection />
-      </section> */}
-
       <section className='py-10 bg-white'>
         <SupportBusiness />
       </section>
@@ -63,30 +54,6 @@ export default function HomePage(props: Partial<QHomeHeroQueriesType>) {
       <section className='py-10 bg-[#f5f7fa]'>
         <JobsCreation />
       </section>
-
-      <section className='py-10 bg-white'>
-        <ClientReview />
-      </section>
-
-      <section className='py-10 bg-[#f5f7fa]'>
-        <FastServer />
-      </section>
-
-      <section className='py-10 bg-white'>
-        <TrustMatters />
-      </section>
-
-      <section className='py-10 bg-[#f5f7fa]'>
-        <ImageGallery />
-      </section>
-
-      <section className='py-10 bg-white'>
-        <BecomePartner />
-      </section>
-
-      {/* <section className='py-10 bg-white'>
-        <ImageCardScroll />
-      </section> */}
 
       <section className='py-10 bg-[#f5f7fa]'>
         <PlatformCategory />

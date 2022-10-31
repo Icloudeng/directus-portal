@@ -1,6 +1,6 @@
 import { jsonToGraphQLQuery } from 'json-to-graphql-query';
 
-import { CMS_MODELS } from '@/constant/cms';
+import { CMS_MODELS } from '@/app/constant/cms';
 
 import {
   MDCompanyDetail,
@@ -69,6 +69,7 @@ const gql_query = jsonToGraphQLQuery({
     },
     [CMS_MODELS.company_details]: {
       logo: qWithQueryAsset(),
+      image: qWithQueryAsset(),
       company_name: true,
       support_email: true,
       email: true,
@@ -155,6 +156,7 @@ export async function getGqlSharedData() {
 
   if (CompanyDetails) {
     qWithAsset(access_token, CompanyDetails, 'logo');
+    qWithAsset(access_token, CompanyDetails, 'image');
     CompanyDetails?.socials?.forEach((social) =>
       qWithAsset(access_token, social, 'icon', [50, 50])
     );

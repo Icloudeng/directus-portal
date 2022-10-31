@@ -1,12 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 import ReactPlayer from "react-player"
 
-import { useHasMounted } from "@/hooks/useHasMounted";
+import { useHasMounted } from "@/app/hooks/useHasMounted";
 
 import Button from "@/components/ui/buttons/Button";
 import Skeleton from "@/components/ui/Skeleton";
 
-import { TabButtonData } from "@/models/tabButtonModel";
+import { TabButtonData } from "@/app/models/tabButtonModel";
 
 import { ITabButtonData } from "@/types/tabVideoTypes";
 
@@ -22,7 +22,7 @@ export const TabVideo = () => {
     useEffect(() => {
         const element = Array.from(tabData.current()).at(activeIndex)
         element?.classList.add('btn-tab-active')
-        
+
         setTabBigData(TabButtonData[activeIndex])
     }, [activeIndex])
 
