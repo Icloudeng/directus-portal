@@ -26,6 +26,7 @@ export const CMS_MODELS = {
     home_hero: 'HomeHero',
     home_sections: 'HomeSections',
     platforms: 'Platforms',
+    partners_requests: 'PartnersRequests',
   } as const),
   plans_pricing: {
     flexible_plans: 'FlexiblePlans',

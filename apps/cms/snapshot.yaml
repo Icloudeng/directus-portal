@@ -653,7 +653,7 @@ collections:
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: 11
+      sort: 12
       sort_field: null
       translations: null
       unarchive_value: null
@@ -850,14 +850,14 @@ collections:
       comment: null
       name: Pages_translations
       schema: public
-  - collection: PartnerRequests
+  - collection: PartnersRequests
     meta:
       accountability: all
       archive_app_filter: true
-      archive_field: null
-      archive_value: null
+      archive_field: status
+      archive_value: archived
       collapse: open
-      collection: PartnerRequests
+      collection: PartnersRequests
       color: null
       display_template: null
       group: null
@@ -866,13 +866,13 @@ collections:
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: 10
+      sort: 11
       sort_field: sort
       translations: null
-      unarchive_value: null
+      unarchive_value: draft
     schema:
       comment: null
-      name: PartnerRequests
+      name: PartnersRequests
       schema: public
   - collection: PlansComparisons
     meta:
@@ -2054,7 +2054,7 @@ collections:
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: 13
+      sort: 14
       sort_field: null
       translations: null
       unarchive_value: null
@@ -2075,7 +2075,7 @@ collections:
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: 12
+      sort: 13
       sort_field: null
       translations: null
       unarchive_value: null
@@ -13156,10 +13156,10 @@ fields:
       schema: public
       table: Pages_translations
     type: string
-  - collection: PartnerRequests
+  - collection: PartnersRequests
     field: company
     meta:
-      collection: PartnerRequests
+      collection: PartnersRequests
       conditions: null
       display: null
       display_options: null
@@ -13197,12 +13197,12 @@ fields:
       numeric_precision: null
       numeric_scale: null
       schema: public
-      table: PartnerRequests
+      table: PartnersRequests
     type: string
-  - collection: PartnerRequests
+  - collection: PartnersRequests
     field: country
     meta:
-      collection: PartnerRequests
+      collection: PartnersRequests
       conditions: null
       display: null
       display_options: null
@@ -13240,12 +13240,12 @@ fields:
       numeric_precision: null
       numeric_scale: null
       schema: public
-      table: PartnerRequests
+      table: PartnersRequests
     type: string
-  - collection: PartnerRequests
+  - collection: PartnersRequests
     field: date_created
     meta:
-      collection: PartnerRequests
+      collection: PartnersRequests
       conditions: null
       display: datetime
       display_options:
@@ -13283,12 +13283,55 @@ fields:
       numeric_precision: null
       numeric_scale: null
       schema: public
-      table: PartnerRequests
+      table: PartnersRequests
     type: timestamp
-  - collection: PartnerRequests
+  - collection: PartnersRequests
+    field: date_updated
+    meta:
+      collection: PartnersRequests
+      conditions: null
+      display: datetime
+      display_options:
+        relative: true
+      field: date_updated
+      group: null
+      hidden: true
+      interface: datetime
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: 16
+      special:
+        - date-updated
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      comment: null
+      data_type: timestamp with time zone
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: date_updated
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: PartnersRequests
+    type: timestamp
+  - collection: PartnersRequests
     field: description
     meta:
-      collection: PartnerRequests
+      collection: PartnersRequests
       conditions: null
       display: null
       display_options: null
@@ -13326,12 +13369,12 @@ fields:
       numeric_precision: null
       numeric_scale: null
       schema: public
-      table: PartnerRequests
+      table: PartnersRequests
     type: text
-  - collection: PartnerRequests
+  - collection: PartnersRequests
     field: email
     meta:
-      collection: PartnerRequests
+      collection: PartnersRequests
       conditions: null
       display: null
       display_options: null
@@ -13369,12 +13412,12 @@ fields:
       numeric_precision: null
       numeric_scale: null
       schema: public
-      table: PartnerRequests
+      table: PartnersRequests
     type: string
-  - collection: PartnerRequests
+  - collection: PartnersRequests
     field: first_name
     meta:
-      collection: PartnerRequests
+      collection: PartnersRequests
       conditions: null
       display: null
       display_options: null
@@ -13412,12 +13455,12 @@ fields:
       numeric_precision: null
       numeric_scale: null
       schema: public
-      table: PartnerRequests
+      table: PartnersRequests
     type: string
-  - collection: PartnerRequests
+  - collection: PartnersRequests
     field: id
     meta:
-      collection: PartnerRequests
+      collection: PartnersRequests
       conditions: null
       display: null
       display_options: null
@@ -13454,12 +13497,12 @@ fields:
       numeric_precision: null
       numeric_scale: null
       schema: public
-      table: PartnerRequests
+      table: PartnersRequests
     type: uuid
-  - collection: PartnerRequests
+  - collection: PartnersRequests
     field: job_title
     meta:
-      collection: PartnerRequests
+      collection: PartnersRequests
       conditions: null
       display: null
       display_options: null
@@ -13497,12 +13540,12 @@ fields:
       numeric_precision: null
       numeric_scale: null
       schema: public
-      table: PartnerRequests
+      table: PartnersRequests
     type: string
-  - collection: PartnerRequests
+  - collection: PartnersRequests
     field: last_name
     meta:
-      collection: PartnerRequests
+      collection: PartnersRequests
       conditions: null
       display: null
       display_options: null
@@ -13540,12 +13583,12 @@ fields:
       numeric_precision: null
       numeric_scale: null
       schema: public
-      table: PartnerRequests
+      table: PartnersRequests
     type: string
-  - collection: PartnerRequests
+  - collection: PartnersRequests
     field: linkedin
     meta:
-      collection: PartnerRequests
+      collection: PartnersRequests
       conditions: null
       display: null
       display_options: null
@@ -13583,12 +13626,12 @@ fields:
       numeric_precision: null
       numeric_scale: null
       schema: public
-      table: PartnerRequests
+      table: PartnersRequests
     type: string
-  - collection: PartnerRequests
+  - collection: PartnersRequests
     field: phone_number
     meta:
-      collection: PartnerRequests
+      collection: PartnersRequests
       conditions: null
       display: null
       display_options: null
@@ -13626,12 +13669,12 @@ fields:
       numeric_precision: null
       numeric_scale: null
       schema: public
-      table: PartnerRequests
+      table: PartnersRequests
     type: string
-  - collection: PartnerRequests
+  - collection: PartnersRequests
     field: sort
     meta:
-      collection: PartnerRequests
+      collection: PartnersRequests
       conditions: null
       display: null
       display_options: null
@@ -13643,7 +13686,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: 12
+      sort: 13
       special: null
       translations: null
       validation: null
@@ -13667,12 +13710,74 @@ fields:
       numeric_precision: 32
       numeric_scale: 0
       schema: public
-      table: PartnerRequests
+      table: PartnersRequests
     type: integer
-  - collection: PartnerRequests
+  - collection: PartnersRequests
+    field: status
+    meta:
+      collection: PartnersRequests
+      conditions: null
+      display: labels
+      display_options:
+        choices:
+          - text: $t:published
+            value: published
+            foreground: '#FFFFFF'
+            background: var(--primary)
+          - text: $t:draft
+            value: draft
+            foreground: '#18222F'
+            background: '#D3DAE4'
+          - text: $t:archived
+            value: archived
+            foreground: '#FFFFFF'
+            background: var(--warning)
+        showAsDot: true
+      field: status
+      group: null
+      hidden: false
+      interface: select-dropdown
+      note: null
+      options:
+        choices:
+          - text: $t:published
+            value: published
+          - text: $t:draft
+            value: draft
+          - text: $t:archived
+            value: archived
+      readonly: false
+      required: false
+      sort: 12
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: character varying
+      default_value: draft
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: false
+      is_primary_key: false
+      is_unique: false
+      max_length: 255
+      name: status
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: PartnersRequests
+    type: string
+  - collection: PartnersRequests
     field: user_created
     meta:
-      collection: PartnerRequests
+      collection: PartnersRequests
       conditions: null
       display: user
       display_options: null
@@ -13685,7 +13790,7 @@ fields:
         template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
       readonly: true
       required: false
-      sort: 13
+      sort: 15
       special:
         - user-created
       translations: null
@@ -13710,12 +13815,55 @@ fields:
       numeric_precision: null
       numeric_scale: null
       schema: public
-      table: PartnerRequests
+      table: PartnersRequests
     type: uuid
-  - collection: PartnerRequests
+  - collection: PartnersRequests
+    field: user_updated
+    meta:
+      collection: PartnersRequests
+      conditions: null
+      display: user
+      display_options: null
+      field: user_updated
+      group: null
+      hidden: true
+      interface: select-dropdown-m2o
+      note: null
+      options:
+        template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
+      readonly: true
+      required: false
+      sort: 17
+      special:
+        - user-updated
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: directus_users
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: user_updated
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: PartnersRequests
+    type: uuid
+  - collection: PartnersRequests
     field: website
     meta:
-      collection: PartnerRequests
+      collection: PartnersRequests
       conditions: null
       display: null
       display_options: null
@@ -13753,7 +13901,7 @@ fields:
       numeric_precision: null
       numeric_scale: null
       schema: public
-      table: PartnerRequests
+      table: PartnersRequests
     type: string
   - collection: PlansComparisons
     field: basic
@@ -31723,11 +31871,11 @@ relations:
       on_delete: SET NULL
       on_update: NO ACTION
       table: Pages_translations
-  - collection: PartnerRequests
+  - collection: PartnersRequests
     field: user_created
     meta:
       junction_field: null
-      many_collection: PartnerRequests
+      many_collection: PartnersRequests
       many_field: user_created
       one_allowed_collections: null
       one_collection: directus_users
@@ -31738,13 +31886,35 @@ relations:
     related_collection: directus_users
     schema:
       column: user_created
-      constraint_name: partnerrequests_user_created_foreign
+      constraint_name: partnersrequests_user_created_foreign
       foreign_key_column: id
       foreign_key_schema: public
       foreign_key_table: directus_users
       on_delete: NO ACTION
       on_update: NO ACTION
-      table: PartnerRequests
+      table: PartnersRequests
+  - collection: PartnersRequests
+    field: user_updated
+    meta:
+      junction_field: null
+      many_collection: PartnersRequests
+      many_field: user_updated
+      one_allowed_collections: null
+      one_collection: directus_users
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    related_collection: directus_users
+    schema:
+      column: user_updated
+      constraint_name: partnersrequests_user_updated_foreign
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: directus_users
+      on_delete: NO ACTION
+      on_update: NO ACTION
+      table: PartnersRequests
   - collection: PlansComparisons
     field: user_created
     meta:

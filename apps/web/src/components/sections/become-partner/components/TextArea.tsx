@@ -1,23 +1,47 @@
+import { useErrorInput } from '@/app/hooks/useErrorInput';
+import { useTranslation } from 'next-i18next';
+
 type ITextArea = {
-    inputLabel: string;
-    inputID: string;
-    inputPlaceholder: string;
-}
+  inputLabel: string;
+  inputID: string;
+  inputPlaceholder: string;
+  errors?: { [x: string]: any };
+};
 
-export const TextArea = ({ inputLabel, inputID, inputPlaceholder }:ITextArea) => {
-    return (
-        <div className='w-full'>
-            <label
-                htmlFor={inputID}
-                className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">{inputLabel}</label>
-            <textarea
-                id={inputID}
-                rows={4}
-                className="block p-2.5 px-4 w-full text-sm text-gray-900 bg-gray-50 rounded-sm border border-gray-300 focus:ring-primary-400 focus:border-primary-400"
-                placeholder={inputPlaceholder}
-            >
-            </textarea>
+export const TextArea = ({
+  inputLabel,
+  inputID,
+  inputPlaceholder,
+  errors,
+}: ITextArea) => {
+  const { error, onKeyUp } = useErrorInput(inputID, errors);
+  const { t } = useTranslation();
 
-        </div>
-    )
-}
+  return (
+    <div className='w-full'>
+      <label
+        htmlFor={inputID}
+        className='block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400'
+      >
+        {inputLabel}
+      </label>
+      <textarea
+        id={inputID + '-id'}
+        rows={4}
+        onKeyUp={onKeyUp}
+        name={inputID}
+        className={`block p-2.5 px-4 w-full text-sm text-gray-900 bg-gray-50 rounded-sm border ${
+          error ? 'border-red-400' : 'border-gray-300'
+        } focus:ring-primary-400 focus:border-primary-400`}
+        placeholder={inputPlaceholder}
+      />
+      <span
+        className={`text-red-400 text-sm ${
+          error ? 'opacity-100' : 'opacity-0'
+        } font-light`}
+      >
+        {error ? t(error) : '0'}
+      </span>
+    </div>
+  );
+};
