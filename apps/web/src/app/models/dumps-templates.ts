@@ -1,4 +1,5 @@
-import {
+/* eslint-disable */
+import type {
   ST_Button,
   ST_CardCarousel,
   ST_CardImageCarousel,
@@ -18,7 +19,7 @@ import {
   ST_TransformedImageCarousel,
   ST_Value,
 } from '@/cms/page-sections';
-import { DRTStatus } from '@/types/directus';
+import type { DRTStatus } from '@/types/directus';
 
 const getId = () => `${Math.random() * 10 ** 17}`;
 const dumpDRTStatus: () => DRTStatus = () => ({
