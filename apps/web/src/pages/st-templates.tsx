@@ -2,6 +2,7 @@ import { getServerSideTranslations } from '@/app/utils/server-translation';
 import { GetServerSidePropsContext } from 'next';
 import * as Sts from '@/components/sections/templates';
 import {
+  DumpBecomePartnerForms,
   DumpButton,
   DumpCardCarousel,
   DumpCardImageCarousel,
@@ -180,6 +181,15 @@ export default function Page() {
         <h3 className='my-9'>ST GroupedLogos</h3>
         <Sts.ST_GroupedLogosFC
           items={DumpGroupedLogos}
+          sectionClass=''
+          sharedObject={{}}
+        />
+      </section>
+
+      <section className='py-14  x-container'>
+        <h3 className='my-9'>ST BecomePartnerForms</h3>
+        <Sts.ST_BecomePartnerFormsFC
+          items={DumpBecomePartnerForms}
           sectionClass=''
           sharedObject={{}}
         />
