@@ -1,12 +1,12 @@
 import type { ID } from '@directus/sdk';
 
-import {
+import type {
   DRTStatus,
   MDWithAsset,
   MDWithPoint,
   MDWithTranslation,
 } from '@/types/directus';
-import { M2APageSection } from '../page-sections';
+import type { M2APageSection } from '../page-sections';
 import type { CMS_MODELS } from '@/app/constant/cms';
 
 // --------------- language model types -------------
@@ -217,6 +217,8 @@ export type MDPlansComparison = {
 }> &
   DRTStatus;
 
+// ----------------  Platforms -------------------------
+
 export type MDMachineTemplate = {
   name: string;
   icon_svg?: string;
@@ -249,3 +251,20 @@ export type MDPlatformCategory = {
   description?: string;
 }> &
   DRTStatus;
+
+// ----------------  Partner Requests -------------------------
+
+export type PartnerRequest = {
+  first_name: string;
+  last_name: string;
+  email: string;
+  phone_number: string;
+  job_title: string;
+  country: string;
+  website: string;
+  company: string;
+  description: string;
+  linkedin?: string;
+};
+
+export type MDPartnerRequest = PartnerRequest & DRTStatus;
