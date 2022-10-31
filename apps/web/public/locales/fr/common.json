@@ -21,5 +21,19 @@
     "Get Started": "Commencer",
     "TOPBAR_NEWS": "actualités",
     "Plans Comparison": "Comparaison des forfaits",
-    "Please make sure to fill out this field": "Merci de bien remplir ce champ"
+    "Please make sure to fill out this field": "Merci de bien remplir ce champ",
+    "First Name": "Prénom",
+    "Last Name": "Nom de famille",
+    "Job Title": "Titre d'emploi",
+    "Phone Number": "Numéro de téléphone",
+    "Website": "Site Internet",
+    "Company": "Compagnie",
+    "Country": "Pays",
+    "Describe your needs": "Décrivez vos besoins",
+    "Let's know your needs": "Faites-nous part de vos besoins",
+    "By clicking Submit, you agree to our": "En cliquant sur Soumettre, vous acceptez nos",
+    "Terms of Service": "Conditions d'utilisation",
+    "and give your permission to create an account": "et donnez votre permission pour créer un compte",
+    "PATERNER_FORM_SUBMIT": "Envoyer",
+    "PARTER_REQUEST_SENT": "Votre demande a bien été envoyée, nous vous en informerons par email après vérification des informations renseignées."
 }
