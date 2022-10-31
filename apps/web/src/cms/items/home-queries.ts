@@ -1,4 +1,4 @@
-import { CMS_MODELS } from '@/constant/cms';
+import { CMS_MODELS } from '@/app/constant/cms';
 import { ID } from '@directus/sdk';
 import { jsonToGraphQLQuery } from 'json-to-graphql-query';
 import { getDirectusClient } from '../directus';

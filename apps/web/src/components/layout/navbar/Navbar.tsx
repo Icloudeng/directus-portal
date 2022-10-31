@@ -2,13 +2,13 @@ import { useRef } from 'react';
 import { AiOutlineMenuFold } from 'react-icons/ai';
 import { VscChevronDown } from 'react-icons/vsc';
 
-import { useScrollPosition } from '@/hooks/useScrollPosition';
+import { useScrollPosition } from '@/app/hooks/useScrollPosition';
 
 import ButtonLink from '@/components/ui/links/ButtonLink';
 import UnstyledLink from '@/components/ui/links/UnstyledLink';
 import NextImage from '@/components/ui/NextImage';
 
-import { useSharedData } from '@/store';
+import { useSharedData } from '@/app/store';
 
 import { useMut } from '@/cms/mut';
 

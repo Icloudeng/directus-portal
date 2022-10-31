@@ -5,7 +5,7 @@ import { RiAlarmWarningFill } from 'react-icons/ri';
 import ArrowLink from '@/components/ui/links/ArrowLink';
 import Seo from '@/components/Seo';
 
-import { getServerSideTranslations } from '@/utils/server-translation';
+import { getServerSideTranslations } from '@/app/utils/server-translation';
 
 export default function NotFoundPage() {
   const { t } = useTranslation('404');

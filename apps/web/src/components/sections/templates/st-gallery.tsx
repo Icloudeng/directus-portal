@@ -4,7 +4,7 @@ import {
   NextButton,
   PrevButton,
 } from '@/components/ui/carouselButtons/CarouselButtons';
-import { useCustomerEmblaCarousel } from '@/hooks/useCustomEmblaCarousel';
+import { useCustomerEmblaCarousel } from '@/app/hooks/useCustomEmblaCarousel';
 import Image from 'next/image';
 
 export function ST_GalleryFC({ items }: STemplates_Props<ST_Gallery>) {

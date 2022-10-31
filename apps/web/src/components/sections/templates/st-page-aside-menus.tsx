@@ -5,7 +5,7 @@ import {
   AsideMenuContent,
 } from '@/components/ui/aside-menu/aside-menu';
 import { MarkdownContent } from '@/components/ui/react-markdown/MarkdownContent';
-import { useSharedData } from '@/store';
+import { useSharedData } from '@/app/store';
 import { HasPlansPricing } from '../pricing/HasPlansPricing';
 
 export function ST_PageAsideMenusFC({

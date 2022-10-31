@@ -1,13 +1,13 @@
 import { forwardRef, useCallback, useEffect, useRef } from 'react';
 import { GrClose } from 'react-icons/gr';
 import { VscChevronDown } from 'react-icons/vsc';
-import { mergeRefs } from '@/utils/merge-refs';
+import { mergeRefs } from '@/app/utils/merge-refs';
 
 import ButtonLink from '../../ui/links/ButtonLink';
 import UnstyledLink from '../../ui/links/UnstyledLink';
 
-import { useOutsideClick } from '@/hooks/useOutsideClick';
-import { useSharedData } from '@/store';
+import { useOutsideClick } from '@/app/hooks/useOutsideClick';
+import { useSharedData } from '@/app/store';
 import { useMut } from '@/cms/mut';
 import { I_MDWithUserTranslation } from '@/types/directus';
 import {

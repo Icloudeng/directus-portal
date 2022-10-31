@@ -5,7 +5,7 @@ import {
   MediaTabs,
   MediaTabsPane,
 } from '@/components/ui/media-tabs/media-tabs';
-import { useSharedData } from '@/store';
+import { useSharedData } from '@/app/store';
 import { MDWithAsset } from '@/types/directus';
 
 function HasPlayer({

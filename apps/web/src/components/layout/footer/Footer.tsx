@@ -1,6 +1,6 @@
 import ButtonLink from '@/components/ui/links/ButtonLink';
 
-import { useSharedData } from '@/store';
+import { useSharedData } from '@/app/store';
 
 import { useMut } from '@/cms/mut';
 

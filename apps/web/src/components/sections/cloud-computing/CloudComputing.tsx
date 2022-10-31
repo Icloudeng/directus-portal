@@ -1,10 +1,10 @@
 /* eslint-disable react/no-unescaped-entities */
 
-import { useCustomerEmblaCarousel } from '@/hooks/useCustomEmblaCarousel';
+import { useCustomerEmblaCarousel } from '@/app/hooks/useCustomEmblaCarousel';
 
 import { DotButton, NextButton, PrevButton } from '@/components/ui/carouselButtons/CarouselButtons';
 
-import { CarouselData } from '@/models/carouselModel';
+import { CarouselData } from '@/app/models/carouselModel';
 
 import { CarouselItem } from './components/CarouselItem';
 

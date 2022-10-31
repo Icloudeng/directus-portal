@@ -11,7 +11,7 @@ import { GoMailRead } from 'react-icons/go';
 
 import UnstyledLink from '@/components/ui/links/UnstyledLink';
 
-import { useSharedData } from '@/store';
+import { useSharedData } from '@/app/store';
 
 import { useMut } from '@/cms/mut';
 

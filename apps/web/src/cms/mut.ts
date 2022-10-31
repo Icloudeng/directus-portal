@@ -1,4 +1,4 @@
-import { useSharedData } from '@/store';
+import { useSharedData } from '@/app/store';
 
 import { MDWithTranslation, MDWithUserTranslation } from '@/types/directus';
 

@@ -4,9 +4,9 @@ import {
   M2APageSection,
   STemplates_Props,
 } from '@/cms/page-sections';
-import { CMS_MODELS } from '@/constant/cms';
-import { VALID_CSS } from '@/utils/regex';
-import { testHexColor } from '@/utils/tests';
+import { CMS_MODELS } from '@/app/constant/cms';
+import { VALID_CSS } from '@/app/utils/regex';
+import { testHexColor } from '@/app/utils/tests';
 import isSvg from 'is-svg';
 import React, { FunctionComponent, useMemo, useRef } from 'react';
 import { HasSvgText } from '../ui/HasSvgText';

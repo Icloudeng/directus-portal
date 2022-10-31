@@ -9,7 +9,7 @@ import {
   ST_Vls,
 } from './page-sections';
 import { qWithAsset, qWithAssets } from './gql-query';
-import { CMS_MODELS } from '@/constant/cms';
+import { CMS_MODELS } from '@/app/constant/cms';
 import { PlansPricingContent } from './items/types';
 import { getGqlPageSections, getGqlPlansPricingQueries } from './items';
 import cloneDeep from 'lodash/cloneDeep';

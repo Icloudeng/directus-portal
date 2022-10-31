@@ -1,5 +1,5 @@
 import { jsonToGraphQLQuery, VariableType } from 'json-to-graphql-query';
-import { CMS_MODELS } from '@/constant/cms';
+import { CMS_MODELS } from '@/app/constant/cms';
 import { getDirectusClient } from '../directus';
 import { qWithPublishedStatus } from '../gql-query';
 import { M2APageSection, pageSectionItemsQuery } from '../page-sections';

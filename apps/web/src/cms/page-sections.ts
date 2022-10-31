@@ -1,4 +1,4 @@
-import { CMS_MODELS } from '@/constant/cms';
+import { CMS_MODELS } from '@/app/constant/cms';
 import {
   DRTStatus,
   MDHasM2A,

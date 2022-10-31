@@ -1,4 +1,4 @@
-import { getServerSideTranslations } from '@/utils/server-translation';
+import { getServerSideTranslations } from '@/app/utils/server-translation';
 import { GetServerSidePropsContext } from 'next';
 import * as Sts from '@/components/sections/templates';
 import {
@@ -20,7 +20,7 @@ import {
   DumpTestimonials,
   DumpTransformedImageCarousels,
   DumpValue,
-} from '@/models/dumps-templates';
+} from '@/app/models/dumps-templates';
 
 export default function Page() {
   return (

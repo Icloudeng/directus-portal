@@ -1,4 +1,4 @@
-import { useHasMounted } from '@/hooks/useHasMounted';
+import { useHasMounted } from '@/app/hooks/useHasMounted';
 import { MDWithAsset } from '@/types/directus';
 import ReactPlayer from 'react-player';
 import { PlyrReact } from './plyr-react';

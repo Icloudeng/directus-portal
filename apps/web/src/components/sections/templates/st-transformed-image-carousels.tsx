@@ -7,7 +7,7 @@ import {
   NextButton,
   PrevButton,
 } from '@/components/ui/carouselButtons/CarouselButtons';
-import { useCustomerEmblaCarousel } from '@/hooks/useCustomEmblaCarousel';
+import { useCustomerEmblaCarousel } from '@/app/hooks/useCustomEmblaCarousel';
 import { MDWithAsset } from '@/types/directus';
 import Image from 'next/image';
 

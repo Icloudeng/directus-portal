@@ -7,7 +7,7 @@ import {
   MDWithTranslation,
 } from '@/types/directus';
 import { M2APageSection } from '../page-sections';
-import type { CMS_MODELS } from '@/constant/cms';
+import type { CMS_MODELS } from '@/app/constant/cms';
 
 // --------------- language model types -------------
 

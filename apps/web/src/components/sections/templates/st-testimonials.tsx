@@ -6,8 +6,8 @@ import {
   NextButton,
   PrevButton,
 } from '@/components/ui/carouselButtons/CarouselButtons';
-import { useCustomerEmblaCarousel } from '@/hooks/useCustomEmblaCarousel';
-import { useSharedData } from '@/store';
+import { useCustomerEmblaCarousel } from '@/app/hooks/useCustomEmblaCarousel';
+import { useSharedData } from '@/app/store';
 
 export function ST_TestimonialsFC({ items }: STemplates_Props<ST_Testimonial>) {
   const {

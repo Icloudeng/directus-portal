@@ -13,7 +13,7 @@ import { SupportBusiness } from '@/components/sections/support-business/SupportB
 import Seo from '@/components/Seo';
 
 import { getGqlHomeQueries, QHomeHeroQueriesType } from '@/cms/items';
-import { getServerSideTranslations } from '@/utils/server-translation';
+import { getServerSideTranslations } from '@/app/utils/server-translation';
 import { PlatformCategory } from '@/components/sections/platform-category/PlatformCategory';
 
 export default function HomePage(props: Partial<QHomeHeroQueriesType>) {

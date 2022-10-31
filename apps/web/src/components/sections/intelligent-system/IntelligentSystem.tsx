@@ -1,4 +1,4 @@
-import { useCustomerEmblaCarousel } from '@/hooks/useCustomEmblaCarousel';
+import { useCustomerEmblaCarousel } from '@/app/hooks/useCustomEmblaCarousel';
 
 import {
   DotButton,
@@ -6,7 +6,7 @@ import {
   PrevButton,
 } from '@/components/ui/carouselButtons/CarouselButtons';
 
-import { SnapItemData } from '@/models/snapItemModel';
+import { SnapItemData } from '@/app/models/snapItemModel';
 
 import { SnapItem } from './components/SnapItem';
 
