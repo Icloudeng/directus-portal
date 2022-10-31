@@ -1,5 +1,6 @@
 /* eslint-disable */
 import type {
+  ST_BecomePartnerForm,
   ST_Button,
   ST_CardCarousel,
   ST_CardImageCarousel,
@@ -1488,6 +1489,18 @@ export const DumpGroupedLogos: ST_GroupedLogo[] = [
       id: 'c74a3606-ceb1-4519-b823-cdc8da2d7086',
       status: 'published',
       date_created: '2022-10-28T17:53:16.275Z',
+    },
+  },
+];
+
+export const DumpBecomePartnerForms: ST_BecomePartnerForm[] = [
+  {
+    id: '62',
+    collection: 'ST_BecomePartnerForms',
+    item: {
+      id: '18a4ba12-aaf1-41d1-8ddf-068d7725ee47',
+      status: 'published',
+      date_created: '2022-10-30T20:32:51.078Z',
     },
   },
 ];
