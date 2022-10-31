@@ -13171,7 +13171,7 @@ fields:
       options:
         placeholder: Company
         trim: true
-      readonly: false
+      readonly: true
       required: true
       sort: 9
       special: null
@@ -13214,7 +13214,7 @@ fields:
       options:
         placeholder: Country
         trim: true
-      readonly: false
+      readonly: true
       required: true
       sort: 7
       special: null
@@ -13300,7 +13300,7 @@ fields:
       options:
         placeholder: Description
         trim: true
-      readonly: false
+      readonly: true
       required: false
       sort: 11
       special: null
@@ -13343,14 +13343,14 @@ fields:
       options:
         placeholder: Email
         trim: true
-      readonly: false
+      readonly: true
       required: true
-      sort: 5
+      sort: 4
       special: null
       translations: null
       validation: null
       validation_message: null
-      width: full
+      width: half
     schema:
       comment: null
       data_type: character varying
@@ -13386,14 +13386,14 @@ fields:
       options:
         placeholder: First Name
         trim: true
-      readonly: false
+      readonly: true
       required: true
       sort: 2
       special: null
       translations: null
       validation: null
       validation_message: null
-      width: full
+      width: half
     schema:
       comment: null
       data_type: character varying
@@ -13471,9 +13471,9 @@ fields:
       options:
         placeholder: Job Title
         trim: true
-      readonly: false
+      readonly: true
       required: true
-      sort: 4
+      sort: 6
       special: null
       translations: null
       validation: null
@@ -13514,14 +13514,14 @@ fields:
       options:
         placeholder: Last Name
         trim: true
-      readonly: false
+      readonly: true
       required: true
       sort: 3
       special: null
       translations: null
       validation: null
       validation_message: null
-      width: full
+      width: half
     schema:
       comment: null
       data_type: character varying
@@ -13557,7 +13557,7 @@ fields:
       options:
         placeholder: LinkedIn
         trim: true
-      readonly: false
+      readonly: true
       required: false
       sort: 10
       special: null
@@ -13600,14 +13600,14 @@ fields:
       options:
         placeholder: Phone Number
         trim: true
-      readonly: false
+      readonly: true
       required: true
-      sort: 6
+      sort: 5
       special: null
       translations: null
       validation: null
       validation_message: null
-      width: full
+      width: half
     schema:
       comment: null
       data_type: character varying
@@ -13727,7 +13727,7 @@ fields:
       options:
         placeholder: Website
         trim: true
-      readonly: false
+      readonly: true
       required: true
       sort: 8
       special: null
