@@ -18,3 +18,4 @@ export * from './st-testimonials';
 export * from './st-gallery';
 export * from './st-grouped-logos';
 export * from './st-become-partner-forms';
+export * from './st-company-details';
