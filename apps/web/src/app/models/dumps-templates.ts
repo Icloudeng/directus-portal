@@ -5,6 +5,7 @@ import type {
   ST_CardCarousel,
   ST_CardImageCarousel,
   ST_CleanHero,
+  ST_CompanyDetail,
   ST_Gallery,
   ST_GroupedLogo,
   ST_HoverableMediaMenu,
@@ -17,6 +18,7 @@ import type {
   ST_SimpleCardLink,
   ST_StreamableCard,
   ST_Testimonial,
+  ST_TimelineRange,
   ST_TransformedImageCarousel,
   ST_Value,
 } from '@/cms/page-sections';
@@ -1501,6 +1503,190 @@ export const DumpBecomePartnerForms: ST_BecomePartnerForm[] = [
       id: '18a4ba12-aaf1-41d1-8ddf-068d7725ee47',
       status: 'published',
       date_created: '2022-10-30T20:32:51.078Z',
+    },
+  },
+];
+
+export const DumpCompanyDetails: ST_CompanyDetail[] = [
+  {
+    id: '64',
+    collection: 'ST_CompanyDetails',
+    item: {
+      id: '3caf1f7a-85e8-463d-824a-cb7a388f3c53',
+      status: 'published',
+      date_created: '2022-11-01T07:38:03.097Z',
+    },
+  },
+];
+
+export const DumpTimelineRanges: ST_TimelineRange[] = [
+  {
+    id: '65',
+    collection: 'ST_TimelineRanges',
+    item: {
+      translations: [
+        {
+          id: '1',
+          languages_code: {
+            code: 'en',
+            name: 'English',
+          },
+          time_title: '2008',
+          time_description:
+            'Launched in-house developed cloud platform under the IT-GRAD brand;\nGot the status of a VMware Service Provider Partner.',
+        },
+      ],
+      id: '771cf667-5249-43ff-931b-fe2c3b6beb98',
+      status: 'published',
+      date_created: '2022-11-01T14:25:08.785Z',
+    },
+  },
+  {
+    id: '66',
+    collection: 'ST_TimelineRanges',
+    item: {
+      translations: [
+        {
+          id: '2',
+          languages_code: {
+            code: 'en',
+            name: 'English',
+          },
+          time_title: '2009',
+          time_description: 'Implemented the NetApp data storage system.',
+        },
+      ],
+      id: '6a0dbfe0-91c9-4763-b7ee-5865d1e83efa',
+      status: 'published',
+      date_created: '2022-11-01T14:25:08.898Z',
+    },
+  },
+  {
+    id: '67',
+    collection: 'ST_TimelineRanges',
+    item: {
+      translations: [
+        {
+          id: '3',
+          languages_code: {
+            code: 'en',
+            name: 'English',
+          },
+          time_title: '2016',
+          time_description: 'Received the PCI DSS certificate.',
+        },
+      ],
+      id: '55f9707e-f31f-4408-8f91-e006d5da46f8',
+      status: 'published',
+      date_created: '2022-11-01T14:25:09.009Z',
+    },
+  },
+  {
+    id: '68',
+    collection: 'ST_TimelineRanges',
+    item: {
+      translations: [
+        {
+          id: '4',
+          languages_code: {
+            code: 'en',
+            name: 'English',
+          },
+          time_title: '2017',
+          time_description:
+            'Gained the conformity certificate of ISO/IEC 20000, ISO 9001:2015.',
+        },
+      ],
+      id: 'aa1780e0-bf76-4038-a3eb-ae3e1572f83d',
+      status: 'published',
+      date_created: '2022-11-01T14:25:09.098Z',
+    },
+  },
+  {
+    id: '69',
+    collection: 'ST_TimelineRanges',
+    item: {
+      translations: [
+        {
+          id: '5',
+          languages_code: {
+            code: 'en',
+            name: 'English',
+          },
+          time_title: '2019',
+          time_description:
+            'Expanded on the international market under Serverspace brand;\nOpened offices and data centers in Belarus, the Netherlands, and Kazakhstan.',
+        },
+      ],
+      id: '3f9e9b06-a5b0-4d1f-ac88-8f66d2823b41',
+      status: 'published',
+      date_created: '2022-11-01T14:25:09.159Z',
+    },
+  },
+  {
+    id: '70',
+    collection: 'ST_TimelineRanges',
+    item: {
+      translations: [
+        {
+          id: '6',
+          languages_code: {
+            code: 'en',
+            name: 'English',
+          },
+          time_title: '2020',
+          time_description:
+            'Integrated the hyperconverged vStack platform;\nOpened a data center and an office in the USA;\nCreated a data center in Russia',
+        },
+      ],
+      id: '3ed01502-f47e-479c-ac8d-18674521688c',
+      status: 'published',
+      date_created: '2022-11-01T14:25:09.226Z',
+      date_updated: '2022-11-01T16:17:05.354Z',
+    },
+  },
+  {
+    id: '71',
+    collection: 'ST_TimelineRanges',
+    item: {
+      translations: [
+        {
+          id: '7',
+          languages_code: {
+            code: 'en',
+            name: 'English',
+          },
+          time_title: '2021',
+          time_description:
+            'Launched new clusters in New Jersey, Amsterdam, and Moscow.',
+        },
+      ],
+      id: '263a2ab5-7573-4a10-8d59-3aa5e18dcf31',
+      status: 'published',
+      date_created: '2022-11-01T14:25:09.293Z',
+      date_updated: '2022-11-01T16:17:05.418Z',
+    },
+  },
+  {
+    id: '72',
+    collection: 'ST_TimelineRanges',
+    item: {
+      translations: [
+        {
+          id: '8',
+          languages_code: {
+            code: 'en',
+            name: 'English',
+          },
+          time_title: '2022',
+          time_description:
+            'Became part of the ITGLOBAL.COM group of companies.\nOpened an office and a data center in Canada.',
+        },
+      ],
+      id: '443068bb-c957-47c7-bd10-4fd697900a3d',
+      status: 'published',
+      date_created: '2022-11-01T14:25:09.355Z',
+      date_updated: '2022-11-01T16:17:05.478Z',
     },
   },
 ];

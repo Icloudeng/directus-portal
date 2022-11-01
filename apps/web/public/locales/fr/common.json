@@ -38,5 +38,6 @@
     "PARTER_REQUEST_SENT": "Votre demande a bien été envoyée, nous vous en informerons par email après vérification des informations renseignées.",
     "Please provide a valid email address": "Veuillez fournir une adresse email valide",
     "Please provide a valid phone number": "Veuillez fournir un numéro de téléphone valide",
-    "Please provide a valid URL": "Veuillez fournir une URL valide"
+    "Please provide a valid URL": "Veuillez fournir une URL valide",
+    "Company details": "Coordonnées de l'entreprise"
 }

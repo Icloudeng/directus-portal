@@ -208,6 +208,18 @@ const q_ST: Query = {
     __typeName: section_templates.st_become_partner_forms,
     ...qWithStatus,
   },
+  [section_templates.st_company_details]: {
+    __typeName: section_templates.st_company_details,
+    ...qWithStatus,
+  },
+  [section_templates.st_timeline_ranges]: {
+    __typeName: section_templates.st_timeline_ranges,
+    ...qWithTranslations({
+      time_title: true,
+      time_description: true,
+    }),
+    ...qWithStatus,
+  },
 };
 
 type PSQuery = {
@@ -487,7 +499,17 @@ export type ST_BecomePartnerForm = MDHasM2A<
   ST_V<'st_become_partner_forms'>
 >;
 
-// strean_direction
+export type ST_CompanyDetail = MDHasM2A<DRTStatus, ST_V<'st_company_details'>>;
+
+export type ST_TimelineRange = MDHasM2A<
+  MDWithTranslation<{
+    time_title: string;
+    time_description: string;
+  }> &
+    DRTStatus,
+  ST_V<'st_timeline_ranges'>
+>;
+
 //------------------- Page Sections --------------------//
 export type PS_Content =
   | ST_Value
@@ -509,7 +531,9 @@ export type PS_Content =
   | ST_Testimonial
   | ST_Gallery
   | ST_GroupedLogo
-  | ST_BecomePartnerForm;
+  | ST_BecomePartnerForm
+  | ST_CompanyDetail
+  | ST_TimelineRange;
 
 export type M2APageSection = MDHasM2A<
   {
