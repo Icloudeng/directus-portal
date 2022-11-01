@@ -50,6 +50,7 @@ export function ST_CompanyDetailsFC(_: STemplates_Props<ST_CompanyDetail>) {
               <a
                 href={CompanyDetails?.website}
                 target='_blank'
+                rel="noopener"
                 className='text-primary-400'
               >
                 {CompanyDetails?.website}
