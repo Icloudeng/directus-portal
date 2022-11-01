@@ -66,7 +66,9 @@ export const NextButton = ({ enabled, onClick }: ICarouselButton) => {
       disabled={!enabled}
       className='absolute top-0 hidden ss:-right-16 sm:-right-20 z-30 ss:flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none'
       data-carousel-next=''
-    ></button>
+    >
+      <RawNextButton enabled={enabled} />
+    </button>
   );
 };
 
