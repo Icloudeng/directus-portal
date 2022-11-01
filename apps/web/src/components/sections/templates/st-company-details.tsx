@@ -1,5 +1,6 @@
 import { useSharedData } from '@/app/store';
 import { STemplates_Props, ST_CompanyDetail } from '@/cms/page-sections';
+import UnderlineLink from '@/components/ui/links/UnderlineLink';
 import { useTranslation } from 'next-i18next';
 import Image from 'next/image';
 
@@ -47,14 +48,13 @@ export function ST_CompanyDetailsFC(_: STemplates_Props<ST_CompanyDetail>) {
           <li className='mb-3'>
             {t('Website')}:{' '}
             {CompanyDetails?.website && (
-              <a
+              <UnderlineLink
                 href={CompanyDetails?.website}
                 target='_blank'
-                rel="noopener"
                 className='text-primary-400'
               >
                 {CompanyDetails?.website}
-              </a>
+              </UnderlineLink>
             )}
           </li>
         </ul>
