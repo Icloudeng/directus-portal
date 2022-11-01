@@ -5,6 +5,7 @@ import type {
   ST_CardCarousel,
   ST_CardImageCarousel,
   ST_CleanHero,
+  ST_CompanyDetail,
   ST_Gallery,
   ST_GroupedLogo,
   ST_HoverableMediaMenu,
@@ -1501,6 +1502,18 @@ export const DumpBecomePartnerForms: ST_BecomePartnerForm[] = [
       id: '18a4ba12-aaf1-41d1-8ddf-068d7725ee47',
       status: 'published',
       date_created: '2022-10-30T20:32:51.078Z',
+    },
+  },
+];
+
+export const DumpCompanyDetails: ST_CompanyDetail[] = [
+  {
+    id: '64',
+    collection: 'ST_CompanyDetails',
+    item: {
+      id: '3caf1f7a-85e8-463d-824a-cb7a388f3c53',
+      status: 'published',
+      date_created: '2022-11-01T07:38:03.097Z',
     },
   },
 ];
