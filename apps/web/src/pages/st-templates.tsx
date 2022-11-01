@@ -20,6 +20,7 @@ import {
   DumpSimpleCardLink,
   DumpStreamableCards,
   DumpTestimonials,
+  DumpTimelineRanges,
   DumpTransformedImageCarousels,
   DumpValue,
 } from '@/app/models/dumps-templates';
@@ -200,6 +201,15 @@ export default function Page() {
         <h3 className='my-9'>ST CompanyDetails</h3>
         <Sts.ST_CompanyDetailsFC
           items={DumpCompanyDetails}
+          sectionClass=''
+          sharedObject={{}}
+        />
+      </section>
+
+      <section className='py-14  x-container'>
+        <h3 className='my-9'>ST TimelineRanges</h3>
+        <Sts.ST_TimelineRangesFC
+          items={DumpTimelineRanges}
           sectionClass=''
           sharedObject={{}}
         />

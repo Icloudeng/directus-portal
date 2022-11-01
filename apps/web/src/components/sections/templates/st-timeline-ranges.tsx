@@ -26,7 +26,7 @@ export function ST_TimelineRangesFC({
         <button
           type='button'
           disabled={index === 0}
-          className={`${index === 0 ? 'opacity-50' : ''}`}
+          className={`${index === 0 ? 'opacity-70' : ''}`}
           onClick={() => {
             setIndex((value) => {
               const v = value - stepValue;
@@ -69,7 +69,7 @@ export function ST_TimelineRangesFC({
         <button
           type='button'
           disabled={index === maxValue}
-          className={`${index === maxValue ? 'opacity-50' : ''}`}
+          className={`${index === maxValue ? 'opacity-70' : ''}`}
           onClick={() => {
             setIndex((value) => {
               const v = value + stepValue;
