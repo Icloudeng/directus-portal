@@ -23,7 +23,7 @@ const {
   },
 } = CMS_MODELS;
 
-const { st_media_tabs, st_testimonials, st_grouped_logos } = section_templates;
+const { st_media_tabs, st_testimonials } = section_templates;
 
 export async function pageSectionsAdapters<
   T extends { [x: string]: any; sections: M2APageSection[] }
@@ -143,12 +143,6 @@ function pageSectionsWithAssets(
         case st_testimonials:
           qWithAsset(access_token, st.item, 'image', [71, 71]);
           break;
-
-        // case st_grouped_logos:
-        //   qWithAsset(access_token, st.item, 'image', [71, 71]);
-        //   break;
-
-        //   st_grouped_logos
         default:
           // Actually all templates modeles uses image as default key for assets
           qWithAsset(access_token, st.item, 'image' as any);
@@ -177,6 +171,9 @@ function pageSectionPublished<
   });
 
   data.sections.forEach(({ item }) => {
+    if (!item.contents) {
+      item.contents = [];
+    }
     item.contents = item.contents.filter(
       (citem) => citem.item.status === 'published'
     );
