@@ -1,4 +1,5 @@
 import { CMS_MODELS } from '@/app/constant/cms';
+import { ButtonVariant } from '@/types/buttonTypes';
 import {
   DRTStatus,
   MDHasM2A,
@@ -97,9 +98,13 @@ const q_ST: Query = {
   },
   [section_templates.st_clean_heros]: {
     __typeName: section_templates.st_clean_heros,
+    image: qWithQueryAsset(),
+    image_svg: true,
+    disposition: true,
     ...qWithTranslations({
       title: true,
       description: true,
+      buttons: true,
     }),
     ...qWithStatus,
   },
@@ -367,9 +372,19 @@ export type ST_NavAccordion = MDHasM2A<
 >;
 
 export type ST_CleanHero = MDHasM2A<
-  MDWithTranslation<{
+  {
+    image?: MDWithAsset;
+    image_svg?: string;
+    disposition: 'text_left' | 'text_right';
+  } & MDWithTranslation<{
     title: string;
     description?: string;
+    buttons?: {
+      name: string;
+      url: string;
+      variant?: ButtonVariant;
+      external: boolean;
+    }[];
   }> &
     DRTStatus,
   ST_V<'st_clean_heros'>
@@ -405,7 +420,7 @@ export type ST_Button = MDHasM2A<
   {
     url: string;
     external: boolean;
-    variant?: 'primary' | 'outline' | 'ghost' | 'light' | 'dark';
+    variant?: ButtonVariant;
   } & MDWithTranslation<{
     button_text: string;
   }> &
