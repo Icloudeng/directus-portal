@@ -26,7 +26,7 @@ export function ST_TimelineRangesFC({
         <button
           type='button'
           disabled={index === 0}
-          className={`${index === 0 ? 'opacity-70' : ''}`}
+          className={`${index === 0 ? 'opacity-70' : ''} mt-5`}
           onClick={() => {
             setIndex((value) => {
               const v = value - stepValue;
@@ -56,20 +56,22 @@ export function ST_TimelineRangesFC({
               );
             })}
           </div>
-          <input
-            className='w-full py-14 -mt-5'
-            type='range'
-            value={index}
-            onChange={(e) => setIndex(+e.currentTarget.value)}
-            step={stepValue}
-            min={minValue}
-            max={maxValue}
-          />
+          <div className='w-full py-14'>
+            <input
+              className='w-full'
+              type='range'
+              value={index}
+              onChange={(e) => setIndex(+e.currentTarget.value)}
+              step={stepValue}
+              min={minValue}
+              max={maxValue}
+            />
+          </div>
         </div>
         <button
           type='button'
           disabled={index === maxValue}
-          className={`${index === maxValue ? 'opacity-70' : ''}`}
+          className={`${index === maxValue ? 'opacity-70' : ''} mt-5`}
           onClick={() => {
             setIndex((value) => {
               const v = value + stepValue;
