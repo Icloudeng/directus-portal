@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 
 import { useMut } from '@/cms/mut';
 import { MDPage } from '@/cms/items/types';
+import { useSharedData } from '@/app/store';
 
 const defaultMeta = {
   title: 'Icloudeng',
@@ -24,8 +25,9 @@ type SeoProps = {
 export default function Seo({ dynamicPage, ...props }: SeoProps) {
   const router = useRouter();
   const page = useMut(dynamicPage);
+  const { CompanyDetails } = useSharedData();
 
-  const $title = page?.translations?.title;
+  const $title = page?.translations?.title || CompanyDetails?.website_title;
   const $description = page?.translations?.description;
   const $image = page?.image;
 
