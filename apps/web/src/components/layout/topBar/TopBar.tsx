@@ -12,7 +12,7 @@ import { useOutsideClick } from '@/app/hooks/useOutsideClick';
 import { useTranslation } from 'next-i18next';
 
 export const TopBar: React.FC = () => {
-  const { languages, locale } = useSharedData();
+  const { languages, locale, News } = useSharedData();
   const { targetEl } = useOutsideClick((el) => el.classList.remove('active'));
   const { t } = useTranslation();
 
@@ -26,12 +26,16 @@ export const TopBar: React.FC = () => {
     <div className='hidden sd:block border-b border-b-textGray bg-white px-10 z-50 topbar--line'>
       <div className='h-10 flex items-center justify-start'>
         <div className='flex flex-1 items-center mr-auto overflow-hidden flex-nowrap'>
-          <div className=' h-5 px-2 border border-primary-400 flex items-center justify-center rounded-sm'>
-            <span className='uppercase text-[0.6rem] text-primary-400'>
-              {t('TOPBAR_NEWS')}
-            </span>
-          </div>
-          <TopbarNews />
+          {News && News.length > 0 && (
+            <>
+              <div className=' h-5 px-2 border border-primary-400 flex items-center justify-center rounded-sm'>
+                <span className='uppercase text-[0.6rem] text-primary-400'>
+                  {t('TOPBAR_NEWS')}
+                </span>
+              </div>
+              <TopbarNews />
+            </>
+          )}
         </div>
         <div className=' mr-5'>
           <TopbarLinks />
