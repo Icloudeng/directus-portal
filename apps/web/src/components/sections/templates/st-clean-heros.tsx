@@ -1,7 +1,10 @@
 import { useMut } from '@/cms/mut';
 import type { STemplates_Props, ST_CleanHero } from '@/cms/page-sections';
+import ButtonLink from '@/components/ui/links/ButtonLink';
+import isSvg from 'is-svg';
 import Router from 'next/router';
 import { useEffect } from 'react';
+import { HasSvgText } from '@/components/ui/HasSvgText';
 
 export function ST_CleanHerosFC({
   items,
@@ -80,20 +83,70 @@ export function ST_CleanHerosFC({
 }
 
 function Header({ item }: ST_CleanHero) {
-  const { translations } = useMut(item);
+  const { translations, image, image_svg, disposition } = useMut(item);
+  const buttons = translations?.buttons || [];
+
+  const hasImage = (image_svg && isSvg(image_svg)) || !!image;
+
   return (
     <div
-      className='xl:max-w-[560px] lg:max-w-[480px] max-w-[460px] flex items-center justify-center flex-col ml-auto mr-auto'
-      key={item.id}
+      className={`flex max-h-[1000px] ${hasImage ? 'lg:justify-between' : ''} ${
+        disposition === 'text_right' ? 'flex-row-reverse' : ''
+      }`}
     >
-      <h1 className='text-center text-[30px] sm:text-[45px] font-bold'>
-        {translations?.title}
-      </h1>
-      <div className='mt-[30px]'>
-        <p className='text-center text-[18px] ss:text-[20px] font-light leading-[1.64]'>
-          {translations?.description}
-        </p>
+      <div
+        className={`${
+          hasImage
+            ? 'lg:items-start lg:mx-0 lg:w-1/2'
+            : 'xl:max-w-[560px] lg:max-w-[480px] '
+        } justify-center max-w-[460px] flex items-center flex-col mx-auto`}
+      >
+        <h1
+          className={`${
+            hasImage ? 'lg:text-start' : ''
+          } text-center text-[30px] sm:text-[45px] font-bold`}
+        >
+          {translations?.title}
+        </h1>
+        <div className='mt-[30px]'>
+          <p
+            className={`${
+              hasImage ? 'lg:text-start' : ''
+            } text-center text-[18px] ss:text-[20px] font-light leading-[1.64]`}
+          >
+            {translations?.description}
+          </p>
+        </div>
+
+        {buttons.length > 0 && (
+          <div className='mt-9 flex flex-wrap justify-center gap-3'>
+            {buttons.map((btn, i) => {
+              return (
+                <div key={i}>
+                  <ButtonLink
+                    href={btn.url}
+                    className='px-7 py-3'
+                    variant={btn.variant}
+                    target={btn.external ? '_blank' : undefined}
+                  >
+                    {btn.name}
+                  </ButtonLink>
+                </div>
+              );
+            })}
+          </div>
+        )}
       </div>
+
+      {hasImage && (
+        <HasSvgText
+          fallback={
+            <>{image && <img className='w-full h-auto' src={image.src} />}</>
+          }
+          svgText={image_svg}
+          className='lg:w-1/2 hidden lg:block st_flexible_icon'
+        />
+      )}
     </div>
   );
 }
