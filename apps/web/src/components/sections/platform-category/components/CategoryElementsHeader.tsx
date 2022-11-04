@@ -1,4 +1,4 @@
-import { InputWithIcon } from "./InputWithIcon"
+import { InputWithIcon } from "@/components/ui/InputWithIcon"
 
 export const CategoryElementsHeader = () => {
     return (
