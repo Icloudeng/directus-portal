@@ -6,9 +6,13 @@ import ButtonLink from '@/components/ui/links/ButtonLink';
 export function ST_SideTextImageFC({
   items,
 }: STemplates_Props<ST_SideTextImage>) {
-  return items.map((data) => {
-    return <Content {...data} key={data.item.id} />;
-  });
+  return (
+    <>
+      {items.map((data) => {
+        return <Content {...data} key={data.item.id} />;
+      })}
+    </>
+  );
 }
 
 function Content({ item }: ST_SideTextImage) {
