@@ -691,7 +691,7 @@ collections:
       collapse: open
       collection: PageSections
       color: null
-      display_template: "{{status}}\_{{label}}\_(\_{{category}}\_)"
+      display_template: "{{status}}\_{{label}}\_(\_{{category.name}}\_)"
       group: Page
       hidden: false
       icon: null
@@ -1069,7 +1069,7 @@ collections:
       collapse: open
       collection: ReusablePageSections
       color: null
-      display_template: "{{status}}\_{{page_section}}"
+      display_template: "{{status}}\_({{page_section.label}}\_-\_{{id}})"
       group: generics
       hidden: true
       icon: null
@@ -1093,7 +1093,7 @@ collections:
       collapse: open
       collection: ReusablePageSectionsCategories
       color: null
-      display_template: "{{status}}\_{{section_category}}"
+      display_template: "{{status}}\_({{section_category.name}}\_-\_{{section_category.id}})"
       group: generics
       hidden: true
       icon: null
@@ -10920,46 +10920,39 @@ fields:
       field: category
       group: null
       hidden: false
-      interface: input-autocomplete-api
+      interface: select-dropdown-m2o
       note: null
       options:
-        rate: 200
-        resultsPath: null
-        textPath: name
-        url: /searchable/page-sections-categories?q={{value}}
-        valuePath: ref
+        template: "{{name}}\_-\_{{id}}"
       readonly: false
       required: false
       sort: 5
-      special: null
+      special:
+        - m2o
       translations: null
-      validation:
-        _and:
-          - category:
-              _regex: >-
-                ^((.*)\s+\-\-\s+(([0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12})|[0-9]+)|(\-\-))$
+      validation: null
       validation_message: null
       width: full
     schema:
       comment: null
-      data_type: character varying
-      default_value: '--'
-      foreign_key_column: null
-      foreign_key_schema: null
-      foreign_key_table: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: PageSectionsCategories
       generation_expression: null
       has_auto_increment: false
       is_generated: false
       is_nullable: true
       is_primary_key: false
       is_unique: false
-      max_length: 255
+      max_length: null
       name: category
       numeric_precision: null
       numeric_scale: null
       schema: public
       table: PageSections
-    type: string
+    type: uuid
   - collection: PageSections
     field: container
     meta:
@@ -11743,27 +11736,25 @@ fields:
       table: PageSectionsCategories
     type: string
   - collection: PageSectionsCategories
-    field: notice-9xof5j
+    field: page_sections
     meta:
       collection: PageSectionsCategories
       conditions: null
       display: null
       display_options: null
-      field: notice-9xof5j
+      field: page_sections
       group: null
       hidden: false
-      interface: presentation-notice
+      interface: list-o2m
       note: null
       options:
-        color: warning
-        icon: notification_important
-        text: Don't edit me once you created me
+        enableLink: true
+        template: "{{label}}\_-\_{{id}}"
       readonly: false
       required: false
       sort: 3
       special:
-        - alias
-        - no-data
+        - o2m
       translations: null
       validation: null
       validation_message: null
@@ -14836,7 +14827,7 @@ fields:
       options: null
       readonly: true
       required: false
-      sort: 9
+      sort: 10
       special:
         - date-created
       translations: null
@@ -14879,7 +14870,7 @@ fields:
       options: null
       readonly: true
       required: false
-      sort: 11
+      sort: 12
       special:
         - date-updated
       translations: null
@@ -15077,6 +15068,32 @@ fields:
       table: PlatformCategories
     type: string
   - collection: PlatformCategories
+    field: platforms
+    meta:
+      collection: PlatformCategories
+      conditions: null
+      display: null
+      display_options: null
+      field: platforms
+      group: null
+      hidden: false
+      interface: list-o2m
+      note: null
+      options:
+        enableLink: true
+        template: "{{name}}\_-\_{{id}}"
+      readonly: false
+      required: false
+      sort: 6
+      special:
+        - o2m
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema: null
+    type: alias
+  - collection: PlatformCategories
     field: sort
     meta:
       collection: PlatformCategories
@@ -15091,7 +15108,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: 7
+      sort: 8
       special: null
       translations: null
       validation: null
@@ -15153,7 +15170,7 @@ fields:
             value: archived
       readonly: false
       required: false
-      sort: 6
+      sort: 7
       special: null
       translations: null
       validation: null
@@ -15221,7 +15238,7 @@ fields:
         template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
       readonly: true
       required: false
-      sort: 8
+      sort: 9
       special:
         - user-created
       translations: null
@@ -15264,7 +15281,7 @@ fields:
         template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
       readonly: true
       required: false
-      sort: 10
+      sort: 11
       special:
         - user-updated
       translations: null
@@ -15509,46 +15526,39 @@ fields:
       field: category
       group: null
       hidden: false
-      interface: input-autocomplete-api
+      interface: select-dropdown-m2o
       note: null
       options:
-        placeholder: Platform Category
-        rate: 200
-        textPath: name
-        url: /searchable/platform-categories?q={{value}}
-        valuePath: ref
+        template: "{{name}}\_-\_{{id}}"
       readonly: false
       required: true
       sort: 4
-      special: null
+      special:
+        - m2o
       translations: null
-      validation:
-        _and:
-          - category:
-              _regex: >-
-                ^(.*)\s+\-\-\s+(([0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12})|[0-9]+)$
+      validation: null
       validation_message: null
       width: full
     schema:
       comment: null
-      data_type: character varying
+      data_type: uuid
       default_value: null
-      foreign_key_column: null
-      foreign_key_schema: null
-      foreign_key_table: null
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: PlatformCategories
       generation_expression: null
       has_auto_increment: false
       is_generated: false
       is_nullable: true
       is_primary_key: false
       is_unique: false
-      max_length: 255
+      max_length: null
       name: category
       numeric_precision: null
       numeric_scale: null
       schema: public
       table: Platforms
-    type: string
+    type: uuid
   - collection: Platforms
     field: cpu
     meta:
@@ -15735,7 +15745,7 @@ fields:
       note: null
       options: null
       readonly: false
-      required: false
+      required: true
       sort: 6
       special:
         - file
@@ -16567,42 +16577,39 @@ fields:
       field: page_section
       group: null
       hidden: false
-      interface: input-autocomplete-api
+      interface: select-dropdown-m2o
       note: null
       options:
-        placeholder: Page Section
-        rate: 200
-        textPath: label
-        url: /searchable/page-sections?q={{value}}
-        valuePath: ref
+        template: "{{status}}\_{{label}}\_-\_{{id}}"
       readonly: false
       required: true
       sort: 3
-      special: null
+      special:
+        - m2o
       translations: null
       validation: null
       validation_message: null
       width: full
     schema:
       comment: null
-      data_type: character varying
+      data_type: uuid
       default_value: null
-      foreign_key_column: null
-      foreign_key_schema: null
-      foreign_key_table: null
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: PageSections
       generation_expression: null
       has_auto_increment: false
       is_generated: false
       is_nullable: true
       is_primary_key: false
       is_unique: false
-      max_length: 255
+      max_length: null
       name: page_section
       numeric_precision: null
       numeric_scale: null
       schema: public
       table: ReusablePageSections
-    type: string
+    type: uuid
   - collection: ReusablePageSections
     field: sort
     meta:
@@ -16956,46 +16963,39 @@ fields:
       field: section_category
       group: null
       hidden: false
-      interface: input-autocomplete-api
+      interface: select-dropdown-m2o
       note: null
       options:
-        placeholder: Page Section Category
-        rate: 200
-        textPath: name
-        url: /searchable/page-sections-categories?q={{value}}
-        valuePath: ref
+        template: "{{name}}\_-\_{{id}}"
       readonly: false
       required: true
       sort: 3
-      special: null
+      special:
+        - m2o
       translations: null
-      validation:
-        _and:
-          - section_category:
-              _regex: >-
-                ^(.*)\s+\-\-\s+(([0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12})|[0-9]+)$
+      validation: null
       validation_message: null
       width: full
     schema:
       comment: null
-      data_type: character varying
+      data_type: uuid
       default_value: null
-      foreign_key_column: null
-      foreign_key_schema: null
-      foreign_key_table: null
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: PageSectionsCategories
       generation_expression: null
       has_auto_increment: false
       is_generated: false
       is_nullable: true
       is_primary_key: false
       is_unique: false
-      max_length: 255
+      max_length: null
       name: section_category
       numeric_precision: null
       numeric_scale: null
       schema: public
       table: ReusablePageSectionsCategories
-    type: string
+    type: uuid
   - collection: ReusablePageSectionsCategories
     field: sort
     meta:
@@ -34596,6 +34596,28 @@ relations:
       on_update: NO ACTION
       table: PageSections
   - collection: PageSections
+    field: category
+    meta:
+      junction_field: null
+      many_collection: PageSections
+      many_field: category
+      one_allowed_collections: null
+      one_collection: PageSectionsCategories
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: page_sections
+      sort_field: null
+    related_collection: PageSectionsCategories
+    schema:
+      column: category
+      constraint_name: pagesections_category_foreign
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: PageSectionsCategories
+      on_delete: SET NULL
+      on_update: NO ACTION
+      table: PageSections
+  - collection: PageSections
     field: user_created
     meta:
       junction_field: null
@@ -35179,6 +35201,28 @@ relations:
       on_update: NO ACTION
       table: PlatformCategories_translations
   - collection: Platforms
+    field: category
+    meta:
+      junction_field: null
+      many_collection: Platforms
+      many_field: category
+      one_allowed_collections: null
+      one_collection: PlatformCategories
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: platforms
+      sort_field: null
+    related_collection: PlatformCategories
+    schema:
+      column: category
+      constraint_name: platforms_category_foreign
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: PlatformCategories
+      on_delete: SET NULL
+      on_update: NO ACTION
+      table: Platforms
+  - collection: Platforms
     field: icon
     meta:
       junction_field: null
@@ -35289,6 +35333,28 @@ relations:
       on_update: NO ACTION
       table: Platforms_translations
   - collection: ReusablePageSections
+    field: page_section
+    meta:
+      junction_field: null
+      many_collection: ReusablePageSections
+      many_field: page_section
+      one_allowed_collections: null
+      one_collection: PageSections
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    related_collection: PageSections
+    schema:
+      column: page_section
+      constraint_name: reusablepagesections_page_section_foreign
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: PageSections
+      on_delete: SET NULL
+      on_update: NO ACTION
+      table: ReusablePageSections
+  - collection: ReusablePageSections
     field: user_created
     meta:
       junction_field: null
@@ -35332,6 +35398,28 @@ relations:
       on_delete: NO ACTION
       on_update: NO ACTION
       table: ReusablePageSections
+  - collection: ReusablePageSectionsCategories
+    field: section_category
+    meta:
+      junction_field: null
+      many_collection: ReusablePageSectionsCategories
+      many_field: section_category
+      one_allowed_collections: null
+      one_collection: PageSectionsCategories
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    related_collection: PageSectionsCategories
+    schema:
+      column: section_category
+      constraint_name: reusablepagesectionscategories_section_category_foreign
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: PageSectionsCategories
+      on_delete: SET NULL
+      on_update: NO ACTION
+      table: ReusablePageSectionsCategories
   - collection: ReusablePageSectionsCategories
     field: user_created
     meta:
