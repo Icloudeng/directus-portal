@@ -1,8 +1,8 @@
+import React from 'react'
+import { GiMoebiusStar } from 'react-icons/gi'
+
 import Button from '@/components/ui/buttons/Button'
 import UnstyledLink from '@/components/ui/links/UnstyledLink'
-import React from 'react'
-import { AiOutlineStar } from 'react-icons/ai'
-import { GiMoebiusStar } from 'react-icons/gi'
 
 export const ReachOut = () => {
     return (
@@ -13,7 +13,7 @@ export const ReachOut = () => {
                     Have questions? Fill out the form and our team will contact you shortly.
                 </span>
             </div>
-            <div className="max-w-4xl w-full flex items-center">
+            <div className="max-w-4xl w-full flex flex-col sd:flex-row items-center gap-12">
                 <div className="left-side flex-[3]">
                     <ul className='flex flex-col gap-20 max-w-xs'>
                         <li className='relative flex items-center'>
@@ -31,7 +31,7 @@ export const ReachOut = () => {
                         </li>
                     </ul>
                 </div>
-                <div className="right-side flex-[1.5] bg-[#f5f7fa] p-7">
+                <div className="right-side flex-[2.5] sm:flex-[2] md:flex-[1.7] bg-[#f5f7fa] p-7">
                     <h4>Ask a question</h4>
                     <form action="">
                         <div className="formInputs flex flex-col gap-5 mt-7">
