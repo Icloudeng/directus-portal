@@ -25,7 +25,7 @@ type SeoProps = {
 export default function Seo({ dynamicPage, ...props }: SeoProps) {
   const router = useRouter();
   const page = useMut(dynamicPage);
-  const { CompanyDetails } = useSharedData();
+  const shared = useSharedData();
 
   const $title = page?.translations?.title;
   const $description = page?.translations?.description;
@@ -36,8 +36,8 @@ export default function Seo({ dynamicPage, ...props }: SeoProps) {
     ...props,
   };
 
-  meta.title = CompanyDetails?.website_title || meta.title;
-  meta.siteName = CompanyDetails?.website_title || meta.siteName;
+  meta.title = shared?.CompanyDetails?.website_title || meta.title;
+  meta.siteName = shared?.CompanyDetails?.website_title || meta.siteName;
 
   meta['title'] =
     $title || props.templateTitle
