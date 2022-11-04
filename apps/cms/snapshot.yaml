@@ -1,5 +1,5 @@
 version: 1
-directus: 9.19.2
+directus: 9.20.4
 collections:
   - collection: Addresses
     meta:
@@ -1683,6 +1683,54 @@ collections:
     schema:
       comment: null
       name: ST_Platforms
+      schema: public
+  - collection: ST_SideTextImage
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: status
+      archive_value: archived
+      collapse: open
+      collection: ST_SideTextImage
+      color: null
+      display_template: "{{status}}\_{{id}}"
+      group: Section_Templates
+      hidden: true
+      icon: null
+      item_duplication_fields: null
+      note: null
+      singleton: false
+      sort: 38
+      sort_field: sort
+      translations: null
+      unarchive_value: draft
+    schema:
+      comment: null
+      name: ST_SideTextImage
+      schema: public
+  - collection: ST_SideTextImage_translations
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: ST_SideTextImage_translations
+      color: null
+      display_template: null
+      group: Section_Templates
+      hidden: true
+      icon: import_export
+      item_duplication_fields: null
+      note: null
+      singleton: false
+      sort: 39
+      sort_field: null
+      translations: null
+      unarchive_value: null
+    schema:
+      comment: null
+      name: ST_SideTextImage_translations
       schema: public
   - collection: ST_SidedContents
     meta:
@@ -25851,6 +25899,809 @@ fields:
       schema: public
       table: ST_Platforms
     type: uuid
+  - collection: ST_SideTextImage
+    field: date_created
+    meta:
+      collection: ST_SideTextImage
+      conditions: null
+      display: datetime
+      display_options:
+        relative: true
+      field: date_created
+      group: null
+      hidden: true
+      interface: datetime
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: 10
+      special:
+        - date-created
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      comment: null
+      data_type: timestamp with time zone
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: date_created
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: ST_SideTextImage
+    type: timestamp
+  - collection: ST_SideTextImage
+    field: date_updated
+    meta:
+      collection: ST_SideTextImage
+      conditions: null
+      display: datetime
+      display_options:
+        relative: true
+      field: date_updated
+      group: null
+      hidden: true
+      interface: datetime
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: 12
+      special:
+        - date-updated
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      comment: null
+      data_type: timestamp with time zone
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: date_updated
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: ST_SideTextImage
+    type: timestamp
+  - collection: ST_SideTextImage
+    field: disposition
+    meta:
+      collection: ST_SideTextImage
+      conditions: null
+      display: null
+      display_options: null
+      field: disposition
+      group: null
+      hidden: false
+      interface: select-dropdown
+      note: null
+      options:
+        choices:
+          - text: Text Left
+            value: text_left
+          - text: Text Right
+            value: text_right
+      readonly: false
+      required: true
+      sort: 6
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: character varying
+      default_value: text_left
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: 255
+      name: disposition
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: ST_SideTextImage
+    type: string
+  - collection: ST_SideTextImage
+    field: id
+    meta:
+      collection: ST_SideTextImage
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: 1
+      special:
+        - uuid
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: false
+      is_primary_key: true
+      is_unique: true
+      max_length: null
+      name: id
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: ST_SideTextImage
+    type: uuid
+  - collection: ST_SideTextImage
+    field: image
+    meta:
+      collection: ST_SideTextImage
+      conditions: null
+      display: null
+      display_options: null
+      field: image
+      group: null
+      hidden: false
+      interface: file-image
+      note: null
+      options: null
+      readonly: false
+      required: true
+      sort: 4
+      special:
+        - file
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: directus_files
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: image
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: ST_SideTextImage
+    type: uuid
+  - collection: ST_SideTextImage
+    field: image_svg
+    meta:
+      collection: ST_SideTextImage
+      conditions: null
+      display: null
+      display_options: null
+      field: image_svg
+      group: null
+      hidden: false
+      interface: input-code
+      note: null
+      options:
+        language: xml
+        lineWrapping: true
+        template: <svg></svg>
+      readonly: false
+      required: false
+      sort: 5
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: image_svg
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: ST_SideTextImage
+    type: text
+  - collection: ST_SideTextImage
+    field: notice-hdaacy
+    meta:
+      collection: ST_SideTextImage
+      conditions: null
+      display: null
+      display_options: null
+      field: notice-hdaacy
+      group: null
+      hidden: false
+      interface: presentation-notice
+      note: null
+      options:
+        text: ST Side Text Image
+      readonly: false
+      required: false
+      sort: 2
+      special:
+        - alias
+        - no-data
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema: null
+    type: alias
+  - collection: ST_SideTextImage
+    field: sort
+    meta:
+      collection: ST_SideTextImage
+      conditions: null
+      display: null
+      display_options: null
+      field: sort
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 8
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: integer
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: sort
+      numeric_precision: 32
+      numeric_scale: 0
+      schema: public
+      table: ST_SideTextImage
+    type: integer
+  - collection: ST_SideTextImage
+    field: status
+    meta:
+      collection: ST_SideTextImage
+      conditions: null
+      display: labels
+      display_options:
+        choices:
+          - text: $t:published
+            value: published
+            foreground: '#FFFFFF'
+            background: var(--primary)
+          - text: $t:draft
+            value: draft
+            foreground: '#18222F'
+            background: '#D3DAE4'
+          - text: $t:archived
+            value: archived
+            foreground: '#FFFFFF'
+            background: var(--warning)
+        showAsDot: true
+      field: status
+      group: null
+      hidden: false
+      interface: select-dropdown
+      note: null
+      options:
+        choices:
+          - text: $t:published
+            value: published
+          - text: $t:draft
+            value: draft
+          - text: $t:archived
+            value: archived
+      readonly: false
+      required: false
+      sort: 7
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: character varying
+      default_value: draft
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: false
+      is_primary_key: false
+      is_unique: false
+      max_length: 255
+      name: status
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: ST_SideTextImage
+    type: string
+  - collection: ST_SideTextImage
+    field: translations
+    meta:
+      collection: ST_SideTextImage
+      conditions: null
+      display: null
+      display_options: null
+      field: translations
+      group: null
+      hidden: false
+      interface: translations
+      note: null
+      options:
+        userLanguage: true
+      readonly: false
+      required: true
+      sort: 3
+      special:
+        - translations
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema: null
+    type: alias
+  - collection: ST_SideTextImage
+    field: user_created
+    meta:
+      collection: ST_SideTextImage
+      conditions: null
+      display: user
+      display_options: null
+      field: user_created
+      group: null
+      hidden: true
+      interface: select-dropdown-m2o
+      note: null
+      options:
+        template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
+      readonly: true
+      required: false
+      sort: 9
+      special:
+        - user-created
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: directus_users
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: user_created
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: ST_SideTextImage
+    type: uuid
+  - collection: ST_SideTextImage
+    field: user_updated
+    meta:
+      collection: ST_SideTextImage
+      conditions: null
+      display: user
+      display_options: null
+      field: user_updated
+      group: null
+      hidden: true
+      interface: select-dropdown-m2o
+      note: null
+      options:
+        template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
+      readonly: true
+      required: false
+      sort: 11
+      special:
+        - user-updated
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: directus_users
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: user_updated
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: ST_SideTextImage
+    type: uuid
+  - collection: ST_SideTextImage_translations
+    field: ST_SideTextImage_id
+    meta:
+      collection: ST_SideTextImage_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: ST_SideTextImage_id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 5
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: ST_SideTextImage
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: ST_SideTextImage_id
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: ST_SideTextImage_translations
+    type: uuid
+  - collection: ST_SideTextImage_translations
+    field: buttons
+    meta:
+      collection: ST_SideTextImage_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: buttons
+      group: null
+      hidden: false
+      interface: list
+      note: null
+      options:
+        fields:
+          - field: name
+            name: name
+            type: string
+            meta:
+              field: name
+              width: full
+              type: string
+              interface: input
+              options:
+                placeholder: Button Name
+                trim: true
+                softLength: 100
+          - field: url
+            name: url
+            type: string
+            meta:
+              field: url
+              width: half
+              type: string
+              interface: input
+              options:
+                placeholder: URL
+                trim: true
+          - field: external
+            name: external
+            type: boolean
+            meta:
+              field: external
+              width: half
+              type: boolean
+              interface: boolean
+          - field: variant
+            name: variant
+            type: string
+            meta:
+              field: variant
+              width: full
+              type: string
+              interface: select-dropdown
+              note: Button Variant
+              options:
+                choices:
+                  - text: Primary
+                    value: primary
+                  - text: Outline
+                    value: outline
+                  - text: Ghost
+                    value: ghost
+                  - text: Light
+                    value: light
+                  - text: Dark
+                    value: dark
+                allowNone: true
+      readonly: false
+      required: false
+      sort: 4
+      special:
+        - cast-json
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: json
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: buttons
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: ST_SideTextImage_translations
+    type: json
+  - collection: ST_SideTextImage_translations
+    field: description
+    meta:
+      collection: ST_SideTextImage_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: description
+      group: null
+      hidden: false
+      interface: input-multiline
+      note: null
+      options:
+        trim: true
+      readonly: false
+      required: true
+      sort: 3
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: description
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: ST_SideTextImage_translations
+    type: text
+  - collection: ST_SideTextImage_translations
+    field: id
+    meta:
+      collection: ST_SideTextImage_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 1
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: integer
+      default_value: nextval('"ST_SideTextImage_translations_id_seq"'::regclass)
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: true
+      is_generated: false
+      is_nullable: false
+      is_primary_key: true
+      is_unique: true
+      max_length: null
+      name: id
+      numeric_precision: 32
+      numeric_scale: 0
+      schema: public
+      table: ST_SideTextImage_translations
+    type: integer
+  - collection: ST_SideTextImage_translations
+    field: languages_code
+    meta:
+      collection: ST_SideTextImage_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: languages_code
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 6
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: character varying
+      default_value: null
+      foreign_key_column: code
+      foreign_key_schema: public
+      foreign_key_table: languages
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: 255
+      name: languages_code
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: ST_SideTextImage_translations
+    type: string
+  - collection: ST_SideTextImage_translations
+    field: title
+    meta:
+      collection: ST_SideTextImage_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: title
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        trim: true
+      readonly: false
+      required: true
+      sort: 2
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: character varying
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: 255
+      name: title
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: ST_SideTextImage_translations
+    type: string
   - collection: ST_SidedContents
     field: date_created
     meta:
@@ -32940,6 +33791,7 @@ relations:
         - ST_PageAsideMenus
         - ST_PlansPricing
         - ST_Platforms
+        - ST_SideTextImage
         - ST_SidedContents
         - ST_SimpleCardLinks
         - ST_StreamableCards
@@ -34841,6 +35693,116 @@ relations:
       on_delete: NO ACTION
       on_update: NO ACTION
       table: ST_Platforms
+  - collection: ST_SideTextImage
+    field: image
+    meta:
+      junction_field: null
+      many_collection: ST_SideTextImage
+      many_field: image
+      one_allowed_collections: null
+      one_collection: directus_files
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    related_collection: directus_files
+    schema:
+      column: image
+      constraint_name: st_sidetextimage_image_foreign
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: directus_files
+      on_delete: SET NULL
+      on_update: NO ACTION
+      table: ST_SideTextImage
+  - collection: ST_SideTextImage
+    field: user_created
+    meta:
+      junction_field: null
+      many_collection: ST_SideTextImage
+      many_field: user_created
+      one_allowed_collections: null
+      one_collection: directus_users
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    related_collection: directus_users
+    schema:
+      column: user_created
+      constraint_name: st_sidetextimage_user_created_foreign
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: directus_users
+      on_delete: NO ACTION
+      on_update: NO ACTION
+      table: ST_SideTextImage
+  - collection: ST_SideTextImage
+    field: user_updated
+    meta:
+      junction_field: null
+      many_collection: ST_SideTextImage
+      many_field: user_updated
+      one_allowed_collections: null
+      one_collection: directus_users
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    related_collection: directus_users
+    schema:
+      column: user_updated
+      constraint_name: st_sidetextimage_user_updated_foreign
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: directus_users
+      on_delete: NO ACTION
+      on_update: NO ACTION
+      table: ST_SideTextImage
+  - collection: ST_SideTextImage_translations
+    field: ST_SideTextImage_id
+    meta:
+      junction_field: languages_code
+      many_collection: ST_SideTextImage_translations
+      many_field: ST_SideTextImage_id
+      one_allowed_collections: null
+      one_collection: ST_SideTextImage
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: translations
+      sort_field: null
+    related_collection: ST_SideTextImage
+    schema:
+      column: ST_SideTextImage_id
+      constraint_name: st_sidetextimage_translations_st_sidetextimage_id_foreign
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: ST_SideTextImage
+      on_delete: SET NULL
+      on_update: NO ACTION
+      table: ST_SideTextImage_translations
+  - collection: ST_SideTextImage_translations
+    field: languages_code
+    meta:
+      junction_field: ST_SideTextImage_id
+      many_collection: ST_SideTextImage_translations
+      many_field: languages_code
+      one_allowed_collections: null
+      one_collection: languages
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    related_collection: languages
+    schema:
+      column: languages_code
+      constraint_name: st_sidetextimage_translations_languages_code_foreign
+      foreign_key_column: code
+      foreign_key_schema: public
+      foreign_key_table: languages
+      on_delete: SET NULL
+      on_update: NO ACTION
+      table: ST_SideTextImage_translations
   - collection: ST_SidedContents
     field: image
     meta:

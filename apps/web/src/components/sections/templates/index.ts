@@ -20,3 +20,4 @@ export * from './st-grouped-logos';
 export * from './st-become-partner-forms';
 export * from './st-company-details';
 export * from './st-timeline-ranges';
+export * from './st-side-text-image';

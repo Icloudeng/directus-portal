@@ -225,6 +225,18 @@ const q_ST: Query = {
     }),
     ...qWithStatus,
   },
+  [section_templates.st_side_text_image]: {
+    __typeName: section_templates.st_side_text_image,
+    image: qWithQueryAsset(),
+    image_svg: true,
+    disposition: true,
+    ...qWithTranslations({
+      title: true,
+      description: true,
+      buttons: true,
+    }),
+    ...qWithStatus,
+  },
 };
 
 type PSQuery = {
@@ -525,6 +537,25 @@ export type ST_TimelineRange = MDHasM2A<
   ST_V<'st_timeline_ranges'>
 >;
 
+export type ST_SideTextImage = MDHasM2A<
+  {
+    image: MDWithAsset;
+    image_svg?: string;
+    disposition: 'text_left' | 'text_right';
+  } & MDWithTranslation<{
+    title: string;
+    description: string;
+    buttons?: {
+      name: string;
+      url: string;
+      variant?: ButtonVariant;
+      external: boolean;
+    }[];
+  }> &
+    DRTStatus,
+  ST_V<'st_side_text_image'>
+>;
+
 //------------------- Page Sections --------------------//
 export type PS_Content =
   | ST_Value
@@ -548,7 +579,8 @@ export type PS_Content =
   | ST_GroupedLogo
   | ST_BecomePartnerForm
   | ST_CompanyDetail
-  | ST_TimelineRange;
+  | ST_TimelineRange
+  | ST_SideTextImage;
 
 export type M2APageSection = MDHasM2A<
   {
