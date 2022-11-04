@@ -5,6 +5,7 @@ import {
   MDHasM2A,
   MDWithAsset,
   MDWithTranslation,
+  RepeaterBtn,
 } from '@/types/directus';
 import {
   qWithPublishedStatus,
@@ -237,6 +238,20 @@ const q_ST: Query = {
     }),
     ...qWithStatus,
   },
+  [section_templates.st_cards]: {
+    __typeName: section_templates.st_cards,
+    image: qWithQueryAsset(),
+    flexible_image: true,
+    border_card: true,
+    background_color: true,
+    clickable_card: true,
+    ...qWithTranslations({
+      title: true,
+      description: true,
+      buttons: true,
+    }),
+    ...qWithStatus,
+  },
 };
 
 type PSQuery = {
@@ -391,12 +406,7 @@ export type ST_CleanHero = MDHasM2A<
   } & MDWithTranslation<{
     title: string;
     description?: string;
-    buttons?: {
-      name: string;
-      url: string;
-      variant?: ButtonVariant;
-      external: boolean;
-    }[];
+    buttons?: RepeaterBtn[];
   }> &
     DRTStatus,
   ST_V<'st_clean_heros'>
@@ -545,17 +555,27 @@ export type ST_SideTextImage = MDHasM2A<
   } & MDWithTranslation<{
     title: string;
     description: string;
-    buttons?: {
-      name: string;
-      url: string;
-      variant?: ButtonVariant;
-      external: boolean;
-    }[];
+    buttons?: RepeaterBtn[];
   }> &
     DRTStatus,
   ST_V<'st_side_text_image'>
 >;
 
+export type ST_Card = MDHasM2A<
+  {
+    image: MDWithAsset;
+    flexible_image: boolean;
+    border_card: boolean;
+    background_color: string;
+    clickable_card: boolean;
+  } & MDWithTranslation<{
+    title: string;
+    description?: string;
+    buttons?: RepeaterBtn[];
+  }> &
+    DRTStatus,
+  ST_V<'st_cards'>
+>;
 //------------------- Page Sections --------------------//
 export type PS_Content =
   | ST_Value
@@ -580,7 +600,8 @@ export type PS_Content =
   | ST_BecomePartnerForm
   | ST_CompanyDetail
   | ST_TimelineRange
-  | ST_SideTextImage;
+  | ST_SideTextImage
+  | ST_Card;
 
 export type M2APageSection = MDHasM2A<
   {

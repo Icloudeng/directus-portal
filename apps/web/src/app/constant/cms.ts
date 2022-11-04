@@ -64,5 +64,6 @@ export const CMS_MODELS = {
     st_company_details: 'ST_CompanyDetails',
     st_timeline_ranges: 'ST_TimelineRanges',
     st_side_text_image: 'ST_SideTextImage',
+    st_cards: 'ST_Cards',
   } as const,
 };

@@ -46,7 +46,7 @@ function Content({ item }: ST_SideTextImage) {
     <div
       className={`flex  lg:justify-between ${
         disposition === 'text_right' ? 'lg:flex-row-reverse' : 'lg:flex-row'
-      } flex-col mb-5`}
+      } flex-col mb-5 lg:gap-6`}
     >
       <div className='lg:items-start w-full lg:mx-0 lg:w-1/2 justify-center flex items-center flex-col mx-auto'>
         <h1 className='lg:text-start text-center leading-10 text-[30px] md:text-[40px] font-bold'>
@@ -63,7 +63,7 @@ function Content({ item }: ST_SideTextImage) {
       <HasSvgText
         fallback={<img className='w-full h-auto' src={image.src} />}
         svgText={image_svg}
-        className='lg:w-1/2 w-full st_flexible_icon mt-4 ml-5'
+        className='lg:w-1/2 w-full st_flexible_icon mt-4'
       />
       <div className='block lg:hidden'>{buttonNode}</div>
     </div>
