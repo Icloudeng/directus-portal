@@ -261,37 +261,64 @@ type PSQuery = {
   };
 };
 
-export const pageSectionItemsQuery: PSQuery = {
-  [generics.page_sections]: {
-    __typeName: CMS_MODELS.generics.page_sections,
-    __args: qWithPublishedStatus(),
-    background_image: qWithQueryAsset(),
-    background_color: true,
-    background_svg: true,
-    custom_css: true,
-    container: true,
-    ...qWithTranslations({
-      title: true,
-      description: true,
-    }),
-    ...qWithStatus,
-    contents: {
-      id: true,
-      collection: true,
-      item: {
-        __on: Object.values(q_ST),
-      },
+const page_section = {
+  __typeName: CMS_MODELS.generics.page_sections,
+  __args: qWithPublishedStatus(),
+  background_image: qWithQueryAsset(),
+  background_color: true,
+  background_svg: true,
+  custom_css: true,
+  container: true,
+  ...qWithTranslations({
+    title: true,
+    description: true,
+  }),
+  ...qWithStatus,
+  contents: {
+    id: true,
+    collection: true,
+    item: {
+      __on: Object.values(q_ST),
     },
   },
+};
+
+export const pageSectionItemsQuery: PSQuery = {
+  [generics.page_sections]: page_section,
   [generics.reusable_page_sections]: {
     __typeName: CMS_MODELS.generics.reusable_page_sections,
     __args: qWithPublishedStatus(),
-    page_section: true,
+    page_section: {
+      ...page_section,
+      reusable: true,
+      __args: qWithPublishedStatus({
+        filter: {
+          status: {
+            _in: ['published', 'archived'],
+          },
+        },
+      }),
+    },
     ...qWithStatus,
   },
   [generics.reusable_page_sections_categories]: {
     __typeName: CMS_MODELS.generics.reusable_page_sections_categories,
-    section_category: true,
+    section_category: {
+      __args: qWithPublishedStatus(),
+      name: true,
+      page_sections: {
+        ...page_section,
+        reusable: true,
+        __args: qWithPublishedStatus({
+          filter: {
+            status: {
+              _in: ['published', 'archived'],
+            },
+          },
+        }),
+      },
+      ...qWithStatus,
+    },
     __args: qWithPublishedStatus(),
     ...qWithStatus,
   },
@@ -610,7 +637,8 @@ export type M2APageSection = MDHasM2A<
     background_svg?: string;
     custom_css?: string;
     container: boolean;
-    category?: string;
+    category?: MDPageSectionsCategory;
+    reusable?: boolean;
     contents: PS_Content[];
   } & MDWithTranslation<{
     title: string;
@@ -627,20 +655,19 @@ export type M2APageSectionReusable =
 
 export type MDPageSectionsCategory = {
   name: boolean;
+  page_sections: M2APageSection['item'][];
 } & DRTStatus;
 
 export type M2AReusablePageSection = MDHasM2A<
   {
-    page_section: string;
-    section?: M2APageSection;
+    page_section?: M2APageSection['item'];
   } & DRTStatus,
   GE_V<'reusable_page_sections'>
 >;
 
 export type M2AReusablePageSectionsCategory = MDHasM2A<
   {
-    section_category: string;
-    sections?: M2APageSection[];
+    section_category?: MDPageSectionsCategory;
   } & DRTStatus,
   GE_V<'reusable_page_sections_categories'>
 >;

@@ -11114,7 +11114,7 @@ fields:
       options: null
       readonly: true
       required: false
-      sort: 11
+      sort: 12
       special:
         - date-created
       translations: null
@@ -11157,7 +11157,7 @@ fields:
       options: null
       readonly: true
       required: false
-      sort: 13
+      sort: 14
       special:
         - date-updated
       translations: null
@@ -11322,6 +11322,48 @@ fields:
       width: full
     schema: null
     type: alias
+  - collection: PageSections
+    field: reusable
+    meta:
+      collection: PageSections
+      conditions: null
+      display: null
+      display_options: null
+      field: reusable
+      group: null
+      hidden: true
+      interface: boolean
+      note: null
+      options: null
+      readonly: true
+      required: true
+      sort: 10
+      special:
+        - cast-boolean
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: boolean
+      default_value: true
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: reusable
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: PageSections
+    type: boolean
   - collection: PageSections
     field: section_contents
     meta:
@@ -11494,7 +11536,7 @@ fields:
         template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
       readonly: true
       required: false
-      sort: 10
+      sort: 11
       special:
         - user-created
       translations: null
@@ -11537,7 +11579,7 @@ fields:
         template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
       readonly: true
       required: false
-      sort: 12
+      sort: 13
       special:
         - user-updated
       translations: null
@@ -11748,8 +11790,9 @@ fields:
       interface: list-o2m
       note: null
       options:
+        enableCreate: false
         enableLink: true
-        template: "{{label}}\_-\_{{id}}"
+        template: "{{status}}\_{{label}}\_-\_{{id}}"
       readonly: false
       required: false
       sort: 3
@@ -16966,7 +17009,7 @@ fields:
       interface: select-dropdown-m2o
       note: null
       options:
-        template: "{{name}}\_-\_{{id}}"
+        template: "{{status}}\_{{name}}\_-\_{{id}}"
       readonly: false
       required: true
       sort: 3
