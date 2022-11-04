@@ -4,15 +4,15 @@ importers:
 
   apps/cms:
     specifiers:
-      '@directus/sdk': ^10.1.4
+      '@directus/sdk': ^10.1.5
       directus: 9.20.4
-      dotenv: ^16.0.2
-      postgres: ^3.2.4
+      dotenv: ^16.0.3
+      postgres: ^3.3.1
     dependencies:
-      '@directus/sdk': 10.1.4
+      '@directus/sdk': 10.1.5
       directus: 9.20.4
-      dotenv: 16.0.2
-      postgres: 3.2.4
+      dotenv: 16.0.3
+      postgres: 3.3.1
 
   apps/cms/extensions/endpoints/searchable:
     specifiers:
@@ -2588,6 +2588,14 @@ packages:
 
   /@directus/sdk/10.1.4:
     resolution: {integrity: sha512-e8iwEbdMLMYBfla7QPh5ZfWua03PRMhhAwMkNz1/6k+ZCHc5+VQh7oR13OFU8r5KinsVPc7TjXElw3B6wxG0wg==}
+    dependencies:
+      axios: 0.27.2
+    transitivePeerDependencies:
+      - debug
+    dev: false
+
+  /@directus/sdk/10.1.5:
+    resolution: {integrity: sha512-/q+Cm8NQjkJV7xIk3UJjUAFmE1ZJ1KnF2uyV2+AnmYinj75Y/aHnU7td6n74pBKBMwRPJPBIidksiWUiH20EHw==}
     dependencies:
       axios: 0.27.2
     transitivePeerDependencies:
@@ -6652,11 +6660,6 @@ packages:
     dependencies:
       is-obj: 2.0.0
     dev: true
-
-  /dotenv/16.0.2:
-    resolution: {integrity: sha512-JvpYKUmzQhYoIFgK2MOnF3bciIZoItIIoryihy0rIA+H4Jy0FmgyKYAHCTN98P5ybGSJcIFbh6QKeJdtZd1qhA==}
-    engines: {node: '>=12'}
-    dev: false
 
   /dotenv/16.0.3:
     resolution: {integrity: sha512-7GO6HghkA5fYG9TYnNxi14/7K9f5occMlp3zXAuSxn7CKCxt9xbNWG7yF8hTCSUchlfWSe3uLmlPfigevRItzQ==}
@@ -11866,8 +11869,8 @@ packages:
       xtend: 4.0.2
     dev: false
 
-  /postgres/3.2.4:
-    resolution: {integrity: sha512-iscysD+ZlM4A9zj0RS2zo3f4Us4yuov94Yx+p3dE1rEARaBHC8R3/gRq40KEnWp1lxjuFq9EjuAenIUsPaTaDA==}
+  /postgres/3.3.1:
+    resolution: {integrity: sha512-ak/xXToZYwRvQlZIUtLgPUIggz62eIIbPTgxl/Yl4oTu0TgNOd1CrzTCifsvZ89jBwLvnX6+Ky5frp5HzIBoaw==}
     dev: false
 
   /prebuild-install/7.1.1:
