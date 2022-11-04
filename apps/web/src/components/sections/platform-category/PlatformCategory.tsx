@@ -1,7 +1,11 @@
 import { AllCategoryItems } from "./components/AllCategoryCards"
 import { AllCategoryCads } from "./components/AllCategoryItems"
+import { AllMarketPlaceCards } from "./components/AllMarketPlaceCards"
 import { CategoryElementsHeader } from "./components/CategoryElementsHeader"
 import { InputWithIcon } from "./components/InputWithIcon"
+
+
+
 
 export const PlatformCategory = () => {
   return (
@@ -24,7 +28,7 @@ export const PlatformCategory = () => {
           </div>
           <div className="xl:flex-[3.7]">
             {/* <CategoryElementsHeader /> */}
-            <AllCategoryCads />
+            <AllMarketPlaceCards />
           </div>
         </div>
       </div>
