@@ -97,6 +97,7 @@ type MDAddress = {
 
 type MDCompanyDetailField = {
   company_name?: string;
+  website_title?: string;
   support_email?: string;
   email?: string;
   website?: string;

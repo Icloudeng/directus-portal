@@ -25,7 +25,7 @@ export type MDWithTranslation<T = unknown> = {
   } & T)[];
 };
 
-export type MDWithPoint =
+export type MDWithPointCoordinated =
   | {
       coordinates: [number, number][];
       type: 'LineString' | 'Polygon';
@@ -33,6 +33,13 @@ export type MDWithPoint =
   | {
       coordinates: [number, number];
       type: 'Point';
+    };
+
+export type MDWithPoint =
+  | MDWithPointCoordinated
+  | {
+      geometries: MDWithPointCoordinated[];
+      type: 'GeometryCollection';
     };
 
 export type MDWithAsset<T = unknown> = T & {

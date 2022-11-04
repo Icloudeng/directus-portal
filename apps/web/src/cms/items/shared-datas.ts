@@ -71,6 +71,7 @@ const gql_query = jsonToGraphQLQuery({
       logo: qWithQueryAsset(),
       image: qWithQueryAsset(),
       company_name: true,
+      website_title: true,
       support_email: true,
       email: true,
       website: true,

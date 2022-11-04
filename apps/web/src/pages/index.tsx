@@ -21,9 +21,11 @@ export default function HomePage(props: Partial<QHomeHeroQueriesType>) {
     <Layout>
       <Seo />
 
-      <section className='hero-section py-10'>
-        {HomeHero && <HomeHeroSection data={HomeHero} />}
-      </section>
+      {HomeHero && HomeHero.status === 'published' && (
+        <section className='hero-section py-10'>
+          <HomeHeroSection data={HomeHero} />
+        </section>
+      )}
 
       <section className='py-10 bg-[#f5f7fa]'>
         <CloudComputing />
