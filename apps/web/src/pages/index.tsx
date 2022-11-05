@@ -14,7 +14,6 @@ import { getGqlHomeQueries, QHomeHeroQueriesType } from '@/cms/items';
 import { getServerSideTranslations } from '@/app/utils/server-translation';
 import { PlatformCategory } from '@/components/sections/platform-category/PlatformCategory';
 import { MarketPlace } from '@/components/sections/maket-place/MarketPlace';
-import { IndependentCards } from '@/components/sections/indepedent-card/IndependentCards';
 import { ReachOut } from '@/components/sections/reach-out/ReachOut';
 
 export default function HomePage(props: Partial<QHomeHeroQueriesType<true>>) {
@@ -60,10 +59,6 @@ export default function HomePage(props: Partial<QHomeHeroQueriesType<true>>) {
 
       <section className='py-10 bg-white'>
         <ReachOut />
-      </section>
-
-      <section className='py-10 bg-[#f5f7fa]'>
-        <IndependentCards />
       </section>
 
       {HomeSections && <PageSections sections={HomeSections.sections} />}
