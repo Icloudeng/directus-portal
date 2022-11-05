@@ -17,6 +17,7 @@ import type {
   ST_PageAsideMenu,
   ST_PlansPricing,
   ST_SidedContent,
+  ST_SideTextMedia,
   ST_SimpleCardLink,
   ST_StreamableCard,
   ST_Testimonial,
@@ -1805,6 +1806,43 @@ export const DumpGuestQuestions: ST_GuestQuestion[] = [
       id: '8341740e-0e4e-4559-9e14-c4d7a6f19ed6',
       status: 'published',
       date_created: '2022-11-05T16:39:03.810Z',
+    },
+  },
+];
+
+export const DumpSideTextMedias: ST_SideTextMedia[] = [
+  {
+    id: '80',
+    collection: 'ST_SideTextMedias',
+    item: {
+      media: undefined,
+      media_url: 'https://youtu.be/mxT233EdY5c',
+      disposition: 'text_left',
+      sided: true,
+      translations: [
+        {
+          id: '1',
+          languages_code: {
+            code: 'en',
+            name: 'English',
+          },
+          title: 'Cloud computing market continues to grow',
+          description:
+            'Gartner analytical agency predicts the world cloud services market will grow 18,4% in 2021.',
+          buttons: [
+            {
+              name: 'Gartner research',
+              url: '/research',
+              external: false,
+              variant: 'primary',
+            },
+          ],
+        },
+      ],
+      id: '5a4e0ea2-4c78-4494-9f0a-7a89982fcc3e',
+      status: 'published',
+      date_created: '2022-11-05T18:31:36.167Z',
+      date_updated: '2022-11-05T20:28:22.869Z',
     },
   },
 ];
