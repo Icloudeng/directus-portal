@@ -6,6 +6,7 @@ import {
   DumpButton,
   DumpCardCarousel,
   DumpCardImageCarousel,
+  DumpCards,
   DumpCleanHero,
   DumpCompanyDetails,
   DumpGallery,
@@ -223,6 +224,11 @@ export default function Page() {
           sectionClass=''
           sharedObject={{}}
         />
+      </section>
+
+      <section className='py-14  x-container'>
+        <h3 className='my-9'>ST Cards</h3>
+        <Sts.ST_CardsFC items={DumpCards} sectionClass='' sharedObject={{}} />
       </section>
     </div>
   );
