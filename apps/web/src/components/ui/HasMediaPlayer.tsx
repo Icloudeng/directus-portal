@@ -13,19 +13,13 @@ export function HasMediaPlayer({
   media: MDWithAsset | undefined;
 }) {
   const { mounted } = useHasMounted();
-  const showVideo = media?.type?.startsWith('video') ? media.src : media_url;
+  const video = media?.type?.startsWith('video') ? media.src : undefined;
+  const showVideo = media_url ? media_url : video;
   const hasVideo = showVideo && mounted;
   return (
     <>
       {hasVideo &&
-        (media?.src ? (
-          <PlyrReact
-            source={{
-              type: 'video',
-              sources: [{ src: showVideo, type: media?.type }],
-            }}
-          />
-        ) : (
+        (media_url ? (
           <ReactPlayer
             controls={true}
             fallback={
@@ -34,6 +28,13 @@ export function HasMediaPlayer({
             url={showVideo}
             width='100%'
             height='100%'
+          />
+        ) : (
+          <PlyrReact
+            source={{
+              type: 'video',
+              sources: [{ src: showVideo, type: media?.type }],
+            }}
           />
         ))}
 

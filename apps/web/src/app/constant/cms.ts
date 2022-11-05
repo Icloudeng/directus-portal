@@ -64,8 +64,8 @@ export const CMS_MODELS = {
     st_become_partner_forms: 'ST_BecomePartnerForms',
     st_company_details: 'ST_CompanyDetails',
     st_timeline_ranges: 'ST_TimelineRanges',
-    st_side_text_image: 'ST_SideTextImage',
     st_cards: 'ST_Cards',
     st_guest_questions: 'ST_GuestQuestions',
+    st_side_text_medias: 'ST_SideTextMedias',
   } as const,
 };

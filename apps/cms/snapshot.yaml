@@ -1780,14 +1780,14 @@ collections:
       comment: null
       name: ST_Platforms
       schema: public
-  - collection: ST_SideTextImage
+  - collection: ST_SideTextMedias
     meta:
       accountability: all
       archive_app_filter: true
       archive_field: status
       archive_value: archived
       collapse: open
-      collection: ST_SideTextImage
+      collection: ST_SideTextMedias
       color: null
       display_template: "{{status}}\_{{id}}"
       group: Section_Templates
@@ -1796,22 +1796,22 @@ collections:
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: 38
+      sort: 43
       sort_field: sort
       translations: null
       unarchive_value: draft
     schema:
       comment: null
-      name: ST_SideTextImage
+      name: ST_SideTextMedias
       schema: public
-  - collection: ST_SideTextImage_translations
+  - collection: ST_SideTextMedias_translations
     meta:
       accountability: all
       archive_app_filter: true
       archive_field: null
       archive_value: null
       collapse: open
-      collection: ST_SideTextImage_translations
+      collection: ST_SideTextMedias_translations
       color: null
       display_template: null
       group: Section_Templates
@@ -1820,13 +1820,13 @@ collections:
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: 39
+      sort: 44
       sort_field: null
       translations: null
       unarchive_value: null
     schema:
       comment: null
-      name: ST_SideTextImage_translations
+      name: ST_SideTextMedias_translations
       schema: public
   - collection: ST_SidedContents
     meta:
@@ -24788,7 +24788,7 @@ fields:
       note: null
       options: null
       readonly: false
-      required: false
+      required: true
       sort: 5
       special:
         - file
@@ -24837,11 +24837,7 @@ fields:
       sort: 6
       special: null
       translations: null
-      validation:
-        _and:
-          - media_url:
-              _regex: >-
-                ^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$
+      validation: null
       validation_message: null
       width: full
     schema:
@@ -27802,10 +27798,10 @@ fields:
       schema: public
       table: ST_Platforms
     type: uuid
-  - collection: ST_SideTextImage
+  - collection: ST_SideTextMedias
     field: date_created
     meta:
-      collection: ST_SideTextImage
+      collection: ST_SideTextMedias
       conditions: null
       display: datetime
       display_options:
@@ -27818,7 +27814,7 @@ fields:
       options: null
       readonly: true
       required: false
-      sort: 10
+      sort: 11
       special:
         - date-created
       translations: null
@@ -27843,12 +27839,12 @@ fields:
       numeric_precision: null
       numeric_scale: null
       schema: public
-      table: ST_SideTextImage
+      table: ST_SideTextMedias
     type: timestamp
-  - collection: ST_SideTextImage
+  - collection: ST_SideTextMedias
     field: date_updated
     meta:
-      collection: ST_SideTextImage
+      collection: ST_SideTextMedias
       conditions: null
       display: datetime
       display_options:
@@ -27861,7 +27857,7 @@ fields:
       options: null
       readonly: true
       required: false
-      sort: 12
+      sort: 13
       special:
         - date-updated
       translations: null
@@ -27886,12 +27882,12 @@ fields:
       numeric_precision: null
       numeric_scale: null
       schema: public
-      table: ST_SideTextImage
+      table: ST_SideTextMedias
     type: timestamp
-  - collection: ST_SideTextImage
+  - collection: ST_SideTextMedias
     field: disposition
     meta:
-      collection: ST_SideTextImage
+      collection: ST_SideTextMedias
       conditions: null
       display: null
       display_options: null
@@ -27932,12 +27928,12 @@ fields:
       numeric_precision: null
       numeric_scale: null
       schema: public
-      table: ST_SideTextImage
+      table: ST_SideTextMedias
     type: string
-  - collection: ST_SideTextImage
+  - collection: ST_SideTextMedias
     field: id
     meta:
-      collection: ST_SideTextImage
+      collection: ST_SideTextMedias
       conditions: null
       display: null
       display_options: null
@@ -27974,19 +27970,19 @@ fields:
       numeric_precision: null
       numeric_scale: null
       schema: public
-      table: ST_SideTextImage
+      table: ST_SideTextMedias
     type: uuid
-  - collection: ST_SideTextImage
-    field: image
+  - collection: ST_SideTextMedias
+    field: media
     meta:
-      collection: ST_SideTextImage
+      collection: ST_SideTextMedias
       conditions: null
       display: null
       display_options: null
-      field: image
+      field: media
       group: null
       hidden: false
-      interface: file-image
+      interface: file
       note: null
       options: null
       readonly: false
@@ -28012,28 +28008,28 @@ fields:
       is_primary_key: false
       is_unique: false
       max_length: null
-      name: image
+      name: media
       numeric_precision: null
       numeric_scale: null
       schema: public
-      table: ST_SideTextImage
+      table: ST_SideTextMedias
     type: uuid
-  - collection: ST_SideTextImage
-    field: image_svg
+  - collection: ST_SideTextMedias
+    field: media_url
     meta:
-      collection: ST_SideTextImage
+      collection: ST_SideTextMedias
       conditions: null
       display: null
       display_options: null
-      field: image_svg
+      field: media_url
       group: null
       hidden: false
-      interface: input-code
+      interface: input
       note: null
       options:
-        language: xml
-        lineWrapping: true
-        template: <svg></svg>
+        placeholder: External Media URL
+        softLength: 300
+        trim: true
       readonly: false
       required: false
       sort: 5
@@ -28044,7 +28040,7 @@ fields:
       width: full
     schema:
       comment: null
-      data_type: text
+      data_type: character varying
       default_value: null
       foreign_key_column: null
       foreign_key_schema: null
@@ -28055,27 +28051,27 @@ fields:
       is_nullable: true
       is_primary_key: false
       is_unique: false
-      max_length: null
-      name: image_svg
+      max_length: 255
+      name: media_url
       numeric_precision: null
       numeric_scale: null
       schema: public
-      table: ST_SideTextImage
-    type: text
-  - collection: ST_SideTextImage
-    field: notice-hdaacy
+      table: ST_SideTextMedias
+    type: string
+  - collection: ST_SideTextMedias
+    field: notice-kqizvn
     meta:
-      collection: ST_SideTextImage
+      collection: ST_SideTextMedias
       conditions: null
       display: null
       display_options: null
-      field: notice-hdaacy
+      field: notice-kqizvn
       group: null
       hidden: false
       interface: presentation-notice
       note: null
       options:
-        text: ST Side Text Image
+        text: ST Side Text Medias
       readonly: false
       required: false
       sort: 2
@@ -28088,10 +28084,52 @@ fields:
       width: full
     schema: null
     type: alias
-  - collection: ST_SideTextImage
+  - collection: ST_SideTextMedias
+    field: sided
+    meta:
+      collection: ST_SideTextMedias
+      conditions: null
+      display: null
+      display_options: null
+      field: sided
+      group: null
+      hidden: false
+      interface: boolean
+      note: null
+      options: null
+      readonly: false
+      required: true
+      sort: 7
+      special:
+        - cast-boolean
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: boolean
+      default_value: true
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: sided
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: ST_SideTextMedias
+    type: boolean
+  - collection: ST_SideTextMedias
     field: sort
     meta:
-      collection: ST_SideTextImage
+      collection: ST_SideTextMedias
       conditions: null
       display: null
       display_options: null
@@ -28103,7 +28141,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: 8
+      sort: 9
       special: null
       translations: null
       validation: null
@@ -28127,12 +28165,12 @@ fields:
       numeric_precision: 32
       numeric_scale: 0
       schema: public
-      table: ST_SideTextImage
+      table: ST_SideTextMedias
     type: integer
-  - collection: ST_SideTextImage
+  - collection: ST_SideTextMedias
     field: status
     meta:
-      collection: ST_SideTextImage
+      collection: ST_SideTextMedias
       conditions: null
       display: labels
       display_options:
@@ -28165,7 +28203,7 @@ fields:
             value: archived
       readonly: false
       required: false
-      sort: 7
+      sort: 8
       special: null
       translations: null
       validation: null
@@ -28189,12 +28227,12 @@ fields:
       numeric_precision: null
       numeric_scale: null
       schema: public
-      table: ST_SideTextImage
+      table: ST_SideTextMedias
     type: string
-  - collection: ST_SideTextImage
+  - collection: ST_SideTextMedias
     field: translations
     meta:
-      collection: ST_SideTextImage
+      collection: ST_SideTextMedias
       conditions: null
       display: null
       display_options: null
@@ -28216,10 +28254,10 @@ fields:
       width: full
     schema: null
     type: alias
-  - collection: ST_SideTextImage
+  - collection: ST_SideTextMedias
     field: user_created
     meta:
-      collection: ST_SideTextImage
+      collection: ST_SideTextMedias
       conditions: null
       display: user
       display_options: null
@@ -28232,7 +28270,7 @@ fields:
         template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
       readonly: true
       required: false
-      sort: 9
+      sort: 10
       special:
         - user-created
       translations: null
@@ -28257,12 +28295,12 @@ fields:
       numeric_precision: null
       numeric_scale: null
       schema: public
-      table: ST_SideTextImage
+      table: ST_SideTextMedias
     type: uuid
-  - collection: ST_SideTextImage
+  - collection: ST_SideTextMedias
     field: user_updated
     meta:
-      collection: ST_SideTextImage
+      collection: ST_SideTextMedias
       conditions: null
       display: user
       display_options: null
@@ -28275,7 +28313,7 @@ fields:
         template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
       readonly: true
       required: false
-      sort: 11
+      sort: 12
       special:
         - user-updated
       translations: null
@@ -28300,16 +28338,16 @@ fields:
       numeric_precision: null
       numeric_scale: null
       schema: public
-      table: ST_SideTextImage
+      table: ST_SideTextMedias
     type: uuid
-  - collection: ST_SideTextImage_translations
-    field: ST_SideTextImage_id
+  - collection: ST_SideTextMedias_translations
+    field: ST_SideTextMedias_id
     meta:
-      collection: ST_SideTextImage_translations
+      collection: ST_SideTextMedias_translations
       conditions: null
       display: null
       display_options: null
-      field: ST_SideTextImage_id
+      field: ST_SideTextMedias_id
       group: null
       hidden: true
       interface: null
@@ -28329,7 +28367,7 @@ fields:
       default_value: null
       foreign_key_column: id
       foreign_key_schema: public
-      foreign_key_table: ST_SideTextImage
+      foreign_key_table: ST_SideTextMedias
       generation_expression: null
       has_auto_increment: false
       is_generated: false
@@ -28337,16 +28375,16 @@ fields:
       is_primary_key: false
       is_unique: false
       max_length: null
-      name: ST_SideTextImage_id
+      name: ST_SideTextMedias_id
       numeric_precision: null
       numeric_scale: null
       schema: public
-      table: ST_SideTextImage_translations
+      table: ST_SideTextMedias_translations
     type: uuid
-  - collection: ST_SideTextImage_translations
+  - collection: ST_SideTextMedias_translations
     field: buttons
     meta:
-      collection: ST_SideTextImage_translations
+      collection: ST_SideTextMedias_translations
       conditions: null
       display: null
       display_options: null
@@ -28437,12 +28475,12 @@ fields:
       numeric_precision: null
       numeric_scale: null
       schema: public
-      table: ST_SideTextImage_translations
+      table: ST_SideTextMedias_translations
     type: json
-  - collection: ST_SideTextImage_translations
+  - collection: ST_SideTextMedias_translations
     field: description
     meta:
-      collection: ST_SideTextImage_translations
+      collection: ST_SideTextMedias_translations
       conditions: null
       display: null
       display_options: null
@@ -28479,12 +28517,12 @@ fields:
       numeric_precision: null
       numeric_scale: null
       schema: public
-      table: ST_SideTextImage_translations
+      table: ST_SideTextMedias_translations
     type: text
-  - collection: ST_SideTextImage_translations
+  - collection: ST_SideTextMedias_translations
     field: id
     meta:
-      collection: ST_SideTextImage_translations
+      collection: ST_SideTextMedias_translations
       conditions: null
       display: null
       display_options: null
@@ -28505,7 +28543,7 @@ fields:
     schema:
       comment: null
       data_type: integer
-      default_value: nextval('"ST_SideTextImage_translations_id_seq"'::regclass)
+      default_value: nextval('"ST_SideTextMedias_translations_id_seq"'::regclass)
       foreign_key_column: null
       foreign_key_schema: null
       foreign_key_table: null
@@ -28520,12 +28558,12 @@ fields:
       numeric_precision: 32
       numeric_scale: 0
       schema: public
-      table: ST_SideTextImage_translations
+      table: ST_SideTextMedias_translations
     type: integer
-  - collection: ST_SideTextImage_translations
+  - collection: ST_SideTextMedias_translations
     field: languages_code
     meta:
-      collection: ST_SideTextImage_translations
+      collection: ST_SideTextMedias_translations
       conditions: null
       display: null
       display_options: null
@@ -28561,12 +28599,12 @@ fields:
       numeric_precision: null
       numeric_scale: null
       schema: public
-      table: ST_SideTextImage_translations
+      table: ST_SideTextMedias_translations
     type: string
-  - collection: ST_SideTextImage_translations
+  - collection: ST_SideTextMedias_translations
     field: title
     meta:
-      collection: ST_SideTextImage_translations
+      collection: ST_SideTextMedias_translations
       conditions: null
       display: null
       display_options: null
@@ -28603,7 +28641,7 @@ fields:
       numeric_precision: null
       numeric_scale: null
       schema: public
-      table: ST_SideTextImage_translations
+      table: ST_SideTextMedias_translations
     type: string
   - collection: ST_SidedContents
     field: date_created
@@ -35762,7 +35800,7 @@ relations:
         - ST_PageAsideMenus
         - ST_PlansPricing
         - ST_Platforms
-        - ST_SideTextImage
+        - ST_SideTextMedias
         - ST_SidedContents
         - ST_SimpleCardLinks
         - ST_StreamableCards
@@ -37884,12 +37922,12 @@ relations:
       on_delete: NO ACTION
       on_update: NO ACTION
       table: ST_Platforms
-  - collection: ST_SideTextImage
-    field: image
+  - collection: ST_SideTextMedias
+    field: media
     meta:
       junction_field: null
-      many_collection: ST_SideTextImage
-      many_field: image
+      many_collection: ST_SideTextMedias
+      many_field: media
       one_allowed_collections: null
       one_collection: directus_files
       one_collection_field: null
@@ -37898,19 +37936,19 @@ relations:
       sort_field: null
     related_collection: directus_files
     schema:
-      column: image
-      constraint_name: st_sidetextimage_image_foreign
+      column: media
+      constraint_name: st_sidetextmedias_media_foreign
       foreign_key_column: id
       foreign_key_schema: public
       foreign_key_table: directus_files
       on_delete: SET NULL
       on_update: NO ACTION
-      table: ST_SideTextImage
-  - collection: ST_SideTextImage
+      table: ST_SideTextMedias
+  - collection: ST_SideTextMedias
     field: user_created
     meta:
       junction_field: null
-      many_collection: ST_SideTextImage
+      many_collection: ST_SideTextMedias
       many_field: user_created
       one_allowed_collections: null
       one_collection: directus_users
@@ -37921,18 +37959,18 @@ relations:
     related_collection: directus_users
     schema:
       column: user_created
-      constraint_name: st_sidetextimage_user_created_foreign
+      constraint_name: st_sidetextmedias_user_created_foreign
       foreign_key_column: id
       foreign_key_schema: public
       foreign_key_table: directus_users
       on_delete: NO ACTION
       on_update: NO ACTION
-      table: ST_SideTextImage
-  - collection: ST_SideTextImage
+      table: ST_SideTextMedias
+  - collection: ST_SideTextMedias
     field: user_updated
     meta:
       junction_field: null
-      many_collection: ST_SideTextImage
+      many_collection: ST_SideTextMedias
       many_field: user_updated
       one_allowed_collections: null
       one_collection: directus_users
@@ -37943,40 +37981,40 @@ relations:
     related_collection: directus_users
     schema:
       column: user_updated
-      constraint_name: st_sidetextimage_user_updated_foreign
+      constraint_name: st_sidetextmedias_user_updated_foreign
       foreign_key_column: id
       foreign_key_schema: public
       foreign_key_table: directus_users
       on_delete: NO ACTION
       on_update: NO ACTION
-      table: ST_SideTextImage
-  - collection: ST_SideTextImage_translations
-    field: ST_SideTextImage_id
+      table: ST_SideTextMedias
+  - collection: ST_SideTextMedias_translations
+    field: ST_SideTextMedias_id
     meta:
       junction_field: languages_code
-      many_collection: ST_SideTextImage_translations
-      many_field: ST_SideTextImage_id
+      many_collection: ST_SideTextMedias_translations
+      many_field: ST_SideTextMedias_id
       one_allowed_collections: null
-      one_collection: ST_SideTextImage
+      one_collection: ST_SideTextMedias
       one_collection_field: null
       one_deselect_action: nullify
       one_field: translations
       sort_field: null
-    related_collection: ST_SideTextImage
+    related_collection: ST_SideTextMedias
     schema:
-      column: ST_SideTextImage_id
-      constraint_name: st_sidetextimage_translations_st_sidetextimage_id_foreign
+      column: ST_SideTextMedias_id
+      constraint_name: st_sidetextmedias_translations_st_sidetextmedias_id_foreign
       foreign_key_column: id
       foreign_key_schema: public
-      foreign_key_table: ST_SideTextImage
+      foreign_key_table: ST_SideTextMedias
       on_delete: SET NULL
       on_update: NO ACTION
-      table: ST_SideTextImage_translations
-  - collection: ST_SideTextImage_translations
+      table: ST_SideTextMedias_translations
+  - collection: ST_SideTextMedias_translations
     field: languages_code
     meta:
-      junction_field: ST_SideTextImage_id
-      many_collection: ST_SideTextImage_translations
+      junction_field: ST_SideTextMedias_id
+      many_collection: ST_SideTextMedias_translations
       many_field: languages_code
       one_allowed_collections: null
       one_collection: languages
@@ -37987,13 +38025,13 @@ relations:
     related_collection: languages
     schema:
       column: languages_code
-      constraint_name: st_sidetextimage_translations_languages_code_foreign
+      constraint_name: st_sidetextmedias_translations_languages_code_foreign
       foreign_key_column: code
       foreign_key_schema: public
       foreign_key_table: languages
       on_delete: SET NULL
       on_update: NO ACTION
-      table: ST_SideTextImage_translations
+      table: ST_SideTextMedias_translations
   - collection: ST_SidedContents
     field: image
     meta:

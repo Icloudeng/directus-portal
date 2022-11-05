@@ -22,7 +22,8 @@ const {
   },
 } = CMS_MODELS;
 
-const { st_media_tabs, st_testimonials } = section_templates;
+const { st_media_tabs, st_testimonials, st_side_text_medias } =
+  section_templates;
 
 type ParamPageSectionReusable = {
   [x: string]: any;
@@ -105,6 +106,9 @@ function pageSectionsWithAssets(
       switch (st.collection) {
         case st_media_tabs:
           qWithAssets(access_token, st.item.translations, 'media');
+          break;
+        case st_side_text_medias:
+          qWithAsset(access_token, st.item, 'media');
           break;
         case st_testimonials:
           qWithAsset(access_token, st.item, 'image', [71, 71]);
