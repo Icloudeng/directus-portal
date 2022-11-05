@@ -1,5 +1,5 @@
 import { STemplates_Props, ST_PlansPricing } from '@/cms/page-sections';
-import { HasPlansPricing } from '../pricing/HasPlansPricing';
+import { HasPlansPricing } from '../shared/pricing/HasPlansPricing';
 
 export function ST_PlansPricingFC({
   items,
