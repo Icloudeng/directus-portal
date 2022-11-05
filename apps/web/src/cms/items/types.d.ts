@@ -6,7 +6,7 @@ import type {
   MDWithPoint,
   MDWithTranslation,
 } from '@/types/directus';
-import type { M2APageSection } from '../page-sections';
+import type { M2APageSection, M2APageSectionReusable } from '../page-sections';
 import type { CMS_MODELS } from '@/app/constant/cms';
 
 // --------------- language model types -------------
@@ -144,7 +144,7 @@ export type MDNavbarLink = {
 
 //  ------------------ Page details Links types  ---------------------
 
-export type MDPage = {
+export type MDPage<PS = false> = {
   label: string;
   url: string;
   image: MDWithAsset<{
@@ -153,7 +153,7 @@ export type MDPage = {
   }>;
   keywords: string[];
   theme_color?: string;
-  sections: M2APageSection[];
+  sections: PS extends false ? M2APageSectionReusable[] : M2APageSection[];
 } & MDWithTranslation<{
   title: string;
   description?: string;

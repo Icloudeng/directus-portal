@@ -8,7 +8,11 @@ import {
   qWithStatus,
   qWithTranslations,
 } from '../gql-query';
-import { M2APageSection, pageSectionQuery } from '../page-sections';
+import {
+  M2APageSection,
+  M2APageSectionReusable,
+  pageSectionQuery,
+} from '../page-sections';
 import { pageSectionsAdapters } from '../page-sections-adapters';
 import { MDHomePageHero } from './types';
 
@@ -35,11 +39,11 @@ const gql_query = jsonToGraphQLQuery({
   },
 });
 
-export type QHomeHeroQueriesType = {
+export type QHomeHeroQueriesType<PS = false> = {
   [CMS_MODELS.home_hero]: MDHomePageHero;
   [CMS_MODELS.home_sections]: {
     id: ID;
-    sections: M2APageSection[];
+    sections: PS extends false ? M2APageSectionReusable[] : M2APageSection[];
   };
 };
 

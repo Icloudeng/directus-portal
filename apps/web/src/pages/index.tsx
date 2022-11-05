@@ -17,7 +17,7 @@ import { MarketPlace } from '@/components/sections/maket-place/MarketPlace';
 import { IndependentCards } from '@/components/sections/indepedent-card/IndependentCards';
 import { ReachOut } from '@/components/sections/reach-out/ReachOut';
 
-export default function HomePage(props: Partial<QHomeHeroQueriesType>) {
+export default function HomePage(props: Partial<QHomeHeroQueriesType<true>>) {
   const { HomeHero, HomeSections } = props;
 
   return (

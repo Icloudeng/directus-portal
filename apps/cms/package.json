@@ -16,9 +16,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@directus/sdk": "^10.1.4",
+    "@directus/sdk": "^10.1.5",
     "directus": "9.20.4",
-    "dotenv": "^16.0.2",
-    "postgres": "^3.2.4"
+    "dotenv": "^16.0.3",
+    "postgres": "^3.3.1"
   }
 }

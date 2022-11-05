@@ -45,8 +45,8 @@ const gql_query = jsonToGraphQLQuery({
   },
 });
 
-export type QDynamicPagesType = {
-  [CMS_MODELS.pages]: [MDPage | undefined];
+export type QDynamicPagesType<PS = false> = {
+  [CMS_MODELS.pages]: [MDPage<PS> | undefined];
 };
 
 export async function getGqlDynamicPages(request_pathname: string) {

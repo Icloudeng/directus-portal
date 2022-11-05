@@ -5,6 +5,7 @@ import {
   MDHasM2A,
   MDWithAsset,
   MDWithTranslation,
+  RepeaterBtn,
 } from '@/types/directus';
 import {
   qWithPublishedStatus,
@@ -225,6 +226,32 @@ const q_ST: Query = {
     }),
     ...qWithStatus,
   },
+  [section_templates.st_side_text_image]: {
+    __typeName: section_templates.st_side_text_image,
+    image: qWithQueryAsset(),
+    image_svg: true,
+    disposition: true,
+    ...qWithTranslations({
+      title: true,
+      description: true,
+      buttons: true,
+    }),
+    ...qWithStatus,
+  },
+  [section_templates.st_cards]: {
+    __typeName: section_templates.st_cards,
+    image: qWithQueryAsset(),
+    flexible_image: true,
+    border_card: true,
+    background_color: true,
+    clickable_card: true,
+    ...qWithTranslations({
+      title: true,
+      description: true,
+      buttons: true,
+    }),
+    ...qWithStatus,
+  },
 };
 
 type PSQuery = {
@@ -234,37 +261,64 @@ type PSQuery = {
   };
 };
 
-export const pageSectionItemsQuery: PSQuery = {
-  [generics.page_sections]: {
-    __typeName: CMS_MODELS.generics.page_sections,
-    __args: qWithPublishedStatus(),
-    background_image: qWithQueryAsset(),
-    background_color: true,
-    background_svg: true,
-    custom_css: true,
-    container: true,
-    ...qWithTranslations({
-      title: true,
-      description: true,
-    }),
-    ...qWithStatus,
-    contents: {
-      id: true,
-      collection: true,
-      item: {
-        __on: Object.values(q_ST),
-      },
+const page_section = {
+  __typeName: CMS_MODELS.generics.page_sections,
+  __args: qWithPublishedStatus(),
+  background_image: qWithQueryAsset(),
+  background_color: true,
+  background_svg: true,
+  custom_css: true,
+  container: true,
+  ...qWithTranslations({
+    title: true,
+    description: true,
+  }),
+  ...qWithStatus,
+  contents: {
+    id: true,
+    collection: true,
+    item: {
+      __on: Object.values(q_ST),
     },
   },
+};
+
+export const pageSectionItemsQuery: PSQuery = {
+  [generics.page_sections]: page_section,
   [generics.reusable_page_sections]: {
     __typeName: CMS_MODELS.generics.reusable_page_sections,
     __args: qWithPublishedStatus(),
-    page_section: true,
+    page_section: {
+      ...page_section,
+      reusable: true,
+      __args: qWithPublishedStatus({
+        filter: {
+          status: {
+            _in: ['published', 'archived'],
+          },
+        },
+      }),
+    },
     ...qWithStatus,
   },
   [generics.reusable_page_sections_categories]: {
     __typeName: CMS_MODELS.generics.reusable_page_sections_categories,
-    section_category: true,
+    section_category: {
+      __args: qWithPublishedStatus(),
+      name: true,
+      page_sections: {
+        ...page_section,
+        reusable: true,
+        __args: qWithPublishedStatus({
+          filter: {
+            status: {
+              _in: ['published', 'archived'],
+            },
+          },
+        }),
+      },
+      ...qWithStatus,
+    },
     __args: qWithPublishedStatus(),
     ...qWithStatus,
   },
@@ -379,12 +433,7 @@ export type ST_CleanHero = MDHasM2A<
   } & MDWithTranslation<{
     title: string;
     description?: string;
-    buttons?: {
-      name: string;
-      url: string;
-      variant?: ButtonVariant;
-      external: boolean;
-    }[];
+    buttons?: RepeaterBtn[];
   }> &
     DRTStatus,
   ST_V<'st_clean_heros'>
@@ -525,6 +574,35 @@ export type ST_TimelineRange = MDHasM2A<
   ST_V<'st_timeline_ranges'>
 >;
 
+export type ST_SideTextImage = MDHasM2A<
+  {
+    image: MDWithAsset;
+    image_svg?: string;
+    disposition: 'text_left' | 'text_right';
+  } & MDWithTranslation<{
+    title: string;
+    description: string;
+    buttons?: RepeaterBtn[];
+  }> &
+    DRTStatus,
+  ST_V<'st_side_text_image'>
+>;
+
+export type ST_Card = MDHasM2A<
+  {
+    image: MDWithAsset;
+    flexible_image: boolean;
+    border_card: boolean;
+    background_color: string;
+    clickable_card: boolean;
+  } & MDWithTranslation<{
+    title: string;
+    description?: string;
+    buttons?: RepeaterBtn[];
+  }> &
+    DRTStatus,
+  ST_V<'st_cards'>
+>;
 //------------------- Page Sections --------------------//
 export type PS_Content =
   | ST_Value
@@ -548,7 +626,9 @@ export type PS_Content =
   | ST_GroupedLogo
   | ST_BecomePartnerForm
   | ST_CompanyDetail
-  | ST_TimelineRange;
+  | ST_TimelineRange
+  | ST_SideTextImage
+  | ST_Card;
 
 export type M2APageSection = MDHasM2A<
   {
@@ -557,7 +637,8 @@ export type M2APageSection = MDHasM2A<
     background_svg?: string;
     custom_css?: string;
     container: boolean;
-    category?: string;
+    category?: MDPageSectionsCategory;
+    reusable?: boolean;
     contents: PS_Content[];
   } & MDWithTranslation<{
     title: string;
@@ -574,20 +655,19 @@ export type M2APageSectionReusable =
 
 export type MDPageSectionsCategory = {
   name: boolean;
+  page_sections: M2APageSection['item'][];
 } & DRTStatus;
 
 export type M2AReusablePageSection = MDHasM2A<
   {
-    page_section: string;
-    section?: M2APageSection;
+    page_section?: M2APageSection['item'];
   } & DRTStatus,
   GE_V<'reusable_page_sections'>
 >;
 
 export type M2AReusablePageSectionsCategory = MDHasM2A<
   {
-    section_category: string;
-    sections?: M2APageSection[];
+    section_category?: MDPageSectionsCategory;
   } & DRTStatus,
   GE_V<'reusable_page_sections_categories'>
 >;

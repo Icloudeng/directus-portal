@@ -12,7 +12,6 @@ import { qWithAsset, qWithAssets } from './gql-query';
 import { CMS_MODELS } from '@/app/constant/cms';
 import { PlansPricingContent } from './items/types';
 import { getGqlPageSections, getGqlPlansPricingQueries } from './items';
-import cloneDeep from 'lodash/cloneDeep';
 
 const {
   section_templates,
@@ -25,100 +24,67 @@ const {
 
 const { st_media_tabs, st_testimonials } = section_templates;
 
-export async function pageSectionsAdapters<
-  T extends { [x: string]: any; sections: M2APageSection[] }
->(data: T | undefined, access_token: string) {
-  if (data) {
-    await pageSectionExtractReusableM2A(data); // this must be called at top of any others functions
-    pageSectionPublished(data);
-    pageSectionsWithAssets(access_token, data.sections);
-    await pageSectionWithPlansPricing(data);
-  }
+type ParamPageSectionReusable = {
+  [x: string]: any;
+  sections: M2APageSectionReusable[];
+};
+
+type ParamPageSection = {
+  [x: string]: any;
+  sections: M2APageSection[];
+};
+
+export async function pageSectionsAdapters<T extends ParamPageSectionReusable>(
+  data: T | undefined,
+  access_token: string
+) {
+  if (!data) return;
+
+  const ps = pageSectionExtractReusableM2A(data); // this must be called at top of any others functions
+  pageSectionPublished(ps);
+  pageSectionsWithAssets(access_token, ps.sections);
+  await pageSectionWithPlansPricing(ps);
 }
 
-async function pageSectionExtractReusableM2A<
-  T extends { [x: string]: any; sections: M2APageSection[] }
->(data: T) {
-  const sections = data.sections as M2APageSectionReusable[];
+function pageSectionExtractReusableM2A<T extends ParamPageSectionReusable>(
+  data: T
+): ParamPageSection {
+  const sections = data.sections.filter(
+    (m2a) => m2a.item.status === 'published'
+  );
 
-  const reusable_sections = sections
-    .filter(({ item, collection }) => {
-      return (
-        item.status === 'published' && collection === reusable_page_sections
-      );
-    })
-    .map((item) => {
-      return (item as M2AReusablePageSection).item.page_section;
-    })
-    .map((ps) => ps.split('--')[1].trim());
-
-  const reusable_section_categories = sections
-    .filter(({ item, collection }) => {
-      return (
-        collection === reusable_page_sections_categories &&
-        item.status === 'published'
-      );
-    })
-    .map((item) => {
-      return (item as M2AReusablePageSectionsCategory).item.section_category;
-    });
-
-  if (reusable_section_categories.length > 0 || reusable_sections.length > 0) {
-    const rs_sections = await getGqlPageSections(
-      reusable_sections,
-      reusable_section_categories
-    );
-
-    if (!rs_sections || rs_sections.PageSections.length === 0) return;
-
-    rs_sections.PageSections.forEach((rs_section, rs_i) => {
-      sections.forEach((section, i) => {
-        switch (section.collection) {
-          case reusable_page_sections:
-            if (section.item.page_section.includes(rs_section.id.toString())) {
-              section.item.section = cloneDeep({
-                item: rs_section,
-                id: `${section.id}_${rs_i}_${i}`,
-                collection: page_sections,
-              });
-            }
-            break;
-          case reusable_page_sections_categories:
-            if (
-              rs_section.category &&
-              section.item.section_category.includes(rs_section.category)
-            ) {
-              if (!section.item.sections) {
-                section.item.sections = [];
-              }
-              section.item.sections.push(
-                cloneDeep({
-                  item: rs_section,
-                  id: `${section.id}_${rs_i}_${i}`,
-                  collection: page_sections,
-                })
-              );
-            }
-            break;
-        }
-      });
-    });
-  }
-
-  data.sections = sections.reduce((acc, item) => {
-    switch (item.collection) {
+  data.sections = sections.reduce((acc, value, i) => {
+    switch (value.collection) {
       case page_sections:
-        acc.push(item);
+        acc.push(value);
         break;
       case reusable_page_sections:
-        item.item.section && acc.push(item.item.section);
+        if (value.item.page_section) {
+          acc.push({
+            id: `${value.id}_${i}`,
+            collection: page_sections,
+            item: value.item.page_section,
+          });
+        }
         break;
       case reusable_page_sections_categories:
-        item.item.sections && acc.push(...item.item.sections);
+        if (value?.item?.section_category) {
+          acc.push(
+            ...value.item.section_category.page_sections.map((ps, rs_i) => {
+              return {
+                id: `${value.id}_${i}_${rs_i}`,
+                collection: page_sections,
+                item: ps,
+              };
+            })
+          );
+        }
         break;
     }
     return acc;
-  }, [] as M2APageSection[]);
+  }, <M2APageSection[]>[]);
+
+  return data as ParamPageSection;
 }
 
 function pageSectionsWithAssets(
@@ -163,7 +129,7 @@ function pageSectionPublished<
   T extends { [x: string]: any; sections: M2APageSection[] }
 >(data: T) {
   data.sections = data.sections.filter(({ item }) => {
-    const reusable = item.category !== undefined;
+    const reusable = item.reusable !== undefined;
     if (reusable && item.status !== 'draft') {
       return true;
     }

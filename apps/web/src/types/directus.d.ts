@@ -91,3 +91,10 @@ export type MDHasM2A<T, C = string> = {
   collection: C;
   item: T;
 };
+
+export type RepeaterBtn = {
+  name: string;
+  url: string;
+  variant?: ButtonVariant;
+  external: boolean;
+};
