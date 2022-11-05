@@ -2,6 +2,7 @@
 import type {
   ST_BecomePartnerForm,
   ST_Button,
+  ST_Card,
   ST_CardCarousel,
   ST_CardImageCarousel,
   ST_CleanHero,
@@ -1728,6 +1729,109 @@ export const DumpSideTextImage: ST_SideTextImage[] = [
       id: '45fc1ac2-f623-42df-a0fc-f71ea54c63cf',
       status: 'published',
       date_created: '2022-11-04T14:43:00.589Z',
+    },
+  },
+];
+
+export const DumpCards: ST_Card[] = [
+  {
+    id: '75',
+    collection: 'ST_Cards',
+    item: {
+      image: {
+        id: 'ece3b9ea-a35f-4cb2-afec-87e5a7cbaa3c',
+        src: 'https://flowbite.com/docs/images/blog/image-1.jpg',
+      },
+      flexible_image: false,
+      border_card: true,
+      background_color: 'transparent',
+      clickable_card: false,
+      translations: [
+        {
+          id: '1',
+          languages_code: {
+            code: 'en',
+            name: 'English',
+          },
+          title:
+            'How To Set Up and Configure an OpenVPN Server on Ubuntu 20.04',
+          description:
+            'OpenVPN is an open-source Virtual Private Network (VPN) application that lets you create and join a private network securely over the public Internet.',
+          buttons: [],
+        },
+      ],
+      id: '6cbb9e64-33b0-4c91-b536-801df3c2cfd3',
+      status: 'published',
+      date_created: '2022-11-05T10:00:22.204Z',
+      date_updated: '2022-11-05T10:10:19.620Z',
+    },
+  },
+  {
+    id: '76',
+    collection: 'ST_Cards',
+    item: {
+      image: {
+        id: '1981cd81-449d-45ba-a292-d0044bbb7de2',
+        src: 'https://flowbite.com/docs/images/blog/image-2.jpg',
+      },
+      flexible_image: false,
+      border_card: true,
+      background_color: 'transparent',
+      clickable_card: true,
+      translations: [
+        {
+          id: '2',
+          languages_code: {
+            code: 'en',
+            name: 'English',
+          },
+          title: 'How To Set Up and Configure an OpenVPN Server on CentOS 8',
+          description:
+            'OpenVPN is an open-source Virtual Private Network (VPN) application that lets you create and join a private network securely over the public Internet.',
+          buttons: [
+            {
+              name: 'Levels',
+              url: '/levels',
+              variant: 'primary',
+              external: false,
+            },
+          ],
+        },
+      ],
+      id: '97437f74-41e1-4c3b-814b-1d2712bcbabc',
+      status: 'published',
+      date_created: '2022-11-05T11:09:39.406Z',
+      date_updated: '2022-11-05T12:03:36.581Z',
+    },
+  },
+  {
+    id: '77',
+    collection: 'ST_Cards',
+    item: {
+      image: {
+        id: '304d6515-5864-48f1-8d31-2b1db8c2bcac',
+        src: 'https://flowbite.com/docs/images/blog/image-3.jpg',
+      },
+      flexible_image: false,
+      border_card: true,
+      background_color: 'transparent',
+      clickable_card: false,
+      translations: [
+        {
+          id: '3',
+          languages_code: {
+            code: 'en',
+            name: 'English',
+          },
+          title: 'How To Set Up an OpenVPN Server on Debian 10',
+          description:
+            'OpenVPN is a full-featured, open-source Secure Socket Layer (SSL) VPN solution that accommodates a wide range of configurations.',
+          buttons: [],
+        },
+      ],
+      id: 'ae48cb6c-e5c2-446d-9b28-07f6876db326',
+      status: 'published',
+      date_created: '2022-11-05T11:09:39.490Z',
     },
   },
 ];
