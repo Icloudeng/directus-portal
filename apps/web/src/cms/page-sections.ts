@@ -252,6 +252,10 @@ const q_ST: Query = {
     }),
     ...qWithStatus,
   },
+  [section_templates.st_guest_questions]: {
+    __typeName: section_templates.st_guest_questions,
+    ...qWithStatus,
+  },
 };
 
 type PSQuery = {
@@ -603,6 +607,9 @@ export type ST_Card = MDHasM2A<
     DRTStatus,
   ST_V<'st_cards'>
 >;
+
+export type ST_GuestQuestion = MDHasM2A<DRTStatus, ST_V<'st_guest_questions'>>;
+
 //------------------- Page Sections --------------------//
 export type PS_Content =
   | ST_Value
@@ -628,7 +635,8 @@ export type PS_Content =
   | ST_CompanyDetail
   | ST_TimelineRange
   | ST_SideTextImage
-  | ST_Card;
+  | ST_Card
+  | ST_GuestQuestion;
 
 export type M2APageSection = MDHasM2A<
   {

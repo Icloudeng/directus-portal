@@ -1,5 +1,6 @@
 import { useErrorInput } from '@/app/hooks/useErrorInput';
 import { useTranslation } from 'next-i18next';
+import { useId } from 'react';
 
 type ITextArea = {
   inputLabel: string;
@@ -16,17 +17,18 @@ export const TextArea = ({
 }: ITextArea) => {
   const { error, onKeyUp } = useErrorInput(inputID, errors);
   const { t } = useTranslation();
+  const id = useId();
 
   return (
     <div className='w-full'>
       <label
-        htmlFor={inputID}
+        htmlFor={inputID + id}
         className='block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400'
       >
         {inputLabel}
       </label>
       <textarea
-        id={inputID + '-id'}
+        id={inputID + id}
         rows={4}
         onKeyUp={onKeyUp}
         name={inputID}

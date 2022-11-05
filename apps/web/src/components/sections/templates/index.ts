@@ -22,3 +22,4 @@ export * from './st-company-details';
 export * from './st-timeline-ranges';
 export * from './st-side-text-image';
 export * from './st-cards';
+export * from './st-guest-questions';

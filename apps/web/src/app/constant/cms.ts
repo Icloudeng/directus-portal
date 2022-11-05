@@ -27,6 +27,7 @@ export const CMS_MODELS = {
     home_sections: 'HomeSections',
     platforms: 'Platforms',
     partners_requests: 'PartnersRequests',
+    guest_questions: 'GuestQuestions',
   } as const),
   plans_pricing: {
     flexible_plans: 'FlexiblePlans',
@@ -65,5 +66,6 @@ export const CMS_MODELS = {
     st_timeline_ranges: 'ST_TimelineRanges',
     st_side_text_image: 'ST_SideTextImage',
     st_cards: 'ST_Cards',
+    st_guest_questions: 'ST_GuestQuestions',
   } as const,
 };
