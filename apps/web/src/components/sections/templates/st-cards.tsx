@@ -1,7 +1,7 @@
 import { useSharedData } from '@/app/store';
 import { mut } from '@/cms/mut';
 import { STemplates_Props, ST_Card } from '@/cms/page-sections';
-import { Card } from '@/components/ui/cards/card';
+import { Card } from '@/components/ui/cards/Card';
 
 export function ST_CardsFC({ items }: STemplates_Props<ST_Card>) {
   const { locale } = useSharedData();
