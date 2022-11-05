@@ -1,6 +1,6 @@
 import { useErrorInput } from '@/app/hooks/useErrorInput';
 import { useTranslation } from 'next-i18next';
-import { HTMLInputTypeAttribute } from 'react';
+import { HTMLInputTypeAttribute, useId } from 'react';
 
 type InputField = {
   inputLabel: string;
@@ -8,6 +8,7 @@ type InputField = {
   inputType: HTMLInputTypeAttribute;
   inputPlaceholder: string;
   errors?: { [x: string]: any };
+  border?: boolean;
 };
 
 function InputField({
@@ -16,23 +17,25 @@ function InputField({
   inputType,
   inputPlaceholder,
   errors,
+  border = true,
 }: InputField) {
   const { error, onKeyUp } = useErrorInput(inputID, errors);
   const { t } = useTranslation();
+  const id = useId();
 
   return (
     <div className='w-full'>
       <label
-        htmlFor={inputID + '-id'}
+        htmlFor={inputID + id}
         className='block text-sm font-medium text-gray-700 capitalize'
       >
         {inputLabel}
       </label>
-      <div className='mt-1 rounded-sm shadow-sm w-full'>
+      <div className={`mt-1 rounded-sm ${border ? 'shadow-sm' : ''} w-full`}>
         <input
           type={inputType}
           name={inputID}
-          id={inputID + '-id'}
+          id={inputID + id}
           onKeyUp={onKeyUp}
           className={`block w-full rounded-sm bg-gray-50 py-3 ${
             error ? 'border-red-400' : 'border-gray-300'

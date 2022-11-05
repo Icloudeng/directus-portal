@@ -5,3 +5,4 @@ export * from './plans-pricing';
 export * from './page-sections';
 export * from './platforms';
 export * from './partner-requests';
+export * from './guest-questions';

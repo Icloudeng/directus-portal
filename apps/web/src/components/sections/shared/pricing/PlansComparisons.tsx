@@ -2,7 +2,7 @@ import { useTranslation } from 'next-i18next';
 
 import { MDPlansComparison } from '@/cms/items/types';
 
-import { CheckCircle } from '../../ui/CheckCircle';
+import { CheckCircle } from '../../../ui/CheckCircle';
 import { useMut } from '@/cms/mut';
 
 export const PlansComparisons = ({

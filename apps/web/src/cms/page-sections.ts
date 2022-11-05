@@ -226,18 +226,6 @@ const q_ST: Query = {
     }),
     ...qWithStatus,
   },
-  [section_templates.st_side_text_image]: {
-    __typeName: section_templates.st_side_text_image,
-    image: qWithQueryAsset(),
-    image_svg: true,
-    disposition: true,
-    ...qWithTranslations({
-      title: true,
-      description: true,
-      buttons: true,
-    }),
-    ...qWithStatus,
-  },
   [section_templates.st_cards]: {
     __typeName: section_templates.st_cards,
     image: qWithQueryAsset(),
@@ -245,6 +233,23 @@ const q_ST: Query = {
     border_card: true,
     background_color: true,
     clickable_card: true,
+    ...qWithTranslations({
+      title: true,
+      description: true,
+      buttons: true,
+    }),
+    ...qWithStatus,
+  },
+  [section_templates.st_guest_questions]: {
+    __typeName: section_templates.st_guest_questions,
+    ...qWithStatus,
+  },
+  [section_templates.st_side_text_medias]: {
+    __typeName: section_templates.st_side_text_medias,
+    media: qWithQueryAsset({ type: true }),
+    media_url: true,
+    disposition: true,
+    sided: true,
     ...qWithTranslations({
       title: true,
       description: true,
@@ -574,18 +579,19 @@ export type ST_TimelineRange = MDHasM2A<
   ST_V<'st_timeline_ranges'>
 >;
 
-export type ST_SideTextImage = MDHasM2A<
+export type ST_SideTextMedia = MDHasM2A<
   {
-    image: MDWithAsset;
-    image_svg?: string;
+    media?: MDWithAsset;
+    media_url?: string;
     disposition: 'text_left' | 'text_right';
+    sided: boolean;
   } & MDWithTranslation<{
     title: string;
     description: string;
     buttons?: RepeaterBtn[];
   }> &
     DRTStatus,
-  ST_V<'st_side_text_image'>
+  ST_V<'st_side_text_medias'>
 >;
 
 export type ST_Card = MDHasM2A<
@@ -603,6 +609,9 @@ export type ST_Card = MDHasM2A<
     DRTStatus,
   ST_V<'st_cards'>
 >;
+
+export type ST_GuestQuestion = MDHasM2A<DRTStatus, ST_V<'st_guest_questions'>>;
+
 //------------------- Page Sections --------------------//
 export type PS_Content =
   | ST_Value
@@ -627,8 +636,9 @@ export type PS_Content =
   | ST_BecomePartnerForm
   | ST_CompanyDetail
   | ST_TimelineRange
-  | ST_SideTextImage
-  | ST_Card;
+  | ST_SideTextMedia
+  | ST_Card
+  | ST_GuestQuestion;
 
 export type M2APageSection = MDHasM2A<
   {

@@ -1,20 +1,9 @@
-import { PartnerRequest } from '@/cms/items/types';
 import { EMAIL_REGEX, PHONE_REGEX, URL_REGEX } from './regex';
 
-export function validateParterRequestForm(data: PartnerRequest) {
-  const errors = {} as { [x: string]: string };
+type Ks = { [x: string]: string };
 
-  const keys: (keyof PartnerRequest)[] = [
-    'company',
-    'country',
-    'description',
-    'email',
-    'first_name',
-    'job_title',
-    'last_name',
-    'phone_number',
-    'website',
-  ];
+export function validateForm<T extends Ks>(keys: (keyof T)[], data: T) {
+  const errors = {} as { [k in keyof T]: string | undefined };
 
   keys.forEach((key) => {
     const value = data[key];

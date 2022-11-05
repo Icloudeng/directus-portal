@@ -269,3 +269,13 @@ export type PartnerRequest = {
 };
 
 export type MDPartnerRequest = PartnerRequest & DRTStatus;
+
+//  ----------------  Guest Questions -------------------------
+
+export type GuestQuestion = {
+  name: string;
+  email: string;
+  message: string;
+};
+
+export type MDGuestQuestion = GuestQuestion & DRTStatus;

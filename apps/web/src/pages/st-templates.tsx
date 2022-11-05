@@ -11,6 +11,7 @@ import {
   DumpCompanyDetails,
   DumpGallery,
   DumpGroupedLogos,
+  DumpGuestQuestions,
   DumpHoverableMediaMenus,
   DumpMediaTabs,
   DumpNavAccordion,
@@ -18,7 +19,7 @@ import {
   DumpPageAsideMenus,
   DumpPlansPricing,
   DumpSidedContent,
-  DumpSideTextImage,
+  DumpSideTextMedias,
   DumpSimpleCardLink,
   DumpStreamableCards,
   DumpTestimonials,
@@ -218,17 +219,26 @@ export default function Page() {
       </section>
 
       <section className='py-14  x-container'>
-        <h3 className='my-9'>ST SideTextImage</h3>
-        <Sts.ST_SideTextImageFC
-          items={DumpSideTextImage}
+        <h3 className='my-9'>ST Cards</h3>
+        <Sts.ST_CardsFC items={DumpCards} sectionClass='' sharedObject={{}} />
+      </section>
+
+      <section className='py-14  x-container'>
+        <h3 className='my-9'>ST GuestQuestions</h3>
+        <Sts.ST_GuestQuestionsFC
+          items={DumpGuestQuestions}
           sectionClass=''
           sharedObject={{}}
         />
       </section>
 
       <section className='py-14  x-container'>
-        <h3 className='my-9'>ST Cards</h3>
-        <Sts.ST_CardsFC items={DumpCards} sectionClass='' sharedObject={{}} />
+        <h3 className='my-9'>ST SideTextMedias</h3>
+        <Sts.ST_SideTextMediasFC
+          items={DumpSideTextMedias}
+          sectionClass=''
+          sharedObject={{}}
+        />
       </section>
     </div>
   );
