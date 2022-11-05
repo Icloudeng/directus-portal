@@ -11,6 +11,7 @@ import {
   DumpCompanyDetails,
   DumpGallery,
   DumpGroupedLogos,
+  DumpGuestQuestions,
   DumpHoverableMediaMenus,
   DumpMediaTabs,
   DumpNavAccordion,
@@ -229,6 +230,15 @@ export default function Page() {
       <section className='py-14  x-container'>
         <h3 className='my-9'>ST Cards</h3>
         <Sts.ST_CardsFC items={DumpCards} sectionClass='' sharedObject={{}} />
+      </section>
+
+      <section className='py-14  x-container'>
+        <h3 className='my-9'>ST GuestQuestions</h3>
+        <Sts.ST_GuestQuestionsFC
+          items={DumpGuestQuestions}
+          sectionClass=''
+          sharedObject={{}}
+        />
       </section>
     </div>
   );

@@ -9,6 +9,7 @@ import type {
   ST_CompanyDetail,
   ST_Gallery,
   ST_GroupedLogo,
+  ST_GuestQuestion,
   ST_HoverableMediaMenu,
   ST_MediaTab,
   ST_NavAccordion,
@@ -1832,6 +1833,18 @@ export const DumpCards: ST_Card[] = [
       id: 'ae48cb6c-e5c2-446d-9b28-07f6876db326',
       status: 'published',
       date_created: '2022-11-05T11:09:39.490Z',
+    },
+  },
+];
+
+export const DumpGuestQuestions: ST_GuestQuestion[] = [
+  {
+    id: '79',
+    collection: 'ST_GuestQuestions',
+    item: {
+      id: '8341740e-0e4e-4559-9e14-c4d7a6f19ed6',
+      status: 'published',
+      date_created: '2022-11-05T16:39:03.810Z',
     },
   },
 ];
