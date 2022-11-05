@@ -29,7 +29,7 @@ export function Card({
   const btns = buttons || [];
 
   const content = (
-    <>
+    <div className=''>
       {!flexible_image && (
         <div className='relative flex-1 min-h-[202px] w-full mb-3'>
           <Image
@@ -77,8 +77,9 @@ export function Card({
         >
           {btns.map((btn, i) => {
             return (
-              <div key={i}>
+              <div key={i} className='z-20'>
                 <ButtonLink
+                  onClick={(e) => e.stopPropagation()}
                   href={btn.url}
                   variant={btn.variant}
                   target={btn.external ? '_blank' : undefined}
@@ -90,29 +91,28 @@ export function Card({
           })}
         </div>
       )}
-    </>
+    </div>
   );
 
-  const props = {
-    className: `flex basis:auto md:basis-[calc((100%_-_32px)_/_3)] flex-col w-full min-h-[24rem] ${
-      border_card ? 'border border-gray-200 shadow-md rounded-xl' : ''
-    }`,
-    style: {
-      backgroundColor: background_color,
-    },
-  };
   return (
-    <>
+    <div
+      className={`flex basis:auto flex-col relative w-full min-h-[24rem] md:basis-[calc((100%_-_32px)_/_3)]  ${
+        border_card ? 'border border-gray-200 shadow-md rounded-xl' : ''
+      }`}
+      style={{
+        backgroundColor: background_color,
+      }}
+    >
       {hasClick && (
         <UnstyledLink
           href={btn.url}
+          className='z-10'
           target={btn.external ? '_blank' : undefined}
-          {...props}
         >
-          {content}
+          <span aria-hidden='true' className='absolute inset-0'></span>
         </UnstyledLink>
       )}
-      {!hasClick && <div {...props}>{content}</div>}
-    </>
+      {content}
+    </div>
   );
 }
