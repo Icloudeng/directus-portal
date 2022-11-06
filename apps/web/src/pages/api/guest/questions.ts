@@ -21,7 +21,7 @@ export default async function handle(
     return res.status(400).json(errors);
   }
 
-  const data = storeGuestQuestion(body);
+  const data = await storeGuestQuestion(body);
 
   res.status(200).json(data);
 }
