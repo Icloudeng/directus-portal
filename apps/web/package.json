@@ -19,7 +19,7 @@
     "prepare": "cd ../.. &&  husky install"
   },
   "dependencies": {
-    "@directus/sdk": "^10.1.4",
+    "@directus/sdk": "^10.1.5",
     "clsx": "^1.2.1",
     "cookies-next": "^2.1.1",
     "embla-carousel-react": "^7.0.3",
@@ -56,8 +56,8 @@
     "@types/leaflet": "^1.9.0",
     "@types/lodash": "^4.14.186",
     "@types/nprogress": "^0.2.0",
-    "@types/react": "^18.0.21",
-    "@types/react-dom": "^18.0.6",
+    "@types/react": "^18.0.25",
+    "@types/react-dom": "^18.0.8",
     "@types/react-syntax-highlighter": "^15.5.5",
     "@typescript-eslint/eslint-plugin": "^5.32.0",
     "@typescript-eslint/parser": "^5.32.0",
@@ -74,8 +74,8 @@
     "postcss": "^8.4.16",
     "prettier": "^2.7.1",
     "prettier-plugin-tailwindcss": "^0.1.13",
-    "tailwindcss": "^3.1.8",
-    "typescript": "^4.7.4"
+    "tailwindcss": "^3.2.2",
+    "typescript": "^4.8.4"
   },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx}": [

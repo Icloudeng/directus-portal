@@ -1,8 +1,6 @@
 import {
   M2APageSection,
   M2APageSectionReusable,
-  M2AReusablePageSection,
-  M2AReusablePageSectionsCategory,
   PS_Content,
   ST_PageAsideMenu,
   ST_PlansPricing,
@@ -11,7 +9,7 @@ import {
 import { qWithAsset, qWithAssets } from './gql-query';
 import { CMS_MODELS } from '@/app/constant/cms';
 import { PlansPricingContent } from './items/types';
-import { getGqlPageSections, getGqlPlansPricingQueries } from './items';
+import { getGqlPlansPricingQueries } from './items';
 
 const {
   section_templates,
@@ -47,8 +45,8 @@ export async function pageSectionsAdapters<T extends ParamPageSectionReusable>(
   await pageSectionWithPlansPricing(ps);
 }
 
-function pageSectionExtractReusableM2A<T extends ParamPageSectionReusable>(
-  data: T
+function pageSectionExtractReusableM2A(
+  data: ParamPageSectionReusable
 ): ParamPageSection {
   const sections = data.sections.filter(
     (m2a) => m2a.item.status === 'published'
@@ -129,9 +127,7 @@ function pageSectionsWithAssets(
   psAssets($sections);
 }
 
-function pageSectionPublished<
-  T extends { [x: string]: any; sections: M2APageSection[] }
->(data: T) {
+function pageSectionPublished(data: ParamPageSection) {
   data.sections = data.sections.filter(({ item }) => {
     const reusable = item.reusable !== undefined;
     if (reusable && item.status !== 'draft') {
@@ -150,9 +146,7 @@ function pageSectionPublished<
   });
 }
 
-async function pageSectionWithPlansPricing<
-  T extends { [x: string]: any; sections: M2APageSection[] }
->(data: T) {
+async function pageSectionWithPlansPricing(data: ParamPageSection) {
   let memo_content = null as PlansPricingContent | null | undefined;
   for (const section of data.sections) {
     for (const content of section.item.contents) {

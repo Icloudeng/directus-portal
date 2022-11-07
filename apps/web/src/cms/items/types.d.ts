@@ -230,16 +230,17 @@ export type MDMachineTemplate = {
 
 export type MDPlatform = {
   name: string;
+  icon: MDWithAsset;
   icon_svg?: string;
-  icon?: MDWithAsset;
-  category?: string;
+  category?: Pick<MDPlatformCategory, 'id'>;
   ram: number;
   cpu: number;
   ssd: number;
   link?: string;
   external_link: boolean;
 } & MDWithTranslation<{
-  description?: string;
+  description: string;
+  documentation?: string;
 }> &
   DRTStatus;
 

@@ -8206,7 +8206,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: 4
+      sort: 3
       special:
         - file
       translations: null
@@ -8251,7 +8251,7 @@ fields:
         template: <svg></svg>
       readonly: false
       required: false
-      sort: 3
+      sort: 4
       special: null
       translations: null
       validation: null
@@ -15536,7 +15536,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: 5
+      sort: 4
       special:
         - file
       translations: null
@@ -15580,7 +15580,7 @@ fields:
         template: <svg></svg>
       readonly: false
       required: false
-      sort: 4
+      sort: 5
       special: null
       translations: null
       validation: null
@@ -16370,7 +16370,7 @@ fields:
       options: null
       readonly: false
       required: true
-      sort: 6
+      sort: 5
       special:
         - file
       translations: null
@@ -16415,7 +16415,7 @@ fields:
         template: <svg></svg>
       readonly: false
       required: false
-      sort: 5
+      sort: 6
       special: null
       translations: null
       validation: null
@@ -16886,7 +16886,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: 3
+      sort: 4
       special: null
       translations: null
       validation: null
@@ -16928,7 +16928,7 @@ fields:
         softLength: 300
         trim: true
       readonly: false
-      required: false
+      required: true
       sort: 2
       special: null
       translations: null
@@ -16955,6 +16955,75 @@ fields:
       schema: public
       table: Platforms_translations
     type: text
+  - collection: Platforms_translations
+    field: documentation
+    meta:
+      collection: Platforms_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: documentation
+      group: documentations
+      hidden: false
+      interface: input-rich-text-md
+      note: null
+      options:
+        imageToken: mdzjETutYM06z9ch56CmFkjIOWZCwraG
+      readonly: false
+      required: false
+      sort: 1
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: documentation
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: Platforms_translations
+    type: text
+  - collection: Platforms_translations
+    field: documentations
+    meta:
+      collection: Platforms_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: documentations
+      group: null
+      hidden: false
+      interface: group-detail
+      note: null
+      options:
+        start: closed
+      readonly: false
+      required: false
+      sort: 3
+      special:
+        - alias
+        - group
+        - no-data
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema: null
+    type: alias
   - collection: Platforms_translations
     field: id
     meta:
@@ -17011,7 +17080,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: 4
+      sort: 5
       special: null
       translations: null
       validation: null
