@@ -22,7 +22,7 @@ function MyApp({
     <SharedDataProvider value={datas}>
       <Component {...pageProps} />
       <ChatwootWidget />
-      <NextProgress height='2px' options={{ showSpinner: false }} />
+      {/* <NextProgress height='2px' options={{ showSpinner: false }} /> */}
     </SharedDataProvider>
   );
 }

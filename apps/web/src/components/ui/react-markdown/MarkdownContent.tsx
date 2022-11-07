@@ -2,6 +2,7 @@
 import ReactMarkdown from 'react-markdown';
 import remarkBreaks from 'remark-breaks';
 import remarkGfm from 'remark-gfm';
+import oembed from '@agentofuser/remark-oembed';
 import { PrismAsyncLight as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { atomDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 import { CodeComponent } from 'react-markdown/lib/ast-to-react';
@@ -35,7 +36,7 @@ export function MarkdownContent({ children }: { children: string }) {
       components={{
         code,
       }}
-      remarkPlugins={[remarkBreaks, remarkGfm]}
+      remarkPlugins={[remarkBreaks, remarkGfm, oembed]}
     >
       {children}
     </ReactMarkdown>

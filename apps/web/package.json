@@ -19,6 +19,7 @@
     "prepare": "cd ../.. &&  husky install"
   },
   "dependencies": {
+    "@agentofuser/remark-oembed": "^1.0.4",
     "@directus/sdk": "^10.1.5",
     "clsx": "^1.2.1",
     "cookies-next": "^2.1.1",
