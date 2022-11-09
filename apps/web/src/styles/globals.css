@@ -284,6 +284,10 @@ body {
       }
     }
 
+    a {
+      @apply text-primary-400 underline;
+    }
+
     tbody {
       tr {
         @apply bg-white border-b;

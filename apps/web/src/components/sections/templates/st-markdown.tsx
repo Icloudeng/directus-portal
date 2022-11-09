@@ -10,7 +10,10 @@ export function ST_MarkdownFC({ items }: STemplates_Props<ST_Markdown>) {
       {items.map(({ item }) => {
         const { translations } = mut(item, locale);
         return (
-          <div className='markdown__content mb-4 w-full' key={item.id}>
+          <div
+            className='markdown__content default__typo mb-4 w-full'
+            key={item.id}
+          >
             <MarkdownContent>
               {translations?.markdown_content || ''}
             </MarkdownContent>
