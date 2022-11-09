@@ -33,8 +33,9 @@
     content: "#!/bin/bash\nnginx -t && systemctl reload nginx"
     dest: /etc/letsencrypt/renewal-hooks/post/nginx-reload.sh
     mode: 0755
-# - name: CRON | Certbot new
-#   cron:
-#     name: certbot renew
-#     special_time: daily
-#     job: "/usr/bin/certbot renew  --quiet"
+
+- name: CRON | Certbot new
+  cron:
+    name: certbot renew
+    special_time: daily
+    job: "/usr/bin/certbot renew  --quiet"
