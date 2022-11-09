@@ -7,6 +7,7 @@ export function validateForm<T extends Ks>(keys: (keyof T)[], data: T) {
 
   keys.forEach((key) => {
     const value = data[key];
+    data[key] = typeof value === 'string' ? (value.trim() as any) : value;
     switch (key) {
       case 'email':
         if (value && !EMAIL_REGEX.test(value)) {

@@ -69,11 +69,11 @@ export const FlexiblePlans = ({
 
               <div className='calculator__form-field custom-select flex items-center'>
                 <a
-                  href='#'
-                  target={'_blank'}
+                  href='/-/apps-platforms'
+                  target='_blank'
                   className='text-xs xs:text-sm inline-flex items-center min-w-[5rem] xs:min-w-[7rem] sd:min-w-[10rem]'
                 >
-                  {t('Platforms')}
+                  {t('App')} {t('Platforms')}
                   <span className='ml-1'>
                     <FiExternalLink />
                   </span>

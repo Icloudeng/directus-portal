@@ -11,6 +11,7 @@ import ChatwootWidget from '@/components/services/chatwoot';
 import { ISharedData, SharedDataProvider } from '@/app/store';
 
 import { getGqlSharedData } from '@/cms/items';
+import NextProgress from '@/components/ui/next-progress';
 
 function MyApp({
   Component,
@@ -21,6 +22,7 @@ function MyApp({
     <SharedDataProvider value={datas}>
       <Component {...pageProps} />
       <ChatwootWidget />
+      <NextProgress height='2px' options={{ showSpinner: false }} />
     </SharedDataProvider>
   );
 }

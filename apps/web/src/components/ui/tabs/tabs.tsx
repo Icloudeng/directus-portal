@@ -22,20 +22,22 @@ export function Tabs({ children }: PropsWithChildren) {
 
   return (
     <div className='nav__tabs flex flex-col'>
-      <div className='tabs__head w-max max-w-full flex items-center justify-center mx-auto border-b border-[#dae1eb] mb-[40px] lg:mb-[60px] overflow-x-auto'>
-        {titles.map(({ title, index }, i) => {
-          return (
-            <div
-              key={index}
-              onClick={() => setActive(index)}
-              className={`relative text-[18px] text-[#1d2330] lg:text-[20px] py-[12px] transition-colors font-medium bg-transparent normal-case ${
-                i > 0 ? 'ml-9' : ''
-              } ${index === active ? 'active' : ''} cursor-pointer`}
-            >
-              <span>{title}</span>
-            </div>
-          );
-        })}
+      <div className='w-full flex items-center justify-center p-3 overflow-x-auto mb-[40px] lg:mb-[60px] '>
+        <ul className='tabs__head w-full flex items-start justify-start sm:justify-center  gap-1 whitespace-nowrap px-2'>
+          {titles.map(({ title, index }, i) => {
+            return (
+              <li
+                key={index}
+                onClick={() => setActive(index)}
+                className={`relative text-[18px] text-[#1d2330] lg:text-[20px] py-[12px] border-b border-[#dae1eb] transition-colors font-medium bg-transparent normal-case ${
+                  i > 0 ? 'ml-9' : ''
+                } ${index === active ? 'active' : ''} cursor-pointer`}
+              >
+                <span>{title}</span>
+              </li>
+            );
+          })}
+        </ul>
       </div>
 
       <div className='tabs__content'>{newChildren}</div>

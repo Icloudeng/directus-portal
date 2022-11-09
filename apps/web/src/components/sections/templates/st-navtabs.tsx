@@ -16,8 +16,8 @@ export function ST_NavTabsFC({ items }: STemplates_Props<ST_NavTab>) {
           <TabsPane key={item.id} title={translations?.name || ''}>
             <div className='flex flex-col sm:flex-row'>
               <div
-                className={`markdown__content default__typo mb-5 ${
-                  image ? 'pr-4 w-full sm:w-[60%]' : ''
+                className={`markdown__content w-full default__typo mb-5 ${
+                  image ? 'pr-4 sm:w-[60%]' : ''
                 }`}
               >
                 <MarkdownContent>

@@ -67,5 +67,6 @@ export const CMS_MODELS = {
     st_cards: 'ST_Cards',
     st_guest_questions: 'ST_GuestQuestions',
     st_side_text_medias: 'ST_SideTextMedias',
+    st_markdown: 'ST_Markdown',
   } as const,
 };

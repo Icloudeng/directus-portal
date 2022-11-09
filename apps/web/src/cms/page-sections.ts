@@ -257,6 +257,13 @@ const q_ST: Query = {
     }),
     ...qWithStatus,
   },
+  [section_templates.st_markdown]: {
+    __typeName: section_templates.st_markdown,
+    ...qWithTranslations({
+      markdown_content: true,
+    }),
+    ...qWithStatus,
+  },
 };
 
 type PSQuery = {
@@ -610,6 +617,14 @@ export type ST_Card = MDHasM2A<
   ST_V<'st_cards'>
 >;
 
+export type ST_Markdown = MDHasM2A<
+  MDWithTranslation<{
+    markdown_content: string;
+  }> &
+    DRTStatus,
+  ST_V<'st_markdown'>
+>;
+
 export type ST_GuestQuestion = MDHasM2A<DRTStatus, ST_V<'st_guest_questions'>>;
 
 //------------------- Page Sections --------------------//
@@ -638,7 +653,8 @@ export type PS_Content =
   | ST_TimelineRange
   | ST_SideTextMedia
   | ST_Card
-  | ST_GuestQuestion;
+  | ST_GuestQuestion
+  | ST_Markdown;
 
 export type M2APageSection = MDHasM2A<
   {

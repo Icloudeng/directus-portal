@@ -23,3 +23,4 @@ export * from './st-timeline-ranges';
 export * from './st-cards';
 export * from './st-guest-questions';
 export * from './st-side-text-medias';
+export * from './st-markdown';
