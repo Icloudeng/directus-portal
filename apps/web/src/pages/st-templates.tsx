@@ -13,6 +13,7 @@ import {
   DumpGroupedLogos,
   DumpGuestQuestions,
   DumpHoverableMediaMenus,
+  DumpMarkdown,
   DumpMediaTabs,
   DumpNavAccordion,
   DumpNavTab,
@@ -233,9 +234,9 @@ export default function Page() {
       </section>
 
       <section className='py-14  x-container'>
-        <h3 className='my-9'>ST SideTextMedias</h3>
-        <Sts.ST_SideTextMediasFC
-          items={DumpSideTextMedias}
+        <h3 className='my-9'>ST Markdown</h3>
+        <Sts.ST_MarkdownFC
+          items={DumpMarkdown}
           sectionClass=''
           sharedObject={{}}
         />

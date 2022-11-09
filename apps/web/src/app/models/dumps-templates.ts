@@ -11,6 +11,7 @@ import type {
   ST_GroupedLogo,
   ST_GuestQuestion,
   ST_HoverableMediaMenu,
+  ST_Markdown,
   ST_MediaTab,
   ST_NavAccordion,
   ST_NavTab,
@@ -1843,6 +1844,30 @@ export const DumpSideTextMedias: ST_SideTextMedia[] = [
       status: 'published',
       date_created: '2022-11-05T18:31:36.167Z',
       date_updated: '2022-11-05T20:28:22.869Z',
+    },
+  },
+];
+
+export const DumpMarkdown: ST_Markdown[] = [
+  {
+    id: '84',
+    collection: 'ST_Markdown',
+    item: {
+      translations: [
+        {
+          id: '1',
+          languages_code: {
+            code: 'en',
+            name: 'English',
+          },
+          markdown_content:
+            "### What's a Layout?#\n\nData models vary drastically in shape and purpose, from eCommerce platforms to IoT fleets and everything in between. While your Directus Project data may be stored in Collections (i.e. SQL data tables), this table representation is not always the most human-friendly way to interact with information. Layouts provide more human-friendly, intuitive displays to view and interact with Items in a Collection.\n\nThe following sections detail the Layouts managed and supported by the Directus Team. Keep in mind that Directus is open-source, modular and extensible. You are free to create any Layout you need on self-hosted and Enterprise Cloud Projects. Additionally, Directus Cloud is always adding more Layouts to its Cloud Exclusive Extensions, so check back often to stay up-to-date with the latest and greatest. Additionally, you can join the community on Discord and GitHub to find thousands of engineers guiding development of the Directus platform.",
+        },
+      ],
+      id: '69d38545-9b7c-40b2-8d14-5612ec00df4d',
+      status: 'published',
+      date_created: '2022-11-09T16:10:20.778Z',
+      date_updated: '2022-11-09T16:11:12.515Z',
     },
   },
 ];
