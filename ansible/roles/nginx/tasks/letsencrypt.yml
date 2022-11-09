@@ -20,9 +20,8 @@
 
 - name: LetsEncrypt | Certbot {{ domain }} certificate
   shell:
-    cmd: "certbot certonly --webroot -d {{ domain }} -d www.{{ domain }} --email contact@{{ company_domain }} -w /var/www/_letsencrypt -n --agree-tos --force-renewal"
+    cmd: "certbot certonly --webroot -d {{ domain }} --email contact@{{ company_domain }} -w /var/www/_letsencrypt -n --agree-tos --force-renewal"
     creates: "/etc/letsencrypt/live/{{ domain }}/fullchain.pem"
-
 
 - name: LetsEncrypt | Certbot {{ admin_domain }} certificate
   shell:
@@ -34,3 +33,8 @@
     content: "#!/bin/bash\nnginx -t && systemctl reload nginx"
     dest: /etc/letsencrypt/renewal-hooks/post/nginx-reload.sh
     mode: 0755
+# - name: CRON | Certbot new
+#   cron:
+#     name: certbot renew
+#     special_time: daily
+#     job: "/usr/bin/certbot renew  --quiet"

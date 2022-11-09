@@ -173,7 +173,7 @@ async function pageSectionWithPlansPricing(data: ParamPageSection) {
 
       if (!memo_content) continue;
 
-      ncontent.item.plan_pricing_contents = {} as PlansPricingContent;
+      ncontent.item.plan_pricing_contents = <PlansPricingContent>{};
       plan_pricing.push('machine_templates');
       plan_pricing.forEach((key) => {
         ncontent.item.plan_pricing_contents![key] = memo_content![key] as any;
