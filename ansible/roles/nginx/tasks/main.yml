@@ -72,6 +72,25 @@
 
 - include_tasks: letsencrypt.yml
   when: letsencrypt
+  loop:
+    - "{{ domain }}"
+    - "{{ admin_domain }}"
+  loop_control:
+    loop_var: domain_item
+
+- name: CRON | Certbot new
+  cron:
+    name: certbot renew
+    special_time: daily
+    job: "/usr/bin/certbot renew  --quiet"
+  when: letsencrypt
+
+- name: LetsEncrypt | Reload nginx on renewal
+  copy:
+    content: "#!/bin/bash\nnginx -t && systemctl reload nginx"
+    dest: /etc/letsencrypt/renewal-hooks/post/nginx-reload.sh
+    mode: 0755
+  when: letsencrypt
 
 # NGINX Custom
 - name: "Nginx | Vhost {{ domain }}"
