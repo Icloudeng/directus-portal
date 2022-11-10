@@ -1,15 +1,15 @@
 ---
 - name: LetsEncrypt | Check if certificate exists
   stat:
-    path: "/etc/letsencrypt/live/{{ domain }}/fullchain.pem"
+    path: "/etc/letsencrypt/live/{{ domain_item }}/fullchain.pem"
   register: certificate
 
 - name: LetsEncrypt | Remove cert configuration from vhost
   when: not certificate.stat.exists
   shell:
     cmd: |
-      sed -i -r 's/(listen .*443)/\1;#/g; s/(ssl_(certificate|certificate_key|trusted_certificate) )/#;#\1/g' /etc/nginx/sites-available/{{domain}}
-    creates: "/etc/letsencrypt/live/{{ domain }}/fullchain.pem"
+      sed -i -r 's/(listen .*443)/\1;#/g; s/(ssl_(certificate|certificate_key|trusted_certificate) )/#;#\1/g' /etc/nginx/sites-available/{{ domain }}
+    creates: "/etc/letsencrypt/live/{{ domain_item }}/fullchain.pem"
   ignore_errors: true
 
 - name: LetsEncrypt | Reload nginx
@@ -18,23 +18,7 @@
     name: nginx
     state: reloaded
 
-- name: LetsEncrypt | Certbot {{ domain }} certificate
+- name: LetsEncrypt | Certbot {{ domain_item }} certificate
   shell:
-    cmd: "certbot certonly --webroot -d {{ domain }} --email contact@{{ company_domain }} -w /var/www/_letsencrypt -n --agree-tos --force-renewal"
-    creates: "/etc/letsencrypt/live/{{ domain }}/fullchain.pem"
-
-- name: LetsEncrypt | Certbot {{ admin_domain }} certificate
-  shell:
-    cmd: "certbot certonly --webroot -d {{ admin_domain }} --email contact@{{ company_domain }} -w /var/www/_letsencrypt -n --agree-tos --force-renewal"
-    creates: "/etc/letsencrypt/live/{{ admin_domain }}/fullchain.pem"
-
-- name: LetsEncrypt | Reload nginx on renewal
-  copy:
-    content: "#!/bin/bash\nnginx -t && systemctl reload nginx"
-    dest: /etc/letsencrypt/renewal-hooks/post/nginx-reload.sh
-    mode: 0755
-# - name: CRON | Certbot new
-#   cron:
-#     name: certbot renew
-#     special_time: daily
-#     job: "/usr/bin/certbot renew  --quiet"
+    cmd: "certbot certonly --webroot -d {{ domain_item }} --email contact@{{ company_domain }} -w /var/www/_letsencrypt -n --agree-tos --force-renewal"
+    creates: "/etc/letsencrypt/live/{{ domain_item }}/fullchain.pem"
