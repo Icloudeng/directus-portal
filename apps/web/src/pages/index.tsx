@@ -48,13 +48,13 @@ export default function HomePage(props: Partial<QHomeHeroQueriesType<true>>) {
         <JobsCreation />
       </section>
 
-      <section className='py-10 bg-white'>
+      {/* <section className='py-10 bg-white'>
         <MarketPlace />
       </section>
 
       <section className='py-10 bg-[#f5f7fa]'>
         <PlatformCategory />
-      </section>
+      </section> */}
 
       {HomeSections && <PageSections sections={HomeSections.sections} />}
     </Layout>

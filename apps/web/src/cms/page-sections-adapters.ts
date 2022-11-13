@@ -2,14 +2,15 @@ import {
   M2APageSection,
   M2APageSectionReusable,
   PS_Content,
-  ST_PageAsideMenu,
-  ST_PlansPricing,
   ST_Vls,
 } from './page-sections';
 import { qWithAsset, qWithAssets } from './gql-query';
 import { CMS_MODELS } from '@/app/constant/cms';
 import { PlansPricingContent } from './items/types';
-import { getGqlPlansPricingQueries } from './items';
+import {
+  getGqlPlansPricingQueries,
+  getGqlPlatformsByCategories,
+} from './items';
 
 const {
   section_templates,
@@ -42,7 +43,7 @@ export async function pageSectionsAdapters<T extends ParamPageSectionReusable>(
   const ps = pageSectionExtractReusableM2A(data); // this must be called at top of any others functions
   pageSectionPublished(ps);
   pageSectionsWithAssets(access_token, ps.sections);
-  await pageSectionWithPlansPricing(ps);
+  await pageSectionWithContent(ps.sections);
 }
 
 function pageSectionExtractReusableM2A(
@@ -146,38 +147,89 @@ function pageSectionPublished(data: ParamPageSection) {
   });
 }
 
-async function pageSectionWithPlansPricing(data: ParamPageSection) {
-  let memo_content = null as PlansPricingContent | null | undefined;
-  for (const section of data.sections) {
-    for (const content of section.item.contents) {
-      // Select templates with plans_pricing request
-      const sts: ST_Vls[] = [
+function pageSectionWithContent(sections: M2APageSection[]) {
+  return psWithContent(sections, [
+    _psHelper({
+      sts: [
         section_templates['st_page_aside_menus'],
         section_templates['st_plans_pricing'],
-      ];
-      const has = sts.includes(content.collection);
-      if (!has) continue;
-      const ncontent = content as ST_PageAsideMenu | ST_PlansPricing;
-      const plan_pricing = ncontent.item.plan_pricing;
-      if (
-        !plan_pricing ||
-        plan_pricing.length === 0 ||
-        memo_content === undefined
-      ) {
-        continue;
+      ] as const,
+      validate(content) {
+        const plan_pricing = content.item.plan_pricing;
+        return plan_pricing ? plan_pricing.length > 0 : false;
+      },
+      query() {
+        return getGqlPlansPricingQueries();
+      },
+      mutate(content, memo) {
+        const { plan_pricing } = content.item;
+        content.item.plan_pricing_contents = <PlansPricingContent>{};
+        plan_pricing?.push('machine_templates');
+        plan_pricing?.forEach((key) => {
+          content.item.plan_pricing_contents![key] = memo![key] as any;
+        });
+      },
+    }),
+    _psHelper({
+      sts: [section_templates['st_platforms']] as const,
+      query() {
+        return getGqlPlatformsByCategories();
+      },
+      mutate(content, memo) {
+        if (memo) {
+          content.item.categories = memo.categories;
+        }
+      },
+    }),
+  ]);
+}
+
+// -----------------=========---------------------- //
+// ----------------- Helper ---------------------- //
+// -----------------========---------------------- //
+type SC<T> = Extract<PS_Content, { [x: string]: any; collection: T }>;
+type PSWithContent<T extends ST_Vls, M = any> = {
+  sts: readonly T[];
+  query(content: SC<T>): Promise<M>;
+  validate?(content: SC<T>, memo: M | null): boolean;
+  mutate(content: SC<T>, memo: M | null): void;
+};
+const _psHelper = <T extends ST_Vls, M>(c: PSWithContent<T, M>) => c;
+
+async function psWithContent(
+  sections: M2APageSection[],
+  items: PSWithContent<any>[]
+) {
+  const memo: { [x: string]: any } = {};
+  const sort = (c: string[]) => c.sort((a, b) => a.localeCompare(b)).join('');
+  items.forEach((item) => {
+    const mid = sort([...item.sts]);
+    memo[mid] = null;
+  });
+
+  for (const section of sections) {
+    for (const content of section.item.contents) {
+      for (const ps_w of items) {
+        if (!ps_w.sts.includes(content.collection)) {
+          continue;
+        }
+        const mid = sort([...ps_w.sts]);
+        let memo_content = memo[mid];
+
+        if (
+          memo_content === undefined ||
+          (ps_w.validate && !ps_w.validate(content, memo_content))
+        ) {
+          continue;
+        }
+
+        memo[mid] = memo_content ? memo_content : await ps_w.query(content);
+        memo_content = memo[mid];
+
+        if (!memo_content) continue;
+
+        ps_w.mutate(content, memo_content);
       }
-
-      memo_content = memo_content
-        ? memo_content
-        : await getGqlPlansPricingQueries();
-
-      if (!memo_content) continue;
-
-      ncontent.item.plan_pricing_contents = <PlansPricingContent>{};
-      plan_pricing.push('machine_templates');
-      plan_pricing.forEach((key) => {
-        ncontent.item.plan_pricing_contents![key] = memo_content![key] as any;
-      });
     }
   }
 }

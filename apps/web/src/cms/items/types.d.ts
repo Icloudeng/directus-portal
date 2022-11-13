@@ -248,6 +248,7 @@ export type MDPlatformCategory = {
   name: string;
   icon_svg?: string;
   icon?: MDWithAsset;
+  platforms?: MDPlatform[];
 } & MDWithTranslation<{
   name?: string;
   description?: string;

@@ -6,8 +6,9 @@ import {
   qWithPublishedStatus,
   qWithQueryAsset,
   qWithStatus,
+  qWithTranslations,
 } from '../gql-query';
-import { MDPlatform } from './types';
+import { MDPlatform, MDPlatformCategory } from './types';
 
 const platformQuery = {
   __variables: {
@@ -55,4 +56,49 @@ export async function searchGqlPlatforms(query: string) {
   }
 
   return res;
+}
+
+const pg_gql_query = jsonToGraphQLQuery({
+  query: {
+    categories: {
+      __aliasFor: CMS_MODELS.platform_categories,
+      __args: qWithPublishedStatus(),
+      name: true,
+      ...qWithTranslations({
+        name: true,
+        description: true,
+      }),
+      icon: qWithQueryAsset(),
+      icon_svg: true,
+      platforms: {
+        ...platformQuery.platforms,
+        __args: qWithPublishedStatus(),
+        __aliasFor: undefined,
+      },
+      ...qWithStatus,
+    },
+  },
+});
+
+export async function getGqlPlatformsByCategories() {
+  const directus = await getDirectusClient();
+  const access_token = await directus.auth.token;
+
+  const res = await directus.graphql.items<{
+    categories: MDPlatformCategory[];
+  }>(pg_gql_query);
+
+  if (!res.data) {
+    return undefined;
+  }
+
+  if (access_token) {
+    const { categories } = res.data;
+    qWithAssets(access_token, categories, 'icon');
+    categories.forEach((cat) => {
+      cat.platforms && qWithAssets(access_token, cat.platforms, 'icon');
+    });
+  }
+
+  return res?.data;
 }

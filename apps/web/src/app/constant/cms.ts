@@ -26,6 +26,7 @@ export const CMS_MODELS = {
     home_hero: 'HomeHero',
     home_sections: 'HomeSections',
     platforms: 'Platforms',
+    platform_categories: 'PlatformCategories',
     partners_requests: 'PartnersRequests',
     guest_questions: 'GuestQuestions',
   } as const),
