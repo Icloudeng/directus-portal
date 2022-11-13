@@ -25,13 +25,20 @@ const platformQuery = {
       limit: 15,
     }),
     name: true,
-    icon: qWithQueryAsset(),
+    icon: qWithQueryAsset({
+      width: true,
+      height: true,
+    }),
     icon_svg: true,
     ram: true,
     cpu: true,
     ssd: true,
     link: true,
     external_link: true,
+    ...qWithTranslations({
+      description: true,
+    }),
+    version: true,
     ...qWithStatus,
   },
 };

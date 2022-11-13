@@ -238,6 +238,7 @@ export type MDPlatform = {
   ssd: number;
   link?: string;
   external_link: boolean;
+  version?: string;
 } & MDWithTranslation<{
   description: string;
   documentation?: string;
