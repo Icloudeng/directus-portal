@@ -500,7 +500,6 @@ export type ST_PlansPricing = MDHasM2A<
 export type ST_Platform = MDHasM2A<
   {
     include_platforms: true;
-    platforms?: MDPlatform[];
     categories?: MDPlatformCategory[];
   } & DRTStatus,
   ST_V<'st_platforms'>
