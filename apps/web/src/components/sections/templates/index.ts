@@ -24,3 +24,4 @@ export * from './st-cards';
 export * from './st-guest-questions';
 export * from './st-side-text-medias';
 export * from './st-markdown';
+export * from './st-charts';

@@ -265,6 +265,10 @@ const q_ST: Query = {
     }),
     ...qWithStatus,
   },
+  [section_templates.st_charts]: {
+    __typeName: section_templates.st_charts,
+    ...qWithStatus,
+  },
 };
 
 type PSQuery = {
@@ -628,6 +632,8 @@ export type ST_Markdown = MDHasM2A<
 
 export type ST_GuestQuestion = MDHasM2A<DRTStatus, ST_V<'st_guest_questions'>>;
 
+export type ST_Chart = MDHasM2A<DRTStatus, ST_V<'st_charts'>>;
+
 //------------------- Page Sections --------------------//
 export type PS_Content =
   | ST_Value
@@ -655,7 +661,8 @@ export type PS_Content =
   | ST_SideTextMedia
   | ST_Card
   | ST_GuestQuestion
-  | ST_Markdown;
+  | ST_Markdown
+  | ST_Chart;
 
 export type M2APageSection = MDHasM2A<
   {
