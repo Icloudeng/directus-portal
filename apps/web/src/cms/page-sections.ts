@@ -352,7 +352,7 @@ export type ISharedObject = { [x: string]: any };
 export type STemplates_Props<T> = {
   items: T[];
   sectionClass: string;
-  sectionId: ID;
+  sectionId?: ID;
   sharedObject: ISharedObject;
 };
 
