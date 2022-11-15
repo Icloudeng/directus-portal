@@ -8,7 +8,10 @@ import { InputSearch } from '@/components/ui/inputs/InputSearch';
 import { useTranslation } from 'next-i18next';
 import { useCallback, useState } from 'react';
 
-export function ST_PlatformsFC({ items }: STemplates_Props<ST_Platform>) {
+export function ST_PlatformsFC({
+  items,
+  sectionId,
+}: STemplates_Props<ST_Platform>) {
   const { item } = items[0];
   const [categories, setCategories] = useState(item.categories || []);
   const { locale } = useSharedData();
@@ -33,11 +36,12 @@ export function ST_PlatformsFC({ items }: STemplates_Props<ST_Platform>) {
         <InputSearch onChange={onSearch} />
       </div>
       <AsideMenuCategories
+        hrefPrefix={sectionId as string}
         items={categories.map((cat) => {
           const { translations } = mut(cat, locale);
           return {
             id: cat.id,
-            name: cat.name || translations?.name || '',
+            name: translations?.name || cat.name,
             description: translations?.description,
             itemsNumber: cat.platforms?.length || 0,
             icon: (

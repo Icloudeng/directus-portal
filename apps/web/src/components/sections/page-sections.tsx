@@ -195,6 +195,7 @@ function PageSection({
                       <STComponent
                         items={items}
                         sectionClass={classId}
+                        sectionId={section.id}
                         sharedObject={sharedObject}
                       />
                     </div>

@@ -3,7 +3,7 @@ import { Navbar } from './navbar/Navbar';
 import { TopBar } from './topBar/TopBar';
 import throttle from 'lodash/throttle';
 
-export default function Header() {
+export default function Header({ whiteNav }: { whiteNav?: boolean }) {
   const [hasTop, setHasTop] = useState(true);
   const lastScrollY = useRef(0);
 
@@ -31,6 +31,7 @@ export default function Header() {
       window.removeEventListener('scroll', throttleScroll);
     };
   }, []);
+
   return (
     <header
       className={`fixed left-0 top-0 right-0 z-40 transition-transform translate-y-0 layout--header ${
@@ -38,7 +39,7 @@ export default function Header() {
       }`}
     >
       <TopBar />
-      <Navbar />
+      <Navbar whiteNav={whiteNav} />
     </header>
   );
 }

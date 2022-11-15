@@ -30,6 +30,9 @@ const platformQuery = {
       width: true,
       height: true,
     }),
+    category: {
+      id: true,
+    },
     icon_svg: true,
     ram: true,
     cpu: true,
@@ -65,6 +68,55 @@ export async function searchGqlPlatforms(query: string) {
 
   return res;
 }
+
+// Get Platform by slug url
+
+const gql_query_slug = jsonToGraphQLQuery({
+  query: {
+    __variables: {
+      slug: 'String!',
+    },
+    platforms: {
+      ...platformQuery.platforms,
+      __args: qWithPublishedStatus<{ slug: string }>({
+        filter: { slug: { _eq: new VariableType('slug') } },
+        limit: 1,
+      }),
+      category: {
+        id: true,
+        name: true,
+        ...qWithTranslations({
+          name: true,
+          description: true,
+        }),
+      },
+      ...qWithTranslations({
+        description: true,
+        documentation: true,
+      }),
+    },
+  },
+});
+
+export async function getGqlPlatformsBySlug(slug: string) {
+  const directus = await getDirectusClient();
+  const access_token = await directus.auth.token;
+
+  const res = await directus.graphql.items<{ platforms: MDPlatform[] }>(
+    gql_query_slug,
+    { slug }
+  );
+  if (!res.data) return res;
+
+  if (access_token) {
+    const { platforms } = res.data;
+    qWithAssets(access_token, platforms, 'icon');
+  }
+
+  return res;
+}
+
+// Get Platform by categories
 
 const pg_gql_query = jsonToGraphQLQuery({
   query: {

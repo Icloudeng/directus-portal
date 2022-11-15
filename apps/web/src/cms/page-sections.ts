@@ -7,6 +7,7 @@ import {
   MDWithTranslation,
   RepeaterBtn,
 } from '@/types/directus';
+import { ID } from '@directus/sdk';
 import {
   qWithPublishedStatus,
   qWithQueryAsset,
@@ -351,6 +352,7 @@ export type ISharedObject = { [x: string]: any };
 export type STemplates_Props<T> = {
   items: T[];
   sectionClass: string;
+  sectionId: ID;
   sharedObject: ISharedObject;
 };
 
