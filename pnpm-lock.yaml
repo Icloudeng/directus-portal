@@ -35,6 +35,7 @@ importers:
       '@tailwindcss/forms': ^0.5.3
       '@testing-library/jest-dom': ^5.16.5
       '@testing-library/react': ^13.3.0
+      '@types/d3-shape': ^3.1.0
       '@types/leaflet': ^1.9.0
       '@types/lodash': ^4.14.186
       '@types/node': ^18.11.2
@@ -48,6 +49,7 @@ importers:
       autoprefixer: ^10.4.8
       clsx: ^1.2.1
       cookies-next: ^2.1.1
+      d3-shape: ^3.1.0
       embla-carousel-react: ^7.0.3
       eslint: ^8.21.0
       eslint-config-next: ^12.2.4
@@ -90,8 +92,10 @@ importers:
       typescript: ^4.8.4
     dependencies:
       '@directus/sdk': 10.1.5
+      '@types/d3-shape': 3.1.0
       clsx: 1.2.1
       cookies-next: 2.1.1
+      d3-shape: 3.1.0
       embla-carousel-react: 7.0.3_react@18.2.0
       flowbite: 1.5.3
       is-svg: 4.3.2
@@ -6289,6 +6293,13 @@ packages:
 
   /d3-shape/2.1.0:
     resolution: {integrity: sha512-PnjUqfM2PpskbSLTJvAzp2Wv4CZsnAgTfcVRTwW03QR3MkXF8Uo7B1y/lWkAsmbKwuecto++4NlsYcvYpXpTHA==}
+    dependencies:
+      d3-path: 1.0.9
+    dev: false
+
+  /d3-shape/3.1.0:
+    resolution: {integrity: sha512-tGDh1Muf8kWjEDT/LswZJ8WF85yDZLvVJpYU9Nq+8+yW1Z5enxrmXOhTArlkaElU+CTn0OTVNli+/i+HP45QEQ==}
+    engines: {node: '>=12'}
     dependencies:
       d3-path: 1.0.9
     dev: false

@@ -20,8 +20,10 @@
   },
   "dependencies": {
     "@directus/sdk": "^10.1.5",
+    "@types/d3-shape": "^3.1.0",
     "clsx": "^1.2.1",
     "cookies-next": "^2.1.1",
+    "d3-shape": "^3.1.0",
     "embla-carousel-react": "^7.0.3",
     "flowbite": "^1.5.3",
     "is-svg": "^4.3.2",

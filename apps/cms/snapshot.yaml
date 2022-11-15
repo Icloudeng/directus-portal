@@ -22162,7 +22162,7 @@ fields:
                         placeholder: Data value
                         trim: true
                         softLength: 10
-                template: '{{ label }} - {{ value }}'
+                template: '{{ label }} - ({{ value }})'
                 addLabel: Create Data
       readonly: false
       required: true

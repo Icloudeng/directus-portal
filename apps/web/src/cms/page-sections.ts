@@ -669,6 +669,10 @@ export type ST_Markdown = MDHasM2A<
 
 export type ST_GuestQuestion = MDHasM2A<DRTStatus, ST_V<'st_guest_questions'>>;
 
+export type ChartDataSetData = {
+  label: string;
+  value: number;
+};
 export type ST_Chart = MDHasM2A<
   {
     type:
@@ -685,10 +689,7 @@ export type ST_Chart = MDHasM2A<
     datasets: {
       dataset_name: string;
       border_color: string;
-      data?: {
-        label: string;
-        value: number;
-      }[];
+      data?: ChartDataSetData[];
     }[];
   } & MDWithTranslation<{
     markdown_content?: string;
