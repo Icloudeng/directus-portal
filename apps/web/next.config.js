@@ -9,7 +9,15 @@ module.exports = {
   },
 
   images: {
-    domains: ['localhost', 'portaladmin.coding.icloudeng.xyz', '127.0.0.1', 'flowbite.com', 'images.unsplash.com'],
+    dangerouslyAllowSVG: true,
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
+    domains: [
+      'localhost',
+      'portaladmin.coding.icloudeng.xyz',
+      '127.0.0.1',
+      'flowbite.com',
+      'images.unsplash.com',
+    ],
   },
 
   publicRuntimeConfig: {

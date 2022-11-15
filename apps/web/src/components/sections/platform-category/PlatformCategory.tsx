@@ -1,5 +1,5 @@
-import { AllCategoryCads } from "./components/AllCategoryCads"
-import { CategoryElementsHeader } from "./components/CategoryElementsHeader"
+import { AllCategoryCads } from './components/AllCategoryCads';
+import { CategoryElementsHeader } from './components/CategoryElementsHeader';
 
 export const PlatformCategory = () => {
   return (
@@ -9,10 +9,10 @@ export const PlatformCategory = () => {
           <CategoryElementsHeader />
         </div>
 
-        <div className="w-full">
-            <AllCategoryCads />
+        <div className='w-full'>
+          <AllCategoryCads />
         </div>
       </div>
     </div>
-  )
-}
+  );
+};

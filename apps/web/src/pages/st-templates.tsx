@@ -19,6 +19,7 @@ import {
   DumpNavTab,
   DumpPageAsideMenus,
   DumpPlansPricing,
+  DumpPlatforms,
   DumpSidedContent,
   DumpSideTextMedias,
   DumpSimpleCardLink,
@@ -237,6 +238,15 @@ export default function Page() {
         <h3 className='my-9'>ST Markdown</h3>
         <Sts.ST_MarkdownFC
           items={DumpMarkdown}
+          sectionClass=''
+          sharedObject={{}}
+        />
+      </section>
+
+      <section className='py-14  x-container'>
+        <h3 className='my-9'>ST Platforms</h3>
+        <Sts.ST_PlatformsFC
+          items={DumpPlatforms}
           sectionClass=''
           sharedObject={{}}
         />
