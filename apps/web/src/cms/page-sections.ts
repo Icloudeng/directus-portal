@@ -31,6 +31,7 @@ type Query = {
 const q_ST: Query = {
   [section_templates.st_values]: {
     __typeName: section_templates.st_values,
+    __args: qWithPublishedStatus(),
     icon_svg: true,
     icon_bg_color: true,
     flexible: true,
@@ -43,6 +44,7 @@ const q_ST: Query = {
   },
   [section_templates.st_navtabs]: {
     __typeName: section_templates.st_navtabs,
+    __args: qWithPublishedStatus(),
     image: qWithQueryAsset(),
     disposition: true,
     ...qWithTranslations({
@@ -53,6 +55,7 @@ const q_ST: Query = {
   },
   [section_templates.st_card_carousels]: {
     __typeName: section_templates.st_card_carousels,
+    __args: qWithPublishedStatus(),
     image: qWithQueryAsset(),
     pagination_buttons: true,
     prev_next_buttons: true,
@@ -66,6 +69,7 @@ const q_ST: Query = {
   },
   [section_templates.st_card_image_carousels]: {
     __typeName: section_templates.st_card_image_carousels,
+    __args: qWithPublishedStatus(),
     image: qWithQueryAsset(),
     pagination_buttons: true,
     prev_next_buttons: true,
@@ -79,6 +83,7 @@ const q_ST: Query = {
   },
   [section_templates.st_sided_contents]: {
     __typeName: section_templates.st_sided_contents,
+    __args: qWithPublishedStatus(),
     image: qWithQueryAsset(),
     disposition: true,
     ...qWithTranslations({
@@ -89,6 +94,7 @@ const q_ST: Query = {
   },
   [section_templates.st_nav_accordions]: {
     __typeName: section_templates.st_nav_accordions,
+    __args: qWithPublishedStatus(),
     image: qWithQueryAsset(),
     prev_next_buttons: true,
     ...qWithTranslations({
@@ -100,6 +106,7 @@ const q_ST: Query = {
   },
   [section_templates.st_clean_heros]: {
     __typeName: section_templates.st_clean_heros,
+    __args: qWithPublishedStatus(),
     image: qWithQueryAsset(),
     image_svg: true,
     disposition: true,
@@ -112,6 +119,7 @@ const q_ST: Query = {
   },
   [section_templates.st_page_aside_menus]: {
     __typeName: section_templates.st_page_aside_menus,
+    __args: qWithPublishedStatus(),
     plan_pricing: true,
     ...qWithTranslations({
       title: true,
@@ -122,6 +130,7 @@ const q_ST: Query = {
   },
   [section_templates.st_simple_card_links]: {
     __typeName: section_templates.st_simple_card_links,
+    __args: qWithPublishedStatus(),
     url: true,
     external: true,
     ...qWithTranslations({
@@ -133,6 +142,7 @@ const q_ST: Query = {
   },
   [section_templates.st_buttons]: {
     __typeName: section_templates.st_buttons,
+    __args: qWithPublishedStatus(),
     url: true,
     external: true,
     variant: true,
@@ -143,16 +153,19 @@ const q_ST: Query = {
   },
   [section_templates.st_plans_pricing]: {
     __typeName: section_templates.st_plans_pricing,
+    __args: qWithPublishedStatus(),
     plan_pricing: true,
     ...qWithStatus,
   },
   [section_templates.st_platforms]: {
     __typeName: section_templates.st_platforms,
+    __args: qWithPublishedStatus(),
     include_platforms: true,
     ...qWithStatus,
   },
   [section_templates.st_media_tabs]: {
     __typeName: section_templates.st_media_tabs,
+    __args: qWithPublishedStatus(),
     disposition: true,
     ...qWithTranslations({
       tab_name: true,
@@ -165,6 +178,7 @@ const q_ST: Query = {
   },
   [section_templates.st_streamable_cards]: {
     __typeName: section_templates.st_streamable_cards,
+    __args: qWithPublishedStatus(),
     stream_direction: true,
     image: qWithQueryAsset(),
     image_svg: true,
@@ -175,6 +189,7 @@ const q_ST: Query = {
   },
   [section_templates.st_hoverable_media_menus]: {
     __typeName: section_templates.st_hoverable_media_menus,
+    __args: qWithPublishedStatus(),
     image: qWithQueryAsset({ type: true }),
     ...qWithTranslations({
       markdown_content: true,
@@ -183,11 +198,13 @@ const q_ST: Query = {
   },
   [section_templates.st_transformed_image_carousels]: {
     __typeName: section_templates.st_transformed_image_carousels,
+    __args: qWithPublishedStatus(),
     image: qWithQueryAsset({ type: true }),
     ...qWithStatus,
   },
   [section_templates.st_testimonials]: {
     __typeName: section_templates.st_testimonials,
+    __args: qWithPublishedStatus(),
     client_name: true,
     client_post: true,
     image: qWithQueryAsset({ type: true }),
@@ -198,11 +215,13 @@ const q_ST: Query = {
   },
   [section_templates.st_gallery]: {
     __typeName: section_templates.st_gallery,
+    __args: qWithPublishedStatus(),
     image: qWithQueryAsset({ type: true }),
     ...qWithStatus,
   },
   [section_templates.st_grouped_logos]: {
     __typeName: section_templates.st_grouped_logos,
+    __args: qWithPublishedStatus(),
     name: true,
     image: qWithQueryAsset({
       type: true,
@@ -213,14 +232,17 @@ const q_ST: Query = {
   },
   [section_templates.st_become_partner_forms]: {
     __typeName: section_templates.st_become_partner_forms,
+    __args: qWithPublishedStatus(),
     ...qWithStatus,
   },
   [section_templates.st_company_details]: {
     __typeName: section_templates.st_company_details,
+    __args: qWithPublishedStatus(),
     ...qWithStatus,
   },
   [section_templates.st_timeline_ranges]: {
     __typeName: section_templates.st_timeline_ranges,
+    __args: qWithPublishedStatus(),
     ...qWithTranslations({
       time_title: true,
       time_description: true,
@@ -229,6 +251,7 @@ const q_ST: Query = {
   },
   [section_templates.st_cards]: {
     __typeName: section_templates.st_cards,
+    __args: qWithPublishedStatus(),
     image: qWithQueryAsset(),
     flexible_image: true,
     border_card: true,
@@ -243,10 +266,12 @@ const q_ST: Query = {
   },
   [section_templates.st_guest_questions]: {
     __typeName: section_templates.st_guest_questions,
+    __args: qWithPublishedStatus(),
     ...qWithStatus,
   },
   [section_templates.st_side_text_medias]: {
     __typeName: section_templates.st_side_text_medias,
+    __args: qWithPublishedStatus(),
     media: qWithQueryAsset({ type: true }),
     media_url: true,
     disposition: true,
@@ -260,6 +285,7 @@ const q_ST: Query = {
   },
   [section_templates.st_markdown]: {
     __typeName: section_templates.st_markdown,
+    __args: qWithPublishedStatus(),
     ...qWithTranslations({
       markdown_content: true,
     }),
@@ -267,6 +293,7 @@ const q_ST: Query = {
   },
   [section_templates.st_charts]: {
     __typeName: section_templates.st_charts,
+    __args: qWithPublishedStatus(),
     ...qWithStatus,
   },
 };
@@ -278,9 +305,7 @@ type PSQuery = {
   };
 };
 
-const page_section = {
-  __typeName: CMS_MODELS.generics.page_sections,
-  __args: qWithPublishedStatus(),
+const page_section_customz = {
   background_image: qWithQueryAsset(),
   background_color: true,
   background_svg: true,
@@ -290,6 +315,12 @@ const page_section = {
     title: true,
     description: true,
   }),
+};
+
+const page_section = {
+  __typeName: CMS_MODELS.generics.page_sections,
+  __args: qWithPublishedStatus(),
+  ...page_section_customz,
   ...qWithStatus,
   contents: {
     id: true,
@@ -305,6 +336,7 @@ export const pageSectionItemsQuery: PSQuery = {
   [generics.reusable_page_sections]: {
     __typeName: CMS_MODELS.generics.reusable_page_sections,
     __args: qWithPublishedStatus(),
+    ...page_section_customz,
     page_section: {
       ...page_section,
       reusable: true,
@@ -695,7 +727,16 @@ export type MDPageSectionsCategory = {
 export type M2AReusablePageSection = MDHasM2A<
   {
     page_section?: M2APageSection['item'];
-  } & DRTStatus,
+  } & Pick<
+    M2APageSection['item'],
+    | 'translations'
+    | 'background_image'
+    | 'background_svg'
+    | 'background_color'
+    | 'custom_css'
+    | 'container'
+  > &
+    DRTStatus,
   GE_V<'reusable_page_sections'>
 >;
 
