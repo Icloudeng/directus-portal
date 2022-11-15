@@ -62,6 +62,7 @@ export function ST_PlatformsFC({ items }: STemplates_Props<ST_Platform>) {
             <div className='grid grid-cols-1 ss:grid-cols-2 md:grid-cols-3 gap-5 md:gap-3'>
               {cat.platforms.map((plat) => {
                 const { translations, id } = mut(plat, locale);
+                const platformLink = `/platforms/apps/${plat.slug}`;
                 return (
                   <MarketPlaceCard
                     key={id}
@@ -69,8 +70,9 @@ export function ST_PlatformsFC({ items }: STemplates_Props<ST_Platform>) {
                     icon={plat.icon}
                     icon_svg={plat.icon_svg}
                     linkText={t('See details')}
-                    link={plat.link}
-                    externalLink={plat.external_link}
+                    titleLink={platformLink}
+                    link={plat.link || platformLink}
+                    externalLink={plat.link ? plat.external_link : false}
                     description={translations?.description}
                   />
                 );
