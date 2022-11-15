@@ -19,7 +19,7 @@ import { useTranslation } from 'next-i18next';
 import type { I_MDWithUserTranslation } from '@/types/directus';
 import type { MDNavbarLink } from '@/cms/items/types';
 
-export const Navbar = () => {
+export const Navbar = ({ whiteNav }: { whiteNav?: boolean }) => {
   const pagePosition = useScrollPosition();
   const { t } = useTranslation();
   const onMouseClick = () => {
@@ -30,10 +30,14 @@ export const Navbar = () => {
 
   return (
     <div
-      className={`nav__parent h-[70px] xl:h-[100px] flex items-center xl:px-10 transition-all ease-in-out duration-100 ${
+      className={`nav__parent h-[70px] xl:h-[100px] ${
+        whiteNav ? 'bg-white text-black shadow-sm' : ''
+      } flex items-center xl:px-10 transition-all ease-in-out duration-100 ${
         pagePosition > 40
           ? 'xl:h-[70px] shadow-md backdrop-blur-sm bg-white/90 text-black nav__fixed'
-          : 'text-white'
+          : !whiteNav
+          ? 'text-white'
+          : ''
       }`}
     >
       <div className='relative x-container-fluid flex items-center justify-between gap-4 h-full'>

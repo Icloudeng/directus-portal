@@ -233,7 +233,8 @@ export type MDPlatform = {
   slug: string;
   icon: MDWithAsset;
   icon_svg?: string;
-  category?: Pick<MDPlatformCategory, 'id'>;
+  category?: Partial<Pick<MDPlatformCategory, 'id' | 'name'>> &
+    Pick<MDPlatformCategory, 'translations'>;
   ram: number;
   cpu: number;
   ssd: number;

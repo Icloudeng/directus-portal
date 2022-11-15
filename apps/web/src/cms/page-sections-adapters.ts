@@ -61,7 +61,7 @@ function pageSectionExtractReusableM2A(
       case reusable_page_sections:
         if (value.item.page_section) {
           acc.push({
-            id: `${value.id}_${i}`,
+            id: `${value.id}-${i}`,
             collection: page_sections,
             item: value.item.page_section,
           });
@@ -72,7 +72,7 @@ function pageSectionExtractReusableM2A(
           acc.push(
             ...value.item.section_category.page_sections.map((ps, rs_i) => {
               return {
-                id: `${value.id}_${i}_${rs_i}`,
+                id: `${value.id}-${i}-${rs_i}`,
                 collection: page_sections,
                 item: ps,
               };

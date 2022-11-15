@@ -252,6 +252,25 @@ body {
       @apply list-disc max-w-xs ss:max-w-sm ml-5 text-xs sd:text-sm text-gray-400;
     }
 
+    &.mkd__reset {
+      ul {
+        @apply list-disc max-w-full ss:max-w-full text-sm text-dark;
+      }
+
+      p {
+        @apply text-sm text-dark;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        @apply !text-start;
+      }
+    }
+
     &:not(.default__typo) {
       h1,
       h2,
