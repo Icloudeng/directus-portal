@@ -22102,7 +22102,68 @@ fields:
       hidden: false
       interface: list
       note: null
-      options: null
+      options:
+        addLabel: Create Dataset
+        fields:
+          - field: dataset_name
+            name: dataset_name
+            type: string
+            meta:
+              field: dataset_name
+              width: half
+              type: string
+              interface: input
+              note: Label
+              options:
+                placeholder: Dataset Name
+                trim: true
+          - field: border_color
+            name: border_color
+            type: string
+            meta:
+              field: border_color
+              width: half
+              type: string
+              interface: select-color
+              note: Border Color
+          - field: data
+            name: data
+            type: json
+            meta:
+              field: data
+              width: full
+              type: json
+              interface: list
+              note: Data
+              options:
+                fields:
+                  - field: label
+                    name: label
+                    type: string
+                    meta:
+                      field: label
+                      width: full
+                      type: string
+                      interface: input
+                      note: Label
+                      options:
+                        placeholder: Data Label
+                        trim: true
+                  - field: value
+                    name: value
+                    type: decimal
+                    meta:
+                      field: value
+                      width: full
+                      type: decimal
+                      interface: input
+                      note: Value (Number)
+                      options:
+                        placeholder: Data value
+                        trim: true
+                        softLength: 10
+                template: '{{ label }} - {{ value }}'
+                addLabel: Create Data
       readonly: false
       required: true
       sort: 6
@@ -22115,7 +22176,7 @@ fields:
     schema:
       comment: null
       data_type: json
-      default_value: null
+      default_value: []
       foreign_key_column: null
       foreign_key_schema: null
       foreign_key_table: null
@@ -22148,7 +22209,7 @@ fields:
       options: null
       readonly: true
       required: false
-      sort: 11
+      sort: 12
       special:
         - date-created
       translations: null
@@ -22191,7 +22252,7 @@ fields:
       options: null
       readonly: true
       required: false
-      sort: 13
+      sort: 14
       special:
         - date-updated
       translations: null
@@ -22260,49 +22321,6 @@ fields:
       schema: public
       table: ST_Charts
     type: uuid
-  - collection: ST_Charts
-    field: labels
-    meta:
-      collection: ST_Charts
-      conditions: null
-      display: null
-      display_options: null
-      field: labels
-      group: null
-      hidden: false
-      interface: tags
-      note: null
-      options:
-        capitalization: auto-format
-      readonly: false
-      required: true
-      sort: 5
-      special:
-        - cast-json
-      translations: null
-      validation: null
-      validation_message: null
-      width: full
-    schema:
-      comment: null
-      data_type: json
-      default_value: null
-      foreign_key_column: null
-      foreign_key_schema: null
-      foreign_key_table: null
-      generation_expression: null
-      has_auto_increment: false
-      is_generated: false
-      is_nullable: true
-      is_primary_key: false
-      is_unique: false
-      max_length: null
-      name: labels
-      numeric_precision: null
-      numeric_scale: null
-      schema: public
-      table: ST_Charts
-    type: json
   - collection: ST_Charts
     field: links-j_feys
     meta:
@@ -22374,7 +22392,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: 9
+      sort: 10
       special: null
       translations: null
       validation: null
@@ -22436,7 +22454,7 @@ fields:
             value: archived
       readonly: false
       required: false
-      sort: 8
+      sort: 9
       special: null
       translations: null
       validation: null
@@ -22478,7 +22496,7 @@ fields:
         start: closed
       readonly: false
       required: false
-      sort: 7
+      sort: 8
       special:
         - alias
         - group
@@ -22526,10 +22544,31 @@ fields:
       hidden: false
       interface: select-dropdown
       note: null
-      options: null
+      options:
+        choices:
+          - text: Line
+            value: line
+          - text: bar
+            value: bar
+          - text: Bar (Horizontal)
+            value: bar_horizontal
+          - text: Bar (Stacked)
+            value: bar_stacked
+          - text: Bar (Horizontal + Stacked)
+            value: bar_horizontal_stacked
+          - text: Area
+            value: area
+          - text: Bubble
+            value: bubble
+          - text: Steam
+            value: steam
+          - text: Spark Chart
+            value: spark_chart
+          - text: Band
+            value: band
       readonly: false
       required: true
-      sort: 4
+      sort: 5
       special: null
       translations: null
       validation: null
@@ -22571,7 +22610,7 @@ fields:
         template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
       readonly: true
       required: false
-      sort: 10
+      sort: 11
       special:
         - user-created
       translations: null
@@ -22614,7 +22653,7 @@ fields:
         template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
       readonly: true
       required: false
-      sort: 12
+      sort: 13
       special:
         - user-updated
       translations: null

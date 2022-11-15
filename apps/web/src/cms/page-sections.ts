@@ -294,6 +294,11 @@ const q_ST: Query = {
   [section_templates.st_charts]: {
     __typeName: section_templates.st_charts,
     __args: qWithPublishedStatus(),
+    type: true,
+    datasets: true,
+    ...qWithTranslations({
+      markdown_content: true,
+    }),
     ...qWithStatus,
   },
 };
@@ -664,7 +669,33 @@ export type ST_Markdown = MDHasM2A<
 
 export type ST_GuestQuestion = MDHasM2A<DRTStatus, ST_V<'st_guest_questions'>>;
 
-export type ST_Chart = MDHasM2A<DRTStatus, ST_V<'st_charts'>>;
+export type ST_Chart = MDHasM2A<
+  {
+    type:
+      | 'line'
+      | 'bar'
+      | 'bar_horizontal'
+      | 'bar_stacked'
+      | 'bar_horizontal_stacked'
+      | 'area'
+      | 'bubble'
+      | 'steam'
+      | 'spark_chart'
+      | 'band';
+    datasets: {
+      dataset_name: string;
+      border_color: string;
+      data?: {
+        label: string;
+        value: number;
+      }[];
+    }[];
+  } & MDWithTranslation<{
+    markdown_content?: string;
+  }> &
+    DRTStatus,
+  ST_V<'st_charts'>
+>;
 
 //------------------- Page Sections --------------------//
 export type PS_Content =
