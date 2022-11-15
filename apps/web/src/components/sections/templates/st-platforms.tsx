@@ -38,6 +38,7 @@ export function ST_PlatformsFC({ items }: STemplates_Props<ST_Platform>) {
           return {
             id: cat.id,
             name: cat.name || translations?.name || '',
+            description: translations?.description,
             itemsNumber: cat.platforms?.length || 0,
             icon: (
               <div className='w-4 h-4'>
@@ -59,25 +60,31 @@ export function ST_PlatformsFC({ items }: STemplates_Props<ST_Platform>) {
       >
         {(cat) => {
           return (
-            <div className='grid grid-cols-1 ss:grid-cols-2 md:grid-cols-3 gap-5 md:gap-3'>
-              {cat.platforms.map((plat) => {
-                const { translations, id } = mut(plat, locale);
-                const platformLink = `/platforms/apps/${plat.slug}`;
-                return (
-                  <MarketPlaceCard
-                    key={id}
-                    title={plat.name}
-                    icon={plat.icon}
-                    icon_svg={plat.icon_svg}
-                    linkText={t('See details')}
-                    titleLink={platformLink}
-                    link={plat.link || platformLink}
-                    externalLink={plat.link ? plat.external_link : false}
-                    description={translations?.description}
-                  />
-                );
-              })}
-            </div>
+            <>
+              <div className='text-[0.9rem] uppercase text-slate-500 mb-3'>
+                {cat.name}
+              </div>
+              {cat.description && <p className='mb-2'>{cat.description}</p>}
+              <div className='grid grid-cols-1 ss:grid-cols-2 md:grid-cols-3 gap-5 md:gap-3'>
+                {cat.platforms.map((plat) => {
+                  const { translations, id } = mut(plat, locale);
+                  const platformLink = `/platforms/apps/${plat.slug}`;
+                  return (
+                    <MarketPlaceCard
+                      key={id}
+                      title={plat.name}
+                      icon={plat.icon}
+                      icon_svg={plat.icon_svg}
+                      linkText={t('See details')}
+                      titleLink={platformLink}
+                      link={plat.link || platformLink}
+                      externalLink={plat.link ? plat.external_link : false}
+                      description={translations?.description}
+                    />
+                  );
+                })}
+              </div>
+            </>
           );
         }}
       </AsideMenuCategories>
