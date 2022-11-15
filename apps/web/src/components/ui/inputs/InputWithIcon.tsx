@@ -1,10 +1,13 @@
 import Button from '@/components/ui/buttons/Button';
+import { ChangeEventHandler, InputHTMLAttributes } from 'react';
 
 type IInputWithIcon = {
   label: string;
   icon: JSX.IntrinsicElements | any;
   withButton?: boolean;
   btnText: string;
+  value?: InputHTMLAttributes<HTMLInputElement>['value'];
+  onChange?: ChangeEventHandler<HTMLInputElement>;
 };
 
 export const InputWithIcon = ({
@@ -12,6 +15,8 @@ export const InputWithIcon = ({
   icon,
   withButton = false,
   btnText,
+  value,
+  onChange,
 }: IInputWithIcon) => {
   return (
     <div>
@@ -34,6 +39,8 @@ export const InputWithIcon = ({
           className='block p-4 pl-10 w-full text-sm text-gray-900 bg-gray-50 rounded-md border border-gray-300 focus:ring-primary-400 focus:border-primary-400'
           placeholder={label}
           required
+          value={value}
+          onChange={onChange}
         />
         {withButton ? (
           <Button

@@ -1,9 +1,22 @@
+import { useEffect, useState } from 'react';
 import { InputWithIcon } from './InputWithIcon';
 
-export function InputSearch() {
+export function InputSearch({
+  onChange,
+}: {
+  onChange?: (value: string) => void;
+}) {
+  const [value, setValue] = useState('');
+
+  useEffect(() => {
+    onChange && onChange(value.trim());
+  }, [value]);
+
   return (
     <InputWithIcon
       label='Search'
+      value={value}
+      onChange={(e) => setValue(e.currentTarget.value)}
       icon={
         <svg
           aria-hidden='true'

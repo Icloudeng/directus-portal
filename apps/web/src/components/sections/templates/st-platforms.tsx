@@ -6,7 +6,7 @@ import { MarketPlaceCard } from '@/components/ui/cards/MarketPlaceCard';
 import { HasSvgText } from '@/components/ui/HasSvgText';
 import { InputSearch } from '@/components/ui/inputs/InputSearch';
 import { useTranslation } from 'next-i18next';
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 
 export function ST_PlatformsFC({ items }: STemplates_Props<ST_Platform>) {
   const { item } = items[0];
@@ -14,10 +14,23 @@ export function ST_PlatformsFC({ items }: STemplates_Props<ST_Platform>) {
   const { locale } = useSharedData();
   const { t } = useTranslation();
 
+  const onSearch = useCallback((value: string) => {
+    setCategories(
+      (item.categories || []).map((cat) => {
+        const $cat = { ...cat };
+        $cat.platforms = ($cat.platforms || []).filter((c) => {
+          const platname = c.name.trim().toLowerCase().replace(/\s+/g, '');
+          return platname.includes(value.toLowerCase().replace(/\s+/g, ''));
+        });
+        return $cat;
+      })
+    );
+  }, []);
+
   return (
     <>
       <div className='max-w-xl w-full mx-auto mb-5'>
-        <InputSearch />
+        <InputSearch onChange={onSearch} />
       </div>
       <AsideMenuCategories
         items={categories.map((cat) => {

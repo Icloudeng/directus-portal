@@ -25,6 +25,7 @@ const platformQuery = {
       limit: 15,
     }),
     name: true,
+    slug: true,
     icon: qWithQueryAsset({
       width: true,
       height: true,

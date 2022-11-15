@@ -16204,7 +16204,7 @@ fields:
         template: "{{name}}\_-\_{{id}}"
       readonly: false
       required: true
-      sort: 4
+      sort: 5
       special:
         - m2o
       translations: null
@@ -16249,7 +16249,7 @@ fields:
         placeholder: Minimum Computer CPU (Core)
       readonly: false
       required: true
-      sort: 8
+      sort: 9
       special: null
       translations: null
       validation: null
@@ -16291,7 +16291,7 @@ fields:
       options: null
       readonly: true
       required: false
-      sort: 16
+      sort: 17
       special:
         - date-created
       translations: null
@@ -16334,7 +16334,7 @@ fields:
       options: null
       readonly: true
       required: false
-      sort: 18
+      sort: 19
       special:
         - date-updated
       translations: null
@@ -16376,7 +16376,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: 11
+      sort: 12
       special:
         - cast-boolean
       translations: null
@@ -16386,7 +16386,7 @@ fields:
     schema:
       comment: null
       data_type: boolean
-      default_value: false
+      default_value: true
       foreign_key_column: null
       foreign_key_schema: null
       foreign_key_table: null
@@ -16418,7 +16418,7 @@ fields:
       options: null
       readonly: false
       required: true
-      sort: 5
+      sort: 6
       special:
         - file
       translations: null
@@ -16463,7 +16463,7 @@ fields:
         template: <svg></svg>
       readonly: false
       required: false
-      sort: 6
+      sort: 7
       special: null
       translations: null
       validation: null
@@ -16547,7 +16547,7 @@ fields:
         trim: true
       readonly: false
       required: false
-      sort: 10
+      sort: 11
       special: null
       translations: null
       validation: null
@@ -16595,7 +16595,7 @@ fields:
       translations: null
       validation: null
       validation_message: null
-      width: full
+      width: half
     schema:
       comment: null
       data_type: character varying
@@ -16634,7 +16634,7 @@ fields:
         placeholder: Minimum Computer RAM
       readonly: false
       required: true
-      sort: 7
+      sort: 8
       special: null
       translations: null
       validation: null
@@ -16661,6 +16661,49 @@ fields:
       table: Platforms
     type: integer
   - collection: Platforms
+    field: slug
+    meta:
+      collection: Platforms
+      conditions: null
+      display: null
+      display_options: null
+      field: slug
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        slug: true
+        trim: true
+      readonly: false
+      required: true
+      sort: 3
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      comment: null
+      data_type: character varying
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: true
+      max_length: 255
+      name: slug
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: Platforms
+    type: string
+  - collection: Platforms
     field: sort
     meta:
       collection: Platforms
@@ -16675,7 +16718,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: 14
+      sort: 15
       special: null
       translations: null
       validation: null
@@ -16720,7 +16763,7 @@ fields:
         step: 10
       readonly: false
       required: true
-      sort: 9
+      sort: 10
       special: null
       translations: null
       validation: null
@@ -16782,7 +16825,7 @@ fields:
             value: archived
       readonly: false
       required: false
-      sort: 13
+      sort: 14
       special: null
       translations: null
       validation: null
@@ -16824,7 +16867,7 @@ fields:
         userLanguage: true
       readonly: false
       required: false
-      sort: 3
+      sort: 4
       special:
         - translations
       translations: null
@@ -16849,7 +16892,7 @@ fields:
         template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
       readonly: true
       required: false
-      sort: 15
+      sort: 16
       special:
         - user-created
       translations: null
@@ -16892,7 +16935,7 @@ fields:
         template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
       readonly: true
       required: false
-      sort: 17
+      sort: 18
       special:
         - user-updated
       translations: null
@@ -16935,7 +16978,7 @@ fields:
         trim: true
       readonly: false
       required: false
-      sort: 12
+      sort: 13
       special: null
       translations: null
       validation: null

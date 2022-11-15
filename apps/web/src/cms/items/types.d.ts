@@ -230,6 +230,7 @@ export type MDMachineTemplate = {
 
 export type MDPlatform = {
   name: string;
+  slug: string;
   icon: MDWithAsset;
   icon_svg?: string;
   category?: Pick<MDPlatformCategory, 'id'>;
