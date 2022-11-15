@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import UnstyledLink from '../links/UnstyledLink';
 
 type Props<T> = {
@@ -17,6 +17,14 @@ export function AsideMenuCategories<
     'name' | 'icon' | 'itemsNumber'
   >
 >({ children, items, menuTitle, hrefPrefix }: Props<T>) {
+  useMemo(() => {
+    const canSort = !items.some(
+      (r) => r.itemsNumber === null || r.itemsNumber === undefined
+    );
+    if (canSort) {
+      items.sort((a, b) => b.itemsNumber! - a.itemsNumber!);
+    }
+  }, [items]);
   const [active, setActive] = useState(0);
 
   return (
