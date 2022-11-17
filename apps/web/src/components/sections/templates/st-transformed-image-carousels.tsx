@@ -9,7 +9,7 @@ import {
 } from '@/components/ui/carouselButtons/CarouselButtons';
 import { useCustomerEmblaCarousel } from '@/app/hooks/useCustomEmblaCarousel';
 import { MDWithAsset } from '@/types/directus';
-import Image from 'next/image';
+import Image from "next/legacy/image";
 
 export function ST_TransformedImageCarouselsFC({
   items,

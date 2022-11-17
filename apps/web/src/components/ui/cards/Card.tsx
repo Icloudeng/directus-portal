@@ -1,5 +1,5 @@
 import { MDWithAsset, RepeaterBtn } from '@/types/directus';
-import Image from 'next/image';
+import Image from "next/legacy/image";
 import ButtonLink from '../links/ButtonLink';
 import UnstyledLink from '../links/UnstyledLink';
 

@@ -3,7 +3,7 @@ import { STemplates_Props, ST_NavTab } from '@/cms/page-sections';
 import { MarkdownContent } from '@/components/ui/react-markdown/MarkdownContent';
 import { Tabs, TabsPane } from '@/components/ui/tabs/tabs';
 import { useSharedData } from '@/app/store';
-import Image from 'next/image';
+import Image from "next/legacy/image";
 
 export function ST_NavTabsFC({ items }: STemplates_Props<ST_NavTab>) {
   const { locale } = useSharedData();

@@ -1,5 +1,5 @@
 import { mut } from '@/cms/mut';
-import Image from 'next/image';
+import Image from "next/legacy/image";
 import type { STemplates_Props, ST_NavAccordion } from '@/cms/page-sections';
 import { Accordion, AccordionChild } from '@/components/ui/accordion/Accordion';
 import { useSharedData } from '@/app/store';

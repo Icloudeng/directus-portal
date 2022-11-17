@@ -5,7 +5,7 @@ import { MarkdownContent } from '@/components/ui/react-markdown/MarkdownContent'
 import dynamic from 'next/dynamic';
 
 const ChartContent = dynamic(
-  () => import('@/components/sections/chart/chart'),
+  () => import('@/components/sections/shared/chart/chart'),
   { ssr: false }
 );
 

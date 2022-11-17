@@ -3,7 +3,7 @@ import { MDWithAsset } from '@/types/directus';
 import ReactPlayer from 'react-player';
 import { PlyrReact } from './plyr-react';
 import Skeleton from './Skeleton';
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 
 export function HasMediaPlayer({
   media_url,
@@ -40,12 +40,10 @@ export function HasMediaPlayer({
 
       {media?.type?.startsWith('image') && (
         <Image
-          className='image object-cover'
+          className='image object-cover w-full h-hull'
           src={media.src!}
           layout='fill'
           objectFit='cover'
-          height='100%'
-          width='100%'
         />
       )}
     </>
