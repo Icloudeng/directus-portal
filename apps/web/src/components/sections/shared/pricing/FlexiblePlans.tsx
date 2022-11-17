@@ -13,6 +13,7 @@ import {
 import { FiExternalLink } from 'react-icons/fi';
 import throttle from 'lodash/throttle';
 import { MDMachineTemplate, MDPlatform } from '@/cms/items/types';
+import Link from 'next/link';
 
 export const FlexiblePlans = ({
   flexible_plans,
@@ -68,8 +69,8 @@ export const FlexiblePlans = ({
               </div>
 
               <div className='calculator__form-field custom-select flex items-center'>
-                <a
-                  href='/-/apps-platforms'
+                <Link
+                  href='/-/platforms/apps'
                   target='_blank'
                   className='text-xs xs:text-sm inline-flex items-center min-w-[5rem] xs:min-w-[7rem] sd:min-w-[10rem]'
                 >
@@ -77,7 +78,7 @@ export const FlexiblePlans = ({
                   <span className='ml-1'>
                     <FiExternalLink />
                   </span>
-                </a>
+                </Link>
                 <PlatformsSelect onChange={onPlatformsSelectChange} />
               </div>
               <div className='calculator__form-field flex items-center'>
