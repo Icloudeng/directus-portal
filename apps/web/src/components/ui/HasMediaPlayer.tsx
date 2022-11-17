@@ -3,7 +3,7 @@ import { MDWithAsset } from '@/types/directus';
 import ReactPlayer from 'react-player';
 import { PlyrReact } from './plyr-react';
 import Skeleton from './Skeleton';
-import Image from 'next/image';
+import Image from "next/legacy/image";
 
 export function HasMediaPlayer({
   media_url,

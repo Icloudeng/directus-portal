@@ -2,7 +2,7 @@ import React from 'react';
 import { PropsWithChildren, useState } from 'react';
 import { MDWithAsset } from '@/types/directus';
 import Skeleton from '../Skeleton';
-import Image from 'next/image';
+import Image from "next/legacy/image";
 
 type HoverableMenusItemProps = {
   image: MDWithAsset;

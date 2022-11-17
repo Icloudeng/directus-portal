@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import Image from "next/legacy/image";
 import { FaRegShareSquare } from 'react-icons/fa';
 import { HiOutlineDotsHorizontal } from 'react-icons/hi';
 

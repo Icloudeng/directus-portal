@@ -2,7 +2,7 @@ import { useSharedData } from '@/app/store';
 import { STemplates_Props, ST_CompanyDetail } from '@/cms/page-sections';
 import UnderlineLink from '@/components/ui/links/UnderlineLink';
 import { useTranslation } from 'next-i18next';
-import Image from 'next/image';
+import Image from "next/legacy/image";
 
 export function ST_CompanyDetailsFC(_: STemplates_Props<ST_CompanyDetail>) {
   const { CompanyDetails: cmp } = useSharedData();
