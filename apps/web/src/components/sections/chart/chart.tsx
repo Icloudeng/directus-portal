@@ -58,7 +58,7 @@ export default function ChartContent({ item }: { item: ST_Chart }) {
       {
         position: hasBottom ? 'bottom' : hasTop ? 'top' : 'left',
 
-        show: itype == 'band' || itype === 'spark_chart' ? false : undefined,
+        show: itype == 'band' || itype === 'spark_chart' ? false : true,
 
         showDatumElements: itype === 'spark_chart' ? false : undefined,
 
