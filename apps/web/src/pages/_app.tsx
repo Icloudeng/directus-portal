@@ -2,7 +2,6 @@ import { GetServerSidePropsContext } from 'next';
 import { AppProps } from 'next/app';
 import { PHASE_PRODUCTION_BUILD } from 'next/constants';
 import { appWithTranslation } from 'next-i18next';
-import { useEffect } from 'react';
 
 import '@/styles/globals.css';
 

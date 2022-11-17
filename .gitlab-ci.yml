@@ -2,22 +2,23 @@ default:
   tags:
     - icloudeng-system-v15
 
-cache:
-  paths:
-    - node_modules/
-    - apps/web/node_modules/
-    - apps/cms/node_modules/
-
 stages:
   - front-test
-  - deploy-job
+  - deploy-coding
+  - deploy-testing
 
-# before_script:
-# - composer install
+variables:
+  PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
 
 front-test:
   image: node:16.16
   stage: front-test
+  cache:
+    key: node_modules-cache
+    paths:
+      - node_modules/
+      - apps/web/node_modules/
+      - apps/cms/node_modules/
   only:
     refs:
       - main
@@ -28,14 +29,18 @@ front-test:
     # run test or build
     - pnpm -r build
 
-deploy-job:
-  stage: deploy-job
+deploy-coding:
+  stage: deploy-coding
   image: python:3.8
   only:
     refs:
       - main
+  cache:
+    key: pip-cache
+    paths:
+      - .cache/pip
   environment:
-    name: testing
+    name: coding env
   before_script:
     - export ANSIBLE_HOST_KEY_CHECKING=False
     - bash cicd_vars.sh
@@ -44,4 +49,26 @@ deploy-job:
     - ssh-add <(echo "$ANSIBLE_DEPLOY_KEY")
   script:
     - make provision-cd limits=coding
+  when: manual
+
+deploy-testing:
+  stage: deploy-testing
+  image: python:3.8
+  only:
+    refs:
+      - main
+  cache:
+    key: pip-cache
+    paths:
+      - .cache/pip
+  environment:
+    name: testing env
+  before_script:
+    - export ANSIBLE_HOST_KEY_CHECKING=False
+    - bash cicd_vars.sh
+    - make ansible-install-cd
+    - eval $(ssh-agent -s)
+    - ssh-add <(echo "$ANSIBLE_DEPLOY_KEY")
+  script:
+    - make provision-cd limits=testing
   when: manual
