@@ -63,7 +63,28 @@ function pageSectionExtractReusableM2A(
           acc.push({
             id: `${value.id}-${i}`,
             collection: page_sections,
-            item: value.item.page_section,
+            item: {
+              ...value.item.page_section,
+              translations:
+                value.item.translations.length > 0
+                  ? value.item.translations
+                  : value.item.page_section.translations,
+              background_image:
+                value.item.background_image ||
+                value.item.page_section.background_image,
+              background_svg:
+                value.item.background_svg ||
+                value.item.page_section.background_svg,
+              background_color:
+                value.item.background_color ||
+                value.item.page_section.background_color,
+              custom_css:
+                value.item.custom_css || value.item.page_section.custom_css,
+              container:
+                value.item.container !== null
+                  ? value.item.container
+                  : value.item.page_section.container,
+            },
           });
         }
         break;

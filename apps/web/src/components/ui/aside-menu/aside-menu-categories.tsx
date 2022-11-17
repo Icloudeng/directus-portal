@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import UnstyledLink from '../links/UnstyledLink';
 
 type Props<T> = {
@@ -26,6 +26,14 @@ export function AsideMenuCategories<
     }
   }, [items]);
   const [active, setActive] = useState(0);
+
+  useEffect(() => {
+    const defaultP = items.findIndex((r) => {
+      const cd = `#${hrefPrefix || ''}-${urlSafe(r.name)}`;
+      return cd === location.hash;
+    });
+    setActive(defaultP > -1 ? defaultP : 0);
+  }, []);
 
   return (
     <div className='w-full flex flex-col xl:flex-row items-center xl:items-start gap-5 pt-7'>

@@ -88,6 +88,9 @@
   args:
     chdir: "{{ root_path }}/apps/web"
 
+- name: PM2 | Generating a Startup Script
+  command: "pm2 startup"
+
 - name: PM2 | Save the app list to be restored at reboot
   command: "pm2 save"
 
