@@ -74,9 +74,16 @@ ifndef tags
 else
  TAGSD=--tags $(tags)
 endif
+
+limits?=
+ifndef limits
+ LIMITSD=
+else
+ LIMITSD=--limit '$(limits)'
+endif
 .PHONY: ansible-playbook
 ansible-playbook:
-	ansible-playbook --vault-password-file .vault_pass -i ansible/hosts.yml ansible/install.yml $(TAGSD)
+	ansible-playbook --vault-password-file .vault_pass -i ansible/hosts.yml ansible/install.yml $(TAGSD) $(LIMITSD)
 
 
 ## Provision (deploy)

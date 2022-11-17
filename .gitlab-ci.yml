@@ -2,13 +2,11 @@ default:
   tags:
     - icloudeng-system-v15
 
-
 cache:
   paths:
     - node_modules/
     - apps/web/node_modules/
     - apps/cms/node_modules/
-
 
 stages:
   - front-test
@@ -45,5 +43,5 @@ deploy-job:
     - eval $(ssh-agent -s)
     - ssh-add <(echo "$ANSIBLE_DEPLOY_KEY")
   script:
-    - make provision-cd
+    - make provision-cd limits=coding
   when: manual
