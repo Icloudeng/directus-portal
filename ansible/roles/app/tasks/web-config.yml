@@ -7,3 +7,9 @@
     path: "{{ env_file }}"
     regexp: "^DIRECTUS_STATIC_TOKEN="
     line: "DIRECTUS_STATIC_TOKEN={{ app_user_token }}"
+
+- name: App WEB .env config | DIRECTUS_STATIC_TOKEN
+  lineinfile:
+    path: "{{ env_file }}"
+    regexp: "^DIRECTUS_URL="
+    line: "DIRECTUS_URL=https://{{ admin_domain }}/"
