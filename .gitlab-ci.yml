@@ -54,6 +54,7 @@ deploy-coding:
 deploy-testing:
   stage: deploy-testing
   image: python:3.8
+  needs: [deploy-coding]
   only:
     refs:
       - main
