@@ -18,7 +18,12 @@
     name: nginx
     state: reloaded
 
+- name: LetsEncrypt | Certbot (--dry-run) {{ domain_item }} certificate
+  shell:
+    cmd: "certbot certonly --webroot -d {{ domain_item }} --email contact@{{ company_domain }} -w /var/www/_letsencrypt -n --agree-tos --dry-run"
+    creates: "/etc/letsencrypt/live/{{ domain_item }}/fullchain.pem"
+
 - name: LetsEncrypt | Certbot {{ domain_item }} certificate
   shell:
-    cmd: "certbot certonly --webroot -d {{ domain_item }} --email contact@{{ company_domain }} -w /var/www/_letsencrypt -n --agree-tos --force-renewal"
+    cmd: "certbot certonly --webroot -d {{ domain_item }} --email contact@{{ company_domain }} -w /var/www/_letsencrypt -n --agree-tos"
     creates: "/etc/letsencrypt/live/{{ domain_item }}/fullchain.pem"
