@@ -69,10 +69,14 @@ export const FixedPlans = ({ fixed_plans, machine_templates }: Props) => {
                         <div className='py-3 pr-2'>{t('SSD')}</div>
                       </th>
                       <th className='sticky top-0 text-sm leading-6 font-semibold text-slate-700 bg-white p-0'>
-                        <div className='py-3 pr-2'>{currency}/hr</div>
+                        <div className='py-3 pr-2'>
+                          {currency}/{t('hr')}
+                        </div>
                       </th>
                       <th className='sticky top-0 text-sm leading-6 font-semibold text-slate-700 bg-white p-0'>
-                        <div className='py-3 pr-2'>{currency}/mo</div>
+                        <div className='py-3 pr-2'>
+                          {currency}/{t('mo')}
+                        </div>
                       </th>
                       <th></th>
                     </tr>
