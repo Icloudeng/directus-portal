@@ -35,7 +35,7 @@ deploy-job:
     refs:
       - main
   environment:
-    name: testing
+    name: coding env
   before_script:
     - export ANSIBLE_HOST_KEY_CHECKING=False
     - bash cicd_vars.sh
