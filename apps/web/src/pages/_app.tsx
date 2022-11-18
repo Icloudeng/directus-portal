@@ -58,10 +58,10 @@ MyApp.getInitialProps = async ({
     };
   }
 
-  const { data } = await getGqlSharedData();
+  const res = await getGqlSharedData().catch(console.error);
 
-  if (data) {
-    data.languages = data.languages.filter((lang) =>
+  if (res && res.data) {
+    res.data.languages = res.data.languages.filter((lang) =>
       locales!.includes(lang.code)
     );
   }
@@ -69,7 +69,12 @@ MyApp.getInitialProps = async ({
   return {
     datas: {
       locale,
-      ...(data || {}),
+      ...(res?.data || {
+        languages: [],
+        TopbarLinks: [],
+        NavbarLinks: [],
+        FooterLinks: [],
+      }),
     },
   };
 };

@@ -121,8 +121,8 @@ export async function getServerSideProps({
   locale,
   query,
 }: GetServerSidePropsContext) {
-  const name = query.name as string;
-  const res = await getGqlPlatformsBySlug(name).catch(console.error);
+  const slug = query.slug as string;
+  const res = await getGqlPlatformsBySlug(slug).catch(console.error);
 
   if (!res || !res.data || res.data.platforms.length === 0) {
     return {
