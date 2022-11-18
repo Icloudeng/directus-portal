@@ -20,6 +20,7 @@ type SeoProps = {
   date?: string;
   templateTitle?: string;
   dynamicPage?: MDPage;
+  suffix?: string;
 } & Partial<typeof defaultMeta>;
 
 export default function Seo({ dynamicPage, ...props }: SeoProps) {
@@ -41,7 +42,9 @@ export default function Seo({ dynamicPage, ...props }: SeoProps) {
 
   meta['title'] =
     $title || props.templateTitle
-      ? `${$title || props.templateTitle} | ${meta.siteName}`
+      ? `${$title || props.templateTitle} | ${meta.siteName}${
+          meta.suffix ? ' ' + meta.suffix : ''
+        }`
       : meta.title;
 
   return (

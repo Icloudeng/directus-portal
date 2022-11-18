@@ -18,6 +18,7 @@ export const CMS_MODELS = {
     languages: 'languages',
     topbar_links: 'TopbarLinks',
     news: 'News',
+    blog: 'Blog',
     footer_links: 'FooterLinks',
     footer_link_items: 'FooterLinkItems',
     company_details: 'CompanyDetails',
@@ -29,6 +30,7 @@ export const CMS_MODELS = {
     platform_categories: 'PlatformCategories',
     partners_requests: 'PartnersRequests',
     guest_questions: 'GuestQuestions',
+    authors: 'Authors',
   } as const),
   plans_pricing: {
     flexible_plans: 'FlexiblePlans',
@@ -70,5 +72,7 @@ export const CMS_MODELS = {
     st_side_text_medias: 'ST_SideTextMedias',
     st_markdown: 'ST_Markdown',
     st_charts: 'ST_Charts',
+    st_latest_news: 'ST_LatestNews',
+    st_latest_blog: 'ST_LatestBlog',
   } as const,
 };

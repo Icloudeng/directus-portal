@@ -115,3 +115,9 @@ text?=
 vault-gen:
 	$(source) $(venv) && \
 	ansible-vault encrypt_string --vault-password-file .vault_pass $(text)
+
+
+.PHONY: gvault-gen
+text?=
+gvault-gen:
+	ansible-vault encrypt_string --vault-password-file .vault_pass $(text)

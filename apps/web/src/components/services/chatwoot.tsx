@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+import { useSharedData } from '@/app/store';
+import { useEffect } from 'react';
 
 declare global {
   interface Window {
@@ -7,7 +8,15 @@ declare global {
   }
 }
 
-export default function ChatwootWidget() {
+export default function ChatwootWidget({
+  websiteToken,
+  baseUrl,
+}: {
+  baseUrl: string;
+  websiteToken: string;
+}) {
+  const { locale } = useSharedData();
+
   useEffect(() => {
     window.chatwootSettings = {
       hideMessageBubble: false,
@@ -17,26 +26,26 @@ export default function ChatwootWidget() {
     };
 
     (function (d, t) {
-      const BASE_URL =
-        process.env.NEXT_PUBLIC_CHATWOOT_BASE_URL ||
-        'https://chatwoot-web.icloudeng.com';
-
       const g = d.createElement(t) as HTMLScriptElement;
       const s = d.getElementsByTagName(t)[0];
 
-      g.src = BASE_URL + '/packs/js/sdk.js';
+      g.src = baseUrl + '/packs/js/sdk.js';
       s?.parentNode?.insertBefore(g, s);
       g.async = !0;
       g.onload = function () {
         window.chatwootSDK.run({
-          websiteToken:
-            process.env.NEXT_PUBLIC_CHATWOOT_API_KEY ||
-            'JBavMEU4FUNNSyVjD3R3ShBE',
-          baseUrl: BASE_URL,
+          websiteToken,
+          baseUrl,
         });
       };
     })(document, 'script');
   }, []);
+
+  useEffect(() => {
+    if (locale && window.chatwootSettings) {
+      window.chatwootSettings['locale'] = locale;
+    }
+  }, [locale]);
 
   return <></>;
 }

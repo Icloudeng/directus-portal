@@ -15,7 +15,8 @@ import {
   qWithTranslations,
 } from './gql-query';
 import {
-  MDPlatform,
+  MDBlog,
+  MDNews,
   MDPlatformCategory,
   MPlansPricing,
   PlansPricingContent,
@@ -299,6 +300,18 @@ const q_ST: Query = {
     ...qWithTranslations({
       markdown_content: true,
     }),
+    ...qWithStatus,
+  },
+  [section_templates.st_latest_news]: {
+    __typeName: section_templates.st_latest_news,
+    __args: qWithPublishedStatus(),
+    limit: true,
+    ...qWithStatus,
+  },
+  [section_templates.st_latest_blog]: {
+    __typeName: section_templates.st_latest_blog,
+    __args: qWithPublishedStatus(),
+    limit: true,
     ...qWithStatus,
   },
 };
@@ -698,6 +711,22 @@ export type ST_Chart = MDHasM2A<
   ST_V<'st_charts'>
 >;
 
+export type ST_LatestNew = MDHasM2A<
+  {
+    limit: number;
+    news?: MDNews[];
+  } & DRTStatus,
+  ST_V<'st_latest_news'>
+>;
+
+export type ST_LatestBlog = MDHasM2A<
+  {
+    limit: number;
+    blogs?: MDBlog[];
+  } & DRTStatus,
+  ST_V<'st_latest_blog'>
+>;
+
 //------------------- Page Sections --------------------//
 export type PS_Content =
   | ST_Value
@@ -726,7 +755,9 @@ export type PS_Content =
   | ST_Card
   | ST_GuestQuestion
   | ST_Markdown
-  | ST_Chart;
+  | ST_Chart
+  | ST_LatestNew
+  | ST_LatestBlog;
 
 export type M2APageSection = MDHasM2A<
   {

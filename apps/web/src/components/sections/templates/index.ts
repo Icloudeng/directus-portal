@@ -25,3 +25,5 @@ export * from './st-guest-questions';
 export * from './st-side-text-medias';
 export * from './st-markdown';
 export * from './st-charts';
+export * from './st-latest-news';
+export * from './st-latest-blog';

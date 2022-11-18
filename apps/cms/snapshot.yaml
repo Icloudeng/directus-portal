@@ -1,5 +1,5 @@
 version: 1
-directus: 9.20.4
+directus: 9.21.0
 collections:
   - collection: Addresses
     meta:
@@ -24,6 +24,102 @@ collections:
     schema:
       comment: null
       name: Addresses
+      schema: public
+  - collection: Authors
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: status
+      archive_value: archived
+      collapse: open
+      collection: Authors
+      color: null
+      display_template: "{{name}}\_\_{{status}}"
+      group: Publishing
+      hidden: true
+      icon: null
+      item_duplication_fields: null
+      note: null
+      singleton: false
+      sort: 3
+      sort_field: sort
+      translations: null
+      unarchive_value: draft
+    schema:
+      comment: null
+      name: Authors
+      schema: public
+  - collection: Blog
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: status
+      archive_value: archived
+      collapse: open
+      collection: Blog
+      color: null
+      display_template: null
+      group: Publishing
+      hidden: false
+      icon: null
+      item_duplication_fields: null
+      note: null
+      singleton: false
+      sort: 2
+      sort_field: sort
+      translations: null
+      unarchive_value: draft
+    schema:
+      comment: null
+      name: Blog
+      schema: public
+  - collection: Blog_author
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: Blog_author
+      color: null
+      display_template: null
+      group: Publishing
+      hidden: true
+      icon: import_export
+      item_duplication_fields: null
+      note: null
+      singleton: false
+      sort: 4
+      sort_field: null
+      translations: null
+      unarchive_value: null
+    schema:
+      comment: null
+      name: Blog_author
+      schema: public
+  - collection: Blog_translations
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: Blog_translations
+      color: null
+      display_template: null
+      group: Publishing
+      hidden: true
+      icon: import_export
+      item_duplication_fields: null
+      note: null
+      singleton: false
+      sort: 6
+      sort_field: null
+      translations: null
+      unarchive_value: null
+    schema:
+      comment: null
+      name: Blog_translations
       schema: public
   - collection: CompanyDetails
     meta:
@@ -299,7 +395,7 @@ collections:
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: 12
+      sort: 11
       sort_field: sort
       translations: null
       unarchive_value: draft
@@ -647,19 +743,43 @@ collections:
       collection: News
       color: null
       display_template: null
-      group: null
+      group: Publishing
       hidden: false
       icon: null
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: 9
+      sort: 1
       sort_field: sort
       translations: null
       unarchive_value: draft
     schema:
       comment: null
       name: News
+      schema: public
+  - collection: News_author
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: News_author
+      color: null
+      display_template: null
+      group: Publishing
+      hidden: true
+      icon: import_export
+      item_duplication_fields: null
+      note: null
+      singleton: false
+      sort: 5
+      sort_field: null
+      translations: null
+      unarchive_value: null
+    schema:
+      comment: null
+      name: News_author
       schema: public
   - collection: News_translations
     meta:
@@ -671,13 +791,13 @@ collections:
       collection: News_translations
       color: null
       display_template: null
-      group: null
+      group: Publishing
       hidden: true
       icon: import_export
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: 10
+      sort: 7
       sort_field: null
       translations: null
       unarchive_value: null
@@ -890,7 +1010,7 @@ collections:
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: 11
+      sort: 10
       sort_field: sort
       translations: null
       unarchive_value: draft
@@ -1084,6 +1204,27 @@ collections:
       comment: null
       name: Platforms_translations
       schema: public
+  - collection: Publishing
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: Publishing
+      color: '#9BE8DF'
+      display_template: null
+      group: null
+      hidden: false
+      icon: folder
+      item_duplication_fields: null
+      note: null
+      singleton: false
+      sort: 9
+      sort_field: null
+      translations: null
+      unarchive_value: null
+    schema: null
   - collection: ReusablePageSections
     meta:
       accountability: all
@@ -1611,6 +1752,54 @@ collections:
     schema:
       comment: null
       name: ST_HoverableMediaMenus_translations
+      schema: public
+  - collection: ST_LatestBlog
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: status
+      archive_value: archived
+      collapse: open
+      collection: ST_LatestBlog
+      color: null
+      display_template: "{{status}}\_{{id}}"
+      group: Section_Templates
+      hidden: true
+      icon: null
+      item_duplication_fields: null
+      note: null
+      singleton: false
+      sort: 48
+      sort_field: sort
+      translations: null
+      unarchive_value: draft
+    schema:
+      comment: null
+      name: ST_LatestBlog
+      schema: public
+  - collection: ST_LatestNews
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: status
+      archive_value: archived
+      collapse: open
+      collection: ST_LatestNews
+      color: null
+      display_template: "{{status}}\_{{id}}"
+      group: Section_Templates
+      hidden: true
+      icon: null
+      item_duplication_fields: null
+      note: null
+      singleton: false
+      sort: 47
+      sort_field: sort
+      translations: null
+      unarchive_value: draft
+    schema:
+      comment: null
+      name: ST_LatestNews
       schema: public
   - collection: ST_Markdown
     meta:
@@ -2390,7 +2579,7 @@ collections:
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: 14
+      sort: 13
       sort_field: null
       translations: null
       unarchive_value: null
@@ -2411,7 +2600,7 @@ collections:
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: 13
+      sort: 12
       sort_field: null
       translations: null
       unarchive_value: null
@@ -3003,6 +3192,1582 @@ fields:
       numeric_scale: null
       schema: public
       table: Addresses
+    type: string
+  - collection: Authors
+    field: Socials
+    meta:
+      collection: Authors
+      conditions: null
+      display: null
+      display_options: null
+      field: Socials
+      group: null
+      hidden: false
+      interface: group-detail
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 4
+      special:
+        - alias
+        - group
+        - no-data
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema: null
+    type: alias
+  - collection: Authors
+    field: date_created
+    meta:
+      collection: Authors
+      conditions: null
+      display: datetime
+      display_options:
+        relative: true
+      field: date_created
+      group: null
+      hidden: true
+      interface: datetime
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: 8
+      special:
+        - date-created
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      comment: null
+      data_type: timestamp with time zone
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: date_created
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: Authors
+    type: timestamp
+  - collection: Authors
+    field: date_updated
+    meta:
+      collection: Authors
+      conditions: null
+      display: datetime
+      display_options:
+        relative: true
+      field: date_updated
+      group: null
+      hidden: true
+      interface: datetime
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: 10
+      special:
+        - date-updated
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      comment: null
+      data_type: timestamp with time zone
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: date_updated
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: Authors
+    type: timestamp
+  - collection: Authors
+    field: facebook_link
+    meta:
+      collection: Authors
+      conditions: null
+      display: null
+      display_options: null
+      field: facebook_link
+      group: Socials
+      hidden: false
+      interface: input
+      note: null
+      options:
+        trim: true
+      readonly: false
+      required: false
+      sort: 3
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: character varying
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: 255
+      name: facebook_link
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: Authors
+    type: string
+  - collection: Authors
+    field: github_link
+    meta:
+      collection: Authors
+      conditions: null
+      display: null
+      display_options: null
+      field: github_link
+      group: Socials
+      hidden: false
+      interface: input
+      note: null
+      options:
+        trim: true
+      readonly: false
+      required: false
+      sort: 2
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: character varying
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: 255
+      name: github_link
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: Authors
+    type: string
+  - collection: Authors
+    field: id
+    meta:
+      collection: Authors
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: 1
+      special:
+        - uuid
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: false
+      is_primary_key: true
+      is_unique: true
+      max_length: null
+      name: id
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: Authors
+    type: uuid
+  - collection: Authors
+    field: image
+    meta:
+      collection: Authors
+      conditions: null
+      display: null
+      display_options: null
+      field: image
+      group: null
+      hidden: false
+      interface: file-image
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 3
+      special:
+        - file
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: directus_files
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: image
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: Authors
+    type: uuid
+  - collection: Authors
+    field: instagram_link
+    meta:
+      collection: Authors
+      conditions: null
+      display: null
+      display_options: null
+      field: instagram_link
+      group: Socials
+      hidden: false
+      interface: input
+      note: null
+      options:
+        trim: true
+      readonly: false
+      required: false
+      sort: 4
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: character varying
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: 255
+      name: instagram_link
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: Authors
+    type: string
+  - collection: Authors
+    field: name
+    meta:
+      collection: Authors
+      conditions: null
+      display: null
+      display_options: null
+      field: name
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        placeholder: Author Name
+        trim: true
+      readonly: false
+      required: true
+      sort: 2
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: character varying
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: 255
+      name: name
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: Authors
+    type: string
+  - collection: Authors
+    field: sort
+    meta:
+      collection: Authors
+      conditions: null
+      display: null
+      display_options: null
+      field: sort
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 6
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: integer
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: sort
+      numeric_precision: 32
+      numeric_scale: 0
+      schema: public
+      table: Authors
+    type: integer
+  - collection: Authors
+    field: status
+    meta:
+      collection: Authors
+      conditions: null
+      display: labels
+      display_options:
+        choices:
+          - text: $t:published
+            value: published
+            foreground: '#FFFFFF'
+            background: var(--primary)
+          - text: $t:draft
+            value: draft
+            foreground: '#18222F'
+            background: '#D3DAE4'
+          - text: $t:archived
+            value: archived
+            foreground: '#FFFFFF'
+            background: var(--warning)
+        showAsDot: true
+      field: status
+      group: null
+      hidden: false
+      interface: select-dropdown
+      note: null
+      options:
+        choices:
+          - text: $t:published
+            value: published
+          - text: $t:draft
+            value: draft
+          - text: $t:archived
+            value: archived
+      readonly: false
+      required: false
+      sort: 5
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: character varying
+      default_value: draft
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: false
+      is_primary_key: false
+      is_unique: false
+      max_length: 255
+      name: status
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: Authors
+    type: string
+  - collection: Authors
+    field: twitter_link
+    meta:
+      collection: Authors
+      conditions: null
+      display: null
+      display_options: null
+      field: twitter_link
+      group: Socials
+      hidden: false
+      interface: input
+      note: null
+      options:
+        trim: true
+      readonly: false
+      required: false
+      sort: 1
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: character varying
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: 255
+      name: twitter_link
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: Authors
+    type: string
+  - collection: Authors
+    field: user_created
+    meta:
+      collection: Authors
+      conditions: null
+      display: user
+      display_options: null
+      field: user_created
+      group: null
+      hidden: true
+      interface: select-dropdown-m2o
+      note: null
+      options:
+        template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
+      readonly: true
+      required: false
+      sort: 7
+      special:
+        - user-created
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: directus_users
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: user_created
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: Authors
+    type: uuid
+  - collection: Authors
+    field: user_updated
+    meta:
+      collection: Authors
+      conditions: null
+      display: user
+      display_options: null
+      field: user_updated
+      group: null
+      hidden: true
+      interface: select-dropdown-m2o
+      note: null
+      options:
+        template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
+      readonly: true
+      required: false
+      sort: 9
+      special:
+        - user-updated
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: directus_users
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: user_updated
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: Authors
+    type: uuid
+  - collection: Blog
+    field: author
+    meta:
+      collection: Blog
+      conditions: null
+      display: null
+      display_options: null
+      field: author
+      group: null
+      hidden: false
+      interface: list-m2a
+      note: null
+      options:
+        limit: 1
+      readonly: false
+      required: true
+      sort: 7
+      special:
+        - m2a
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema: null
+    type: alias
+  - collection: Blog
+    field: date_created
+    meta:
+      collection: Blog
+      conditions: null
+      display: datetime
+      display_options:
+        relative: true
+      field: date_created
+      group: null
+      hidden: true
+      interface: datetime
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: 12
+      special:
+        - date-created
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      comment: null
+      data_type: timestamp with time zone
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: date_created
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: Blog
+    type: timestamp
+  - collection: Blog
+    field: date_updated
+    meta:
+      collection: Blog
+      conditions: null
+      display: datetime
+      display_options:
+        relative: true
+      field: date_updated
+      group: null
+      hidden: true
+      interface: datetime
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: 14
+      special:
+        - date-updated
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      comment: null
+      data_type: timestamp with time zone
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: date_updated
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: Blog
+    type: timestamp
+  - collection: Blog
+    field: id
+    meta:
+      collection: Blog
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: 1
+      special:
+        - uuid
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: false
+      is_primary_key: true
+      is_unique: true
+      max_length: null
+      name: id
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: Blog
+    type: uuid
+  - collection: Blog
+    field: image
+    meta:
+      collection: Blog
+      conditions: null
+      display: null
+      display_options: null
+      field: image
+      group: null
+      hidden: false
+      interface: file-image
+      note: null
+      options: null
+      readonly: false
+      required: true
+      sort: 6
+      special:
+        - file
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: directus_files
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: image
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: Blog
+    type: uuid
+  - collection: Blog
+    field: label
+    meta:
+      collection: Blog
+      conditions: null
+      display: null
+      display_options: null
+      field: label
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        trim: true
+      readonly: false
+      required: true
+      sort: 3
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      comment: null
+      data_type: character varying
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: 255
+      name: label
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: Blog
+    type: string
+  - collection: Blog
+    field: notice-knm_np
+    meta:
+      collection: Blog
+      conditions: null
+      display: null
+      display_options: null
+      field: notice-knm_np
+      group: null
+      hidden: false
+      interface: presentation-notice
+      note: null
+      options:
+        color: warning
+        text: Blog
+      readonly: false
+      required: false
+      sort: 2
+      special:
+        - alias
+        - no-data
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema: null
+    type: alias
+  - collection: Blog
+    field: slug
+    meta:
+      collection: Blog
+      conditions: null
+      display: null
+      display_options: null
+      field: slug
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        placeholder: null
+        slug: true
+        trim: true
+      readonly: false
+      required: true
+      sort: 4
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      comment: null
+      data_type: character varying
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: true
+      max_length: 255
+      name: slug
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: Blog
+    type: string
+  - collection: Blog
+    field: sort
+    meta:
+      collection: Blog
+      conditions: null
+      display: null
+      display_options: null
+      field: sort
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 10
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: integer
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: sort
+      numeric_precision: 32
+      numeric_scale: 0
+      schema: public
+      table: Blog
+    type: integer
+  - collection: Blog
+    field: status
+    meta:
+      collection: Blog
+      conditions: null
+      display: labels
+      display_options:
+        choices:
+          - text: $t:published
+            value: published
+            foreground: '#FFFFFF'
+            background: var(--primary)
+          - text: $t:draft
+            value: draft
+            foreground: '#18222F'
+            background: '#D3DAE4'
+          - text: $t:archived
+            value: archived
+            foreground: '#FFFFFF'
+            background: var(--warning)
+        showAsDot: true
+      field: status
+      group: null
+      hidden: false
+      interface: select-dropdown
+      note: null
+      options:
+        choices:
+          - text: $t:published
+            value: published
+          - text: $t:draft
+            value: draft
+          - text: $t:archived
+            value: archived
+      readonly: false
+      required: false
+      sort: 9
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: character varying
+      default_value: draft
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: false
+      is_primary_key: false
+      is_unique: false
+      max_length: 255
+      name: status
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: Blog
+    type: string
+  - collection: Blog
+    field: tags
+    meta:
+      collection: Blog
+      conditions: null
+      display: null
+      display_options: null
+      field: tags
+      group: null
+      hidden: false
+      interface: tags
+      note: null
+      options:
+        alphabetize: true
+        capitalization: auto-format
+      readonly: false
+      required: false
+      sort: 8
+      special:
+        - cast-json
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: json
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: tags
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: Blog
+    type: json
+  - collection: Blog
+    field: translations
+    meta:
+      collection: Blog
+      conditions: null
+      display: null
+      display_options: null
+      field: translations
+      group: null
+      hidden: false
+      interface: translations
+      note: null
+      options:
+        userLanguage: true
+      readonly: false
+      required: true
+      sort: 5
+      special:
+        - translations
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema: null
+    type: alias
+  - collection: Blog
+    field: user_created
+    meta:
+      collection: Blog
+      conditions: null
+      display: user
+      display_options: null
+      field: user_created
+      group: null
+      hidden: true
+      interface: select-dropdown-m2o
+      note: null
+      options:
+        template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
+      readonly: true
+      required: false
+      sort: 11
+      special:
+        - user-created
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: directus_users
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: user_created
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: Blog
+    type: uuid
+  - collection: Blog
+    field: user_updated
+    meta:
+      collection: Blog
+      conditions: null
+      display: user
+      display_options: null
+      field: user_updated
+      group: null
+      hidden: true
+      interface: select-dropdown-m2o
+      note: null
+      options:
+        template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
+      readonly: true
+      required: false
+      sort: 13
+      special:
+        - user-updated
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: directus_users
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: user_updated
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: Blog
+    type: uuid
+  - collection: Blog_author
+    field: Blog_id
+    meta:
+      collection: Blog_author
+      conditions: null
+      display: null
+      display_options: null
+      field: Blog_id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: Blog
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: Blog_id
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: Blog_author
+    type: uuid
+  - collection: Blog_author
+    field: collection
+    meta:
+      collection: Blog_author
+      conditions: null
+      display: null
+      display_options: null
+      field: collection
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: character varying
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: 255
+      name: collection
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: Blog_author
+    type: string
+  - collection: Blog_author
+    field: id
+    meta:
+      collection: Blog_author
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: integer
+      default_value: nextval('"Blog_author_id_seq"'::regclass)
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: true
+      is_generated: false
+      is_nullable: false
+      is_primary_key: true
+      is_unique: true
+      max_length: null
+      name: id
+      numeric_precision: 32
+      numeric_scale: 0
+      schema: public
+      table: Blog_author
+    type: integer
+  - collection: Blog_author
+    field: item
+    meta:
+      collection: Blog_author
+      conditions: null
+      display: null
+      display_options: null
+      field: item
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: character varying
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: 255
+      name: item
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: Blog_author
+    type: string
+  - collection: Blog_translations
+    field: Blog_id
+    meta:
+      collection: Blog_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: Blog_id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 5
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: Blog
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: Blog_id
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: Blog_translations
+    type: uuid
+  - collection: Blog_translations
+    field: id
+    meta:
+      collection: Blog_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 1
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: integer
+      default_value: nextval('"Blog_translations_id_seq"'::regclass)
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: true
+      is_generated: false
+      is_nullable: false
+      is_primary_key: true
+      is_unique: true
+      max_length: null
+      name: id
+      numeric_precision: 32
+      numeric_scale: 0
+      schema: public
+      table: Blog_translations
+    type: integer
+  - collection: Blog_translations
+    field: languages_code
+    meta:
+      collection: Blog_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: languages_code
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 6
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: character varying
+      default_value: null
+      foreign_key_column: code
+      foreign_key_schema: public
+      foreign_key_table: languages
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: 255
+      name: languages_code
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: Blog_translations
+    type: string
+  - collection: Blog_translations
+    field: markdown_content
+    meta:
+      collection: Blog_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: markdown_content
+      group: null
+      hidden: false
+      interface: input-rich-text-md
+      note: null
+      options:
+        imageToken: mdzjETutYM06z9ch56CmFkjIOWZCwraG
+        placeholder: null
+      readonly: false
+      required: true
+      sort: 4
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: markdown_content
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: Blog_translations
+    type: text
+  - collection: Blog_translations
+    field: summary
+    meta:
+      collection: Blog_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: summary
+      group: null
+      hidden: false
+      interface: input-multiline
+      note: null
+      options:
+        trim: true
+      readonly: false
+      required: true
+      sort: 3
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: summary
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: Blog_translations
+    type: text
+  - collection: Blog_translations
+    field: title
+    meta:
+      collection: Blog_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: title
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        trim: true
+      readonly: false
+      required: true
+      sort: 2
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: character varying
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: 255
+      name: title
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: Blog_translations
     type: string
   - collection: CompanyDetails
     field: addresses
@@ -10671,6 +12436,31 @@ fields:
       table: NavbarLinks_translations
     type: string
   - collection: News
+    field: author
+    meta:
+      collection: News
+      conditions: null
+      display: null
+      display_options: null
+      field: author
+      group: null
+      hidden: false
+      interface: list-m2a
+      note: null
+      options:
+        limit: 1
+      readonly: false
+      required: true
+      sort: 5
+      special:
+        - m2a
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema: null
+    type: alias
+  - collection: News
     field: date_created
     meta:
       collection: News
@@ -10686,7 +12476,7 @@ fields:
       options: null
       readonly: true
       required: false
-      sort: 10
+      sort: 12
       special:
         - date-created
       translations: null
@@ -10729,7 +12519,7 @@ fields:
       options: null
       readonly: true
       required: false
-      sort: 12
+      sort: 14
       special:
         - date-updated
       translations: null
@@ -10813,7 +12603,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: 5
+      sort: 7
       special:
         - file
       translations: null
@@ -10856,7 +12646,7 @@ fields:
         trim: true
       readonly: false
       required: true
-      sort: 2
+      sort: 3
       special: null
       translations: null
       validation: null
@@ -10883,6 +12673,33 @@ fields:
       table: News
     type: string
   - collection: News
+    field: notice-zwn5ll
+    meta:
+      collection: News
+      conditions: null
+      display: null
+      display_options: null
+      field: notice-zwn5ll
+      group: null
+      hidden: false
+      interface: presentation-notice
+      note: null
+      options:
+        color: info
+        text: News
+      readonly: false
+      required: false
+      sort: 2
+      special:
+        - alias
+        - no-data
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema: null
+    type: alias
+  - collection: News
     field: slug
     meta:
       collection: News
@@ -10900,7 +12717,7 @@ fields:
         trim: true
       readonly: false
       required: true
-      sort: 3
+      sort: 4
       special: null
       translations: null
       validation: null
@@ -10941,7 +12758,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: 8
+      sort: 10
       special: null
       translations: null
       validation: null
@@ -11003,7 +12820,7 @@ fields:
             value: archived
       readonly: false
       required: false
-      sort: 7
+      sort: 9
       special: null
       translations: null
       validation: null
@@ -11046,7 +12863,7 @@ fields:
         capitalization: auto-format
       readonly: false
       required: false
-      sort: 6
+      sort: 8
       special:
         - cast-json
       translations: null
@@ -11088,8 +12905,8 @@ fields:
       options:
         languageField: code
       readonly: false
-      required: false
-      sort: 4
+      required: true
+      sort: 6
       special:
         - translations
       translations: null
@@ -11114,7 +12931,7 @@ fields:
         template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
       readonly: true
       required: false
-      sort: 9
+      sort: 11
       special:
         - user-created
       translations: null
@@ -11157,7 +12974,7 @@ fields:
         template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
       readonly: true
       required: false
-      sort: 11
+      sort: 13
       special:
         - user-updated
       translations: null
@@ -11184,6 +13001,170 @@ fields:
       schema: public
       table: News
     type: uuid
+  - collection: News_author
+    field: News_id
+    meta:
+      collection: News_author
+      conditions: null
+      display: null
+      display_options: null
+      field: News_id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: News
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: News_id
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: News_author
+    type: uuid
+  - collection: News_author
+    field: collection
+    meta:
+      collection: News_author
+      conditions: null
+      display: null
+      display_options: null
+      field: collection
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: character varying
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: 255
+      name: collection
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: News_author
+    type: string
+  - collection: News_author
+    field: id
+    meta:
+      collection: News_author
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: integer
+      default_value: nextval('"News_author_id_seq"'::regclass)
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: true
+      is_generated: false
+      is_nullable: false
+      is_primary_key: true
+      is_unique: true
+      max_length: null
+      name: id
+      numeric_precision: 32
+      numeric_scale: 0
+      schema: public
+      table: News_author
+    type: integer
+  - collection: News_author
+    field: item
+    meta:
+      collection: News_author
+      conditions: null
+      display: null
+      display_options: null
+      field: item
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: character varying
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: 255
+      name: item
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: News_author
+    type: string
   - collection: News_translations
     field: News_id
     meta:
@@ -25737,6 +27718,780 @@ fields:
       schema: public
       table: ST_HoverableMediaMenus_translations
     type: text
+  - collection: ST_LatestBlog
+    field: date_created
+    meta:
+      collection: ST_LatestBlog
+      conditions: null
+      display: datetime
+      display_options:
+        relative: true
+      field: date_created
+      group: null
+      hidden: true
+      interface: datetime
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: 7
+      special:
+        - date-created
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      comment: null
+      data_type: timestamp with time zone
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: date_created
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: ST_LatestBlog
+    type: timestamp
+  - collection: ST_LatestBlog
+    field: date_updated
+    meta:
+      collection: ST_LatestBlog
+      conditions: null
+      display: datetime
+      display_options:
+        relative: true
+      field: date_updated
+      group: null
+      hidden: true
+      interface: datetime
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: 9
+      special:
+        - date-updated
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      comment: null
+      data_type: timestamp with time zone
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: date_updated
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: ST_LatestBlog
+    type: timestamp
+  - collection: ST_LatestBlog
+    field: id
+    meta:
+      collection: ST_LatestBlog
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: 1
+      special:
+        - uuid
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: false
+      is_primary_key: true
+      is_unique: true
+      max_length: null
+      name: id
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: ST_LatestBlog
+    type: uuid
+  - collection: ST_LatestBlog
+    field: limit
+    meta:
+      collection: ST_LatestBlog
+      conditions: null
+      display: null
+      display_options: null
+      field: limit
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        max: 10
+        min: 2
+        placeholder: Blog Limit
+      readonly: false
+      required: true
+      sort: 3
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: integer
+      default_value: 4
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: limit
+      numeric_precision: 32
+      numeric_scale: 0
+      schema: public
+      table: ST_LatestBlog
+    type: integer
+  - collection: ST_LatestBlog
+    field: notice-iy65io
+    meta:
+      collection: ST_LatestBlog
+      conditions: null
+      display: null
+      display_options: null
+      field: notice-iy65io
+      group: null
+      hidden: false
+      interface: presentation-notice
+      note: null
+      options:
+        text: ST Latest Blog
+      readonly: false
+      required: false
+      sort: 2
+      special:
+        - alias
+        - no-data
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema: null
+    type: alias
+  - collection: ST_LatestBlog
+    field: sort
+    meta:
+      collection: ST_LatestBlog
+      conditions: null
+      display: null
+      display_options: null
+      field: sort
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 5
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: integer
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: sort
+      numeric_precision: 32
+      numeric_scale: 0
+      schema: public
+      table: ST_LatestBlog
+    type: integer
+  - collection: ST_LatestBlog
+    field: status
+    meta:
+      collection: ST_LatestBlog
+      conditions: null
+      display: labels
+      display_options:
+        choices:
+          - text: $t:published
+            value: published
+            foreground: '#FFFFFF'
+            background: var(--primary)
+          - text: $t:draft
+            value: draft
+            foreground: '#18222F'
+            background: '#D3DAE4'
+          - text: $t:archived
+            value: archived
+            foreground: '#FFFFFF'
+            background: var(--warning)
+        showAsDot: true
+      field: status
+      group: null
+      hidden: false
+      interface: select-dropdown
+      note: null
+      options:
+        choices:
+          - text: $t:published
+            value: published
+          - text: $t:draft
+            value: draft
+          - text: $t:archived
+            value: archived
+      readonly: false
+      required: false
+      sort: 4
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: character varying
+      default_value: draft
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: false
+      is_primary_key: false
+      is_unique: false
+      max_length: 255
+      name: status
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: ST_LatestBlog
+    type: string
+  - collection: ST_LatestBlog
+    field: user_created
+    meta:
+      collection: ST_LatestBlog
+      conditions: null
+      display: user
+      display_options: null
+      field: user_created
+      group: null
+      hidden: true
+      interface: select-dropdown-m2o
+      note: null
+      options:
+        template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
+      readonly: true
+      required: false
+      sort: 6
+      special:
+        - user-created
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: directus_users
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: user_created
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: ST_LatestBlog
+    type: uuid
+  - collection: ST_LatestBlog
+    field: user_updated
+    meta:
+      collection: ST_LatestBlog
+      conditions: null
+      display: user
+      display_options: null
+      field: user_updated
+      group: null
+      hidden: true
+      interface: select-dropdown-m2o
+      note: null
+      options:
+        template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
+      readonly: true
+      required: false
+      sort: 8
+      special:
+        - user-updated
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: directus_users
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: user_updated
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: ST_LatestBlog
+    type: uuid
+  - collection: ST_LatestNews
+    field: date_created
+    meta:
+      collection: ST_LatestNews
+      conditions: null
+      display: datetime
+      display_options:
+        relative: true
+      field: date_created
+      group: null
+      hidden: true
+      interface: datetime
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: 7
+      special:
+        - date-created
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      comment: null
+      data_type: timestamp with time zone
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: date_created
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: ST_LatestNews
+    type: timestamp
+  - collection: ST_LatestNews
+    field: date_updated
+    meta:
+      collection: ST_LatestNews
+      conditions: null
+      display: datetime
+      display_options:
+        relative: true
+      field: date_updated
+      group: null
+      hidden: true
+      interface: datetime
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: 9
+      special:
+        - date-updated
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      comment: null
+      data_type: timestamp with time zone
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: date_updated
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: ST_LatestNews
+    type: timestamp
+  - collection: ST_LatestNews
+    field: id
+    meta:
+      collection: ST_LatestNews
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: 1
+      special:
+        - uuid
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: false
+      is_primary_key: true
+      is_unique: true
+      max_length: null
+      name: id
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: ST_LatestNews
+    type: uuid
+  - collection: ST_LatestNews
+    field: limit
+    meta:
+      collection: ST_LatestNews
+      conditions: null
+      display: null
+      display_options: null
+      field: limit
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        max: 10
+        min: 2
+        placeholder: News Limit
+      readonly: false
+      required: true
+      sort: 3
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: integer
+      default_value: 4
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: limit
+      numeric_precision: 32
+      numeric_scale: 0
+      schema: public
+      table: ST_LatestNews
+    type: integer
+  - collection: ST_LatestNews
+    field: notice-er28bt
+    meta:
+      collection: ST_LatestNews
+      conditions: null
+      display: null
+      display_options: null
+      field: notice-er28bt
+      group: null
+      hidden: false
+      interface: presentation-notice
+      note: null
+      options:
+        text: ST Latest News
+      readonly: false
+      required: false
+      sort: 2
+      special:
+        - alias
+        - no-data
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema: null
+    type: alias
+  - collection: ST_LatestNews
+    field: sort
+    meta:
+      collection: ST_LatestNews
+      conditions: null
+      display: null
+      display_options: null
+      field: sort
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 5
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: integer
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: sort
+      numeric_precision: 32
+      numeric_scale: 0
+      schema: public
+      table: ST_LatestNews
+    type: integer
+  - collection: ST_LatestNews
+    field: status
+    meta:
+      collection: ST_LatestNews
+      conditions: null
+      display: labels
+      display_options:
+        choices:
+          - text: $t:published
+            value: published
+            foreground: '#FFFFFF'
+            background: var(--primary)
+          - text: $t:draft
+            value: draft
+            foreground: '#18222F'
+            background: '#D3DAE4'
+          - text: $t:archived
+            value: archived
+            foreground: '#FFFFFF'
+            background: var(--warning)
+        showAsDot: true
+      field: status
+      group: null
+      hidden: false
+      interface: select-dropdown
+      note: null
+      options:
+        choices:
+          - text: $t:published
+            value: published
+          - text: $t:draft
+            value: draft
+          - text: $t:archived
+            value: archived
+      readonly: false
+      required: false
+      sort: 4
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: character varying
+      default_value: draft
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: false
+      is_primary_key: false
+      is_unique: false
+      max_length: 255
+      name: status
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: ST_LatestNews
+    type: string
+  - collection: ST_LatestNews
+    field: user_created
+    meta:
+      collection: ST_LatestNews
+      conditions: null
+      display: user
+      display_options: null
+      field: user_created
+      group: null
+      hidden: true
+      interface: select-dropdown-m2o
+      note: null
+      options:
+        template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
+      readonly: true
+      required: false
+      sort: 6
+      special:
+        - user-created
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: directus_users
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: user_created
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: ST_LatestNews
+    type: uuid
+  - collection: ST_LatestNews
+    field: user_updated
+    meta:
+      collection: ST_LatestNews
+      conditions: null
+      display: user
+      display_options: null
+      field: user_updated
+      group: null
+      hidden: true
+      interface: select-dropdown-m2o
+      note: null
+      options:
+        template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
+      readonly: true
+      required: false
+      sort: 8
+      special:
+        - user-updated
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: directus_users
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: user_updated
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: ST_LatestNews
+    type: uuid
   - collection: ST_Markdown
     field: date_created
     meta:
@@ -36515,6 +39270,219 @@ relations:
       on_delete: NO ACTION
       on_update: NO ACTION
       table: Addresses
+  - collection: Authors
+    field: image
+    meta:
+      junction_field: null
+      many_collection: Authors
+      many_field: image
+      one_allowed_collections: null
+      one_collection: directus_files
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    related_collection: directus_files
+    schema:
+      column: image
+      constraint_name: authors_image_foreign
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: directus_files
+      on_delete: SET NULL
+      on_update: NO ACTION
+      table: Authors
+  - collection: Authors
+    field: user_created
+    meta:
+      junction_field: null
+      many_collection: Authors
+      many_field: user_created
+      one_allowed_collections: null
+      one_collection: directus_users
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    related_collection: directus_users
+    schema:
+      column: user_created
+      constraint_name: authors_user_created_foreign
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: directus_users
+      on_delete: NO ACTION
+      on_update: NO ACTION
+      table: Authors
+  - collection: Authors
+    field: user_updated
+    meta:
+      junction_field: null
+      many_collection: Authors
+      many_field: user_updated
+      one_allowed_collections: null
+      one_collection: directus_users
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    related_collection: directus_users
+    schema:
+      column: user_updated
+      constraint_name: authors_user_updated_foreign
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: directus_users
+      on_delete: NO ACTION
+      on_update: NO ACTION
+      table: Authors
+  - collection: Blog
+    field: image
+    meta:
+      junction_field: null
+      many_collection: Blog
+      many_field: image
+      one_allowed_collections: null
+      one_collection: directus_files
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    related_collection: directus_files
+    schema:
+      column: image
+      constraint_name: blog_image_foreign
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: directus_files
+      on_delete: SET NULL
+      on_update: NO ACTION
+      table: Blog
+  - collection: Blog
+    field: user_created
+    meta:
+      junction_field: null
+      many_collection: Blog
+      many_field: user_created
+      one_allowed_collections: null
+      one_collection: directus_users
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    related_collection: directus_users
+    schema:
+      column: user_created
+      constraint_name: blog_user_created_foreign
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: directus_users
+      on_delete: NO ACTION
+      on_update: NO ACTION
+      table: Blog
+  - collection: Blog
+    field: user_updated
+    meta:
+      junction_field: null
+      many_collection: Blog
+      many_field: user_updated
+      one_allowed_collections: null
+      one_collection: directus_users
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    related_collection: directus_users
+    schema:
+      column: user_updated
+      constraint_name: blog_user_updated_foreign
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: directus_users
+      on_delete: NO ACTION
+      on_update: NO ACTION
+      table: Blog
+  - collection: Blog_author
+    field: Blog_id
+    meta:
+      junction_field: item
+      many_collection: Blog_author
+      many_field: Blog_id
+      one_allowed_collections: null
+      one_collection: Blog
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: author
+      sort_field: null
+    related_collection: Blog
+    schema:
+      column: Blog_id
+      constraint_name: blog_author_blog_id_foreign
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: Blog
+      on_delete: SET NULL
+      on_update: NO ACTION
+      table: Blog_author
+  - collection: Blog_author
+    field: item
+    meta:
+      junction_field: Blog_id
+      many_collection: Blog_author
+      many_field: item
+      one_allowed_collections:
+        - Authors
+      one_collection: null
+      one_collection_field: collection
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    related_collection: null
+    schema: null
+  - collection: Blog_translations
+    field: Blog_id
+    meta:
+      junction_field: languages_code
+      many_collection: Blog_translations
+      many_field: Blog_id
+      one_allowed_collections: null
+      one_collection: Blog
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: translations
+      sort_field: null
+    related_collection: Blog
+    schema:
+      column: Blog_id
+      constraint_name: blog_translations_blog_id_foreign
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: Blog
+      on_delete: SET NULL
+      on_update: NO ACTION
+      table: Blog_translations
+  - collection: Blog_translations
+    field: languages_code
+    meta:
+      junction_field: Blog_id
+      many_collection: Blog_translations
+      many_field: languages_code
+      one_allowed_collections: null
+      one_collection: languages
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    related_collection: languages
+    schema:
+      column: languages_code
+      constraint_name: blog_translations_languages_code_foreign
+      foreign_key_column: code
+      foreign_key_schema: public
+      foreign_key_table: languages
+      on_delete: SET NULL
+      on_update: NO ACTION
+      table: Blog_translations
   - collection: CompanyDetails
     field: image
     meta:
@@ -37654,6 +40622,43 @@ relations:
       on_delete: NO ACTION
       on_update: NO ACTION
       table: News
+  - collection: News_author
+    field: News_id
+    meta:
+      junction_field: item
+      many_collection: News_author
+      many_field: News_id
+      one_allowed_collections: null
+      one_collection: News
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: author
+      sort_field: null
+    related_collection: News
+    schema:
+      column: News_id
+      constraint_name: news_author_news_id_foreign
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: News
+      on_delete: SET NULL
+      on_update: NO ACTION
+      table: News_author
+  - collection: News_author
+    field: item
+    meta:
+      junction_field: News_id
+      many_collection: News_author
+      many_field: item
+      one_allowed_collections:
+        - Authors
+      one_collection: null
+      one_collection_field: collection
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    related_collection: null
+    schema: null
   - collection: News_translations
     field: News_id
     meta:
@@ -37871,6 +40876,8 @@ relations:
         - ST_GroupedLogos
         - ST_GuestQuestions
         - ST_HoverableMediaMenus
+        - ST_LatestBlog
+        - ST_LatestNews
         - ST_Markdown
         - ST_MediaTabs
         - ST_NavAccordions
@@ -39648,6 +42655,94 @@ relations:
       on_delete: SET NULL
       on_update: NO ACTION
       table: ST_HoverableMediaMenus_translations
+  - collection: ST_LatestBlog
+    field: user_created
+    meta:
+      junction_field: null
+      many_collection: ST_LatestBlog
+      many_field: user_created
+      one_allowed_collections: null
+      one_collection: directus_users
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    related_collection: directus_users
+    schema:
+      column: user_created
+      constraint_name: st_latestblog_user_created_foreign
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: directus_users
+      on_delete: NO ACTION
+      on_update: NO ACTION
+      table: ST_LatestBlog
+  - collection: ST_LatestBlog
+    field: user_updated
+    meta:
+      junction_field: null
+      many_collection: ST_LatestBlog
+      many_field: user_updated
+      one_allowed_collections: null
+      one_collection: directus_users
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    related_collection: directus_users
+    schema:
+      column: user_updated
+      constraint_name: st_latestblog_user_updated_foreign
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: directus_users
+      on_delete: NO ACTION
+      on_update: NO ACTION
+      table: ST_LatestBlog
+  - collection: ST_LatestNews
+    field: user_created
+    meta:
+      junction_field: null
+      many_collection: ST_LatestNews
+      many_field: user_created
+      one_allowed_collections: null
+      one_collection: directus_users
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    related_collection: directus_users
+    schema:
+      column: user_created
+      constraint_name: st_latestnews_user_created_foreign
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: directus_users
+      on_delete: NO ACTION
+      on_update: NO ACTION
+      table: ST_LatestNews
+  - collection: ST_LatestNews
+    field: user_updated
+    meta:
+      junction_field: null
+      many_collection: ST_LatestNews
+      many_field: user_updated
+      one_allowed_collections: null
+      one_collection: directus_users
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    related_collection: directus_users
+    schema:
+      column: user_updated
+      constraint_name: st_latestnews_user_updated_foreign
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: directus_users
+      on_delete: NO ACTION
+      on_update: NO ACTION
+      table: ST_LatestNews
   - collection: ST_Markdown
     field: user_created
     meta:

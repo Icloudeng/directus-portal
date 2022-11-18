@@ -31,7 +31,7 @@ export default function Page({ platform }: { platform: MDPlatform }) {
 
   return (
     <Layout whiteNav={true}>
-      <Seo />
+      <Seo templateTitle={name} suffix='Apps' />
       <div className='min-h-[300px] bg-white pt-24'>
         <div className='x-container mb-10'>
           {/* Header */}
@@ -121,8 +121,8 @@ export async function getServerSideProps({
   locale,
   query,
 }: GetServerSidePropsContext) {
-  const name = query.name as string;
-  const res = await getGqlPlatformsBySlug(name).catch(console.error);
+  const slug = query.slug as string;
+  const res = await getGqlPlatformsBySlug(slug).catch(console.error);
 
   if (!res || !res.data || res.data.platforms.length === 0) {
     return {
