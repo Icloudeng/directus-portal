@@ -17,7 +17,7 @@
   "license": "ISC",
   "dependencies": {
     "@directus/sdk": "^10.1.5",
-    "directus": "9.20.4",
+    "directus": "9.21.0",
     "dotenv": "^16.0.3",
     "postgres": "^3.3.1"
   }
