@@ -31,7 +31,7 @@ export default function Page({ platform }: { platform: MDPlatform }) {
 
   return (
     <Layout whiteNav={true}>
-      <Seo />
+      <Seo templateTitle={name} suffix='Apps' />
       <div className='min-h-[300px] bg-white pt-24'>
         <div className='x-container mb-10'>
           {/* Header */}

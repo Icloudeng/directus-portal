@@ -5,6 +5,7 @@ import type {
   MDWithAsset,
   MDWithPoint,
   MDWithTranslation,
+  MDHasM2A,
 } from '@/types/directus';
 import type { M2APageSection, M2APageSectionReusable } from '../page-sections';
 import type { CMS_MODELS } from '@/app/constant/cms';
@@ -21,7 +22,6 @@ export type MDLanguage = {
 // ----------------------- News model type --------------
 type NewsTransField = {
   title: string;
-  languages_code: string;
   summary: string;
   markdown_content: string;
 };
@@ -30,14 +30,28 @@ type NewsField = {
   label: string;
   tags: string[];
   slug: string;
-  image: MDWithAsset;
+  image?: MDWithAsset;
+  author?: MDHasM2A<MDAuthor, typeof CMS_MODELS['authors']>;
 };
 
 export type MDNews = MDWithTranslation<NewsTransField> & NewsField & DRTStatus;
 
 export type MDTopbarNew = Pick<DRTStatus, 'id' | 'date_created' | 'status'> &
   Pick<NewsField, 'slug'> &
-  MDWithTranslation<Pick<NewsTransField, 'title' | 'languages_code'>>;
+  MDWithTranslation<Pick<NewsTransField, 'title'>>;
+
+//   --------------------- Blog ----------------------- //
+export type Blog = MDNews & { image: MDWithAsset };
+
+// ----------------------- News or Blog authers -----------------------//
+export type MDAuthor = {
+  name: string;
+  image?: MDWithAsset;
+  twitter_link?: string;
+  github_link?: string;
+  facebook_link?: string;
+  instagram_link?: string;
+} & DRTStatus;
 
 // ----------------------- TopbarLinks model type --------------
 
