@@ -41,7 +41,7 @@ export type MDTopbarNew = Pick<DRTStatus, 'id' | 'date_created' | 'status'> &
   MDWithTranslation<Pick<NewsTransField, 'title'>>;
 
 //   --------------------- Blog ----------------------- //
-export type Blog = MDNews & { image: MDWithAsset };
+export type MDBlog = MDNews & { image: MDWithAsset };
 
 // ----------------------- News or Blog authers -----------------------//
 export type MDAuthor = {

@@ -72,5 +72,7 @@ export const CMS_MODELS = {
     st_side_text_medias: 'ST_SideTextMedias',
     st_markdown: 'ST_Markdown',
     st_charts: 'ST_Charts',
+    st_latest_news: 'ST_LatestNews',
+    st_latest_blog: 'ST_LatestBlog',
   } as const,
 };
