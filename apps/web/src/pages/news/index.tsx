@@ -47,9 +47,8 @@ export default function Page({ news }: { news: MDNews[] }) {
                   locale
                 );
                 return (
-                  <div className='w-full sd:w-1/2 lg:w-1/3 px-3 mb-10'>
+                  <div className='w-full sd:w-1/2 lg:w-1/3 px-3 mb-10' key={id}>
                     <NewsCard
-                      key={id}
                       image={image}
                       title={translations?.title || ''}
                       summary={translations?.summary}

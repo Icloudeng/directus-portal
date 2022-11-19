@@ -1,3 +1,4 @@
+import { useTranslation } from 'next-i18next';
 import { useEffect, useState } from 'react';
 import { InputWithIcon } from './InputWithIcon';
 
@@ -17,6 +18,7 @@ export function InputSearch({
   defaultValue = '',
   required,
 }: Props) {
+  const { t } = useTranslation();
   const [value, setValue] = useState(defaultValue);
 
   useEffect(() => {
@@ -25,7 +27,7 @@ export function InputSearch({
 
   return (
     <InputWithIcon
-      label='Search'
+      label={t('Search')}
       value={value}
       onChange={(e) => setValue(e.currentTarget.value)}
       name={name}
@@ -49,7 +51,7 @@ export function InputSearch({
           </svg>
         )
       }
-      btnText='search'
+      btnText={t('Search')}
       withButton={withButton}
     />
   );
