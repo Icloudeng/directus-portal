@@ -35,7 +35,14 @@ function MyApp({
 
   return (
     <SharedDataProvider value={datas}>
-      <NextProgress height='2px' options={{ showSpinner: false }} />
+      <NextProgress
+        height='3px'
+        options={{
+          showSpinner: false,
+          speed: 500,
+          minimum: 0.3,
+        }}
+      />
       <Component {...pageProps} />
       {CHATWOOT_BASE_URL && CHATWOOT_API_KEY && (
         <ChatwootWidget

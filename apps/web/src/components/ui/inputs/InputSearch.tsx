@@ -4,14 +4,20 @@ import { InputWithIcon } from './InputWithIcon';
 type Props = {
   onChange?: (value: string) => void;
   showIcon?: boolean;
+  name?: string;
   withButton?: boolean;
+  defaultValue?: string;
+  required?: boolean;
 };
 export function InputSearch({
   onChange,
   showIcon = true,
   withButton = true,
+  name,
+  defaultValue = '',
+  required,
 }: Props) {
-  const [value, setValue] = useState('');
+  const [value, setValue] = useState(defaultValue);
 
   useEffect(() => {
     onChange && onChange(value.trim());
@@ -22,6 +28,8 @@ export function InputSearch({
       label='Search'
       value={value}
       onChange={(e) => setValue(e.currentTarget.value)}
+      name={name}
+      required={required}
       icon={
         showIcon && (
           <svg

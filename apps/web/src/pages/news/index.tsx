@@ -7,9 +7,11 @@ import { getServerSideTranslations } from '@/app/utils/server-translation';
 import { CleanHero } from '@/components/layout/footer/CleanHero';
 import { useTranslation } from 'next-i18next';
 import capitalize from 'lodash/capitalize';
-import { InputSearch } from '@/components/ui/inputs/InputSearch';
+import { getGqlListNewsQuery } from '@/cms/items';
+import { MDNews } from '@/cms/items/types';
+import { SearchForm } from '@/components/ui/form-control/SearchFrom';
 
-export default function Page() {
+export default function Page({ news }: { news: MDNews[] }) {
   const { t } = useTranslation();
   const title = capitalize(t('TOPBAR_NEWS'));
 
@@ -25,7 +27,7 @@ export default function Page() {
       <div className='bg-[#f5f7fa] pb-9 pt-5'>
         <div className='x-container'>
           <div className='mx-auto w-full sm:max-w-md'>
-            <InputSearch withButton={true} />
+            <SearchForm />
           </div>
 
           <div className='mt-24'></div>
@@ -37,10 +39,14 @@ export default function Page() {
 
 export async function getServerSideProps({
   locale,
+  query,
 }: GetServerSidePropsContext) {
+  const res = await getGqlListNewsQuery((query.q as string) || undefined);
+
   return {
     props: {
       ...(await getServerSideTranslations(locale!)),
+      news: res.data || [],
     },
   };
 }
