@@ -10,10 +10,15 @@ import capitalize from 'lodash/capitalize';
 import { getGqlListNewsQuery } from '@/cms/items';
 import { MDNews } from '@/cms/items/types';
 import { SearchForm } from '@/components/ui/form-control/SearchFrom';
+import { useEffect } from 'react';
 
 export default function Page({ news }: { news: MDNews[] }) {
   const { t } = useTranslation();
   const title = capitalize(t('TOPBAR_NEWS'));
+
+  useEffect(() => {
+    console.log(news);
+  }, [news]);
 
   return (
     <Layout whiteNav={true}>

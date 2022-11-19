@@ -41,7 +41,7 @@ export const newsQuery = {
   ...qWithStatus,
 };
 
-const listNews_gql_query = (query?: string) =>
+const listNews_gql_query = (query?: string, offset = 0) =>
   jsonToGraphQLQuery({
     __variables: {
       search: 'String',
@@ -55,6 +55,8 @@ const listNews_gql_query = (query?: string) =>
           translations: any;
         }>({
           sort: ['-date_created'],
+          limit: 9,
+          offset,
           filter: query?.trim()
             ? {
                 translations: {
@@ -74,12 +76,12 @@ const listNews_gql_query = (query?: string) =>
     },
   });
 
-export async function getGqlListNewsQuery(query?: string) {
+export async function getGqlListNewsQuery(query?: string, offset = 0) {
   const directus = await getDirectusClient();
   const access_token = await directus.auth.token;
 
   const res = await directus.graphql.items<{ news: MDNews[] }>(
-    listNews_gql_query(query)
+    listNews_gql_query(query, offset)
   );
 
   if (!res.data || !access_token) return res;

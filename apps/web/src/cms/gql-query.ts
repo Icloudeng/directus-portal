@@ -84,11 +84,15 @@ type Query<T> = {
   filter?: Filter<T>;
 };
 
-export function qWithOption<T = unknown>(option: Query<T> = {}) {
+export function qWithOption<T = unknown>(
+  option: Query<T> & { offset?: number } = {}
+) {
   return option;
 }
 
-export function qWithPublishedStatus<T>(option: Query<T> = {}) {
+export function qWithPublishedStatus<T>(
+  option: Query<T> & { offset?: number } = {}
+) {
   return {
     ...option,
     filter: {
