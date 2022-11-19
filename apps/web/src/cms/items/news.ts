@@ -2,8 +2,7 @@ import { CMS_MODELS } from '@/app/constant/cms';
 import { jsonToGraphQLQuery, VariableType } from 'json-to-graphql-query';
 import { getDirectusClient } from '../directus';
 import {
-  qWithAsset,
-  qWithOption,
+  qWithAssets,
   qWithPublishedStatus,
   qWithQueryAsset,
   qWithStatus,
@@ -41,7 +40,7 @@ export const newsQuery = {
   ...qWithStatus,
 };
 
-const listNews_gql_query = (query?: string, offset = 0) =>
+const listNews_gql_query = (query?: string, offset = 0, limit = 9) =>
   jsonToGraphQLQuery({
     __variables: {
       search: 'String',
@@ -55,7 +54,7 @@ const listNews_gql_query = (query?: string, offset = 0) =>
           translations: any;
         }>({
           sort: ['-date_created'],
-          limit: 9,
+          limit,
           offset,
           filter: query?.trim()
             ? {
@@ -85,6 +84,8 @@ export async function getGqlListNewsQuery(query?: string, offset = 0) {
   );
 
   if (!res.data || !access_token) return res;
+
+  qWithAssets(access_token, res.data.news || [], 'image');
 
   return res;
 }

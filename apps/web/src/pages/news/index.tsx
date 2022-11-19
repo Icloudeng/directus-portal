@@ -10,15 +10,15 @@ import capitalize from 'lodash/capitalize';
 import { getGqlListNewsQuery } from '@/cms/items';
 import { MDNews } from '@/cms/items/types';
 import { SearchForm } from '@/components/ui/form-control/SearchFrom';
-import { useEffect } from 'react';
+import EmptySvg from '~/svg/empty.svg';
+import { useSharedData } from '@/app/store';
+import { mut } from '@/cms/mut';
+import { NewsCard } from '@/components/ui/cards/NewsCard';
 
 export default function Page({ news }: { news: MDNews[] }) {
   const { t } = useTranslation();
   const title = capitalize(t('TOPBAR_NEWS'));
-
-  useEffect(() => {
-    console.log(news);
-  }, [news]);
+  const { locale } = useSharedData();
 
   return (
     <Layout whiteNav={true}>
@@ -35,7 +35,36 @@ export default function Page({ news }: { news: MDNews[] }) {
             <SearchForm />
           </div>
 
-          <div className='mt-24'></div>
+          <div className='mt-24'>
+            <div className='w-full xs:w-1/2 md:w-1/3 mx-auto'>
+              {news.length === 0 && <EmptySvg className='w-full h-full' />}
+            </div>
+
+            <div className='cards--news flex flex-wrap'>
+              {news.map(($new) => {
+                const { translations, id, image, date_created, slug } = mut(
+                  $new,
+                  locale
+                );
+                return (
+                  <div className='w-full sd:w-1/2 lg:w-1/3 px-3 mb-10'>
+                    <NewsCard
+                      key={id}
+                      image={image}
+                      title={translations?.title || ''}
+                      summary={translations?.summary}
+                      date={new Date(date_created).toLocaleDateString('en-US', {
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric',
+                      })}
+                      link={'/news/' + slug}
+                    />
+                  </div>
+                );
+              })}
+            </div>
+          </div>
         </div>
       </div>
     </Layout>
@@ -51,7 +80,7 @@ export async function getServerSideProps({
   return {
     props: {
       ...(await getServerSideTranslations(locale!)),
-      news: res.data || [],
+      news: res.data?.news || [],
     },
   };
 }
