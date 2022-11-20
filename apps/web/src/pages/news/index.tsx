@@ -14,11 +14,26 @@ import EmptySvg from '~/svg/empty.svg';
 import { useSharedData } from '@/app/store';
 import { mut } from '@/cms/mut';
 import { NewsCard } from '@/components/ui/cards/NewsCard';
+import { useCallback, useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
+import { LoadMore } from '@/components/ui/fetch/LoadMore';
+
+const LIMIT = 9;
 
 export default function Page({ news }: { news: MDNews[] }) {
   const { t } = useTranslation();
   const title = capitalize(t('TOPBAR_NEWS'));
   const { locale } = useSharedData();
+  const router = useRouter();
+  const [data, setData] = useState(news);
+
+  useEffect(() => {
+    setData(news);
+  }, [news]);
+
+  const onNewItems = useCallback((items: any[]) => {
+    setData((its) => its.concat(items));
+  }, []);
 
   return (
     <Layout whiteNav={true}>
@@ -37,11 +52,11 @@ export default function Page({ news }: { news: MDNews[] }) {
 
           <div className='mt-24'>
             <div className='w-full xs:w-1/2 md:w-1/3 mx-auto'>
-              {news.length === 0 && <EmptySvg className='w-full h-full' />}
+              {data.length === 0 && <EmptySvg className='w-full h-full' />}
             </div>
 
             <div className='cards--news flex flex-wrap'>
-              {news.map(($new) => {
+              {data.map(($new) => {
                 const { translations, id, image, date_created, slug } = mut(
                   $new,
                   locale
@@ -63,6 +78,18 @@ export default function Page({ news }: { news: MDNews[] }) {
                 );
               })}
             </div>
+
+            <div className='w-full mt-12'>
+              <div className='max-w-[200px] mx-auto'>
+                <LoadMore
+                  fetchUrl='/api/publishing/news'
+                  limit={LIMIT}
+                  query={router.query.q as string}
+                  queryName='q'
+                  onNewItems={onNewItems}
+                />
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -74,7 +101,11 @@ export async function getServerSideProps({
   locale,
   query,
 }: GetServerSidePropsContext) {
-  const res = await getGqlListNewsQuery((query.q as string) || undefined);
+  const res = await getGqlListNewsQuery(
+    (query.q as string) || undefined,
+    0,
+    LIMIT
+  );
 
   return {
     props: {

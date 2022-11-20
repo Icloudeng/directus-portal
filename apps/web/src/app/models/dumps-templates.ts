@@ -11,6 +11,7 @@ import type {
   ST_GroupedLogo,
   ST_GuestQuestion,
   ST_HoverableMediaMenu,
+  ST_LatestNew,
   ST_Markdown,
   ST_MediaTab,
   ST_NavAccordion,
@@ -2027,6 +2028,86 @@ export const DumpPlatforms: ST_Platform[] = [
           date_created: '2022-10-19T13:55:41.767Z',
           date_updated: '2022-11-13T12:30:12.779Z',
           translations: [],
+        },
+      ],
+    },
+  },
+];
+
+export const DumpLatestNews: ST_LatestNew[] = [
+  {
+    id: '87',
+    collection: 'ST_LatestNews',
+    item: {
+      limit: 3,
+      id: '0c25c908-2481-45ae-b488-4d7c5cc408df',
+      status: 'published',
+      date_created: '2022-11-20T12:51:39.713Z',
+      news: [
+        {
+          label: 'A year with a 30% discount on migration to the Serverspace',
+          tags: [],
+          slug: 'a-year-with-a-30-discount-on-migration-to-the-serverspace',
+          translations: [
+            {
+              id: '4',
+              languages_code: {
+                code: 'en',
+                name: 'English',
+              },
+              markdown_content: '',
+              title:
+                'A year with a 30% discount on migration to the Serverspace',
+              summary:
+                'Cloud provider Serverspace has implemented a migration service virtual infrastructure to its cloud.',
+            },
+          ],
+          id: '35ad1c18-d64f-442d-95e9-a84bfcddb7d3',
+          status: 'published',
+          date_created: '2022-11-20T13:01:04.738Z',
+        },
+        {
+          label: 'Deploying',
+          tags: ['Cloud', 'Compute'],
+          slug: 'deploying',
+          translations: [
+            {
+              id: '3',
+              languages_code: {
+                code: 'en',
+                name: 'English',
+              },
+              title: 'Deploying',
+              markdown_content: '',
+              summary:
+                'This guide will help you to install Chatwoot on Ubuntu 20.04 LTS. We have prepared a deployment script for you to run. Refer to the script and feel free to make changes accordingly to the operating system if you are on a non-Ubuntu system.',
+            },
+          ],
+          id: 'a1ef0661-a6f6-4ff6-9d4d-5eeadbebbd13',
+          status: 'published',
+          date_created: '2022-11-19T15:47:20.829Z',
+          date_updated: '2022-11-20T12:21:32.932Z',
+        },
+        {
+          label: 'Introducing new platform for data analysis',
+          tags: [],
+          slug: 'introducing-new-platform-for-data-analysis',
+          translations: [
+            {
+              id: '1',
+              languages_code: {
+                code: 'en',
+                name: 'English',
+              },
+              title: 'Introducing new platform for data analysis',
+              summary: 'Introducing new platform for data analysis',
+              markdown_content: '',
+            },
+          ],
+          id: '0c18524c-a6e6-4ab1-9481-6f6057500650',
+          status: 'published',
+          date_created: '2022-09-20T15:56:20.388Z',
+          date_updated: '2022-09-29T05:43:00.239Z',
         },
       ],
     },

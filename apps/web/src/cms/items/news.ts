@@ -75,12 +75,16 @@ const listNews_gql_query = (query?: string, offset = 0, limit = 9) =>
     },
   });
 
-export async function getGqlListNewsQuery(query?: string, offset = 0) {
+export async function getGqlListNewsQuery(
+  query?: string,
+  offset = 0,
+  limit = 9
+) {
   const directus = await getDirectusClient();
   const access_token = await directus.auth.token;
 
   const res = await directus.graphql.items<{ news: MDNews[] }>(
-    listNews_gql_query(query, offset)
+    listNews_gql_query(query, offset, limit)
   );
 
   if (!res.data || !access_token) return res;
