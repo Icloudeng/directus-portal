@@ -20,6 +20,7 @@ export function LoadMore({
   const [items, setItems] = useState<any[]>([]);
   const [loading, setLoading] = useState(false);
   const offset = useRef(limit);
+  const lastQuery = useRef<string | undefined>('-');
 
   useEffect(() => {
     offset.current = limit;
@@ -46,7 +47,10 @@ export function LoadMore({
   }, [offset.current, query, limit, items, onNewItems]);
 
   useEffect(() => {
-    loadData();
+    if (query !== lastQuery.current) {
+      lastQuery.current = query;
+      loadData();
+    }
   }, [query]);
 
   return (
