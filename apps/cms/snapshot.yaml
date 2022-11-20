@@ -4698,6 +4698,7 @@ fields:
       interface: input-multiline
       note: null
       options:
+        softLength: 300
         trim: true
       readonly: false
       required: true
@@ -13344,6 +13345,7 @@ fields:
       interface: input-multiline
       note: null
       options:
+        softLength: 300
         trim: true
       readonly: false
       required: true
@@ -28243,12 +28245,13 @@ fields:
       field: limit
       group: null
       hidden: false
-      interface: input
+      interface: slider
       note: null
       options:
-        max: 10
-        min: 2
-        placeholder: News Limit
+        alwaysShowValue: true
+        maxValue: 9
+        minValue: 3
+        stepInterval: 3
       readonly: false
       required: true
       sort: 3
@@ -28260,7 +28263,7 @@ fields:
     schema:
       comment: null
       data_type: integer
-      default_value: 4
+      default_value: 3
       foreign_key_column: null
       foreign_key_schema: null
       foreign_key_table: null

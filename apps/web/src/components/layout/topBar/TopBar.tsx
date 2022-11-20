@@ -28,11 +28,13 @@ export const TopBar: React.FC = () => {
         <div className='flex flex-1 items-center mr-auto overflow-hidden flex-nowrap'>
           {News && News.length > 0 && (
             <>
-              <div className=' h-5 px-2 border border-primary-400 flex items-center justify-center rounded-sm'>
-                <span className='uppercase text-[0.6rem] text-primary-400'>
-                  {t('TOPBAR_NEWS')}
-                </span>
-              </div>
+              <UnstyledLink href='/news'>
+                <div className=' h-5 px-2 border border-primary-400 flex items-center justify-center rounded-sm'>
+                  <span className='uppercase text-[0.6rem] text-primary-400'>
+                    {t('TOPBAR_NEWS')}
+                  </span>
+                </div>
+              </UnstyledLink>
               <TopbarNews />
             </>
           )}

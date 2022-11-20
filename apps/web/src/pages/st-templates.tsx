@@ -13,6 +13,7 @@ import {
   DumpGroupedLogos,
   DumpGuestQuestions,
   DumpHoverableMediaMenus,
+  DumpLatestNews,
   DumpMarkdown,
   DumpMediaTabs,
   DumpNavAccordion,
@@ -29,6 +30,7 @@ import {
   DumpTransformedImageCarousels,
   DumpValue,
 } from '@/app/models/dumps-templates';
+import UnderlineLink from '@/components/ui/links/UnderlineLink';
 
 export default function Page() {
   return (
@@ -259,6 +261,24 @@ export default function Page() {
           sectionClass=''
           sharedObject={{}}
         />
+      </section>
+
+      <section className='py-14 bg-[#f5f7fa]'>
+        <div className='x-container'>
+          <h3 className='my-9'>ST Latest News</h3>
+          <h4 className='my-3 mb-5'>
+            News Page:{' '}
+            <UnderlineLink href='/news' className='text-primary-400'>
+              /news
+            </UnderlineLink>
+          </h4>
+
+          <Sts.ST_LatestNewsFC
+            items={DumpLatestNews}
+            sectionClass=''
+            sharedObject={{}}
+          />
+        </div>
       </section>
     </div>
   );

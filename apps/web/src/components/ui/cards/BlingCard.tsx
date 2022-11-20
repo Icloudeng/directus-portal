@@ -1,4 +1,4 @@
-import Image from "next/legacy/image";
+import Image from 'next/legacy/image';
 import { FaRegShareSquare } from 'react-icons/fa';
 import { HiOutlineDotsHorizontal } from 'react-icons/hi';
 
@@ -14,7 +14,7 @@ type ICategoryCard = {
   cardWidth?: string;
 };
 
-export const CategoryCard = ({
+export const BlingCard = ({
   imgLink,
   title,
   text,

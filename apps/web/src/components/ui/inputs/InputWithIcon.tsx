@@ -6,7 +6,9 @@ type IInputWithIcon = {
   icon: JSX.IntrinsicElements | any;
   withButton?: boolean;
   btnText: string;
+  name?: string;
   value?: InputHTMLAttributes<HTMLInputElement>['value'];
+  required?: boolean;
   onChange?: ChangeEventHandler<HTMLInputElement>;
 };
 
@@ -16,7 +18,9 @@ export const InputWithIcon = ({
   withButton = false,
   btnText,
   value,
+  name,
   onChange,
+  required,
 }: IInputWithIcon) => {
   return (
     <div>
@@ -37,8 +41,9 @@ export const InputWithIcon = ({
           id='search'
           className='block p-4 pl-10 w-full text-sm text-gray-900 bg-gray-50 rounded-md border border-gray-300 focus:ring-primary-400 focus:border-primary-400'
           placeholder={label}
-          required
+          required={required}
           value={value}
+          name={name}
           onChange={onChange}
         />
         {withButton ? (
