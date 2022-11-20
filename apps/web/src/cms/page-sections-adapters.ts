@@ -8,6 +8,7 @@ import { qWithAsset, qWithAssets } from './gql-query';
 import { CMS_MODELS } from '@/app/constant/cms';
 import { PlansPricingContent } from './items/types';
 import {
+  getGqlListBlogQuery,
   getGqlListNewsQuery,
   getGqlPlansPricingQueries,
   getGqlPlatformsByCategories,
@@ -212,6 +213,18 @@ function pageSectionWithContent(sections: M2APageSection[]) {
       mutate(content, memo) {
         if (memo) {
           content.item.news = memo?.news;
+        }
+      },
+    }),
+    _psHelper({
+      sts: [section_templates['st_latest_blog']] as const,
+      async query(item) {
+        const res = await getGqlListBlogQuery(undefined, 0, item.item.limit);
+        return res.data;
+      },
+      mutate(content, memo) {
+        if (memo) {
+          content.item.blogs = memo?.blogs;
         }
       },
     }),
