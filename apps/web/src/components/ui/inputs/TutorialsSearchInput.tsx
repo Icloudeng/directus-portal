@@ -1,6 +1,6 @@
-import { InputWithIcon } from '@/components/ui/inputs/InputWithIcon';
+import { InputWithIcon } from './InputWithIcon';
 
-export const CategoryElementsHeader = () => {
+export function TutorialsSearchInput() {
   return (
     <div className='w-full p-12 bg-primary-400 mb-7 rounded-2xl text-white'>
       <div className='flex flex-col gap-5 mb-4'>
@@ -32,8 +32,7 @@ export const CategoryElementsHeader = () => {
           }
           btnText='search'
         />
-        <span>To add a tag to the search, type the tag with [ ] around it</span>
       </div>
     </div>
   );
-};
+}
