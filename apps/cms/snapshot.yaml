@@ -4698,6 +4698,7 @@ fields:
       interface: input-multiline
       note: null
       options:
+        softLength: 300
         trim: true
       readonly: false
       required: true
@@ -13344,6 +13345,7 @@ fields:
       interface: input-multiline
       note: null
       options:
+        softLength: 300
         trim: true
       readonly: false
       required: true

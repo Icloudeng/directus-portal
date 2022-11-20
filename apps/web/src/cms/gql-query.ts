@@ -1,4 +1,4 @@
-import { Filter, Sort } from '@directus/sdk';
+import { Aggregate, Filter, Sort } from '@directus/sdk';
 
 import { cms_url } from './directus';
 
