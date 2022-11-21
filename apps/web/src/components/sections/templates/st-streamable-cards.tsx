@@ -1,3 +1,4 @@
+import Image from 'next/legacy/image';
 import { mut } from '@/cms/mut';
 import { STemplates_Props, ST_StreamableCard } from '@/cms/page-sections';
 import { RectCard } from '@/components/ui/cards/RectCard';
@@ -64,9 +65,10 @@ export function ST_StreamableCardsFC({
                         fallback={
                           <>
                             {item.image && (
-                              <img
-                                src={item.image.src}
+                              <Image
+                                src={item.image.src || ''}
                                 className='w-full h-full'
+                                layout='fill'
                               />
                             )}
                           </>

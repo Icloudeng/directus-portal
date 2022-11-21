@@ -6,6 +6,7 @@ import { MarketPlaceCard } from '@/components/ui/cards/MarketPlaceCard';
 import { HasSvgText } from '@/components/ui/HasSvgText';
 import { InputSearch } from '@/components/ui/inputs/InputSearch';
 import { useTranslation } from 'next-i18next';
+import Image from 'next/legacy/image';
 import { useCallback, useState } from 'react';
 
 export function ST_PlatformsFC({
@@ -45,12 +46,16 @@ export function ST_PlatformsFC({
             description: translations?.description,
             itemsNumber: cat.platforms?.length || 0,
             icon: (
-              <div className='w-4 h-4'>
+              <div className='w-4 h-4 relative'>
                 <HasSvgText
                   svgText={cat.icon_svg}
                   fallback={
                     cat.icon ? (
-                      <img src={cat.icon.src} className='w-full h-full' />
+                      <Image
+                        src={cat.icon.src || ''}
+                        layout='fill'
+                        className='w-full h-full'
+                      />
                     ) : (
                       <CatIcon />
                     )

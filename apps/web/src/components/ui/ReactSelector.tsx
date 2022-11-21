@@ -1,4 +1,5 @@
 import { MDWithAsset } from '@/types/directus';
+import Image from 'next/legacy/image';
 import React, { useState } from 'react';
 import Select from 'react-select';
 import AsyncSelect from 'react-select/async';
@@ -20,8 +21,18 @@ export function HasSvgOrImage({
 }) {
   return (
     <HasSvgText
-      className='inline-flex mr-2 w-4 h-4'
-      fallback={<>{icon && <img src={icon.src} className='w-full h-full' />}</>}
+      className='inline-flex mr-2 w-4 h-4 relative'
+      fallback={
+        <>
+          {icon && (
+            <Image
+              src={icon.src || ''}
+              layout='fill'
+              className='w-full h-full'
+            />
+          )}
+        </>
+      }
       svgText={icon_svg}
     />
   );
