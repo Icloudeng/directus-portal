@@ -24,10 +24,6 @@
 - include_tasks: cms-config.yml
 - include_tasks: web-config.yml
 
-- name: PM2 | unstartup Script
-  command: "pm2 unstartup systemd"
-  ignore_errors: true
-
 # CMS App
 #
 - name: CMS App | App bootstrap
