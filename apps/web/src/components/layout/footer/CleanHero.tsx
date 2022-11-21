@@ -10,7 +10,7 @@ export function CleanHero({
   return (
     <div
       className={`flex max-h-[1000px] bg-[#f5f7fa] ${
-        !noBottomSpace ? 'min-h-[350px]' : 'pt-[175px]'
+        !noBottomSpace ? 'min-h-[350px]' : 'pt-[175px] pb-2'
       } -mt-1`}
     >
       <div className='xl:max-w-[560px] lg:max-w-[480px] justify-center max-w-[460px] flex items-center flex-col mx-auto'>

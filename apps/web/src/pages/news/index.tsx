@@ -51,9 +51,11 @@ export default function Page({ news }: { news: MDNews[] }) {
           </div>
 
           <div className='mt-24'>
-            <div className='w-full xs:w-1/2 md:w-1/3 mx-auto'>
-              {data.length === 0 && <EmptySvg className='w-full h-full' />}
-            </div>
+            {data.length === 0 && (
+              <div className='w-full xs:w-1/2 md:w-1/3 mx-auto'>
+                <EmptySvg className='w-full h-full' />
+              </div>
+            )}
 
             <div className='cards--news flex flex-wrap'>
               {data.map(($new) => {
