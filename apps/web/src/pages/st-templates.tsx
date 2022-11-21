@@ -13,6 +13,7 @@ import {
   DumpGroupedLogos,
   DumpGuestQuestions,
   DumpHoverableMediaMenus,
+  DumpLatestBlog,
   DumpLatestNews,
   DumpMarkdown,
   DumpMediaTabs,
@@ -279,6 +280,22 @@ export default function Page() {
             sharedObject={{}}
           />
         </div>
+      </section>
+
+      <section className='py-14 x-container'>
+        <h3 className='my-9'>ST Latest News</h3>
+        <h4 className='my-3 mb-5'>
+          Blog Page:{' '}
+          <UnderlineLink href='/blog' className='text-primary-400'>
+            /blog
+          </UnderlineLink>
+        </h4>
+
+        <Sts.ST_LatestBlogFC
+          items={DumpLatestBlog}
+          sectionClass=''
+          sharedObject={{}}
+        />
       </section>
     </div>
   );

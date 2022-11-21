@@ -11,6 +11,7 @@ import type {
   ST_GroupedLogo,
   ST_GuestQuestion,
   ST_HoverableMediaMenu,
+  ST_LatestBlog,
   ST_LatestNew,
   ST_Markdown,
   ST_MediaTab,
@@ -2108,6 +2109,104 @@ export const DumpLatestNews: ST_LatestNew[] = [
           status: 'published',
           date_created: '2022-09-20T15:56:20.388Z',
           date_updated: '2022-09-29T05:43:00.239Z',
+        },
+      ],
+    },
+  },
+];
+
+export const DumpLatestBlog: ST_LatestBlog[] = [
+  {
+    id: '88',
+    collection: 'ST_LatestBlog',
+    item: {
+      limit: 3,
+      id: 'fa542b54-3ebc-4575-9775-3324c9b49501',
+      status: 'published',
+      date_created: '2022-11-21T05:35:21.678Z',
+      blogs: [
+        {
+          label: 'Top YouTube Channels for Developers from Icloudeng cloud',
+          tags: [],
+          slug: 'top-you-tube-channels-for-developers-from-serverspace-cloud',
+          image: {
+            id: '6cde7f02-4d95-4be3-b2d7-a6bd9266c6e7',
+            width: 1593,
+            height: 671,
+            src: 'https://flowbite.com/docs/images/blog/image-1.jpg',
+          },
+          translations: [
+            {
+              id: '3',
+              languages_code: {
+                code: 'en',
+                name: 'English',
+              },
+              markdown_content: '',
+              title: 'Top YouTube Channels for Developers from Icloudeng cloud',
+              summary:
+                'Recently, our team made a survey among top developers from the U.S. and Europe. One of the questions was about YouTube bloggers they subscribed to. We put together the answers and select IT Influencers who share video programming tutorials and thoughts on technology trends',
+            },
+          ],
+          id: '40fc89b6-af4a-42b9-a988-c2cd979902e3',
+          status: 'published',
+          date_created: '2022-11-21T05:17:37.132Z',
+          date_updated: '2022-11-21T05:30:50.489Z',
+        },
+        {
+          label: 'OpenVPN vs WireGuard: which VPN is better?',
+          tags: [],
+          slug: 'open-vpn-vs-wire-guard-which-vpn-is-better',
+          image: {
+            id: '2bf44a86-1a3d-4bb7-b053-ef422131cfe2',
+            width: 1591,
+            height: 670,
+            src: 'https://flowbite.com/docs/images/blog/image-2.jpg',
+          },
+          translations: [
+            {
+              id: '2',
+              languages_code: {
+                code: 'en',
+                name: 'English',
+              },
+              title: 'OpenVPN vs WireGuard: which VPN is better?',
+              markdown_content: '',
+              summary:
+                'We compared two popular VPN protocols for you according to four criteria: encryption, performance, privacy and compatibility. At the end of the article you will find guides on how to set it up',
+            },
+          ],
+          id: 'e71a9725-d8c1-4731-bd6f-6491519eb4be',
+          status: 'published',
+          date_created: '2022-11-21T05:15:52.662Z',
+        },
+        {
+          label: 'HostAdvice interview with Icloudeng',
+          tags: [],
+          slug: 'host-advice-interview-with-serverspace',
+          image: {
+            id: 'd033f099-7302-473c-87f7-bd17f6dc656d',
+            width: 1593,
+            height: 671,
+            src: 'https://flowbite.com/docs/images/blog/image-3.jpg',
+          },
+          translations: [
+            {
+              id: '1',
+              languages_code: {
+                code: 'en',
+                name: 'English',
+              },
+              title: 'HostAdvice interview with Icloudeng',
+              markdown_content: '',
+              summary:
+                'Hostadvice talk with Mr. Vitaliy Gritsay from Serverspace and learn more about our company.Grab your preferred drink and enjoy this interview.',
+            },
+          ],
+          id: '4187567a-58e6-4714-b91e-23b27045e4bc',
+          status: 'published',
+          date_created: '2022-11-21T05:14:10.396Z',
+          date_updated: '2022-11-21T05:31:08.738Z',
         },
       ],
     },

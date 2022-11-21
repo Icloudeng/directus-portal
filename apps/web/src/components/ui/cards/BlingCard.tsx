@@ -42,10 +42,10 @@ export const BlingCard = ({
           />
         </div>
         <div className='relative p-3 flex-1 max-h-[50%] overflow-hidden m-1'>
-          <h4 className='font-bold tracking-tight text-white max-h-14 overflow-hidden'>
+          <h4 className='font-bold tracking-tight text-white h-14 overflow-hidden'>
             {title}
           </h4>
-          <p className='font-normal text-sm text-gray-200 text-ellipsis overflow-hidden p-1 max-h-20'>
+          <p className='font-normal text-sm text-gray-200 text-ellipsis overflow-hidden  max-h-20'>
             {description}
           </p>
         </div>
