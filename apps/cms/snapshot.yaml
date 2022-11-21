@@ -1,5 +1,5 @@
 version: 1
-directus: 9.21.0
+directus: 9.20.4
 collections:
   - collection: Addresses
     meta:
