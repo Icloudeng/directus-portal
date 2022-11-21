@@ -108,7 +108,11 @@ const q_ST: Query = {
   [section_templates.st_clean_heros]: {
     __typeName: section_templates.st_clean_heros,
     __args: qWithPublishedStatus(),
-    image: qWithQueryAsset(),
+    image: qWithQueryAsset({
+      height: true,
+      width: true,
+      type: true,
+    }),
     image_svg: true,
     disposition: true,
     ...qWithTranslations({
@@ -253,7 +257,10 @@ const q_ST: Query = {
   [section_templates.st_cards]: {
     __typeName: section_templates.st_cards,
     __args: qWithPublishedStatus(),
-    image: qWithQueryAsset(),
+    image: qWithQueryAsset({
+      width: true,
+      height: true,
+    }),
     flexible_image: true,
     border_card: true,
     background_color: true,

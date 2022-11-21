@@ -5,6 +5,7 @@ import isSvg from 'is-svg';
 import Router from 'next/router';
 import { useEffect } from 'react';
 import { HasSvgText } from '@/components/ui/HasSvgText';
+import Image from 'next/legacy/image';
 
 export function ST_CleanHerosFC({
   items,
@@ -140,11 +141,24 @@ function Header({ item }: ST_CleanHero) {
 
       {hasImage && (
         <HasSvgText
-          fallback={
-            <>{image && <img className='w-full h-auto' src={image.src} />}</>
-          }
           svgText={image_svg}
-          className='lg:w-1/2 hidden lg:block st_flexible_icon'
+          className='lg:w-1/2 hidden lg:block st_flexible_icon relative'
+          fallback={
+            <>
+              {image &&
+                (image.height ? (
+                  <Image
+                    className='w-full h-auto'
+                    src={image.src!}
+                    height={image.height}
+                    width={image.width}
+                    layout='responsive'
+                  />
+                ) : (
+                  <img className='w-full h-auto' src={image.src} />
+                ))}
+            </>
+          }
         />
       )}
     </div>

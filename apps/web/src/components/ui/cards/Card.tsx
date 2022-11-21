@@ -1,5 +1,5 @@
 import { MDWithAsset, RepeaterBtn } from '@/types/directus';
-import Image from "next/legacy/image";
+import Image from 'next/legacy/image';
 import ButtonLink from '../links/ButtonLink';
 import UnstyledLink from '../links/UnstyledLink';
 
@@ -45,12 +45,15 @@ export function Card({
         </div>
       )}
       {flexible_image && (
-        <div className='flex-1 w-full mb-3'>
-          <img
+        <div className='flex-1 w-full mb-3 relative'>
+          <Image
             className={`h-full w-full ${
               border_card ? 'rounded-tl-xl rounded-tr-xl' : ''
             }`}
-            src={image.src}
+            src={image.src || ''}
+            height={image.height}
+            width={image.width}
+            layout='responsive'
             alt={title}
           />
         </div>

@@ -1,4 +1,5 @@
 import { STemplates_Props, ST_GroupedLogo } from '@/cms/page-sections';
+import Image from 'next/legacy/image';
 
 export function ST_GroupedLogosFC({ items }: STemplates_Props<ST_GroupedLogo>) {
   const grouped = items.reduce((acc, item) => {
@@ -38,7 +39,7 @@ function Logo({ item }: ST_GroupedLogo) {
   return (
     <div className='flex flex-col items-center justify-center gap-10'>
       <div className='relative h-auto min-w-[64px] min-h-[64px] max-w-[112px] p-2'>
-        <img
+        <Image
           className='image object-cover'
           src={image.src!}
           width={image.width}
