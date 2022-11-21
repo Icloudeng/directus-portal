@@ -66,12 +66,9 @@
 # Web App
 #
 - name: "Web App | delete .next folder"
-  ansible.builtin.file:
-    path: "{{ root_path }}/apps/web/.next"
-    state: absent
-    recurse: yes
-    force: yes
-  ignore_errors: true
+  command: "rm -rf .next/"
+  args:
+    chdir: "{{ root_path }}/apps/web"
 
 - name: "Web App | .env.local"
   template:
