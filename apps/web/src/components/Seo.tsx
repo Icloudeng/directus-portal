@@ -21,6 +21,7 @@ type SeoProps = {
   templateTitle?: string;
   dynamicPage?: MDPage;
   suffix?: string;
+  keywords?: string[];
 } & Partial<typeof defaultMeta>;
 
 export default function Seo({ dynamicPage, ...props }: SeoProps) {
@@ -41,11 +42,18 @@ export default function Seo({ dynamicPage, ...props }: SeoProps) {
   meta.siteName = shared?.CompanyDetails?.website_title || meta.siteName;
 
   meta['title'] =
-    $title || props.templateTitle
-      ? `${$title || props.templateTitle} | ${meta.siteName}${
+    props.templateTitle || $title
+      ? `${props.templateTitle || $title} | ${meta.siteName}${
           meta.suffix ? ' ' + meta.suffix : ''
         }`
       : meta.title;
+
+  const keywords =
+    page?.keywords && page.keywords.length > 0
+      ? page.keywords
+      : props.keywords && props.keywords.length > 0
+      ? props.keywords
+      : undefined;
 
   return (
     <Head>
@@ -53,9 +61,7 @@ export default function Seo({ dynamicPage, ...props }: SeoProps) {
       <meta name='robots' content={meta.robots} />
       <meta content={$description || meta.description} name='description' />
       <link rel='canonical' href={`${meta.url}${page?.url || router.asPath}`} />
-      {page?.keywords && page.keywords.length > 0 && (
-        <meta name='keywords' content={page.keywords.join(', ')} />
-      )}
+      {keywords && <meta name='keywords' content={keywords.join(', ')} />}
       {/* Open Graph */}
       <meta
         property='og:url'
@@ -68,7 +74,7 @@ export default function Seo({ dynamicPage, ...props }: SeoProps) {
         content={$description || meta.description}
       />
       <meta property='og:title' content={$title || meta.title} />
-      <meta property='og:image' content={$image?.src || meta.image} />
+      <meta property='og:image' content={meta.image || $image?.src} />
       {$image?.type && <meta property='og:image:type' content={$image?.type} />}
       {$image?.width && (
         <meta property='og:image:width' content={$image?.width.toString()} />
@@ -84,7 +90,7 @@ export default function Seo({ dynamicPage, ...props }: SeoProps) {
         name='twitter:description'
         content={$description || meta.description}
       />
-      <meta name='twitter:image' content={$image?.src || meta.image} />
+      <meta name='twitter:image' content={meta.image || $image?.src} />
       {meta.date && (
         <>
           <meta property='article:published_time' content={meta.date} />
