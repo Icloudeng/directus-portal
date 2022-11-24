@@ -4,13 +4,14 @@ import { useRouter } from 'next/router';
 import { useMut } from '@/cms/mut';
 import { MDPage } from '@/cms/items/types';
 import { useSharedData } from '@/app/store';
+import { COMPANY_NAME, WEBSITE_URL } from '@/app/constant/env';
 
 const defaultMeta = {
   title: 'Icloudeng',
   siteName: 'Icloudeng',
   description:
     'Cloud IT Engineering LTD, a giant cloud computing solution provider',
-  url: 'https://coding.icloudeng.xyz',
+  url: WEBSITE_URL || '',
   type: 'website',
   robots: 'follow, index',
   image: '/images/icloudeng-banner.jpg',
@@ -22,15 +23,19 @@ type SeoProps = {
   dynamicPage?: MDPage;
   suffix?: string;
   keywords?: string[];
+  pathname?: string;
 } & Partial<typeof defaultMeta>;
 
 export default function Seo({ dynamicPage, ...props }: SeoProps) {
   const router = useRouter();
   const page = useMut(dynamicPage);
-  const shared = useSharedData();
+  const sh = useSharedData();
+  const shared = useSharedData() as unknown as typeof sh | undefined;
+  const cdT = useMut(shared?.CompanyDetails);
 
   const $title = page?.translations?.title;
-  const $description = page?.translations?.description;
+  const $description =
+    page?.translations?.description || cdT?.translations?.slogan;
   const $image = page?.image;
 
   const meta = {
@@ -55,26 +60,23 @@ export default function Seo({ dynamicPage, ...props }: SeoProps) {
       ? props.keywords
       : undefined;
 
+  const url = `${meta.url}${page?.url || props.pathname || router.asPath}`;
+  const description = $description || meta.description;
+
   return (
     <Head>
       <title>{meta.title}</title>
       <meta name='robots' content={meta.robots} />
-      <meta content={$description || meta.description} name='description' />
-      <link rel='canonical' href={`${meta.url}${page?.url || router.asPath}`} />
+      <meta content={description} name='description' />
+      <link rel='canonical' href={url} />
       {keywords && <meta name='keywords' content={keywords.join(', ')} />}
       {/* Open Graph */}
-      <meta
-        property='og:url'
-        content={`${meta.url}${page?.url || router.asPath}`}
-      />
+      <meta property='og:url' content={url} />
       <meta property='og:type' content={meta.type} />
       <meta property='og:site_name' content={meta.siteName} />
-      <meta
-        property='og:description'
-        content={$description || meta.description}
-      />
+      <meta property='og:description' content={description} />
       <meta property='og:title' content={$title || meta.title} />
-      <meta property='og:image' content={meta.image || $image?.src} />
+      <meta property='og:image' content={$image?.src || meta.image} />
       {$image?.type && <meta property='og:image:type' content={$image?.type} />}
       {$image?.width && (
         <meta property='og:image:width' content={$image?.width.toString()} />
@@ -86,10 +88,7 @@ export default function Seo({ dynamicPage, ...props }: SeoProps) {
       <meta name='twitter:card' content='summary_large_image' />
       <meta name='twitter:site' content='@th_clarence' />
       <meta name='twitter:title' content={$title || meta.title} />
-      <meta
-        name='twitter:description'
-        content={$description || meta.description}
-      />
+      <meta name='twitter:description' content={description} />
       <meta name='twitter:image' content={meta.image || $image?.src} />
       {meta.date && (
         <>
@@ -102,7 +101,7 @@ export default function Seo({ dynamicPage, ...props }: SeoProps) {
           <meta
             name='author'
             property='article:author'
-            content='Cloud IT Engineering LTD'
+            content={COMPANY_NAME}
           />
         </>
       )}

@@ -13,3 +13,9 @@
     path: "{{ env_file }}"
     regexp: "^DIRECTUS_URL="
     line: "DIRECTUS_URL=https://{{ admin_domain }}/"
+
+- name: App WEB .env config | NEXT_PUBLIC_WEBSITE_URL
+  lineinfile:
+    path: "{{ env_file }}"
+    regexp: "^NEXT_PUBLIC_WEBSITE_URL="
+    line: "NEXT_PUBLIC_WEBSITE_URL=https://{{ domain }}/"

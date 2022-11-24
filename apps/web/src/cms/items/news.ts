@@ -129,8 +129,10 @@ export async function getGqlNewsBySlug(slug: string) {
   const news = res.data.news || [];
   qWithAssets(access_token, news, 'image');
   news.forEach(($new) => {
-    const author = $new.author ? $new.author[0].item : undefined;
-    author && qWithAsset(access_token, author, 'image');
+    if ($new.author) {
+      const author = $new.author[0]?.item;
+      author && qWithAsset(access_token, author, 'image');
+    }
   });
 
   return res;
