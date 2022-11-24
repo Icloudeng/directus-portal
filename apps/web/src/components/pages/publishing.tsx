@@ -1,4 +1,4 @@
-import { COMPANY_NAME, WEBSITE_URL } from '@/app/constant/env';
+import { COMPANY_NAME } from '@/app/constant/env';
 import { useSharedData } from '@/app/store';
 import { toLocaleDateString } from '@/app/utils/helpers';
 import { MDBlog, MDNews } from '@/cms/items/types';
@@ -69,7 +69,7 @@ export function Publishing({
                       <div className='bg-gray-100 w-16 h-16 relative rounded-[50%]'>
                         {author?.image && (
                           <Image
-                            src={author?.image.src!}
+                            src={author?.image.src || ''}
                             className='w-full h-full rounded-[50%]'
                             layout='fill'
                             objectFit='cover'
