@@ -39,27 +39,9 @@
     chdir: "{{ root_path }}/apps/cms"
     removes: "{{ root_path }}/apps/cms/snapshot.yaml"
 
-- name: CMS App | Directus Extensions Build
-  become: false
-  command: pnpm -r extension-build
-  ignore_errors: true
-  args:
-    chdir: "{{ root_path }}/apps/cms"
-
 - name: CMS App | Create App User
   become: false
   command: "node create-app-user.js"
-  args:
-    chdir: "{{ root_path }}/apps/cms"
-
-- name: CMS App | Delete old pm2 process
-  command: "pm2 delete {{ admin_domain }}"
-  args:
-    chdir: "{{ root_path }}/apps/cms"
-  ignore_errors: true
-
-- name: CMS App | Start the server
-  command: "pm2 start npm --name {{ admin_domain }} -- run start"
   args:
     chdir: "{{ root_path }}/apps/cms"
 
@@ -76,12 +58,26 @@
     dest: "{{ root_path }}/apps/web/.env.local"
     force: yes
 
-- name: Web App | Build client assets
+# Builder
+- name: Project Build | Build all app packages
   become: false
-  command: pnpm build
+  command: pnpm -r build
   args:
-    chdir: "{{ root_path }}/apps/web"
+    chdir: "{{ root_path }}"
 
+# CMS App PM2 restart process
+- name: CMS App | Delete old pm2 process
+  command: "pm2 delete {{ admin_domain }}"
+  args:
+    chdir: "{{ root_path }}/apps/cms"
+  ignore_errors: true
+
+- name: CMS App | Start the server
+  command: "pm2 start npm --name {{ admin_domain }} -- run start"
+  args:
+    chdir: "{{ root_path }}/apps/cms"
+
+# Web App PM2 restart process
 - name: Web App | Delete old pm2 process
   command: "pm2 delete {{ domain }}"
   args:

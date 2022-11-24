@@ -1,7 +1,7 @@
 import { FormEvent, useState } from 'react';
 import { useFetch } from './useFetch';
 
-export function useFormSubmit(url: string) {
+export function useFormSubmit(url: string, successTimeout = 1000 * 60) {
   const [errors, setErrors] = useState({});
   const [success, setSuccess] = useState(false);
   const { callFetch, loading } = useFetch();
@@ -25,7 +25,7 @@ export function useFormSubmit(url: string) {
           setErrors(json);
         } else if (res.ok) {
           setSuccess(true);
-          setTimeout(() => setSuccess(false), 1000 * 60);
+          setTimeout(() => setSuccess(false), successTimeout);
           form.forEach((_, key) => {
             (target.querySelector(`[name=${key}]`) as HTMLInputElement).value =
               '';

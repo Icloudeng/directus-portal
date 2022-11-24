@@ -24,6 +24,10 @@ module.exports = {
     domains: ['localhost', '127.0.0.1', 'flowbite.com', 'images.unsplash.com'],
   },
 
+  experimental: {
+    esmExternals: 'loose',
+  },
+
   publicRuntimeConfig: {
     directus_url: process.env.DIRECTUS_URL,
     cms_url: process.env.CMS_URL,

@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsup index.ts --dts",
-    "watch": "tsup index.ts --watch"
+    "dev": "tsup index.ts --dts --watch"
   },
   "keywords": [],
   "author": "",

@@ -1,9 +1,15 @@
 import { useTranslation } from 'next-i18next';
 
 import Button from '@/components/ui/buttons/Button';
+import { useFormSubmit } from '@/app/hooks/useFormSubmit';
+import { Spinner } from '@/components/ui/Spinner';
 
 export const Subscribe = () => {
   const { t } = useTranslation();
+  const { onSubmit, loading, success } = useFormSubmit(
+    '/api/newsletters/subscriptions',
+    1000 * 15
+  );
 
   return (
     <div className='flex flex-col gap-7 lg:flex-row items-center justify-center lg:gap-44 px-10 py-10'>
@@ -15,18 +21,41 @@ export const Subscribe = () => {
           {t('JOIN_MAIL_TEXT')}
         </p>
       </div>
-      <form className='flex flex-col ss:flex-row items-center gap-5'>
-        <input
-          placeholder={t('Enter your email')}
-          className='border-none font-extralight bg-transparent ring-1 ring-primary-400 rounded-sm h-12 max-w-[20rem] w-full px-2 font-base outline-none focus:ring-2'
-        />
-        <Button
-          type='button'
-          className='w-full ss:w-min flex items-center justify-center py-[.7rem] px-8 font-light bg-primary-400 rounded-sm hover:bg-primary-500'
+
+      <div className='flex flex-col'>
+        <form
+          onSubmit={onSubmit}
+          className='flex flex-col ss:flex-row items-center gap-5'
         >
-          {t('Subscribe')}
-        </Button>
-      </form>
+          <input
+            type='email'
+            placeholder={t('Enter your email')}
+            required
+            name='email'
+            className='border-none font-extralight bg-transparent ring-1 ring-primary-400 rounded-sm h-12 max-w-[20rem] w-full px-2 font-base outline-none focus:ring-2'
+          />
+          <div>
+            <Button
+              type='submit'
+              disabled={loading}
+              className='w-full ss:w-min flex items-center justify-center py-[.7rem] px-8 font-light bg-primary-400 rounded-sm hover:bg-primary-500'
+            >
+              {t('Subscribe')}
+              {loading && (
+                <span className='ml-1'>
+                  <Spinner />
+                </span>
+              )}
+            </Button>
+          </div>
+        </form>
+
+        {success && (
+          <div className='w-full text-center mt-2 text-green-500 lg:max-w-[400px]'>
+            {t('SUBSCRIPTION_SUCCESS')}(s).
+          </div>
+        )}
+      </div>
     </div>
   );
 };

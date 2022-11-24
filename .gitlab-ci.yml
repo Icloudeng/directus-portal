@@ -17,8 +17,6 @@ front-test:
     key: node_modules-cache
     paths:
       - node_modules/
-      - apps/web/node_modules/
-      - apps/cms/node_modules/
   only:
     refs:
       - main
