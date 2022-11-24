@@ -289,7 +289,11 @@ body {
       h4,
       h5,
       h6 {
-        @apply mb-3 text-center sd:text-start font-semibold tracking-tight text-gray-900;
+        @apply mb-3 text-start font-semibold tracking-tight text-gray-900;
+      }
+
+      p {
+        @apply text-[16px] lg:text-[18px] text-gray-900 leading-7;
       }
     }
 

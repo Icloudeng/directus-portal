@@ -12652,7 +12652,7 @@ fields:
       translations: null
       validation: null
       validation_message: null
-      width: full
+      width: half
     schema:
       comment: null
       data_type: character varying
@@ -12723,7 +12723,7 @@ fields:
       translations: null
       validation: null
       validation_message: null
-      width: full
+      width: half
     schema:
       comment: null
       data_type: character varying

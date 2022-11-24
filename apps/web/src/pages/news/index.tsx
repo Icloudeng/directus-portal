@@ -17,6 +17,7 @@ import { NewsCard } from '@/components/ui/cards/NewsCard';
 import { useCallback, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { LoadMore } from '@/components/ui/fetch/LoadMore';
+import { toLocaleDateString } from '@/app/utils/helpers';
 
 const LIMIT = 9;
 
@@ -69,11 +70,7 @@ export default function Page({ news }: { news: MDNews[] }) {
                       image={image}
                       title={translations?.title || ''}
                       summary={translations?.summary}
-                      date={new Date(date_created).toLocaleDateString('en-US', {
-                        year: 'numeric',
-                        month: 'long',
-                        day: 'numeric',
-                      })}
+                      date={toLocaleDateString(date_created)}
                       link={'/news/' + slug}
                     />
                   </div>
