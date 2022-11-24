@@ -45,54 +45,66 @@ export function Publishing({
       />
       <div className='bg-white '>
         <div className='x-container'>
-          <div className='py-5 w-full flex'>
-            <span className='capitalize bg-primary-500 text-white p-1 rounded-md text-xs'>
-              {t(type)}
-            </span>
-            <span className='text-2xl ml-3 block md:hidden'>
-              <FaRegShareSquare
-                onClick={onWebShare}
-                className='text-gray-600 cursor-pointer'
-              />
-            </span>
-          </div>
+          <div className='item--content-wrapper flex py-10 w-full md:mt-10'>
+            <div className='w-[110px] pt-1 md:block hidden'>
+              <div className='mb-3'>
+                <span className='capitalize bg-primary-500 text-white p-1 rounded-md text-xs'>
+                  {t(type)}
+                </span>
+              </div>
 
-          <div className='item--content-wrapper flex py-10 w-full'>
-            <div className='w-[110px] pt-4 md:block hidden'>
-              <span className='text-2xl'>
+              <div className='text-2xl'>
                 <FaRegShareSquare
                   onClick={onWebShare}
                   className='text-gray-600 cursor-pointer'
                 />
-              </span>
+              </div>
             </div>
             <div className='item--content sm:w-10/12'>
               {/* Author */}
-              <div className='flex sm:items-center sm:flex-row flex-col item--author'>
-                <div className='bg-gray-100 w-16 h-16 relative rounded-[50%]'>
-                  {author?.image && (
-                    <Image
-                      src={author?.image.src!}
-                      className='w-full h-full rounded-[50%]'
-                      layout='fill'
-                      objectFit='cover'
+              <div className='flex justify-between'>
+                <div className='flex sm:items-center sm:flex-row flex-col item--author flex-1'>
+                  <div className='flex justify-between'>
+                    <div className='flex-1'>
+                      <div className='bg-gray-100 w-16 h-16 relative rounded-[50%]'>
+                        {author?.image && (
+                          <Image
+                            src={author?.image.src!}
+                            className='w-full h-full rounded-[50%]'
+                            layout='fill'
+                            objectFit='cover'
+                          />
+                        )}
+                      </div>
+                    </div>
+                    <Share
+                      className='flex sm:hidden'
+                      onWebShare={onWebShare}
+                      type={type}
                     />
-                  )}
-                </div>
-                <div className='sm:ml-5'>
-                  <div className='text-lg font-semibold'>
-                    {author ? author.name : COMPANY_NAME}{' '}
                   </div>
-                  <div className='text-sm text-gray-500'>
-                    {date}{' '}
-                    {item.date_updated
-                      ? '| ' +
-                        t('Updated') +
-                        ' ' +
-                        toLocaleDateString(item.date_updated)
-                      : ''}
+
+                  <div className='sm:ml-5'>
+                    <div className='text-lg font-semibold'>
+                      {author ? author.name : COMPANY_NAME}{' '}
+                    </div>
+                    <div className='text-sm text-gray-500'>
+                      {date}{' '}
+                      {item.date_updated
+                        ? '| ' +
+                          t('Updated') +
+                          ' ' +
+                          toLocaleDateString(item.date_updated)
+                        : ''}
+                    </div>
                   </div>
                 </div>
+
+                <Share
+                  className='hidden sm:flex md:hidden'
+                  onWebShare={onWebShare}
+                  type={type}
+                />
               </div>
 
               {/* Content */}
@@ -121,5 +133,32 @@ export function Publishing({
         </div>
       </div>
     </>
+  );
+}
+
+function Share({
+  type,
+  onWebShare,
+  className = 'flex md:hidden',
+}: {
+  type: string;
+  onWebShare: any;
+  className: string;
+}) {
+  const { t } = useTranslation();
+  return (
+    <div className={className}>
+      <div>
+        <span className='capitalize bg-primary-500 text-white p-1 rounded-md text-xs'>
+          {t(type)}
+        </span>
+      </div>
+      <span className='text-2xl ml-3'>
+        <FaRegShareSquare
+          onClick={onWebShare}
+          className='text-gray-600 cursor-pointer'
+        />
+      </span>
+    </div>
   );
 }
