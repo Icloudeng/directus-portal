@@ -35,7 +35,9 @@ export default async function handle(
       subscriber,
       success: true,
     });
-  } catch (error) {}
+  } catch (error: any) {
+    console.log(error?.message || '');
+  }
 
   res.status(200).json({
     subscriber: null,
