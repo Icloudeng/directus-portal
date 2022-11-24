@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { validateForm } from '@/app/utils/validations';
-import ListmonkClient from '@listmonk';
+import ListmonkClient from 'listmonk-client';
 
 const BASE_URL = process.env.LISTMONK_BASE_URL || '';
 const ADMIN_USERNAME = process.env.LISTMONK_ADMIN_USERNAME || '';
