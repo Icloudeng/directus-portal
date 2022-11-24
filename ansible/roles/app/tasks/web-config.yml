@@ -19,3 +19,9 @@
     path: "{{ env_file }}"
     regexp: "^NEXT_PUBLIC_WEBSITE_URL="
     line: "NEXT_PUBLIC_WEBSITE_URL=https://{{ domain }}/"
+
+- name: "Web App (Templates) | .env.local"
+  template:
+    src: .env.local-web
+    dest: "{{ root_path }}/apps/web/.env.local"
+    force: yes

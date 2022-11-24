@@ -24,8 +24,19 @@
 - include_tasks: cms-config.yml
 - include_tasks: web-config.yml
 
+# Project Build
+- name: "Web App (Project Build) | delete .next folder"
+  command: "rm -rf .next/"
+  args:
+    chdir: "{{ root_path }}/apps/web"
+
+- name: Project Build | Build all app packages
+  become: false
+  command: pnpm -r build
+  args:
+    chdir: "{{ root_path }}"
+
 # CMS App
-#
 - name: CMS App | App bootstrap
   become: false
   command: pnpm run bootstrap
@@ -39,19 +50,13 @@
     chdir: "{{ root_path }}/apps/cms"
     removes: "{{ root_path }}/apps/cms/snapshot.yaml"
 
-- name: CMS App | Directus Extensions Build
-  become: false
-  command: pnpm -r extension-build
-  ignore_errors: true
-  args:
-    chdir: "{{ root_path }}/apps/cms"
-
 - name: CMS App | Create App User
   become: false
   command: "node create-app-user.js"
   args:
     chdir: "{{ root_path }}/apps/cms"
 
+# CMS App PM2 restart process
 - name: CMS App | Delete old pm2 process
   command: "pm2 delete {{ admin_domain }}"
   args:
@@ -63,25 +68,7 @@
   args:
     chdir: "{{ root_path }}/apps/cms"
 
-# Web App
-#
-- name: "Web App | delete .next folder"
-  command: "rm -rf .next/"
-  args:
-    chdir: "{{ root_path }}/apps/web"
-
-- name: "Web App | .env.local"
-  template:
-    src: .env.local-web
-    dest: "{{ root_path }}/apps/web/.env.local"
-    force: yes
-
-- name: Web App | Build client assets
-  become: false
-  command: pnpm build
-  args:
-    chdir: "{{ root_path }}/apps/web"
-
+# Web App PM2 restart process
 - name: Web App | Delete old pm2 process
   command: "pm2 delete {{ domain }}"
   args:
