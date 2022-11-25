@@ -1,5 +1,6 @@
 import { defineEndpoint } from "@directus/extensions-sdk";
 import type { Filter } from "@directus/sdk";
+import { CMS_MODELS } from "@apps/contracts";
 
 type Handler = (
   req: {
@@ -61,20 +62,23 @@ export default defineEndpoint((router, { services, exceptions }) => {
 
   router.get(
     "/platforms",
-    searchable_handler("Platforms", $common({ filter: {} }))
+    searchable_handler(CMS_MODELS.platforms, $common({ filter: {} }))
   );
   router.get(
     "/platform-categories",
-    searchable_handler("PlatformCategories", $common({ filter: {} }))
+    searchable_handler(CMS_MODELS.platform_categories, $common({ filter: {} }))
   );
   router.get(
     "/page-sections-categories",
-    searchable_handler("PageSectionsCategories", $common({ filter: {} }))
+    searchable_handler(
+      CMS_MODELS.generics.page_sections_categories,
+      $common({ filter: {} })
+    )
   );
   router.get(
     "/page-sections",
     searchable_handler(
-      "PageSections",
+      CMS_MODELS.generics.page_sections,
       $common({ sort: ["label"], fields: ["id", "label"], filter: {} }),
       "label"
     )

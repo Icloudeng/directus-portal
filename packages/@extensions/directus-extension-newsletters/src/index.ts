@@ -1,11 +1,16 @@
-import { defineHook } from '@directus/extensions-sdk';
+import { defineHook } from "@directus/extensions-sdk";
+import { CMS_MODELS } from "@apps/contracts";
 
-export default defineHook(({ filter, action }) => {
-	filter('items.create', () => {
-		console.log('Creating Item!');
-	});
+export default defineHook(({ action }) => {
+  action(`${CMS_MODELS.news}.items.create`, (input) => {
+    console.log("Item created! fdsf sdf");
 
-	action('items.create', () => {
-		console.log('Item created!');
-	});
+    return input;
+  });
+
+  action(`${CMS_MODELS.news}.items.update`, (input) => {
+    console.log("Item update!", input);
+
+    return input;
+  });
 });
