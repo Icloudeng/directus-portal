@@ -5,6 +5,7 @@ import { MDBlog, MDNews } from '@/cms/items/types';
 import { useMut } from '@/cms/mut';
 import { useTranslation } from 'next-i18next';
 import Image from 'next/legacy/image';
+import Link from 'next/link';
 import { useCallback } from 'react';
 import { FaRegShareSquare } from 'react-icons/fa';
 import Seo from '../Seo';
@@ -18,7 +19,7 @@ export function Publishing({
   type: 'TOPBAR_NEWS' | 'Blog';
 }) {
   const { t } = useTranslation();
-  const author = item.author ? item.author[0]?.item : undefined;
+  const author = item.author;
   const { translations } = useMut(item);
   const date = toLocaleDateString(item.date_created);
   const { CompanyDetails } = useSharedData();
@@ -111,15 +112,20 @@ export function Publishing({
               <div className='mt-8'>
                 <h1 className='mb-16'>{translations?.title}</h1>
                 {item.image && (
-                  <div className='relative w-full mb-16'>
+                  <Link
+                    href={item.image.src || ''}
+                    target='_blank'
+                    className='relative w-full h-[284px] sm:h-[384px] lg:h-[484px] mb-16 block'
+                  >
                     <Image
-                      src={item.image.src!}
+                      src={item.image.src || ''}
                       height={item.image.height}
                       width={item.image.width}
-                      layout='responsive'
-                      className='w-full h-auto'
+                      layout='fill'
+                      className='w-full h-full'
+                      objectFit='cover'
                     />
-                  </div>
+                  </Link>
                 )}
                 <p className='mb-10'>{translations?.summary}</p>
                 <div className='markdown__content default__typo mb-4 w-full'>

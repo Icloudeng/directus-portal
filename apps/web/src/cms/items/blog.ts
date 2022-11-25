@@ -96,10 +96,7 @@ export async function getGqlBlogBySlug(slug: string) {
   const blogs = res.data.blogs || [];
   qWithAssets(access_token, blogs, 'image');
   blogs.forEach((blog) => {
-    if (blog.author) {
-      const author = blog.author[0]?.item;
-      author && qWithAsset(access_token, author, 'image');
-    }
+    blog.author && qWithAsset(access_token, blog.author, 'image');
   });
 
   return res;

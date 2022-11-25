@@ -31,7 +31,7 @@ type NewsField = {
   tags: string[];
   slug: string;
   image?: MDWithAsset;
-  author?: MDHasM2A<MDAuthor, typeof CMS_MODELS['authors']>[];
+  author?: MDAuthor;
 };
 
 export type MDNews = MDWithTranslation<NewsTransField> & NewsField & DRTStatus;

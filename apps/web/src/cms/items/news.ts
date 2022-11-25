@@ -21,21 +21,15 @@ export const newsQuery = {
     height: true,
   }),
   author: {
-    id: true,
-    collection: true,
-    item: {
-      __on: {
-        __typeName: CMS_MODELS.authors,
-        __args: qWithPublishedStatus(),
-        name: true,
-        image: qWithQueryAsset(),
-        twitter_link: true,
-        github_link: true,
-        facebook_link: true,
-        instagram_link: true,
-        ...qWithStatus,
-      },
-    },
+    __typeName: CMS_MODELS.authors,
+    __args: qWithPublishedStatus(),
+    name: true,
+    image: qWithQueryAsset(),
+    twitter_link: true,
+    github_link: true,
+    facebook_link: true,
+    instagram_link: true,
+    ...qWithStatus,
   },
   ...qWithTranslations({
     title: true,
@@ -129,10 +123,7 @@ export async function getGqlNewsBySlug(slug: string) {
   const news = res.data.news || [];
   qWithAssets(access_token, news, 'image');
   news.forEach(($new) => {
-    if ($new.author) {
-      const author = $new.author[0]?.item;
-      author && qWithAsset(access_token, author, 'image');
-    }
+    $new.author && qWithAsset(access_token, $new.author, 'image');
   });
 
   return res;
