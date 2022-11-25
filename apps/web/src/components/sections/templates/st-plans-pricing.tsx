@@ -1,4 +1,4 @@
-import { STemplates_Props, ST_PlansPricing } from '@/cms/page-sections';
+import { STemplates_Props, ST_PlansPricing } from '@apps/contracts';
 import { HasPlansPricing } from '../shared/pricing/HasPlansPricing';
 
 export function ST_PlansPricingFC({

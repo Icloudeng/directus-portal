@@ -1,6 +1,6 @@
 import { useSharedData } from '@/app/store';
 import { mut } from '@/cms/mut';
-import { STemplates_Props, ST_LatestBlog } from '@/cms/page-sections';
+import { STemplates_Props, ST_LatestBlog } from '@apps/contracts';
 import { BlingCard } from '@/components/ui/cards/BlingCard';
 
 export function ST_LatestBlogFC({ items }: STemplates_Props<ST_LatestBlog>) {

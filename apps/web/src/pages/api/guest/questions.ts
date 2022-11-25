@@ -1,6 +1,6 @@
 import { validateForm } from '@/app/utils/validations';
 import { storeGuestQuestion } from '@/cms/items';
-import { GuestQuestion } from '@/cms/items/types';
+import { GuestQuestion } from '@apps/contracts';
 import { NextApiRequest, NextApiResponse } from 'next';
 
 export default async function handle(

@@ -3,8 +3,8 @@ import {
   ISharedObject,
   M2APageSection,
   STemplates_Props,
-} from '@/cms/page-sections';
-import { CMS_MODELS } from '@/app/constant/cms';
+} from '@apps/contracts';
+import { CMS_MODELS } from '@apps/contracts';
 import { VALID_CSS } from '@/app/utils/regex';
 import { testHexColor } from '@/app/utils/tests';
 import isSvg from 'is-svg';

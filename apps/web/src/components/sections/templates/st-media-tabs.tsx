@@ -1,12 +1,12 @@
 import { mut } from '@/cms/mut';
-import { STemplates_Props, ST_MediaTab } from '@/cms/page-sections';
+import { STemplates_Props, ST_MediaTab } from '@apps/contracts';
 import { HasMediaPlayer } from '@/components/ui/HasMediaPlayer';
 import {
   MediaTabs,
   MediaTabsPane,
 } from '@/components/ui/media-tabs/media-tabs';
 import { useSharedData } from '@/app/store';
-import { MDWithAsset } from '@/types/directus';
+import { MDWithAsset } from '@apps/contracts';
 
 function HasPlayer({
   media,

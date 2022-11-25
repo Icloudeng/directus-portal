@@ -8,7 +8,7 @@ import { CleanHero } from '@/components/layout/footer/CleanHero';
 import { useTranslation } from 'next-i18next';
 import capitalize from 'lodash/capitalize';
 import { getGqlListNewsQuery } from '@/cms/items';
-import { MDNews } from '@/cms/items/types';
+import { MDNews } from '@apps/contracts';
 import { SearchForm } from '@/components/ui/form-control/SearchFrom';
 import EmptySvg from '~/svg/empty.svg';
 import { useSharedData } from '@/app/store';

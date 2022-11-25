@@ -1,6 +1,6 @@
 import { useSharedData } from '@/app/store';
 import { mut } from '@/cms/mut';
-import { STemplates_Props, ST_Chart } from '@/cms/page-sections';
+import { STemplates_Props, ST_Chart } from '@apps/contracts';
 import { MarkdownContent } from '@/components/ui/react-markdown/MarkdownContent';
 import dynamic from 'next/dynamic';
 

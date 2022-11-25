@@ -32,7 +32,7 @@
 
 - name: Project Build | Build all app packages
   become: false
-  command: pnpm -r build
+  command: pnpm run build
   args:
     chdir: "{{ root_path }}"
 

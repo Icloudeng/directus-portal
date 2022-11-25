@@ -1,4 +1,4 @@
-import { MDWithAsset } from '@/types/directus';
+import { MDWithAsset } from '@apps/contracts';
 import Image from "next/legacy/image";
 import { BiUser } from 'react-icons/bi';
 

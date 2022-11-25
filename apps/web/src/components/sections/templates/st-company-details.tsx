@@ -1,5 +1,5 @@
 import { useSharedData } from '@/app/store';
-import { STemplates_Props, ST_CompanyDetail } from '@/cms/page-sections';
+import { STemplates_Props, ST_CompanyDetail } from '@apps/contracts';
 import UnderlineLink from '@/components/ui/links/UnderlineLink';
 import { useTranslation } from 'next-i18next';
 import Image from "next/legacy/image";

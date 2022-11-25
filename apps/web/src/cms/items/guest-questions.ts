@@ -1,6 +1,6 @@
-import { CMS_MODELS } from '@/app/constant/cms';
+import { CMS_MODELS } from '@apps/contracts';
 import { getDirectusClient } from '../directus';
-import { GuestQuestion } from './types';
+import { GuestQuestion } from '@apps/contracts';
 
 type Md = typeof CMS_MODELS.guest_questions;
 export async function storeGuestQuestion(data: GuestQuestion) {

@@ -1,4 +1,4 @@
-import { STemplates_Props, ST_Gallery } from '@/cms/page-sections';
+import { STemplates_Props, ST_Gallery } from '@apps/contracts';
 import {
   DotButton,
   NextButton,

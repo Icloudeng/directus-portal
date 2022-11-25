@@ -1,6 +1,6 @@
 import UnstyledLink from '@/components/ui/links/UnstyledLink';
 
-import { MDFooterLink } from '@/cms/items/types';
+import { MDFooterLink } from '@apps/contracts';
 import { useMut } from '@/cms/mut';
 
 export const FooterItemLinks = ({

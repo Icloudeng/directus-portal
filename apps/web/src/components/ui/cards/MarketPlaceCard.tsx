@@ -2,7 +2,7 @@ import Image from "next/legacy/image";
 
 import ButtonLink from '@/components/ui/links/ButtonLink';
 import { HasSvgText } from '../HasSvgText';
-import { MDWithAsset } from '@/types/directus';
+import { MDWithAsset } from '@apps/contracts';
 import UnstyledLink from '../links/UnstyledLink';
 import UnderlineLink from '../links/UnderlineLink';
 

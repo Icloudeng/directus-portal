@@ -2,7 +2,7 @@ import { useTranslation } from 'next-i18next';
 
 import { ReactSelector } from '@/components/ui/ReactSelector';
 
-import { MDFixedPlan, MDMachineTemplate } from '@/cms/items/types';
+import { MDFixedPlan, MDMachineTemplate } from '@apps/contracts';
 import { getMachineTemplateOptions } from './hooks';
 import { useSharedData } from '@/app/store';
 import { useMut } from '@/cms/mut';

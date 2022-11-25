@@ -9,12 +9,12 @@ import UnstyledLink from '../../ui/links/UnstyledLink';
 import { useOutsideClick } from '@/app/hooks/useOutsideClick';
 import { useSharedData } from '@/app/store';
 import { useMut } from '@/cms/mut';
-import { I_MDWithUserTranslation } from '@/types/directus';
+import { I_MDWithUserTranslation } from '@apps/contracts';
 import {
   MDNavbarLink,
   NavbarLinkSubmenu,
   NavbarLinkSubmenuItem,
-} from '@/cms/items/types';
+} from '@apps/contracts';
 import { HasSvgText } from '../../ui/HasSvgText';
 import { useTranslation } from 'next-i18next';
 import { Router } from 'next/router';

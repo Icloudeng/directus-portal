@@ -1,5 +1,5 @@
 import { useMut } from '@/cms/mut';
-import type { STemplates_Props, ST_Value } from '@/cms/page-sections';
+import type { STemplates_Props, ST_Value } from '@apps/contracts';
 import { HasSvgText } from '@/components/ui/HasSvgText';
 import { testHexColor } from '@/app/utils/tests';
 

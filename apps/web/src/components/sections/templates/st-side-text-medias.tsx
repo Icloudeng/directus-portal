@@ -1,5 +1,5 @@
 import { useMut } from '@/cms/mut';
-import { STemplates_Props, ST_SideTextMedia } from '@/cms/page-sections';
+import { STemplates_Props, ST_SideTextMedia } from '@apps/contracts';
 import { HasMediaPlayer } from '@/components/ui/HasMediaPlayer';
 import ButtonLink from '@/components/ui/links/ButtonLink';
 

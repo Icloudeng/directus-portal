@@ -1,7 +1,7 @@
 import Image from 'next/legacy/image';
 
 import UnstyledLink from '@/components/ui/links/UnstyledLink';
-import { MDWithAsset } from '@/types/directus';
+import { MDWithAsset } from '@apps/contracts';
 
 type ICategoryCard = {
   link: string;

@@ -2,7 +2,7 @@ import {
   MDFlexiblePlan,
   MDMachineTemplate,
   MDPlatform,
-} from '@/cms/items/types';
+} from '@apps/contracts';
 import { HasSvgOrImage } from '@/components/ui/ReactSelector';
 import React, {
   useCallback,

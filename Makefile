@@ -48,7 +48,7 @@ postgres-docker:
 # ============================
 .PHONY: dev
 dev:
-	@pnpm -r dev
+	@pnpm run dev
 
 # ============================
 # Deployment

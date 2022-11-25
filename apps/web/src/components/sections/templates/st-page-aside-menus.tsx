@@ -1,5 +1,5 @@
 import { mut } from '@/cms/mut';
-import { STemplates_Props, ST_PageAsideMenu } from '@/cms/page-sections';
+import { STemplates_Props, ST_PageAsideMenu } from '@apps/contracts';
 import {
   AsideMenu,
   AsideMenuContent,

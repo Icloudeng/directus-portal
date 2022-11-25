@@ -16,8 +16,8 @@ import { Submenu } from './components/SubMenu';
 
 import Logo from '~/images/icloudenglogo.png';
 import { useTranslation } from 'next-i18next';
-import type { I_MDWithUserTranslation } from '@/types/directus';
-import type { MDNavbarLink } from '@/cms/items/types';
+import type { I_MDWithUserTranslation } from '@apps/contracts';
+import type { MDNavbarLink } from '@apps/contracts';
 
 export const Navbar = ({ whiteNav }: { whiteNav?: boolean }) => {
   const pagePosition = useScrollPosition();

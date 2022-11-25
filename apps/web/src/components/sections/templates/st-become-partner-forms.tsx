@@ -1,4 +1,4 @@
-import { STemplates_Props, ST_BecomePartnerForm } from '@/cms/page-sections';
+import { STemplates_Props, ST_BecomePartnerForm } from '@apps/contracts';
 import { BecomePartner } from '../shared/become-partner/BecomePartner';
 
 export function ST_BecomePartnerFormsFC(

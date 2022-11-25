@@ -1,6 +1,6 @@
 import { useSharedData } from '@/app/store';
 
-import { MDWithTranslation, MDWithUserTranslation } from '@/types/directus';
+import { MDWithTranslation, MDWithUserTranslation } from '@apps/contracts';
 
 type ReturnType<P> = P extends undefined
   ? MDWithUserTranslation<Exclude<P, 'undefined'>> | undefined

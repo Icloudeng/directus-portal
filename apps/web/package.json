@@ -1,5 +1,5 @@
 {
-  "name": "icloudeng",
+  "name": "web",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -50,7 +50,8 @@
     "remark-gfm": "^3.0.1",
     "remark-html": "^15.0.1",
     "tailwind-merge": "^1.5.1",
-    "listmonk-client": "workspace:*"
+    "listmonk-client": "workspace:*",
+    "@apps/contracts": "workspace:*"
   },
   "devDependencies": {
     "@commitlint/cli": "^16.3.0",

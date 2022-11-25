@@ -1,4 +1,4 @@
-import { MDWithPoint, MDWithPointCoordinated } from '@/types/directus';
+import { MDWithPoint, MDWithPointCoordinated } from '@apps/contracts';
 import type { LatLngExpression, LatLngLiteral, LatLngTuple } from 'leaflet';
 import {
   MapContainer,

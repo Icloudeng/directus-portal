@@ -1,5 +1,5 @@
 import { mut } from '@/cms/mut';
-import { STemplates_Props, ST_NavTab } from '@/cms/page-sections';
+import { STemplates_Props, ST_NavTab } from '@apps/contracts';
 import { MarkdownContent } from '@/components/ui/react-markdown/MarkdownContent';
 import { Tabs, TabsPane } from '@/components/ui/tabs/tabs';
 import { useSharedData } from '@/app/store';

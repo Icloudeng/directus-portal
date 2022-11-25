@@ -2,7 +2,7 @@ import { GetServerSidePropsContext } from 'next';
 import Layout from '@/components/layout/Layout';
 import { getServerSideTranslations } from '@/app/utils/server-translation';
 import { getGqlNewsBySlug } from '@/cms/items';
-import { MDNews } from '@/cms/items/types';
+import { MDNews } from '@apps/contracts';
 
 import { Publishing } from '@/components/pages/publishing';
 

@@ -1,5 +1,5 @@
 import { useMut } from '@/cms/mut';
-import { STemplates_Props, ST_SimpleCardLink } from '@/cms/page-sections';
+import { STemplates_Props, ST_SimpleCardLink } from '@apps/contracts';
 import Button from '@/components/ui/buttons/Button';
 import UnstyledLink from '@/components/ui/links/UnstyledLink';
 

@@ -1,4 +1,4 @@
-import { ChartDataSetData, ST_Chart } from '@/cms/page-sections';
+import { ChartDataSetData, ST_Chart } from '@apps/contracts';
 import { useMemo } from 'react';
 import { AxisOptions, Chart, UserSerie } from 'react-charts';
 import { stackOffsetWiggle } from 'd3-shape';

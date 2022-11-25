@@ -1,4 +1,4 @@
-import type { STemplates_Props, ST_SidedContent } from '@/cms/page-sections';
+import type { STemplates_Props, ST_SidedContent } from '@apps/contracts';
 import Image from "next/legacy/image";
 import { useMut } from '@/cms/mut';
 import { MarkdownContent } from '@/components/ui/react-markdown/MarkdownContent';

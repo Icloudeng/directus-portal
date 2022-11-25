@@ -52,7 +52,7 @@ To start the development server run the following command on your terminal
 
 - `make postgres-docker` mount database container
 - `pnpm -r bootstrap` bootstrap cms configuration (To run once)
-- `make dev` start development servers for (cms: http://localhost:8055/ and web: http://localhost:3000/)
+- `pnpm run dev` start development servers for (cms: http://localhost:8055/ and web: http://localhost:3000/)
 
 
 ## Test and Deploy

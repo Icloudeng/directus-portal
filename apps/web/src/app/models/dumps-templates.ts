@@ -28,8 +28,8 @@ import type {
   ST_TimelineRange,
   ST_TransformedImageCarousel,
   ST_Value,
-} from '@/cms/page-sections';
-import type { DRTStatus } from '@/types/directus';
+} from '@apps/contracts';
+import type { DRTStatus } from '@apps/contracts';
 
 const getId = () => `${Math.random() * 10 ** 17}`;
 const dumpDRTStatus: () => DRTStatus = () => ({

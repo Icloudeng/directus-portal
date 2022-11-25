@@ -1,5 +1,5 @@
 import { useMut } from '@/cms/mut';
-import type { STemplates_Props, ST_CleanHero } from '@/cms/page-sections';
+import type { STemplates_Props, ST_CleanHero } from '@apps/contracts';
 import ButtonLink from '@/components/ui/links/ButtonLink';
 import isSvg from 'is-svg';
 import Router from 'next/router';

@@ -19,6 +19,8 @@
 	"devDependencies": {
 		"@directus/extensions-sdk": "9.20.4",
 		"@types/node": "^18.11.2",
-		"typescript": "^4.8.4"
+		"typescript": "^4.8.4",
+		"@directus/sdk": "^10.1.5",
+		"@apps/contracts": "workspace:*"
 	}
 }

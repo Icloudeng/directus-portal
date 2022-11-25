@@ -1,14 +1,13 @@
-import type { ID } from '@directus/sdk';
+import type { ID } from "@directus/sdk";
 
 import type {
   DRTStatus,
   MDWithAsset,
   MDWithPoint,
   MDWithTranslation,
-  MDHasM2A,
-} from '@/types/directus';
-import type { M2APageSection, M2APageSectionReusable } from '../page-sections';
-import type { CMS_MODELS } from '@/app/constant/cms';
+} from "./base";
+import { CMS_MODELS } from "./constants";
+import { M2APageSection, M2APageSectionReusable } from "./m2a";
 
 // --------------- language model types -------------
 
@@ -34,14 +33,20 @@ type NewsField = {
   author?: MDAuthor;
 };
 
-export type MDNews = MDWithTranslation<NewsTransField> & NewsField & DRTStatus;
+type MDNewsBase = MDWithTranslation<NewsTransField> & NewsField & DRTStatus;
 
-export type MDTopbarNew = Pick<DRTStatus, 'id' | 'date_created' | 'status'> &
-  Pick<NewsField, 'slug'> &
-  MDWithTranslation<Pick<NewsTransField, 'title'>>;
+export type MDNews = Omit<MDNewsBase, "status"> & {
+  status: "published" | "draft" | "archived" | "mailer";
+  transfer_initiated?: boolean;
+  published_mailer?: boolean;
+};
+
+export type MDTopbarNew = Pick<DRTStatus, "id" | "date_created" | "status"> &
+  Pick<NewsField, "slug"> &
+  MDWithTranslation<Pick<NewsTransField, "title">>;
 
 //   --------------------- Blog ----------------------- //
-export type MDBlog = MDNews & { image: MDWithAsset };
+export type MDBlog = MDNewsBase & { image: MDWithAsset };
 
 // ----------------------- News or Blog authers -----------------------//
 export type MDAuthor = {
@@ -120,7 +125,7 @@ type MDCompanyDetailField = {
   image?: MDWithAsset;
   addresses: MDAddress[];
   socials: MDSocial[];
-  currency: '$' | '€' | string;
+  currency: "$" | "€" | string;
 };
 
 type MDCompanyDetailFieldTrans = {
@@ -179,7 +184,7 @@ export type MDPage<PS = false> = {
 export type MDHomePageHero = {
   image: MDWithAsset;
   images: { id: ID; directus_files_id: MDWithAsset }[];
-  disposition: 'text_left' | 'text_right';
+  disposition: "text_left" | "text_right";
 } & MDWithTranslation<{
   title: string;
   description: string;
@@ -213,7 +218,7 @@ export type MDFlexiblePlan = {
 
 export type MDFixedPlan = {
   platforms: { platform: string }[];
-  type: 'basic' | 'extended' | 'pro';
+  type: "basic" | "extended" | "pro";
   monthly_reduction: number;
   ram: number;
   cpu: number;
@@ -248,8 +253,8 @@ export type MDPlatform = {
   slug: string;
   icon: MDWithAsset;
   icon_svg?: string;
-  category?: Partial<Pick<MDPlatformCategory, 'id' | 'name'>> &
-    Pick<MDPlatformCategory, 'translations'>;
+  category?: Partial<Pick<MDPlatformCategory, "id" | "name">> &
+    Pick<MDPlatformCategory, "translations">;
   ram: number;
   cpu: number;
   ssd: number;
