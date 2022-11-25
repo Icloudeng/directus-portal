@@ -4,6 +4,7 @@ import { MDPlansComparison } from '@/cms/items/types';
 
 import { CheckCircle } from '../../../ui/CheckCircle';
 import { useMut } from '@/cms/mut';
+import { useSharedData } from '@/app/store';
 
 export const PlansComparisons = ({
   plans_comparisons,
@@ -57,6 +58,9 @@ export const PlansComparisons = ({
 const hasCheck = (type: string) => type === 'checked' || type === 'unchecked';
 function Comparison({ item }: { item: MDPlansComparison }) {
   const { translations, basic, extended, pro } = useMut(item);
+  const { CompanyDetails } = useSharedData();
+  const currency = CompanyDetails?.currency;
+
   return (
     <tr>
       <td className='min-w-[5rem] py-2 pr-2 text-xs leading-6 whitespace-nowrap border-b border-slate-200'>
@@ -64,17 +68,25 @@ function Comparison({ item }: { item: MDPlansComparison }) {
       </td>
       <td className='min-w-[5rem] py-2 pr-2 text-xs text-center leading-6 whitespace-nowrap border-b border-slate-200'>
         {hasCheck(basic) && <CheckCircle isChecked={basic === 'checked'} />}
-        {!hasCheck(basic) && <span>{basic}</span>}
+        {!hasCheck(basic) && (
+          <span>{isNaN(+basic.trim()) ? basic : `${currency}${basic}`}</span>
+        )}
       </td>
       <td className='min-w-[5rem] py-2 pr-2 text-xs text-center leading-6 whitespace-nowrap border-b border-slate-200'>
         {hasCheck(extended) && (
           <CheckCircle isChecked={extended === 'checked'} />
         )}
-        {!hasCheck(extended) && <span>{extended}</span>}
+        {!hasCheck(extended) && (
+          <span>
+            {isNaN(+extended.trim()) ? extended : `${currency}${extended}`}
+          </span>
+        )}
       </td>
       <td className='min-w-[5rem] py-2 pr-2 text-xs text-center leading-6 whitespace-nowrap border-b border-slate-200'>
         {hasCheck(pro) && <CheckCircle isChecked={pro === 'checked'} />}
-        {!hasCheck(pro) && <span>{pro}</span>}
+        {!hasCheck(pro) && (
+          <span>{isNaN(+pro.trim()) ? pro : `${currency}${pro}`}</span>
+        )}
       </td>
     </tr>
   );
