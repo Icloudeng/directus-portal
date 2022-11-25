@@ -34,14 +34,20 @@ type NewsField = {
   author?: MDAuthor;
 };
 
-export type MDNews = MDWithTranslation<NewsTransField> & NewsField & DRTStatus;
+type MDNewsBase = MDWithTranslation<NewsTransField> & NewsField & DRTStatus;
+
+export type MDNews = Omit<MDNewsBase, 'status'> & {
+  status: 'published' | 'draft' | 'archived' | 'mailer';
+  transfer_initiated: boolean;
+  published_mailer: boolean;
+};
 
 export type MDTopbarNew = Pick<DRTStatus, 'id' | 'date_created' | 'status'> &
   Pick<NewsField, 'slug'> &
   MDWithTranslation<Pick<NewsTransField, 'title'>>;
 
 //   --------------------- Blog ----------------------- //
-export type MDBlog = MDNews & { image: MDWithAsset };
+export type MDBlog = MDNewsBase & { image: MDWithAsset };
 
 // ----------------------- News or Blog authers -----------------------//
 export type MDAuthor = {
