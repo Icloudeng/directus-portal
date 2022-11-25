@@ -25,7 +25,7 @@ front-test:
     - npm install pnpm --location=global
     - pnpm install
     # run test or build
-    - pnpm -r build
+    - pnpm run build
 
 deploy-coding:
   stage: deploy-coding
