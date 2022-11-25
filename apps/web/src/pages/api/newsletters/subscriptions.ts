@@ -1,6 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { validateForm } from '@/app/utils/validations';
 import ListmonkClient from 'listmonk-client';
+import { storeNewslettersSubscription } from '@/cms/items';
 
 const BASE_URL = process.env.LISTMONK_BASE_URL || '';
 const ADMIN_USERNAME = process.env.LISTMONK_ADMIN_USERNAME || '';
@@ -30,6 +31,12 @@ export default async function handle(
     );
 
     const subscriber = await client.subscribe(body.email);
+    if (subscriber) {
+      await storeNewslettersSubscription({
+        email: subscriber.email,
+        publisher: 'Listmonk',
+      });
+    }
 
     return res.status(200).json({
       subscriber,

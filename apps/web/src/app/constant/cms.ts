@@ -31,6 +31,7 @@ export const CMS_MODELS = {
     partners_requests: 'PartnersRequests',
     guest_questions: 'GuestQuestions',
     authors: 'Authors',
+    newsletters_subscriptions: 'NewslettersSubscriptions',
   } as const),
   plans_pricing: {
     flexible_plans: 'FlexiblePlans',

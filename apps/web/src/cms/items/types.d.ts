@@ -46,6 +46,7 @@ export type MDBlog = MDNews & { image: MDWithAsset };
 // ----------------------- News or Blog authers -----------------------//
 export type MDAuthor = {
   name: string;
+  email: string;
   image?: MDWithAsset;
   twitter_link?: string;
   github_link?: string;
@@ -298,3 +299,12 @@ export type GuestQuestion = {
 };
 
 export type MDGuestQuestion = GuestQuestion & DRTStatus;
+
+//  ---------------- Newsletters Subscriptions -------------------------
+
+export type NewslettersSubscription = {
+  email: string;
+  publisher: string;
+};
+
+export type MDNewslettersSubscription = NewslettersSubscription & DRTStatus;
