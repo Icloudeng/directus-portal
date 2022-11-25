@@ -1,7 +1,7 @@
 import React from 'react';
 
 import UnstyledLink from '@/components/ui/links/UnstyledLink';
-import { NavbarLinkSubmenu, NavbarLinkSubmenuItem } from '@/cms/items/types';
+import { NavbarLinkSubmenu, NavbarLinkSubmenuItem } from '@apps/contracts';
 import { useMut } from '@/cms/mut';
 import { HasSvgText } from '@/components/ui/HasSvgText';
 

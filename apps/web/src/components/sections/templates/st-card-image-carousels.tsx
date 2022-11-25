@@ -2,7 +2,7 @@ import Image from "next/legacy/image";
 import type {
   STemplates_Props,
   ST_CardImageCarousel,
-} from '@/cms/page-sections';
+} from '@apps/contracts';
 import {
   DotButton,
   NextButton,

@@ -1,7 +1,7 @@
 import { COMPANY_NAME } from '@/app/constant/env';
 import { useSharedData } from '@/app/store';
 import { toLocaleDateString } from '@/app/utils/helpers';
-import { MDBlog, MDNews } from '@/cms/items/types';
+import { MDBlog, MDNews } from '@apps/contracts';
 import { useMut } from '@/cms/mut';
 import { useTranslation } from 'next-i18next';
 import Image from 'next/legacy/image';

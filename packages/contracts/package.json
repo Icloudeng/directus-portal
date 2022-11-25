@@ -1,0 +1,18 @@
+{
+  "name": "@apps/contracts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsup index.ts --dts",
+    "dev": "tsup index.ts --dts --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@directus/sdk": "^10.1.5",
+    "tsup": "^6.5.0"
+  }
+}

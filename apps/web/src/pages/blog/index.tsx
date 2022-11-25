@@ -9,7 +9,7 @@ import { CleanHero } from '@/components/layout/footer/CleanHero';
 import { BlingCard } from '@/components/ui/cards/BlingCard';
 import { SearchForm } from '@/components/ui/form-control/SearchFrom';
 import { getGqlListBlogQuery } from '@/cms/items';
-import { MDBlog } from '@/cms/items/types';
+import { MDBlog } from '@apps/contracts';
 import { useSharedData } from '@/app/store';
 import { useRouter } from 'next/router';
 import { useCallback, useEffect, useState } from 'react';

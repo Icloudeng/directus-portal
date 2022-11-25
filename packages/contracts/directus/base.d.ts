@@ -1,11 +1,13 @@
-import type { ID, QueryOne } from '@directus/sdk';
+import type { ID, QueryOne } from "@directus/sdk";
 
 export type DRTStatus = {
   id: ID;
-  status: 'published' | 'draft' | 'archived';
+  status: "published" | "draft" | "archived";
   date_created: string;
   date_updated?: string;
 };
+
+export type ButtonVariant = "primary" | "outline" | "ghost" | "light" | "dark";
 
 export type DRTQueryT<T> = {
   [key in keyof T]: boolean;
@@ -28,18 +30,18 @@ export type MDWithTranslation<T = unknown> = {
 export type MDWithPointCoordinated =
   | {
       coordinates: [number, number][];
-      type: 'LineString' | 'Polygon';
+      type: "LineString" | "Polygon";
     }
   | {
       coordinates: [number, number];
-      type: 'Point';
+      type: "Point";
     };
 
 export type MDWithPoint =
   | MDWithPointCoordinated
   | {
       geometries: MDWithPointCoordinated[];
-      type: 'GeometryCollection';
+      type: "GeometryCollection";
     };
 
 export type MDWithAsset<T = unknown> = T & {
@@ -60,8 +62,8 @@ export type QueryWithTranslation<T> = {
   };
 };
 
-type I_MDWithUserTranslation<T> = {
-  [k in keyof T]: k extends 'translations'
+export type I_MDWithUserTranslation<T> = {
+  [k in keyof T]: k extends "translations"
     ? T[k] extends (infer L)[] | undefined
       ? L | undefined
       : never
@@ -70,7 +72,7 @@ type I_MDWithUserTranslation<T> = {
 
 type ValueOf<T> = T[keyof T];
 
-export type MDQueryFields<T> = ValueOf<Pick<QueryOne<T>, 'fields'>>;
+export type MDQueryFields<T> = ValueOf<Pick<QueryOne<T>, "fields">>;
 
 export type WithTranslation<T> = T & {
   [k in keyof T as `${string & k}_translations`]: `${string &

@@ -3,10 +3,10 @@ import {
   M2APageSectionReusable,
   PS_Content,
   ST_Vls,
-} from './page-sections';
+} from '@apps/contracts';
 import { qWithAsset, qWithAssets } from './gql-query';
-import { CMS_MODELS } from '@/app/constant/cms';
-import { PlansPricingContent } from './items/types';
+import { CMS_MODELS } from '@apps/contracts';
+import { PlansPricingContent } from '@apps/contracts';
 import {
   getGqlListBlogQuery,
   getGqlListNewsQuery,

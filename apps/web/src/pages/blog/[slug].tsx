@@ -4,7 +4,7 @@ import Layout from '@/components/layout/Layout';
 
 import { getServerSideTranslations } from '@/app/utils/server-translation';
 import { getGqlBlogBySlug } from '@/cms/items';
-import { MDBlog } from '@/cms/items/types';
+import { MDBlog } from '@apps/contracts';
 import { Publishing } from '@/components/pages/publishing';
 
 export default function Page({ blog }: { blog: MDBlog }) {

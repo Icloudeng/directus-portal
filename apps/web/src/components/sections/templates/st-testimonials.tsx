@@ -1,5 +1,5 @@
 import { mut } from '@/cms/mut';
-import { STemplates_Props, ST_Testimonial } from '@/cms/page-sections';
+import { STemplates_Props, ST_Testimonial } from '@apps/contracts';
 import { ReviewCard } from '@/components/ui/cards/ReviewCard';
 import {
   DotButton,

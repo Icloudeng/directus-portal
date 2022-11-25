@@ -1,6 +1,6 @@
 import React from 'react';
 import { PropsWithChildren, useState } from 'react';
-import { MDWithAsset } from '@/types/directus';
+import { MDWithAsset } from '@apps/contracts';
 import Skeleton from '../Skeleton';
 import Image from "next/legacy/image";
 

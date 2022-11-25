@@ -1,4 +1,4 @@
-import type { STemplates_Props, ST_CardCarousel } from '@/cms/page-sections';
+import type { STemplates_Props, ST_CardCarousel } from '@apps/contracts';
 import Image from "next/legacy/image";
 import { useMut } from '@/cms/mut';
 import ButtonLink from '@/components/ui/links/ButtonLink';

@@ -1,6 +1,6 @@
 import { jsonToGraphQLQuery } from 'json-to-graphql-query';
 
-import { CMS_MODELS } from '@/app/constant/cms';
+import { CMS_MODELS } from '@apps/contracts';
 
 import {
   MDCompanyDetail,
@@ -10,7 +10,7 @@ import {
   MDTopbarLink,
   MDTopbarNew,
   NavbarLinkSubmenu,
-} from './types';
+} from '@apps/contracts';
 import { getDirectusClient } from '../directus';
 import {
   qWithAsset,

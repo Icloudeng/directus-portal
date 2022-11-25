@@ -2,7 +2,7 @@ import { useRouter } from 'next/router';
 
 import NextImage from '@/components/ui/NextImage';
 
-import { MDLanguage } from '@/cms/items/types';
+import { MDLanguage } from '@apps/contracts';
 
 export const LangList = ({ icon_flag, name, code }: Partial<MDLanguage>) => {
   const router = useRouter();

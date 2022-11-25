@@ -1,4 +1,4 @@
-import { CMS_MODELS } from '@/app/constant/cms';
+import { CMS_MODELS } from '@apps/contracts';
 import { jsonToGraphQLQuery, VariableType } from 'json-to-graphql-query';
 import { getDirectusClient } from '../directus';
 import {
@@ -10,7 +10,7 @@ import {
 } from '../gql-query';
 import { pageSectionQuery } from '../page-sections';
 import { pageSectionsAdapters } from '../page-sections-adapters';
-import { MDPage } from './types';
+import { MDPage } from '@apps/contracts';
 
 const gql_query = jsonToGraphQLQuery({
   query: {

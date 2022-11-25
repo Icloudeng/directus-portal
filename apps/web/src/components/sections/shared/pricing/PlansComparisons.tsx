@@ -1,6 +1,6 @@
 import { useTranslation } from 'next-i18next';
 
-import { MDPlansComparison } from '@/cms/items/types';
+import { MDPlansComparison } from '@apps/contracts';
 
 import { CheckCircle } from '../../../ui/CheckCircle';
 import { useMut } from '@/cms/mut';

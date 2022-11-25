@@ -1,4 +1,4 @@
-import { CMS_MODELS } from '@/app/constant/cms';
+import { CMS_MODELS } from '@apps/contracts';
 import { jsonToGraphQLQuery, VariableType } from 'json-to-graphql-query';
 import { getDirectusClient } from '../directus';
 import {
@@ -8,7 +8,7 @@ import {
   qWithTranslations,
 } from '../gql-query';
 import { newsQuery } from './news';
-import { MDBlog } from './types';
+import { MDBlog } from '@apps/contracts';
 
 const listBlog_gql_query = (query?: string, offset = 0, limit = 9) =>
   jsonToGraphQLQuery({

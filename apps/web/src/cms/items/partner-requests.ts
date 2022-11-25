@@ -1,6 +1,6 @@
-import { CMS_MODELS } from '@/app/constant/cms';
+import { CMS_MODELS } from '@apps/contracts';
 import { getDirectusClient } from '../directus';
-import type { PartnerRequest } from '@/cms/items/types';
+import type { PartnerRequest } from '@apps/contracts';
 
 type Md = typeof CMS_MODELS.partners_requests;
 export async function storePartnerRequest(data: PartnerRequest) {

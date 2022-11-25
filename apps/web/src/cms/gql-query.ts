@@ -8,7 +8,7 @@ import {
   MDQueryFields,
   MDWithAsset,
   QueryWithTranslation,
-} from '@/types/directus';
+} from '@apps/contracts';
 
 export const qWithStatus: DRTQueryT<DRTStatus> = {
   id: true,

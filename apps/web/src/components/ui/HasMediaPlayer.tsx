@@ -1,5 +1,5 @@
 import { useHasMounted } from '@/app/hooks/useHasMounted';
-import { MDWithAsset } from '@/types/directus';
+import { MDWithAsset } from '@apps/contracts';
 import ReactPlayer from 'react-player';
 import { PlyrReact } from './plyr-react';
 import Skeleton from './Skeleton';

@@ -1,4 +1,4 @@
-import { MPlansPricing, PlansPricingContent } from '@/cms/items/types';
+import { MPlansPricing, PlansPricingContent } from '@apps/contracts';
 import { FixedPlans } from './FixedPlans';
 import { FlexiblePlans } from './FlexiblePlans';
 import { PlansComparisons } from './PlansComparisons';

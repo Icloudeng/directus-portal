@@ -1,6 +1,6 @@
 import { useSharedData } from '@/app/store';
 import { mut } from '@/cms/mut';
-import { STemplates_Props, ST_Platform } from '@/cms/page-sections';
+import { STemplates_Props, ST_Platform } from '@apps/contracts';
 import { AsideMenuCategories } from '@/components/ui/aside-menu/aside-menu-categories';
 import { MarketPlaceCard } from '@/components/ui/cards/MarketPlaceCard';
 import { HasSvgText } from '@/components/ui/HasSvgText';

@@ -1,8 +1,8 @@
 import { jsonToGraphQLQuery } from 'json-to-graphql-query';
-import { CMS_MODELS } from '@/app/constant/cms';
+import { CMS_MODELS, M2APageSection } from '@apps/contracts';
 import { getDirectusClient } from '../directus';
 import { qWithPublishedStatus } from '../gql-query';
-import { M2APageSection, pageSectionItemsQuery } from '../page-sections';
+import { pageSectionItemsQuery } from '../page-sections';
 
 const { generics } = CMS_MODELS;
 

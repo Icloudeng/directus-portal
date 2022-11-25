@@ -1,5 +1,5 @@
 import { mut } from '@/cms/mut';
-import { STemplates_Props, ST_HoverableMediaMenu } from '@/cms/page-sections';
+import { STemplates_Props, ST_HoverableMediaMenu } from '@apps/contracts';
 import {
   HoverableMenus,
   HoverableMenusItem,

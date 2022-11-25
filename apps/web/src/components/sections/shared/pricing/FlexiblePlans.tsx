@@ -12,7 +12,7 @@ import {
 } from './hooks';
 import { FiExternalLink } from 'react-icons/fi';
 import throttle from 'lodash/throttle';
-import { MDMachineTemplate, MDPlatform } from '@/cms/items/types';
+import { MDMachineTemplate, MDPlatform } from '@apps/contracts';
 import Link from 'next/link';
 
 export const FlexiblePlans = ({

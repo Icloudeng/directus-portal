@@ -4,7 +4,7 @@ import { TypeAnimation } from 'react-type-animation';
 
 import NextImage from '@/components/ui/NextImage';
 
-import { MDHomePageHero } from '@/cms/items/types';
+import { MDHomePageHero } from '@apps/contracts';
 import { useMut } from '@/cms/mut';
 import Image from "next/legacy/image";
 

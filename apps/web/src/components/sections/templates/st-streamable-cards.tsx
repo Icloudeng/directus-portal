@@ -1,6 +1,6 @@
 import Image from 'next/legacy/image';
 import { mut } from '@/cms/mut';
-import { STemplates_Props, ST_StreamableCard } from '@/cms/page-sections';
+import { STemplates_Props, ST_StreamableCard } from '@apps/contracts';
 import { RectCard } from '@/components/ui/cards/RectCard';
 import { HasSvgText } from '@/components/ui/HasSvgText';
 import { useSharedData } from '@/app/store';

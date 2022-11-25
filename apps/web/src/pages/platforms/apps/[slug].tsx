@@ -5,7 +5,7 @@ import Seo from '@/components/Seo';
 
 import { getServerSideTranslations } from '@/app/utils/server-translation';
 import { getGqlPlatformsBySlug } from '@/cms/items';
-import { MDPlatform } from '@/cms/items/types';
+import { MDPlatform } from '@apps/contracts';
 import { useMut } from '@/cms/mut';
 import { HasSvgText } from '@/components/ui/HasSvgText';
 import Image from 'next/image';

@@ -1,6 +1,6 @@
 import { mut } from '@/cms/mut';
 import Image from "next/legacy/image";
-import type { STemplates_Props, ST_NavAccordion } from '@/cms/page-sections';
+import type { STemplates_Props, ST_NavAccordion } from '@apps/contracts';
 import { Accordion, AccordionChild } from '@/components/ui/accordion/Accordion';
 import { useSharedData } from '@/app/store';
 import { MarkdownContent } from '@/components/ui/react-markdown/MarkdownContent';
