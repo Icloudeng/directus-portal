@@ -3,13 +3,15 @@ import { useTranslation } from 'next-i18next';
 import Button from '@/components/ui/buttons/Button';
 import { useFormSubmit } from '@/app/hooks/useFormSubmit';
 import { Spinner } from '@/components/ui/Spinner';
+import { useErrorInput } from '@/app/hooks/useErrorInput';
 
 export const Subscribe = () => {
   const { t } = useTranslation();
-  const { onSubmit, loading, success } = useFormSubmit(
+  const { onSubmit, loading, success, errors } = useFormSubmit(
     '/api/newsletters/subscriptions',
     1000 * 15
   );
+  const { error, onKeyUp } = useErrorInput('email', errors);
 
   return (
     <div className='flex flex-col gap-7 lg:flex-row items-center justify-center lg:gap-44 px-10 py-10'>
@@ -32,6 +34,7 @@ export const Subscribe = () => {
             placeholder={t('Enter your email')}
             required
             name='email'
+            onKeyUp={onKeyUp}
             className='border-none font-extralight bg-transparent ring-1 ring-primary-400 rounded-sm h-12 max-w-[20rem] w-full px-2 font-base outline-none focus:ring-2'
           />
           <div>
@@ -49,6 +52,12 @@ export const Subscribe = () => {
             </Button>
           </div>
         </form>
+
+        {error && (
+          <div className='w-full text-center mt-2 text-red-500 lg:max-w-[400px]'>
+            {t(error)}
+          </div>
+        )}
 
         {success && (
           <div className='w-full text-center mt-2 text-green-500 lg:max-w-[400px]'>

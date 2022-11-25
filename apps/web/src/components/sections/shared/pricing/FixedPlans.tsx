@@ -7,6 +7,7 @@ import { getMachineTemplateOptions } from './hooks';
 import { useSharedData } from '@/app/store';
 import { useMut } from '@/cms/mut';
 import { useCallback, useState } from 'react';
+import round from 'lodash/round';
 
 type Props = {
   fixed_plans: MDFixedPlan[];
@@ -118,6 +119,7 @@ function Plan({
   const true_cost_month = cost_hour * 730;
 
   const cost_month = true_cost_month * (((100 - monthly_reduction) * 1) / 100);
+  const precision = 3;
 
   return (
     <tr>
@@ -158,13 +160,13 @@ function Plan({
         {item.ssd} {t('GB')}
       </td>
       <td className='min-w-[5rem] py-2 pr-2 text-xs leading-6 whitespace-normal border-b border-slate-100'>
-        {currency} {cost_hour}/hr
+        {currency} {round(cost_hour, precision)}/{t('hr')}
       </td>
       <td className='min-w-[5rem] py-2 pr-2 text-xs leading-6 whitespace-normal border-b border-slate-100'>
-        {currency} {cost_month}/mo{' '}
+        {currency} {round(cost_month, precision - 1)}/mo{' '}
         {cost_month !== true_cost_month && (
           <span className='opacity-60 line-through'>
-            ({currency} {true_cost_month})
+            ({currency} {round(true_cost_month, precision - 1)})
           </span>
         )}
       </td>
