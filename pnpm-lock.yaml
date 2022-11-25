@@ -29,6 +29,7 @@ importers:
   apps/web:
     specifiers:
       '@apps/contracts': workspace:*
+      '@apps/listmonk-client': workspace:*
       '@commitlint/cli': ^16.3.0
       '@commitlint/config-conventional': ^16.2.4
       '@directus/sdk': ^10.1.5
@@ -64,7 +65,6 @@ importers:
       json-to-graphql-query: ^2.2.4
       leaflet: ^1.9.2
       lint-staged: ^12.5.0
-      listmonk-client: workspace:*
       lodash: ^4.17.21
       next: ^13.0.3
       next-i18next: ^12.0.1
@@ -94,6 +94,7 @@ importers:
       typescript: ^4.9.3
     dependencies:
       '@apps/contracts': link:../../packages/contracts
+      '@apps/listmonk-client': link:../../packages/listmonk-client
       '@directus/sdk': 10.1.5
       '@types/d3-shape': 3.1.0
       clsx: 1.2.1
@@ -104,7 +105,6 @@ importers:
       is-svg: 4.3.2
       json-to-graphql-query: 2.2.4
       leaflet: 1.9.2
-      listmonk-client: link:../../packages/listmonk-client
       lodash: 4.17.21
       next: 13.0.3_biqbaboplfbrettd7655fr4n2y
       next-i18next: 12.0.1_ogpkrxaz2lg6nectum6dl66tn4
@@ -195,12 +195,16 @@ importers:
 
   packages/listmonk-client:
     specifiers:
+      '@types/node': ^18.11.9
       '@types/node-fetch': ^2.6.2
+      dotenv: ^16.0.3
       node-fetch: ^3.3.0
       tsup: ^6.5.0
     dependencies:
+      dotenv: 16.0.3
       node-fetch: 3.3.0
     devDependencies:
+      '@types/node': 18.11.9
       '@types/node-fetch': 2.6.2
       tsup: 6.5.0
 

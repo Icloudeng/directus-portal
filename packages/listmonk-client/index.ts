@@ -1,15 +1,29 @@
+import * as dotenv from "dotenv";
+dotenv.config({ path: ".env" });
+dotenv.config({ path: ".env.local" });
+
 import fetch from "node-fetch";
 
+const BASE_URL = process.env.LISTMONK_BASE_URL || "";
+const ADMIN_USERNAME = process.env.LISTMONK_ADMIN_USERNAME || "";
+const ADMIN_PASSWORD = process.env.LISTMONK_ADMIN_PASSWORD || "";
+const LIST_ID = process.env.LISTMONK_LIST_ID || "";
+
 export default class ListmonkClient {
-  constructor(
-    private baseUrl: string,
-    private adminUsername: string,
-    private adminPassword: string,
-    private listId: string
-  ) {
-    if (!baseUrl || !adminUsername || !adminPassword || !listId) {
+  private baseUrl: string = BASE_URL;
+  private adminUsername: string = ADMIN_USERNAME;
+  private adminPassword: string = ADMIN_PASSWORD;
+  private listId: string = LIST_ID;
+
+  constructor() {
+    if (
+      !this.baseUrl ||
+      !this.adminUsername ||
+      !this.adminPassword ||
+      !this.listId
+    ) {
       throw new Error(
-        "vars baseUrl, adminUsername, adminPassword, listId cannot be empty"
+        "vars BASE_URL, ADMIN_USERNAME, ADMIN_PASSWORD, LIST_ID cannot be empty"
       );
     }
   }
