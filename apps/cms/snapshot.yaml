@@ -73,30 +73,6 @@ collections:
       comment: null
       name: Blog
       schema: public
-  - collection: Blog_author
-    meta:
-      accountability: all
-      archive_app_filter: true
-      archive_field: null
-      archive_value: null
-      collapse: open
-      collection: Blog_author
-      color: null
-      display_template: null
-      group: Publishing
-      hidden: true
-      icon: import_export
-      item_duplication_fields: null
-      note: null
-      singleton: false
-      sort: 4
-      sort_field: null
-      translations: null
-      unarchive_value: null
-    schema:
-      comment: null
-      name: Blog_author
-      schema: public
   - collection: Blog_translations
     meta:
       accountability: all
@@ -801,30 +777,6 @@ collections:
     schema:
       comment: null
       name: News
-      schema: public
-  - collection: News_author
-    meta:
-      accountability: all
-      archive_app_filter: true
-      archive_field: null
-      archive_value: null
-      collapse: open
-      collection: News_author
-      color: null
-      display_template: null
-      group: Publishing
-      hidden: true
-      icon: import_export
-      item_duplication_fields: null
-      note: null
-      singleton: false
-      sort: 5
-      sort_field: null
-      translations: null
-      unarchive_value: null
-    schema:
-      comment: null
-      name: News_author
       schema: public
   - collection: News_translations
     meta:
@@ -3913,21 +3865,40 @@ fields:
       field: author
       group: null
       hidden: false
-      interface: list-m2a
+      interface: select-dropdown-m2o
       note: null
       options:
-        limit: 1
+        filter: null
+        template: "{{status}}\_{{name}}\_-\_{{name}}"
       readonly: false
       required: true
-      sort: 7
+      sort: 5
       special:
-        - m2a
+        - m2o
       translations: null
       validation: null
       validation_message: null
       width: full
-    schema: null
-    type: alias
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: Authors
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: author
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: Blog
+    type: uuid
   - collection: Blog
     field: date_created
     meta:
@@ -4071,7 +4042,7 @@ fields:
       options: null
       readonly: false
       required: true
-      sort: 6
+      sort: 7
       special:
         - file
       translations: null
@@ -4374,7 +4345,7 @@ fields:
         userLanguage: true
       readonly: false
       required: true
-      sort: 5
+      sort: 6
       special:
         - translations
       translations: null
@@ -4469,170 +4440,6 @@ fields:
       schema: public
       table: Blog
     type: uuid
-  - collection: Blog_author
-    field: Blog_id
-    meta:
-      collection: Blog_author
-      conditions: null
-      display: null
-      display_options: null
-      field: Blog_id
-      group: null
-      hidden: true
-      interface: null
-      note: null
-      options: null
-      readonly: false
-      required: false
-      sort: null
-      special: null
-      translations: null
-      validation: null
-      validation_message: null
-      width: full
-    schema:
-      comment: null
-      data_type: uuid
-      default_value: null
-      foreign_key_column: id
-      foreign_key_schema: public
-      foreign_key_table: Blog
-      generation_expression: null
-      has_auto_increment: false
-      is_generated: false
-      is_nullable: true
-      is_primary_key: false
-      is_unique: false
-      max_length: null
-      name: Blog_id
-      numeric_precision: null
-      numeric_scale: null
-      schema: public
-      table: Blog_author
-    type: uuid
-  - collection: Blog_author
-    field: collection
-    meta:
-      collection: Blog_author
-      conditions: null
-      display: null
-      display_options: null
-      field: collection
-      group: null
-      hidden: true
-      interface: null
-      note: null
-      options: null
-      readonly: false
-      required: false
-      sort: null
-      special: null
-      translations: null
-      validation: null
-      validation_message: null
-      width: full
-    schema:
-      comment: null
-      data_type: character varying
-      default_value: null
-      foreign_key_column: null
-      foreign_key_schema: null
-      foreign_key_table: null
-      generation_expression: null
-      has_auto_increment: false
-      is_generated: false
-      is_nullable: true
-      is_primary_key: false
-      is_unique: false
-      max_length: 255
-      name: collection
-      numeric_precision: null
-      numeric_scale: null
-      schema: public
-      table: Blog_author
-    type: string
-  - collection: Blog_author
-    field: id
-    meta:
-      collection: Blog_author
-      conditions: null
-      display: null
-      display_options: null
-      field: id
-      group: null
-      hidden: true
-      interface: null
-      note: null
-      options: null
-      readonly: false
-      required: false
-      sort: null
-      special: null
-      translations: null
-      validation: null
-      validation_message: null
-      width: full
-    schema:
-      comment: null
-      data_type: integer
-      default_value: nextval('"Blog_author_id_seq"'::regclass)
-      foreign_key_column: null
-      foreign_key_schema: null
-      foreign_key_table: null
-      generation_expression: null
-      has_auto_increment: true
-      is_generated: false
-      is_nullable: false
-      is_primary_key: true
-      is_unique: true
-      max_length: null
-      name: id
-      numeric_precision: 32
-      numeric_scale: 0
-      schema: public
-      table: Blog_author
-    type: integer
-  - collection: Blog_author
-    field: item
-    meta:
-      collection: Blog_author
-      conditions: null
-      display: null
-      display_options: null
-      field: item
-      group: null
-      hidden: true
-      interface: null
-      note: null
-      options: null
-      readonly: false
-      required: false
-      sort: null
-      special: null
-      translations: null
-      validation: null
-      validation_message: null
-      width: full
-    schema:
-      comment: null
-      data_type: character varying
-      default_value: null
-      foreign_key_column: null
-      foreign_key_schema: null
-      foreign_key_table: null
-      generation_expression: null
-      has_auto_increment: false
-      is_generated: false
-      is_nullable: true
-      is_primary_key: false
-      is_unique: false
-      max_length: 255
-      name: item
-      numeric_precision: null
-      numeric_scale: null
-      schema: public
-      table: Blog_author
-    type: string
   - collection: Blog_translations
     field: Blog_id
     meta:
@@ -9057,7 +8864,8 @@ fields:
       interface: select-dropdown-m2o
       note: null
       options:
-        template: "{{name}}\_-\_{{email}}"
+        filter: null
+        template: "{{status}}\_{{name}}\_-\_{{email}}"
       readonly: false
       required: true
       sort: 3
@@ -13097,21 +12905,40 @@ fields:
       field: author
       group: null
       hidden: false
-      interface: list-m2a
+      interface: select-dropdown-m2o
       note: null
       options:
-        limit: 1
+        filter: null
+        template: "{{status}}\_{{name}}\_-\_{{email}}"
       readonly: false
       required: true
       sort: 5
       special:
-        - m2a
+        - m2o
       translations: null
       validation: null
       validation_message: null
       width: full
-    schema: null
-    type: alias
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: Authors
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: author
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: News
+    type: uuid
   - collection: News
     field: date_created
     meta:
@@ -13128,7 +12955,7 @@ fields:
       options: null
       readonly: true
       required: false
-      sort: 12
+      sort: 14
       special:
         - date-created
       translations: null
@@ -13171,7 +12998,7 @@ fields:
       options: null
       readonly: true
       required: false
-      sort: 14
+      sort: 16
       special:
         - date-updated
       translations: null
@@ -13352,6 +13179,48 @@ fields:
     schema: null
     type: alias
   - collection: News
+    field: published_mailer
+    meta:
+      collection: News
+      conditions: null
+      display: null
+      display_options: null
+      field: published_mailer
+      group: null
+      hidden: false
+      interface: boolean
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 9
+      special:
+        - cast-boolean
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: boolean
+      default_value: false
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: published_mailer
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: News
+    type: boolean
+  - collection: News
     field: slug
     meta:
       collection: News
@@ -13410,7 +13279,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: 10
+      sort: 12
       special: null
       translations: null
       validation: null
@@ -13470,9 +13339,11 @@ fields:
             value: draft
           - text: $t:archived
             value: archived
+          - text: Mailer
+            value: mailer
       readonly: false
       required: false
-      sort: 9
+      sort: 11
       special: null
       translations: null
       validation: null
@@ -13543,6 +13414,48 @@ fields:
       table: News
     type: json
   - collection: News
+    field: transfer_initiated
+    meta:
+      collection: News
+      conditions: null
+      display: null
+      display_options: null
+      field: transfer_initiated
+      group: null
+      hidden: false
+      interface: boolean
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: 10
+      special:
+        - cast-boolean
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: boolean
+      default_value: false
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: transfer_initiated
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: News
+    type: boolean
+  - collection: News
     field: translations
     meta:
       collection: News
@@ -13583,7 +13496,7 @@ fields:
         template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
       readonly: true
       required: false
-      sort: 11
+      sort: 13
       special:
         - user-created
       translations: null
@@ -13626,7 +13539,7 @@ fields:
         template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
       readonly: true
       required: false
-      sort: 13
+      sort: 15
       special:
         - user-updated
       translations: null
@@ -13653,170 +13566,6 @@ fields:
       schema: public
       table: News
     type: uuid
-  - collection: News_author
-    field: News_id
-    meta:
-      collection: News_author
-      conditions: null
-      display: null
-      display_options: null
-      field: News_id
-      group: null
-      hidden: true
-      interface: null
-      note: null
-      options: null
-      readonly: false
-      required: false
-      sort: null
-      special: null
-      translations: null
-      validation: null
-      validation_message: null
-      width: full
-    schema:
-      comment: null
-      data_type: uuid
-      default_value: null
-      foreign_key_column: id
-      foreign_key_schema: public
-      foreign_key_table: News
-      generation_expression: null
-      has_auto_increment: false
-      is_generated: false
-      is_nullable: true
-      is_primary_key: false
-      is_unique: false
-      max_length: null
-      name: News_id
-      numeric_precision: null
-      numeric_scale: null
-      schema: public
-      table: News_author
-    type: uuid
-  - collection: News_author
-    field: collection
-    meta:
-      collection: News_author
-      conditions: null
-      display: null
-      display_options: null
-      field: collection
-      group: null
-      hidden: true
-      interface: null
-      note: null
-      options: null
-      readonly: false
-      required: false
-      sort: null
-      special: null
-      translations: null
-      validation: null
-      validation_message: null
-      width: full
-    schema:
-      comment: null
-      data_type: character varying
-      default_value: null
-      foreign_key_column: null
-      foreign_key_schema: null
-      foreign_key_table: null
-      generation_expression: null
-      has_auto_increment: false
-      is_generated: false
-      is_nullable: true
-      is_primary_key: false
-      is_unique: false
-      max_length: 255
-      name: collection
-      numeric_precision: null
-      numeric_scale: null
-      schema: public
-      table: News_author
-    type: string
-  - collection: News_author
-    field: id
-    meta:
-      collection: News_author
-      conditions: null
-      display: null
-      display_options: null
-      field: id
-      group: null
-      hidden: true
-      interface: null
-      note: null
-      options: null
-      readonly: false
-      required: false
-      sort: null
-      special: null
-      translations: null
-      validation: null
-      validation_message: null
-      width: full
-    schema:
-      comment: null
-      data_type: integer
-      default_value: nextval('"News_author_id_seq"'::regclass)
-      foreign_key_column: null
-      foreign_key_schema: null
-      foreign_key_table: null
-      generation_expression: null
-      has_auto_increment: true
-      is_generated: false
-      is_nullable: false
-      is_primary_key: true
-      is_unique: true
-      max_length: null
-      name: id
-      numeric_precision: 32
-      numeric_scale: 0
-      schema: public
-      table: News_author
-    type: integer
-  - collection: News_author
-    field: item
-    meta:
-      collection: News_author
-      conditions: null
-      display: null
-      display_options: null
-      field: item
-      group: null
-      hidden: true
-      interface: null
-      note: null
-      options: null
-      readonly: false
-      required: false
-      sort: null
-      special: null
-      translations: null
-      validation: null
-      validation_message: null
-      width: full
-    schema:
-      comment: null
-      data_type: character varying
-      default_value: null
-      foreign_key_column: null
-      foreign_key_schema: null
-      foreign_key_table: null
-      generation_expression: null
-      has_auto_increment: false
-      is_generated: false
-      is_nullable: true
-      is_primary_key: false
-      is_unique: false
-      max_length: 255
-      name: item
-      numeric_precision: null
-      numeric_scale: null
-      schema: public
-      table: News_author
-    type: string
   - collection: News_translations
     field: News_id
     meta:
@@ -40393,6 +40142,28 @@ relations:
       on_update: NO ACTION
       table: Authors
   - collection: Blog
+    field: author
+    meta:
+      junction_field: null
+      many_collection: Blog
+      many_field: author
+      one_allowed_collections: null
+      one_collection: Authors
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    related_collection: Authors
+    schema:
+      column: author
+      constraint_name: blog_author_foreign
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: Authors
+      on_delete: SET NULL
+      on_update: NO ACTION
+      table: Blog
+  - collection: Blog
     field: image
     meta:
       junction_field: null
@@ -40458,43 +40229,6 @@ relations:
       on_delete: NO ACTION
       on_update: NO ACTION
       table: Blog
-  - collection: Blog_author
-    field: Blog_id
-    meta:
-      junction_field: item
-      many_collection: Blog_author
-      many_field: Blog_id
-      one_allowed_collections: null
-      one_collection: Blog
-      one_collection_field: null
-      one_deselect_action: nullify
-      one_field: author
-      sort_field: null
-    related_collection: Blog
-    schema:
-      column: Blog_id
-      constraint_name: blog_author_blog_id_foreign
-      foreign_key_column: id
-      foreign_key_schema: public
-      foreign_key_table: Blog
-      on_delete: SET NULL
-      on_update: NO ACTION
-      table: Blog_author
-  - collection: Blog_author
-    field: item
-    meta:
-      junction_field: Blog_id
-      many_collection: Blog_author
-      many_field: item
-      one_allowed_collections:
-        - Authors
-      one_collection: null
-      one_collection_field: collection
-      one_deselect_action: nullify
-      one_field: null
-      sort_field: null
-    related_collection: null
-    schema: null
   - collection: Blog_translations
     field: Blog_id
     meta:
@@ -41701,6 +41435,28 @@ relations:
       on_update: NO ACTION
       table: NavbarLinks_translations
   - collection: News
+    field: author
+    meta:
+      junction_field: null
+      many_collection: News
+      many_field: author
+      one_allowed_collections: null
+      one_collection: Authors
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    related_collection: Authors
+    schema:
+      column: author
+      constraint_name: news_author_foreign
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: Authors
+      on_delete: SET NULL
+      on_update: NO ACTION
+      table: News
+  - collection: News
     field: image
     meta:
       junction_field: null
@@ -41766,43 +41522,6 @@ relations:
       on_delete: NO ACTION
       on_update: NO ACTION
       table: News
-  - collection: News_author
-    field: News_id
-    meta:
-      junction_field: item
-      many_collection: News_author
-      many_field: News_id
-      one_allowed_collections: null
-      one_collection: News
-      one_collection_field: null
-      one_deselect_action: nullify
-      one_field: author
-      sort_field: null
-    related_collection: News
-    schema:
-      column: News_id
-      constraint_name: news_author_news_id_foreign
-      foreign_key_column: id
-      foreign_key_schema: public
-      foreign_key_table: News
-      on_delete: SET NULL
-      on_update: NO ACTION
-      table: News_author
-  - collection: News_author
-    field: item
-    meta:
-      junction_field: News_id
-      many_collection: News_author
-      many_field: item
-      one_allowed_collections:
-        - Authors
-      one_collection: null
-      one_collection_field: collection
-      one_deselect_action: nullify
-      one_field: null
-      sort_field: null
-    related_collection: null
-    schema: null
   - collection: News_translations
     field: News_id
     meta:
