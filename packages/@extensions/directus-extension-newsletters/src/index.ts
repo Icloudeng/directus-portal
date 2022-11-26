@@ -3,7 +3,6 @@ import {
   CMS_MODELS,
   MDNews,
   MDListmonk,
-  MDNewsletter,
   MDAuthor,
   MDCompanyDetail,
 } from "@apps/contracts";
@@ -14,17 +13,13 @@ type Action = Parameters<Register["action"]>;
 type ActionHandler = Action["1"];
 type Knex = Parameters<ActionHandler>["1"]["database"];
 
+const CREATE_EVENT = `${CMS_MODELS.news}.items.create` as const;
+const UPDATE_EVENT = `${CMS_MODELS.news}.items.update` as const;
+
 // Database getters ------------
 async function getListmonkConfig(database: Knex) {
   return await database
     .from<MDListmonk>(CMS_MODELS.listmonk)
-    .select("*")
-    .first();
-}
-
-async function getNewsletterConfig(database: Knex) {
-  return await database
-    .from<MDNewsletter>(CMS_MODELS.newsletter)
     .select("*")
     .first();
 }
@@ -74,7 +69,7 @@ async function initiateTransfer(id: string, database: Knex) {
 
 // ------------------ Hook handler --------------------------
 const actionHandler: ActionHandler = async (input, context) => {
-  const id = input["keys"][0];
+  const id = input["event"] === UPDATE_EVENT ? input["keys"][0] : input["key"];
 
   const news = await getNewsItem(id, context.database);
   if (!news || news.transfer_initiated) return;
@@ -96,9 +91,8 @@ const actionHandler: ActionHandler = async (input, context) => {
     return;
 
   const listmonk = await getListmonkConfig(context.database);
-  const newsletter = await getNewsletterConfig(context.database);
   const company_details = await getComponyDetails(context.database);
-  if (!listmonk || !newsletter || !company_details) return;
+  if (!listmonk || !company_details) return;
 
   const listmonkClient = new ListmonkClient({
     baseUrl: listmonk.base_url,
@@ -117,13 +111,13 @@ const actionHandler: ActionHandler = async (input, context) => {
     const campaign = await listmonkClient.createCampaign({
       name: news.label,
       subject: translation.title,
-      from_email: `${news.author?.name || newsletter.from_name} <${
-        news.author?.email || newsletter.from_email
-      }>`,
+      ...(news.author
+        ? { from_email: `${news.author?.name} <${news.author?.email}>` }
+        : {}),
       lists: [+listmonk.list_id],
       template_id: +listmonk.template_id,
       tags: news.tags || [],
-      type: "optin",
+      type: "regular",
       content_type: "markdown",
       messenger: "email",
       body: `
@@ -134,11 +128,13 @@ const actionHandler: ActionHandler = async (input, context) => {
       
       Interested ? You can read more [here](${website + "news/" + news.slug})
       `.replace(/\n\s+/g, "\n"),
+      send_at: new Date(new Date().getTime() + 2 * 60000).toISOString(),
     });
 
-    console.log("News Campaign has been created");
-
     if (campaign) {
+      console.log("-------------- Listmonk compain created ------------------");
+
+      await listmonkClient.campaignStatus(campaign.id, "scheduled");
       await initiateTransfer(id, context.database);
     }
   } catch (error) {
@@ -147,6 +143,6 @@ const actionHandler: ActionHandler = async (input, context) => {
 };
 
 export default defineHook(({ action }) => {
-  action(`${CMS_MODELS.news}.items.create`, actionHandler);
-  action(`${CMS_MODELS.news}.items.update`, actionHandler);
+  action(CREATE_EVENT, actionHandler);
+  action(UPDATE_EVENT, actionHandler);
 });
