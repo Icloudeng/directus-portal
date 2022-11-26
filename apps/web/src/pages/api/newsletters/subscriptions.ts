@@ -23,14 +23,19 @@ export default async function handle(
     return res.status(200).json({});
   }
 
+  const client = new ListmonkClient({
+    baseUrl: config.base_url,
+    adminUsername: config.admin_username,
+    adminPassword: config.admin_password,
+    listId: config.list_id,
+    templateId: config.template_id,
+  });
+
+  if (!client.hasValidConfig()) {
+    return res.status(200).json({});
+  }
+
   try {
-    const client = new ListmonkClient({
-      baseUrl: config.base_url,
-      adminUsername: config.admin_username,
-      adminPassword: config.admin_password,
-      listId: config.list_id,
-      templateId: config.template_id,
-    });
     const subscriber = await client.subscribe(body.email);
 
     if (subscriber) {
