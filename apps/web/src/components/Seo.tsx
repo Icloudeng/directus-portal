@@ -10,7 +10,7 @@ const defaultMeta = {
   title: 'Icloudeng',
   siteName: 'Icloudeng',
   description:
-    'Cloud IT Engineering LTD, a giant cloud computing solution provider',
+    (COMPANY_NAME || '') + 'a giant cloud computing solution provider',
   url: WEBSITE_URL || '',
   type: 'website',
   robots: 'follow, index',
