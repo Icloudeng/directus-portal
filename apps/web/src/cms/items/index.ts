@@ -9,3 +9,4 @@ export * from './guest-questions';
 export * from './news';
 export * from './blog';
 export * from './newsletters-subscriptions';
+export * from './listmonk';

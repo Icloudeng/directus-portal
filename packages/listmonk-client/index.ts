@@ -1,31 +1,35 @@
-import * as dotenv from "dotenv";
-dotenv.config({ path: ".env" });
-dotenv.config({ path: ".env.local" });
-
 import fetch from "node-fetch";
 
-const BASE_URL = process.env.LISTMONK_BASE_URL || "";
-const ADMIN_USERNAME = process.env.LISTMONK_ADMIN_USERNAME || "";
-const ADMIN_PASSWORD = process.env.LISTMONK_ADMIN_PASSWORD || "";
-const LIST_ID = process.env.LISTMONK_LIST_ID || "";
+type Options = {
+  baseUrl: string;
+  adminUsername: string;
+  adminPassword: string;
+  listId: string;
+  templateId: string;
+};
+export class ListmonkClient {
+  private baseUrl: string;
+  private adminUsername: string;
+  private adminPassword: string;
+  private listId: string;
+  private templateId: string;
 
-export default class ListmonkClient {
-  private baseUrl: string = BASE_URL;
-  private adminUsername: string = ADMIN_USERNAME;
-  private adminPassword: string = ADMIN_PASSWORD;
-  private listId: string = LIST_ID;
+  constructor(options: Options) {
+    this.baseUrl = options.baseUrl;
+    this.adminUsername = options.adminUsername;
+    this.adminPassword = options.adminPassword;
+    this.listId = options.listId;
+    this.templateId = options.templateId;
+  }
 
-  constructor() {
-    if (
-      !this.baseUrl ||
-      !this.adminUsername ||
-      !this.adminPassword ||
-      !this.listId
-    ) {
-      throw new Error(
-        "vars BASE_URL, ADMIN_USERNAME, ADMIN_PASSWORD, LIST_ID cannot be empty"
-      );
-    }
+  public hasValidConfig() {
+    return (
+      !!this.baseUrl &&
+      !!this.adminUsername &&
+      !!this.adminPassword &&
+      !!this.listId &&
+      !!this.templateId
+    );
   }
 
   public async subscribe(email: string) {
@@ -57,6 +61,20 @@ export default class ListmonkClient {
     }
 
     return subscriber.data;
+  }
+
+  public async createCampaign(body: CampaignRequest) {
+    const { data: campaign, response } = await this.fetch<LResponse<Campaign>>(
+      "/campaigns",
+      "POST",
+      body
+    );
+
+    if (!response.ok) {
+      return null;
+    }
+
+    return campaign.data;
   }
 
   private fetch<T>(path: string, method = "GET", body?: any) {
@@ -94,6 +112,45 @@ export interface LPaginator<T> {
   total: number;
   per_page: number;
   page: number;
+}
+
+export interface CampaignRequest {
+  name: string;
+  subject: string;
+  lists: number[];
+  from_email: string;
+  content_type: "richtext" | "html" | "markdown" | "plain";
+  messenger: "email";
+  type: "regular" | "optin";
+  tags: string[];
+  body: string;
+  template_id: number;
+}
+
+interface Campaign {
+  id: number;
+  created_at: string;
+  updated_at: string;
+  views: number;
+  clicks: number;
+  bounces: number;
+  lists: List[];
+  started_at: any;
+  to_send: number;
+  sent: number;
+  uuid: string;
+  type: string;
+  name: string;
+  subject: string;
+  from_email: string;
+  body: string;
+  altbody: any;
+  send_at: any;
+  status: string;
+  content_type: string;
+  tags: string[];
+  template_id: number;
+  messenger: string;
 }
 
 export interface Subscriber {
