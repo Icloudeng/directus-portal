@@ -313,3 +313,19 @@ export type NewslettersSubscription = {
 };
 
 export type MDNewslettersSubscription = NewslettersSubscription & DRTStatus;
+
+// ------------------- Listmonk ------------------------------------------
+
+export type MDListmonk = {
+  base_url: string;
+  admin_username: string;
+  admin_password: string;
+  list_id: string;
+  template_id: string;
+};
+
+// --------------------- Newsletter Config -------------------------------------
+export type MDNewsletter = {
+  from_name: string;
+  from_email: string;
+};

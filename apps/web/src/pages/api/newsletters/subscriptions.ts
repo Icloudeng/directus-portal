@@ -1,12 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { validateForm } from '@/app/utils/validations';
-import ListmonkClient from 'listmonk-client';
-import { storeNewslettersSubscription } from '@/cms/items';
-
-const BASE_URL = process.env.LISTMONK_BASE_URL || '';
-const ADMIN_USERNAME = process.env.LISTMONK_ADMIN_USERNAME || '';
-const ADMIN_PASSWORD = process.env.LISTMONK_ADMIN_PASSWORD || '';
-const LIST_ID = process.env.LISTMONK_LIST_ID || '';
+import { ListmonkClient } from '@apps/listmonk-client';
+import { getListmonkConfig, storeNewslettersSubscription } from '@/cms/items';
 
 export default async function handle(
   req: NextApiRequest,
@@ -22,15 +17,22 @@ export default async function handle(
     return res.status(400).json(errors);
   }
 
-  try {
-    const client = new ListmonkClient(
-      BASE_URL,
-      ADMIN_USERNAME,
-      ADMIN_PASSWORD,
-      LIST_ID
-    );
+  const config = await getListmonkConfig();
 
+  if (!config) {
+    return res.status(200).json({});
+  }
+
+  try {
+    const client = new ListmonkClient({
+      baseUrl: config.base_url,
+      adminUsername: config.admin_username,
+      adminPassword: config.admin_password,
+      listId: config.list_id,
+      templateId: config.template_id,
+    });
     const subscriber = await client.subscribe(body.email);
+
     if (subscriber) {
       await storeNewslettersSubscription({
         email: subscriber.email,
