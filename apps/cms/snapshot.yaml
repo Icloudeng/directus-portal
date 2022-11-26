@@ -816,7 +816,7 @@ collections:
       color: null
       display_template: null
       group: Settings
-      hidden: false
+      hidden: true
       icon: null
       item_duplication_fields: null
       note: null
@@ -13901,7 +13901,7 @@ fields:
       group: null
       hidden: false
       interface: boolean
-      note: null
+      note: Newsletter publication status
       options: null
       readonly: true
       required: false

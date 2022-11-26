@@ -77,6 +77,23 @@ export class ListmonkClient {
     return campaign.data;
   }
 
+  public async campaignStatus(
+    id: number,
+    status: "scheduled" | "running" | "paused" | "cancelled"
+  ) {
+    const { data: campaign, response } = await this.fetch<LResponse<Campaign>>(
+      `/campaigns/${id}/status`,
+      "PUT",
+      { status }
+    );
+
+    if (!response.ok) {
+      return null;
+    }
+
+    return campaign.data;
+  }
+
   private fetch<T>(path: string, method = "GET", body?: any) {
     const datas: { body?: string } = {};
     if (body) {
@@ -118,13 +135,14 @@ export interface CampaignRequest {
   name: string;
   subject: string;
   lists: number[];
-  from_email: string;
+  from_email?: string;
   content_type: "richtext" | "html" | "markdown" | "plain";
   messenger: "email";
   type: "regular" | "optin";
   tags: string[];
   body: string;
   template_id: number;
+  send_at?: string;
 }
 
 interface Campaign {
