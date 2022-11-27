@@ -8,7 +8,21 @@ declare global {
   }
 }
 
-export default function ChatwootWidget({
+export function ChatwootNext() {
+  const { Chatwoot } = useSharedData();
+  return (
+    <>
+      {Chatwoot && Chatwoot.status === 'published' && (
+        <ChatwootWidget
+          baseUrl={Chatwoot.base_url}
+          websiteToken={Chatwoot.website_token}
+        />
+      )}
+    </>
+  );
+}
+
+function ChatwootWidget({
   websiteToken,
   baseUrl,
 }: {

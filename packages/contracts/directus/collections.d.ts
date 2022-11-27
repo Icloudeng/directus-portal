@@ -329,3 +329,17 @@ export type MDNewsletter = {
   from_name: string;
   from_email: string;
 } & Omit<DRTStatus, "id">;
+
+// ------------------------ Matomo Config ---------------------------------------
+
+export type MDMatomo = {
+  base_url: string;
+  site_id: number;
+} & Omit<DRTStatus, "id">;
+
+// ------------------------ Chatwoot Config ---------------------------------------
+
+export type MDChatwoot = {
+  base_url: string;
+  website_token: string;
+} & Omit<DRTStatus, "id">;
