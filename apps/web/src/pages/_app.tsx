@@ -26,9 +26,9 @@ function MyApp({
           minimum: 0.3,
         }}
       />
-      <Component {...pageProps} />
       <MatomoNext />
       <ChatwootNext />
+      <Component {...pageProps} />
     </SharedDataProvider>
   );
 }
