@@ -124,7 +124,7 @@ const actionHandler: ActionHandler = async (input, context) => {
       Hi there, this news may interest you.
 
       ## ${translation.title}\n\n
-      ${translation.summary}
+      ${translation.summary}\n
       
       Interested ? You can read more [here](${website + "news/" + news.slug})
       `.replace(/\n\s+/g, "\n"),
