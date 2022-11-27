@@ -134,7 +134,7 @@ type MDCompanyDetailFieldTrans = {
 
 export type MDCompanyDetail = MDWithTranslation<MDCompanyDetailFieldTrans> &
   MDCompanyDetailField &
-  DRTStatus;
+  Omit<DRTStatus, "id">;
 
 //  ------------------ Navbar Links types  ---------------------
 
@@ -190,7 +190,7 @@ export type MDHomePageHero = {
   description: string;
   trailing_titles: string[];
 }> &
-  DRTStatus;
+  Omit<DRTStatus, "id">;
 
 // ---------------- Plans Pricing -------------------------
 
@@ -214,7 +214,7 @@ export type MDFlexiblePlan = {
   ssd: number;
   ssd_cost_hour: number;
   monthly_reduction: number;
-} & DRTStatus;
+} & Omit<DRTStatus, "id">;
 
 export type MDFixedPlan = {
   platforms: { platform: string }[];
@@ -322,10 +322,24 @@ export type MDListmonk = {
   admin_password: string;
   list_id: string;
   template_id: string;
-};
+} & Omit<DRTStatus, "id">;
 
 // --------------------- Newsletter Config -------------------------------------
 export type MDNewsletter = {
   from_name: string;
   from_email: string;
-};
+} & Omit<DRTStatus, "id">;
+
+// ------------------------ Matomo Config ---------------------------------------
+
+export type MDMatomo = {
+  base_url: string;
+  site_id: number;
+} & Omit<DRTStatus, "id">;
+
+// ------------------------ Chatwoot Config ---------------------------------------
+
+export type MDChatwoot = {
+  base_url: string;
+  website_token: string;
+} & Omit<DRTStatus, "id">;

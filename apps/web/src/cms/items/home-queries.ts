@@ -16,6 +16,8 @@ import { pageSectionQuery } from '../page-sections';
 const gql_query = jsonToGraphQLQuery({
   query: {
     [CMS_MODELS.home_hero]: {
+      ...qWithStatus,
+      id: false, // single object|collection
       disposition: true,
       image: qWithQueryAsset(),
       images: {
@@ -27,7 +29,6 @@ const gql_query = jsonToGraphQLQuery({
         description: true,
         trailing_titles: true,
       }),
-      ...qWithStatus,
     },
     [CMS_MODELS.home_sections]: {
       id: true,

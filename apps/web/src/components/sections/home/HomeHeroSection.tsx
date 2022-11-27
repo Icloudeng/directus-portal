@@ -1,12 +1,11 @@
-import { useTranslation } from 'next-i18next';
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import { TypeAnimation } from 'react-type-animation';
 
 import NextImage from '@/components/ui/NextImage';
 
 import { MDHomePageHero } from '@apps/contracts';
 import { useMut } from '@/cms/mut';
-import Image from "next/legacy/image";
+import Image from 'next/legacy/image';
 
 type AccType =
   | ((element: HTMLElement | null) => void | Promise<void>)
@@ -14,7 +13,6 @@ type AccType =
   | number;
 
 export const HomeHeroSection = ({ data }: { data: MDHomePageHero }) => {
-  const { t } = useTranslation('home');
   const { translations, image, images, disposition } = useMut(data);
   const trailing_titles = translations?.trailing_titles;
   const [imageKey, setImageKey] = useState(0);

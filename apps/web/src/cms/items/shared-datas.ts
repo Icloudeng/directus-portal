@@ -1,6 +1,6 @@
 import { jsonToGraphQLQuery } from 'json-to-graphql-query';
 
-import { CMS_MODELS } from '@apps/contracts';
+import { CMS_MODELS, MDChatwoot, MDMatomo } from '@apps/contracts';
 
 import {
   MDCompanyDetail,
@@ -68,6 +68,8 @@ const gql_query = jsonToGraphQLQuery({
       },
     },
     [CMS_MODELS.company_details]: {
+      ...qWithStatus,
+      id: false, // single object|collection
       logo: qWithQueryAsset(),
       image: qWithQueryAsset(),
       company_name: true,
@@ -92,7 +94,7 @@ const gql_query = jsonToGraphQLQuery({
         localization: true,
         ...qWithStatus,
       },
-      ...qWithStatus,
+
       ...qWithTranslations({
         slogan: true,
       }),
@@ -128,6 +130,18 @@ const gql_query = jsonToGraphQLQuery({
       }),
       ...qWithStatus,
     },
+    [CMS_MODELS.matomo]: {
+      ...qWithStatus,
+      id: false, // single object|collection
+      base_url: true,
+      site_id: true,
+    },
+    [CMS_MODELS.chatwoot]: {
+      ...qWithStatus,
+      id: false, // single object|collection
+      base_url: true,
+      website_token: true,
+    },
   },
 });
 
@@ -138,6 +152,8 @@ export type QShareDataType = {
   [CMS_MODELS.footer_links]: MDFooterLink[];
   [CMS_MODELS.navbar_links]: MDNavbarLink[];
   [CMS_MODELS.company_details]?: MDCompanyDetail;
+  [CMS_MODELS.matomo]?: MDMatomo;
+  [CMS_MODELS.chatwoot]?: MDChatwoot;
 };
 
 /**

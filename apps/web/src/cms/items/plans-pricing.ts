@@ -8,7 +8,11 @@ import {
   qWithStatus,
   qWithTranslations,
 } from '../gql-query';
-import { MPlansPricing, PlansPricingContent, TPlansPricing } from '@apps/contracts';
+import {
+  MPlansPricing,
+  PlansPricingContent,
+  TPlansPricing,
+} from '@apps/contracts';
 
 const plans_pricing = CMS_MODELS.plans_pricing;
 type TQuery = {
@@ -22,6 +26,8 @@ const queries = jsonToGraphQLQuery({
   query: <TQuery>{
     flexible_plans: {
       __aliasFor: plans_pricing.flexible_plans,
+      ...qWithStatus,
+      id: false, // single object|collection
       ram: true,
       ram_cost_hour: true,
       cpu: true,
@@ -29,7 +35,6 @@ const queries = jsonToGraphQLQuery({
       ssd: true,
       ssd_cost_hour: true,
       monthly_reduction: true,
-      ...qWithStatus,
     },
     fixed_plans: {
       __aliasFor: plans_pricing.fixed_plans,

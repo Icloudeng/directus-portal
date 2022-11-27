@@ -92,7 +92,7 @@ const actionHandler: ActionHandler = async (input, context) => {
 
   const listmonk = await getListmonkConfig(context.database);
   const company_details = await getComponyDetails(context.database);
-  if (!listmonk || !company_details) return;
+  if (!listmonk || listmonk.status !== "published" || !company_details) return;
 
   const listmonkClient = new ListmonkClient({
     baseUrl: listmonk.base_url,
