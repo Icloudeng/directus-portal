@@ -134,7 +134,7 @@ type MDCompanyDetailFieldTrans = {
 
 export type MDCompanyDetail = MDWithTranslation<MDCompanyDetailFieldTrans> &
   MDCompanyDetailField &
-  DRTStatus;
+  Omit<DRTStatus, "id">;
 
 //  ------------------ Navbar Links types  ---------------------
 
@@ -190,7 +190,7 @@ export type MDHomePageHero = {
   description: string;
   trailing_titles: string[];
 }> &
-  DRTStatus;
+  Omit<DRTStatus, "id">;
 
 // ---------------- Plans Pricing -------------------------
 
@@ -214,7 +214,7 @@ export type MDFlexiblePlan = {
   ssd: number;
   ssd_cost_hour: number;
   monthly_reduction: number;
-} & DRTStatus;
+} & Omit<DRTStatus, "id">;
 
 export type MDFixedPlan = {
   platforms: { platform: string }[];

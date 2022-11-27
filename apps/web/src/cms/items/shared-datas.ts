@@ -68,6 +68,8 @@ const gql_query = jsonToGraphQLQuery({
       },
     },
     [CMS_MODELS.company_details]: {
+      ...qWithStatus,
+      id: false, // single object|collection
       logo: qWithQueryAsset(),
       image: qWithQueryAsset(),
       company_name: true,
@@ -92,7 +94,7 @@ const gql_query = jsonToGraphQLQuery({
         localization: true,
         ...qWithStatus,
       },
-      ...qWithStatus,
+
       ...qWithTranslations({
         slogan: true,
       }),
@@ -127,6 +129,10 @@ const gql_query = jsonToGraphQLQuery({
         name: true,
       }),
       ...qWithStatus,
+    },
+    [CMS_MODELS.matomo]: {
+      ...qWithStatus,
+      id: false, // single object|collection
     },
   },
 });

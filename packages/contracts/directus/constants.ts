@@ -34,6 +34,8 @@ export const CMS_MODELS = {
     newsletters_subscriptions: "NewslettersSubscriptions",
     listmonk: "Listmonk",
     newsletter: "Newsletter",
+    chatwoot: "Chatwoot",
+    matomo: "Matomo",
   } as const),
   plans_pricing: {
     flexible_plans: "FlexiblePlans",
