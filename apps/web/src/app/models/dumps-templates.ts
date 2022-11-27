@@ -967,7 +967,6 @@ export const DumpPlansPricing: ST_PlansPricing[] = [
           ssd: 25,
           ssd_cost_hour: 0.00001,
           monthly_reduction: 4,
-          id: '251c0f8c-099b-4863-8f73-fef8aac5e99e',
           status: 'published',
           date_created: '2022-10-18T21:07:21.862Z',
           date_updated: '2022-10-27T21:23:37.091Z',
