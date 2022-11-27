@@ -3,9 +3,10 @@ import { useEffect } from 'react';
 import matomoInit from '@/lib/matomo-next';
 
 export function MatomoNext() {
-  const { Matomo } = useSharedData();
+  const shared = useSharedData();
 
   useEffect(() => {
+    const Matomo = shared?.Matomo;
     if (Matomo && Matomo.status === 'published') {
       matomoInit({
         url: Matomo.base_url,
