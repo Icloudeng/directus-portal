@@ -124,9 +124,14 @@ const actionHandler: ActionHandler = async (input, context) => {
       Hi there, this news may interest you.
 
       ## ${translation.title}\n\n
-      ${translation.summary}\n
-      
-      Interested ? You can read more [here](${website + "news/" + news.slug})
+      ${translation.summary}\n\n
+      ${
+        news.status === "mailer"
+          ? translation.markdown_content + "\n"
+          : `Interested ? You can read more [here](${
+              website + "news/" + news.slug
+            })`
+      }
       `.replace(/\n\s+/g, "\n"),
       send_at: new Date(new Date().getTime() + 2 * 60000).toISOString(),
     });
