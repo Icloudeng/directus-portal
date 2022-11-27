@@ -4,7 +4,7 @@
 
 - name: Fact | Line Regex
   set_fact:
-    lr: ^(#\\s)?
+    lr: "^(#\\s+?)?"
 
 # --------------------------- General variable ------------------------
 - name: App CMS .env config | PUBLIC_URL (letsencrypt == true)
@@ -76,56 +76,56 @@
 - name: App CMS .env config | CACHE_ENABLED
   lineinfile:
     path: "{{ env_file }}"
-    regexp: "^(#\\s)?CACHE_ENABLED="
+    regexp: "{{ lr }}CACHE_ENABLED="
     line: "CACHE_ENABLED=true"
 
 - name: App CMS .env config | CACHE_STORE
   lineinfile:
     path: "{{ env_file }}"
-    regexp: "^(#\\s)?CACHE_STORE="
+    regexp: "{{ lr }}CACHE_STORE="
     line: "CACHE_STORE=redis"
 
 - name: App CMS .env config | CACHE_REDIS
   lineinfile:
     path: "{{ env_file }}"
-    regexp: "^(#\\s)?CACHE_REDIS="
+    regexp: "{{ lr }}CACHE_REDIS="
     line: 'CACHE_REDIS="redis://@127.0.0.1:6379"'
 
 # -------------------------------- Rate Limiter -------------------------------
 - name: App CMS .env config | RATE_LIMITER_ENABLED
   lineinfile:
     path: "{{ env_file }}"
-    regexp: "^(#\\s)?RATE_LIMITER_ENABLED="
+    regexp: "{{ lr }}RATE_LIMITER_ENABLED="
     line: "RATE_LIMITER_ENABLED=true"
 
 - name: App CMS .env config | RATE_LIMITER_STORE
   lineinfile:
     path: "{{ env_file }}"
-    regexp: "^(#\\s)?RATE_LIMITER_STORE="
+    regexp: "{{ lr }}RATE_LIMITER_STORE="
     line: "RATE_LIMITER_STORE=redis"
 
 - name: App CMS .env config | RATE_LIMITER_REDIS
   lineinfile:
     path: "{{ env_file }}"
-    regexp: "^(#\\s)?RATE_LIMITER_REDIS="
+    regexp: "{{ lr }}RATE_LIMITER_REDIS="
     line: 'RATE_LIMITER_REDIS="redis://@127.0.0.1:6379"'
 
 # ----------------------- Cors configs ------------------
 - name: App CMS .env config | CORS_ENABLED
   lineinfile:
     path: "{{ env_file }}"
-    regexp: "^(#\\s)?CORS_ENABLED="
+    regexp: "{{ lr }}CORS_ENABLED="
     line: "CORS_ENABLED=false"
 
 # - name: App CMS .env config | CORS_ORIGIN
 #   lineinfile:
 #     path: "{{ env_file }}"
-#     regexp: "^(#\\s)?CORS_ORIGIN="
+#     regexp: "{{ lr }}CORS_ORIGIN="
 #     line: 'CORS_ORIGIN="http://localhost, http://127.0.0.1, https://{{ admin_domain }}, https://{{ domain }}"'
 
 # ----------------------- MESSENGER ------------------
 - name: App CMS .env config | MESSENGER_STORE
   lineinfile:
     path: "{{ env_file }}"
-    regexp: "^(#\\s)?MESSENGER_STORE="
+    regexp: "{{ lr }}MESSENGER_STORE="
     line: "MESSENGER_STORE=redis"
