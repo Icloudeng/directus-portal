@@ -105,7 +105,7 @@ const actionHandler: ActionHandler = async (input, context) => {
   if (!listmonkClient.hasValidConfig()) return;
 
   let website = company_details.website || "";
-  website = website.at(-1) === "/" ? website : website + "/";
+  website = website.slice(-1) === "/" ? website : website + "/";
 
   try {
     const campaign = await listmonkClient.createCampaign({
