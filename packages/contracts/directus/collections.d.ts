@@ -322,10 +322,10 @@ export type MDListmonk = {
   admin_password: string;
   list_id: string;
   template_id: string;
-};
+} & Omit<DRTStatus, "id">;
 
 // --------------------- Newsletter Config -------------------------------------
 export type MDNewsletter = {
   from_name: string;
   from_email: string;
-};
+} & Omit<DRTStatus, "id">;

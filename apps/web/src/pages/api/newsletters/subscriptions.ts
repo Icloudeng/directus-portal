@@ -19,7 +19,7 @@ export default async function handle(
 
   const config = await getListmonkConfig();
 
-  if (!config) {
+  if (!config || config.status !== 'published') {
     return res.status(200).json({});
   }
 
