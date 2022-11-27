@@ -9,7 +9,9 @@ declare global {
 }
 
 export function ChatwootNext() {
-  const { Chatwoot } = useSharedData();
+  const shared = useSharedData();
+  const Chatwoot = shared?.Chatwoot;
+
   return (
     <>
       {Chatwoot && Chatwoot.status === 'published' && (
