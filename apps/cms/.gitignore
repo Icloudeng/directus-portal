@@ -1,2 +1,4 @@
 uploads/
 .env.local
+.env.mail
+.env

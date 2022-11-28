@@ -9,7 +9,10 @@ export function MatomoNext() {
     const Matomo = shared?.Matomo;
     if (Matomo && Matomo.status === 'published') {
       matomoInit({
-        url: Matomo.base_url,
+        url:
+          Matomo.base_url.slice(-1) === '/'
+            ? Matomo.base_url.slice(0, -1)
+            : Matomo.base_url,
         siteId: Matomo.site_id + '',
       });
     }

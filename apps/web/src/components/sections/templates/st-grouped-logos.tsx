@@ -3,7 +3,7 @@ import Image from 'next/legacy/image';
 
 export function ST_GroupedLogosFC({ items }: STemplates_Props<ST_GroupedLogo>) {
   const grouped = items.reduce((acc, item) => {
-    const last = acc.at(-1);
+    const last = acc[acc.length - 1];
     if (!last || last.length >= 5) {
       acc.push([item]);
     } else {
@@ -15,7 +15,8 @@ export function ST_GroupedLogosFC({ items }: STemplates_Props<ST_GroupedLogo>) {
   return (
     <>
       {grouped.map((group, i) => {
-        const hasMargin = grouped.length > 1 && grouped.at(-1) !== group;
+        const hasMargin =
+          grouped.length > 1 && grouped[grouped.length - 1] !== group;
         return (
           <div
             key={i}

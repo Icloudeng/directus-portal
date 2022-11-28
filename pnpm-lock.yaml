@@ -13,17 +13,17 @@ importers:
   apps/cms:
     specifiers:
       '@directus/sdk': ^10.1.5
+      '@extensions/directus-extension-guests-replier': workspace:*
       '@extensions/directus-extension-newsletters': workspace:*
       '@extensions/directus-extension-searchable': workspace:*
       directus: 9.20.4
-      dotenv: ^16.0.3
       postgres: ^3.3.1
     dependencies:
       '@directus/sdk': 10.1.5
+      '@extensions/directus-extension-guests-replier': link:../../packages/@extensions/directus-extension-guests-replier
       '@extensions/directus-extension-newsletters': link:../../packages/@extensions/directus-extension-newsletters
       '@extensions/directus-extension-searchable': link:../../packages/@extensions/directus-extension-searchable
       directus: 9.20.4
-      dotenv: 16.0.3
       postgres: 3.3.1
 
   apps/web:
@@ -161,10 +161,12 @@ importers:
 
   packages/@extensions/directus-extension-guests-replier:
     specifiers:
+      '@apps/contracts': workspace:*
       '@directus/extensions-sdk': 9.21.0
       '@types/node': ^18.11.9
       typescript: ^4.9.3
     devDependencies:
+      '@apps/contracts': link:../../contracts
       '@directus/extensions-sdk': 9.21.0_typescript@4.9.3
       '@types/node': 18.11.9
       typescript: 4.9.3

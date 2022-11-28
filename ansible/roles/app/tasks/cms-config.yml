@@ -1,3 +1,11 @@
+- name: App CMS | Copy Sample .env.sample to .env
+  become: false
+  ansible.builtin.copy:
+    src: "{{ root_path }}/apps/cms/.env.sample"
+    dest: "{{ root_path }}/apps/cms/.env"
+    force: yes
+    remote_src: yes
+
 - name: App CMS .env config
   set_fact:
     env_file: "{{ root_path }}/apps/cms/.env"

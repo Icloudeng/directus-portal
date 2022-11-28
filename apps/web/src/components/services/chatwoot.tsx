@@ -16,7 +16,11 @@ export function ChatwootNext() {
     <>
       {Chatwoot && Chatwoot.status === 'published' && (
         <ChatwootWidget
-          baseUrl={Chatwoot.base_url}
+          baseUrl={
+            Chatwoot.base_url.slice(-1) === '/'
+              ? Chatwoot.base_url.slice(0, -1)
+              : Chatwoot.base_url
+          }
           websiteToken={Chatwoot.website_token}
         />
       )}

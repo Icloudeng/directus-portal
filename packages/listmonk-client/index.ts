@@ -99,7 +99,8 @@ export class ListmonkClient {
     if (body) {
       datas["body"] = JSON.stringify(body);
     }
-    const url = this.baseUrl.at(-1) === "/" ? this.baseUrl : this.baseUrl + "/";
+    const url =
+      this.baseUrl.slice(-1) === "/" ? this.baseUrl : this.baseUrl + "/";
 
     return fetch(url + "api" + path, {
       ...datas,

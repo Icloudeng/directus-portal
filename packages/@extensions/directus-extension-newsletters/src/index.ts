@@ -105,7 +105,7 @@ const actionHandler: ActionHandler = async (input, context) => {
   if (!listmonkClient.hasValidConfig()) return;
 
   let website = company_details.website || "";
-  website = website.at(-1) === "/" ? website : website + "/";
+  website = website.slice(-1) === "/" ? website : website + "/";
 
   try {
     const campaign = await listmonkClient.createCampaign({
@@ -124,9 +124,14 @@ const actionHandler: ActionHandler = async (input, context) => {
       Hi there, this news may interest you.
 
       ## ${translation.title}\n\n
-      ${translation.summary}
-      
-      Interested ? You can read more [here](${website + "news/" + news.slug})
+      ${translation.summary}\n\n
+      ${
+        news.status === "mailer"
+          ? translation.markdown_content + "\n"
+          : `Interested ? You can read more [here](${
+              website + "news/" + news.slug
+            })`
+      }
       `.replace(/\n\s+/g, "\n"),
       send_at: new Date(new Date().getTime() + 2 * 60000).toISOString(),
     });
