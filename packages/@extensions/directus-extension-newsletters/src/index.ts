@@ -71,6 +71,8 @@ async function initiateTransfer(id: string, database: Knex) {
 const actionHandler: ActionHandler = async (input, context) => {
   const id = input["event"] === UPDATE_EVENT ? input["keys"][0] : input["key"];
 
+  if (input["collection"] && input["collection"] !== CMS_MODELS.news) return;
+
   const news = await getNewsItem(id, context.database);
   if (!news || news.transfer_initiated) return;
 

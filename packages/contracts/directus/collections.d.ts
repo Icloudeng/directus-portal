@@ -305,6 +305,16 @@ export type GuestQuestion = {
 
 export type MDGuestQuestion = GuestQuestion & DRTStatus;
 
+//  ----------------  Guest Replies -------------------------
+
+export type MDGuestReplie = {
+  question: MDGuestQuestion;
+  replier?: MDAuthor;
+  message: string;
+  state: "sent" | "failed" | "sending";
+  transfer_initiated: boolean;
+} & DRTStatus;
+
 //  ---------------- Newsletters Subscriptions -------------------------
 
 export type NewslettersSubscription = {
