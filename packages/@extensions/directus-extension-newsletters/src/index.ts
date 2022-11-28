@@ -53,7 +53,7 @@ async function getNewsItem(id: string, database: Knex) {
   return item;
 }
 
-async function getComponyDetails(database: Knex) {
+async function getCompanyDetails(database: Knex) {
   return await database
     .from<MDCompanyDetail>(CMS_MODELS.company_details)
     .select("*")
@@ -93,7 +93,7 @@ const actionHandler: ActionHandler = async (input, context) => {
     return;
 
   const listmonk = await getListmonkConfig(context.database);
-  const company_details = await getComponyDetails(context.database);
+  const company_details = await getCompanyDetails(context.database);
   if (!listmonk || listmonk.status !== "published" || !company_details) return;
 
   const listmonkClient = new ListmonkClient({
@@ -139,7 +139,9 @@ const actionHandler: ActionHandler = async (input, context) => {
     });
 
     if (campaign) {
-      console.log("-------------- Listmonk compain created ------------------");
+      console.log(
+        "-------------- (News) Listmonk compain created ------------------"
+      );
 
       await listmonkClient.campaignStatus(campaign.id, "scheduled");
       await initiateTransfer(id, context.database);

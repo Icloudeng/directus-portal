@@ -9235,10 +9235,29 @@ fields:
       field: message
       group: null
       hidden: false
-      interface: input-multiline
+      interface: input-rich-text-html
       note: null
       options:
-        trim: true
+        imageToken: mdzjETutYM06z9ch56CmFkjIOWZCwraG
+        toolbar:
+          - blockquote
+          - bold
+          - bullist
+          - code
+          - customImage
+          - customLink
+          - customMedia
+          - fullscreen
+          - h1
+          - h2
+          - h3
+          - hr
+          - italic
+          - numlist
+          - removeformat
+          - strikethrough
+          - table
+          - underline
       readonly: false
       required: true
       sort: 4
@@ -9327,7 +9346,7 @@ fields:
         filter: null
         template: "{{status}}\_{{name}}\_-\_{{email}}"
       readonly: false
-      required: true
+      required: false
       sort: 3
       special:
         - m2o

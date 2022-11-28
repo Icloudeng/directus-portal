@@ -353,3 +353,14 @@ export type MDChatwoot = {
   base_url: string;
   website_token: string;
 } & Omit<DRTStatus, "id">;
+
+// --------------------------- Campaigns ----------------------------------------------
+
+export type MDCampaign = {
+  title: string;
+  message: string;
+  list_id?: number;
+  template_id?: number;
+  author?: MDAuthor;
+  transfer_initiated: boolean;
+} & DRTStatus;
