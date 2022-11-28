@@ -17,6 +17,7 @@ importers:
       '@extensions/directus-extension-newsletters': workspace:*
       '@extensions/directus-extension-searchable': workspace:*
       directus: 9.20.4
+      dotenv: ^16.0.3
       postgres: ^3.3.1
     dependencies:
       '@directus/sdk': 10.1.5
@@ -24,6 +25,7 @@ importers:
       '@extensions/directus-extension-newsletters': link:../../packages/@extensions/directus-extension-newsletters
       '@extensions/directus-extension-searchable': link:../../packages/@extensions/directus-extension-searchable
       directus: 9.20.4
+      dotenv: 16.0.3
       postgres: 3.3.1
 
   apps/web:
