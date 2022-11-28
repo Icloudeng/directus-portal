@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "directus start",
     "start": "directus start",
+    "directus": "directus",
     "setup": "directus bootstrap && directus schema apply --yes snapshot.yaml",
     "snapshot": "directus schema snapshot ./snapshot.yaml",
     "bootstrap": "directus bootstrap",
@@ -16,10 +17,10 @@
   "license": "ISC",
   "dependencies": {
     "@directus/sdk": "^10.1.5",
+    "@extensions/directus-extension-guests-replier": "workspace:*",
     "@extensions/directus-extension-newsletters": "workspace:*",
     "@extensions/directus-extension-searchable": "workspace:*",
     "directus": "9.20.4",
-    "dotenv": "^16.0.3",
     "postgres": "^3.3.1"
   }
 }
