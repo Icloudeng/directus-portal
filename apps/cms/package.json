@@ -20,6 +20,7 @@
     "@extensions/directus-extension-guests-replier": "workspace:*",
     "@extensions/directus-extension-newsletters": "workspace:*",
     "@extensions/directus-extension-searchable": "workspace:*",
+    "@extensions/directus-extension-compaigns": "workspace:*",
     "directus": "9.20.4",
     "dotenv": "^16.0.3",
     "postgres": "^3.3.1"

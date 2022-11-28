@@ -305,6 +305,16 @@ export type GuestQuestion = {
 
 export type MDGuestQuestion = GuestQuestion & DRTStatus;
 
+//  ----------------  Guest Replies -------------------------
+
+export type MDGuestReplie = {
+  question: MDGuestQuestion;
+  replier?: MDAuthor;
+  message: string;
+  state: "sent" | "failed" | "sending";
+  transfer_initiated: boolean;
+} & DRTStatus;
+
 //  ---------------- Newsletters Subscriptions -------------------------
 
 export type NewslettersSubscription = {
@@ -343,3 +353,14 @@ export type MDChatwoot = {
   base_url: string;
   website_token: string;
 } & Omit<DRTStatus, "id">;
+
+// --------------------------- Campaigns ----------------------------------------------
+
+export type MDCampaign = {
+  title: string;
+  message: string;
+  list_id?: number;
+  template_id?: number;
+  author?: MDAuthor;
+  transfer_initiated: boolean;
+} & DRTStatus;

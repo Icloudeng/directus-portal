@@ -8,11 +8,11 @@ type Options = {
   templateId: string;
 };
 export class ListmonkClient {
-  private baseUrl: string;
-  private adminUsername: string;
-  private adminPassword: string;
-  private listId: string;
-  private templateId: string;
+  public readonly baseUrl: string;
+  public readonly adminUsername: string;
+  public readonly adminPassword: string;
+  public readonly listId: string;
+  public readonly templateId: string;
 
   constructor(options: Options) {
     this.baseUrl = options.baseUrl;

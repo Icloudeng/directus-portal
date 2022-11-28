@@ -53,7 +53,7 @@ async function getNewsItem(id: string, database: Knex) {
   return item;
 }
 
-async function getComponyDetails(database: Knex) {
+async function getCompanyDetails(database: Knex) {
   return await database
     .from<MDCompanyDetail>(CMS_MODELS.company_details)
     .select("*")
@@ -70,6 +70,8 @@ async function initiateTransfer(id: string, database: Knex) {
 // ------------------ Hook handler --------------------------
 const actionHandler: ActionHandler = async (input, context) => {
   const id = input["event"] === UPDATE_EVENT ? input["keys"][0] : input["key"];
+
+  if (input["collection"] && input["collection"] !== CMS_MODELS.news) return;
 
   const news = await getNewsItem(id, context.database);
   if (!news || news.transfer_initiated) return;
@@ -91,7 +93,7 @@ const actionHandler: ActionHandler = async (input, context) => {
     return;
 
   const listmonk = await getListmonkConfig(context.database);
-  const company_details = await getComponyDetails(context.database);
+  const company_details = await getCompanyDetails(context.database);
   if (!listmonk || listmonk.status !== "published" || !company_details) return;
 
   const listmonkClient = new ListmonkClient({
@@ -137,7 +139,9 @@ const actionHandler: ActionHandler = async (input, context) => {
     });
 
     if (campaign) {
-      console.log("-------------- Listmonk compain created ------------------");
+      console.log(
+        "-------------- (News) Listmonk compain created ------------------"
+      );
 
       await listmonkClient.campaignStatus(campaign.id, "scheduled");
       await initiateTransfer(id, context.database);
