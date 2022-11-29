@@ -43,6 +43,11 @@ export async function getStaticProps({
   locale,
   locales,
 }: GetServerSidePropsContext) {
+  if (process.env.NEXT_PHASE === PHASE_PRODUCTION_BUILD) {
+    return {
+      props: {},
+    };
+  }
   const res = await getGqlSharedData().catch(console.error);
 
   if (res && res.data) {
