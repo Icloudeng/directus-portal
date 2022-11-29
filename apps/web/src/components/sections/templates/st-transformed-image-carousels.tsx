@@ -1,7 +1,4 @@
-import {
-  STemplates_Props,
-  ST_TransformedImageCarousel,
-} from '@apps/contracts';
+import { STemplates_Props, ST_TransformedImageCarousel } from '@apps/contracts';
 import {
   DotButton,
   NextButton,
@@ -9,7 +6,7 @@ import {
 } from '@/components/ui/carouselButtons/CarouselButtons';
 import { useCustomerEmblaCarousel } from '@/app/hooks/useCustomEmblaCarousel';
 import { MDWithAsset } from '@apps/contracts';
-import Image from "next/legacy/image";
+import Image from 'next/legacy/image';
 
 export function ST_TransformedImageCarouselsFC({
   items,
@@ -80,7 +77,7 @@ export const ImageCard = ({
         className={`relative h-60 sm:h-72 lg:h-96 w-[60vw] ss:w-[40vw] sm:w-[35vw] lg:w-[30vw] max-w-screen-xl flex-shrink-0 overflow-hidden ${className} scl transition-all duration-500`}
       >
         <Image
-          src={image.src!}
+          src={image?.src || ''}
           layout='fill'
           alt='Image'
           objectFit='cover'

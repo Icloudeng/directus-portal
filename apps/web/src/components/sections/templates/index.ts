@@ -27,3 +27,4 @@ export * from './st-markdown';
 export * from './st-charts';
 export * from './st-latest-news';
 export * from './st-latest-blog';
+export * from './st-rich-text';

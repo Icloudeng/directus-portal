@@ -155,7 +155,7 @@ function Header({ item }: ST_CleanHero) {
                     layout='responsive'
                   />
                 ) : (
-                  <img className='w-full h-auto' src={image.src} />
+                  <img className='w-full h-auto' src={image?.src} />
                 ))}
             </>
           }

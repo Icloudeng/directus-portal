@@ -52,7 +52,7 @@ export function ST_PlatformsFC({
                   fallback={
                     cat.icon ? (
                       <Image
-                        src={cat.icon.src || ''}
+                        src={cat.icon?.src || ''}
                         layout='fill'
                         className='w-full h-full'
                       />

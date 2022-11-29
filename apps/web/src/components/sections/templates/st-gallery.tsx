@@ -5,7 +5,7 @@ import {
   PrevButton,
 } from '@/components/ui/carouselButtons/CarouselButtons';
 import { useCustomerEmblaCarousel } from '@/app/hooks/useCustomEmblaCarousel';
-import Image from "next/legacy/image";
+import Image from 'next/legacy/image';
 
 export function ST_GalleryFC({ items }: STemplates_Props<ST_Gallery>) {
   const {
@@ -31,7 +31,7 @@ export function ST_GalleryFC({ items }: STemplates_Props<ST_Gallery>) {
                 <div className='relative w-full h-full'>
                   <Image
                     className='image object-cover'
-                    src={item.image.src!}
+                    src={item.image?.src || ''}
                     layout='fill'
                     objectFit='cover'
                     alt='Image'

@@ -41,7 +41,7 @@ export function HasMediaPlayer({
       {media?.type?.startsWith('image') && (
         <Image
           className='image object-cover w-full h-hull'
-          src={media.src!}
+          src={media?.src || ''}
           layout='fill'
           objectFit='cover'
         />

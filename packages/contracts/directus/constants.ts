@@ -81,5 +81,6 @@ export const CMS_MODELS = {
     st_charts: "ST_Charts",
     st_latest_news: "ST_LatestNews",
     st_latest_blog: "ST_LatestBlog",
+    st_rich_text: "ST_RichText",
   } as const,
 };

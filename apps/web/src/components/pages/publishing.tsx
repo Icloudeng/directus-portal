@@ -70,7 +70,7 @@ export function Publishing({
                       <div className='bg-gray-100 w-16 h-16 relative rounded-[50%]'>
                         {author?.image && (
                           <Image
-                            src={author?.image.src || ''}
+                            src={author?.image?.src || ''}
                             className='w-full h-full rounded-[50%]'
                             layout='fill'
                             objectFit='cover'
@@ -113,12 +113,12 @@ export function Publishing({
                 <h1 className='mb-16'>{translations?.title}</h1>
                 {item.image && (
                   <Link
-                    href={item.image.src || ''}
+                    href={item.image?.src || ''}
                     target='_blank'
                     className='relative w-full h-[284px] sm:h-[384px] lg:h-[484px] mb-16 block'
                   >
                     <Image
-                      src={item.image.src || ''}
+                      src={item.image?.src || ''}
                       height={item.image.height}
                       width={item.image.width}
                       layout='fill'

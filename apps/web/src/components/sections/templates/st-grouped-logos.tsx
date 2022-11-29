@@ -42,7 +42,7 @@ function Logo({ item }: ST_GroupedLogo) {
       <div className='relative h-auto min-w-[64px] min-h-[64px] max-w-[112px] p-2'>
         <Image
           className='image object-cover'
-          src={image.src!}
+          src={image?.src || ''}
           width={image.width}
           height={image.height}
           alt='Image'

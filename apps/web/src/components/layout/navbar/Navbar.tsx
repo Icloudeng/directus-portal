@@ -133,7 +133,7 @@ function NavbarLink({
         type='button'
         className='menu-top__link flex items-center gap-1'
       >
-        {url ? (
+        {url && !hasSubmenus ? (
           <UnstyledLink target={external ? '_blank' : undefined} href={url}>
             {translations?.name}
           </UnstyledLink>

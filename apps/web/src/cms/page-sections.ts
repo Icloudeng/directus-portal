@@ -305,6 +305,11 @@ const q_ST: Query = {
     limit: true,
     ...qWithStatus,
   },
+  [section_templates.st_rich_text]: {
+    __typeName: section_templates.st_rich_text,
+    __args: qWithPublishedStatus(),
+    ...qWithStatus,
+  },
 };
 
 type PSQuery = {

@@ -53,7 +53,7 @@ export const TopBar: React.FC = () => {
                 <span>
                   <NextImage
                     useSkeleton
-                    src={language.icon_flag.src!}
+                    src={language.icon_flag?.src || ''}
                     width='15'
                     height='15'
                     alt='Icon'

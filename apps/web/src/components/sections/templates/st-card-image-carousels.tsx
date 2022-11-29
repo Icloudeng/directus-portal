@@ -1,8 +1,5 @@
-import Image from "next/legacy/image";
-import type {
-  STemplates_Props,
-  ST_CardImageCarousel,
-} from '@apps/contracts';
+import Image from 'next/legacy/image';
+import type { STemplates_Props, ST_CardImageCarousel } from '@apps/contracts';
 import {
   DotButton,
   NextButton,
@@ -87,9 +84,8 @@ function CarouselItem({
         } scl transition-all duration-500`}
       >
         <Image
-          src={image.src!}
+          src={image?.src || ''}
           layout='fill'
-          alt=''
           className='absolute inset-0 w-full h-full object-cover object-bottom'
         />
         <div className='absolute inset-0 h-full w-full bg-gradient-to-br from-black/75'></div>
