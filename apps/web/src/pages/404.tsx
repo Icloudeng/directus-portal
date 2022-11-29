@@ -44,9 +44,16 @@ export async function getStaticProps({
   locale,
   locales,
 }: GetServerSidePropsContext) {
+  const translations = await getServerSideTranslations(locale!);
   if (process.env.NEXT_PHASE === PHASE_PRODUCTION_BUILD) {
     return {
-      props: {},
+      props: {
+        languages: [],
+        TopbarLinks: [],
+        NavbarLinks: [],
+        FooterLinks: [],
+        ...translations,
+      },
     };
   }
   const res = await getGqlSharedData().catch(console.error);
@@ -60,7 +67,7 @@ export async function getStaticProps({
     props: {
       locale,
       ...(res?.data || {}),
-      ...(await getServerSideTranslations(locale!)),
+      ...translations,
     },
   };
 }
