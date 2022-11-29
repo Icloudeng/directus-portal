@@ -1,4 +1,5 @@
 import { CMS_MODELS, GE_Vls, ST_Vls } from '@apps/contracts';
+
 import {
   qWithPublishedStatus,
   qWithQueryAsset,
@@ -303,6 +304,11 @@ const q_ST: Query = {
     __typeName: section_templates.st_latest_blog,
     __args: qWithPublishedStatus(),
     limit: true,
+    ...qWithStatus,
+  },
+  [section_templates.st_rich_text]: {
+    __typeName: section_templates.st_rich_text,
+    __args: qWithPublishedStatus(),
     ...qWithStatus,
   },
 };

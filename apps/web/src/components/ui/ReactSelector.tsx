@@ -3,6 +3,7 @@ import Image from 'next/legacy/image';
 import React, { useState } from 'react';
 import Select from 'react-select';
 import AsyncSelect from 'react-select/async';
+
 import { HasSvgText } from './HasSvgText';
 
 type Params = Parameters<Select>;

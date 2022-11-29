@@ -1,11 +1,14 @@
-import { mut } from '@/cms/mut';
-import { STemplates_Props, ST_PageAsideMenu } from '@apps/contracts';
+import { ST_PageAsideMenu, STemplates_Props } from '@apps/contracts';
+
 import {
   AsideMenu,
   AsideMenuContent,
 } from '@/components/ui/aside-menu/aside-menu';
 import { MarkdownContent } from '@/components/ui/react-markdown/MarkdownContent';
+
 import { useSharedData } from '@/app/store';
+import { mut } from '@/cms/mut';
+
 import { HasPlansPricing } from '../shared/pricing/HasPlansPricing';
 
 export function ST_PageAsideMenusFC({

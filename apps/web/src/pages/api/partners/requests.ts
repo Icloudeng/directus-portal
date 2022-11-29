@@ -1,7 +1,8 @@
-import { validateForm } from '@/app/utils/validations';
-import { storePartnerRequest } from '@/cms/items';
 import { PartnerRequest } from '@apps/contracts';
 import { NextApiRequest, NextApiResponse } from 'next';
+
+import { validateForm } from '@/app/utils/validations';
+import { storePartnerRequest } from '@/cms/items';
 
 export default async function handle(
   req: NextApiRequest,

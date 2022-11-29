@@ -1,15 +1,15 @@
-import '@/styles/globals.css';
-
 import { GetServerSidePropsContext } from 'next';
 import { AppProps } from 'next/app';
 import { PHASE_PRODUCTION_BUILD } from 'next/constants';
 import { appWithTranslation } from 'next-i18next';
 
-import { ISharedData, SharedDataProvider } from '@/app/store';
+import '@/styles/globals.css';
 
-import { getGqlSharedData } from '@/cms/items';
+import { ChatwootNext, MatomoNext } from '@/components/services';
 import NextProgress from '@/components/ui/next-progress';
-import { MatomoNext, ChatwootNext } from '@/components/services';
+
+import { ISharedData, SharedDataProvider } from '@/app/store';
+import { getGqlSharedData } from '@/cms/items';
 
 function MyApp({
   Component,

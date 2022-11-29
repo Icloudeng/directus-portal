@@ -1,7 +1,9 @@
-import { useMut } from '@/cms/mut';
-import { STemplates_Props, ST_SideTextMedia } from '@apps/contracts';
+import { ST_SideTextMedia, STemplates_Props } from '@apps/contracts';
+
 import { HasMediaPlayer } from '@/components/ui/HasMediaPlayer';
 import ButtonLink from '@/components/ui/links/ButtonLink';
+
+import { useMut } from '@/cms/mut';
 
 export function ST_SideTextMediasFC({
   items,

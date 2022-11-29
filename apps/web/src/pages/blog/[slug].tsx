@@ -1,11 +1,11 @@
+import { MDBlog } from '@apps/contracts';
 import { GetServerSidePropsContext } from 'next';
 
 import Layout from '@/components/layout/Layout';
+import { Publishing } from '@/components/pages/publishing';
 
 import { getServerSideTranslations } from '@/app/utils/server-translation';
 import { getGqlBlogBySlug } from '@/cms/items';
-import { MDBlog } from '@apps/contracts';
-import { Publishing } from '@/components/pages/publishing';
 
 export default function Page({ blog }: { blog: MDBlog }) {
   return (

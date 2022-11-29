@@ -1,7 +1,8 @@
+import { useTranslation } from 'next-i18next';
 import { FaCcMastercard, FaCcPaypal, FaCcVisa } from 'react-icons/fa';
 
 import UnstyledLink from '@/components/ui/links/UnstyledLink';
-import { useTranslation } from 'next-i18next';
+
 import { COMPANY_NAME } from '@/app/constant/env';
 
 export const TermsConditions = () => {
@@ -10,8 +11,7 @@ export const TermsConditions = () => {
     <div className='flex items-end sm:items-center space-x-32 pt-10'>
       <div className='bottom-footer flex flex-col items-start gap-2 md:flex-row md:items-center md:gap-0 md:divide-x-2'>
         <span className='px-2 text-xs hover:text-primary-400'>
-          &#169; 2021-2022{' '}
-          <UnstyledLink href='#'>{COMPANY_NAME}.</UnstyledLink>
+          &#169; 2021-2022 <UnstyledLink href='#'>{COMPANY_NAME}.</UnstyledLink>
         </span>
         <UnstyledLink href='#' className='px-2 text-xs hover:text-primary-400'>
           {t('Terms of services')}

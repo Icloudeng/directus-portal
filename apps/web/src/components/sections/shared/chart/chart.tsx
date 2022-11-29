@@ -1,7 +1,7 @@
 import { ChartDataSetData, ST_Chart } from '@apps/contracts';
+import { stackOffsetWiggle } from 'd3-shape';
 import { useMemo } from 'react';
 import { AxisOptions, Chart, UserSerie } from 'react-charts';
-import { stackOffsetWiggle } from 'd3-shape';
 
 type ElType = AxisOptions<ChartDataSetData>['elementType'];
 type IElRype = ST_Chart['item']['type'];

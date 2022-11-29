@@ -1,5 +1,6 @@
-import { useSharedData } from '@/app/store';
 import { useEffect } from 'react';
+
+import { useSharedData } from '@/app/store';
 
 declare global {
   interface Window {

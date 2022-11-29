@@ -1,23 +1,24 @@
+import { MDNews } from '@apps/contracts';
+import capitalize from 'lodash/capitalize';
 import { GetServerSidePropsContext } from 'next';
+import { useRouter } from 'next/router';
+import { useTranslation } from 'next-i18next';
+import { useCallback, useEffect, useState } from 'react';
 
+import { CleanHero } from '@/components/layout/footer/CleanHero';
 import Layout from '@/components/layout/Layout';
 import Seo from '@/components/Seo';
-
-import { getServerSideTranslations } from '@/app/utils/server-translation';
-import { CleanHero } from '@/components/layout/footer/CleanHero';
-import { useTranslation } from 'next-i18next';
-import capitalize from 'lodash/capitalize';
-import { getGqlListNewsQuery } from '@/cms/items';
-import { MDNews } from '@apps/contracts';
-import { SearchForm } from '@/components/ui/form-control/SearchFrom';
-import EmptySvg from '~/svg/empty.svg';
-import { useSharedData } from '@/app/store';
-import { mut } from '@/cms/mut';
 import { NewsCard } from '@/components/ui/cards/NewsCard';
-import { useCallback, useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
 import { LoadMore } from '@/components/ui/fetch/LoadMore';
+import { SearchForm } from '@/components/ui/form-control/SearchFrom';
+
+import { useSharedData } from '@/app/store';
 import { toLocaleDateString } from '@/app/utils/helpers';
+import { getServerSideTranslations } from '@/app/utils/server-translation';
+import { getGqlListNewsQuery } from '@/cms/items';
+import { mut } from '@/cms/mut';
+
+import EmptySvg from '~/svg/empty.svg';
 
 const LIMIT = 9;
 

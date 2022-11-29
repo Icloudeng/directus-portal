@@ -1,8 +1,9 @@
+import { MDWithAsset } from '@apps/contracts';
+import Image from 'next/legacy/image';
 import React from 'react';
 import { PropsWithChildren, useState } from 'react';
-import { MDWithAsset } from '@apps/contracts';
+
 import Skeleton from '../Skeleton';
-import Image from "next/legacy/image";
 
 type HoverableMenusItemProps = {
   image: MDWithAsset;
@@ -67,11 +68,11 @@ export function HoverableMenusItem({
   const { active } = props as any;
   return (
     <div className={`flex flex-col lg:flex-row ${active ? '' : 'hidden'}`}>
-      <div className={`relative h-[15rem] sm:h-[20rem] lg:h-[22rem] w-full  lg:w-1/2 rounded-sm z-[1]`}>
+      <div className='relative h-[15rem] sm:h-[20rem] lg:h-[22rem] w-full  lg:w-1/2 rounded-sm z-[1]'>
         <Skeleton className='absolute inset-0 bg-primary-100 -z-[1]' />
         <Image
           className='image object-cover'
-          src={image.src!}
+          src={image?.src || ''}
           layout='fill'
           objectFit='cover'
           alt='Image'

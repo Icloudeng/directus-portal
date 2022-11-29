@@ -1,11 +1,13 @@
-import { useSharedData } from '@/app/store';
-import { mut } from '@/cms/mut';
-import { STemplates_Props, ST_TimelineRange } from '@apps/contracts';
+import { ST_TimelineRange, STemplates_Props } from '@apps/contracts';
+import { useState } from 'react';
+
 import {
   RawNextButton,
   RawPrevButton,
 } from '@/components/ui/carouselButtons/CarouselButtons';
-import { useState } from 'react';
+
+import { useSharedData } from '@/app/store';
+import { mut } from '@/cms/mut';
 
 export function ST_TimelineRangesFC({
   items,

@@ -1,4 +1,5 @@
 import { MPlansPricing, PlansPricingContent } from '@apps/contracts';
+
 import { FixedPlans } from './FixedPlans';
 import { FlexiblePlans } from './FlexiblePlans';
 import { PlansComparisons } from './PlansComparisons';

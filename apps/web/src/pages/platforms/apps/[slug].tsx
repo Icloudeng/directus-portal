@@ -1,18 +1,18 @@
-import { GetServerSidePropsContext } from 'next';
-
-import Layout from '@/components/layout/Layout';
-import Seo from '@/components/Seo';
-
-import { getServerSideTranslations } from '@/app/utils/server-translation';
-import { getGqlPlatformsBySlug } from '@/cms/items';
 import { MDPlatform } from '@apps/contracts';
-import { useMut } from '@/cms/mut';
-import { HasSvgText } from '@/components/ui/HasSvgText';
+import { GetServerSidePropsContext } from 'next';
 import Image from 'next/image';
 import { useTranslation } from 'next-i18next';
 import { HiOutlineLink } from 'react-icons/hi';
+
+import Layout from '@/components/layout/Layout';
+import Seo from '@/components/Seo';
+import { HasSvgText } from '@/components/ui/HasSvgText';
 import UnstyledLink from '@/components/ui/links/UnstyledLink';
 import { MarkdownContent } from '@/components/ui/react-markdown/MarkdownContent';
+
+import { getServerSideTranslations } from '@/app/utils/server-translation';
+import { getGqlPlatformsBySlug } from '@/cms/items';
+import { useMut } from '@/cms/mut';
 
 export default function Page({ platform }: { platform: MDPlatform }) {
   const {
@@ -103,7 +103,7 @@ export default function Page({ platform }: { platform: MDPlatform }) {
                 <h5 className='font-semibold text-2xl mb-2'>
                   {t('Documentation')}
                 </h5>
-                <div className={`markdown__content w-full mkd__reset`}>
+                <div className='markdown__content w-full mkd__reset'>
                   <MarkdownContent>
                     {translations?.documentation || ''}
                   </MarkdownContent>

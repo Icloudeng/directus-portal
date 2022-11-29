@@ -9,6 +9,7 @@ import { CodeComponent } from 'react-markdown/lib/ast-to-react';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { useEffect, useState } from 'react';
 import { FiCopy, FiCheck } from 'react-icons/fi';
+import remarkToc from 'remark-toc';
 
 const Code: keyof JSX.IntrinsicElements | CodeComponent = ({
   node,
@@ -55,13 +56,15 @@ const Code: keyof JSX.IntrinsicElements | CodeComponent = ({
 
 export function MarkdownContent({ children }: { children: string }) {
   return (
-    <ReactMarkdown
-      components={{
-        code: Code,
-      }}
-      remarkPlugins={[remarkBreaks, remarkGfm, remarkHtml]}
-    >
-      {children}
-    </ReactMarkdown>
+    <div id='table-content'>
+      <ReactMarkdown
+        components={{
+          code: Code,
+        }}
+        remarkPlugins={[remarkBreaks, remarkGfm, remarkHtml, remarkToc]}
+      >
+        {children}
+      </ReactMarkdown>
+    </div>
   );
 }

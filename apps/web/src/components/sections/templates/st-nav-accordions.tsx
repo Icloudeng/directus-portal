@@ -1,9 +1,11 @@
-import { mut } from '@/cms/mut';
-import Image from "next/legacy/image";
-import type { STemplates_Props, ST_NavAccordion } from '@apps/contracts';
+import type { ST_NavAccordion, STemplates_Props } from '@apps/contracts';
+import Image from 'next/legacy/image';
+
 import { Accordion, AccordionChild } from '@/components/ui/accordion/Accordion';
-import { useSharedData } from '@/app/store';
 import { MarkdownContent } from '@/components/ui/react-markdown/MarkdownContent';
+
+import { useSharedData } from '@/app/store';
+import { mut } from '@/cms/mut';
 
 export function ST_NavAccordionsFC({
   items,

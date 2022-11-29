@@ -1,13 +1,15 @@
-import { useSharedData } from '@/app/store';
-import { mut } from '@/cms/mut';
-import { STemplates_Props, ST_Platform } from '@apps/contracts';
+import { ST_Platform, STemplates_Props } from '@apps/contracts';
+import Image from 'next/legacy/image';
+import { useTranslation } from 'next-i18next';
+import { useCallback, useState } from 'react';
+
 import { AsideMenuCategories } from '@/components/ui/aside-menu/aside-menu-categories';
 import { MarketPlaceCard } from '@/components/ui/cards/MarketPlaceCard';
 import { HasSvgText } from '@/components/ui/HasSvgText';
 import { InputSearch } from '@/components/ui/inputs/InputSearch';
-import { useTranslation } from 'next-i18next';
-import Image from 'next/legacy/image';
-import { useCallback, useState } from 'react';
+
+import { useSharedData } from '@/app/store';
+import { mut } from '@/cms/mut';
 
 export function ST_PlatformsFC({
   items,
@@ -52,7 +54,7 @@ export function ST_PlatformsFC({
                   fallback={
                     cat.icon ? (
                       <Image
-                        src={cat.icon.src || ''}
+                        src={cat.icon?.src || ''}
                         layout='fill'
                         className='w-full h-full'
                       />

@@ -2,20 +2,21 @@ import { GetServerSidePropsContext } from 'next';
 import { useTranslation } from 'next-i18next';
 import { RiAlarmWarningFill } from 'react-icons/ri';
 
-import ArrowLink from '@/components/ui/links/ArrowLink';
+import Layout from '@/components/layout/Layout';
 import Seo from '@/components/Seo';
+import ArrowLink from '@/components/ui/links/ArrowLink';
 
 import { getServerSideTranslations } from '@/app/utils/server-translation';
 
 export default function NotFoundPage() {
   const { t } = useTranslation('404');
   return (
-    <>
+    <Layout>
       <Seo templateTitle='Not Found' />
 
       <main>
         <section className='bg-white'>
-          <div className='layout flex min-h-screen flex-col items-center justify-center text-center text-black'>
+          <div className='layout flex min-h-[70vh] flex-col items-center justify-center text-center text-black'>
             <RiAlarmWarningFill
               size={60}
               className='drop-shadow-glow animate-flicker text-red-500'
@@ -27,7 +28,7 @@ export default function NotFoundPage() {
           </div>
         </section>
       </main>
-    </>
+    </Layout>
   );
 }
 

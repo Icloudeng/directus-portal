@@ -1,11 +1,13 @@
-import { useMut } from '@/cms/mut';
-import type { STemplates_Props, ST_CleanHero } from '@apps/contracts';
-import ButtonLink from '@/components/ui/links/ButtonLink';
+import type { ST_CleanHero, STemplates_Props } from '@apps/contracts';
 import isSvg from 'is-svg';
+import Image from 'next/legacy/image';
 import Router from 'next/router';
 import { useEffect } from 'react';
+
 import { HasSvgText } from '@/components/ui/HasSvgText';
-import Image from 'next/legacy/image';
+import ButtonLink from '@/components/ui/links/ButtonLink';
+
+import { useMut } from '@/cms/mut';
 
 export function ST_CleanHerosFC({
   items,
@@ -155,7 +157,7 @@ function Header({ item }: ST_CleanHero) {
                     layout='responsive'
                   />
                 ) : (
-                  <img className='w-full h-auto' src={image.src} />
+                  <img className='w-full h-auto' src={image?.src} />
                 ))}
             </>
           }

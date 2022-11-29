@@ -1,4 +1,4 @@
-import { STemplates_Props, ST_GroupedLogo } from '@apps/contracts';
+import { ST_GroupedLogo, STemplates_Props } from '@apps/contracts';
 import Image from 'next/legacy/image';
 
 export function ST_GroupedLogosFC({ items }: STemplates_Props<ST_GroupedLogo>) {
@@ -42,7 +42,7 @@ function Logo({ item }: ST_GroupedLogo) {
       <div className='relative h-auto min-w-[64px] min-h-[64px] max-w-[112px] p-2'>
         <Image
           className='image object-cover'
-          src={image.src!}
+          src={image?.src || ''}
           width={image.width}
           height={image.height}
           alt='Image'

@@ -1,7 +1,9 @@
+import { ST_LatestNew, STemplates_Props } from '@apps/contracts';
+
+import { NewsCard } from '@/components/ui/cards/NewsCard';
+
 import { useSharedData } from '@/app/store';
 import { mut } from '@/cms/mut';
-import { STemplates_Props, ST_LatestNew } from '@apps/contracts';
-import { NewsCard } from '@/components/ui/cards/NewsCard';
 
 export function ST_LatestNewsFC({ items }: STemplates_Props<ST_LatestNew>) {
   const { item } = items[0];

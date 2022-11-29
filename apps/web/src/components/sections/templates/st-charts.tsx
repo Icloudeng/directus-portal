@@ -1,8 +1,10 @@
+import { ST_Chart, STemplates_Props } from '@apps/contracts';
+import dynamic from 'next/dynamic';
+
+import { MarkdownContent } from '@/components/ui/react-markdown/MarkdownContent';
+
 import { useSharedData } from '@/app/store';
 import { mut } from '@/cms/mut';
-import { STemplates_Props, ST_Chart } from '@apps/contracts';
-import { MarkdownContent } from '@/components/ui/react-markdown/MarkdownContent';
-import dynamic from 'next/dynamic';
 
 const ChartContent = dynamic(
   () => import('@/components/sections/shared/chart/chart'),
@@ -25,7 +27,7 @@ export function ST_ChartsFC({ items }: STemplates_Props<ST_Chart>) {
             }`}
           >
             {markdown_content && (
-              <div className={`markdown__content w-full md:w-1/2`}>
+              <div className='markdown__content w-full md:w-1/2'>
                 <MarkdownContent>{markdown_content || ''}</MarkdownContent>
               </div>
             )}

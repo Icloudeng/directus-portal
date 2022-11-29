@@ -3,7 +3,10 @@ const { fontFamily } = require('tailwindcss/defaultTheme');
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./src/**/*.{js,jsx,ts,tsx}', 'node_modules/flowbite-react/**/*.{js,jsx,ts,tsx}'],
+  content: [
+    './src/**/*.{js,jsx,ts,tsx}',
+    'node_modules/flowbite-react/**/*.{js,jsx,ts,tsx}',
+  ],
   darkMode: 'class',
   theme: {
     extend: {
@@ -85,7 +88,7 @@ module.exports = {
         shimmer: 'shimmer 1.3s linear infinite',
         blink: 'blink .7s linear infinite',
         streamleft: 'streamleft  15s linear infinite forwards',
-        streamright: 'streamright 15s linear 0s infinite normal none running'
+        streamright: 'streamright 15s linear 0s infinite normal none running',
       },
       // gridAutoRows: {
 
@@ -106,5 +109,4 @@ module.exports = {
     },
   },
   plugins: [require('@tailwindcss/forms'), require('flowbite/plugin')],
-  
 };

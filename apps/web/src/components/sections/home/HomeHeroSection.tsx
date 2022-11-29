@@ -1,11 +1,11 @@
+import { MDHomePageHero } from '@apps/contracts';
+import Image from 'next/legacy/image';
 import { useCallback, useMemo, useState } from 'react';
 import { TypeAnimation } from 'react-type-animation';
 
 import NextImage from '@/components/ui/NextImage';
 
-import { MDHomePageHero } from '@apps/contracts';
 import { useMut } from '@/cms/mut';
-import Image from 'next/legacy/image';
 
 type AccType =
   | ((element: HTMLElement | null) => void | Promise<void>)

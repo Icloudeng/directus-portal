@@ -1,5 +1,6 @@
-import Button from '@/components/ui/buttons/Button';
 import { ChangeEventHandler, InputHTMLAttributes } from 'react';
+
+import Button from '@/components/ui/buttons/Button';
 
 type IInputWithIcon = {
   label: string;

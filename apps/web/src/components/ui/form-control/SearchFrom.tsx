@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router';
 import { useState } from 'react';
+
 import { InputSearch } from '../inputs/InputSearch';
 
 export function SearchForm({ queryName = 'q' }) {

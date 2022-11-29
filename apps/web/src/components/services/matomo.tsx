@@ -1,6 +1,8 @@
-import { useSharedData } from '@/app/store';
 import { useEffect } from 'react';
+
 import matomoInit from '@/lib/matomo-next';
+
+import { useSharedData } from '@/app/store';
 
 export function MatomoNext() {
   const shared = useSharedData();

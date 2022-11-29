@@ -1,5 +1,7 @@
 import { CMS_MODELS } from '@apps/contracts';
+import { MDPlatform, MDPlatformCategory } from '@apps/contracts';
 import { jsonToGraphQLQuery, VariableType } from 'json-to-graphql-query';
+
 import { getDirectusClient } from '../directus';
 import {
   qWithAssets,
@@ -8,7 +10,6 @@ import {
   qWithStatus,
   qWithTranslations,
 } from '../gql-query';
-import { MDPlatform, MDPlatformCategory } from '@apps/contracts';
 
 const platformQuery = {
   __variables: {

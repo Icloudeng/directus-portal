@@ -1,13 +1,14 @@
+import { MDFixedPlan, MDMachineTemplate } from '@apps/contracts';
+import round from 'lodash/round';
 import { useTranslation } from 'next-i18next';
+import { useCallback, useState } from 'react';
 
 import { ReactSelector } from '@/components/ui/ReactSelector';
 
-import { MDFixedPlan, MDMachineTemplate } from '@apps/contracts';
-import { getMachineTemplateOptions } from './hooks';
 import { useSharedData } from '@/app/store';
 import { useMut } from '@/cms/mut';
-import { useCallback, useState } from 'react';
-import round from 'lodash/round';
+
+import { getMachineTemplateOptions } from './hooks';
 
 type Props = {
   fixed_plans: MDFixedPlan[];

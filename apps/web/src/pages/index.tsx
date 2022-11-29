@@ -5,8 +5,8 @@ import { HomeHeroSection } from '@/components/sections/home/HomeHeroSection';
 import { PageSections } from '@/components/sections/page-sections';
 import Seo from '@/components/Seo';
 
-import { getGqlHomeQueries, QHomeHeroQueriesType } from '@/cms/items';
 import { getServerSideTranslations } from '@/app/utils/server-translation';
+import { getGqlHomeQueries, QHomeHeroQueriesType } from '@/cms/items';
 
 export default function HomePage(props: Partial<QHomeHeroQueriesType<true>>) {
   const { HomeHero, HomeSections } = props;

@@ -5,7 +5,7 @@ import clsxm from '@/lib/clsxm';
 
 export type UnstyledLinkProps = {
   href: string;
-  children: React.ReactNode;
+  children?: React.ReactNode;
   openNewTab?: boolean;
   className?: string;
   nextLinkProps?: Omit<LinkProps, 'href'>;

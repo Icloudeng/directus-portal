@@ -1,19 +1,22 @@
+import { MDMachineTemplate, MDPlatform } from '@apps/contracts';
+import throttle from 'lodash/throttle';
+import Link from 'next/link';
+import { useTranslation } from 'next-i18next';
+import { useCallback } from 'react';
+import { FiExternalLink } from 'react-icons/fi';
+
 import Button from '@/components/ui/buttons/Button';
 import { DynamicInput } from '@/components/ui/DynamicInput';
 import { ReactAsyncSelect, ReactSelector } from '@/components/ui/ReactSelector';
+
 import { useSharedData } from '@/app/store';
-import { useTranslation } from 'next-i18next';
-import { useCallback } from 'react';
+
 import {
   FlexiblePlansProps,
   getMachineTemplateOptions,
   getPlatformOptions,
   useFlexiblePlans,
 } from './hooks';
-import { FiExternalLink } from 'react-icons/fi';
-import throttle from 'lodash/throttle';
-import { MDMachineTemplate, MDPlatform } from '@apps/contracts';
-import Link from 'next/link';
 
 export const FlexiblePlans = ({
   flexible_plans,

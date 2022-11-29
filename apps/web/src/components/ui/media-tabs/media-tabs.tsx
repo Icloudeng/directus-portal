@@ -1,5 +1,6 @@
 import React from 'react';
 import { PropsWithChildren, useState } from 'react';
+
 import Button from '@/components/ui/buttons/Button';
 
 export function MediaTabs({ children }: PropsWithChildren) {

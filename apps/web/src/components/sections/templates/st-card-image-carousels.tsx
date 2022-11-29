@@ -1,17 +1,16 @@
-import Image from "next/legacy/image";
-import type {
-  STemplates_Props,
-  ST_CardImageCarousel,
-} from '@apps/contracts';
+import type { ST_CardImageCarousel, STemplates_Props } from '@apps/contracts';
+import Image from 'next/legacy/image';
+import { useTranslation } from 'next-i18next';
+
 import {
   DotButton,
   NextButton,
   PrevButton,
 } from '@/components/ui/carouselButtons/CarouselButtons';
+import ButtonLink from '@/components/ui/links/ButtonLink';
+
 import { useCustomerEmblaCarousel } from '@/app/hooks/useCustomEmblaCarousel';
 import { useMut } from '@/cms/mut';
-import ButtonLink from '@/components/ui/links/ButtonLink';
-import { useTranslation } from 'next-i18next';
 
 export function ST_CardImageCarouselsFC({
   items,
@@ -87,9 +86,8 @@ function CarouselItem({
         } scl transition-all duration-500`}
       >
         <Image
-          src={image.src!}
+          src={image?.src || ''}
           layout='fill'
-          alt=''
           className='absolute inset-0 w-full h-full object-cover object-bottom'
         />
         <div className='absolute inset-0 h-full w-full bg-gradient-to-br from-black/75'></div>

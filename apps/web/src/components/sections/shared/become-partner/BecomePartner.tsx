@@ -1,10 +1,12 @@
-import { useFormSubmit } from '@/app/hooks/useFormSubmit';
+import { useTranslation } from 'next-i18next';
+
 import Button from '@/components/ui/buttons/Button';
+import InputField from '@/components/ui/form-control/InputField';
 import { TextArea } from '@/components/ui/form-control/TextArea';
 import UnstyledLink from '@/components/ui/links/UnstyledLink';
 import { Spinner } from '@/components/ui/Spinner';
-import { useTranslation } from 'next-i18next';
-import InputField from '@/components/ui/form-control/InputField';
+
+import { useFormSubmit } from '@/app/hooks/useFormSubmit';
 
 export const BecomePartner = () => {
   const { t } = useTranslation();

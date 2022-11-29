@@ -1,6 +1,8 @@
-import { getServerSideTranslations } from '@/app/utils/server-translation';
 import { GetServerSidePropsContext } from 'next';
+
 import * as Sts from '@/components/sections/templates';
+import UnderlineLink from '@/components/ui/links/UnderlineLink';
+
 import {
   DumpBecomePartnerForms,
   DumpButton,
@@ -31,7 +33,7 @@ import {
   DumpTransformedImageCarousels,
   DumpValue,
 } from '@/app/models/dumps-templates';
-import UnderlineLink from '@/components/ui/links/UnderlineLink';
+import { getServerSideTranslations } from '@/app/utils/server-translation';
 
 export default function Page() {
   return (

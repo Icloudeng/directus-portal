@@ -1,7 +1,7 @@
+import { MDWithAsset } from '@apps/contracts';
 import Image from 'next/legacy/image';
 
 import UnstyledLink from '@/components/ui/links/UnstyledLink';
-import { MDWithAsset } from '@apps/contracts';
 
 type ICategoryCard = {
   link: string;
@@ -17,9 +17,7 @@ export const BlingCard = ({
   link,
 }: ICategoryCard) => {
   return (
-    <div
-      className={`relative max-w-3xl w-full max-h-[35rem] h-[25rem] bg-white rounded-lg border border-gray-200 shadow-md`}
-    >
+    <div className='relative max-w-3xl w-full max-h-[35rem] h-[25rem] bg-white rounded-lg border border-gray-200 shadow-md'>
       <div className='absolute inset-0 h-full w-full bg-gradient-to-br from-black/90'></div>
       <UnstyledLink
         href={link}

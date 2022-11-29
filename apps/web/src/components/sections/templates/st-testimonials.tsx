@@ -1,13 +1,15 @@
-import { mut } from '@/cms/mut';
-import { STemplates_Props, ST_Testimonial } from '@apps/contracts';
+import { ST_Testimonial, STemplates_Props } from '@apps/contracts';
+
 import { ReviewCard } from '@/components/ui/cards/ReviewCard';
 import {
   DotButton,
   NextButton,
   PrevButton,
 } from '@/components/ui/carouselButtons/CarouselButtons';
+
 import { useCustomerEmblaCarousel } from '@/app/hooks/useCustomEmblaCarousel';
 import { useSharedData } from '@/app/store';
+import { mut } from '@/cms/mut';
 
 export function ST_TestimonialsFC({ items }: STemplates_Props<ST_Testimonial>) {
   const {

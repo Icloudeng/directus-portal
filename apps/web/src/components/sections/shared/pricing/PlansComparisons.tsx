@@ -1,10 +1,10 @@
+import { MDPlansComparison } from '@apps/contracts';
 import { useTranslation } from 'next-i18next';
 
-import { MDPlansComparison } from '@apps/contracts';
+import { useSharedData } from '@/app/store';
+import { useMut } from '@/cms/mut';
 
 import { CheckCircle } from '../../../ui/CheckCircle';
-import { useMut } from '@/cms/mut';
-import { useSharedData } from '@/app/store';
 
 export const PlansComparisons = ({
   plans_comparisons,

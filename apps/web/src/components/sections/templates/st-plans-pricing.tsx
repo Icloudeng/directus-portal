@@ -1,4 +1,5 @@
-import { STemplates_Props, ST_PlansPricing } from '@apps/contracts';
+import { ST_PlansPricing, STemplates_Props } from '@apps/contracts';
+
 import { HasPlansPricing } from '../shared/pricing/HasPlansPricing';
 
 export function ST_PlansPricingFC({

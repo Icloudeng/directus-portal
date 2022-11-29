@@ -1,21 +1,22 @@
+import { MDBlog } from '@apps/contracts';
 import { GetServerSidePropsContext } from 'next';
+import { useRouter } from 'next/router';
+import { useTranslation } from 'next-i18next';
+import { useCallback, useEffect, useState } from 'react';
 
+import { CleanHero } from '@/components/layout/footer/CleanHero';
 import Layout from '@/components/layout/Layout';
 import Seo from '@/components/Seo';
-
-import { getServerSideTranslations } from '@/app/utils/server-translation';
-import { useTranslation } from 'next-i18next';
-import { CleanHero } from '@/components/layout/footer/CleanHero';
 import { BlingCard } from '@/components/ui/cards/BlingCard';
-import { SearchForm } from '@/components/ui/form-control/SearchFrom';
-import { getGqlListBlogQuery } from '@/cms/items';
-import { MDBlog } from '@apps/contracts';
-import { useSharedData } from '@/app/store';
-import { useRouter } from 'next/router';
-import { useCallback, useEffect, useState } from 'react';
-import { mut } from '@/cms/mut';
-import EmptySvg from '~/svg/empty.svg';
 import { LoadMore } from '@/components/ui/fetch/LoadMore';
+import { SearchForm } from '@/components/ui/form-control/SearchFrom';
+
+import { useSharedData } from '@/app/store';
+import { getServerSideTranslations } from '@/app/utils/server-translation';
+import { getGqlListBlogQuery } from '@/cms/items';
+import { mut } from '@/cms/mut';
+
+import EmptySvg from '~/svg/empty.svg';
 
 const LIMIT = 9;
 
@@ -36,7 +37,7 @@ export default function Page({ blogs }: { blogs: MDBlog[] }) {
   return (
     <Layout whiteNav={true}>
       <Seo templateTitle={t('Blog')} />
-      <CleanHero title={'Blog'} noBottomSpace={true} />
+      <CleanHero title='Blog' noBottomSpace={true} />
 
       <div className='bg-[#f5f7fa] pb-9 pt-5'>
         <div className='x-container'>

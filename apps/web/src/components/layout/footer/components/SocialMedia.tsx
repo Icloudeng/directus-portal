@@ -1,7 +1,8 @@
+import Image from 'next/legacy/image';
+
 import UnstyledLink from '@/components/ui/links/UnstyledLink';
 
 import { ISocialIcon } from '@/types/footerTypes';
-import Image from 'next/legacy/image';
 
 export const SocialMedia = ({ icon, href, title }: ISocialIcon) => {
   return (

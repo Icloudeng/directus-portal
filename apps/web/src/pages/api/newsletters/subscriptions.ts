@@ -1,6 +1,7 @@
-import { NextApiRequest, NextApiResponse } from 'next';
-import { validateForm } from '@/app/utils/validations';
 import { ListmonkClient } from '@apps/listmonk-client';
+import { NextApiRequest, NextApiResponse } from 'next';
+
+import { validateForm } from '@/app/utils/validations';
 import { getListmonkConfig, storeNewslettersSubscription } from '@/cms/items';
 
 export default async function handle(

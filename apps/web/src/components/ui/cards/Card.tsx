@@ -1,5 +1,6 @@
 import { MDWithAsset, RepeaterBtn } from '@apps/contracts';
 import Image from 'next/legacy/image';
+
 import ButtonLink from '../links/ButtonLink';
 import UnstyledLink from '../links/UnstyledLink';
 
@@ -30,7 +31,7 @@ export function Card({
 
   const content = (
     <div className=''>
-      {!flexible_image && (
+      {!flexible_image && image && (
         <div className='relative flex-1 min-h-[202px] w-full mb-3'>
           <Image
             className={`image object-cover ${
@@ -44,7 +45,7 @@ export function Card({
           />
         </div>
       )}
-      {flexible_image && (
+      {flexible_image && image && (
         <div className='flex-1 w-full mb-3 relative'>
           <Image
             className={`h-full w-full ${

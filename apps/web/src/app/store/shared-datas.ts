@@ -6,9 +6,22 @@ export type ISharedData = QShareDataType & {
   locale: string;
 };
 
+const defaultValue: ISharedData = {
+  languages: [],
+  TopbarLinks: [],
+  NavbarLinks: [],
+  FooterLinks: [],
+  CompanyDetails: undefined,
+  Chatwoot: undefined,
+  locale: 'en',
+  Matomo: undefined,
+  News: [],
+};
+
 export const sharedDataContext = createContext<ISharedData>({} as ISharedData);
 
 export const SharedDataProvider = sharedDataContext.Provider;
 export const SharedDataConsumer = sharedDataContext.Consumer;
 
-export const useSharedData = () => useContext(sharedDataContext);
+export const useSharedData = () =>
+  useContext(sharedDataContext) || defaultValue;
