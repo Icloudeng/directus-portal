@@ -1,9 +1,10 @@
 import { useTranslation } from 'next-i18next';
 
 import Button from '@/components/ui/buttons/Button';
-import { useFormSubmit } from '@/app/hooks/useFormSubmit';
 import { Spinner } from '@/components/ui/Spinner';
+
 import { useErrorInput } from '@/app/hooks/useErrorInput';
+import { useFormSubmit } from '@/app/hooks/useFormSubmit';
 
 export const Subscribe = () => {
   const { t } = useTranslation();

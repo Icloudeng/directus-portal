@@ -1,23 +1,21 @@
+import type { I_MDWithUserTranslation } from '@apps/contracts';
+import type { MDNavbarLink } from '@apps/contracts';
+import { useTranslation } from 'next-i18next';
 import { useRef } from 'react';
 import { AiOutlineMenuFold } from 'react-icons/ai';
 import { VscChevronDown } from 'react-icons/vsc';
-
-import { useScrollPosition } from '@/app/hooks/useScrollPosition';
 
 import ButtonLink from '@/components/ui/links/ButtonLink';
 import UnstyledLink from '@/components/ui/links/UnstyledLink';
 import NextImage from '@/components/ui/NextImage';
 
+import { useScrollPosition } from '@/app/hooks/useScrollPosition';
 import { useSharedData } from '@/app/store';
-
 import { useMut } from '@/cms/mut';
 
 import { Submenu } from './components/SubMenu';
 
 import Logo from '~/images/icloudenglogo.png';
-import { useTranslation } from 'next-i18next';
-import type { I_MDWithUserTranslation } from '@apps/contracts';
-import type { MDNavbarLink } from '@apps/contracts';
 
 export const Navbar = ({ whiteNav }: { whiteNav?: boolean }) => {
   const pagePosition = useScrollPosition();

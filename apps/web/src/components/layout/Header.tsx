@@ -1,7 +1,8 @@
+import throttle from 'lodash/throttle';
 import { useCallback, useEffect, useRef, useState } from 'react';
+
 import { Navbar } from './navbar/Navbar';
 import { TopBar } from './topBar/TopBar';
-import throttle from 'lodash/throttle';
 
 export default function Header({ whiteNav }: { whiteNav?: boolean }) {
   const [hasTop, setHasTop] = useState(true);

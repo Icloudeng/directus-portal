@@ -1,7 +1,3 @@
-import { Aggregate, Filter, Sort } from '@directus/sdk';
-
-import { cms_url } from './directus';
-
 import {
   DRTQueryT,
   DRTStatus,
@@ -9,6 +5,9 @@ import {
   MDWithAsset,
   QueryWithTranslation,
 } from '@apps/contracts';
+import { Filter, Sort } from '@directus/sdk';
+
+import { cms_url } from './directus';
 
 export const qWithStatus: DRTQueryT<DRTStatus> = {
   id: true,

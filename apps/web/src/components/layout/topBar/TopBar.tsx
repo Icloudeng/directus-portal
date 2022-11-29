@@ -1,15 +1,14 @@
+import { useTranslation } from 'next-i18next';
 import React from 'react';
 import { VscChevronDown, VscChevronRight } from 'react-icons/vsc';
 
+import { LangList } from '@/components/layout/topBar/components/ListData';
 import UnstyledLink from '@/components/ui/links/UnstyledLink';
 import NextImage from '@/components/ui/NextImage';
-import { LangList } from '@/components/layout/topBar/components/ListData';
 
-import { useSharedData } from '@/app/store';
-
-import { useMut } from '@/cms/mut';
 import { useOutsideClick } from '@/app/hooks/useOutsideClick';
-import { useTranslation } from 'next-i18next';
+import { useSharedData } from '@/app/store';
+import { useMut } from '@/cms/mut';
 
 export const TopBar: React.FC = () => {
   const { languages, locale, News } = useSharedData();

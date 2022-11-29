@@ -1,7 +1,6 @@
+import Router from 'next/router';
 import NProgress, { NProgressOptions } from 'nprogress';
 import React, { useEffect } from 'react';
-
-import Router from 'next/router';
 
 interface NextProgressProps {
   height?: number | string;

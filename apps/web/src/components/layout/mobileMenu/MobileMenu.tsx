@@ -1,23 +1,23 @@
-import { forwardRef, useCallback, useEffect, useRef } from 'react';
-import { GrClose } from 'react-icons/gr';
-import { VscChevronDown } from 'react-icons/vsc';
-import { mergeRefs } from '@/app/utils/merge-refs';
-
-import ButtonLink from '../../ui/links/ButtonLink';
-import UnstyledLink from '../../ui/links/UnstyledLink';
-
-import { useOutsideClick } from '@/app/hooks/useOutsideClick';
-import { useSharedData } from '@/app/store';
-import { useMut } from '@/cms/mut';
 import { I_MDWithUserTranslation } from '@apps/contracts';
 import {
   MDNavbarLink,
   NavbarLinkSubmenu,
   NavbarLinkSubmenuItem,
 } from '@apps/contracts';
-import { HasSvgText } from '../../ui/HasSvgText';
-import { useTranslation } from 'next-i18next';
 import { Router } from 'next/router';
+import { useTranslation } from 'next-i18next';
+import { forwardRef, useCallback, useEffect, useRef } from 'react';
+import { GrClose } from 'react-icons/gr';
+import { VscChevronDown } from 'react-icons/vsc';
+
+import { useOutsideClick } from '@/app/hooks/useOutsideClick';
+import { useSharedData } from '@/app/store';
+import { mergeRefs } from '@/app/utils/merge-refs';
+import { useMut } from '@/cms/mut';
+
+import { HasSvgText } from '../../ui/HasSvgText';
+import ButtonLink from '../../ui/links/ButtonLink';
+import UnstyledLink from '../../ui/links/UnstyledLink';
 
 const SubmenuItem = ({
   data,
@@ -140,9 +140,9 @@ export const MobileMenu = forwardRef<HTMLDivElement>((_, ref) => {
     Router.events.on('routeChangeComplete', onMouseClick);
     Router.events.on('routeChangeError', onMouseClick);
     return () => {
-        Router.events.off('routeChangeComplete', onMouseClick);
-        Router.events.off('routeChangeError', onMouseClick);
-    }
+      Router.events.off('routeChangeComplete', onMouseClick);
+      Router.events.off('routeChangeError', onMouseClick);
+    };
   }, []);
 
   return (

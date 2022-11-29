@@ -1,5 +1,6 @@
-import { getGqlListBlogQuery } from '@/cms/items';
 import { NextApiRequest, NextApiResponse } from 'next';
+
+import { getGqlListBlogQuery } from '@/cms/items';
 
 export default async function handle(
   req: NextApiRequest,

@@ -13,7 +13,7 @@ export const useErrorInput = (
     } else {
       setError(null);
     }
-  }, [errors]);
+  }, [errors, name]);
 
   const onKeyUp = () => setError(null);
 

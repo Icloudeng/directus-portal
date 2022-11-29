@@ -4,9 +4,10 @@ import {
   PS_Content,
   ST_Vls,
 } from '@apps/contracts';
-import { qWithAsset, qWithAssets } from './gql-query';
 import { CMS_MODELS } from '@apps/contracts';
 import { PlansPricingContent } from '@apps/contracts';
+
+import { qWithAsset, qWithAssets } from './gql-query';
 import {
   getGqlListBlogQuery,
   getGqlListNewsQuery,

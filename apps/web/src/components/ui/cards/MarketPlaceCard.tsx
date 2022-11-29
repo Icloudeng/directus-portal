@@ -1,10 +1,11 @@
-import Image from "next/legacy/image";
+import { MDWithAsset } from '@apps/contracts';
+import Image from 'next/legacy/image';
 
 import ButtonLink from '@/components/ui/links/ButtonLink';
+
 import { HasSvgText } from '../HasSvgText';
-import { MDWithAsset } from '@apps/contracts';
-import UnstyledLink from '../links/UnstyledLink';
 import UnderlineLink from '../links/UnderlineLink';
+import UnstyledLink from '../links/UnstyledLink';
 
 type IMarketPlaceCard = {
   title: string;
@@ -32,9 +33,10 @@ export const MarketPlaceCard = ({
       <div className='relative w-full h-full flex flex-col items-center rounded-lg overflow-hidden p-5'>
         <div className='relative flex-[1] w-32 mb-3'>
           {titleLink && (
-            <UnstyledLink href={titleLink} className='absolute inset-0 z-10'>
-              {''}
-            </UnstyledLink>
+            <UnstyledLink
+              href={titleLink}
+              className='absolute inset-0 z-10'
+            ></UnstyledLink>
           )}
           <HasSvgText
             svgText={icon_svg}

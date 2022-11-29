@@ -1,5 +1,5 @@
 import { MDWithPoint, MDWithPointCoordinated } from '@apps/contracts';
-import type { LatLngExpression, LatLngLiteral, LatLngTuple } from 'leaflet';
+import type { LatLngExpression } from 'leaflet';
 import {
   MapContainer,
   Marker,

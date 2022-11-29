@@ -1,6 +1,7 @@
 import { CMS_MODELS } from '@apps/contracts';
-import { getDirectusClient } from '../directus';
 import { NewslettersSubscription } from '@apps/contracts';
+
+import { getDirectusClient } from '../directus';
 
 type Md = typeof CMS_MODELS.newsletters_subscriptions;
 export async function storeNewslettersSubscription(

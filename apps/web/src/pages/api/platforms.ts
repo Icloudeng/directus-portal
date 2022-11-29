@@ -1,5 +1,6 @@
-import { searchGqlPlatforms } from '@/cms/items';
 import { NextApiRequest, NextApiResponse } from 'next';
+
+import { searchGqlPlatforms } from '@/cms/items';
 
 export default async function handle(
   req: NextApiRequest,

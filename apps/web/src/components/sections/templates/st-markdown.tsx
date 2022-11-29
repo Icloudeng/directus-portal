@@ -1,7 +1,9 @@
+import { ST_Markdown, STemplates_Props } from '@apps/contracts';
+
+import { MarkdownContent } from '@/components/ui/react-markdown/MarkdownContent';
+
 import { useSharedData } from '@/app/store';
 import { mut } from '@/cms/mut';
-import { STemplates_Props, ST_Markdown } from '@apps/contracts';
-import { MarkdownContent } from '@/components/ui/react-markdown/MarkdownContent';
 
 export function ST_MarkdownFC({ items }: STemplates_Props<ST_Markdown>) {
   const { locale } = useSharedData();

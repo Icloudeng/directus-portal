@@ -1,4 +1,4 @@
-import { STemplates_Props, ST_GroupedLogo } from '@apps/contracts';
+import { ST_GroupedLogo, STemplates_Props } from '@apps/contracts';
 import Image from 'next/legacy/image';
 
 export function ST_GroupedLogosFC({ items }: STemplates_Props<ST_GroupedLogo>) {

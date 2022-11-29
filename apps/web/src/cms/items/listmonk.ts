@@ -1,6 +1,7 @@
 import { CMS_MODELS } from '@apps/contracts';
-import { getDirectusClient } from '../directus';
 import { MDListmonk } from '@apps/contracts';
+
+import { getDirectusClient } from '../directus';
 
 type Md = typeof CMS_MODELS.listmonk;
 

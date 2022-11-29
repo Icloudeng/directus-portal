@@ -1,5 +1,11 @@
 import { CMS_MODELS } from '@apps/contracts';
+import {
+  MPlansPricing,
+  PlansPricingContent,
+  TPlansPricing,
+} from '@apps/contracts';
 import { jsonToGraphQLQuery } from 'json-to-graphql-query';
+
 import { getDirectusClient } from '../directus';
 import {
   qWithAsset,
@@ -8,11 +14,6 @@ import {
   qWithStatus,
   qWithTranslations,
 } from '../gql-query';
-import {
-  MPlansPricing,
-  PlansPricingContent,
-  TPlansPricing,
-} from '@apps/contracts';
 
 const plans_pricing = CMS_MODELS.plans_pricing;
 type TQuery = {

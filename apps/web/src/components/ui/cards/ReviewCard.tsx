@@ -1,5 +1,5 @@
 import { MDWithAsset } from '@apps/contracts';
-import Image from "next/legacy/image";
+import Image from 'next/legacy/image';
 import { BiUser } from 'react-icons/bi';
 
 export type Props = {

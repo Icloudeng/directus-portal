@@ -2,11 +2,11 @@ import { GetServerSidePropsContext } from 'next';
 import { useTranslation } from 'next-i18next';
 import { RiAlarmWarningFill } from 'react-icons/ri';
 
-import ArrowLink from '@/components/ui/links/ArrowLink';
+import Layout from '@/components/layout/Layout';
 import Seo from '@/components/Seo';
+import ArrowLink from '@/components/ui/links/ArrowLink';
 
 import { getServerSideTranslations } from '@/app/utils/server-translation';
-import Layout from '@/components/layout/Layout';
 
 export default function NotFoundPage() {
   const { t } = useTranslation('404');

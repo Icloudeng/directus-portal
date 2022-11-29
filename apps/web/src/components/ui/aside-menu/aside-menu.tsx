@@ -1,4 +1,6 @@
-import UnstyledLink from '@/components/ui/links/UnstyledLink';
+import capitalize from 'lodash/capitalize';
+import debounce from 'lodash/debounce';
+import throttle from 'lodash/throttle';
 import React, {
   PropsWithChildren,
   useCallback,
@@ -6,9 +8,8 @@ import React, {
   useRef,
   useState,
 } from 'react';
-import throttle from 'lodash/throttle';
-import capitalize from 'lodash/capitalize';
-import debounce from 'lodash/debounce';
+
+import UnstyledLink from '@/components/ui/links/UnstyledLink';
 
 export function AsideMenu({ children }: PropsWithChildren) {
   const [active, setActive] = useState(0);

@@ -1,5 +1,6 @@
 import { useTranslation } from 'next-i18next';
 import { useEffect, useState } from 'react';
+
 import { InputWithIcon } from './InputWithIcon';
 
 type Props = {

@@ -1,16 +1,18 @@
-import { useMut } from '@/cms/mut';
 import {
   ISharedObject,
   M2APageSection,
   STemplates_Props,
 } from '@apps/contracts';
 import { CMS_MODELS } from '@apps/contracts';
-import { VALID_CSS } from '@/app/utils/regex';
-import { testHexColor } from '@/app/utils/tests';
 import isSvg from 'is-svg';
 import React, { FunctionComponent, useMemo, useRef } from 'react';
-import { HasSvgText } from '../ui/HasSvgText';
+
+import { VALID_CSS } from '@/app/utils/regex';
+import { testHexColor } from '@/app/utils/tests';
+import { useMut } from '@/cms/mut';
+
 import * as stfc from './templates';
+import { HasSvgText } from '../ui/HasSvgText';
 
 const { section_templates } = CMS_MODELS;
 type ST = typeof section_templates;

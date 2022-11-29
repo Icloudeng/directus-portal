@@ -1,6 +1,7 @@
-import { useErrorInput } from '@/app/hooks/useErrorInput';
 import { useTranslation } from 'next-i18next';
 import { useId } from 'react';
+
+import { useErrorInput } from '@/app/hooks/useErrorInput';
 
 type ITextArea = {
   inputLabel: string;

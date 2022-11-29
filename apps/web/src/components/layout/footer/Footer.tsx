@@ -1,14 +1,14 @@
+import { useTranslation } from 'next-i18next';
+
 import ButtonLink from '@/components/ui/links/ButtonLink';
 
 import { useSharedData } from '@/app/store';
-
 import { useMut } from '@/cms/mut';
 
 import { ContactSection } from './components/ContactSection';
 import { FooterItemLinks } from './components/FooterItemLinks';
 import { Subscribe } from './components/Subscribe';
 import { TermsConditions } from './components/TermsConditions';
-import { useTranslation } from 'next-i18next';
 
 export const Footer = () => {
   const { FooterLinks } = useSharedData();

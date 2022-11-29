@@ -1,4 +1,5 @@
 import { FormEvent, useState } from 'react';
+
 import { useFetch } from './useFetch';
 
 export function useFormSubmit(url: string, successTimeout = 1000 * 60) {

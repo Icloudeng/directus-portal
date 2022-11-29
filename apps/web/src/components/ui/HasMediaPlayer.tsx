@@ -1,9 +1,11 @@
-import { useHasMounted } from '@/app/hooks/useHasMounted';
 import { MDWithAsset } from '@apps/contracts';
+import Image from 'next/legacy/image';
 import ReactPlayer from 'react-player';
+
+import { useHasMounted } from '@/app/hooks/useHasMounted';
+
 import { PlyrReact } from './plyr-react';
 import Skeleton from './Skeleton';
-import Image from 'next/legacy/image';
 
 export function HasMediaPlayer({
   media_url,

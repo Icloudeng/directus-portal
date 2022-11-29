@@ -1,6 +1,9 @@
 import { CMS_MODELS } from '@apps/contracts';
+import { M2APageSection, M2APageSectionReusable } from '@apps/contracts';
+import { MDHomePageHero } from '@apps/contracts';
 import { ID } from '@directus/sdk';
 import { jsonToGraphQLQuery } from 'json-to-graphql-query';
+
 import { getDirectusClient } from '../directus';
 import {
   qWithAsset,
@@ -8,10 +11,8 @@ import {
   qWithStatus,
   qWithTranslations,
 } from '../gql-query';
-import { M2APageSection, M2APageSectionReusable } from '@apps/contracts';
-import { pageSectionsAdapters } from '../page-sections-adapters';
-import { MDHomePageHero } from '@apps/contracts';
 import { pageSectionQuery } from '../page-sections';
+import { pageSectionsAdapters } from '../page-sections-adapters';
 
 const gql_query = jsonToGraphQLQuery({
   query: {

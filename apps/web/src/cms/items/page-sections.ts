@@ -1,5 +1,6 @@
-import { jsonToGraphQLQuery } from 'json-to-graphql-query';
 import { CMS_MODELS, M2APageSection } from '@apps/contracts';
+import { jsonToGraphQLQuery } from 'json-to-graphql-query';
+
 import { getDirectusClient } from '../directus';
 import { qWithPublishedStatus } from '../gql-query';
 import { pageSectionItemsQuery } from '../page-sections';

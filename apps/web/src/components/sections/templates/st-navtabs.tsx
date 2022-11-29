@@ -1,9 +1,11 @@
-import { mut } from '@/cms/mut';
-import { STemplates_Props, ST_NavTab } from '@apps/contracts';
+import { ST_NavTab, STemplates_Props } from '@apps/contracts';
+import Image from 'next/legacy/image';
+
 import { MarkdownContent } from '@/components/ui/react-markdown/MarkdownContent';
 import { Tabs, TabsPane } from '@/components/ui/tabs/tabs';
+
 import { useSharedData } from '@/app/store';
-import Image from "next/legacy/image";
+import { mut } from '@/cms/mut';
 
 export function ST_NavTabsFC({ items }: STemplates_Props<ST_NavTab>) {
   const { locale } = useSharedData();

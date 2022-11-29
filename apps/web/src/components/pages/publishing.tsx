@@ -1,13 +1,15 @@
+import { MDBlog, MDNews } from '@apps/contracts';
+import Image from 'next/legacy/image';
+import Link from 'next/link';
+import { useTranslation } from 'next-i18next';
+import { useCallback } from 'react';
+import { FaRegShareSquare } from 'react-icons/fa';
+
 import { COMPANY_NAME } from '@/app/constant/env';
 import { useSharedData } from '@/app/store';
 import { toLocaleDateString } from '@/app/utils/helpers';
-import { MDBlog, MDNews } from '@apps/contracts';
 import { useMut } from '@/cms/mut';
-import { useTranslation } from 'next-i18next';
-import Image from 'next/legacy/image';
-import Link from 'next/link';
-import { useCallback } from 'react';
-import { FaRegShareSquare } from 'react-icons/fa';
+
 import Seo from '../Seo';
 import { MarkdownContent } from '../ui/react-markdown/MarkdownContent';
 

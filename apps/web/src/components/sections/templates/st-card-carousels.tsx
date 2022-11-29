@@ -1,15 +1,17 @@
-import type { STemplates_Props, ST_CardCarousel } from '@apps/contracts';
-import Image from "next/legacy/image";
-import { useMut } from '@/cms/mut';
-import ButtonLink from '@/components/ui/links/ButtonLink';
+import type { ST_CardCarousel, STemplates_Props } from '@apps/contracts';
+import Image from 'next/legacy/image';
 import { useTranslation } from 'next-i18next';
-import { useCustomerEmblaCarousel } from '@/app/hooks/useCustomEmblaCarousel';
+
 import {
   DotButton,
   NextButton,
   PrevButton,
 } from '@/components/ui/carouselButtons/CarouselButtons';
+import ButtonLink from '@/components/ui/links/ButtonLink';
 import { MarkdownContent } from '@/components/ui/react-markdown/MarkdownContent';
+
+import { useCustomerEmblaCarousel } from '@/app/hooks/useCustomEmblaCarousel';
+import { useMut } from '@/cms/mut';
 
 export function ST_CardCarouselsFC({
   items,

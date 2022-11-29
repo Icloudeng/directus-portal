@@ -1,12 +1,14 @@
-import { STemplates_Props, ST_TransformedImageCarousel } from '@apps/contracts';
+import { ST_TransformedImageCarousel, STemplates_Props } from '@apps/contracts';
+import { MDWithAsset } from '@apps/contracts';
+import Image from 'next/legacy/image';
+
 import {
   DotButton,
   NextButton,
   PrevButton,
 } from '@/components/ui/carouselButtons/CarouselButtons';
+
 import { useCustomerEmblaCarousel } from '@/app/hooks/useCustomEmblaCarousel';
-import { MDWithAsset } from '@apps/contracts';
-import Image from 'next/legacy/image';
 
 export function ST_TransformedImageCarouselsFC({
   items,

@@ -1,18 +1,9 @@
-import {
-  MDFlexiblePlan,
-  MDMachineTemplate,
-  MDPlatform,
-} from '@apps/contracts';
-import { HasSvgOrImage } from '@/components/ui/ReactSelector';
-import React, {
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from 'react';
-import round from 'lodash/round';
+import { MDFlexiblePlan, MDMachineTemplate, MDPlatform } from '@apps/contracts';
 import cloneDeep from 'lodash/cloneDeep';
+import round from 'lodash/round';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
+
+import { HasSvgOrImage } from '@/components/ui/ReactSelector';
 
 export type FlexiblePlansProps = {
   flexible_plans: MDFlexiblePlan;

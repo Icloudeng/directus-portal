@@ -1,5 +1,7 @@
 import { CMS_MODELS } from '@apps/contracts';
+import { MDNews } from '@apps/contracts';
 import { jsonToGraphQLQuery, VariableType } from 'json-to-graphql-query';
+
 import { getDirectusClient } from '../directus';
 import {
   qWithAsset,
@@ -9,7 +11,6 @@ import {
   qWithStatus,
   qWithTranslations,
 } from '../gql-query';
-import { MDNews } from '@apps/contracts';
 
 export const newsQuery = {
   __aliasFor: CMS_MODELS.news,

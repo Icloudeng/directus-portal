@@ -12,7 +12,6 @@ import { GoMailRead } from 'react-icons/go';
 import UnstyledLink from '@/components/ui/links/UnstyledLink';
 
 import { useSharedData } from '@/app/store';
-
 import { useMut } from '@/cms/mut';
 
 import { SocialMedia } from './SocialMedia';
@@ -34,7 +33,9 @@ export const ContactSection = () => {
   return (
     <div className='middle-right text-xs xs:text-sm flex-1 flex flex-col gap-5'>
       {data?.translations?.slogan && (
-        <p className='max-w-[24rem] leading-5 mb-3'>{data?.translations?.slogan}</p>
+        <p className='max-w-[24rem] leading-5 mb-3'>
+          {data?.translations?.slogan}
+        </p>
       )}
       <p className='font-bold uppercase underline underline-offset-8'>
         {t('Contact Us')} :

@@ -1,7 +1,4 @@
-import { jsonToGraphQLQuery } from 'json-to-graphql-query';
-
 import { CMS_MODELS, MDChatwoot, MDMatomo } from '@apps/contracts';
-
 import {
   MDCompanyDetail,
   MDFooterLink,
@@ -11,6 +8,8 @@ import {
   MDTopbarNew,
   NavbarLinkSubmenu,
 } from '@apps/contracts';
+import { jsonToGraphQLQuery } from 'json-to-graphql-query';
+
 import { getDirectusClient } from '../directus';
 import {
   qWithAsset,

@@ -1,5 +1,5 @@
-import Header from './Header';
 import { Footer } from './footer/Footer';
+import Header from './Header';
 import { MobileMenu } from './mobileMenu/MobileMenu';
 
 export default function Layout({

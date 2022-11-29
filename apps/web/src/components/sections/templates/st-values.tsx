@@ -1,7 +1,9 @@
-import { useMut } from '@/cms/mut';
-import type { STemplates_Props, ST_Value } from '@apps/contracts';
+import type { ST_Value, STemplates_Props } from '@apps/contracts';
+
 import { HasSvgText } from '@/components/ui/HasSvgText';
+
 import { testHexColor } from '@/app/utils/tests';
+import { useMut } from '@/cms/mut';
 
 export function ST_ValuesFC({ items }: STemplates_Props<ST_Value>) {
   const first = items[0];

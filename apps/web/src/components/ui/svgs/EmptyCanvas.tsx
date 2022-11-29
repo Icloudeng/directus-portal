@@ -3,7 +3,7 @@ export function EmptyCanvasSvg() {
     <svg
       xmlns='http://www.w3.org/2000/svg'
       data-name='Layer 1'
-      className="w-full h-full"
+      className='w-full h-full'
       width='550.71039'
       height='567.98584'
       viewBox='0 0 550.71039 567.98584'
