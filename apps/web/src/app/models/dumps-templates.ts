@@ -1855,9 +1855,11 @@ export const DumpMarkdown: ST_Markdown[] = [
     id: '84',
     collection: 'ST_Markdown',
     item: {
+      toc: true,
       translations: [
         {
           id: '1',
+          toc_parent: 'Table of content',
           languages_code: {
             code: 'en',
             name: 'English',

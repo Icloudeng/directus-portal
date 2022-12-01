@@ -287,7 +287,10 @@ export type ST_Card = MDHasM2A<
 >;
 
 export type ST_Markdown = MDHasM2A<
-  MDWithTranslation<{
+  {
+    toc: boolean;
+  } & MDWithTranslation<{
+    toc_parent: string;
     markdown_content: string;
   }> &
     DRTStatus,
@@ -300,6 +303,7 @@ export type ChartDataSetData = {
   label: string;
   value: number;
 };
+
 export type ST_Chart = MDHasM2A<
   {
     type:
@@ -341,6 +345,16 @@ export type ST_LatestBlog = MDHasM2A<
   ST_V<"st_latest_blog">
 >;
 
+export type ST_RichText = MDHasM2A<
+  {
+    toc: boolean;
+  } & MDWithTranslation<{
+    text: string;
+  }> &
+    DRTStatus,
+  ST_V<"st_rich_text">
+>;
+
 //------------------- Page Sections --------------------//
 export type PS_Content =
   | ST_Value
@@ -371,7 +385,8 @@ export type PS_Content =
   | ST_Markdown
   | ST_Chart
   | ST_LatestNew
-  | ST_LatestBlog;
+  | ST_LatestBlog
+  | ST_RichText;
 
 export type M2APageSection = MDHasM2A<
   {

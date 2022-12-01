@@ -279,8 +279,10 @@ const q_ST: Query = {
   [section_templates.st_markdown]: {
     __typeName: section_templates.st_markdown,
     __args: qWithPublishedStatus(),
+    toc: true,
     ...qWithTranslations({
       markdown_content: true,
+      toc_parent: true,
     }),
     ...qWithStatus,
   },
@@ -309,6 +311,10 @@ const q_ST: Query = {
   [section_templates.st_rich_text]: {
     __typeName: section_templates.st_rich_text,
     __args: qWithPublishedStatus(),
+    toc: true,
+    ...qWithTranslations({
+      text: true,
+    }),
     ...qWithStatus,
   },
 };
