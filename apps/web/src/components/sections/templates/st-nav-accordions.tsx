@@ -36,7 +36,7 @@ export function ST_NavAccordionsFC({
               </div>
             )}
             {markdown_content && (
-              <div className='markdown__content'>
+              <div className='prose'>
                 <MarkdownContent>{markdown_content}</MarkdownContent>
               </div>
             )}

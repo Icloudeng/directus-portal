@@ -27,7 +27,7 @@ export function ST_ChartsFC({ items }: STemplates_Props<ST_Chart>) {
             }`}
           >
             {markdown_content && (
-              <div className='markdown__content w-full md:w-1/2'>
+              <div className='prose w-full md:w-1/2'>
                 <MarkdownContent>{markdown_content || ''}</MarkdownContent>
               </div>
             )}

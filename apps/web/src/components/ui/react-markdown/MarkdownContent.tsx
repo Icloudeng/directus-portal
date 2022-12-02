@@ -1,5 +1,4 @@
 /* eslint-disable */
-import tocCss from './toc.module.css';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import remarkHtml from 'remark-html';
@@ -9,13 +8,11 @@ import { CodeComponent } from 'react-markdown/lib/ast-to-react';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { useEffect, useState } from 'react';
 import { FiCopy, FiCheck } from 'react-icons/fi';
-import remarkToc, { Options } from 'remark-toc';
-// import toc from '@jsdevtools/rehype-toc';
+import rehypeToc from '@jsdevtools/rehype-toc';
 
 type Props = {
   children: string;
   toc?: boolean;
-  toc_parent?: string;
 };
 
 const Code: keyof JSX.IntrinsicElements | CodeComponent = ({
@@ -61,29 +58,16 @@ const Code: keyof JSX.IntrinsicElements | CodeComponent = ({
   );
 };
 
-export function MarkdownContent({ children, toc = false, toc_parent }: Props) {
-  const $toc = toc
-    ? [
-        [
-          remarkToc,
-          {
-            parents: toc_parent,
-          } as Options,
-        ],
-      ]
-    : ([] as any);
+export function MarkdownContent({ children, toc = false }: Props) {
   return (
-    <div className={tocCss.table_of_content}>
-      <div className={tocCss.content__wrapper}>
-        <ReactMarkdown
-          components={{
-            code: Code,
-          }}
-          remarkPlugins={[remarkGfm, remarkHtml, ...$toc]}
-        >
-          {children}
-        </ReactMarkdown>
-      </div>
-    </div>
+    <ReactMarkdown
+      components={{
+        code: Code,
+      }}
+      rehypePlugins={toc ? [rehypeToc] : []}
+      remarkPlugins={[remarkGfm, remarkHtml]}
+    >
+      {children}
+    </ReactMarkdown>
   );
 }

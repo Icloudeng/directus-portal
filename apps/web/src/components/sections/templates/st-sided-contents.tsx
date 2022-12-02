@@ -52,7 +52,7 @@ function SidedContent({ item }: ST_SidedContent) {
             {translations?.title}
           </h6>
         )}
-        <div className='markdown__content'>
+        <div className='prose'>
           <MarkdownContent>
             {translations?.markdown_content || ''}
           </MarkdownContent>
