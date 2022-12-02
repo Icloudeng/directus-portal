@@ -7,16 +7,9 @@ import { PrismAsyncLight as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { atomDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 import { CodeComponent } from 'react-markdown/lib/ast-to-react';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
-import { useEffect, useId, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FiCopy, FiCheck } from 'react-icons/fi';
-import rehypeToc, {
-  HtmlElementNode,
-  ListItemNode,
-  Options,
-} from '@jsdevtools/rehype-toc';
-import type { Node } from 'unist';
-import { dbSafe } from '@/app/utils/db-safe';
-import { scrollToElement } from '@/app/utils/scroll-to-element';
+import { useRehypeToc } from '@/app/hooks/useRehypeToc';
 
 type Props = {
   children: string;
@@ -67,77 +60,8 @@ const Code: keyof JSX.IntrinsicElements | CodeComponent = ({
   );
 };
 
-function customizeTOCItem(node: ListItemNode, heading: HtmlElementNode) {
-  if (!heading.children || heading.children.length === 0) return true;
-  const children = heading.children!;
-  const extactText = (node: Node) =>
-    node.type === 'text' ? (node as any).value || '' : '';
-
-  const safeText = dbSafe(children.map(extactText).join('-'));
-
-  const linkModifier = (link: HtmlElementNode) => {
-    if (link.type === 'element' && link.tagName === 'a') {
-      link.properties['href'] = '#' + safeText;
-    }
-    link.children?.forEach(linkModifier as any);
-  };
-
-  node.children.forEach(linkModifier as any);
-  heading.properties['id'] = safeText;
-
-  return node;
-}
-
-function useMarkdownToc(toc: boolean) {
-  const id = useId();
-  const tocParent = useRef<HTMLDivElement | null>(null);
-  const tocOptions: Options = {
-    customizeTOC: (node) => {
-      //@ts-ignore
-      node.properties['hidden'] = true;
-      node.properties['id'] = id;
-      return node;
-    },
-    customizeTOCItem,
-  };
-
-  useEffect(() => {
-    if (!toc) return;
-    const navToc = document.getElementById(id);
-    if (!navToc) return;
-    const links = Array.from(navToc.querySelectorAll('a'));
-
-    const onAnchorClick = (event: MouseEvent) => {
-      event.preventDefault();
-      const el = event.currentTarget as HTMLAnchorElement;
-      const href = el.href.substring(el.href.indexOf('#'));
-      const headingEl = document.querySelector(href);
-      if (!headingEl) return;
-
-      const rect = headingEl.getBoundingClientRect();
-      scrollToElement(rect);
-    };
-
-    links.forEach((el) => el.addEventListener('click', onAnchorClick));
-    return () => {
-      links.forEach((el) => el.removeEventListener('click', onAnchorClick));
-    };
-  }, [toc, id]);
-
-  useEffect(() => {
-    if (!toc || !tocParent.current) return;
-    const navToc = document.getElementById(id);
-    if (navToc) {
-      tocParent.current.appendChild(navToc);
-      navToc.removeAttribute('hidden');
-    }
-  }, [toc, id]);
-
-  return { tocOptions, tocParent };
-}
-
 export function MarkdownContent({ children, toc = false, className }: Props) {
-  const { tocParent, tocOptions } = useMarkdownToc(toc);
+  const { tocParent, tocOptions, rehypeToc, rehypeSlug } = useRehypeToc(toc);
 
   return (
     <div className={`w-full ${toc ? 'lg:flex' : ''} ${className || ''}`}>
@@ -154,7 +78,7 @@ export function MarkdownContent({ children, toc = false, className }: Props) {
           components={{
             code: Code,
           }}
-          rehypePlugins={toc ? [[rehypeToc, tocOptions]] : []}
+          rehypePlugins={toc ? [rehypeSlug, [rehypeToc, tocOptions]] : []}
           remarkPlugins={[remarkGfm, remarkHtml]}
         >
           {children}
