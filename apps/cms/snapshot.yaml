@@ -5829,7 +5829,7 @@ fields:
         template: "{{address_name}}\_--\_{{status}}"
       readonly: false
       required: false
-      sort: 7
+      sort: 8
       special:
         - o2m
       translations: null
@@ -5902,7 +5902,7 @@ fields:
             value: €
       readonly: false
       required: true
-      sort: 6
+      sort: 7
       special: null
       translations: null
       validation: null
@@ -6031,7 +6031,7 @@ fields:
         trim: true
       readonly: false
       required: false
-      sort: 8
+      sort: 9
       special: null
       translations: null
       validation: null
@@ -6155,8 +6155,8 @@ fields:
       note: null
       options: null
       readonly: false
-      required: false
-      sort: 10
+      required: true
+      sort: 5
       special:
         - file
       translations: null
@@ -6287,7 +6287,7 @@ fields:
         trim: true
       readonly: false
       required: false
-      sort: 9
+      sort: 10
       special: null
       translations: null
       validation: null
@@ -6329,7 +6329,7 @@ fields:
         languageField: code
       readonly: false
       required: false
-      sort: 5
+      sort: 6
       special:
         - translations
       translations: null
@@ -32239,7 +32239,7 @@ fields:
       display_options: null
       field: toc_parent
       group: null
-      hidden: false
+      hidden: true
       interface: input
       note: null
       options:
