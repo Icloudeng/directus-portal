@@ -23,6 +23,8 @@
 
 - include_tasks: cms-config.yml
 - include_tasks: web-config.yml
+- include_tasks: docs-config.yml
+  when: has_docs_app
 
 # Project Build
 - name: "Web App (Project Build) | delete .next folder"
@@ -58,13 +60,13 @@
 
 # CMS App PM2 restart process
 - name: CMS App | Delete old pm2 process
-  command: "pm2 delete {{ admin_domain }}"
+  command: "pm2 delete {{ cms_domain }}"
   args:
     chdir: "{{ root_path }}/apps/cms"
   ignore_errors: true
 
 - name: CMS App | Start the server
-  command: "pm2 start npm --name {{ admin_domain }} -- run start"
+  command: "pm2 start npm --name {{ cms_domain }} -- run start"
   args:
     chdir: "{{ root_path }}/apps/cms"
 
@@ -80,6 +82,21 @@
   args:
     chdir: "{{ root_path }}/apps/web"
 
+# Docs App PM2 restart process
+- name: Docs App | Delete old pm2 process
+  command: "pm2 delete {{ domain }}-docs"
+  args:
+    chdir: "{{ root_path }}/apps/docs"
+  ignore_errors: true
+  when: has_docs_app
+
+- name: Docs App | Start the server
+  command: "pm2 start npm --name {{ domain }}-docs -- run serve"
+  args:
+    chdir: "{{ root_path }}/apps/docs"
+  when: has_docs_app
+
+# Gerate pm2 scripts
 - name: PM2 | Generating a Startup Script
   command: "pm2 startup"
 

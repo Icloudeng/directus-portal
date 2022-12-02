@@ -19,14 +19,14 @@
   lineinfile:
     path: "{{ env_file }}"
     regexp: "^PUBLIC_URL="
-    line: 'PUBLIC_URL="https://{{ admin_domain }}/"'
+    line: 'PUBLIC_URL="https://{{ cms_domain }}/"'
   when: letsencrypt == true
 
 - name: App CMS .env config | PUBLIC_URL (letsencrypt == false)
   lineinfile:
     path: "{{ env_file }}"
     regexp: "^PUBLIC_URL="
-    line: 'PUBLIC_URL="http://{{ admin_domain }}/"'
+    line: 'PUBLIC_URL="http://{{ cms_domain }}/"'
   when: letsencrypt == false
 
 # ---------------------------- Admin account ----------------------------
@@ -129,7 +129,7 @@
 #   lineinfile:
 #     path: "{{ env_file }}"
 #     regexp: "{{ lr }}CORS_ORIGIN="
-#     line: 'CORS_ORIGIN="http://localhost, http://127.0.0.1, https://{{ admin_domain }}, https://{{ domain }}"'
+#     line: 'CORS_ORIGIN="http://localhost, http://127.0.0.1, https://{{ cms_domain }}, https://{{ domain }}"'
 
 # ----------------------- MESSENGER ------------------
 - name: App CMS .env config | MESSENGER_STORE

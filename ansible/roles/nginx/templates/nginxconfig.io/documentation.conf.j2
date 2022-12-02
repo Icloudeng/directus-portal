@@ -1,0 +1,14 @@
+# docsserver_upstream
+
+
+location /documentation {
+    proxy_pass http://docsserver_upstream;
+}
+
+
+location ^~ /documentation/(img|assets) {
+    proxy_cache STATIC;
+    proxy_ignore_headers Cache-Control;
+    proxy_cache_valid 60m;
+    proxy_pass http://docsserver_upstream;
+}

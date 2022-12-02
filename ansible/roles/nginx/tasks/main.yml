@@ -53,6 +53,7 @@
     - nginxconfig.io/general.conf
     - nginxconfig.io/letsencrypt.conf
     - nginxconfig.io/security.conf
+    - nginxconfig.io/documentation.conf
   notify: nginx reload
 
 - name: "Nginx | Vhost {{ domain }}"
@@ -74,7 +75,7 @@
   when: letsencrypt
   loop:
     - "{{ domain }}"
-    - "{{ admin_domain }}"
+    - "{{ cms_domain }}"
   loop_control:
     loop_var: domain_item
 
