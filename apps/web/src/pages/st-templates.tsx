@@ -1,4 +1,5 @@
 import { GetStaticPropsContext } from 'next';
+import { BsArrowUp } from 'react-icons/bs';
 
 import * as Sts from '@/components/sections/templates';
 import UnderlineLink from '@/components/ui/links/UnderlineLink';
@@ -36,6 +37,7 @@ import {
 } from '@/app/models/dumps-templates';
 import { getServerSideTranslations } from '@/app/utils/server-translation';
 import React from 'react';
+import Button from '@/components/ui/buttons/Button';
 
 type Template = {
   title: string;
@@ -49,7 +51,7 @@ const templates: Template[] = [
     content(title) {
       return (
         <section className='py-10 x-container'>
-          <h3 id={urlSafe(title)} className='text-primary-400 my-9'>
+          <h3 id={urlSafe(title)} className='sticky top-8 z-50 bg-white p-2 inline-block text-primary-400 my-9'>
             {' '}
             {title}
           </h3>
@@ -67,7 +69,7 @@ const templates: Template[] = [
     content(title) {
       return (
         <section className='py-10 mb-20 x-container'>
-          <h3 id={urlSafe(title)} className='text-primary-400 my-9'>
+          <h3 id={urlSafe(title)} className='sticky top-8 z-50 bg-white p-2 inline-block text-primary-400 my-9'>
             {title}
           </h3>
           <Sts.ST_CardImageCarouselsFC
@@ -84,7 +86,7 @@ const templates: Template[] = [
     content(title) {
       return (
         <section className='py-10 mb-20 hero---seection relative'>
-          <h3 id={urlSafe(title)} className='text-primary-400 my-9 text-center'>
+          <h3 id={urlSafe(title)} className='sticky top-8 z-50 bg-white p-2 inline-block text-primary-400 my-9 text-center'>
             {title}
           </h3>
           <Sts.ST_CleanHerosFC
@@ -101,7 +103,7 @@ const templates: Template[] = [
     content(title) {
       return (
         <section className='py-10 x-container'>
-          <h3 id={urlSafe(title)} className='text-primary-400 my-9'>
+          <h3 id={urlSafe(title)} className='sticky top-8 z-50 bg-white p-2 inline-block text-primary-400 my-9'>
             {title}
           </h3>
           <Sts.ST_NavAccordionsFC
@@ -118,7 +120,7 @@ const templates: Template[] = [
     content(title) {
       return (
         <section className='py-10 x-container'>
-          <h3 id={urlSafe(title)} className='text-primary-400 my-9'>
+          <h3 id={urlSafe(title)} className='sticky top-8 z-50 bg-white p-2 inline-block text-primary-400 my-9'>
             {title}
           </h3>
           <Sts.ST_SidedContentsFC
@@ -135,7 +137,7 @@ const templates: Template[] = [
     content(title) {
       return (
         <section className='py-10 x-container'>
-          <h3 id={urlSafe(title)} className='text-primary-400 my-9'>
+          <h3 id={urlSafe(title)} className='sticky top-8 z-50 bg-white p-2 inline-block text-primary-400 my-9'>
             {title}{' '}
           </h3>
           <Sts.ST_ValuesFC
@@ -152,7 +154,7 @@ const templates: Template[] = [
     content(title) {
       return (
         <section className='py-10 x-container'>
-          <h3 id={urlSafe(title)} className='text-primary-400 my-9'>
+          <h3 id={urlSafe(title)} className='sticky top-8 z-50 bg-white p-2 inline-block text-primary-400 my-9'>
             {title}{' '}
           </h3>
           <Sts.ST_NavTabsFC
@@ -169,7 +171,7 @@ const templates: Template[] = [
     content(title) {
       return (
         <section className='py-14 x-container'>
-          <h3 id={urlSafe(title)} className='text-primary-400 my-9'>
+          <h3 id={urlSafe(title)} className='sticky top-8 z-50 bg-white p-2 inline-block text-primary-400 my-9'>
             {title}{' '}
           </h3>
           <Sts.ST_ButtonsFC
@@ -186,7 +188,7 @@ const templates: Template[] = [
     content(title) {
       return (
         <section className='py-14 x-container'>
-          <h3 id={urlSafe(title)} className='text-primary-400 my-9'>
+          <h3 id={urlSafe(title)} className='sticky top-8 z-50 bg-white p-2 inline-block text-primary-400 my-9'>
             {title}
           </h3>
           <Sts.ST_SimpleCardLinksFC
@@ -203,7 +205,7 @@ const templates: Template[] = [
     content(title) {
       return (
         <section className='py-14 x-container'>
-          <h3 id={urlSafe(title)} className='text-primary-400 my-9'>
+          <h3 id={urlSafe(title)} className='sticky top-8 z-50 bg-white p-2 inline-block text-primary-400 my-9'>
             {title}{' '}
           </h3>
           <Sts.ST_MediaTabsFC
@@ -220,7 +222,7 @@ const templates: Template[] = [
     content(title) {
       return (
         <section className='py-14 x-container'>
-          <h3 id={urlSafe(title)} className='text-primary-400 my-9'>
+          <h3 id={urlSafe(title)} className='sticky top-8 z-50 bg-white p-2 inline-block text-primary-400 my-9'>
             {title}
           </h3>
           <Sts.ST_PageAsideMenusFC
@@ -238,7 +240,7 @@ const templates: Template[] = [
       return (
         <section className='py-14 overflow-hidden'>
           <div className='x-container'>
-            <h3 id={urlSafe(title)} className='text-primary-400 my-9'>
+            <h3 id={urlSafe(title)} className='sticky top-8 z-50 bg-white p-2 inline-block text-primary-400 my-9'>
               {title}
             </h3>
           </div>
@@ -256,7 +258,7 @@ const templates: Template[] = [
     content(title) {
       return (
         <section className='py-14 x-container'>
-          <h3 id={urlSafe(title)} className='text-primary-400 my-9'>
+          <h3 id={urlSafe(title)} className='sticky top-8 z-50 bg-white p-2 inline-block text-primary-400 my-9'>
             {title}
           </h3>
           <Sts.ST_HoverableMediaMenusFC
@@ -273,7 +275,7 @@ const templates: Template[] = [
     content(title) {
       return (
         <section className='py-14'>
-          <h3 id={urlSafe(title)} className='text-primary-400 my-9 x-container'>
+          <h3 id={urlSafe(title)} className='sticky top-8 z-50 bg-white p-2 inline-block text-primary-400 my-9 '>
             {title}
           </h3>
           <Sts.ST_TransformedImageCarouselsFC
@@ -290,7 +292,7 @@ const templates: Template[] = [
     content(title) {
       return (
         <section className='py-14  x-container'>
-          <h3 id={urlSafe(title)} className='text-primary-400 my-9'>
+          <h3 id={urlSafe(title)} className='sticky top-8 z-50 bg-white p-2 inline-block text-primary-400 my-9'>
             {title}
           </h3>
           <Sts.ST_PlansPricingFC
@@ -307,7 +309,7 @@ const templates: Template[] = [
     content(title) {
       return (
         <section className='py-14  x-container'>
-          <h3 id={urlSafe(title)} className='text-primary-400 my-9'>
+          <h3 id={urlSafe(title)} className='sticky top-8 z-50 bg-white p-2 inline-block text-primary-400 my-9'>
             {title}
           </h3>
           <Sts.ST_TestimonialsFC
@@ -324,7 +326,7 @@ const templates: Template[] = [
     content(title) {
       return (
         <section className='py-14  x-container'>
-          <h3 id={urlSafe(title)} className='text-primary-400 my-9'>
+          <h3 id={urlSafe(title)} className='sticky top-8 z-50 bg-white p-2 inline-block text-primary-400 my-9'>
             {title}
           </h3>
           <Sts.ST_GalleryFC
@@ -341,7 +343,7 @@ const templates: Template[] = [
     content(title) {
       return (
         <section className='py-14  x-container'>
-          <h3 id={urlSafe(title)} className='text-primary-400 my-9'>
+          <h3 id={urlSafe(title)} className='sticky top-8 z-50 bg-white p-2 inline-block text-primary-400 my-9'>
             {title}
           </h3>
           <Sts.ST_GroupedLogosFC
@@ -358,7 +360,7 @@ const templates: Template[] = [
     content(title) {
       return (
         <section className='py-14  x-container'>
-          <h3 id={urlSafe(title)} className='text-primary-400 my-9'>
+          <h3 id={urlSafe(title)} className='sticky top-8 z-50 bg-white p-2 inline-block text-primary-400 my-9'>
             {title}
           </h3>
           <Sts.ST_BecomePartnerFormsFC
@@ -375,7 +377,7 @@ const templates: Template[] = [
     content(title) {
       return (
         <section className='py-14  x-container'>
-          <h3 id={urlSafe(title)} className='text-primary-400 my-9'>
+          <h3 id={urlSafe(title)} className='sticky top-8 z-50 bg-white p-2 inline-block text-primary-400 my-9'>
             {title}
           </h3>
           <Sts.ST_CompanyDetailsFC
@@ -392,7 +394,7 @@ const templates: Template[] = [
     content(title) {
       return (
         <section className='py-14  x-container'>
-          <h3 id={urlSafe(title)} className='text-primary-400 my-9'>
+          <h3 id={urlSafe(title)} className='sticky top-8 z-50 bg-white p-2 inline-block text-primary-400 my-9'>
             {title}
           </h3>
           <Sts.ST_TimelineRangesFC
@@ -409,7 +411,7 @@ const templates: Template[] = [
     content(title) {
       return (
         <section className='py-14  x-container'>
-          <h3 id={urlSafe(title)} className='text-primary-400 my-9'>
+          <h3 id={urlSafe(title)} className='sticky top-8 z-50 bg-white p-2 inline-block text-primary-400 my-9'>
             {title}
           </h3>
           <Sts.ST_CardsFC items={DumpCards} sectionClass='' sharedObject={{}} />
@@ -422,7 +424,7 @@ const templates: Template[] = [
     content(title) {
       return (
         <section className='py-14  x-container'>
-          <h3 id={urlSafe(title)} className='text-primary-400 my-9'>
+          <h3 id={urlSafe(title)} className='sticky top-8 z-50 bg-white p-2 inline-block text-primary-400 my-9'>
             {title}
           </h3>
           <Sts.ST_GuestQuestionsFC
@@ -435,28 +437,11 @@ const templates: Template[] = [
     },
   },
   {
-    title: 'ST Markdown',
-    content(title) {
-      return (
-        <section className='py-14  x-container'>
-          <h3 id={urlSafe(title)} className='text-primary-400 my-9'>
-            {title}
-          </h3>
-          <Sts.ST_MarkdownFC
-            items={DumpMarkdown}
-            sectionClass=''
-            sharedObject={{}}
-          />
-        </section>
-      );
-    },
-  },
-  {
     title: 'ST Platforms',
     content(title) {
       return (
         <section className='py-14  x-container'>
-          <h3 id={urlSafe(title)} className='text-primary-400 my-9'>
+          <h3 id={urlSafe(title)} className='sticky top-8 z-50 bg-white p-2 inline-block text-primary-400 my-9'>
             {title}
           </h3>
           <Sts.ST_PlatformsFC
@@ -473,7 +458,7 @@ const templates: Template[] = [
     content(title) {
       return (
         <section className='py-14  x-container'>
-          <h3 id={urlSafe(title)} className='text-primary-400 my-9'>
+          <h3 id={urlSafe(title)} className='sticky top-8 z-50 bg-white p-2 inline-block text-primary-400 my-9'>
             {title}
           </h3>
           <Sts.ST_SideTextMediasFC
@@ -491,7 +476,7 @@ const templates: Template[] = [
       return (
         <section className='py-14 bg-[#f5f7fa]'>
           <div className='x-container'>
-            <h3 id={urlSafe(title)} className='text-primary-400 my-9'>
+            <h3 id={urlSafe(title)} className='sticky top-8 z-50 bg-white p-2 inline-block text-primary-400 my-9'>
               {title}
             </h3>
             <h4 className='my-3 mb-5'>
@@ -516,7 +501,7 @@ const templates: Template[] = [
     content(title) {
       return (
         <section className='py-14 x-container'>
-          <h3 id={urlSafe(title)} className='text-primary-400 my-9'>
+          <h3 id={urlSafe(title)} className='sticky top-8 z-50 bg-white p-2 inline-block text-primary-400 my-9'>
             {title}
           </h3>
           <h4 className='my-3 mb-5'>
@@ -536,11 +521,28 @@ const templates: Template[] = [
     },
   },
   {
+    title: 'ST Markdown',
+    content(title) {
+      return (
+        <section className='py-14  x-container'>
+          <h3 id={urlSafe(title)} className='sticky top-8 z-50 bg-white p-2 inline-block text-primary-400 my-9'>
+            {title}
+          </h3>
+          <Sts.ST_MarkdownFC
+            items={DumpMarkdown}
+            sectionClass=''
+            sharedObject={{}}
+          />
+        </section>
+      );
+    },
+  },
+  {
     title: 'ST Rich Text',
     content(title) {
       return (
         <section className='py-14 x-container'>
-          <h3 id={urlSafe(title)} className='text-primary-400 my-9'>
+          <h3 id={urlSafe(title)} className='sticky top-8 z-50 bg-white p-2 inline-block text-primary-400 my-9'>
             {title}
           </h3>
           <Sts.ST_RichTextFC
@@ -598,6 +600,15 @@ export default function Page() {
           </React.Fragment>
         );
       })}
+
+      <Button
+        className='fixed bottom-5 right-12'
+        onClick={() => {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }}
+      >
+        <BsArrowUp />
+      </Button>
     </div>
   );
 }
