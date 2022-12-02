@@ -8,8 +8,7 @@ export function useRehypeToc(toc: boolean, refresh = 0) {
   const tocParent = useRef<HTMLDivElement | null>(null);
   const tocOptions: Options = {
     customizeTOC: (node) => {
-      //@ts-ignore
-      node.properties['hidden'] = true;
+      (node.properties as any)['hidden'] = true;
       node.properties['id'] = id;
       return true;
     },
