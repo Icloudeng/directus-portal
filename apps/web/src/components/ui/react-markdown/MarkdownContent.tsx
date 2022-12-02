@@ -1,4 +1,5 @@
 /* eslint-disable */
+// import tocCss from './toc.module.css';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import remarkHtml from 'remark-html';
@@ -8,11 +9,12 @@ import { CodeComponent } from 'react-markdown/lib/ast-to-react';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { useEffect, useState } from 'react';
 import { FiCopy, FiCheck } from 'react-icons/fi';
-import rehypeToc from '@jsdevtools/rehype-toc';
+import { useRehypeToc } from '@/app/hooks/useRehypeToc';
 
 type Props = {
   children: string;
   toc?: boolean;
+  className?: string;
 };
 
 const Code: keyof JSX.IntrinsicElements | CodeComponent = ({
@@ -58,16 +60,30 @@ const Code: keyof JSX.IntrinsicElements | CodeComponent = ({
   );
 };
 
-export function MarkdownContent({ children, toc = false }: Props) {
+export function MarkdownContent({ children, toc = false, className }: Props) {
+  const { tocParent, tocOptions, rehypeToc, rehypeSlug } = useRehypeToc(toc);
+
   return (
-    <ReactMarkdown
-      components={{
-        code: Code,
-      }}
-      rehypePlugins={toc ? [rehypeToc] : []}
-      remarkPlugins={[remarkGfm, remarkHtml]}
-    >
-      {children}
-    </ReactMarkdown>
+    <div className={`w-full ${toc ? 'lg:flex' : ''} ${className || ''}`}>
+      {toc && (
+        <div className='lg:w-[30%] lg:mt-10'>
+          <div
+            className='lg:sticky lg:top-48 lg:pr-4 lg:text-lg overflow-x-auto'
+            ref={tocParent}
+          />
+        </div>
+      )}
+      <div className={`${toc ? 'lg:w-[70%]' : ''}`}>
+        <ReactMarkdown
+          components={{
+            code: Code,
+          }}
+          rehypePlugins={toc ? [rehypeSlug, [rehypeToc, tocOptions]] : []}
+          remarkPlugins={[remarkGfm, remarkHtml]}
+        >
+          {children}
+        </ReactMarkdown>
+      </div>
+    </div>
   );
 }

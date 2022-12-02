@@ -19,7 +19,7 @@ export function ST_NavTabsFC({ items }: STemplates_Props<ST_NavTab>) {
             <div className='flex flex-col sm:flex-row'>
               <div
                 className={`prose md:prose-lg lg:prose-xl mb-5 ${
-                  image ? 'pr-4 sm:w-[60%]' : ''
+                  image ? 'pr-4 sm:w-[60%]' : 'max-w-none'
                 }`}
               >
                 <MarkdownContent>
