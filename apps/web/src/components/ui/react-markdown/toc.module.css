@@ -1,7 +1,7 @@
 .table_of_content {
   position: relative;
   width: 100%;
-  min-height: 6500px;
+  /* min-height: 6500px; */
   :global(.toc) {
     /* position: absolute;
     left: 0; */

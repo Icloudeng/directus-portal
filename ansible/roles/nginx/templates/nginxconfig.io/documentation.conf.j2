@@ -1,7 +1,7 @@
 # docsserver_upstream
 
 
-location ^ /documentation {
+location ^~ /documentation {
     proxy_pass http://docsserver_upstream;
 }
 
