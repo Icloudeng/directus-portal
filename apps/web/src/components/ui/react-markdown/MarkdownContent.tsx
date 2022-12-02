@@ -1,6 +1,6 @@
 /* eslint-disable */
+import tocCss from './toc.module.css';
 import ReactMarkdown from 'react-markdown';
-import remarkBreaks from 'remark-breaks';
 import remarkGfm from 'remark-gfm';
 import remarkHtml from 'remark-html';
 import { PrismAsyncLight as SyntaxHighlighter } from 'react-syntax-highlighter';
@@ -9,7 +9,14 @@ import { CodeComponent } from 'react-markdown/lib/ast-to-react';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { useEffect, useState } from 'react';
 import { FiCopy, FiCheck } from 'react-icons/fi';
-import remarkToc from 'remark-toc';
+import remarkToc, { Options } from 'remark-toc';
+// import toc from '@jsdevtools/rehype-toc';
+
+type Props = {
+  children: string;
+  toc?: boolean;
+  toc_parent?: string;
+};
 
 const Code: keyof JSX.IntrinsicElements | CodeComponent = ({
   node,
@@ -54,17 +61,29 @@ const Code: keyof JSX.IntrinsicElements | CodeComponent = ({
   );
 };
 
-export function MarkdownContent({ children }: { children: string }) {
+export function MarkdownContent({ children, toc = false, toc_parent }: Props) {
+  const $toc = toc
+    ? [
+        [
+          remarkToc,
+          {
+            parents: toc_parent,
+          } as Options,
+        ],
+      ]
+    : ([] as any);
   return (
-    <div id='table-content'>
-      <ReactMarkdown
-        components={{
-          code: Code,
-        }}
-        remarkPlugins={[remarkBreaks, remarkGfm, remarkHtml, remarkToc]}
-      >
-        {children}
-      </ReactMarkdown>
+    <div className={tocCss.table_of_content}>
+      <div className={tocCss.content__wrapper}>
+        <ReactMarkdown
+          components={{
+            code: Code,
+          }}
+          remarkPlugins={[remarkGfm, remarkHtml, ...$toc]}
+        >
+          {children}
+        </ReactMarkdown>
+      </div>
     </div>
   );
 }

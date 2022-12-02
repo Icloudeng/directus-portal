@@ -31671,7 +31671,7 @@ fields:
       options: null
       readonly: true
       required: false
-      sort: 7
+      sort: 8
       special:
         - date-created
       translations: null
@@ -31714,7 +31714,7 @@ fields:
       options: null
       readonly: true
       required: false
-      sort: 9
+      sort: 10
       special:
         - date-updated
       translations: null
@@ -31824,7 +31824,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: 5
+      sort: 6
       special: null
       translations: null
       validation: null
@@ -31886,7 +31886,7 @@ fields:
             value: archived
       readonly: false
       required: false
-      sort: 4
+      sort: 5
       special: null
       translations: null
       validation: null
@@ -31913,6 +31913,48 @@ fields:
       table: ST_Markdown
     type: string
   - collection: ST_Markdown
+    field: toc
+    meta:
+      collection: ST_Markdown
+      conditions: null
+      display: null
+      display_options: null
+      field: toc
+      group: null
+      hidden: false
+      interface: boolean
+      note: null
+      options: null
+      readonly: false
+      required: true
+      sort: 3
+      special:
+        - cast-boolean
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: boolean
+      default_value: true
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: toc
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: ST_Markdown
+    type: boolean
+  - collection: ST_Markdown
     field: translations
     meta:
       collection: ST_Markdown
@@ -31928,7 +31970,7 @@ fields:
         userLanguage: true
       readonly: false
       required: true
-      sort: 3
+      sort: 4
       special:
         - translations
       translations: null
@@ -31953,7 +31995,7 @@ fields:
         template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
       readonly: true
       required: false
-      sort: 6
+      sort: 7
       special:
         - user-created
       translations: null
@@ -31996,7 +32038,7 @@ fields:
         template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
       readonly: true
       required: false
-      sort: 8
+      sort: 9
       special:
         - user-updated
       translations: null
@@ -32038,7 +32080,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: 3
+      sort: 4
       special: null
       translations: null
       validation: null
@@ -32120,7 +32162,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: 4
+      sort: 5
       special: null
       translations: null
       validation: null
@@ -32162,7 +32204,7 @@ fields:
         imageToken: mdzjETutYM06z9ch56CmFkjIOWZCwraG
       readonly: false
       required: true
-      sort: 2
+      sort: 3
       special: null
       translations: null
       validation: null
@@ -32188,6 +32230,48 @@ fields:
       schema: public
       table: ST_Markdown_translations
     type: text
+  - collection: ST_Markdown_translations
+    field: toc_parent
+    meta:
+      collection: ST_Markdown_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: toc_parent
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        trim: true
+      readonly: false
+      required: true
+      sort: 2
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: character varying
+      default_value: Table of content
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: 255
+      name: toc_parent
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: ST_Markdown_translations
+    type: string
   - collection: ST_MediaTabs
     field: date_created
     meta:
@@ -35808,7 +35892,7 @@ fields:
       options: null
       readonly: true
       required: false
-      sort: 7
+      sort: 8
       special:
         - date-created
       translations: null
@@ -35851,7 +35935,7 @@ fields:
       options: null
       readonly: true
       required: false
-      sort: 9
+      sort: 10
       special:
         - date-updated
       translations: null
@@ -35961,7 +36045,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: 5
+      sort: 6
       special: null
       translations: null
       validation: null
@@ -36023,7 +36107,7 @@ fields:
             value: archived
       readonly: false
       required: false
-      sort: 4
+      sort: 5
       special: null
       translations: null
       validation: null
@@ -36050,6 +36134,48 @@ fields:
       table: ST_RichText
     type: string
   - collection: ST_RichText
+    field: toc
+    meta:
+      collection: ST_RichText
+      conditions: null
+      display: null
+      display_options: null
+      field: toc
+      group: null
+      hidden: false
+      interface: boolean
+      note: Show Table of Content
+      options: null
+      readonly: false
+      required: true
+      sort: 3
+      special:
+        - cast-boolean
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: boolean
+      default_value: true
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: toc
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: ST_RichText
+    type: boolean
+  - collection: ST_RichText
     field: translations
     meta:
       collection: ST_RichText
@@ -36065,7 +36191,7 @@ fields:
         userLanguage: true
       readonly: false
       required: true
-      sort: 3
+      sort: 4
       special:
         - translations
       translations: null
@@ -36090,7 +36216,7 @@ fields:
         template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
       readonly: true
       required: false
-      sort: 6
+      sort: 7
       special:
         - user-created
       translations: null
@@ -36133,7 +36259,7 @@ fields:
         template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
       readonly: true
       required: false
-      sort: 8
+      sort: 9
       special:
         - user-updated
       translations: null
@@ -36175,7 +36301,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: null
+      sort: 2
       special: null
       translations: null
       validation: null
@@ -36216,7 +36342,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: null
+      sort: 1
       special: null
       translations: null
       validation: null
@@ -36257,7 +36383,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: null
+      sort: 4
       special: null
       translations: null
       validation: null
@@ -36283,6 +36409,93 @@ fields:
       schema: public
       table: ST_RichText_translations
     type: string
+  - collection: ST_RichText_translations
+    field: text
+    meta:
+      collection: ST_RichText_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: text
+      group: null
+      hidden: false
+      interface: input-rich-text-html
+      note: null
+      options:
+        imageToken: mdzjETutYM06z9ch56CmFkjIOWZCwraG
+        toolbar:
+          - aligncenter
+          - alignjustify
+          - alignleft
+          - alignnone
+          - alignright
+          - backcolor
+          - blockquote
+          - bold
+          - bullist
+          - code
+          - copy
+          - customImage
+          - customLink
+          - customMedia
+          - cut
+          - fontselect
+          - fontsizeselect
+          - forecolor
+          - fullscreen
+          - h1
+          - h2
+          - h3
+          - h4
+          - h5
+          - h6
+          - hr
+          - indent
+          - italic
+          - ltr rtl
+          - numlist
+          - outdent
+          - paste
+          - redo
+          - remove
+          - removeformat
+          - selectall
+          - strikethrough
+          - subscript
+          - superscript
+          - table
+          - underline
+          - undo
+          - unlink
+          - visualaid
+      readonly: false
+      required: true
+      sort: 3
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: text
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: ST_RichText_translations
+    type: text
   - collection: ST_SideTextMedias
     field: date_created
     meta:

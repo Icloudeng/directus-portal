@@ -12,7 +12,7 @@
   lineinfile:
     path: "{{ env_file }}"
     regexp: "^DIRECTUS_URL="
-    line: "DIRECTUS_URL=https://{{ admin_domain }}/"
+    line: "DIRECTUS_URL=https://{{ cms_domain }}/"
 
 - name: App WEB .env config | NEXT_PUBLIC_WEBSITE_URL
   lineinfile:

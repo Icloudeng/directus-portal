@@ -4,6 +4,10 @@ upstream clientserver_upstream {
   server {{ client_host }};
 }
 
+upstream docsserver_upstream {
+  server {{ docs_host }};
+}
+
 server {
     listen                  443 ssl http2;
     listen                  [::]:443 ssl http2;
@@ -77,6 +81,11 @@ server {
         # add_header X-Cache-Status $upstream_cache_status;
     }
 
+{% if has_docs_app %}
+    # add docs app config
+    include nginxconfig.io/documentation.conf;
+{% endif %}
+
     # additional config
     include nginxconfig.io/general.conf;
 }
@@ -102,9 +111,9 @@ server {
 }
 
 
-################## -------------- admin server -------------- ################## 
+################## -------------- cms server -------------- ################## 
 
-upstream adminserver_upstream {
+upstream cmsserver_upstream {
   server {{ cms_host }};
 }
 
@@ -112,13 +121,13 @@ upstream adminserver_upstream {
 server {
     listen                  443 ssl http2;
     listen                  [::]:443 ssl http2;
-    server_name             {{ admin_domain }};
+    server_name             {{ cms_domain }};
 
     # SSL
 {% if letsencrypt %}
-    ssl_certificate         /etc/letsencrypt/live/{{ admin_domain }}/fullchain.pem;
-    ssl_certificate_key     /etc/letsencrypt/live/{{ admin_domain }}/privkey.pem;
-    ssl_trusted_certificate /etc/letsencrypt/live/{{ admin_domain }}/chain.pem;
+    ssl_certificate         /etc/letsencrypt/live/{{ cms_domain }}/fullchain.pem;
+    ssl_certificate_key     /etc/letsencrypt/live/{{ cms_domain }}/privkey.pem;
+    ssl_trusted_certificate /etc/letsencrypt/live/{{ cms_domain }}/chain.pem;
 {% endif %}
 
 
@@ -141,7 +150,7 @@ server {
 
 
     location / {
-        proxy_pass http://adminserver_upstream;
+        proxy_pass http://cmsserver_upstream;
     }
 
 
@@ -149,14 +158,14 @@ server {
         proxy_cache STATIC;
         proxy_ignore_headers Cache-Control;
         proxy_cache_valid 60m;
-        proxy_pass http://adminserver_upstream;
+        proxy_pass http://cmsserver_upstream;
     }
 
     location ^~ /extensions {
         proxy_cache STATIC;
         proxy_ignore_headers Cache-Control;
         proxy_cache_valid 60m;
-        proxy_pass http://adminserver_upstream;
+        proxy_pass http://cmsserver_upstream;
     }
     
 
@@ -169,10 +178,10 @@ server {
 server {
     listen      80;
     listen      [::]:80;
-    server_name {{ admin_domain }};
+    server_name {{ cms_domain }};
     include     nginxconfig.io/letsencrypt.conf;
 
     location / {
-        return 301 https://{{ admin_domain }}$request_uri;
+        return 301 https://{{ cms_domain }}$request_uri;
     }
 }
