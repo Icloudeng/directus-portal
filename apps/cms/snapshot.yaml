@@ -4872,6 +4872,7 @@ fields:
       interface: select-dropdown-m2o
       note: null
       options:
+        enableCreate: false
         template: "{{status}}\_{{name}}\_-\_{{email}}"
       readonly: false
       required: false
@@ -10004,6 +10005,7 @@ fields:
       interface: select-dropdown-m2o
       note: null
       options:
+        enableCreate: false
         filter: null
         template: "{{status}}\_{{name}}\_-\_{{email}}"
       readonly: false
