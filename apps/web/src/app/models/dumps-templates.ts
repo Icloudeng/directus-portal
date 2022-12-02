@@ -20,6 +20,7 @@ import type {
   ST_PageAsideMenu,
   ST_PlansPricing,
   ST_Platform,
+  ST_RichText,
   ST_SidedContent,
   ST_SideTextMedia,
   ST_SimpleCardLink,
@@ -1865,7 +1866,7 @@ export const DumpMarkdown: ST_Markdown[] = [
             name: 'English',
           },
           markdown_content:
-            "### What's a Layout?#\n\nData models vary drastically in shape and purpose, from eCommerce platforms to IoT fleets and everything in between. While your Directus Project data may be stored in Collections (i.e. SQL data tables), this table representation is not always the most human-friendly way to interact with information. Layouts provide more human-friendly, intuitive displays to view and interact with Items in a Collection.\n\nThe following sections detail the Layouts managed and supported by the Directus Team. Keep in mind that Directus is open-source, modular and extensible. You are free to create any Layout you need on self-hosted and Enterprise Cloud Projects. Additionally, Directus Cloud is always adding more Layouts to its Cloud Exclusive Extensions, so check back often to stay up-to-date with the latest and greatest. Additionally, you can join the community on Discord and GitHub to find thousands of engineers guiding development of the Directus platform.",
+            "## What is this?\n\nThis package is a [unified][] ([remark][]) plugin to generate a table of\ncontents of the document such as the one above.\n\n**unified** is a project that transforms content with abstract syntax trees\n(ASTs).\n**remark** adds support for markdown to unified.\n**mdast** is the markdown AST that remark uses.\nThis is a remark plugin that transforms mdast.\n\n| Header | Header | Header | Header |\n| ------ | ------ | ------ | ------ |\n| Cell   | Cell   | Cell   | Cell   |\n| Cell   | Cell   | Cell   | Cell   |\n| Cell   | Cell   | Cell   | Cell   |\n| Cell   | Cell   | Cell   | Cell   |\n\n- fdsaf dfa sdf asd fads afds fa dsaf sdaf\n- asdf asd fas daf ds fads asd fa dsf adsfasd\n- asdfadsfasdfasdfads\n\n## When should I use this?\n\nThis project is useful when authors are writing docs in markdown that are\nsometimes quite long and hence would benefit from automated overviews inside\nthem.\nIt is assumed that headings define the structure of documents and that they can\nbe linked to.\nWhen this plugin is used, authors can add a certain heading (say, `## Contents`)\nto documents and this plugin will populate those sections with lists that link\nto all following sections.\n\nGitHub and similar services automatically add IDs (and anchors that\nlink-to-self) to headings.\nYou can add similar features when combining remark with [rehype][] through\n[`remark-rehype`][remark-rehype] after this plugin.\nThen it’s possible to use the rehype plugins [`rehype-slug`][rehype-slug] (for\nIDs on headings) and [`rehype-autolink-headings`][rehype-autolink-headings] (for\nanchors that link-to-self).\n\nThis plugin does not generate a table of contents for the *whole* document or\nexpose it to other plugins.\nYou can use the underlying mdast utility [`mdast-util-toc`][mdast-util-toc] and\n[create a plugin][create-a-plugin] yourself to do that and more.\n\n### Install\n\nThis package is [ESM only](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c).\nIn Node.js (version 12.20+, 14.14+, or 16.0+), install with [npm][]:\n\n```sh\nnpm install remark-toc\n```\n\nIn Deno with [`esm.sh`][esmsh]:\n\n```js\nimport remarkToc from 'https://esm.sh/remark-toc@8'\n```\n\nIn browsers with [`esm.sh`][esmsh]:\n\n```html\n<script type=\"module\">\n  import remarkToc from 'https://esm.sh/remark-toc@8?bundle'\n</script>\n```\n\n### Use\n\nSay we have the following file, `example.md`:\n\n```markdown\n# Alpha\n\n## Table of contents\n\n## Bravo\n\n### Charlie\n\n## Delta\n```\n\nAnd our module, `example.js`, looks as follows:\n\n```js\nimport {read} from 'to-vfile'\nimport {remark} from 'remark'\nimport remarkToc from 'remark-toc'\n\nmain()\n\nasync function main() {\n  const file = await remark()\n    .use(remarkToc)\n    .process(await read('example.md'))\n\n  console.log(String(file))\n}\n```\n\nNow, running `node example` yields:\n\n```markdown\n# Alpha\n\n## Table of contents\n\n*   [Bravo](#bravo)\n\n    *   [Charlie](#charlie)\n\n*   [Delta](#delta)\n\n## Bravo\n\n### Charlie\n\n## Delta\n```\n\n## License\n\nLicense Text\n\n\n",
         },
       ],
       id: '69d38545-9b7c-40b2-8d14-5612ec00df4d',
@@ -2210,6 +2211,30 @@ export const DumpLatestBlog: ST_LatestBlog[] = [
           date_updated: '2022-11-21T05:31:08.738Z',
         },
       ],
+    },
+  },
+];
+
+export const DumpRichText: ST_RichText[] = [
+  {
+    id: '90',
+    collection: 'ST_RichText',
+    item: {
+      toc: true,
+      translations: [
+        {
+          id: '1',
+          languages_code: {
+            code: 'en',
+            name: 'English',
+          },
+          text: '<h1 class="mb-3">Self-Hosted Sentry</h1>\n<div id="main">\n<p>In addition to making its source code available publicly, Sentry offers and maintains a minimal setup that works out-of-the-box for simple use cases. This repository also serves as a blueprint for how various Sentry services connect for a complete setup, which is useful for folks willing to maintain larger installations. For the sake of simplicity, we have chosen to use&nbsp;<a class="" href="https://www.docker.com/">Docker</a>&nbsp;and&nbsp;<a class="" href="https://docs.docker.com/compose/">Docker Compose</a>&nbsp;for this, along with a bash-based install and upgrade script.</p>\n<code class="language-markdown"># Table of Contents\n\n## Bravo&lt;script&gt;alert(1)&lt;/script&gt;\n\n## Charlie\n</code>\n<h2 id="getting-started">Getting Started</h2>\n<p>Our recommendation is to download the&nbsp;<a class="" href="https://github.com/getsentry/self-hosted/releases/latest">latest release of the self-hosted repository</a>, and then run&nbsp;<code>./install.sh</code>&nbsp;inside this directory. This script will take care of all the things you need to get started, including a base-line configuration, and then will tell you to run&nbsp;<code>docker-compose up -d</code>&nbsp;to start Sentry. Sentry binds to port&nbsp;<code>9000</code>&nbsp;by default. You should be able to reach the login page at&nbsp;<a class="" href="http://127.0.0.1:9000/">http://127.0.0.1:9000</a>.</p>\n<h3 id="self-hosted-monitoring">Self-Hosted Monitoring</h3>\n<p>When you run&nbsp;<code>./install.sh</code>, you have a choice to opt in or out of our monitoring. This monitoring is used for development and debugging purposes so that we\'re on top of issues you\'re facing, allowing us to provide a more seamless installation process. For more details please see the&nbsp;<a class="" href="https://github.com/getsentry/self-hosted#self-hosted-monitoring">section in the self-hosted README</a>.</p>\n<p>Note that choosing whether to send errors or not will become mandatory beginning with the 22.11.0 release.</p>\n<h3 id="self-hosted-beacon">Self-hosted Beacon</h3>\n<p>If you opt-in to it, self-hosted Sentry will periodically communicate with a remote beacon server. This is utilized for a couple of things, primarily:</p>\n<ul>\n<li>Getting information about the current version of Sentry</li>\n<li>Retrieving important system notices The remote server is operated by the Sentry team (sentry.io), and the information reported follows the company\'s&nbsp;<a class="" href="https://sentry.io/privacy/">privacy policy</a>.</li>\n</ul>\n<p>The following information is reported:</p>\n<ol>\n<li>A unique installation ID</li>\n<li>The version of Sentry</li>\n<li>A technical contact email if opted in to sending contact info (system.admin-email)</li>\n<li>General anonymous statistics on the data pattern (such as the number of users and volume of errors)</li>\n<li>Names and version of the installed Python modules Note: The contact email is utilized for security announcements, and will never be used outside of such. You can change your opt in/out settings for sending contact info at any time in the settings of the admin panel.</li>\n</ol>\n<p>&nbsp;</p>\n<h2>Security</h2>\n<p>Use of&nbsp;<code>remark-toc</code>&nbsp;involves user content and changes the tree, so it can open you up for a&nbsp;<a href="https://en.wikipedia.org/wiki/Cross-site_scripting">cross-site scripting (XSS)</a>&nbsp;attack.</p>\n<p>Existing nodes are copied into the table of contents. The following example shows how an existing script is copied into the table of contents.</p>\n<p>The following markdown:</p>\n<div class="relative">\n<div><code class="language-markdown"><span class="token title">#</span><span class="token title"> Table of Contents</span>\n\n<span class="token title">##</span><span class="token title"> Bravo&lt;script&gt;alert(1)&lt;/script&gt;</span>\n\n<span class="token title">##</span><span class="token title"> Charlie</span></code></div>\n<button class="absolute top-3 text-white right-5"></button></div>\n<p>Yields:</p>\n</div>',
+        },
+      ],
+      id: 'a4ee9a20-8283-4928-8c70-4db4bd7ff739',
+      status: 'published',
+      date_created: '2022-11-30T11:06:12.961Z',
+      date_updated: '2022-11-30T11:40:08.335Z',
     },
   },
 ];

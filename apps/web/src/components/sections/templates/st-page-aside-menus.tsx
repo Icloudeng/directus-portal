@@ -29,7 +29,7 @@ export function ST_PageAsideMenusFC({
             menuTitle={translations?.menu_name || 'Menu-' + i}
             title={translations?.title}
           >
-            <div className='markdown__content default__typo mb-5'>
+            <div className='prose md:prose-lg lg:prose-xl mb-5'>
               <MarkdownContent>
                 {translations?.markdown_content || ''}
               </MarkdownContent>

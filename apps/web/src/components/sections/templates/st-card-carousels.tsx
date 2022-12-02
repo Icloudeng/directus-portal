@@ -99,7 +99,7 @@ const CarouselItem = ({ item }: ST_CardCarousel) => {
         </h5>
       </div>
 
-      <div className='markdown__content st_carousel'>
+      <div className='prose st_carousel'>
         <MarkdownContent>
           {translations?.markdown_content || ''}
         </MarkdownContent>

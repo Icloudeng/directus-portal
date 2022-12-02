@@ -13,10 +13,10 @@ export function ST_MarkdownFC({ items }: STemplates_Props<ST_Markdown>) {
         const { translations, toc } = mut(item, locale);
         return (
           <div
-            className='markdown__content default__typo mb-4 w-full'
+            className='prose md:prose-lg lg:prose-xl mb-4 w-full'
             key={item.id}
           >
-            <MarkdownContent toc={toc} toc_parent={translations?.toc_parent}>
+            <MarkdownContent toc={toc}>
               {translations?.markdown_content || ''}
             </MarkdownContent>
           </div>

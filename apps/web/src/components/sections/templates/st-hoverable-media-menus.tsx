@@ -19,7 +19,7 @@ export function ST_HoverableMediaMenusFC({
         const { translations, image, id } = mut(item, locale);
         return (
           <HoverableMenusItem key={id} image={image}>
-            <div className='markdown__content mb-5'>
+            <div className='prose mb-5'>
               <MarkdownContent>
                 {translations?.markdown_content || ''}
               </MarkdownContent>

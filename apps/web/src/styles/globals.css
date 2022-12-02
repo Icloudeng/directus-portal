@@ -241,90 +241,6 @@ body {
     @apply w-[20px] h-[20px];
   }
 
-  .markdown__content {
-    /* &.st_carousel {
-    } */
-    p {
-      @apply mb-3 font-normal text-gray-700;
-    }
-
-    ul {
-      @apply list-disc max-w-xs ss:max-w-sm ml-5 text-xs sd:text-sm text-gray-400;
-    }
-
-    &.mkd__reset {
-      ul {
-        @apply list-disc max-w-full ss:max-w-full text-sm text-dark;
-      }
-
-      p {
-        @apply text-sm text-dark;
-      }
-
-      h1,
-      h2,
-      h3,
-      h4,
-      h5,
-      h6 {
-        @apply !text-start;
-      }
-    }
-
-    &:not(.default__typo) {
-      h1,
-      h2,
-      h3,
-      h4,
-      h5,
-      h6 {
-        @apply mb-3 text-center sd:text-start text-lg font-semibold tracking-tight text-gray-900;
-      }
-    }
-
-    &.default__typo {
-      h1,
-      h2,
-      h3,
-      h4,
-      h5,
-      h6 {
-        @apply mb-3 text-start font-semibold tracking-tight text-gray-900;
-      }
-
-      p {
-        @apply text-[16px] lg:text-[18px] text-gray-900 leading-7;
-      }
-    }
-
-    table {
-      @apply w-full text-sm text-left text-gray-500;
-    }
-    thead {
-      @apply text-xs text-gray-700 uppercase bg-gray-50;
-      th {
-        @apply py-3 px-6;
-      }
-    }
-
-    a {
-      @apply text-primary-400 underline;
-    }
-
-    tbody {
-      tr {
-        @apply bg-white border-b;
-        td:first-child {
-          @apply py-4 px-6 font-medium text-gray-900 whitespace-nowrap;
-        }
-
-        td:not(:first-child) {
-          @apply py-4 px-6;
-        }
-      }
-    }
-  }
-
   .nav__tabs {
     .tabs__head {
       & > div:not(.active):hover {
@@ -351,26 +267,6 @@ body {
       0 1px 3px rgb(98 112 143 / 8%);
   }
 }
-
-/* .custom-select select::-ms-expand {
-  display: none;
-}
-.custom-select select {
-  display: inline-block;
-  box-sizing: border-box;
-  padding: 0.5em 2em 0.5em 0.5em;
-  border: 1px solid #eee;
-  font: inherit;
-  line-height: inherit;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  -ms-appearance: none;
-  appearance: none;
-  background-repeat: no-repeat;
-  background-image: linear-gradient(45deg, transparent 50%, currentColor 50%), linear-gradient(135deg, currentColor 50%, transparent 50%);
-  background-position: right 15px top 1em, right 10px top 1em;
-  background-size: 5px 5px, 5px 5px;
-} */
 
 .pricing-input-range {
   -webkit-appearance: none;
@@ -418,7 +314,3 @@ input[type='range']::-webkit-slider-thumb {
     width: 100%;
   }
 }
-/* .btn-tab-direction.btn-tab-active {
-  background-color: #60a5fa;
-  color: white;
-} */
