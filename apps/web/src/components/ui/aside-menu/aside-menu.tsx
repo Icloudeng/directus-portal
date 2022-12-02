@@ -10,6 +10,7 @@ import React, {
 } from 'react';
 
 import UnstyledLink from '@/components/ui/links/UnstyledLink';
+import { scrollToElement } from '@/app/utils/scroll-to-element';
 
 export function AsideMenu({ children }: PropsWithChildren) {
   const [active, setActive] = useState(0);
@@ -100,13 +101,7 @@ export function AsideMenu({ children }: PropsWithChildren) {
         }
       }, 101);
 
-      window.scroll({
-        top:
-          rect.y > 0
-            ? rect.y + window.scrollY - 150
-            : window.scrollY - Math.abs(rect.y) - 150,
-        behavior: 'smooth',
-      });
+      scrollToElement(rect);
     };
   }, []);
 

@@ -83,6 +83,7 @@ importers:
       '@types/react-copy-to-clipboard': ^5.0.4
       '@types/react-dom': ^18.0.8
       '@types/react-syntax-highlighter': ^15.5.5
+      '@types/unist': ^2.0.6
       '@typescript-eslint/eslint-plugin': ^5.32.0
       '@typescript-eslint/parser': ^5.32.0
       autoprefixer: ^10.4.8
@@ -178,6 +179,7 @@ importers:
       '@types/react-copy-to-clipboard': 5.0.4
       '@types/react-dom': 18.0.8
       '@types/react-syntax-highlighter': 15.5.5
+      '@types/unist': 2.0.6
       '@typescript-eslint/eslint-plugin': 5.33.0_undtaa4336ncbmd6naqszh2hjm
       '@typescript-eslint/parser': 5.33.0_4he5nxxgrmu5gxjroamasnmd3i
       autoprefixer: 10.4.8_postcss@8.4.16
@@ -5609,7 +5611,6 @@ packages:
 
   /@types/unist/2.0.6:
     resolution: {integrity: sha512-PBjIUxZHOuj0R15/xuwJYjFi+KZdNFrehocChv4g5hu6aFroHue8m0lBP0POdK2nKzbw0cgV1mws8+V/JAcEkQ==}
-    dev: false
 
   /@types/ws/8.5.3:
     resolution: {integrity: sha512-6YOoWjruKj1uLf3INHH7D3qTXwFfEsg1kf3c0uDdSBJwfa/llkwIjrAGV7j7mVgGNbzTQ3HiHKKDXl6bJPD97w==}
