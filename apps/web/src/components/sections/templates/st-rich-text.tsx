@@ -31,7 +31,7 @@ function TextContent({ toc, text }: { toc: boolean; text: string }) {
       {toc && (
         <div className='lg:w-[30%] lg:mt-10'>
           <div
-            className='lg:sticky lg:top-48 lg:pr-4 lg:text-lg overflow-x-auto'
+            className='lg:sticky lg:top-48 lg:mr-4 lg:text-lg lg:max-h-[800px] overflow-auto'
             ref={tocParent}
           />
         </div>
