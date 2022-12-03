@@ -68,7 +68,7 @@ export function MarkdownContent({ children, toc = false, className }: Props) {
       {toc && (
         <div className='lg:w-[30%] lg:mt-10'>
           <div
-            className='lg:sticky lg:top-48 lg:max-h-[800px] lg:mr-4 lg:text-lg overflow-auto '
+            className='lg:sticky lg:top-48 lg:max-h-[80vh] lg:mr-4 lg:text-lg overflow-auto '
             ref={tocParent}
           />
         </div>
