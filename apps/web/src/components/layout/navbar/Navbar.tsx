@@ -1,7 +1,7 @@
 import type { I_MDWithUserTranslation } from '@apps/contracts';
 import type { MDNavbarLink } from '@apps/contracts';
 import { useTranslation } from 'next-i18next';
-import { useRef } from 'react';
+import { useCallback, useRef } from 'react';
 import { AiOutlineMenuFold } from 'react-icons/ai';
 import { VscChevronDown } from 'react-icons/vsc';
 
@@ -108,8 +108,22 @@ function NavbarLink({
   pagePosition,
 }: I_MDWithUserTranslation<MDNavbarLink> & { pagePosition: number }) {
   const hasSubmenus = submenus.length > 0;
+  const submenuRef = useRef<HTMLDivElement | null>(null);
 
   const btnRef = useRef<HTMLButtonElement>(null);
+
+  const hanlder = useCallback(() => {
+    if (!submenuRef.current) return;
+    const el = submenuRef.current;
+    const rect = el.getBoundingClientRect();
+    const screenX = window.screen.width;
+    const elX = rect.x + rect.width;
+    if (elX <= screenX) return;
+
+    const rest = elX - screenX;
+    el.style.transform = `translateX(-${rest + 20}px)`;
+  }, []);
+
   const onMouseHover = () => {
     btnRef.current?.classList.add('active');
   };
@@ -129,6 +143,7 @@ function NavbarLink({
       <button
         ref={btnRef}
         type='button'
+        onMouseOver={hasSubmenus ? hanlder : undefined}
         className='menu-top__link flex items-center gap-1'
       >
         {url && !hasSubmenus ? (
@@ -146,6 +161,7 @@ function NavbarLink({
 
       {hasSubmenus && (
         <div
+          ref={submenuRef}
           className={`submenu absolute rounded-3xl pt-[2.5rem] ${
             pagePosition > 40 ? 'top-[.45rem]' : 'top-[1.4rem]'
           } -left-[100%] invisible opacity-0`}

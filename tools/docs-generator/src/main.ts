@@ -9,9 +9,9 @@ async function main() {
 
   Logger.info("=============== Started =================");
 
-  subscriber.subscribe((message) => {
-    console.log(message);
-  });
+  // subscriber.subscribe((message) => {
+  //   console.log(message);
+  // });
 }
 
 main();

@@ -3,29 +3,27 @@
 
 const lightCodeTheme = require("prism-react-renderer/themes/github");
 const darkCodeTheme = require("prism-react-renderer/themes/dracula");
+const meta = require("./meta");
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: "My Site",
-  tagline: "Dinosaurs are cool",
-  url: "https://your-docusaurus-test-site.com",
+  title: meta.title,
+  tagline: meta.tagline,
+  url: meta.url,
   baseUrl: "/documentation/",
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
-  favicon: "img/favicon.ico",
+  favicon: meta.favicon,
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: "facebook", // Usually your GitHub org/user name.
-  projectName: "docusaurus", // Usually your repo name.
+  organizationName: meta.organizationName, // Usually your GitHub org/user name.
+  projectName: meta.projectName, // Usually your repo name.
 
   // Even if you don't use internalization, you can use this field to set useful
   // metadata like html lang. For example, if your site is Chinese, you may want
   // to replace "en" with "zh-Hans".
-  i18n: {
-    defaultLocale: "en",
-    locales: ["en"],
-  },
+  i18n: meta.i18n,
 
   presets: [
     [
@@ -52,6 +50,8 @@ const config = {
         logo: {
           alt: "My Site Logo",
           src: "img/logo.svg",
+          width: 32,
+          height: 32,
         },
         items: [
           {
@@ -61,10 +61,14 @@ const config = {
             label: "Docs",
           },
           {
-            href: "https://www.coding.icloudeng.xyz",
-            label: "Site",
+            type: "localeDropdown",
             position: "right",
           },
+          // {
+          //   href: "https://www.coding.icloudeng.xyz",
+          //   label: "Site",
+          //   position: "right",
+          // },
         ],
       },
       footer: {

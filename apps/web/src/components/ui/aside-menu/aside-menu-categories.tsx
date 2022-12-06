@@ -37,9 +37,9 @@ export function AsideMenuCategories<
   }, []);
 
   return (
-    <div className='w-full flex flex-col xl:flex-row items-center xl:items-start gap-5 pt-7'>
-      <div className='xl:sticky xl:top-56 w-full xl:flex-1 flex items-center justify-center xl:block p-3 xl:p-0 overflow-x-auto'>
-        {menuTitle && <h4 className='mb-5 hidden xl:block'>{menuTitle}</h4>}
+    <div className='w-full flex flex-col lg:flex-row items-center lg:items-start gap-5 pt-7'>
+      <div className='lg:sticky lg:max-h-[80vh] lg:top-56 w-full lg:flex-1 flex items-center justify-center lg:block p-3 lg:p-0 overflow-x-auto'>
+        {menuTitle && <h4 className='mb-5 hidden lg:block'>{menuTitle}</h4>}
         {items.map((item, i) => {
           return (
             <CategoryItem
@@ -54,7 +54,7 @@ export function AsideMenuCategories<
           );
         })}
       </div>
-      <div className='xl:flex-[3.7]'>
+      <div className='lg:flex-[3.7]'>
         {items[active] && children(items[active])}
       </div>
     </div>
@@ -79,7 +79,7 @@ export const CategoryItem = ({
   href = '#',
 }: ICategoryItem) => {
   return (
-    <ul className='w-full flex xl:flex-col items-start justify-start gap-1'>
+    <ul className='w-full flex lg:flex-col items-start justify-start gap-1'>
       <li className='relative p-1 w-full'>
         <UnstyledLink
           className={`flex items-center gap-x-3 cursor-pointer ${
@@ -92,7 +92,7 @@ export const CategoryItem = ({
             {icon}
           </span>
           <span className=' font-medium hover:font-semibold'>{name}</span>
-          <span className='hidden xl:block absolute right-7 '>
+          <span className='hidden lg:block absolute right-7 '>
             {itemsNumber !== null && <>({itemsNumber})</>}
           </span>
         </UnstyledLink>
