@@ -88,7 +88,7 @@ function Submenu({
           type='button'
           className='menu-top__link w-full flex items-center justify-between my-5'
         >
-          {url ? (
+          {url && !hasMenu ? (
             <UnstyledLink target={external ? '_blank' : undefined} href={url}>
               {translations?.name}
             </UnstyledLink>

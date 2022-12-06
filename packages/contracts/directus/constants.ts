@@ -38,6 +38,11 @@ export const CMS_MODELS = {
     matomo: "Matomo",
     guest_replies: "GuestReplies",
     campaigns: "Campaigns",
+    dc_namespaces: "DC_Namespaces",
+    dc_pages: "DC_Pages",
+    dc_footer: "DC_Footer",
+    dc_footer_links: "DC_FooterLinks",
+    dc_footer_link_items: "DC_FooterLinkItems",
   } as const),
   plans_pricing: {
     flexible_plans: "FlexiblePlans",

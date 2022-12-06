@@ -7,9 +7,9 @@ import Layout from '@/components/layout/Layout';
 import Seo from '@/components/Seo';
 import ArrowLink from '@/components/ui/links/ArrowLink';
 
+import { SharedDataProvider } from '@/app/store';
 import { getServerSideTranslations } from '@/app/utils/server-translation';
 import { getGqlSharedData } from '@/cms/items';
-import { SharedDataProvider } from '@/app/store';
 
 export default function NotFoundPage(props: any) {
   const { t } = useTranslation('404');

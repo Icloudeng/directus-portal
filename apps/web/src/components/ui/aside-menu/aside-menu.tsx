@@ -10,6 +10,7 @@ import React, {
 } from 'react';
 
 import UnstyledLink from '@/components/ui/links/UnstyledLink';
+
 import { scrollToElement } from '@/app/utils/scroll-to-element';
 
 export function AsideMenu({ children }: PropsWithChildren) {
@@ -107,7 +108,7 @@ export function AsideMenu({ children }: PropsWithChildren) {
 
   return (
     <div className='flex items-start mt-9'>
-      <aside className='sticky hidden lg:block top-56 container__nav flex-1'>
+      <aside className='sticky hidden lg:max-h-[80vh] lg:block top-56 container__nav flex-1'>
         <ul className='aside-menu border-l'>
           {titles.map(({ title, index, href }, i) => {
             return (

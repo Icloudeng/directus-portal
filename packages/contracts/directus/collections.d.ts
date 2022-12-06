@@ -364,3 +364,46 @@ export type MDCampaign = {
   author?: MDAuthor;
   transfer_initiated: boolean;
 } & DRTStatus;
+
+// -------------------------------- DC * collections -----------------------------------------
+
+export type MDDCNamespace = {
+  label: string;
+  pages: MDDCPage[];
+} & MDWithTranslation<{
+  name: string;
+}> &
+  DRTStatus;
+
+export type MDDCPage = {
+  namespace?: MDDCNamespace;
+  parent_page?: MDDCPage;
+  label: string;
+  pages: MDDCPage[];
+} & MDWithTranslation<{
+  name: string;
+  description?: string;
+  markdown_content: string;
+}> &
+  DRTStatus;
+
+type MDDCFooterLinkItem = {
+  external: boolean;
+  url: string;
+} & MDWithTranslation<{
+  name: string;
+}> &
+  DRTStatus;
+
+type MDDCFooterLink = {
+  label: string;
+  items: MDDCFooterLinkItem[];
+} & MDWithTranslation<{
+  name: string;
+}> &
+  DRTStatus;
+
+export type MDDCFooter = {
+  copyright?: string;
+  links: MDDCFooterLink[];
+} & Omit<DRTStatus, "id" | "status">;
