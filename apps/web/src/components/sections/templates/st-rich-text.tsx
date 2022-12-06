@@ -1,7 +1,8 @@
+import { ST_RichText, STemplates_Props } from '@apps/contracts';
+
 import { useRehypeReactProcessor } from '@/app/hooks/useRehypeReactProcessor';
 import { useSharedData } from '@/app/store';
 import { mut } from '@/cms/mut';
-import { STemplates_Props, ST_RichText } from '@apps/contracts';
 
 export function ST_RichTextFC({ items }: STemplates_Props<ST_RichText>) {
   const { locale } = useSharedData();

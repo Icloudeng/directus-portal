@@ -10,6 +10,7 @@ import React, {
 } from 'react';
 
 import UnstyledLink from '@/components/ui/links/UnstyledLink';
+
 import { scrollToElement } from '@/app/utils/scroll-to-element';
 
 export function AsideMenu({ children }: PropsWithChildren) {

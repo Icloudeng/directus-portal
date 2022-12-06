@@ -1,9 +1,10 @@
 import { createElement, Fragment, useEffect, useState } from 'react';
-import { unified } from 'unified';
+import React from 'react';
 import rehypeParse from 'rehype-parse';
 import rehypeReact from 'rehype-react';
+import { unified } from 'unified';
+
 import { useRehypeToc } from './useRehypeToc';
-import React from 'react';
 
 export function useRehypeReactProcessor(text: string, toc: boolean) {
   const [key, setKey] = useState(0);

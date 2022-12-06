@@ -1,6 +1,7 @@
+import rehypeToc, { Options } from '@jsdevtools/rehype-toc';
 import { useEffect, useId, useRef } from 'react';
 import rehypeSlug from 'rehype-slug';
-import rehypeToc, { Options } from '@jsdevtools/rehype-toc';
+
 import { scrollToElement } from '../utils/scroll-to-element';
 
 export function useRehypeToc(toc: boolean, refresh = 0) {
