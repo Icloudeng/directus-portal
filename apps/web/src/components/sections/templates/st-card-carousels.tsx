@@ -75,7 +75,7 @@ const CarouselItem = ({ item }: ST_CardCarousel) => {
   const { translations, image, readmore_url, disposition } = useMut(item);
 
   const imageContent = (
-    <div className='image-container relative md:h-[31rem] w-full flex flex-[1.2] flex-col justify-between p-24 md:p-4'>
+    <div className='image-container h-full relative w-full flex flex-[1.2] flex-col justify-between p-24 md:p-4'>
       {image && (
         <Image
           className={`image object-cover rounded-t-lg md:rounded-sm ${
