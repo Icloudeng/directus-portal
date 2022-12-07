@@ -320,6 +320,7 @@ importers:
       '@types/node': ^18.11.10
       dotenv: ^16.0.3
       json-to-graphql-query: ^2.2.4
+      limax: ^3.0.0
       lodash: ^4.17.21
       modern-async: ^1.1.2
       nodemon: ^2.0.20
@@ -334,6 +335,7 @@ importers:
       '@seald-io/nedb': 3.1.0
       dotenv: 16.0.3
       json-to-graphql-query: 2.2.4
+      limax: 3.0.0
       lodash: 4.17.21
       modern-async: 1.1.2
       winston: 3.8.2
@@ -5140,6 +5142,145 @@ packages:
   /@mdx-js/util/1.6.22:
     resolution: {integrity: sha512-H1rQc1ZOHANWBvPcW+JpGwr+juXSxM8Q8YCkm3GhZd8REu1fHR3z99CErO1p9pkcfcxZnMdIZdIsXkOHY0NilA==}
 
+  /@napi-rs/pinyin-android-arm-eabi/1.7.1:
+    resolution: {integrity: sha512-Dhvhz3qm3SJoPQUd2wEnUFQH0OizjBkUQOEGPcyGIpwbdyS5tVppxuAC7dO+iUh9F/uvhtKwoibDdLiupqdptw==}
+    engines: {node: '>= 10.0'}
+    cpu: [arm]
+    os: [android]
+    requiresBuild: true
+    dev: false
+    optional: true
+
+  /@napi-rs/pinyin-android-arm64/1.7.1:
+    resolution: {integrity: sha512-h+qYBRDu7mUkKiOPRaZmNUPdlxfbURUggKqncYUlV2TmHAALfoPBPoT3DD8ClQXVax1eYp4UWSloRA3hUxFLcQ==}
+    engines: {node: '>= 10.0'}
+    cpu: [arm64]
+    os: [android]
+    requiresBuild: true
+    dev: false
+    optional: true
+
+  /@napi-rs/pinyin-darwin-arm64/1.7.1:
+    resolution: {integrity: sha512-5NYFZT6PtBtO02N23vG1pcCGnDlwjlYFaq7I/V6pbI5reGDzP6Xg1TqnK635jb0AgC2yM9ojjBfR5kJYViPQTQ==}
+    engines: {node: '>= 10.0'}
+    cpu: [arm64]
+    os: [darwin]
+    requiresBuild: true
+    dev: false
+    optional: true
+
+  /@napi-rs/pinyin-darwin-x64/1.7.1:
+    resolution: {integrity: sha512-xomDqZC7qAmBCAqPPKgvhJRUreCgVLIa7KHdP1kMq3iOJD99ZoV9fkf8EHP54Ia5zNxUVgGSUOcEA8BwLwT1ig==}
+    engines: {node: '>= 10.0'}
+    cpu: [x64]
+    os: [darwin]
+    requiresBuild: true
+    dev: false
+    optional: true
+
+  /@napi-rs/pinyin-freebsd-x64/1.7.1:
+    resolution: {integrity: sha512-nGZhpA2vyTWPKguGFKMWUo8zFwPhgwNyVqVDF6T+djgzi6VKr3IUQHX5vs2lWyQixPxkrq4oxPHISvy+nHyrcg==}
+    engines: {node: '>= 10.0'}
+    cpu: [x64]
+    os: [freebsd]
+    requiresBuild: true
+    dev: false
+    optional: true
+
+  /@napi-rs/pinyin-linux-arm-gnueabihf/1.7.1:
+    resolution: {integrity: sha512-PfCuDa8S0Zh2QSOoVnowlHb7j/XkaZtRDq7GoqS7Hy4cuXDM00pHVclh9C5RfbEPQ8Nefz9ryeyYItYxaRt7Qg==}
+    engines: {node: '>= 10.0'}
+    cpu: [arm]
+    os: [linux]
+    requiresBuild: true
+    dev: false
+    optional: true
+
+  /@napi-rs/pinyin-linux-arm64-gnu/1.7.1:
+    resolution: {integrity: sha512-ay+tonSYDRhJDy95fRtXsu5wDyMcf3v2qxqVKG69ly8PW2ekbGTKLSJILJbhFx5NOwyB6DcmiFZvZQqlpaWNKQ==}
+    engines: {node: '>= 10.0'}
+    cpu: [arm64]
+    os: [linux]
+    requiresBuild: true
+    dev: false
+    optional: true
+
+  /@napi-rs/pinyin-linux-arm64-musl/1.7.1:
+    resolution: {integrity: sha512-wR3FOgewIoGeB9HsGqB2AZBzC+G1QKviPSG9BD5joXSsffcekhG47/aWvy4bnILF1gCDf1SGDo4o4WMRlpD+oQ==}
+    engines: {node: '>= 10.0'}
+    cpu: [arm64]
+    os: [linux]
+    requiresBuild: true
+    dev: false
+    optional: true
+
+  /@napi-rs/pinyin-linux-x64-gnu/1.7.1:
+    resolution: {integrity: sha512-p+S9kmdZlTtv4UVpCoyhHZRZ7WcuHY5OOAniWoBn9S3pq2ac8ptX9zvZkqwJ4jUvaeoXOQKqKNQnJTw05ECfSA==}
+    engines: {node: '>= 10.0'}
+    cpu: [x64]
+    os: [linux]
+    requiresBuild: true
+    dev: false
+    optional: true
+
+  /@napi-rs/pinyin-linux-x64-musl/1.7.1:
+    resolution: {integrity: sha512-qfpbsIHw9wdzdm6YyrUhgKwCyHl4eutOIcJDWRZcvVeuxaFwaYiSTyhn57uMCVkk/M4zTLFW+iUZra6a9tDw/g==}
+    engines: {node: '>= 10.0'}
+    cpu: [x64]
+    os: [linux]
+    requiresBuild: true
+    dev: false
+    optional: true
+
+  /@napi-rs/pinyin-win32-arm64-msvc/1.7.1:
+    resolution: {integrity: sha512-MNorAzMFmmPxqq3pzJGQ11fV/cGuKD8AQfZ2r0es32+4oQX/Ke6HF1CRr1ijG9ERyhCz1H0U4BnjUTwadpjjcQ==}
+    engines: {node: '>= 10.0'}
+    cpu: [arm64]
+    os: [win32]
+    requiresBuild: true
+    dev: false
+    optional: true
+
+  /@napi-rs/pinyin-win32-ia32-msvc/1.7.1:
+    resolution: {integrity: sha512-LraMduh848NTS+EpVRI8ufCWoCucbDOyq8GL874aaKL514xqMSgRWaPMEz7WkDE0R/8egpJK9eA6N7pDBpF92w==}
+    engines: {node: '>= 10.0'}
+    cpu: [ia32]
+    os: [win32]
+    requiresBuild: true
+    dev: false
+    optional: true
+
+  /@napi-rs/pinyin-win32-x64-msvc/1.7.1:
+    resolution: {integrity: sha512-W5hKb0AusXieCDot4O1SOTee1u46vKkHZ/vhdJqudzSubNmb6mQgMxSxPkfLMEvm+1hchOzrwVO0xCVtrLW1bw==}
+    engines: {node: '>= 10.0'}
+    cpu: [x64]
+    os: [win32]
+    requiresBuild: true
+    dev: false
+    optional: true
+
+  /@napi-rs/pinyin/1.7.1:
+    resolution: {integrity: sha512-+Mutbfd28IPXFqK1MQIhzVn1riPuKPVDDfRvn1aN1o17xmWShE5orRr43UFdVVAsnagrgT9yvbXeAS7GwUYGZw==}
+    engines: {node: '>= 10.0'}
+    requiresBuild: true
+    dependencies:
+      '@napi-rs/triples': 1.1.0
+    optionalDependencies:
+      '@napi-rs/pinyin-android-arm-eabi': 1.7.1
+      '@napi-rs/pinyin-android-arm64': 1.7.1
+      '@napi-rs/pinyin-darwin-arm64': 1.7.1
+      '@napi-rs/pinyin-darwin-x64': 1.7.1
+      '@napi-rs/pinyin-freebsd-x64': 1.7.1
+      '@napi-rs/pinyin-linux-arm-gnueabihf': 1.7.1
+      '@napi-rs/pinyin-linux-arm64-gnu': 1.7.1
+      '@napi-rs/pinyin-linux-arm64-musl': 1.7.1
+      '@napi-rs/pinyin-linux-x64-gnu': 1.7.1
+      '@napi-rs/pinyin-linux-x64-musl': 1.7.1
+      '@napi-rs/pinyin-win32-arm64-msvc': 1.7.1
+      '@napi-rs/pinyin-win32-ia32-msvc': 1.7.1
+      '@napi-rs/pinyin-win32-x64-msvc': 1.7.1
+    dev: false
+
   /@napi-rs/snappy-android-arm-eabi/7.2.0:
     resolution: {integrity: sha512-gHMR/sRSO0wxCwJke9VLzpBQmKm4VytDSmvNDGtARj+0kpfhXa4I0GxVQb4MHY//nb5J/Hf/Axz4pLFCHtfhTg==}
     engines: {node: '>= 10'}
@@ -5256,6 +5397,10 @@ packages:
     requiresBuild: true
     dev: false
     optional: true
+
+  /@napi-rs/triples/1.1.0:
+    resolution: {integrity: sha512-XQr74QaLeMiqhStEhLn1im9EOMnkypp7MZOwQhGzqp2Weu5eQJbpPxWxixxlYRKWPOmJjsk6qYfYH9kq43yc2w==}
+    dev: false
 
   /@next/env/13.0.3:
     resolution: {integrity: sha512-/4WzeG61Ot/PxsghXkSqQJ6UohFfwXoZ3dtsypmR9EBP+OIax9JRq0trq8Z/LCT9Aq4JbihVkaazRWguORjTAw==}
@@ -7852,6 +7997,10 @@ packages:
   /builtin-modules/3.3.0:
     resolution: {integrity: sha512-zhaCDicdLuWN5UbN5IMnFqNMhNfo919sH85y2/ea+5Yg9TsTkeZxpL+JLbp6cgYFS4sRLp3YV4S6yDuqVWHYOw==}
     engines: {node: '>=6'}
+
+  /bulk-replace/0.0.1:
+    resolution: {integrity: sha512-IxLEnfsCYLjlpf6mG7SWpWgA4A8IAT5dAX3FxXHFn+6FTLf3ums771elQ74sj1BCOVanBf6esu0rEC6zgwfmIg==}
+    dev: false
 
   /bundle-require/3.1.2_esbuild@0.15.15:
     resolution: {integrity: sha512-Of6l6JBAxiyQ5axFxUM6dYeP/W7X2Sozeo/4EYB9sJhL+dqL7TKjg+shwxp6jlu/6ZSERfsYtIpSJ1/x3XkAEA==}
@@ -11872,6 +12021,13 @@ packages:
     engines: {node: '>=14.0.0'}
     dev: false
 
+  /hepburn/1.2.0:
+    resolution: {integrity: sha512-xWjHb03dN/ivNcqG2vqA//sHQ0oapYGZ9QV/2TR7m2+cggxzoVpbDxZn9s/Zm1tF88/7a1IpdZyn00tNP5oABA==}
+    engines: {node: '>=4'}
+    dependencies:
+      bulk-replace: 0.0.1
+    dev: false
+
   /highlight.js/10.7.3:
     resolution: {integrity: sha512-tzcUFauisWKNHaRkN4Wjl/ZA07gENAjFl3J/c480dprkGTg5EQstgaNFqBfUqCq54kZRIEcreTsAgF/m2quD7A==}
     dev: false
@@ -13686,6 +13842,15 @@ packages:
   /lilconfig/2.0.6:
     resolution: {integrity: sha512-9JROoBW7pobfsx+Sq2JsASvCo6Pfo6WWoUW79HuB1BCoBXD4PLWJPqDF6fNj67pqBYTbAHkE57M1kS/+L1neOg==}
     engines: {node: '>=10'}
+
+  /limax/3.0.0:
+    resolution: {integrity: sha512-7O14piibxAkJlQuAvhbJY5uubV7xszi1kQgnr5z+RkDJXyKYoStilqqpH8//LJq+HQpQN7TJmj3qxXzaEJOSfg==}
+    engines: {node: '>=10'}
+    dependencies:
+      '@napi-rs/pinyin': 1.7.1
+      hepburn: 1.2.0
+      speakingurl: 14.0.1
+    dev: false
 
   /lines-and-columns/1.2.4:
     resolution: {integrity: sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg==}
@@ -18559,6 +18724,11 @@ packages:
       spdy-transport: 3.0.0
     transitivePeerDependencies:
       - supports-color
+
+  /speakingurl/14.0.1:
+    resolution: {integrity: sha512-1POYv7uv2gXoyGFpBCmpDVSNV74IfsWlDW216UPjbWufNf+bSU6GdbDsxdcxtfwb4xlI3yxzOTKClUosxARYrQ==}
+    engines: {node: '>=0.10.0'}
+    dev: false
 
   /split-on-first/1.1.0:
     resolution: {integrity: sha512-43ZssAJaMusuKWL8sKUBQXHWOpq8d6CfN/u1p4gUzfJkM05C8rxTmYrkIPTXapZpORA6LkkzcUulJ8FqA7Uudw==}

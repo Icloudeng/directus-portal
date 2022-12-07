@@ -9,6 +9,12 @@ export type I18nContent = {
   };
 };
 
+/**
+ * Generate i18n locales content
+ *
+ * @param languages
+ * @returns
+ */
 export function generateI18nContent(languages: MDLang[]) {
   const langs = languages.map((l) => l.code);
   const content: I18nContent = {

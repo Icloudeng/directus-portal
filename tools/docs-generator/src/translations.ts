@@ -36,7 +36,7 @@ export function cmsTransTransformer<T extends MDTranslation>(
   langs.forEach((lang) => {
     const data = getTranslation(datas, lang);
     datakeys.forEach((dkey) => {
-      mutable[lang][`${key}.${dkey}`] = {
+      mutable[lang][transKey(key, dkey)] = {
         message: data[dkey],
         description: "",
       };
@@ -50,7 +50,7 @@ export function cmsTransTransformer<T extends MDTranslation>(
  * @param lang
  * @returns
  */
-function getTranslation<T extends MDTranslation>(
+export function getTranslation<T extends MDTranslation>(
   translations: T[],
   lang: string
 ) {
@@ -67,7 +67,7 @@ function getTranslation<T extends MDTranslation>(
     if (data) break;
   }
 
-  return data!;
+  return data! as T;
 }
 
 export const transKey = (...keys: any[]) => keys.join(".");

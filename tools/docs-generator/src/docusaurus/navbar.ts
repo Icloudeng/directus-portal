@@ -1,9 +1,9 @@
-import { DIRECTUS_STATIC_TOKEN, DIRECTUS_URL } from "../constants";
 import type { MDDCNamespace } from "@apps/contracts";
 import type { ThemeConfig } from "@docusaurus/preset-classic";
 import type { CompanyDetail, MDLang } from "../cms/type";
+import { NamespaceBaseLink, reArrangeNamespace } from "./namespaces";
+import { DIRECTUS_STATIC_TOKEN, DIRECTUS_URL } from "../constants";
 import { cmsTransTransformer, transKey, Translations } from "../translations";
-import { NamespaceBaseLink, reArrangeNamespace } from "../pages";
 
 type NavbarItems = NonNullable<NonNullable<ThemeConfig["navbar"]>["items"]>;
 export type NavbarContent = {
@@ -14,6 +14,7 @@ export type NavbarContent = {
       logo?: {
         alt: string;
         src: string;
+        href?: string;
       };
       items?: NavbarItems;
     };
@@ -60,6 +61,10 @@ export function generateNavbarContent({
   const meta = content.meta;
   const translations = content.translations;
 
+  langs.forEach((lang) => {
+    translations[lang] = {};
+  });
+
   /**
    * Set navbar title (use website title from cms)
    */
@@ -74,6 +79,7 @@ export function generateNavbarContent({
     meta.navbar.logo = {
       src: `${DIRECTUS_URL}/assets/${companyDetails.logo.id}?access_token=${DIRECTUS_STATIC_TOKEN}`,
       alt: companyDetails.website_title || "",
+      href: companyDetails?.website || "",
     };
   }
 
