@@ -3,7 +3,7 @@ import Image from "next/legacy/image"
 import UnstyledLink from "@/components/ui/links/UnstyledLink"
 
 /* eslint-disable react/no-unescaped-entities */
-export const BlogTextContentVertical = () => {
+export const BlogTextContentHorizontal = () => {
     return (
         <div className='x-container max-w-7xl mx-auto py-10 flex flex-col items-center gap-10 ss:px-12'>
             <div className='flex flex-col items-center justify-center gap-7 mb-7'>
