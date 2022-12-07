@@ -99,9 +99,7 @@ export async function generateNamespacesContent(
       path: `${parent.path + page.id}/`, // this should end with /
       id: page.id,
       slug: `${
-        parent.slug.endsWith("/")
-          ? parent.slug.slice(0, parent.slug.length - 1)
-          : parent.slug
+        parent.slug.endsWith("/") ? parent.slug.slice(0, -1) : parent.slug
       }/${slug(page.label)}`, // slug tree
       show_content: page.show_content,
       position,

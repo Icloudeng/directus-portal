@@ -314,12 +314,9 @@ async function storeNamespacesContent(
         (itemContent.markdown || "");
 
       await Promise.all([
-        ensureWriteFile(path.join(content_path, item.id + MD_EXT), mdText),
+        ensureWriteFile(content_path.slice(0, -1) + MD_EXT, mdText),
         withDocs &&
-          ensureWriteFile(
-            path.join(content_docs_path, item.id + MD_EXT),
-            mdText
-          ),
+          ensureWriteFile(content_docs_path.slice(0, -1) + MD_EXT, mdText),
       ]);
     }
 
