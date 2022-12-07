@@ -1,13 +1,22 @@
 import * as async from "modern-async";
 import path from "path";
 import { Buffer } from "buffer";
-import { I18N_FILES, I18N_PATH, METAFILE_PATH } from "../constants";
+import {
+  CONTENT_DOCS_PATH,
+  I18N_CONTENT_DOCS_FOLDER,
+  I18N_FILES,
+  I18N_PATH,
+  METAFILE_PATH,
+} from "../constants";
 import storage from "../storage";
 import utils from "../utils";
 import { MetaContent } from "./types";
 import { NavbarContent } from "./navbar";
-import { Translations } from "./translations";
+import { DEFAULT_LANG, Translations } from "./translations";
 import { MDLang } from "src/cms/type";
+import { FooterContent } from "./footer";
+import { I18nContent } from "./i18n";
+import { NamespacesContent, NamespacesContentTree } from "./namespaces";
 
 const i18nFiles = Object.values(I18N_FILES);
 
@@ -37,6 +46,13 @@ async function ensureFileCreate(file_path: string, content = "{}") {
 
   // means file exists before
   return true;
+}
+
+async function ensureFolderCreate(path: string) {
+  await storage.mkdirAsync(path, {
+    recursive: true,
+    mode: storage.DEFAULT_DIR_MODE,
+  });
 }
 
 /**
@@ -185,6 +201,153 @@ async function storeNavbarContent(content: NavbarContent) {
 }
 
 /**
+ * Store footer content
+ */
+async function storeFooterContent(content: FooterContent) {
+  const meta = await metaContent();
+  meta.footer = content.meta.footer || {};
+
+  // Store footer content and translation
+  await Promise.all([
+    storeMetaContent(meta),
+    storeTranslationContent("footer", content.translations),
+  ]);
+}
+
+/**
+ * Store i18n content
+ */
+async function storeI18nContent(content: I18nContent) {
+  const meta = await metaContent();
+  meta.i18n = content.meta.i18n || {};
+
+  // Store i18n content and translation
+  await storeMetaContent(meta);
+}
+
+/**
+ * Store namespaces pages content
+ *
+ * @param content
+ */
+async function storeNamespacesContent(
+  content: NamespacesContent,
+  languages: MDLang[]
+) {
+  const defaultLang = DEFAULT_LANG;
+  const MD_EXT = ".md";
+  const langs = languages.map((l) => l.code);
+  const tree = content.tree;
+  const translations = content.translations;
+
+  const getPath = (lang: string, ...files: string[]) =>
+    path.join(I18N_PATH, lang, I18N_CONTENT_DOCS_FOLDER, ...files);
+
+  const storeTree = async (item: NamespacesContentTree, lang: string) => {
+    const withDocs = lang === defaultLang;
+    const content_path = getPath(lang, item.path);
+    const content_docs_path = path.join(CONTENT_DOCS_PATH, item.path);
+
+    // Handle folder
+    if (item.type === "parent") {
+      await Promise.all([
+        ensureFolderCreate(content_path),
+        withDocs && ensureFolderCreate(content_docs_path),
+      ]);
+      // Create parents details
+      if (item.content) {
+        const itemContent = item.content[lang];
+
+        /**
+         * Create overview markdown file if has show content to true
+         */
+        const overviewFileId = `${item.id}-overview`;
+        if (item.show_content) {
+          const overviewText =
+            `---\nsidebar_position:0\nsidebar_label:${itemContent.name}\nid: ${overviewFileId}\nslug: ${item.slug}---\n` +
+            (itemContent.markdown || "");
+
+          await Promise.all([
+            ensureWriteFile(
+              path.join(content_path, overviewFileId + MD_EXT),
+              overviewText
+            ),
+            withDocs &&
+              ensureWriteFile(
+                path.join(content_docs_path, overviewFileId + MD_EXT),
+                overviewText
+              ),
+          ]);
+        }
+
+        // Create page folder meta (_category_.json)
+        const detail = JSON.stringify({
+          label: itemContent.name,
+          position: item.position,
+          slug: item.slug,
+          link: {
+            type: "doc",
+            ...(item.show_content
+              ? { id: overviewFileId }
+              : { description: itemContent.description }),
+          },
+        });
+        // write page folder meta file
+        await Promise.all([
+          ensureWriteFile(path.join(content_path, "_category_.json"), detail),
+          withDocs &&
+            ensureWriteFile(
+              path.join(content_docs_path, "_category_.json"),
+              detail
+            ),
+        ]);
+      }
+    }
+
+    /**
+     * Create md file if child
+     */
+    if (item.type === "child" && item.content) {
+      const itemContent = item.content[lang];
+      const mdText =
+        `---\nsidebar_position:${item.position}\nsidebar_label:${itemContent.name}\nid: ${item.id}\nslug: ${item.slug}---\n` +
+        (itemContent.markdown || "");
+
+      await Promise.all([
+        ensureWriteFile(path.join(content_path, item.id + MD_EXT), mdText),
+        withDocs &&
+          ensureWriteFile(
+            path.join(content_docs_path, item.id + MD_EXT),
+            mdText
+          ),
+      ]);
+    }
+
+    /**
+     * Handle item childen if exist
+     */
+    await async.forEach(item.children, async (child) => {
+      await storeTree(child, lang);
+    });
+  };
+
+  await Promise.all([
+    storeTranslationContent("current", translations),
+    async.forEach(tree, async (item) => {
+      await async.forEach(langs, async (lang) => {
+        await storeTree(item, lang);
+      });
+    }),
+  ]);
+}
+
+/**
  * Export only what needed
  */
-export { storeNavbarContent, initDocsFiles };
+export {
+  storeNavbarContent,
+  initDocsFiles,
+  storeFooterContent,
+  storeI18nContent,
+  storeNamespacesContent,
+};

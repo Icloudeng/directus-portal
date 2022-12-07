@@ -1,1 +1,1 @@
-export type { FooterContent } from "./src/docusaurus";
+export type { MetaContent } from "./src/docusaurus";

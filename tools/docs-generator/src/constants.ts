@@ -11,6 +11,9 @@ export const I18N_FILES = {
   code: "code.json",
 } as const;
 
+export const I18N_CONTENT_DOCS_FOLDER = "docusaurus-plugin-content-docs";
+export const CONTENT_DOCS_PATH = path.resolve(DOCS_APP_PATH, "docs");
+
 export const METAFILE_PATH = path.resolve(DOCS_APP_PATH, "meta.json");
 
 const url = process.env.DIRECTUS_URL || "";

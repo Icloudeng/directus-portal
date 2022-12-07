@@ -2,6 +2,7 @@ import slug from "limax";
 import { forEach, map } from "modern-async";
 import type { MDDCNamespace, MDDCPage } from "@apps/contracts";
 import type { MDLang } from "../cms/type";
+import type { ID } from "@directus/sdk";
 import { constructPagesTree, pagesById } from "./pages";
 import { getTranslation, transKey, Translations } from "./translations";
 
@@ -14,15 +15,17 @@ export type NamespaceBaseLink = {
 
 type ContentTreeTrans = {
   [lang: string]: {
+    name: string;
     description?: string;
     markdown?: string;
   };
 };
 
-type NamespacesContentTree = {
+export type NamespacesContentTree = {
   type: "parent" | "child"; // this can be tranducted as "folder" (parent) | "Child" (file)
   path: string; // parent path tree
   slug: string;
+  id: ID;
   position?: number;
   show_content: boolean;
   content?: ContentTreeTrans;
@@ -94,6 +97,7 @@ export async function generateNamespacesContent(
     const itemTree: NamespacesContentTree = {
       type: page.pages.length > 0 ? "parent" : "child", // if page has children set it as parent
       path: `${parent.path + page.id}/`, // this should end with /
+      id: page.id,
       slug: `${
         parent.slug.endsWith("/")
           ? parent.slug.slice(0, parent.slug.length - 1)
@@ -103,16 +107,24 @@ export async function generateNamespacesContent(
       position,
       content: langs.reduce((acc, lang) => {
         const data = getTranslation(page.translations, lang);
-        const tkey = transKey(page.id, "description");
+
+        // Add name to translation object
+        const name_key = transKey(page.id, "name");
+        translations[lang][name_key] = {
+          message: data.name,
+          description: "",
+        };
 
         // Add description to translation object
-        translations[lang][tkey] = {
+        const dest_key = transKey(page.id, "description");
+        translations[lang][dest_key] = {
           message: data.description,
           description: "",
         };
 
         acc[lang] = {
-          description: tkey,
+          name: name_key,
+          description: dest_key,
           markdown: page.show_content ? data.markdown_content : "",
         };
         return acc;
@@ -141,6 +153,7 @@ export async function generateNamespacesContent(
       type: "parent",
       path: `${nsp.id}/`, // this should end with / (slash)
       slug: `${nsp.url}`,
+      id: nsp.id,
       show_content: false,
       children: [],
     };
