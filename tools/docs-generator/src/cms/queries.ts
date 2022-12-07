@@ -49,6 +49,7 @@ const pageQuery = {
     id: true,
   },
   label: true,
+  show_content: true,
   pages: { id: true },
   ...qWithTranslations({
     name: true,
@@ -77,6 +78,7 @@ const query = jsonToGraphQLQuery({
       __aliasFor: CMS_MODELS.dc_namespaces,
       ...qWithStatus,
       label: true,
+      url: true,
       ...qWithTranslations({
         name: true,
       }),

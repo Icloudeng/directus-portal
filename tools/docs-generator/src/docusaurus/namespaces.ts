@@ -35,12 +35,14 @@ export type NamespacesContent = {
   links: NamespaceBaseLink;
 };
 
-function getFirstChildLink(contentTree: NamespacesContentTree) {
-  if (contentTree.type !== "parent") {
-    return contentTree.path;
+function getFirstChildLink(
+  contentTree: NamespacesContentTree
+): string | undefined {
+  if (contentTree.type !== "parent" || contentTree.children.length === 0) {
+    return contentTree.slug;
   }
 
-  getFirstChildLink(contentTree.children[0]);
+  return getFirstChildLink(contentTree.children[0]);
 }
 
 /**
@@ -155,8 +157,8 @@ export async function generateNamespacesContent(
 
     // Set namespace link meta
     links[nsp.id] = {
-      activeBasePath: `${nsp.id}`,
-      to: firstChildLink || `${nsp.id}/`,
+      activeBasePath: nsp.url,
+      to: firstChildLink || nsp.url,
     };
 
     tree.push(itemTree);

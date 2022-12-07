@@ -138,4 +138,6 @@ export function generateNavbarContent({
       });
     }
   });
+
+  return content;
 }
