@@ -1,9 +1,9 @@
 import { forEach } from "modern-async";
 import path from "path";
-import { I18N_PATH } from "./constants";
+import { I18N_PATH } from "../constants";
 import { writeFile, access } from "fs/promises";
-import storage from "./storage";
-import utils from "./utils";
+import storage from "../storage";
+import utils from "../utils";
 
 const i18nFiles = [
   "docusaurus-plugin-content-docs/current.json",

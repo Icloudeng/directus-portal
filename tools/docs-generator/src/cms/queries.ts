@@ -91,6 +91,7 @@ const query = jsonToGraphQLQuery({
       ...qWithStatus,
       id: false, // single object|collection
       status: false,
+      copyright: true,
       links: {
         ...qWithStatus,
         label: true,
