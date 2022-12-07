@@ -264,7 +264,7 @@ async function storeNamespacesContent(
         const overviewFileId = `${item.id}-overview`;
         if (item.show_content) {
           const overviewText =
-            `---\nsidebar_position:0\nsidebar_label:${itemContent.name}\nid: ${overviewFileId}\nslug: ${item.slug}---\n` +
+            `---\nsidebar_position: 0\nsidebar_label: ${itemContent.name}\nid: ${overviewFileId}\nslug: ${item.slug}\n---\n\n` +
             (itemContent.markdown || "");
 
           await Promise.all([
@@ -310,7 +310,7 @@ async function storeNamespacesContent(
     if (item.type === "child" && item.content) {
       const itemContent = item.content[lang];
       const mdText =
-        `---\nsidebar_position:${item.position}\nsidebar_label:${itemContent.name}\nid: ${item.id}\nslug: ${item.slug}---\n` +
+        `---\nsidebar_position: ${item.position}\nsidebar_label: ${itemContent.name}\nid: ${item.id}\nslug: ${item.slug}\n---\n\n` +
         (itemContent.markdown || "");
 
       await Promise.all([
