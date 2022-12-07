@@ -9,6 +9,7 @@ import Seo from '@/components/Seo';
 import { getServerSideTranslations } from '@/app/utils/server-translation';
 import { getGqlHomeQueries, QHomeHeroQueriesType } from '@/cms/items';
 import { LeftRightContent } from '@/components/sections/more-ui/LeftRightContent';
+import { BlogTextContentHorizontal } from '@/components/sections/more-ui/BlogTextContentHorizontal';
 import { BlogTextContentVertical } from '@/components/sections/more-ui/BlogTextContentVertical';
 
 export default function HomePage(props: Partial<QHomeHeroQueriesType<true>>) {
