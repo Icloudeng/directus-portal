@@ -25,7 +25,13 @@ export default function HomePage(props: Partial<QHomeHeroQueriesType<true>>) {
         </section>
       )}
       <section className='py-10 bg-white'>
+        <LeftRightContent />
+      </section>
+      <section className='py-10 bg-[#f5f7fa]'>
         <BlogTextContentVertical />
+      </section>
+      <section className='py-10 bg-white'>
+        <BlogTextContentHorizontal />
       </section>
 
       {HomeSections && <PageSections sections={HomeSections.sections} />}
