@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node dist/main.js",
+    "start": "node dist/src/main.js",
+    "generate": "tsc && node dist/cli/generate.js",
     "dev": "nodemon",
     "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"

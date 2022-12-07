@@ -1,22 +1,7 @@
-import { MDDCNamespace, MDDCPage } from "@apps/contracts";
-import { map, forEach } from "modern-async";
+import { MDDCPage } from "@apps/contracts";
+import { forEach } from "modern-async";
 
 type PageById = Record<string, MDDCPage>;
-
-type LinkTree =
-  | (
-      | string
-      | {
-          [page: string]: LinkTree;
-        }
-    )[]
-  | {
-      [page: string]: LinkTree;
-    };
-
-export type PageLinkTree = {
-  [namespace: string]: LinkTree;
-};
 
 /**
  * Returned pages like key value object

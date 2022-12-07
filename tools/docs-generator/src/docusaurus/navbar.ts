@@ -127,6 +127,7 @@ export function generateNavbarContent({
         type: "doc",
         position: "left",
         label: transKey(nsp.id, "name"),
+        docId: link.docId,
         ...link,
       });
     } else {

@@ -2,7 +2,6 @@ import {
   CMS_MODELS,
   DRTQueryT,
   DRTStatus,
-  MDCompanyDetail,
   MDDCFooter,
   MDDCNamespace,
   MDDCPage,
@@ -124,5 +123,11 @@ type QueryItems = {
 export async function getItemsQuery() {
   const directus = await getDirectusClient();
   const res = await directus.graphql.items<QueryItems>(query);
+
+  if (res.data) {
+    res.data.namespaces = res.data.namespaces.filter(
+      (nsp) => nsp.pages.length > 0
+    );
+  }
   return res.data;
 }

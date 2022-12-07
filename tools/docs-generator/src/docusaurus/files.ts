@@ -226,6 +226,17 @@ async function storeI18nContent(content: I18nContent) {
 }
 
 /**
+ * Store sidebars content
+ */
+async function storeSidebarsContent(content: NamespacesContent["sidebars"]) {
+  const meta = await metaContent();
+  meta.sidebars = content || {};
+
+  // Store i18n content and translation
+  await storeMetaContent(meta);
+}
+
+/**
  * Store namespaces pages content
  *
  * @param content
@@ -285,6 +296,7 @@ async function storeNamespacesContent(
           label: itemContent.name,
           position: item.position,
           slug: item.slug,
+          id: item.id,
           link: {
             type: "doc",
             ...(item.show_content
@@ -347,4 +359,5 @@ export {
   storeFooterContent,
   storeI18nContent,
   storeNamespacesContent,
+  storeSidebarsContent,
 };

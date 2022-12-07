@@ -45,36 +45,10 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
-      navbar: {
-        title: "Icloudeng",
-        logo: {
-          alt: "My Site Logo",
-          src: "img/logo.svg",
-          width: 32,
-          height: 32,
-        },
-        items: [
-          {
-            type: "doc",
-            docId: "intro",
-            position: "left",
-            label: "Docs",
-          },
-          {
-            type: "localeDropdown",
-            position: "right",
-          },
-          // {
-          //   href: "https://www.coding.icloudeng.xyz",
-          //   label: "Site",
-          //   position: "right",
-          // },
-        ],
-      },
+      navbar: meta.navbar,
       footer: {
         style: "dark",
-        links: [],
-        copyright: `Copyright © ${new Date().getFullYear()} Icloudeng, Inc. Built with Docusaurus.`,
+        ...meta.footer,
       },
       prism: {
         theme: lightCodeTheme,

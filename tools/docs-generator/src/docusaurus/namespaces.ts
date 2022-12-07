@@ -10,8 +10,21 @@ export type NamespaceBaseLink = {
   [id: string]: {
     to: string;
     activeBasePath: string;
+    docId?: string;
   };
 };
+
+export type SidebarsConfig =
+  | string
+  | {
+      type: "category";
+      label: string;
+      link: {
+        type: "doc";
+        id: string;
+      };
+      items: SidebarsConfig[];
+    };
 
 type ContentTreeTrans = {
   [lang: string]: {
@@ -36,13 +49,19 @@ export type NamespacesContent = {
   tree: NamespacesContentTree[];
   translations: Translations;
   links: NamespaceBaseLink;
+  sidebars: {
+    [namespace: string]: SidebarsConfig[];
+  };
 };
 
 function getFirstChildLink(
   contentTree: NamespacesContentTree
-): string | undefined {
+): { slug: string; path: string } | undefined {
   if (contentTree.type !== "parent" || contentTree.children.length === 0) {
-    return contentTree.slug;
+    return {
+      slug: contentTree.slug,
+      path: contentTree.path,
+    };
   }
 
   return getFirstChildLink(contentTree.children[0]);
@@ -66,11 +85,13 @@ export async function generateNamespacesContent(
     tree: [],
     translations: {},
     links: {},
+    sidebars: {},
   };
 
   const tree = content.tree;
   const translations = content.translations;
   const links = content.links;
+  const sidebars = content.sidebars;
 
   langs.forEach((lang) => {
     translations[lang] = {};
@@ -169,10 +190,41 @@ export async function generateNamespacesContent(
     // Set namespace link meta
     links[nsp.id] = {
       activeBasePath: nsp.url,
-      to: firstChildLink || nsp.url,
+      to: firstChildLink?.slug || nsp.url,
+      docId: firstChildLink?.path.slice(0, -1),
     };
 
     tree.push(itemTree);
+  });
+
+  /**
+   * Contruct item sidebars
+   */
+
+  const constructSidebarTree = (
+    item: NamespacesContentTree
+  ): SidebarsConfig => {
+    if (item.type === "child") {
+      return item.path.slice(0, -1); // path with slash
+    }
+
+    return {
+      type: "category",
+      label: transKey(item.id, "name"),
+      link: {
+        type: "doc",
+        id: item.path.slice(0, -1),
+      },
+      items: item.children.map((child) => {
+        return constructSidebarTree(child);
+      }),
+    };
+  };
+
+  tree.forEach((item) => {
+    sidebars[item.id] = item.children.map((child) => {
+      return constructSidebarTree(child);
+    });
   });
 
   return content;
