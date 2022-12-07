@@ -41,11 +41,6 @@ const config = {
         position: "left",
         label: "Docs",
       },
-      // {
-      //   href: "https://www.coding.icloudeng.xyz",
-      //   label: "Site",
-      //   position: "right",
-      // },
     ],
   },
 };
