@@ -99,6 +99,7 @@ export function generateNavbarContent({
    * Generate navbar links content from namespaces
    */
   const [docNamespace, new_namespaces] = reArrangeNamespace(namespaces);
+
   /**
    * We need to reverse the new_namespaces array, this well be unshilft element on the next logic
    */
