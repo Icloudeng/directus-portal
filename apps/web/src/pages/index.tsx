@@ -3,6 +3,7 @@ import { GetServerSidePropsContext } from 'next';
 import Layout from '@/components/layout/Layout';
 import { HomeHeroSection } from '@/components/sections/home/HomeHeroSection';
 import { PageSections } from '@/components/sections/page-sections';
+import { SectionBoilerplate } from '@/components/sections/section-boilerplate';
 import Seo from '@/components/Seo';
 
 import { getServerSideTranslations } from '@/app/utils/server-translation';
@@ -20,6 +21,9 @@ export default function HomePage(props: Partial<QHomeHeroQueriesType<true>>) {
           <HomeHeroSection data={HomeHero} />
         </section>
       )}
+      <section className='py-10 bg-white'>
+        <SectionBoilerplate />
+      </section>
 
       {HomeSections && <PageSections sections={HomeSections.sections} />}
     </Layout>
