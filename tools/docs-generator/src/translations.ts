@@ -1,7 +1,9 @@
 import type { MDWithTranslation } from "@apps/contracts";
 import type { ID } from "@directus/sdk";
 
-const DEFAULT_LANG = "en";
+export const DEFAULT_LANG = "en";
+export const DEFAULT_LANG_NAME = "English";
+
 type MDTranslation = MDWithTranslation["translations"][number] & {
   [x: string]: any;
 };

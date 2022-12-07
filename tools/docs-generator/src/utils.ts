@@ -10,7 +10,7 @@
  * @return {Array}
  * @alias module:utils.uniq
  */
-const uniq = (array: any[], iteratee: Function) => {
+const uniq = (array: any[], iteratee?: Function) => {
   if (iteratee)
     return [...new Map(array.map((x) => [iteratee(x), x])).values()];
   else return [...new Set(array)];
