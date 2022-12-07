@@ -3,7 +3,7 @@ import { forEach, map } from "modern-async";
 import type { MDDCNamespace, MDDCPage } from "@apps/contracts";
 import type { MDLang } from "../cms/type";
 import { constructPagesTree, pagesById } from "./pages";
-import { getTranslation, transKey, Translations } from "../translations";
+import { getTranslation, transKey, Translations } from "./translations";
 
 export type NamespaceBaseLink = {
   [id: string]: {

@@ -20,6 +20,7 @@ export type Translations = {
 /**
  * This function takes the languages and mutate the mutable params
  * with the corresponding transtionn data
+ *
  * @param key
  * @param langs
  * @param datas

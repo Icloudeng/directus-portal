@@ -3,7 +3,7 @@ import type { ThemeConfig } from "@docusaurus/preset-classic";
 import type { CompanyDetail, MDLang } from "../cms/type";
 import { NamespaceBaseLink, reArrangeNamespace } from "./namespaces";
 import { DIRECTUS_STATIC_TOKEN, DIRECTUS_URL } from "../constants";
-import { cmsTransTransformer, transKey, Translations } from "../translations";
+import { cmsTransTransformer, transKey, Translations } from "./translations";
 
 type NavbarItems = NonNullable<NonNullable<ThemeConfig["navbar"]>["items"]>;
 export type NavbarContent = {

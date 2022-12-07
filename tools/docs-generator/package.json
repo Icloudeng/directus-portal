@@ -28,7 +28,6 @@
     "@apps/contracts": "workspace:*",
     "@apps/docs-pubsub": "workspace:*",
     "@directus/sdk": "^10.3.0",
-    "@seald-io/nedb": "^3.1.0",
     "dotenv": "^16.0.3",
     "json-to-graphql-query": "^2.2.4",
     "limax": "^3.0.0",
