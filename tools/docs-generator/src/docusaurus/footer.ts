@@ -1,9 +1,10 @@
-import type { MDDCFooter, MDLanguage } from "@apps/contracts";
+import type { MDDCFooter } from "@apps/contracts";
 import type { ThemeConfig } from "@docusaurus/preset-classic";
+import type { MDLang } from "../cms/type";
 import { cmsTransTransformer, transKey, Translations } from "../translations";
 
 type FooterLinks = NonNullable<NonNullable<ThemeConfig["footer"]>["links"]>;
-type FooterContent = {
+export type FooterContent = {
   translations: Translations;
   meta: {
     footer: {
@@ -23,7 +24,7 @@ type FooterContent = {
  */
 export async function generateFooterContent(
   footer: MDDCFooter,
-  languanges: Pick<MDLanguage, "code" | "name">[]
+  languanges: MDLang[]
 ): Promise<FooterContent> {
   const content: FooterContent = {
     translations: {},

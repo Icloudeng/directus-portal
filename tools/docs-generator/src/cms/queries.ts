@@ -6,11 +6,11 @@ import {
   MDDCFooter,
   MDDCNamespace,
   MDDCPage,
-  MDLanguage,
   QueryWithTranslation,
 } from "@apps/contracts";
 import { jsonToGraphQLQuery } from "json-to-graphql-query";
 import { getDirectusClient } from "./directus";
+import type { CompanyDetail, MDLang } from "./type";
 
 const qWithStatus: DRTQueryT<DRTStatus> = {
   id: true,
@@ -112,11 +112,8 @@ const query = jsonToGraphQLQuery({
 });
 
 type QueryItems = {
-  languages: Pick<MDLanguage, "code" | "name">[];
-  company_details?: Pick<
-    MDCompanyDetail,
-    "logo" | "company_name" | "website" | "website_title"
-  >;
+  languages: MDLang[];
+  company_details?: CompanyDetail;
   namespaces: MDDCNamespace[];
   pages: MDDCPage[];
   footer?: MDDCFooter;

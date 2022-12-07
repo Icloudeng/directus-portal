@@ -1,7 +1,6 @@
 import { forEach } from "modern-async";
 import path from "path";
 import { I18N_PATH } from "../constants";
-import { writeFile, access } from "fs/promises";
 import storage from "../storage";
 import utils from "../utils";
 
@@ -13,7 +12,7 @@ const i18nFiles = [
 ];
 
 /**
- * Create folders and create default files
+ * Create i18n folders and create default files
  *
  * @param languages
  * @returns
