@@ -8,6 +8,7 @@ import Seo from '@/components/Seo';
 
 import { getServerSideTranslations } from '@/app/utils/server-translation';
 import { getGqlHomeQueries, QHomeHeroQueriesType } from '@/cms/items';
+import { LeftRightContent } from '@/components/sections/more-ui/LeftRightContent';
 
 export default function HomePage(props: Partial<QHomeHeroQueriesType<true>>) {
   const { HomeHero, HomeSections } = props;
@@ -22,7 +23,7 @@ export default function HomePage(props: Partial<QHomeHeroQueriesType<true>>) {
         </section>
       )}
       <section className='py-10 bg-white'>
-        <SectionBoilerplate />
+        <LeftRightContent />
       </section>
 
       {HomeSections && <PageSections sections={HomeSections.sections} />}
