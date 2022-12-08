@@ -5,7 +5,6 @@ import type { MDLang } from "../cms/type";
 import type { ID } from "@directus/sdk";
 import { constructPagesTree, pagesById } from "./pages";
 import { getTranslation, transKey, Translations } from "./translations";
-import utils from "../utils";
 
 export type NamespaceBaseLink = {
   [id: string]: {
@@ -57,11 +56,22 @@ export type NamespacesContent = {
 
 function getFirstChildLink(
   contentTree: NamespacesContentTree
-): { slug: string; path: string } | undefined {
+): { slug: string; pathId: string } | undefined {
+  if (
+    contentTree.type === "parent" &&
+    contentTree.content &&
+    contentTree.show_content
+  ) {
+    return {
+      slug: contentTree.slug,
+      pathId: contentTree.path + `${contentTree.id}-overview`,
+    };
+  }
+
   if (contentTree.type !== "parent" || contentTree.children.length === 0) {
     return {
       slug: contentTree.slug,
-      path: contentTree.path,
+      pathId: contentTree.path.slice(0, -1),
     };
   }
 
@@ -156,7 +166,7 @@ export async function generateNamespacesContent(
      * Contruct page pages tree
      */
     page.pages.forEach((npage, index) => {
-      constructPageContentTree(npage, itemTree, index + 1);
+      constructPageContentTree(npage, itemTree, index);
     });
 
     /**
@@ -182,7 +192,7 @@ export async function generateNamespacesContent(
      * Contruct namespace pages tree
      */
     nsp.pages.forEach((page, index) => {
-      constructPageContentTree(page, itemTree, index + 1);
+      constructPageContentTree(page, itemTree, index);
     });
 
     // get first child link of the tree
@@ -192,7 +202,7 @@ export async function generateNamespacesContent(
     links[nsp.id] = {
       activeBasePath: nsp.url,
       to: firstChildLink?.slug || nsp.url,
-      docId: firstChildLink?.path.slice(0, -1),
+      docId: firstChildLink?.pathId,
     };
 
     tree.push(itemTree);
@@ -219,10 +229,7 @@ export async function generateNamespacesContent(
     /**
      * If doc has to show content, then add the overvew file path
      */
-    const pathId =
-      item.content && item.show_content
-        ? item.path + `${item.id}-overview`
-        : (getFirstChildLink(item)?.path || "").slice(0, -1);
+    const pathId = getFirstChildLink(item)?.pathId || "";
 
     return {
       type: "category",
