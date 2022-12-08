@@ -27,18 +27,27 @@ export type Translations = {
  * @param datakeys
  * @param mutable
  */
-export function cmsTransTransformer<T extends MDTranslation>(
-  key: ID,
-  langs: string[],
-  datas: T[],
-  datakeys: (keyof T & string)[],
-  mutable: Translations,
-  description = ""
-) {
+export function cmsTransTransformer<T extends MDTranslation>({
+  description = "",
+  langs,
+  datas,
+  datakeys,
+  mutable,
+  prefixKey,
+  key,
+}: {
+  key: ID;
+  langs: string[];
+  datas: T[];
+  datakeys: (keyof T & string)[];
+  prefixKey: string;
+  mutable: Translations;
+  description?: string;
+}) {
   langs.forEach((lang) => {
     const data = getTranslation(datas, lang);
     datakeys.forEach((dkey) => {
-      mutable[lang][transKey(key, dkey)] = {
+      mutable[lang][transKey(prefixKey, key, dkey)] = {
         message: data[dkey],
         description,
       };

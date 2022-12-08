@@ -8,6 +8,7 @@ import { getTranslation, transKey, Translations } from "./translations";
 
 export type NamespaceBaseLink = {
   [id: string]: {
+    type: "category" | "doc";
     to: string;
     activeBasePath: string;
     docId?: string;
@@ -60,13 +61,14 @@ export type NamespacesContent = {
 
 function getFirstChildLink(
   contentTree: NamespacesContentTree
-): { slug: string; pathId: string } | undefined {
+): { slug: string; pathId: string; type: "doc" | "category" } | undefined {
   if (
     contentTree.type === "parent" &&
     contentTree.content &&
     contentTree.show_content
   ) {
     return {
+      type: "category",
       slug: contentTree.slug,
       pathId: contentTree.path + `${contentTree.id}-overview`,
     };
@@ -74,6 +76,7 @@ function getFirstChildLink(
 
   if (contentTree.type !== "parent" || contentTree.children.length === 0) {
     return {
+      type: "doc",
       slug: contentTree.slug,
       pathId: contentTree.path.slice(0, -1),
     };
@@ -200,13 +203,14 @@ export async function generateNamespacesContent(
     });
 
     // get first child link of the tree
-    const firstChildLink = getFirstChildLink(itemTree);
+    const firstChildLink = getFirstChildLink(itemTree)!;
 
     // Set namespace link meta
     links[nsp.id] = {
       activeBasePath: nsp.url,
       to: firstChildLink?.slug || nsp.url,
       docId: firstChildLink?.pathId,
+      type: firstChildLink.type,
     };
 
     tree.push(itemTree);

@@ -107,16 +107,17 @@ export function generateNavbarContent({
 
   new_namespaces.forEach((nsp) => {
     // Get namespace name translation
-    cmsTransTransformer(
-      nsp.id,
+    cmsTransTransformer({
+      key: nsp.id,
+      prefixKey: "item.label", // Docusaurus navbar link prefix translation path
+      datakeys: ["name"],
+      description: "The label of navbar link",
       langs,
-      nsp.translations,
-      ["name"],
-      translations,
-      "The label of navbar link"
-    );
+      mutable: translations,
+      datas: nsp.translations,
+    });
 
-    const link = namespaceLinks[nsp.id];
+    const { type, ...link } = namespaceLinks[nsp.id];
 
     /**
      * Insert the at the start of an array,

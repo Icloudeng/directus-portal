@@ -71,18 +71,19 @@ export async function generateFooterContent(
    */
   links.forEach((link) => {
     let metaLink: FooterLinks[number] = {
-      label: transKey(link.id, "name"), // the translation key (id + field name)
+      title: transKey(link.id, "name"), // the translation key (id + field name)
       items: [],
     };
     // Get link name translation
-    cmsTransTransformer(
-      link.id,
+    cmsTransTransformer({
+      key: link.id,
+      datakeys: ["name"],
+      description: "The label of footer link",
       langs,
-      link.translations,
-      ["name"],
-      translations,
-      "The label of footer link"
-    );
+      mutable: translations,
+      prefixKey: "link.title", // Docusaurus footer links prefix translation path
+      datas: link.translations,
+    });
 
     /**
      * Generate footer link items if the link has more than one item,
@@ -91,19 +92,19 @@ export async function generateFooterContent(
     if (link.items.length > 1) {
       link.items.forEach((item) => {
         // Get link item name translation
-        cmsTransTransformer(
-          item.id,
+        cmsTransTransformer({
+          key: item.id,
+          datakeys: ["name"],
+          description: "The label of footer link item",
           langs,
-          item.translations,
-          ["name"],
-          translations,
-          "The label of footer link item"
-        );
+          mutable: translations,
+          prefixKey: "link.item.label", // Docusaurus footer links items prefix translation path
+          datas: item.translations,
+        });
 
         (metaLink.items as any[]).push({
-          label: transKey(link.id, "name"), // the translation key (id + field name)
+          label: transKey(item.id, "name"),
           ...(item.url.startsWith("/") ? { to: item.url } : { href: item.url }),
-          // href: item.url,
         });
       });
     } else if (link.items.length === 1) {
@@ -111,14 +112,30 @@ export async function generateFooterContent(
        * If the list has only one items then move first the item data to the parent link (the current link)
        */
       const firstItem = link.items[0];
+
+      // Get item (link) translations
+      cmsTransTransformer({
+        key: firstItem.id,
+        datakeys: ["name"],
+        description: "The label of footer link",
+        langs,
+        mutable: translations,
+        prefixKey: "link.label", // Docusaurus footer links prefix translation path
+        datas: firstItem.translations,
+      });
+
+      // Overwride footer link by writing the first child
       metaLink = {
-        label: transKey(link.id, "name"), // the translation key (id + field name)
+        label: transKey(firstItem.id, "name"),
         ...(firstItem.url.startsWith("/")
           ? { to: firstItem.url }
           : { href: firstItem.url }),
       };
     }
 
+    /**
+     * Push new footer link
+     */
     meta.footer["links"].push(metaLink);
   });
 
