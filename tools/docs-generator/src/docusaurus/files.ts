@@ -254,6 +254,35 @@ async function storeNamespacesContent(
   const getPath = (lang: string, ...files: string[]) =>
     path.join(I18N_PATH, lang, I18N_CONTENT_DOCS_FOLDER, ...files);
 
+  const docMeta = (
+    item: NamespacesContentTree,
+    lang: string,
+    params: Record<string, any> = {},
+    additional = {}
+  ) => {
+    const itemContent = item.content ? item.content[lang] : undefined;
+    const meta = {
+      sidebar_position: params.position || item.position,
+      id: params.id || item.id,
+      slug: item.slug,
+      ...(itemContent
+        ? {
+            sidebar_label: itemContent.name,
+            title: itemContent.name,
+            description: itemContent.description || "",
+          }
+        : {}),
+      ...additional,
+    } as Record<string, string | number>;
+
+    const text = Object.keys(meta).reduce((acc, key) => {
+      acc += `${key}: ${meta[key]}\n`;
+      return acc;
+    }, "");
+
+    return `---\n${text}\n---\n\n`;
+  };
+
   const storeTree = async (item: NamespacesContentTree, lang: string) => {
     const withDocs = lang === defaultLang;
     const content_path = getPath(lang, item.path);
@@ -275,8 +304,10 @@ async function storeNamespacesContent(
         const overviewFileId = `${item.id}-overview`;
         if (item.show_content) {
           const overviewText =
-            `---\nsidebar_position: 0\nsidebar_label: ${itemContent.name}\nid: ${overviewFileId}\nslug: ${item.slug}\n---\n\n` +
-            (itemContent.markdown || "");
+            docMeta(item, lang, {
+              position: 0,
+              id: overviewFileId,
+            }) + (itemContent.markdown || "");
 
           await Promise.all([
             ensureWriteFile(
@@ -295,14 +326,18 @@ async function storeNamespacesContent(
         const detail = JSON.stringify({
           label: itemContent.name,
           position: item.position,
-          slug: item.slug,
-          id: item.id,
-          link: {
-            type: "doc",
-            ...(item.show_content
-              ? { id: overviewFileId }
-              : { description: itemContent.description }),
-          },
+          ...(item.show_content
+            ? {
+                link: {
+                  type: "doc",
+                  id: overviewFileId,
+                },
+              }
+            : {
+                customProps: {
+                  description: itemContent.description,
+                },
+              }),
         });
         // write page folder meta file
         await Promise.all([
@@ -319,11 +354,10 @@ async function storeNamespacesContent(
     /**
      * Create md file if child
      */
+
     if (item.type === "child" && item.content) {
       const itemContent = item.content[lang];
-      const mdText =
-        `---\nsidebar_position: ${item.position}\nsidebar_label: ${itemContent.name}\nid: ${item.id}\nslug: ${item.slug}\n---\n\n` +
-        (itemContent.markdown || "");
+      const mdText = docMeta(item, lang) + (itemContent.markdown || "");
 
       await Promise.all([
         ensureWriteFile(content_path.slice(0, -1) + MD_EXT, mdText),

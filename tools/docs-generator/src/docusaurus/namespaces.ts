@@ -203,16 +203,26 @@ export async function generateNamespacesContent(
    */
 
   const constructSidebarTree = (
-    item: NamespacesContentTree,
-    rootId: string | number
+    item: NamespacesContentTree
   ): SidebarsConfig => {
-    const pathId = item.path
-      .slice(0, -1)
-      .replace(new RegExp(utils.escapeRegExp(rootId + "/") + "?", "g"), "");
+    const itemPath = item.path.slice(0, -1);
+    /**
+     * Create path ids by omitting the root id
+     */
+    // const pathId = itemPath
+    //   .replace(new RegExp(utils.escapeRegExp(rootId + "/") + "?", "g"), "");
 
     if (item.type === "child") {
-      return pathId; // path with slash
+      return itemPath; //pathId    /**path with slash**/
     }
+
+    /**
+     * If doc has to show content, then add the overvew file path
+     */
+    const pathId =
+      item.content && item.show_content
+        ? item.path + `${item.id}-overview`
+        : (getFirstChildLink(item)?.path || "").slice(0, -1);
 
     return {
       type: "category",
@@ -220,16 +230,17 @@ export async function generateNamespacesContent(
       link: {
         type: "doc",
         id: pathId,
+        // id: pathId,
       },
       items: item.children.map((child) => {
-        return constructSidebarTree(child, rootId);
+        return constructSidebarTree(child);
       }),
     };
   };
 
   tree.forEach((item) => {
     sidebars[item.id] = item.children.map((child) => {
-      return constructSidebarTree(child, item.id);
+      return constructSidebarTree(child);
     });
   });
 
