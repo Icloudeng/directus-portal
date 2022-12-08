@@ -20,8 +20,12 @@ export type SidebarsConfig =
       type: "category";
       label: string;
       link: {
-        type: "doc";
-        id: string;
+        type: "doc" | "generated-index";
+        id?: string;
+        title?: string;
+        description?: string;
+        keywords?: string[];
+        image?: string;
       };
       items: SidebarsConfig[];
     };
@@ -230,15 +234,21 @@ export async function generateNamespacesContent(
      * If doc has to show content, then add the overvew file path
      */
     const pathId = getFirstChildLink(item)?.pathId || "";
+    const hasContent = item.content && item.show_content;
 
     return {
       type: "category",
       label: transKey(item.id, "name"),
-      link: {
-        type: "doc",
-        id: pathId,
-        // id: pathId,
-      },
+      link: hasContent
+        ? {
+            type: "doc",
+            id: pathId,
+          }
+        : {
+            type: "generated-index",
+            title: transKey(item.id, "name"),
+            description: transKey(item.id, "description"),
+          },
       items: item.children.map((child) => {
         return constructSidebarTree(child);
       }),
