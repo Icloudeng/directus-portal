@@ -166,7 +166,7 @@ export async function generateNamespacesContent(
      * Contruct page pages tree
      */
     page.pages.forEach((npage, index) => {
-      constructPageContentTree(npage, itemTree, index);
+      constructPageContentTree(npage, itemTree, index + 1);
     });
 
     /**
@@ -192,7 +192,7 @@ export async function generateNamespacesContent(
      * Contruct namespace pages tree
      */
     nsp.pages.forEach((page, index) => {
-      constructPageContentTree(page, itemTree, index);
+      constructPageContentTree(page, itemTree, index + 1);
     });
 
     // get first child link of the tree
