@@ -32,14 +32,15 @@ export function cmsTransTransformer<T extends MDTranslation>(
   langs: string[],
   datas: T[],
   datakeys: (keyof T & string)[],
-  mutable: Translations
+  mutable: Translations,
+  description = ""
 ) {
   langs.forEach((lang) => {
     const data = getTranslation(datas, lang);
     datakeys.forEach((dkey) => {
       mutable[lang][transKey(key, dkey)] = {
         message: data[dkey],
-        description: "",
+        description,
       };
     });
   });

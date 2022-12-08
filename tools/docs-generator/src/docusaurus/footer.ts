@@ -70,7 +70,7 @@ export async function generateFooterContent(
    * Generate the footer links content
    */
   links.forEach((link) => {
-    const metaLink: FooterLinks[number] = {
+    let metaLink: FooterLinks[number] = {
       label: transKey(link.id, "name"), // the translation key (id + field name)
       items: [],
     };
@@ -80,24 +80,44 @@ export async function generateFooterContent(
       langs,
       link.translations,
       ["name"],
-      translations
+      translations,
+      "The label of footer link"
     );
 
-    link.items.forEach((item) => {
-      // Get link item name translation
-      cmsTransTransformer(
-        item.id,
-        langs,
-        item.translations,
-        ["name"],
-        translations
-      );
+    /**
+     * Generate footer link items if the link has more than one item,
+     * to prevent docusaurus error type (The footer must be either simple or multi-column, and not a mix of the two)
+     */
+    if (link.items.length > 1) {
+      link.items.forEach((item) => {
+        // Get link item name translation
+        cmsTransTransformer(
+          item.id,
+          langs,
+          item.translations,
+          ["name"],
+          translations,
+          "The label of footer link item"
+        );
 
-      (metaLink.items as any[]).push({
-        label: transKey(link.id, "name"), // the translation key (id + field name)
-        ...(item.url.startsWith("/") ? { to: item.url } : { href: item.url }),
+        (metaLink.items as any[]).push({
+          label: transKey(link.id, "name"), // the translation key (id + field name)
+          ...(item.url.startsWith("/") ? { to: item.url } : { href: item.url }),
+          // href: item.url,
+        });
       });
-    });
+    } else if (link.items.length === 1) {
+      /**
+       * If the list has only one items then move first the item data to the parent link (the current link)
+       */
+      const firstItem = link.items[0];
+      metaLink = {
+        label: transKey(link.id, "name"), // the translation key (id + field name)
+        ...(firstItem.url.startsWith("/")
+          ? { to: firstItem.url }
+          : { href: firstItem.url }),
+      };
+    }
 
     meta.footer["links"].push(metaLink);
   });

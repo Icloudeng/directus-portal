@@ -47,15 +47,32 @@ const isDate = (d: any) =>
 const isRegExp = (re: any) =>
   isObject(re) && Object.prototype.toString.call(re) === "[object RegExp]";
 
+/**
+ * Returns the parents path of the file path
+ *
+ * @param path
+ * @returns
+ */
 const extractPathFile = (path: string) =>
   path
     .split(/[\/\\]/)
     .slice(0, -1)
     .join("/");
 
+/**
+ * Escape regex charactar of a string
+ *
+ * @param value
+ * @returns
+ */
+const escapeRegExp = (value: string) => {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); // $& means the whole matched string
+};
+
 export default {
   uniq,
   isDate,
   isRegExp,
   extractPathFile,
+  escapeRegExp,
 };

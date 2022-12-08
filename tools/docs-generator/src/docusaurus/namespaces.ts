@@ -5,6 +5,7 @@ import type { MDLang } from "../cms/type";
 import type { ID } from "@directus/sdk";
 import { constructPagesTree, pagesById } from "./pages";
 import { getTranslation, transKey, Translations } from "./translations";
+import utils from "../utils";
 
 export type NamespaceBaseLink = {
   [id: string]: {
@@ -131,14 +132,14 @@ export async function generateNamespacesContent(
         const name_key = transKey(page.id, "name");
         translations[lang][name_key] = {
           message: data.name,
-          description: "",
+          description: `The label for category ${page.id} in sidebar docs`,
         };
 
         // Add description to translation object
         const dest_key = transKey(page.id, "description");
         translations[lang][dest_key] = {
-          message: data.description,
-          description: "",
+          message: data.description || "",
+          description: `The description for category ${page.id} in sidebar docs`,
         };
 
         acc[lang] = {
@@ -202,10 +203,15 @@ export async function generateNamespacesContent(
    */
 
   const constructSidebarTree = (
-    item: NamespacesContentTree
+    item: NamespacesContentTree,
+    rootId: string | number
   ): SidebarsConfig => {
+    const pathId = item.path
+      .slice(0, -1)
+      .replace(new RegExp(utils.escapeRegExp(rootId + "/") + "?", "g"), "");
+
     if (item.type === "child") {
-      return item.path.slice(0, -1); // path with slash
+      return pathId; // path with slash
     }
 
     return {
@@ -213,17 +219,17 @@ export async function generateNamespacesContent(
       label: transKey(item.id, "name"),
       link: {
         type: "doc",
-        id: item.path.slice(0, -1),
+        id: pathId,
       },
       items: item.children.map((child) => {
-        return constructSidebarTree(child);
+        return constructSidebarTree(child, rootId);
       }),
     };
   };
 
   tree.forEach((item) => {
     sidebars[item.id] = item.children.map((child) => {
-      return constructSidebarTree(child);
+      return constructSidebarTree(child, item.id);
     });
   });
 

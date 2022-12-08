@@ -112,7 +112,8 @@ export function generateNavbarContent({
       langs,
       nsp.translations,
       ["name"],
-      translations
+      translations,
+      "The label of navbar link"
     );
 
     const link = namespaceLinks[nsp.id];
