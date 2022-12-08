@@ -17,6 +17,7 @@ import { MDLang } from "src/cms/type";
 import { FooterContent } from "./footer";
 import { I18nContent } from "./i18n";
 import { NamespacesContent, NamespacesContentTree } from "./namespaces";
+import yaml from "js-yaml";
 
 const i18nFiles = Object.values(I18N_FILES);
 
@@ -254,6 +255,15 @@ async function storeNamespacesContent(
   const getPath = (lang: string, ...files: string[]) =>
     path.join(I18N_PATH, lang, I18N_CONTENT_DOCS_FOLDER, ...files);
 
+  /**
+   * Retuns the docs meta (parent docs | folder)
+   *
+   * @param item
+   * @param lang
+   * @param params
+   * @param additional
+   * @returns
+   */
   const docMeta = (
     item: NamespacesContentTree,
     lang: string,
@@ -275,25 +285,29 @@ async function storeNamespacesContent(
       ...additional,
     } as Record<string, string | number>;
 
-    const text = Object.keys(meta).reduce((acc, key) => {
-      acc += `${key}: ${meta[key]}\n`;
-      return acc;
-    }, "");
-
-    return `---\n${text}\n---\n\n`;
+    return `---\n${yaml.dump(meta)}\n---\n\n`;
   };
 
+  /**
+   * Store and create page and cotegories docs
+   *
+   * @param item
+   * @param lang
+   */
   const storeTree = async (item: NamespacesContentTree, lang: string) => {
-    const withDocs = lang === defaultLang;
-    const content_path = getPath(lang, item.path);
-    const content_docs_path = path.join(CONTENT_DOCS_PATH, item.path);
+    /**
+     * If the loop lang the default system language,
+     * then use the docs/ folder to write in
+     */
+    const content_path =
+      lang === defaultLang
+        ? path.join(CONTENT_DOCS_PATH, item.path)
+        : getPath(lang, "current", item.path);
 
     // Handle folder
     if (item.type === "parent") {
-      await Promise.all([
-        ensureFolderCreate(content_path),
-        withDocs && ensureFolderCreate(content_docs_path),
-      ]);
+      await ensureFolderCreate(content_path);
+
       // Create parents details
       if (item.content) {
         const itemContent = item.content[lang];
@@ -309,17 +323,10 @@ async function storeNamespacesContent(
               id: overviewFileId,
             }) + (itemContent.markdown || "");
 
-          await Promise.all([
-            ensureWriteFile(
-              path.join(content_path, overviewFileId + MD_EXT),
-              overviewText
-            ),
-            withDocs &&
-              ensureWriteFile(
-                path.join(content_docs_path, overviewFileId + MD_EXT),
-                overviewText
-              ),
-          ]);
+          await ensureWriteFile(
+            path.join(content_path, overviewFileId + MD_EXT),
+            overviewText
+          );
         }
 
         // Create page folder meta (_category_.json)
@@ -340,14 +347,10 @@ async function storeNamespacesContent(
               }),
         });
         // write page folder meta file
-        await Promise.all([
-          ensureWriteFile(path.join(content_path, "_category_.json"), detail),
-          withDocs &&
-            ensureWriteFile(
-              path.join(content_docs_path, "_category_.json"),
-              detail
-            ),
-        ]);
+        await ensureWriteFile(
+          path.join(content_path, "_category_.json"),
+          detail
+        );
       }
     }
 
@@ -359,11 +362,7 @@ async function storeNamespacesContent(
       const itemContent = item.content[lang];
       const mdText = docMeta(item, lang) + (itemContent.markdown || "");
 
-      await Promise.all([
-        ensureWriteFile(content_path.slice(0, -1) + MD_EXT, mdText),
-        withDocs &&
-          ensureWriteFile(content_docs_path.slice(0, -1) + MD_EXT, mdText),
-      ]);
+      await ensureWriteFile(content_path.slice(0, -1) + MD_EXT, mdText);
     }
 
     /**
