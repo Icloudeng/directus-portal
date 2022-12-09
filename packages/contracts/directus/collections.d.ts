@@ -369,6 +369,7 @@ export type MDCampaign = {
 
 export type MDDCNamespace = {
   label: string;
+  url: string;
   pages: MDDCPage[];
 } & MDWithTranslation<{
   name: string;
@@ -379,6 +380,7 @@ export type MDDCPage = {
   namespace?: MDDCNamespace;
   parent_page?: MDDCPage;
   label: string;
+  show_content: boolean;
   pages: MDDCPage[];
 } & MDWithTranslation<{
   name: string;
@@ -407,3 +409,8 @@ export type MDDCFooter = {
   copyright?: string;
   links: MDDCFooterLink[];
 } & Omit<DRTStatus, "id" | "status">;
+
+export type MDDCLog = {
+  log: string;
+  type: "info" | "warning" | "error";
+} & Pick<DRTStatus, "date_created" | "id">;

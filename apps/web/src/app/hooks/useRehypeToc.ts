@@ -25,8 +25,8 @@ export function useRehypeToc(toc: boolean, refresh = 0) {
       event.preventDefault();
 
       const el = event.currentTarget as HTMLAnchorElement;
-      const href = el.href.substring(el.href.indexOf('#'));
-      const headingEl = document.querySelector(href);
+      const href = el.href.substring(el.href.indexOf('#') + 1);
+      const headingEl = document.getElementById(href);
       if (!headingEl) return;
 
       const rect = headingEl.getBoundingClientRect();

@@ -1,8 +1,8 @@
-/** @type {import('@docusaurus/types').Config} */
+/** @type {import('docs-generator').MetaContent} */
 let meta = {};
 
 try {
-  //   meta = require("./meta.json");
+  meta = require("./meta.json");
 } catch (error) {
   console.error(error);
 }
@@ -17,37 +17,40 @@ const config = {
   organizationName: meta.organizationName || "icloudeng",
   projectName: "icloudeng-portal",
   i18n: {
-    defaultLocale: "en",
+    defaultLocale: meta.i18n.defaultLocale || "en",
     locales: locales.length > 0 && locales.includes("en") ? locales : ["en"],
-    localeConfigs: {
-      en: {
-        label: "English",
-      },
-      fr: {
-        label: "Français",
-      },
+    localeConfigs: meta.i18n?.localeConfigs || {
+      en: { label: "English" },
     },
   },
   navbar: {
-    title: "Icloudeng",
+    title: meta.navbar?.title || "Icloudeng",
     logo: {
-      alt: "My Site Logo",
       src: "img/logo.svg",
+      width: 32,
+      height: 32,
+      ...(meta.navbar?.logo || {}),
     },
-    items: [
-      {
-        type: "doc",
-        docId: "intro",
-        position: "left",
-        label: "Docs",
-      },
-      // {
-      //   href: "https://www.coding.icloudeng.xyz",
-      //   label: "Site",
-      //   position: "right",
-      // },
-    ],
+    items:
+      meta.navbar?.items && meta.navbar?.items.length > 0
+        ? meta.navbar.items
+        : [
+            {
+              type: "doc",
+              docId: "intro",
+              position: "left",
+              label: "Docs",
+            },
+          ],
   },
+  footer: {
+    links: meta.footer?.links || [],
+    copyright:
+      meta.footer?.copyright ||
+      `Copyright © ${new Date().getFullYear()} Icloudeng, Inc. Built with Docusaurus.`,
+  },
+  sidebars:
+    Object.keys(meta.sidebars || {}).length > 0 ? meta.sidebars : undefined,
 };
 
 module.exports = config;

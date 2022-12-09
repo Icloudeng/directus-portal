@@ -21,6 +21,32 @@ const existsAsync = (file: string) =>
   );
 
 /**
+ * Returns true if file exists.
+ * @param {string} file
+ * @return {Promise<boolean>}
+ * @async
+ * @alias module:storage.existsAsync
+ * @see module:storage.exists
+ */
+const readAsync = async (file: string) => {
+  let content: Buffer | null = null;
+  try {
+    content = await fsPromises.readFile(file);
+  } catch (error: any) {
+    if (error.code === "ENOENT") {
+      return {
+        content: null,
+      };
+    }
+    throw error;
+  }
+
+  return {
+    content: content,
+  };
+};
+
+/**
  * Node.js' [fsPromises.rename]{@link https://nodejs.org/api/fs.html#fspromisesrenameoldpath-newpath}
  * @function
  * @param {string} oldPath
@@ -300,6 +326,7 @@ const ensureDatafileIntegrityAsync = async (
 export default {
   existsAsync,
   renameAsync,
+  readAsync,
   writeFileAsync,
   writeFileLinesAsync,
   crashSafeWriteFileLinesAsync,
