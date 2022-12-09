@@ -11,7 +11,7 @@ import {
 } from "@apps/contracts";
 import { Filter, Sort } from "@directus/sdk";
 import { jsonToGraphQLQuery } from "json-to-graphql-query";
-import { DEFAULT_LANG, DEFAULT_LANG_NAME } from "../docusaurus";
+import { DEFAULT_LANG, DEFAULT_LANG_NAME } from "../constants";
 import { getDirectusClient } from "./directus";
 import type { CompanyDetail, MDLang } from "./type";
 
