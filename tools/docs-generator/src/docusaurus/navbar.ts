@@ -2,7 +2,7 @@ import type { MDDCNamespace } from "@apps/contracts";
 import type { ThemeConfig } from "@docusaurus/preset-classic";
 import type { CompanyDetail, MDLang } from "../cms/type";
 import { NamespaceBaseLink, reArrangeNamespace } from "./namespaces";
-import { DIRECTUS_STATIC_TOKEN, DIRECTUS_URL } from "../constants";
+import { DIRECTUS_STATIC_TOKEN, DIRECTUS_URL, WEBSITE_URL } from "../constants";
 import { cmsTransTransformer, transKey, Translations } from "./translations";
 
 type NavbarItems = NonNullable<NonNullable<ThemeConfig["navbar"]>["items"]>;
@@ -79,7 +79,7 @@ export function generateNavbarContent({
     meta.navbar.logo = {
       src: `${DIRECTUS_URL}/assets/${companyDetails.logo.id}?access_token=${DIRECTUS_STATIC_TOKEN}`,
       alt: companyDetails.website_title || "",
-      href: companyDetails?.website || "",
+      ...(WEBSITE_URL ? { href: WEBSITE_URL } : {}),
     };
   }
 
