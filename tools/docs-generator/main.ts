@@ -47,7 +47,7 @@ main();
  *
  * @param param0
  */
-async function process({ type }: { type: DataType; data: DataPayload }) {
+async function process({ type, data }: { type: DataType; data: DataPayload }) {
   const company_details = await getCompanyDetailsQuery();
 
   if (!company_details) {
@@ -64,18 +64,26 @@ async function process({ type }: { type: DataType; data: DataPayload }) {
    * !we should handle every event action (create, update, delete) on its own logic or executorF
    */
   if (type === "languages" || type === "namespaces" || type === "pages") {
+    logEvent(`All Docs - Executor, type: ${type} | event: ${data.event}`);
     queue.exec(execGenerateAllEvent);
 
     /**
      * Footer event
      */
   } else if (type === "footer") {
+    logEvent(`Footer - Executor, type: ${type} | event: ${data.event}`);
     queue.exec(execFooterEvent);
 
     /**
      * Meta or company details event
      */
   } else if (type === "meta") {
+    logEvent(`Footer - Executor, type: ${type} | event: ${data.event}`);
     queue.exec(execDetailEvent);
   }
+}
+
+function logEvent(message: string) {
+  createLogQuery({ log: message, type: "info" }).catch(console.error);
+  Logger.info(message);
 }
