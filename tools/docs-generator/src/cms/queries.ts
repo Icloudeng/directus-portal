@@ -6,10 +6,19 @@ import {
   MDDCNamespace,
   MDDCPage,
   QueryWithTranslation,
+  MDQueryFields,
 } from "@apps/contracts";
+import { Filter, Sort } from "@directus/sdk";
 import { jsonToGraphQLQuery } from "json-to-graphql-query";
 import { getDirectusClient } from "./directus";
 import type { CompanyDetail, MDLang } from "./type";
+
+type Query<T> = {
+  fields?: MDQueryFields<T>;
+  limit?: number;
+  sort?: Sort<T>;
+  filter?: Filter<T>;
+};
 
 const qWithStatus: DRTQueryT<DRTStatus> = {
   id: true,
@@ -36,6 +45,18 @@ function qWithTranslations<
         name: true,
       },
       ...fields,
+    },
+  };
+}
+
+function qWithPublishedStatus<T>(option: Query<T> & { offset?: number } = {}) {
+  return {
+    ...option,
+    filter: {
+      status: {
+        _in: ["published"],
+      },
+      ...(option.filter || {}),
     },
   };
 }
@@ -75,16 +96,21 @@ const query = jsonToGraphQLQuery({
     },
     namespaces: {
       __aliasFor: CMS_MODELS.dc_namespaces,
+      __args: qWithPublishedStatus(),
       ...qWithStatus,
       label: true,
       url: true,
       ...qWithTranslations({
         name: true,
       }),
-      pages: pageQuery,
+      pages: {
+        __args: qWithPublishedStatus(),
+        ...pageQuery,
+      },
     },
     pages: {
       __aliasFor: CMS_MODELS.dc_pages,
+      __args: qWithPublishedStatus(),
       ...pageQuery,
     },
     footer: {
@@ -94,6 +120,7 @@ const query = jsonToGraphQLQuery({
       status: false,
       copyright: true,
       links: {
+        __args: qWithPublishedStatus(),
         ...qWithStatus,
         label: true,
         ...qWithTranslations({
