@@ -11,6 +11,7 @@ import {
 } from "@apps/contracts";
 import { Filter, Sort } from "@directus/sdk";
 import { jsonToGraphQLQuery } from "json-to-graphql-query";
+import { DEFAULT_LANG, DEFAULT_LANG_NAME } from "../docusaurus";
 import { getDirectusClient } from "./directus";
 import type { CompanyDetail, MDLang } from "./type";
 
@@ -60,6 +61,18 @@ function qWithPublishedStatus<T>(option: Query<T> & { offset?: number } = {}) {
       ...(option.filter || {}),
     },
   };
+}
+
+function addDefaultLanguage(languages: MDLang[]) {
+  if (languages.length === 0) return;
+
+  const exists = languages.find((l) => l.code === DEFAULT_LANG);
+  if (!exists) {
+    languages.unshift({
+      code: DEFAULT_LANG,
+      name: DEFAULT_LANG_NAME,
+    });
+  }
 }
 
 // ------------------------------ queries page --------------------------------- //
@@ -164,6 +177,9 @@ export async function getItemsQuery() {
       (nsp) => nsp.pages.length > 0
     );
   }
+
+  addDefaultLanguage(res.data?.languages || []);
+
   return res.data;
 }
 
@@ -198,6 +214,8 @@ export async function getCompanyDetailsQuery() {
     Pick<QueryItems, "company_details" | "languages">
   >(companyDetailsQuery);
 
+  addDefaultLanguage(res.data?.languages || []);
+
   return res.data;
 }
 
@@ -218,6 +236,8 @@ export async function getFooterQuery() {
   const res = await directus.graphql.items<
     Pick<QueryItems, "footer" | "languages">
   >(footerQuery);
+
+  addDefaultLanguage(res.data?.languages || []);
 
   return res.data;
 }

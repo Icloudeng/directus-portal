@@ -39,7 +39,7 @@ export async function generateFooterContent(
   const meta = content.meta;
 
   const langs = languanges.map((l) => l.code);
-  const links = footer.links;
+  const links = footer.links || [];
 
   langs.forEach((lang) => {
     translations[lang] = {};
