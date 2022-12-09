@@ -126,7 +126,7 @@ async function docsBuilder(storeLogs = true) {
  * This function will regenerate all docs data and build for productionF
  */
 async function execGenerateAllEvent() {
-  await generateAll();
+  await generateAll(false);
 
   if (IN_PROD) {
     /**

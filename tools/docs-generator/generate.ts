@@ -16,15 +16,15 @@ import {
   storeDetailContent,
 } from "./src/docusaurus";
 
-const generator = async () => {
-  Logger.info("=============== Start Generating =================");
+const generator = async (logger = true) => {
+  logger && Logger.info("=============== Start Generating =================");
 
   /**
    * Query all data items from cms
    */
   const data = await getItemsQuery().catch(console.error);
   if (!data) {
-    return Logger.warn("Cannot find any data from query");
+    return logger && Logger.warn("Cannot find any data from query");
   }
 
   /**
@@ -34,7 +34,7 @@ const generator = async () => {
     const log = "Company details must be set from cms to complete the process";
     await createLogQuery({ type: "warning", log });
 
-    Logger.warn(log);
+    logger && Logger.warn(log);
     return;
   }
 
@@ -44,7 +44,7 @@ const generator = async () => {
   const languages = data.languages;
 
   await initDocsFiles(languages);
-  Logger.info("=== Initialized docs app files ===");
+  logger && Logger.info("=== Initialized docs app files ===");
 
   // ============================ Generate content and store them ===========================
 
@@ -54,7 +54,7 @@ const generator = async () => {
   const detailContent = await generateDetailContent(data.company_details);
 
   await storeDetailContent(detailContent);
-  Logger.info("=== detail content generated and stored ===");
+  logger && Logger.info("=== detail content generated and stored ===");
 
   /**
    * Generate i18n content and store it
@@ -62,7 +62,7 @@ const generator = async () => {
   const i18nContent = await generateI18nContent(languages);
 
   await storeI18nContent(i18nContent);
-  Logger.info("=== I18n content generated and stored ===");
+  logger && Logger.info("=== I18n content generated and stored ===");
 
   /**
    * Generate footer content and store it
@@ -71,7 +71,7 @@ const generator = async () => {
     const footerContent = await generateFooterContent(data.footer, languages);
 
     await storeFooterContent(footerContent);
-    Logger.info("=== Footer content generated and stored ===");
+    logger && Logger.info("=== Footer content generated and stored ===");
   }
 
   /**
@@ -95,7 +95,7 @@ const generator = async () => {
   });
 
   await storeNavbarContent(navbarContent);
-  Logger.info("=== Navbar content generated and stored ===");
+  logger && Logger.info("=== Navbar content generated and stored ===");
 
   /**
    * Store sidebars contents
@@ -106,7 +106,7 @@ const generator = async () => {
    * Generate navbar content and store it
    */
   await storeNamespacesContent(namespacesContent, languages);
-  Logger.info("=== Namespaces content generated and stored ===");
+  logger && Logger.info("=== Namespaces content generated and stored ===");
 };
 
 /**
