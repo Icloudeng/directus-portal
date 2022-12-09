@@ -79,7 +79,7 @@ const pageQuery = {
   }),
 };
 
-const query = jsonToGraphQLQuery({
+const allItemsQueryObject = {
   query: {
     languages: {
       __aliasFor: CMS_MODELS.languages,
@@ -138,7 +138,9 @@ const query = jsonToGraphQLQuery({
       },
     },
   },
-});
+};
+
+const allItemsQuery = jsonToGraphQLQuery(allItemsQueryObject);
 
 type QueryItems = {
   languages: MDLang[];
@@ -155,7 +157,7 @@ type QueryItems = {
  */
 export async function getItemsQuery() {
   const directus = await getDirectusClient();
-  const res = await directus.graphql.items<QueryItems>(query);
+  const res = await directus.graphql.items<QueryItems>(allItemsQuery);
 
   if (res.data) {
     res.data.namespaces = res.data.namespaces.filter(
@@ -165,10 +167,57 @@ export async function getItemsQuery() {
   return res.data;
 }
 
+/**
+ * Create new cms log query
+ *
+ * @param data
+ */
 export async function createLogQuery(data: Pick<MDDCLog, "log" | "type">) {
   const directus = await getDirectusClient();
 
   await directus
     .items<typeof CMS_MODELS.dc_logs, MDDCLog>("DC_Logs")
     .createOne(data);
+}
+
+// ---------------------------- Company details ----------------------- //
+
+const companyDetailsQuery = jsonToGraphQLQuery({
+  query: {
+    company_details: allItemsQueryObject.query["company_details"],
+    languages: allItemsQueryObject.query["languages"],
+  },
+});
+
+/**
+ * Get company details query
+ */
+export async function getCompanyDetailsQuery() {
+  const directus = await getDirectusClient();
+  const res = await directus.graphql.items<
+    Pick<QueryItems, "company_details" | "languages">
+  >(companyDetailsQuery);
+
+  return res.data;
+}
+
+// ---------------------------- Footer ----------------------- //
+
+const footerQuery = jsonToGraphQLQuery({
+  query: {
+    footer: allItemsQueryObject.query["footer"],
+    languages: allItemsQueryObject.query["languages"],
+  },
+});
+
+/**
+ * Get dc footer query
+ */
+export async function getFooterQuery() {
+  const directus = await getDirectusClient();
+  const res = await directus.graphql.items<
+    Pick<QueryItems, "footer" | "languages">
+  >(footerQuery);
+
+  return res.data;
 }

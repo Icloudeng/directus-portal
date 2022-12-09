@@ -3,10 +3,24 @@ import { createClient } from "redis";
 const CHANNEL = "docs-generator-999";
 
 type Client = ReturnType<typeof createClient>;
+
 export type DataType = "pages" | "footer" | "meta" | "namespaces" | "languages";
 
+export type DataPayload = {
+  payload: Record<string, any>;
+  collection: string;
+} & (
+  | {
+      event: `${string}.items.update`;
+      key: string[];
+    }
+  | {
+      event: `${string}.items.create`;
+      key: string;
+    }
+);
 function publisher(client: Client) {
-  return <T>(type: DataType, data: T) => {
+  return <T extends DataPayload>(type: DataType, data: T) => {
     return client.publish(
       CHANNEL,
       JSON.stringify({

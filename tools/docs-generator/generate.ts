@@ -1,6 +1,6 @@
-import "../src/env";
-import { Logger } from "../src/logger";
-import { createLogQuery, getItemsQuery } from "../src/cms/queries";
+import "./src/env";
+import { Logger } from "./src/logger";
+import { createLogQuery, getItemsQuery } from "./src/cms/queries";
 import {
   generateNamespacesContent,
   generateNavbarContent,
@@ -14,9 +14,9 @@ import {
   storeSidebarsContent,
   generateDetailContent,
   storeDetailContent,
-} from "../src/docusaurus";
+} from "./src/docusaurus";
 
-(async () => {
+const generator = async () => {
   Logger.info("=============== Start Generating =================");
 
   /**
@@ -107,4 +107,14 @@ import {
    */
   await storeNamespacesContent(namespacesContent, languages);
   Logger.info("=== Namespaces content generated and stored ===");
-})();
+};
+
+/**
+ * Since the function generator will be used with other files,
+ * we need to limit the autocall of the function generator when importing this file
+ */
+if (process.argv[2] === "--exec") {
+  generator();
+}
+
+export default generator;

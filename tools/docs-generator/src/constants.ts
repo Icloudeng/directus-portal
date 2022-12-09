@@ -2,6 +2,10 @@ import path from "path";
 
 export const DOCS_APP_PATH = path.resolve(process.cwd(), "../../apps/docs");
 
+export const PROJECT_ROOT_PATH = path.resolve(process.cwd(), "../../");
+
+export const DOCS_APP_NAME = "docs";
+
 export const I18N_PATH = path.resolve(DOCS_APP_PATH, "i18n");
 
 export const I18N_FILES = {
@@ -24,3 +28,5 @@ export const DIRECTUS_URL = url.endsWith("/")
 export const DIRECTUS_STATIC_TOKEN = process.env.DIRECTUS_STATIC_TOKEN || "";
 
 export const WEBSITE_URL = process.env.WEBSITE_URL || "";
+
+export const IN_PROD = process.env.ENV === "prod";

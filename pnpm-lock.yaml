@@ -320,6 +320,7 @@ importers:
       '@types/js-yaml': ^4.0.5
       '@types/lodash': ^4.14.186
       '@types/node': ^18.11.10
+      '@types/which': ^2.0.1
       dotenv: ^16.0.3
       js-yaml: ^4.1.0
       json-to-graphql-query: ^2.2.4
@@ -330,6 +331,7 @@ importers:
       regenerator-runtime: ^0.13.11
       ts-node: ^10.9.1
       typescript: ^4.9.3
+      which: ^3.0.0
       winston: ^3.8.2
     dependencies:
       '@apps/contracts': link:../../packages/contracts
@@ -341,6 +343,7 @@ importers:
       limax: 3.0.0
       lodash: 4.17.21
       modern-async: 1.1.2
+      which: 3.0.0
       winston: 3.8.2
     devDependencies:
       '@docusaurus/preset-classic': 2.2.0_6xzt72mebcmfvahk4jb54mm2eq
@@ -350,6 +353,7 @@ importers:
       '@types/js-yaml': 4.0.5
       '@types/lodash': 4.14.186
       '@types/node': 18.11.10
+      '@types/which': 2.0.1
       nodemon: 2.0.20
       regenerator-runtime: 0.13.11
       ts-node: 10.9.1_33vtn2v5fjjx6tjps5fcpxu4jy
@@ -6710,6 +6714,10 @@ packages:
 
   /@types/unist/2.0.6:
     resolution: {integrity: sha512-PBjIUxZHOuj0R15/xuwJYjFi+KZdNFrehocChv4g5hu6aFroHue8m0lBP0POdK2nKzbw0cgV1mws8+V/JAcEkQ==}
+
+  /@types/which/2.0.1:
+    resolution: {integrity: sha512-Jjakcv8Roqtio6w1gr0D7y6twbhx6gGgFGF5BLwajPpnOIOxFkakFhCq+LmyyeAz7BX6ULrjBOxdKaCDy+4+dQ==}
+    dev: true
 
   /@types/ws/8.5.3:
     resolution: {integrity: sha512-6YOoWjruKj1uLf3INHH7D3qTXwFfEsg1kf3c0uDdSBJwfa/llkwIjrAGV7j7mVgGNbzTQ3HiHKKDXl6bJPD97w==}
@@ -20647,6 +20655,14 @@ packages:
     hasBin: true
     dependencies:
       isexe: 2.0.0
+
+  /which/3.0.0:
+    resolution: {integrity: sha512-nla//68K9NU6yRiwDY/Q8aU6siKlSs64aEC7+IV56QoAuyQT2ovsJcgGYGyqMOmI/CGN1BOR6mM5EN0FBO+zyQ==}
+    engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
+    hasBin: true
+    dependencies:
+      isexe: 2.0.0
+    dev: false
 
   /wide-align/1.1.5:
     resolution: {integrity: sha512-eDMORYaPNZ4sQIuuYPDHdQvf4gyCF9rEEV/yPxGfwPkRodwEgiMUUXTx/dex+Me0wxx53S+NgUHaP7y3MGlDmg==}
