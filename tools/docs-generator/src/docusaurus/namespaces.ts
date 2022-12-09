@@ -162,6 +162,10 @@ export async function generateNamespacesContent(
          */
         if (itype === "parent" && !page.show_content) {
           // link.generated-index.title
+          translations[lang][`sidebar.${rootId}.category.${page.label}`] = {
+            message: data.name || "",
+            description: `The sidebar category ${page.id} in sidebar docs`,
+          };
           /**
            * Use page label as translation key for generated-index
            */
