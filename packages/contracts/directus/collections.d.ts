@@ -409,3 +409,8 @@ export type MDDCFooter = {
   copyright?: string;
   links: MDDCFooterLink[];
 } & Omit<DRTStatus, "id" | "status">;
+
+export type MDDCLog = {
+  log: string;
+  type: "info" | "warning" | "error";
+} & Pick<DRTStatus, "date_created">;

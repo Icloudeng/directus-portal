@@ -43,6 +43,7 @@ export const CMS_MODELS = {
     dc_footer: "DC_Footer",
     dc_footer_links: "DC_FooterLinks",
     dc_footer_link_items: "DC_FooterLinkItems",
+    dc_logs: "DC_Logs",
   } as const),
   plans_pricing: {
     flexible_plans: "FlexiblePlans",
