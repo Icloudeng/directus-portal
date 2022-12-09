@@ -104,7 +104,7 @@ export async function generateFooterContent(
 
         (metaLink.items as any[]).push({
           label: transKey(item.id, "name"),
-          href: item.url,
+          ...(item.url.startsWith("/") ? { to: item.url } : { href: item.url }),
         });
       });
     } else if (link.items.length === 1) {
