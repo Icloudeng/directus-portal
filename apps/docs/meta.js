@@ -20,7 +20,7 @@ const config = {
   organizationName: meta.organizationName || "icloudeng",
   projectName: "icloudeng-portal",
   i18n: {
-    defaultLocale: meta.i18n.defaultLocale || "en",
+    defaultLocale: meta.i18n?.defaultLocale || "en",
     locales: locales.length > 0 && locales.includes("en") ? locales : ["en"],
     localeConfigs: meta.i18n?.localeConfigs || {
       en: { label: "English" },
