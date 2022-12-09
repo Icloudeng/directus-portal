@@ -1,7 +1,7 @@
 import { Directus } from "@directus/sdk";
-import { DIRECTUS_URL, DIRECTUS_STATIC_TOKEN } from "../constants";
+import { DIRECTUS_HOST, DIRECTUS_STATIC_TOKEN } from "../constants";
 
-const directus = new Directus(DIRECTUS_URL);
+const directus = new Directus(DIRECTUS_HOST);
 
 export async function getDirectusClient() {
   if (await directus.auth.token) return directus;

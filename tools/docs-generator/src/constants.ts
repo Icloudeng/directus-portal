@@ -27,6 +27,8 @@ export const DIRECTUS_URL = url.endsWith("/")
   ? url.slice(0, url.length - 1)
   : url;
 
+export const DIRECTUS_HOST = process.env.DIRECTUS_HOST || "";
+
 export const DIRECTUS_STATIC_TOKEN = process.env.DIRECTUS_STATIC_TOKEN || "";
 
 export const WEBSITE_URL = process.env.WEBSITE_URL || "";

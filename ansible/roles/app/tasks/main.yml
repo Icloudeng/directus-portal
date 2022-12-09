@@ -34,7 +34,7 @@
 
 - name: Project Build | Build all app packages
   become: false
-  command: pnpm run build
+  command: pnpm run build --filter=!docs # Ingore docs, the docs-generator will build it
   args:
     chdir: "{{ root_path }}"
 
@@ -82,7 +82,18 @@
   args:
     chdir: "{{ root_path }}/apps/web"
 
-# Docs App PM2 restart process
+# Docs generator config (It should come of CMS)
+- include_tasks: docs-generator.yml
+  when: has_docs_app
+
+# Docs App PM2 restart process (It should come of DOCS generator)
+- name: DOCS | Build docs app
+  become: false
+  command: pnpm run build --filter=docs # Build only docs app from workspace
+  args:
+    chdir: "{{ root_path }}"
+  ignore_errors: true
+
 - name: Docs App | Delete old pm2 process
   command: "pm2 delete {{ domain }}-docs"
   args:
