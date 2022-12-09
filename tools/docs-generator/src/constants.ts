@@ -22,3 +22,5 @@ export const DIRECTUS_URL = url.endsWith("/")
   : url;
 
 export const DIRECTUS_STATIC_TOKEN = process.env.DIRECTUS_STATIC_TOKEN || "";
+
+export const WEBSITE_URL = process.env.WEBSITE_URL || "";

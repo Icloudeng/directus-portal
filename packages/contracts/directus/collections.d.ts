@@ -413,4 +413,4 @@ export type MDDCFooter = {
 export type MDDCLog = {
   log: string;
   type: "info" | "warning" | "error";
-} & Pick<DRTStatus, "date_created">;
+} & Pick<DRTStatus, "date_created" | "id">;

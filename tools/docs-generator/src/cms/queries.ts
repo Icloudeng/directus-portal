@@ -7,6 +7,7 @@ import {
   MDDCPage,
   QueryWithTranslation,
   MDQueryFields,
+  MDDCLog,
 } from "@apps/contracts";
 import { Filter, Sort } from "@directus/sdk";
 import { jsonToGraphQLQuery } from "json-to-graphql-query";
@@ -147,6 +148,11 @@ type QueryItems = {
   footer?: MDDCFooter;
 };
 
+/**
+ * Query all items at one with graphql
+ *
+ * @returns
+ */
 export async function getItemsQuery() {
   const directus = await getDirectusClient();
   const res = await directus.graphql.items<QueryItems>(query);
@@ -157,4 +163,12 @@ export async function getItemsQuery() {
     );
   }
   return res.data;
+}
+
+export async function createLogQuery(data: Pick<MDDCLog, "log" | "type">) {
+  const directus = await getDirectusClient();
+
+  await directus
+    .items<typeof CMS_MODELS.dc_logs, MDDCLog>("DC_Logs")
+    .createOne(data);
 }

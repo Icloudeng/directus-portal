@@ -18,6 +18,7 @@ import { FooterContent } from "./footer";
 import { I18nContent } from "./i18n";
 import { NamespacesContent, NamespacesContentTree } from "./namespaces";
 import yaml from "js-yaml";
+import { DetailContent } from "./details";
 
 const i18nFiles = Object.values(I18N_FILES);
 
@@ -216,6 +217,21 @@ async function storeFooterContent(content: FooterContent) {
 }
 
 /**
+ * Store Details content
+ */
+async function storeDetailContent(content: DetailContent) {
+  const meta = await metaContent();
+
+  meta.title = content.meta.title || "";
+  meta.favicon = content.meta.favicon || "";
+  meta.organizationName = content.meta.organizationName || "";
+  meta.url = content.meta.url || "";
+
+  // Store footer content and translation
+  await storeMetaContent(meta);
+}
+
+/**
  * Store i18n content
  */
 async function storeI18nContent(content: I18nContent) {
@@ -392,4 +408,5 @@ export {
   storeI18nContent,
   storeNamespacesContent,
   storeSidebarsContent,
+  storeDetailContent,
 };

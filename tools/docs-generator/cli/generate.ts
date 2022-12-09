@@ -1,6 +1,6 @@
 import "../src/env";
 import { Logger } from "../src/logger";
-import { getItemsQuery } from "../src/cms/queries";
+import { createLogQuery, getItemsQuery } from "../src/cms/queries";
 import {
   generateNamespacesContent,
   generateNavbarContent,
@@ -12,59 +12,99 @@ import {
   storeI18nContent,
   storeFooterContent,
   storeSidebarsContent,
+  generateDetailContent,
+  storeDetailContent,
 } from "../src/docusaurus";
 
 (async () => {
-  Logger.info("=============== Started =================");
-  const data = await getItemsQuery();
+  Logger.info("=============== Start Generating =================");
+
+  /**
+   * Query all data items from cms
+   */
+  const data = await getItemsQuery().catch(console.error);
   if (!data) {
     return Logger.warn("Cannot find any data from query");
   }
-  /** Init docs app files */
-  const languages = data.languages;
-  await initDocsFiles(languages);
 
+  /**
+   * If company_details not exits then no need to go further
+   */
+  if (!data.company_details) {
+    const log = "Company details must be set from cms to complete the process";
+    await createLogQuery({ type: "warning", log });
+
+    Logger.warn(log);
+    return;
+  }
+
+  /**
+   * Init docs app files
+   */
+  const languages = data.languages;
+
+  await initDocsFiles(languages);
   Logger.info("=== Initialized docs app files ===");
 
-  /** Generate i18n content and store it  */
-  const i18nContent = await generateI18nContent(languages);
-  await storeI18nContent(i18nContent);
+  // ============================ Generate content and store them ===========================
 
+  /**
+   * Generate detail content and store it
+   */
+  const detailContent = await generateDetailContent(data.company_details);
+
+  await storeDetailContent(detailContent);
+  Logger.info("=== detail content generated and stored ===");
+
+  /**
+   * Generate i18n content and store it
+   */
+  const i18nContent = await generateI18nContent(languages);
+
+  await storeI18nContent(i18nContent);
   Logger.info("=== I18n content generated and stored ===");
 
-  /** Generate footer content and store it  */
+  /**
+   * Generate footer content and store it
+   */
   if (data.footer) {
     const footerContent = await generateFooterContent(data.footer, languages);
-    await storeFooterContent(footerContent);
 
+    await storeFooterContent(footerContent);
     Logger.info("=== Footer content generated and stored ===");
   }
 
-  /** Generate namespaces content  */
+  /**
+   * Generate namespaces content
+   */
   const namespacesContent = await generateNamespacesContent(
     data.namespaces,
     data.pages,
     languages
   );
 
-  if (data.company_details) {
-    /** Generate navbar content and store it  */
-    const navbarContent = await generateNavbarContent({
-      namespaces: data.namespaces,
-      languages,
-      companyDetails: data.company_details,
-      namespaceLinks: namespacesContent.links,
-    });
+  /**
+   * Generate navbar content and store it
+   */
 
-    await storeNavbarContent(navbarContent);
-    Logger.info("=== Navbar content generated and stored ===");
-  }
+  const navbarContent = await generateNavbarContent({
+    namespaces: data.namespaces,
+    languages,
+    companyDetails: data.company_details,
+    namespaceLinks: namespacesContent.links,
+  });
 
-  // Store sidebars contents */
+  await storeNavbarContent(navbarContent);
+  Logger.info("=== Navbar content generated and stored ===");
+
+  /**
+   * Store sidebars contents
+   */
   await storeSidebarsContent(namespacesContent.sidebars);
 
-  /** Generate navbar content and store it  */
+  /**
+   * Generate navbar content and store it
+   */
   await storeNamespacesContent(namespacesContent, languages);
-
   Logger.info("=== Namespaces content generated and stored ===");
 })();
