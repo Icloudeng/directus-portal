@@ -23,10 +23,6 @@ export type SidebarsConfig =
       link: {
         type: "doc" | "generated-index";
         id?: string;
-        title?: string;
-        description?: string;
-        keywords?: string[];
-        image?: string;
       };
       items: SidebarsConfig[];
     };
@@ -43,6 +39,7 @@ export type NamespacesContentTree = {
   type: "parent" | "child"; // this can be tranducted as "folder" (parent) | "Child" (file)
   path: string; // parent path tree
   slug: string;
+  label?: string;
   id: ID;
   position?: number;
   show_content: boolean;
@@ -132,11 +129,14 @@ export async function generateNamespacesContent(
     position: number
   ) {
     const parent = mutableParent;
+    const itype = page.pages.length > 0 ? "parent" : "child";
+
     // Put page content
     const itemTree: NamespacesContentTree = {
-      type: page.pages.length > 0 ? "parent" : "child", // if page has children set it as parent
+      type: itype, // if page has children set it as parent
       path: `${parent.path + page.id}/`, // this should end with /
       id: page.id,
+      label: page.label,
       slug: `${
         parent.slug.endsWith("/") ? parent.slug.slice(0, -1) : parent.slug
       }/${slug(page.label)}`, // slug tree
@@ -144,24 +144,46 @@ export async function generateNamespacesContent(
       position,
       content: langs.reduce((acc, lang) => {
         const data = getTranslation(page.translations, lang);
+        const rootId = parent.path.split("/")[0];
 
-        // Add name to translation object
-        const name_key = transKey(page.id, "name");
-        translations[lang][name_key] = {
-          message: data.name,
-          description: `The label for category ${page.id} in sidebar docs`,
-        };
+        /**
+         * Translate link category label
+         */
+        if (itype === "parent") {
+          const name_key = transKey(page.id, "name");
+          translations[lang][`sidebar.${rootId}.category.${name_key}`] = {
+            message: data.name || "",
+            description: `The sidebar category ${page.id} in sidebar docs`,
+          };
+        }
 
-        // Add description to translation object
-        const dest_key = transKey(page.id, "description");
-        translations[lang][dest_key] = {
-          message: data.description || "",
-          description: `The description for category ${page.id} in sidebar docs`,
-        };
+        /**
+         * Add translations for link generated-index
+         */
+        if (itype === "parent" && !page.show_content) {
+          // link.generated-index.title
+          /**
+           * Use page label as translation key for generated-index
+           */
+          translations[lang][
+            `sidebar.${rootId}.category.${page.label}.link.generated-index.title`
+          ] = {
+            message: data.name || "",
+            description: `The sidebar generated-index title ${page.id} in sidebar docs`,
+          };
+
+          // link.generated-index.description
+          translations[lang][
+            `sidebar.${rootId}.category.${page.label}.link.generated-index.description`
+          ] = {
+            message: data.description || "",
+            description: `The sidebar generated-index description ${page.id} in sidebar docs`,
+          };
+        }
 
         acc[lang] = {
-          name: name_key,
-          description: dest_key,
+          name: data.name,
+          description: data.description,
           markdown: page.show_content ? data.markdown_content : "",
         };
         return acc;
@@ -242,7 +264,8 @@ export async function generateNamespacesContent(
 
     return {
       type: "category",
-      label: transKey(item.id, "name"),
+      // we'are using page label as translation key for generated-index
+      label: hasContent || !item.label ? transKey(item.id, "name") : item.label,
       link: hasContent
         ? {
             type: "doc",
@@ -250,8 +273,6 @@ export async function generateNamespacesContent(
           }
         : {
             type: "generated-index",
-            title: transKey(item.id, "name"),
-            description: transKey(item.id, "description"),
           },
       items: item.children.map((child) => {
         return constructSidebarTree(child);

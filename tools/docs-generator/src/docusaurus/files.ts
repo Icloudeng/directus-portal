@@ -333,6 +333,9 @@ async function storeNamespacesContent(
         const detail = JSON.stringify({
           label: itemContent.name,
           position: item.position,
+          customProps: {
+            description: itemContent.description,
+          },
           ...(item.show_content
             ? {
                 link: {
@@ -340,11 +343,7 @@ async function storeNamespacesContent(
                   id: overviewFileId,
                 },
               }
-            : {
-                customProps: {
-                  description: itemContent.description,
-                },
-              }),
+            : {}),
         });
         // write page folder meta file
         await ensureWriteFile(
