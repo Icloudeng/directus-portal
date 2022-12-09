@@ -1,7 +1,7 @@
 import type { MDLang } from "../cms/type";
 import type { Config } from "@docusaurus/types";
-import { DEFAULT_LANG, DEFAULT_LANG_NAME } from "./translations";
 import utils from "../utils";
+import { DEFAULT_LANG, DEFAULT_LANG_NAME } from "../constants";
 
 export type I18nContent = {
   meta: {

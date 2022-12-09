@@ -32,3 +32,6 @@ export const DIRECTUS_STATIC_TOKEN = process.env.DIRECTUS_STATIC_TOKEN || "";
 export const WEBSITE_URL = process.env.WEBSITE_URL || "";
 
 export const IN_PROD = process.env.ENV === "prod";
+
+export const DEFAULT_LANG = process.env.DEFAULT_LANG || "en";
+export const DEFAULT_LANG_NAME = process.env.DEFAULT_LANG_NAME || "English";

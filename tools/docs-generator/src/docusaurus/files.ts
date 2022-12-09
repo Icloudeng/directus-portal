@@ -3,6 +3,7 @@ import path from "path";
 import { Buffer } from "buffer";
 import {
   CONTENT_DOCS_PATH,
+  DEFAULT_LANG,
   I18N_CONTENT_DOCS_FOLDER,
   I18N_FILES,
   I18N_PATH,
@@ -12,7 +13,7 @@ import storage from "../storage";
 import utils from "../utils";
 import { MetaContent } from "./types";
 import { NavbarContent } from "./navbar";
-import { DEFAULT_LANG, Translations } from "./translations";
+import { Translations } from "./translations";
 import { MDLang } from "src/cms/type";
 import { FooterContent } from "./footer";
 import { I18nContent } from "./i18n";
