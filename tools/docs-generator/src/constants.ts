@@ -6,6 +6,8 @@ export const PROJECT_ROOT_PATH = path.resolve(process.cwd(), "../../");
 
 export const DOCS_APP_NAME = "docs";
 
+export const PM2_NAME = process.env.PM2_NAME;
+
 export const I18N_PATH = path.resolve(DOCS_APP_PATH, "i18n");
 
 export const I18N_FILES = {

@@ -1,6 +1,12 @@
-import { spawn } from "node:child_process";
+import { spawn, exec } from "node:child_process";
+import { promisify } from "node:util";
 import generateAll from "../generate";
-import { DOCS_APP_NAME, IN_PROD, PROJECT_ROOT_PATH } from "./constants";
+import {
+  DOCS_APP_NAME,
+  IN_PROD,
+  PM2_NAME,
+  PROJECT_ROOT_PATH,
+} from "./constants";
 import which from "which";
 import { Logger } from "./logger";
 import {
@@ -14,6 +20,42 @@ import {
   storeDetailContent,
   storeFooterContent,
 } from "./docusaurus";
+
+const execAsync = promisify(exec);
+
+/**
+ * Restart the pm2 app proccess but if the build has succeed
+ */
+async function restartPm2Process() {
+  const pm2Resolved = await which("pm2").catch(console.error);
+  if (!pm2Resolved) return;
+
+  /**
+   * Restart pm2 id {PM2_NAME}
+   */
+  const { stdout, stderr } = await execAsync(
+    `${pm2Resolved} restart ${PM2_NAME}`
+  );
+
+  /**
+   * Store errors and log them
+   */
+  if (stderr) {
+    createLogQuery({
+      log: stderr,
+      type: "error",
+    });
+
+    Logger.error(stderr);
+    return;
+  }
+
+  /**
+   * Process succeed
+   */
+  Logger.info(`PM2 ${PM2_NAME} restarted`);
+  Logger.info(stdout);
+}
 
 /**
  * Build the docs app after exectors,
@@ -61,6 +103,11 @@ async function docsBuilder(storeLogs = true) {
           type: hasError ? "error" : "info",
         });
       }
+
+      /**
+       * Restart the pm2 process if no error
+       */
+      !hasError && restartPm2Process();
 
       /**
        * log error if existsF
