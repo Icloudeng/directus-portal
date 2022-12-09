@@ -1,8 +1,11 @@
+const fs = require("fs");
 /** @type {import('docs-generator').MetaContent} */
 let meta = {};
 
 try {
-  meta = require("./meta.json");
+  if (fs.existsSync("./meta.json")) {
+    meta = require("./meta.json");
+  }
 } catch (error) {
   console.error(error);
 }
