@@ -78,7 +78,7 @@ async function docsBuilder(storeLogs = true) {
 /**
  * This function will regenerate all docs data and build for productionF
  */
-async function execLanguagesEvent() {
+async function execGenerateAllEvent() {
   await generateAll();
 
   if (IN_PROD) {
@@ -139,4 +139,4 @@ async function execDetailEvent() {
   }
 }
 
-export { execLanguagesEvent, execFooterEvent, execDetailEvent };
+export { execGenerateAllEvent, execFooterEvent, execDetailEvent };

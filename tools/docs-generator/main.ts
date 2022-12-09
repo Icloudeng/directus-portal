@@ -3,14 +3,23 @@ import debounce from "lodash/debounce";
 import * as async from "modern-async";
 import { connect, DataPayload, DataType } from "@apps/docs-pubsub";
 import { Logger } from "./src/logger";
-import { CMS_MODELS } from "@apps/contracts";
 import { createLogQuery, getCompanyDetailsQuery } from "./src/cms/queries";
 import {
   execDetailEvent,
   execFooterEvent,
-  execLanguagesEvent,
+  execGenerateAllEvent,
 } from "./src/executors";
 import { IN_PROD } from "./src/constants";
+
+/**
+ * --------------------------------------------------------------------------------------
+ * --------------------------------------------------------------------------------------
+ * --------------------------------------------------------------------------------------
+ * For now we're not handle each event action particulary, means normaly we should handle them \
+ * by providing the correspond process or executor, for item delete, create, updateF
+ * --------------------------------------------------------------------------------------
+ * --------------------------------------------------------------------------------------
+ */
 
 const client = connect(); // Init redis connection
 const queue = new async.Queue(1); // create a queue with concurrency 1
@@ -47,15 +56,14 @@ async function process({ type, data }: { type: DataType; data: DataPayload }) {
     Logger.warn(log);
     return;
   }
+
   /**
-   * If event is type of language and code had changed or a new creation
+   * For languages, namespaces and pages alway rebuild whole docs app
+   * !important this is not good for optimization spacialy when there are many content, 
+   * !we should handle every event action (create, update, delete) on its own logic or executorF
    */
-  if (
-    type === "languages" &&
-    (data.payload?.code ||
-      data.event === `${CMS_MODELS.languages}.items.create`)
-  ) {
-    queue.exec(execLanguagesEvent);
+  if (type === "languages" || type === "namespaces" || type === "pages") {
+    queue.exec(execGenerateAllEvent);
 
     /**
      * Footer event
@@ -68,11 +76,5 @@ async function process({ type, data }: { type: DataType; data: DataPayload }) {
      */
   } else if (type === "meta") {
     queue.exec(execDetailEvent);
-
-    /**
-     * Namespaces event
-     */
-  } else if (type === "namespaces") {
-    
   }
 }

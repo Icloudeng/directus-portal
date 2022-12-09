@@ -18,6 +18,11 @@ export type DataPayload = {
       event: `${string}.items.create`;
       key: string;
     }
+  | {
+      event: `${string}.items.delete`;
+      key: string[];
+      payload: never;
+    }
 );
 function publisher(client: Client) {
   return <T extends DataPayload>(type: DataType, data: T) => {
