@@ -32,7 +32,7 @@
   args:
     chdir: "{{ root_path }}/apps/web"
 
-- name: Project Build | Build all app packages
+- name: Project Build | Build all app packages (execpt docs)
   become: false
   command: pnpm run build --filter=!docs # Ingore docs, the docs-generator will build it
   args:
