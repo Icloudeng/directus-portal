@@ -402,7 +402,7 @@ collections:
       note: null
       singleton: false
       sort: 3
-      sort_field: sort
+      sort_field: null
       translations: null
       unarchive_value: draft
     schema:
@@ -47349,7 +47349,7 @@ relations:
       one_collection_field: null
       one_deselect_action: nullify
       one_field: pages
-      sort_field: null
+      sort_field: sort
     related_collection: DC_Namespaces
     schema:
       column: namespace
@@ -47371,7 +47371,7 @@ relations:
       one_collection_field: null
       one_deselect_action: nullify
       one_field: pages
-      sort_field: null
+      sort_field: sort
     related_collection: DC_Pages
     schema:
       column: parent_page
@@ -47613,7 +47613,7 @@ relations:
       one_collection_field: null
       one_deselect_action: nullify
       one_field: links
-      sort_field: null
+      sort_field: sort
     related_collection: FooterLinks
     schema:
       column: footer_links_id
@@ -48290,7 +48290,7 @@ relations:
       one_collection_field: null
       one_deselect_action: nullify
       one_field: items
-      sort_field: null
+      sort_field: sort
     related_collection: NavbarLinkSubmenus
     schema:
       column: navbar_link_submenus_id
@@ -48400,7 +48400,7 @@ relations:
       one_collection_field: null
       one_deselect_action: nullify
       one_field: submenus
-      sort_field: null
+      sort_field: sort
     related_collection: NavbarLinks
     schema:
       column: navbar_link_id
@@ -49451,7 +49451,7 @@ relations:
       one_collection_field: null
       one_deselect_action: nullify
       one_field: platforms
-      sort_field: null
+      sort_field: sort
     related_collection: PlatformCategories
     schema:
       column: category
