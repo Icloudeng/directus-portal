@@ -10,7 +10,7 @@ export const PM2_NAME = process.env.PM2_NAME;
 
 export const I18N_PATH = path.resolve(DOCS_APP_PATH, "i18n");
 
-export const DEBOUNCE_EXECUTOR = process.env.DEBOUNCE_EXECUTOR === 'true'
+export const DEBOUNCE_EXECUTOR = process.env.DEBOUNCE_EXECUTOR !== 'false'
 
 export const I18N_FILES = {
   current: "docusaurus-plugin-content-docs/current.json",
