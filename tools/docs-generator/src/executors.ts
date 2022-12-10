@@ -2,7 +2,6 @@ import { spawn, exec } from "node:child_process";
 import { promisify } from "node:util";
 import generateAll from "../generate";
 import {
-  DOCS_APP_NAME,
   IN_PROD,
   PM2_NAME,
   DOCS_APP_PATH,
