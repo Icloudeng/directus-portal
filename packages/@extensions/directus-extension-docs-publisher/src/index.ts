@@ -19,6 +19,7 @@ export default defineHook(({ action }) => {
   action(`${CMS_MODELS.dc_namespaces}.items.create`, emitter("namespaces"));
   action(`${CMS_MODELS.dc_namespaces}.items.update`, emitter("namespaces"));
   action(`${CMS_MODELS.dc_namespaces}.items.delete`, emitter("namespaces"));
+  action(`${CMS_MODELS.dc_namespaces}.items.sort`, emitter("namespaces"));
 
   action(`${CMS_MODELS.dc_pages}.items.create`, emitter("pages"));
   action(`${CMS_MODELS.dc_pages}.items.update`, emitter("pages"));

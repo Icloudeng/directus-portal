@@ -23,6 +23,13 @@ export type DataPayload = {
       key: string[];
       payload: never;
     }
+  | {
+      event: `${string}.items.sort`;
+      key: never;
+      item: any;
+      to: any;
+      payload: never;
+    }
 );
 function publisher(client: Client) {
   return <T extends DataPayload>(type: DataType, data: T) => {
