@@ -5,7 +5,7 @@ import {
   DOCS_APP_NAME,
   IN_PROD,
   PM2_NAME,
-  PROJECT_ROOT_PATH,
+  DOCS_APP_PATH,
 } from "./constants";
 import which from "which";
 import { Logger } from "./logger";
@@ -65,8 +65,8 @@ async function docsBuilder(storeLogs = true) {
   Logger.info("=== Start building docs app ===");
 
   const pnpmResolved = await which("pnpm");
-  const pnpm = spawn(pnpmResolved, ["build", `--filter=${DOCS_APP_NAME}`], {
-    cwd: PROJECT_ROOT_PATH,
+  const pnpm = spawn(pnpmResolved, ["build"], {
+    cwd: DOCS_APP_PATH,
   });
 
   let error: null | string = null;
