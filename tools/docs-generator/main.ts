@@ -1,6 +1,5 @@
 import "./src/env";
 import debounce from "lodash/debounce";
-import * as async from "modern-async";
 import { connect, DataPayload, DataType } from "@apps/docs-pubsub";
 import { Logger } from "./src/logger";
 import { createLogQuery, getCompanyDetailsQuery } from "./src/cms/queries";
@@ -10,6 +9,7 @@ import {
   execGenerateAllEvent,
 } from "./src/executors";
 import { IN_PROD, DEBOUNCE_EXECUTOR } from "./src/constants";
+import { executorQueue } from "./src/queue";
 
 /**
  * --------------------------------------------------------------------------------------
@@ -24,7 +24,6 @@ import { IN_PROD, DEBOUNCE_EXECUTOR } from "./src/constants";
  */
 
 const client = connect(); // Init redis connection
-const queue = new async.Queue(1); // create a queue with concurrency 1
 const TIMEOUT_PROCESS = DEBOUNCE_EXECUTOR ? 2 * 60000 : 5000; // 2 minutes if DEBOUNCE
 
 async function main() {
@@ -32,7 +31,8 @@ async function main() {
 
   IN_PROD && Logger.info("=============== PROD Observing =================");
   !IN_PROD && Logger.info("=============== DEV Observing =================");
-  DEBOUNCE_EXECUTOR && Logger.info("======== Running with DEBOUNCE_EXECUTOR ========");
+  DEBOUNCE_EXECUTOR &&
+    Logger.info("======== Running with DEBOUNCE_EXECUTOR ========");
 
   /**
    * Start observing
@@ -87,7 +87,7 @@ async function process({ type, data }: { type: DataType; data: DataPayload }) {
  */
 const processGenerateAll = (type: DataType, data: DataPayload) => {
   logEvent(`All Docs - Executor, type: ${type} | event: ${data.event}`);
-  queue.exec(execGenerateAllEvent);
+  executorQueue.exec(execGenerateAllEvent);
 };
 const processGenerateAllDebounce = debounce(
   processGenerateAll,
@@ -102,7 +102,7 @@ const processGenerateAllDebounce = debounce(
  */
 const processGenerateFooter = (type: DataType, data: DataPayload) => {
   logEvent(`Footer - Executor, type: ${type} | event: ${data.event}`);
-  queue.exec(execFooterEvent);
+  executorQueue.exec(execFooterEvent);
 };
 const processGenerateFooterDebounce = debounce(
   processGenerateFooter,
@@ -117,7 +117,7 @@ const processGenerateFooterDebounce = debounce(
  */
 const processGenerateDetail = (type: DataType, data: DataPayload) => {
   logEvent(`Detail - Executor, type: ${type} | event: ${data.event}`);
-  queue.exec(execDetailEvent);
+  executorQueue.exec(execDetailEvent);
 };
 const processGenerateDetailDebounce = debounce(
   processGenerateDetail,

@@ -1,11 +1,7 @@
 import { spawn, exec } from "node:child_process";
 import { promisify } from "node:util";
 import generateAll from "../generate";
-import {
-  IN_PROD,
-  PM2_NAME,
-  DOCS_APP_PATH,
-} from "./constants";
+import { IN_PROD, PM2_NAME, DOCS_APP_PATH } from "./constants";
 import which from "which";
 import { Logger } from "./logger";
 import {
@@ -19,6 +15,7 @@ import {
   storeDetailContent,
   storeFooterContent,
 } from "./docusaurus";
+import { executorQueue } from "./queue";
 
 const execAsync = promisify(exec);
 
@@ -127,7 +124,7 @@ async function docsBuilder(storeLogs = true) {
 async function execGenerateAllEvent() {
   await generateAll(false);
 
-  if (IN_PROD) {
+  if (IN_PROD && executorQueue.pending === 0) {
     /**
      * Build docs app
      */
@@ -152,7 +149,7 @@ async function execFooterEvent() {
   // Store generated content
   await storeFooterContent(footerContent);
 
-  if (IN_PROD) {
+  if (IN_PROD && executorQueue.pending === 0) {
     /**
      * Build docs app
      */
@@ -177,7 +174,7 @@ async function execDetailEvent() {
 
   await storeDetailContent(detailContent);
 
-  if (IN_PROD) {
+  if (IN_PROD && executorQueue.pending === 0) {
     /**
      * Build docs app
      */
