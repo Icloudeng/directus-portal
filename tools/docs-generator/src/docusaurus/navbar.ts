@@ -98,7 +98,7 @@ export function generateNavbarContent({
   /**
    * Generate navbar links content from namespaces
    */
-  const [docNamespace, new_namespaces] = reArrangeNamespace(namespaces);
+  const [detaultDocNamespace, new_namespaces] = reArrangeNamespace(namespaces);
 
   /**
    * We need to reverse the new_namespaces array, this well be unshilft element on the next logic
@@ -123,24 +123,18 @@ export function generateNavbarContent({
      * Insert the at the start of an array,
      * since we've reversed the array on above logic
      */
-    if (docNamespace.id === nsp.id) {
-      /** Create the navbar links as doc namespamce */
-      meta.navbar.items!.unshift({
-        type: "doc",
-        position: "left",
-        label: transKey(nsp.id, "name"),
-        docId: link.docId,
-        ...link,
-      });
-    } else {
-      /** Create the navbar links */
-      meta.navbar.items!.unshift({
-        type: "docSidebar",
-        position: "left",
-        label: transKey(nsp.id, "name"),
-        ...link,
-      });
-    }
+    /**
+     * Insert the at the start of an array,
+     * since we've reversed the array on above logic
+     */
+    /** Create the navbar links as doc namespamce */
+    meta.navbar.items!.unshift({
+      type: "doc",
+      position: "left",
+      label: transKey(nsp.id, "name"),
+      docId: link.docId,
+      ...link,
+    });
   });
 
   return content;
