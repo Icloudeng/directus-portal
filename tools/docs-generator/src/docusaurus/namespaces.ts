@@ -192,7 +192,7 @@ export async function generateNamespacesContent(
         acc[lang] = {
           name: data.name,
           description: data.description,
-          markdown: page.show_content ? data.markdown_content : "",
+          markdown: data.markdown_content || "",
         };
         return acc;
       }, {} as ContentTreeTrans),
