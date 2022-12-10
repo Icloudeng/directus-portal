@@ -8,33 +8,10 @@
       "outputs": [
         "dist/**",
         ".next/**",
-        "build/**"
-      ],
-      "inputs": [
-        "src/**/*.tsx",
-        "src/**/*.ts",
-        "test/**/*.ts",
-        "src/**/*.jsx",
-        "src/**/*.js",
-        "test/**/*.js",
-        "*.json",
-        "meta.json",
-        "docs/**/*.md",
-        "docs/**/*.mdx",
-        "docs/**/*.json",
-        "docs/**/*.yaml",
-        "docs/**/*.yml",
-        "i18n/**/*.md",
-        "i18n/**/*.mdx",
-        "i18n/**/*.json",
-        "i18n/**/*.yaml",
-        "i18n/**/*.yml",
-        "*.ts",
-        "*.tsx",
-        "*.js",
-        "*.jsx",
-        ".env",
-        ".env.*"
+        "build/**",
+        "i18n/**",
+        "docs/**",
+        "meta.json"
       ]
     },
     "lint": {
