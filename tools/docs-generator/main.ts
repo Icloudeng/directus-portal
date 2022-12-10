@@ -9,7 +9,7 @@ import {
   execFooterEvent,
   execGenerateAllEvent,
 } from "./src/executors";
-import { IN_PROD } from "./src/constants";
+import { IN_PROD, DEBOUNCE_EXECUTOR } from "./src/constants";
 
 /**
  * --------------------------------------------------------------------------------------
@@ -25,13 +25,14 @@ import { IN_PROD } from "./src/constants";
 
 const client = connect(); // Init redis connection
 const queue = new async.Queue(1); // create a queue with concurrency 1
-const TIMEOUT_PROCESS = 2 * 60000; // 2 minutes
+const TIMEOUT_PROCESS = DEBOUNCE_EXECUTOR ? 2 * 60000 : 0; // 2 minutes if DEBOUNCE
 
 async function main() {
   const subscriber = await client;
 
   IN_PROD && Logger.info("=============== PROD Observing =================");
   !IN_PROD && Logger.info("=============== DEV Observing =================");
+  DEBOUNCE_EXECUTOR && Logger.info("======== Running with DEBOUNCE_EXECUTOR ========");
 
   /**
    * Start observing
