@@ -139,7 +139,7 @@ export async function generateNamespacesContent(
       label: page.label,
       slug: `${
         parent.slug.endsWith("/") ? parent.slug.slice(0, -1) : parent.slug
-      }${page.label === "intro" ? "" : "/" + slug(page.label)}`, // slug tree (if the page label is intro then consider it as root page)
+      }${page.label.toLowerCase() === "intro" ? "" : "/" + slug(page.label)}`, // slug tree (if the page label is intro then consider it as root page)
       show_content: page.show_content,
       position,
       content: langs.reduce((acc, lang) => {
