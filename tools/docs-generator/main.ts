@@ -20,25 +20,23 @@ import { IN_PROD } from "./src/constants";
  * by providing the correspond process or executor, for item delete, create, updateF
  * --------------------------------------------------------------------------------------
  * --------------------------------------------------------------------------------------
+ * --------------------------------------------------------------------------------------
  */
 
 const client = connect(); // Init redis connection
 const queue = new async.Queue(1); // create a queue with concurrency 1
-const TIMEOUT_PROCESS = 3 * 60 * 1000; // 3 minutes
+const TIMEOUT_PROCESS = 2 * 60000; // 2 minutes
 
 async function main() {
   const subscriber = await client;
 
-  if (IN_PROD) {
-    Logger.info("=============== PROD Observing =================");
-    /**
-     * In prod run the observer with debounce if {TIMEOUT_PROCESS} time
-     */
-    subscriber.subscribe(debounce(process, TIMEOUT_PROCESS));
-  } else {
-    Logger.info("=============== DEV Observing =================");
-    subscriber.subscribe(process);
-  }
+  IN_PROD && Logger.info("=============== PROD Observing =================");
+  !IN_PROD && Logger.info("=============== DEV Observing =================");
+
+  /**
+   * Start observing
+   */
+  subscriber.subscribe(process);
 }
 main();
 
@@ -51,10 +49,7 @@ async function process({ type, data }: { type: DataType; data: DataPayload }) {
   const company_details = await getCompanyDetailsQuery();
 
   if (!company_details) {
-    const log = "Company details must be set from cms to complete the process";
-    await createLogQuery({ type: "warning", log });
-
-    Logger.warn(log);
+    Logger.warn("Company details must be set from cms to complete the process");
     return;
   }
 
@@ -64,26 +59,73 @@ async function process({ type, data }: { type: DataType; data: DataPayload }) {
    * !we should handle every event action (create, update, delete) on its own logic or executorF
    */
   if (type === "languages" || type === "namespaces" || type === "pages") {
-    logEvent(`All Docs - Executor, type: ${type} | event: ${data.event}`);
-    queue.exec(execGenerateAllEvent);
+    IN_PROD && processGenerateAllDebounce(type, data);
+    !IN_PROD && processGenerateAll(type, data);
 
     /**
      * Footer event
      */
   } else if (type === "footer") {
-    logEvent(`Footer - Executor, type: ${type} | event: ${data.event}`);
-    queue.exec(execFooterEvent);
+    IN_PROD && processGenerateFooterDebounce(type, data);
+    !IN_PROD && processGenerateFooter(type, data);
 
     /**
      * Meta or company details event
      */
   } else if (type === "meta") {
-    logEvent(`Footer - Executor, type: ${type} | event: ${data.event}`);
-    queue.exec(execDetailEvent);
+    IN_PROD && processGenerateDetailDebounce(type, data);
+    !IN_PROD && processGenerateDetail(type, data);
   }
 }
 
+/**
+ * Proccess generate all
+ * @param type
+ * @param data
+ */
+const processGenerateAll = (type: DataType, data: DataPayload) => {
+  logEvent(`All Docs - Executor, type: ${type} | event: ${data.event}`);
+  queue.exec(execGenerateAllEvent);
+};
+const processGenerateAllDebounce = debounce(
+  processGenerateAll,
+  TIMEOUT_PROCESS
+);
+
+/**
+ * Proccess generate footer
+ *
+ * @param type
+ * @param data
+ */
+const processGenerateFooter = (type: DataType, data: DataPayload) => {
+  logEvent(`Footer - Executor, type: ${type} | event: ${data.event}`);
+  queue.exec(execFooterEvent);
+};
+const processGenerateFooterDebounce = debounce(
+  processGenerateFooter,
+  TIMEOUT_PROCESS
+);
+
+/**
+ * Proccess generate detail
+ *
+ * @param type
+ * @param data
+ */
+const processGenerateDetail = (type: DataType, data: DataPayload) => {
+  logEvent(`Detail - Executor, type: ${type} | event: ${data.event}`);
+  queue.exec(execDetailEvent);
+};
+const processGenerateDetailDebounce = debounce(
+  processGenerateDetail,
+  TIMEOUT_PROCESS
+);
+
+// ================================================ Logger =================================//
 function logEvent(message: string) {
-  createLogQuery({ log: message, type: "info" }).catch(console.error);
-  Logger.info(message);
+  createLogQuery({ log: message + ` (PROD: ${IN_PROD})`, type: "info" }).catch(
+    console.error
+  );
+  Logger.info(message + ` (PROD: ${IN_PROD})`);
 }
