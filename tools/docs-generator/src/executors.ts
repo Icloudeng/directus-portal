@@ -64,6 +64,15 @@ async function docsBuilder(storeLogs = true) {
   Logger.info("=== Start building docs app ===");
 
   const pnpmResolved = await which("pnpm");
+
+  /**
+   *Clear Docs cache and build
+   */
+  await execAsync(
+    `${pnpmResolved} clear`, {
+    cwd: DOCS_APP_PATH,
+  });
+
   const pnpm = spawn(pnpmResolved, ["build"], {
     cwd: DOCS_APP_PATH,
   });
