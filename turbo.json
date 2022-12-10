@@ -9,6 +9,24 @@
         "dist/**",
         ".next/**",
         "build/**"
+      ],
+      "inputs": [
+        "src/**/*.tsx",
+        "src/**/*.ts",
+        "test/**/*.ts",
+        "src/**/*.jsx",
+        "src/**/*.js",
+        "test/**/*.js",
+        "*.json",
+        "docs/**/*.md",
+        "i18n/**/*.md",
+        "i18n/**/*.json",
+        "*.ts",
+        "*.tsx",
+        "*.js",
+        "*.jsx",
+        ".env",
+        ".env.*"
       ]
     },
     "lint": {
