@@ -30,7 +30,7 @@ async function restartPm2Process() {
    * Restart pm2 id {PM2_NAME}
    */
   const { stdout, stderr } = await execAsync(
-    `${pm2Resolved} restart ${PM2_NAME}`
+    `${pm2Resolved} reload ${PM2_NAME}`
   );
 
   /**
