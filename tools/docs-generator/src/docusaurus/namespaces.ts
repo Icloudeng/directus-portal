@@ -137,7 +137,9 @@ export async function generateNamespacesContent(
       path: `${parent.path + page.id}/`, // this should end with /
       id: page.id,
       label: page.label,
-      slug: `${parent.slug}${
+      slug: `${
+        parent.slug.endsWith("/") ? parent.slug.slice(0, -1) : parent.slug
+      }${
         itype === "child" && page.label.toLowerCase() === "intro"
           ? "/"
           : "/" + slug(page.label)
