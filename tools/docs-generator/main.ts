@@ -46,8 +46,9 @@ main();
  * @param param0
  */
 async function process({ type, data }: { type: DataType; data: DataPayload }) {
-  const company_details = await getCompanyDetailsQuery();
+  Logger.info(`New Event, type: ${type} | event: ${data.event}`);
 
+  const company_details = await getCompanyDetailsQuery();
   if (!company_details) {
     Logger.warn("Company details must be set from cms to complete the process");
     return;
