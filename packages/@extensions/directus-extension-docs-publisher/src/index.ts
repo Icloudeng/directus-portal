@@ -24,6 +24,7 @@ export default defineHook(({ action }) => {
   action(`${CMS_MODELS.dc_pages}.items.create`, emitter("pages"));
   action(`${CMS_MODELS.dc_pages}.items.update`, emitter("pages"));
   action(`${CMS_MODELS.dc_pages}.items.delete`, emitter("pages"));
+  action(`${CMS_MODELS.dc_pages}.items.sort`, emitter("pages"));
 
   action(`${CMS_MODELS.company_details}.items.create`, emitter("meta"));
   action(`${CMS_MODELS.company_details}.items.update`, emitter("meta"));
