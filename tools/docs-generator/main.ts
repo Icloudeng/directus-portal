@@ -25,7 +25,7 @@ import { IN_PROD, DEBOUNCE_EXECUTOR } from "./src/constants";
 
 const client = connect(); // Init redis connection
 const queue = new async.Queue(1); // create a queue with concurrency 1
-const TIMEOUT_PROCESS = DEBOUNCE_EXECUTOR ? 2 * 60000 : 0; // 2 minutes if DEBOUNCE
+const TIMEOUT_PROCESS = DEBOUNCE_EXECUTOR ? 2 * 60000 : 5000; // 2 minutes if DEBOUNCE
 
 async function main() {
   const subscriber = await client;
