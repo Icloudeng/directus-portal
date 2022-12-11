@@ -4,7 +4,7 @@
 
 - name: DOCS Generator | PM2 Name
   set_fact:
-    pm2_name: "{{ domain }}-docs-generator"
+    pm2_name: "{{ docs_pm2_name }}-generator"
 
 - name: DOCS Generator | .env config | WEBSITE_URL (letsencrypt == true)
   lineinfile:
@@ -30,11 +30,11 @@
     regexp: "^DIRECTUS_URL="
     line: "DIRECTUS_URL=https://{{ cms_domain }}"
 
-- name: "DOCS Generator | .env config PM2_NAME ({{ pm2_name }})"
+- name: "DOCS Generator (docs app) | .env config DOCS_APP_PM2_NAME | PM2 name ({{ docs_pm2_name }}) "
   lineinfile:
     path: "{{ env_file }}"
-    regexp: "^PM2_NAME="
-    line: "PM2_NAME={{ pm2_name }}"
+    regexp: "^DOCS_APP_PM2_NAME="
+    line: "DOCS_APP_PM2_NAME={{ docs_pm2_name }}"
 
 - name: DOCS Generator | Sleep for 5 seconds and continue with play
   wait_for:
