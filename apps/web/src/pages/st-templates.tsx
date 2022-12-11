@@ -36,6 +36,7 @@ import {
   DumpTimelineRanges,
   DumpTransformedImageCarousels,
   DumpValue,
+  getDumpChart,
 } from '@/app/models/dumps-templates';
 import { getServerSideTranslations } from '@/app/utils/server-translation';
 
@@ -637,6 +638,116 @@ const templates: Template[] = [
             sectionClass=''
             sharedObject={{}}
           />
+        </section>
+      );
+    },
+  },
+  {
+    title: 'ST Charts',
+    content(title) {
+      return (
+        <section className='py-14 x-container-fluid'>
+          <h3
+            id={urlSafe(title)}
+            className='sticky top-8 z-50 bg-white p-2 inline-block text-primary-400 my-9'
+          >
+            {title}
+          </h3>
+
+          <div className='flex mb-7'>
+            <div className='w-1/2 pr-4'>
+              <h4 className='mb-4'>Line</h4>
+              <Sts.ST_ChartsFC
+                items={getDumpChart('line')}
+                sectionClass=''
+                sharedObject={{}}
+              />
+            </div>
+            <div className='w-1/2 pl-4'>
+              <h4 className='mb-4'>Bar</h4>
+              <Sts.ST_ChartsFC
+                items={getDumpChart('bar')}
+                sectionClass=''
+                sharedObject={{}}
+              />
+            </div>
+          </div>
+
+          <div className='flex mb-7'>
+            <div className='w-1/2 pr-4'>
+              <h4 className='mb-4'>Bar (Horizontal)</h4>
+              <Sts.ST_ChartsFC
+                items={getDumpChart('bar_horizontal')}
+                sectionClass=''
+                sharedObject={{}}
+              />
+            </div>
+            <div className='w-1/2 pl-4'>
+              <h4 className='mb-4'>Bar (Stacked)</h4>
+              <Sts.ST_ChartsFC
+                items={getDumpChart('bar_stacked')}
+                sectionClass=''
+                sharedObject={{}}
+              />
+            </div>
+          </div>
+
+          <div className='flex mb-7'>
+            <div className='w-1/2 pr-4'>
+              <h4 className='mb-4'>Bar (Horizontal + Stacked)</h4>
+              <Sts.ST_ChartsFC
+                items={getDumpChart('bar_horizontal_stacked')}
+                sectionClass=''
+                sharedObject={{}}
+              />
+            </div>
+            <div className='w-1/2 pl-4'>
+              <h4 className='mb-4'>Area</h4>
+              <Sts.ST_ChartsFC
+                items={getDumpChart('area')}
+                sectionClass=''
+                sharedObject={{}}
+              />
+            </div>
+          </div>
+
+          <div className='flex mb-7'>
+            <div className='w-1/2 pr-4'>
+              <h4 className='mb-4'>Bubble</h4>
+              <Sts.ST_ChartsFC
+                items={getDumpChart('bubble')}
+                sectionClass=''
+                sharedObject={{}}
+              />
+            </div>
+            <div className='w-1/2 pl-4'>
+              <h4 className='mb-4'>Steam</h4>
+              <Sts.ST_ChartsFC
+                items={getDumpChart('steam')}
+                sectionClass=''
+                sharedObject={{}}
+              />
+            </div>
+          </div>
+
+          <div className='flex mb-7'>
+            <div className='w-1/2 pr-4'>
+              <h4 className='mb-4'>Spark Chart</h4>
+              <Sts.ST_ChartsFC
+                items={getDumpChart('spark_chart')}
+                sectionClass=''
+                sharedObject={{}}
+              />
+            </div>
+            <div className='w-1/2 pl-4'>
+              <h4 className='mb-4'>Band</h4>
+              <Sts.ST_ChartsFC
+                items={getDumpChart('band')}
+                sectionClass=''
+                sharedObject={{}}
+              />
+            </div>
+          </div>
         </section>
       );
     },

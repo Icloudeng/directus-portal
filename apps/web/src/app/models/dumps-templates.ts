@@ -5,6 +5,7 @@ import type {
   ST_Card,
   ST_CardCarousel,
   ST_CardImageCarousel,
+  ST_Chart,
   ST_CleanHero,
   ST_CompanyDetail,
   ST_Gallery,
@@ -2238,3 +2239,104 @@ export const DumpRichText: ST_RichText[] = [
     },
   },
 ];
+
+export const getDumpChart = (type: ST_Chart['item']['type']): ST_Chart[] => {
+  return [
+    {
+      id: '86',
+      collection: 'ST_Charts',
+      item: {
+        type: type,
+        datasets: [
+          {
+            dataset_name: 'Series 1',
+            border_color: '#2ECDA7',
+            data: [
+              {
+                value: 71,
+              },
+              {
+                value: 86,
+              },
+              {
+                value: 71,
+              },
+              {
+                value: 43,
+              },
+              {
+                value: 54,
+              },
+              {
+                value: 57,
+              },
+              {
+                value: 11,
+              },
+              {
+                value: 26,
+              },
+              {
+                value: 94,
+              },
+              {
+                value: 65,
+              },
+            ],
+          },
+          {
+            dataset_name: 'Series 2',
+            border_color: '#E35169',
+            data: [
+              {
+                value: 71,
+              },
+              {
+                value: 3,
+              },
+              {
+                value: 47,
+              },
+              {
+                value: 4,
+              },
+              {
+                value: 12,
+              },
+              {
+                value: 96,
+              },
+              {
+                value: 91,
+              },
+            ],
+          },
+        ],
+        labels: [
+          'Group 1',
+          'Group 2',
+          'Group 3',
+          'Group 4',
+          'Group 5',
+          'Group 6',
+        ],
+        show_text: false,
+        dark: false,
+        translations: [
+          {
+            id: '1',
+            languages_code: {
+              code: 'en',
+              name: 'English',
+            },
+            markdown_content: undefined,
+          },
+        ],
+        id: '31901575-c25f-4a82-a531-c3035585368f',
+        status: 'published',
+        date_created: '2022-11-15T20:53:40.056Z',
+        date_updated: '2022-12-11T23:01:07.021Z',
+      },
+    },
+  ];
+};
