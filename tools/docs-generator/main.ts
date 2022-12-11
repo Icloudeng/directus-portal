@@ -134,10 +134,11 @@ const processGenerateDetailDebounce = debounce(
 );
 
 /**
- * THis function will always append a fake executor on the queue,
+ * This function will always append a fake executor on the queue,
  * it for when docs execotor will get time to build to always find if there is pending task
  *
- * We debounced it with 1 seconds, just prevent creating many pending functions
+ * We debounced it with 1 seconds, just prevent creating many pending functions,
+ * if TIMEOUT_PROCESS is less than 1 seconds then debounce time must set to 0 or less then TIMEOUT_PROCESS
  */
 const queueFakeExector = debounce(() => {
   executorQueue.exec(() => Promise.resolve());
