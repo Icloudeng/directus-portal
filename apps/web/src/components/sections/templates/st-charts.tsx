@@ -19,22 +19,23 @@ export function ST_ChartsFC({ items }: STemplates_Props<ST_Chart>) {
       {items.map((item) => {
         const { translations } = mut(item.item, locale);
         const markdown_content = translations?.markdown_content;
+        const hasTextContent = item.item.show_text && markdown_content;
         return (
           <div
             key={item.item.id}
             className={`mb-5 ${
-              markdown_content ? 'flex flex-col-reverse md:flex-row' : ''
+              hasTextContent ? 'flex flex-col-reverse md:flex-row' : ''
             }`}
           >
-            {markdown_content && (
+            {hasTextContent && (
               <div className='prose w-full md:w-1/2'>
                 <MarkdownContent>{markdown_content || ''}</MarkdownContent>
               </div>
             )}
 
             <div
-              className={`mb-5 w-full relative h-[400px] ${
-                markdown_content ? 'md:w-1/2' : ''
+              className={`my-5 w-full relative h-[250px] md:h-[400px] ${
+                hasTextContent ? 'md:w-1/2' : ''
               }`}
             >
               <ChartContent item={item} />
