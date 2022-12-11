@@ -24,7 +24,7 @@ import { executorQueue } from "./src/queue";
  */
 
 const client = connect(); // Init redis connection
-const TIMEOUT_PROCESS = DEBOUNCE_EXECUTOR ? 2 * 60000 : 5000; // 2 minutes if DEBOUNCE
+const TIMEOUT_PROCESS = DEBOUNCE_EXECUTOR ? 2 * 60000 : 5000; // 2 minutes if DEBOUNCE, otherwise 5 seconds
 
 async function main() {
   const subscriber = await client;
@@ -61,21 +61,30 @@ async function process({ type, data }: { type: DataType; data: DataPayload }) {
    * !we should handle every event action (create, update, delete) on its own logic or executorF
    */
   if (type === "languages" || type === "namespaces" || type === "pages") {
-    IN_PROD && processGenerateAllDebounce(type, data);
+    if (IN_PROD) {
+      queueFakeExector();
+      processGenerateAllDebounce(type, data);
+    }
     !IN_PROD && processGenerateAll(type, data);
 
     /**
      * Footer event
      */
   } else if (type === "footer") {
-    IN_PROD && processGenerateFooterDebounce(type, data);
+    if (IN_PROD) {
+      queueFakeExector();
+      processGenerateFooterDebounce(type, data);
+    }
     !IN_PROD && processGenerateFooter(type, data);
 
     /**
      * Meta or company details event
      */
   } else if (type === "meta") {
-    IN_PROD && processGenerateDetailDebounce(type, data);
+    if (IN_PROD) {
+      queueFakeExector();
+      processGenerateDetailDebounce(type, data);
+    }
     !IN_PROD && processGenerateDetail(type, data);
   }
 }
@@ -123,6 +132,16 @@ const processGenerateDetailDebounce = debounce(
   processGenerateDetail,
   TIMEOUT_PROCESS
 );
+
+/**
+ * THis function will always append a fake executor on the queue,
+ * it for when docs execotor will get time to build to always find if there is pending task
+ *
+ * We debounced it with 1 seconds, just prevent creating many pending functions
+ */
+const queueFakeExector = debounce(() => {
+  executorQueue.exec(() => Promise.resolve());
+}, 1000);
 
 // ================================================ Logger =================================//
 function logEvent(message: string) {
