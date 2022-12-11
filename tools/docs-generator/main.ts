@@ -3,11 +3,7 @@ import debounce from "lodash/debounce";
 import { connect, DataPayload, DataType } from "@apps/docs-pubsub";
 import { Logger } from "./src/logger";
 import { createLogQuery, getCompanyDetailsQuery } from "./src/cms/queries";
-import {
-  execDetailEvent,
-  execFooterEvent,
-  execGenerateAllEvent,
-} from "./src/executors";
+import { execFooterEvent, execGenerateAllEvent } from "./src/executors";
 import { IN_PROD, DEBOUNCE_EXECUTOR } from "./src/constants";
 import { executorQueue } from "./src/queue";
 
@@ -60,23 +56,21 @@ async function process({ type, data }: { type: DataType; data: DataPayload }) {
    * !important this is not good for optimization spacialy when there are many content,
    * !we should handle every event action (create, update, delete) on its own logic or executorF
    */
-  if (type === "languages" || type === "namespaces" || type === "pages") {
-    IN_PROD && processGenerateAllDebounce(type, data)
+  if (
+    type === "languages" ||
+    type === "namespaces" ||
+    type === "pages" ||
+    type === "meta"
+  ) {
+    IN_PROD && processGenerateAllDebounce(type, data);
     !IN_PROD && processGenerateAll(type, data);
 
     /**
      * Footer event
      */
   } else if (type === "footer") {
-    IN_PROD && processGenerateFooterDebounce(type, data)
+    IN_PROD && processGenerateFooterDebounce(type, data);
     !IN_PROD && processGenerateFooter(type, data);
-
-    /**
-     * Meta or company details event
-     */
-  } else if (type === "meta") {
-    IN_PROD && processGenerateDetailDebounce(type, data)
-    !IN_PROD && processGenerateDetail(type, data);
   }
 }
 
@@ -106,21 +100,6 @@ const processGenerateFooter = (type: DataType, data: DataPayload) => {
 };
 const processGenerateFooterDebounce = debounce(
   processGenerateFooter,
-  TIMEOUT_PROCESS
-);
-
-/**
- * Proccess generate detail
- *
- * @param type
- * @param data
- */
-const processGenerateDetail = (type: DataType, data: DataPayload) => {
-  logEvent(`Detail - Executor, type: ${type} | event: ${data.event}`);
-  executorQueue.exec(execDetailEvent);
-};
-const processGenerateDetailDebounce = debounce(
-  processGenerateDetail,
   TIMEOUT_PROCESS
 );
 
