@@ -82,6 +82,11 @@
   args:
     chdir: "{{ root_path }}/apps/web"
 
+# Docs App PM2 Name fact (It should set before docs generator)
+- name: DOCS | PM2 Name
+  set_fact:
+    docs_pm2_name: "{{ domain }}-docs"
+
 # Docs generator config (It should come of CMS)
 - include_tasks: docs-generator.yml
   when: has_docs_app
@@ -95,14 +100,14 @@
   ignore_errors: true
 
 - name: Docs App | Delete old pm2 process
-  command: "pm2 delete {{ domain }}-docs"
+  command: "pm2 delete {{ docs_pm2_name }}"
   args:
     chdir: "{{ root_path }}/apps/docs"
   ignore_errors: true
   when: has_docs_app
 
 - name: Docs App | Start the server
-  command: "pm2 start npm --name {{ domain }}-docs -- run serve"
+  command: "pm2 start npm --name {{ docs_pm2_name }} -- run serve"
   args:
     chdir: "{{ root_path }}/apps/docs"
   when: has_docs_app

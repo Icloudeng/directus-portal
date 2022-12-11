@@ -1,7 +1,7 @@
 import { spawn, exec } from "node:child_process";
 import { promisify } from "node:util";
 import generateAll from "../generate";
-import { IN_PROD, PM2_NAME, DOCS_APP_PATH } from "./constants";
+import { IN_PROD, DOCS_APP_PM2_NAME, DOCS_APP_PATH } from "./constants";
 import which from "which";
 import { Logger } from "./logger";
 import {
@@ -22,15 +22,15 @@ const execAsync = promisify(exec);
 /**
  * Restart the pm2 app proccess but if the build has succeed
  */
-async function restartPm2Process() {
+async function restartPm2DocsAppProcess() {
   const pm2Resolved = await which("pm2").catch(console.error);
   if (!pm2Resolved) return;
 
   /**
-   * Restart pm2 id {PM2_NAME}
+   * Restart pm2 id {DOCS_APP_PM2_NAME}
    */
   const { stdout, stderr } = await execAsync(
-    `${pm2Resolved} reload ${PM2_NAME}`
+    `${pm2Resolved} reload ${DOCS_APP_PM2_NAME}`
   );
 
   /**
@@ -49,7 +49,7 @@ async function restartPm2Process() {
   /**
    * Process succeed
    */
-  Logger.info(`PM2 ${PM2_NAME} restarted`);
+  Logger.info(`PM2 ${DOCS_APP_PM2_NAME} restarted`);
   Logger.info(stdout);
 }
 
@@ -103,7 +103,7 @@ async function docsBuilder(storeLogs = true) {
       /**
        * Restart the pm2 process if no error
        */
-      !hasError && restartPm2Process();
+      !hasError && restartPm2DocsAppProcess();
 
       /**
        * log error if existsF

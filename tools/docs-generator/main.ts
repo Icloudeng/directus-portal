@@ -61,30 +61,21 @@ async function process({ type, data }: { type: DataType; data: DataPayload }) {
    * !we should handle every event action (create, update, delete) on its own logic or executorF
    */
   if (type === "languages" || type === "namespaces" || type === "pages") {
-    if (IN_PROD) {
-      queueFakeExector();
-      processGenerateAllDebounce(type, data);
-    }
+    IN_PROD && processGenerateAllDebounce(type, data)
     !IN_PROD && processGenerateAll(type, data);
 
     /**
      * Footer event
      */
   } else if (type === "footer") {
-    if (IN_PROD) {
-      queueFakeExector();
-      processGenerateFooterDebounce(type, data);
-    }
+    IN_PROD && processGenerateFooterDebounce(type, data)
     !IN_PROD && processGenerateFooter(type, data);
 
     /**
      * Meta or company details event
      */
   } else if (type === "meta") {
-    if (IN_PROD) {
-      queueFakeExector();
-      processGenerateDetailDebounce(type, data);
-    }
+    IN_PROD && processGenerateDetailDebounce(type, data)
     !IN_PROD && processGenerateDetail(type, data);
   }
 }
@@ -132,17 +123,6 @@ const processGenerateDetailDebounce = debounce(
   processGenerateDetail,
   TIMEOUT_PROCESS
 );
-
-/**
- * This function will always append a fake executor on the queue,
- * it for when docs execotor will get time to build to always find if there is pending task
- *
- * We debounced it with 1 seconds, just prevent creating many pending functions,
- * if TIMEOUT_PROCESS is less than 1 seconds then debounce time must set to 0 or less then TIMEOUT_PROCESS
- */
-const queueFakeExector = debounce(() => {
-  executorQueue.exec(() => Promise.resolve());
-}, 1000);
 
 // ================================================ Logger =================================//
 function logEvent(message: string) {
