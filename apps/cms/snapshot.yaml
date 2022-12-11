@@ -7127,7 +7127,7 @@ fields:
         enableLink: true
         template: "{{status}}\_{{label}}"
       readonly: false
-      required: true
+      required: false
       sort: 3
       special:
         - o2m
