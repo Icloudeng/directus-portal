@@ -291,6 +291,9 @@ const q_ST: Query = {
     __args: qWithPublishedStatus(),
     type: true,
     datasets: true,
+    labels: true,
+    show_text: true,
+    dark: true,
     ...qWithTranslations({
       markdown_content: true,
     }),

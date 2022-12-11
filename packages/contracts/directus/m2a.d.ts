@@ -300,7 +300,6 @@ export type ST_Markdown = MDHasM2A<
 export type ST_GuestQuestion = MDHasM2A<DRTStatus, ST_V<"st_guest_questions">>;
 
 export type ChartDataSetData = {
-  label: string;
   value: number;
 };
 
@@ -317,6 +316,9 @@ export type ST_Chart = MDHasM2A<
       | "steam"
       | "spark_chart"
       | "band";
+    labels: string[];
+    show_text: boolean;
+    dark: boolean;
     datasets: {
       dataset_name: string;
       border_color: string;
