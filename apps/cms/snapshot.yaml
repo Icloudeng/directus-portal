@@ -47041,7 +47041,7 @@ relations:
       one_collection_field: null
       one_deselect_action: nullify
       one_field: items
-      sort_field: null
+      sort_field: sort
     related_collection: DC_FooterLinks
     schema:
       column: footer_link
@@ -47151,7 +47151,7 @@ relations:
       one_collection_field: null
       one_deselect_action: nullify
       one_field: links
-      sort_field: null
+      sort_field: sort
     related_collection: DC_Footer
     schema:
       column: footer
