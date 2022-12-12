@@ -1,6 +1,7 @@
 import type { ID } from "@directus/sdk";
 
 import type {
+  ButtonVariant,
   DRTStatus,
   MDWithAsset,
   MDWithPoint,
@@ -159,6 +160,16 @@ export type MDNavbarLink = {
   submenus: NavbarLinkSubmenu[];
 } & MDWithTranslation<{
   name: string;
+}> &
+  DRTStatus;
+
+export type MDNavbarButton = {
+  label: string;
+  url: string;
+  variant?: ButtonVariant;
+  external: boolean;
+} & MDWithTranslation<{
+  button_text: string;
 }> &
   DRTStatus;
 

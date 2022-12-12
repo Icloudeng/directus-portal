@@ -23,6 +23,7 @@ export const CMS_MODELS = {
     footer_link_items: "FooterLinkItems",
     company_details: "CompanyDetails",
     navbar_links: "NavbarLinks",
+    navbar_buttons: "NavbarButtons",
     pages: "Pages",
     home_hero: "HomeHero",
     home_sections: "HomeSections",

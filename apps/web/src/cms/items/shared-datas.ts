@@ -1,4 +1,9 @@
-import { CMS_MODELS, MDChatwoot, MDMatomo } from '@apps/contracts';
+import {
+  CMS_MODELS,
+  MDChatwoot,
+  MDMatomo,
+  MDNavbarButton,
+} from '@apps/contracts';
 import {
   MDCompanyDetail,
   MDFooterLink,
@@ -129,6 +134,17 @@ const gql_query = jsonToGraphQLQuery({
       }),
       ...qWithStatus,
     },
+    [CMS_MODELS.navbar_buttons]: {
+      __args: qWithPublishedStatus(),
+      label: true,
+      url: true,
+      variant: true,
+      external: true,
+      ...qWithTranslations({
+        button_text: true,
+      }),
+      ...qWithStatus,
+    },
     [CMS_MODELS.matomo]: {
       ...qWithStatus,
       id: false, // single object|collection
@@ -147,6 +163,7 @@ const gql_query = jsonToGraphQLQuery({
 export type QShareDataType = {
   [CMS_MODELS.languages]: MDLanguage[];
   [CMS_MODELS.topbar_links]: MDTopbarLink[];
+  [CMS_MODELS.navbar_buttons]: MDNavbarButton[];
   [CMS_MODELS.news]: MDTopbarNew[];
   [CMS_MODELS.footer_links]: MDFooterLink[];
   [CMS_MODELS.navbar_links]: MDNavbarLink[];

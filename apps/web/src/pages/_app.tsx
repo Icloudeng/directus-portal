@@ -60,6 +60,7 @@ MyApp.getInitialProps = async ({
         TopbarLinks: [],
         NavbarLinks: [],
         FooterLinks: [],
+        NavbarButtons: [],
       }),
     },
   };

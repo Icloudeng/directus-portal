@@ -11,13 +11,14 @@ import NextImage from '@/components/ui/NextImage';
 
 import { useScrollPosition } from '@/app/hooks/useScrollPosition';
 import { useSharedData } from '@/app/store';
-import { useMut } from '@/cms/mut';
+import { mut, useMut } from '@/cms/mut';
 
 import { Submenu } from './components/SubMenu';
 
 import Logo from '~/images/icloudenglogo.png';
 
 export const Navbar = ({ whiteNav }: { whiteNav?: boolean }) => {
+  const { CompanyDetails, NavbarButtons, locale } = useSharedData();
   const pagePosition = useScrollPosition();
   const { t } = useTranslation();
   const onMouseClick = () => {
@@ -43,7 +44,7 @@ export const Navbar = ({ whiteNav }: { whiteNav?: boolean }) => {
           <UnstyledLink href='/'>
             <NextImage
               useSkeleton
-              src={Logo.src}
+              src={CompanyDetails?.logo?.src || Logo.src}
               width={80}
               height={60}
               alt='icloudeng logo'
@@ -55,20 +56,20 @@ export const Navbar = ({ whiteNav }: { whiteNav?: boolean }) => {
             <NavBarLinks />
           </div>
           <div className='hidden nav__buttons md:flex items-center flex-1 xl:flex-0 justify-end gap-5 ml-3'>
-            <ButtonLink
-              className='py-[4px] text-center text-sm font-light rounded-sm'
-              href='#'
-              variant='outline'
-            >
-              {t('Contact Us')}
-            </ButtonLink>
-            <ButtonLink
-              className='py-[4px] text-center text-sm font-light rounded-sm'
-              href='#'
-              variant='primary'
-            >
-              {t('Get Started')}
-            </ButtonLink>
+            {NavbarButtons.map((button) => {
+              const { translations } = mut(button, locale);
+              return (
+                <ButtonLink
+                  key={button.id}
+                  className='py-[4px] text-center text-sm font-light rounded-sm'
+                  href={button.url}
+                  variant={button.variant}
+                  target={button.external ? '_blank' : undefined}
+                >
+                  {translations?.button_text}
+                </ButtonLink>
+              );
+            })}
           </div>
         </div>
         <div
