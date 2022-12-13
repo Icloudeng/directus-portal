@@ -10,6 +10,29 @@ import type {
 import { CMS_MODELS } from "./constants";
 import { M2APageSection, M2APageSectionReusable } from "./m2a";
 
+// --------------- Layout -------------
+
+export type MDLayout = {
+  site_background_color: string;
+  show_topbar: boolean;
+  show_footer_contacts: boolean;
+  show_footer_links: boolean;
+  show_footer_mailing_subscription: boolean;
+  show_footer_get_started: boolean;
+  footer_get_started_button_link: string;
+  bottom_footer: (
+    | "company_name"
+    | "terms_services"
+    | "privacy"
+    | "use_cookies"
+    | "payment_modes"
+  )[];
+} & MDWithTranslation<{
+  footer_get_started_texts: string[];
+  footer_leading_text_get_started_button?: string;
+}> &
+  Omit<MDNewsBase, "status">;
+
 // --------------- language model types -------------
 
 export type MDLanguage = {

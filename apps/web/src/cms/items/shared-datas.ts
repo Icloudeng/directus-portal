@@ -1,6 +1,7 @@
 import {
   CMS_MODELS,
   MDChatwoot,
+  MDLayout,
   MDMatomo,
   MDNavbarButton,
 } from '@apps/contracts';
@@ -26,6 +27,23 @@ import {
 
 const gql_query = jsonToGraphQLQuery({
   query: {
+    [CMS_MODELS.layout]: {
+      ...qWithStatus,
+      id: false, // single object|collection
+      status: false,
+      site_background_color: true,
+      show_topbar: true,
+      show_footer_contacts: true,
+      show_footer_links: true,
+      show_footer_mailing_subscription: true,
+      show_footer_get_started: true,
+      bottom_footer: true,
+      footer_get_started_button_link: true,
+      ...qWithTranslations({
+        footer_get_started_texts: true,
+        footer_leading_text_get_started_button: true,
+      }),
+    },
     [CMS_MODELS.languages]: {
       code: true,
       name: true,
@@ -109,9 +127,7 @@ const gql_query = jsonToGraphQLQuery({
       url: true,
       external: true,
       submenus: {
-        __args: qWithPublishedStatus<NavbarLinkSubmenu>({
-          sort: ['-featured', 'date_created'],
-        }),
+        __args: qWithPublishedStatus<NavbarLinkSubmenu>({}),
         featured: true,
         items: {
           __args: qWithPublishedStatus(),
@@ -169,7 +185,7 @@ export type QShareDataType = {
   [CMS_MODELS.navbar_links]: MDNavbarLink[];
   [CMS_MODELS.company_details]?: MDCompanyDetail;
   [CMS_MODELS.matomo]?: MDMatomo;
-  [CMS_MODELS.chatwoot]?: MDChatwoot;
+  [CMS_MODELS.layout]?: MDLayout;
 };
 
 /**

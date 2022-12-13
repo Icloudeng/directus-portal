@@ -15,6 +15,7 @@ function modelsWithTranslation<T>(models: T): WithTranslation<T> {
 
 export const CMS_MODELS = {
   ...modelsWithTranslation({
+    layout: "Layout",
     languages: "languages",
     topbar_links: "TopbarLinks",
     news: "News",

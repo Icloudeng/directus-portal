@@ -17,7 +17,7 @@ collections:
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: 6
+      sort: 8
       sort_field: sort
       translations: null
       unarchive_value: draft
@@ -137,7 +137,7 @@ collections:
       item_duplication_fields: null
       note: null
       singleton: true
-      sort: 4
+      sort: 6
       sort_field: null
       translations: null
       unarchive_value: null
@@ -161,7 +161,7 @@ collections:
       item_duplication_fields: null
       note: null
       singleton: true
-      sort: 1
+      sort: 3
       sort_field: null
       translations: null
       unarchive_value: draft
@@ -185,7 +185,7 @@ collections:
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: 8
+      sort: 10
       sort_field: null
       translations: null
       unarchive_value: null
@@ -853,6 +853,54 @@ collections:
       translations: null
       unarchive_value: null
     schema: null
+  - collection: Layout
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: Layout
+      color: null
+      display_template: null
+      group: Settings
+      hidden: false
+      icon: null
+      item_duplication_fields: null
+      note: null
+      singleton: true
+      sort: 1
+      sort_field: null
+      translations: null
+      unarchive_value: null
+    schema:
+      comment: null
+      name: Layout
+      schema: public
+  - collection: Layout_translations
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: Layout_translations
+      color: null
+      display_template: null
+      group: Settings
+      hidden: true
+      icon: import_export
+      item_duplication_fields: null
+      note: null
+      singleton: false
+      sort: 2
+      sort_field: null
+      translations: null
+      unarchive_value: null
+    schema:
+      comment: null
+      name: Layout_translations
+      schema: public
   - collection: Listmonk
     meta:
       accountability: all
@@ -869,7 +917,7 @@ collections:
       item_duplication_fields: null
       note: null
       singleton: true
-      sort: 2
+      sort: 4
       sort_field: null
       translations: null
       unarchive_value: null
@@ -917,7 +965,7 @@ collections:
       item_duplication_fields: null
       note: null
       singleton: true
-      sort: 3
+      sort: 5
       sort_field: null
       translations: null
       unarchive_value: null
@@ -1202,7 +1250,7 @@ collections:
       item_duplication_fields: null
       note: null
       singleton: true
-      sort: 5
+      sort: 7
       sort_field: null
       translations: null
       unarchive_value: null
@@ -2984,7 +3032,7 @@ collections:
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: 7
+      sort: 9
       sort_field: sort
       translations: null
       unarchive_value: draft
@@ -11616,7 +11664,7 @@ fields:
       options: null
       readonly: true
       required: false
-      sort: 9
+      sort: 10
       special:
         - date-created
       translations: null
@@ -11658,7 +11706,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: 4
+      sort: 5
       special:
         - cast-boolean
       translations: null
@@ -11701,7 +11749,7 @@ fields:
         template: '{{translations.name}}'
       readonly: false
       required: false
-      sort: 2
+      sort: 3
       special:
         - m2o
       translations: null
@@ -11771,6 +11819,48 @@ fields:
       table: FooterLinkItems
     type: uuid
   - collection: FooterLinkItems
+    field: label
+    meta:
+      collection: FooterLinkItems
+      conditions: null
+      display: null
+      display_options: null
+      field: label
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        trim: true
+      readonly: false
+      required: true
+      sort: 2
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: character varying
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: 255
+      name: label
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: FooterLinkItems
+    type: string
+  - collection: FooterLinkItems
     field: sort
     meta:
       collection: FooterLinkItems
@@ -11785,7 +11875,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: 7
+      sort: 8
       special: null
       translations: null
       validation: null
@@ -11847,7 +11937,7 @@ fields:
             value: archived
       readonly: false
       required: false
-      sort: 6
+      sort: 7
       special: null
       translations: null
       validation: null
@@ -11889,7 +11979,7 @@ fields:
         languageField: code
       readonly: false
       required: false
-      sort: 3
+      sort: 4
       special:
         - translations
       translations: null
@@ -11915,7 +12005,7 @@ fields:
         trim: true
       readonly: false
       required: true
-      sort: 5
+      sort: 6
       special: null
       translations: null
       validation: null
@@ -11957,7 +12047,7 @@ fields:
         template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
       readonly: true
       required: false
-      sort: 8
+      sort: 9
       special:
         - user-created
       translations: null
@@ -12334,7 +12424,7 @@ fields:
       note: null
       options:
         enableSelect: false
-        template: "{{translations.name}}\_--\_{{url}}\_\_{{status}}"
+        template: "{{label}}\_--\_{{url}}\_\_{{status}}"
       readonly: false
       required: true
       sort: 4
@@ -14960,6 +15050,886 @@ fields:
       schema: public
       table: HomeSections_sections
     type: integer
+  - collection: Layout
+    field: Footer
+    meta:
+      collection: Layout
+      conditions: null
+      display: null
+      display_options: null
+      field: Footer
+      group: null
+      hidden: false
+      interface: group-detail
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 3
+      special:
+        - alias
+        - group
+        - no-data
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema: null
+    type: alias
+  - collection: Layout
+    field: Footer_Get_Started
+    meta:
+      collection: Layout
+      conditions: null
+      display: null
+      display_options: null
+      field: Footer_Get_Started
+      group: null
+      hidden: false
+      interface: group-detail
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 4
+      special:
+        - alias
+        - group
+        - no-data
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema: null
+    type: alias
+  - collection: Layout
+    field: Site
+    meta:
+      collection: Layout
+      conditions: null
+      display: null
+      display_options: null
+      field: Site
+      group: null
+      hidden: false
+      interface: group-detail
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 2
+      special:
+        - alias
+        - group
+        - no-data
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema: null
+    type: alias
+  - collection: Layout
+    field: bottom_footer
+    meta:
+      collection: Layout
+      conditions: null
+      display: null
+      display_options: null
+      field: bottom_footer
+      group: Footer
+      hidden: false
+      interface: select-multiple-dropdown
+      note: null
+      options:
+        allowNone: true
+        allowOther: true
+        choices:
+          - text: Company Name
+            value: company_name
+          - text: Terms of services
+            value: terms_services
+          - text: Privacy
+            value: privacy
+          - text: Use of Cookies
+            value: use_cookies
+          - text: Payment Modes
+            value: payment_modes
+      readonly: false
+      required: true
+      sort: 4
+      special:
+        - cast-json
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      comment: null
+      data_type: json
+      default_value:
+        - company_name
+        - payment_modes
+        - privacy
+        - terms_services
+        - use_cookies
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: bottom_footer
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: Layout
+    type: json
+  - collection: Layout
+    field: date_created
+    meta:
+      collection: Layout
+      conditions: null
+      display: datetime
+      display_options:
+        relative: true
+      field: date_created
+      group: null
+      hidden: true
+      interface: datetime
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: 6
+      special:
+        - date-created
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      comment: null
+      data_type: timestamp with time zone
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: date_created
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: Layout
+    type: timestamp
+  - collection: Layout
+    field: date_updated
+    meta:
+      collection: Layout
+      conditions: null
+      display: datetime
+      display_options:
+        relative: true
+      field: date_updated
+      group: null
+      hidden: true
+      interface: datetime
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: 8
+      special:
+        - date-updated
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      comment: null
+      data_type: timestamp with time zone
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: date_updated
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: Layout
+    type: timestamp
+  - collection: Layout
+    field: footer_get_started_button_link
+    meta:
+      collection: Layout
+      conditions: null
+      display: null
+      display_options: null
+      field: footer_get_started_button_link
+      group: Footer_Get_Started
+      hidden: false
+      interface: input
+      note: null
+      options:
+        trim: true
+      readonly: false
+      required: false
+      sort: 3
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: character varying
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: 255
+      name: footer_get_started_button_link
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: Layout
+    type: string
+  - collection: Layout
+    field: id
+    meta:
+      collection: Layout
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: 1
+      special:
+        - uuid
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: false
+      is_primary_key: true
+      is_unique: true
+      max_length: null
+      name: id
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: Layout
+    type: uuid
+  - collection: Layout
+    field: show_footer_contacts
+    meta:
+      collection: Layout
+      conditions: null
+      display: null
+      display_options: null
+      field: show_footer_contacts
+      group: Footer
+      hidden: false
+      interface: boolean
+      note: null
+      options: null
+      readonly: false
+      required: true
+      sort: 1
+      special:
+        - cast-boolean
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      comment: null
+      data_type: boolean
+      default_value: true
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: show_footer_contacts
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: Layout
+    type: boolean
+  - collection: Layout
+    field: show_footer_get_started
+    meta:
+      collection: Layout
+      conditions: null
+      display: null
+      display_options: null
+      field: show_footer_get_started
+      group: Footer_Get_Started
+      hidden: false
+      interface: boolean
+      note: null
+      options: null
+      readonly: false
+      required: true
+      sort: 1
+      special:
+        - cast-boolean
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: boolean
+      default_value: true
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: show_footer_get_started
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: Layout
+    type: boolean
+  - collection: Layout
+    field: show_footer_links
+    meta:
+      collection: Layout
+      conditions: null
+      display: null
+      display_options: null
+      field: show_footer_links
+      group: Footer
+      hidden: false
+      interface: boolean
+      note: null
+      options: null
+      readonly: false
+      required: true
+      sort: 2
+      special:
+        - cast-boolean
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      comment: null
+      data_type: boolean
+      default_value: true
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: show_footer_links
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: Layout
+    type: boolean
+  - collection: Layout
+    field: show_footer_mailing_subscription
+    meta:
+      collection: Layout
+      conditions: null
+      display: null
+      display_options: null
+      field: show_footer_mailing_subscription
+      group: Footer
+      hidden: false
+      interface: boolean
+      note: null
+      options: null
+      readonly: false
+      required: true
+      sort: 3
+      special:
+        - cast-boolean
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      comment: null
+      data_type: boolean
+      default_value: true
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: show_footer_mailing_subscription
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: Layout
+    type: boolean
+  - collection: Layout
+    field: show_topbar
+    meta:
+      collection: Layout
+      conditions: null
+      display: null
+      display_options: null
+      field: show_topbar
+      group: Site
+      hidden: false
+      interface: boolean
+      note: null
+      options: null
+      readonly: false
+      required: true
+      sort: 2
+      special:
+        - cast-boolean
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      comment: null
+      data_type: boolean
+      default_value: true
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: show_topbar
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: Layout
+    type: boolean
+  - collection: Layout
+    field: site_background_color
+    meta:
+      collection: Layout
+      conditions: null
+      display: null
+      display_options: null
+      field: site_background_color
+      group: Site
+      hidden: false
+      interface: select-color
+      note: null
+      options:
+        opacity: true
+      readonly: false
+      required: true
+      sort: 1
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      comment: null
+      data_type: character varying
+      default_value: '#313b4d'
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: 255
+      name: site_background_color
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: Layout
+    type: string
+  - collection: Layout
+    field: translations
+    meta:
+      collection: Layout
+      conditions: null
+      display: null
+      display_options: null
+      field: translations
+      group: Footer_Get_Started
+      hidden: false
+      interface: translations
+      note: null
+      options:
+        userLanguage: true
+      readonly: false
+      required: false
+      sort: 2
+      special:
+        - translations
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema: null
+    type: alias
+  - collection: Layout
+    field: user_created
+    meta:
+      collection: Layout
+      conditions: null
+      display: user
+      display_options: null
+      field: user_created
+      group: null
+      hidden: true
+      interface: select-dropdown-m2o
+      note: null
+      options:
+        template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
+      readonly: true
+      required: false
+      sort: 5
+      special:
+        - user-created
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: directus_users
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: user_created
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: Layout
+    type: uuid
+  - collection: Layout
+    field: user_updated
+    meta:
+      collection: Layout
+      conditions: null
+      display: user
+      display_options: null
+      field: user_updated
+      group: null
+      hidden: true
+      interface: select-dropdown-m2o
+      note: null
+      options:
+        template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
+      readonly: true
+      required: false
+      sort: 7
+      special:
+        - user-updated
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: directus_users
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: user_updated
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: Layout
+    type: uuid
+  - collection: Layout_translations
+    field: Layout_id
+    meta:
+      collection: Layout_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: Layout_id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 4
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: Layout
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: Layout_id
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: Layout_translations
+    type: uuid
+  - collection: Layout_translations
+    field: footer_get_started_texts
+    meta:
+      collection: Layout_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: footer_get_started_texts
+      group: null
+      hidden: false
+      interface: tags
+      note: null
+      options: null
+      readonly: false
+      required: true
+      sort: 2
+      special:
+        - cast-json
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: json
+      default_value:
+        - Start your innovation
+        - today with cloud
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: footer_get_started_texts
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: Layout_translations
+    type: json
+  - collection: Layout_translations
+    field: footer_leading_text_get_started_button
+    meta:
+      collection: Layout_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: footer_leading_text_get_started_button
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        trim: true
+      readonly: false
+      required: false
+      sort: 3
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: character varying
+      default_value: Take first step right now
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: 255
+      name: footer_leading_text_get_started_button
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: Layout_translations
+    type: string
+  - collection: Layout_translations
+    field: id
+    meta:
+      collection: Layout_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 1
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: integer
+      default_value: nextval('"Layout_translations_id_seq"'::regclass)
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: true
+      is_generated: false
+      is_nullable: false
+      is_primary_key: true
+      is_unique: true
+      max_length: null
+      name: id
+      numeric_precision: 32
+      numeric_scale: 0
+      schema: public
+      table: Layout_translations
+    type: integer
+  - collection: Layout_translations
+    field: languages_code
+    meta:
+      collection: Layout_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: languages_code
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 5
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: character varying
+      default_value: null
+      foreign_key_column: code
+      foreign_key_schema: public
+      foreign_key_table: languages
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: 255
+      name: languages_code
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: Layout_translations
+    type: string
   - collection: Listmonk
     field: admin_password
     meta:
@@ -17773,7 +18743,7 @@ fields:
       options: null
       readonly: true
       required: false
-      sort: 9
+      sort: 10
       special:
         - date-created
       translations: null
@@ -17816,7 +18786,7 @@ fields:
       options: null
       readonly: true
       required: false
-      sort: 11
+      sort: 12
       special:
         - date-updated
       translations: null
@@ -17858,7 +18828,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: 4
+      sort: 5
       special:
         - cast-boolean
       translations: null
@@ -17944,7 +18914,7 @@ fields:
         template: "{{url}}\_--\_{{status}}"
       readonly: false
       required: true
-      sort: 5
+      sort: 6
       special:
         - o2m
       translations: null
@@ -17953,6 +18923,48 @@ fields:
       width: full
     schema: null
     type: alias
+  - collection: NavbarLinkSubmenus
+    field: label
+    meta:
+      collection: NavbarLinkSubmenus
+      conditions: null
+      display: null
+      display_options: null
+      field: label
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        trim: true
+      readonly: false
+      required: true
+      sort: 2
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: character varying
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: 255
+      name: label
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: NavbarLinkSubmenus
+    type: string
   - collection: NavbarLinkSubmenus
     field: navbar_link_id
     meta:
@@ -17971,7 +18983,7 @@ fields:
         template: '{{label}}'
       readonly: false
       required: true
-      sort: 2
+      sort: 3
       special:
         - m2o
       translations: null
@@ -18013,7 +19025,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: 7
+      sort: 8
       special: null
       translations: null
       validation: null
@@ -18075,7 +19087,7 @@ fields:
             value: archived
       readonly: false
       required: false
-      sort: 6
+      sort: 7
       special: null
       translations: null
       validation: null
@@ -18116,7 +19128,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: 3
+      sort: 4
       special:
         - translations
       translations: null
@@ -18141,7 +19153,7 @@ fields:
         template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
       readonly: true
       required: false
-      sort: 8
+      sort: 9
       special:
         - user-created
       translations: null
@@ -18184,7 +19196,7 @@ fields:
         template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
       readonly: true
       required: false
-      sort: 10
+      sort: 11
       special:
         - user-updated
       translations: null
@@ -18706,7 +19718,7 @@ fields:
       note: null
       options:
         enableSelect: false
-        template: "{{id}}\_--\_{{status}}"
+        template: "{{label}}\_--\_{{status}}"
       readonly: false
       required: false
       sort: 6
@@ -48977,6 +49989,94 @@ relations:
       sort_field: null
     related_collection: null
     schema: null
+  - collection: Layout
+    field: user_created
+    meta:
+      junction_field: null
+      many_collection: Layout
+      many_field: user_created
+      one_allowed_collections: null
+      one_collection: directus_users
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    related_collection: directus_users
+    schema:
+      column: user_created
+      constraint_name: layout_user_created_foreign
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: directus_users
+      on_delete: NO ACTION
+      on_update: NO ACTION
+      table: Layout
+  - collection: Layout
+    field: user_updated
+    meta:
+      junction_field: null
+      many_collection: Layout
+      many_field: user_updated
+      one_allowed_collections: null
+      one_collection: directus_users
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    related_collection: directus_users
+    schema:
+      column: user_updated
+      constraint_name: layout_user_updated_foreign
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: directus_users
+      on_delete: NO ACTION
+      on_update: NO ACTION
+      table: Layout
+  - collection: Layout_translations
+    field: Layout_id
+    meta:
+      junction_field: languages_code
+      many_collection: Layout_translations
+      many_field: Layout_id
+      one_allowed_collections: null
+      one_collection: Layout
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: translations
+      sort_field: null
+    related_collection: Layout
+    schema:
+      column: Layout_id
+      constraint_name: layout_translations_layout_id_foreign
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: Layout
+      on_delete: SET NULL
+      on_update: NO ACTION
+      table: Layout_translations
+  - collection: Layout_translations
+    field: languages_code
+    meta:
+      junction_field: Layout_id
+      many_collection: Layout_translations
+      many_field: languages_code
+      one_allowed_collections: null
+      one_collection: languages
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    related_collection: languages
+    schema:
+      column: languages_code
+      constraint_name: layout_translations_languages_code_foreign
+      foreign_key_column: code
+      foreign_key_schema: public
+      foreign_key_table: languages
+      on_delete: SET NULL
+      on_update: NO ACTION
+      table: Layout_translations
   - collection: Listmonk
     field: user_created
     meta:
