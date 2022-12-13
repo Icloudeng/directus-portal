@@ -11,6 +11,7 @@ import { getGqlHomeQueries, QHomeHeroQueriesType } from '@/cms/items';
 import { LeftRightContent } from '@/components/sections/more-ui/LeftRightContent';
 import { BlogTextContentHorizontal } from '@/components/sections/more-ui/BlogTextContentHorizontal';
 import { BlogTextContentVertical } from '@/components/sections/more-ui/BlogTextContentVertical';
+import { TopLeftRightContent } from '@/components/sections/more-ui/TopLeftRight';
 
 export default function HomePage(props: Partial<QHomeHeroQueriesType<true>>) {
   const { HomeHero, HomeSections } = props;
@@ -25,7 +26,7 @@ export default function HomePage(props: Partial<QHomeHeroQueriesType<true>>) {
         </section>
       )}
       <section className='py-10 bg-white'>
-        <LeftRightContent />
+        <TopLeftRightContent />
       </section>
       <section className='py-10 bg-[#f5f7fa]'>
         <BlogTextContentVertical />
