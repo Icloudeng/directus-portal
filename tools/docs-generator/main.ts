@@ -20,7 +20,7 @@ import { executorQueue } from "./src/queue";
  */
 
 const client = connect(); // Init redis connection
-const TIMEOUT_PROCESS = DEBOUNCE_EXECUTOR ? 2 * 60000 : 0; // 2 minutes if DEBOUNCE, otherwise 0 time
+const TIMEOUT_PROCESS = DEBOUNCE_EXECUTOR ? 2 * 60000 : 3000; // 2 minutes if DEBOUNCE, otherwise 3 seconds
 
 async function main() {
   const subscriber = await client;
