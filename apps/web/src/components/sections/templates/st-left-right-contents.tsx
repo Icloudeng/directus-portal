@@ -65,6 +65,7 @@ export function ST_LeftRightContentsFC({
 
         return (
           <div
+            key={item.id}
             className={`flex items-center lg:w-3/5 mx-auto pb-10 mb-10 ${
               i + 1 !== items.length ? 'border-b border-gray-200' : ''
             } sm:flex-row flex-col`}

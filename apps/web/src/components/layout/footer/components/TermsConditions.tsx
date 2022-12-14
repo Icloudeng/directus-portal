@@ -75,8 +75,12 @@ export const TermsConditions = () => {
         </span>
       )}
 
-      {newItems.map((v) => {
-        return <span className='px-2 text-xs hover:text-primary-400'>{v}</span>;
+      {newItems.map((v, i) => {
+        return (
+          <span key={i} className='px-2 text-xs hover:text-primary-400'>
+            {v}
+          </span>
+        );
       })}
     </div>
   );

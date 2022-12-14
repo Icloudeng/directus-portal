@@ -78,7 +78,9 @@ export function MarkdownContent({ children, toc = false, className }: Props) {
           components={{
             code: Code,
           }}
-          rehypePlugins={toc ? [rehypeSlug, [rehypeToc, tocOptions]] : []}
+          rehypePlugins={
+            toc ? [rehypeSlug, [rehypeToc as any, tocOptions]] : []
+          }
           remarkPlugins={[remarkGfm, remarkHtml]}
         >
           {children}

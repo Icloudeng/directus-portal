@@ -40,6 +40,7 @@ import {
   getDumpChart,
 } from '@/app/models/dumps-templates';
 import { getServerSideTranslations } from '@/app/utils/server-translation';
+import Link from 'next/link';
 
 type Template = {
   title: string;
@@ -790,7 +791,7 @@ export default function Page() {
     <div>
       <div className='x-container'>
         <h1>
-          <a href='/'>Templates ({templates.length})</a>
+          <Link href='/'>Templates ({templates.length})</Link>
         </h1>
         <div className='flex my-3'>
           {grouped.map((list, i) => {

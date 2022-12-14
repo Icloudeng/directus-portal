@@ -186,6 +186,7 @@ export type QShareDataType = {
   [CMS_MODELS.company_details]?: MDCompanyDetail;
   [CMS_MODELS.matomo]?: MDMatomo;
   [CMS_MODELS.layout]?: MDLayout;
+  [CMS_MODELS.chatwoot]?: MDChatwoot;
 };
 
 /**

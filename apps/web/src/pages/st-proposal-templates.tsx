@@ -4,12 +4,13 @@ import { getServerSideTranslations } from '@/app/utils/server-translation';
 import { TopLeftRightContent } from '@/components/sections/more-ui/TopLeftRight';
 import { BlogTextContentVertical } from '@/components/sections/more-ui/BlogTextContentVertical';
 import { BlogTextContentHorizontal } from '@/components/sections/more-ui/BlogTextContentHorizontal';
+import Link from 'next/link';
 
 export default function Page() {
   return (
     <div>
       <h1 className='mb-10'>
-        <a href='/'>Templates</a>
+        <Link href='/'>Templates</Link>
       </h1>
 
       <section className='py-10 bg-white'>

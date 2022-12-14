@@ -100,9 +100,9 @@ export const FooterSimple = () => {
                 © {new Date().getFullYear()}{' '}
               </UnstyledLink>
 
-              {newItems.map((v) => {
+              {newItems.map((v, i) => {
                 return (
-                  <span className='px-2 text-xs hover:text-primary-400'>
+                  <span key={i} className='px-2 text-xs hover:text-primary-400'>
                     {v}
                   </span>
                 );
