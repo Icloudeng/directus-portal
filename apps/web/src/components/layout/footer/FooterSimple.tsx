@@ -1,8 +1,11 @@
 import { COMPANY_NAME } from '@/app/constant/env';
+import { useErrorInput } from '@/app/hooks/useErrorInput';
+import { useFormSubmit } from '@/app/hooks/useFormSubmit';
 import { useSharedData } from '@/app/store';
 import { mut } from '@/cms/mut';
 import Button from '@/components/ui/buttons/Button';
 import UnstyledLink from '@/components/ui/links/UnstyledLink';
+import { Spinner } from '@/components/ui/Spinner';
 import { FooterBottom } from '@apps/contracts';
 import { useTranslation } from 'next-i18next';
 import { socialIcons } from './components/ContactSection';
@@ -45,7 +48,7 @@ export const FooterSimple = () => {
                       {link.links.map((item) => {
                         const { translations } = mut(item, locale);
                         return (
-                          <li key={item.id}>
+                          <li key={item.id} className='mb-2'>
                             <UnstyledLink
                               href={item.url}
                               target={item.external ? '_blank' : undefined}
@@ -65,13 +68,13 @@ export const FooterSimple = () => {
         )}
 
         <div className='border-t border-gray-200'>
-          <div className='container px-5 py-8 flex flex-wrap mx-auto items-center'>
+          <div className='container px-5 py-8 flex flex-col-reverse lg:flex-row mx-auto items-center'>
             {Layout?.show_footer_mailing_subscription !== false && (
               <Subscription />
             )}
 
             {Layout?.show_footer_contacts !== false && (
-              <span className='inline-flex lg:ml-auto lg:mt-0 mt-6 w-full justify-center md:justify-start md:w-auto'>
+              <span className='inline-flex lg:ml-auto lg:mb-0 mb-6 w-full justify-center md:justify-start md:w-auto'>
                 {socials.map(({ link, icon, id, social_name }) => (
                   <SocialMedia
                     key={id}
@@ -123,20 +126,49 @@ export const FooterSimple = () => {
 
 function Subscription() {
   const { t } = useTranslation();
+  const { onSubmit, loading, success, errors } = useFormSubmit(
+    '/api/newsletters/subscriptions',
+    1000 * 15
+  );
+  const { error, onKeyUp } = useErrorInput('email', errors);
+
   return (
-    <div className='flex md:flex-nowrap flex-wrap justify-center items-end md:justify-start'>
-      <div className='relative sm:w-64 w-40 sm:mr-4 mr-2'>
+    <form
+      onSubmit={onSubmit}
+      className='flex flex-col md:flex-row justify-center items-center md:items-start md:justify-start'
+    >
+      <div className='relative sm:w-80 w-70 sm:mr-4 mr-2 mb-5 md:mb-0'>
         <input
           type='email'
+          onKeyUp={onKeyUp}
           placeholder={t('Enter your email')}
           id='footer-field'
           name='footer-field'
           className='w-full bg-transparent bg-opacity-50 rounded-sm border border-primary-400 focus:ring-1 focus:bg-transparent focus:ring-primary-400 focus:border-primary-500 text-base outline-none py-1 px-3 leading-8 transition-colors duration-200 ease-in-out'
         />
+        {error && (
+          <div className='w-full text-center mt-2 text-red-500 lg:max-w-[400px]'>
+            {t(error)}
+          </div>
+        )}
+        {success && (
+          <div className='w-full text-center mt-2 text-green-500 lg:max-w-[400px]'>
+            {t('SUBSCRIPTION_SUCCESS')}(s).
+          </div>
+        )}
       </div>
-      <Button className='inline-flex text-white bg-primary-400 border-0 py-2 px-6 focus:outline-none hover:bg-primary-500 rounded-sm'>
-        {t('Subscribe')}
+      <Button
+        disabled={loading}
+        type='submit'
+        className='inline-flex text-white bg-primary-400 border-0 py-2 px-6 focus:outline-none hover:bg-primary-500 rounded-sm'
+      >
+        {t('Subscribe')}{' '}
+        {loading && (
+          <span className='ml-1'>
+            <Spinner />
+          </span>
+        )}
       </Button>
-    </div>
+    </form>
   );
 }
