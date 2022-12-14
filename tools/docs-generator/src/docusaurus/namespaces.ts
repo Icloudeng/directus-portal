@@ -128,6 +128,12 @@ export async function generateNamespacesContent(
     mutableParent: NamespacesContentTree,
     position: number
   ) {
+    /**
+     * If page doen't have label field
+     * then consider was not constructed
+     */
+    if (!page.label) return;
+
     const parent = mutableParent;
     const itype = (page.pages || []).length > 0 ? "parent" : "child";
 
