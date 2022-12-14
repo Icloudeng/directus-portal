@@ -1,6 +1,5 @@
 import type { I_MDWithUserTranslation } from '@apps/contracts';
 import type { MDNavbarLink } from '@apps/contracts';
-import { useTranslation } from 'next-i18next';
 import { useCallback, useRef } from 'react';
 import { AiOutlineMenuFold } from 'react-icons/ai';
 import { VscChevronDown } from 'react-icons/vsc';
@@ -20,7 +19,6 @@ import Logo from '~/images/icloudenglogo.png';
 export const Navbar = ({ whiteNav }: { whiteNav?: boolean }) => {
   const { CompanyDetails, NavbarButtons, locale } = useSharedData();
   const pagePosition = useScrollPosition();
-  const { t } = useTranslation();
   const onMouseClick = () => {
     const sidebarEl = document.querySelector('#mob--menu-El');
     document.body.classList.add('mobile__model-open');

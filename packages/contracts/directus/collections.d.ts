@@ -13,6 +13,13 @@ import { M2APageSection, M2APageSectionReusable } from "./m2a";
 
 // --------------- Layout -------------
 
+export type FooterBottom =
+  | "company_name"
+  | "terms_services"
+  | "privacy"
+  | "use_cookies"
+  | "payment_modes";
+
 export type MDLayout = {
   site_background_color: string;
   show_topbar: boolean;
@@ -20,13 +27,8 @@ export type MDLayout = {
   show_footer_links: boolean;
   show_footer_mailing_subscription: boolean;
   show_top_footer: boolean;
-  bottom_footer: (
-    | "company_name"
-    | "terms_services"
-    | "privacy"
-    | "use_cookies"
-    | "payment_modes"
-  )[];
+  footer_type: "full_footer" | "simple_footer";
+  bottom_footer: FooterBottom[];
 } & MDWithTranslation<{
   titles: { title: string; color: string }[];
   buttons: (Omit<RepeaterBtn, "variant"> & {

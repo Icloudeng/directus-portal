@@ -16,7 +16,7 @@ import { useMut } from '@/cms/mut';
 
 import { SocialMedia } from './SocialMedia';
 
-const socialIcons: { [x: string]: JSX.Element } = {
+export const socialIcons: { [x: string]: JSX.Element } = {
   facebook: <FaFacebookF fontSize={17} />,
   twitter: <FaTwitter fontSize={17} />,
   instagram: <FaInstagram fontSize={17} />,
@@ -29,6 +29,8 @@ export const ContactSection = () => {
   const { CompanyDetails } = useSharedData();
   const data = useMut(CompanyDetails);
   const { t } = useTranslation();
+
+  const socials = data?.socials || [];
 
   return (
     <div className='middle-right text-xs xs:text-sm flex-1 flex flex-col gap-5'>
@@ -74,7 +76,7 @@ export const ContactSection = () => {
       )}
 
       <div className='flex items-center gap-5 text-primary-400 mt-1'>
-        {data?.socials?.map(({ link, icon, id, social_name }) => (
+        {socials.map(({ link, icon, id, social_name }) => (
           <SocialMedia
             key={id}
             href={link}

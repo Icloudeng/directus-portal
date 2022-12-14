@@ -12,9 +12,6 @@ import { LeftRightContent } from '@/components/sections/more-ui/LeftRightContent
 import { BlogTextContentHorizontal } from '@/components/sections/more-ui/BlogTextContentHorizontal';
 import { BlogTextContentVertical } from '@/components/sections/more-ui/BlogTextContentVertical';
 import { TopLeftRightContent } from '@/components/sections/more-ui/TopLeftRight';
-import { FooterOne } from '@/components/sections/more-ui/footers/FooterOne';
-import { FooterTwo } from '@/components/sections/more-ui/footers/FooterTwo';
-import { FooterThree } from '@/components/sections/more-ui/footers/FooterThree';
 
 export default function HomePage(props: Partial<QHomeHeroQueriesType<true>>) {
   const { HomeHero, HomeSections } = props;
@@ -34,14 +31,11 @@ export default function HomePage(props: Partial<QHomeHeroQueriesType<true>>) {
       <section className='py-10 bg-white'>
         <TopLeftRightContent />
       </section>
-      <FooterOne />
       <section className='py-10 bg-[#f5f7fa]'>
         <BlogTextContentVertical />
       </section>
-      <FooterTwo />
       <section className='py-10 bg-white'>
         <BlogTextContentHorizontal />
-        <FooterThree />
       </section>
 
       {HomeSections && <PageSections sections={HomeSections.sections} />}

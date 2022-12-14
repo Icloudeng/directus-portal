@@ -1,5 +1,6 @@
 import { useSharedData } from '@/app/store';
 import { Footer } from './footer/Footer';
+import { FooterSimple } from './footer/FooterSimple';
 import Header from './Header';
 import { MobileMenu } from './mobileMenu/MobileMenu';
 
@@ -11,6 +12,7 @@ export default function Layout({
   whiteNav?: boolean;
 }) {
   const { Layout } = useSharedData();
+
   return (
     <div
       id='layout__container'
@@ -22,7 +24,8 @@ export default function Layout({
       <div className='flex-1 flex flex-col justify-center z-0 main__content'>
         {children}
       </div>
-      <Footer />
+      {Layout?.footer_type !== 'simple_footer' && <Footer />}
+      {Layout?.footer_type === 'simple_footer' && <FooterSimple />}
       <MobileMenu />
       <div className='bg-overlay hidden fixed top-0 sd:top-10 left-0 bg-green-300 bg-black/60 w-full h-full z-40' />
     </div>

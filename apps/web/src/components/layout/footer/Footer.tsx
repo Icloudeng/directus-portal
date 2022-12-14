@@ -29,7 +29,7 @@ export const Footer = () => {
       style={{ backgroundColor: Layout?.site_background_color || '#313B4D' }}
     >
       <div className='x-container-fluid flex flex-col gap-5 divide-y-2 divide-gray-800'>
-        {Layout?.show_top_footer !== false && <GetStartedSection />}
+        {Layout?.show_top_footer !== false && <FooterTopSection />}
 
         {showSection && (
           <div className='middle-footer flex items-start justify-around py-10 divide-x-[1px] divide-gray-300 text-xs xs:text-sm'>
@@ -52,7 +52,6 @@ export const Footer = () => {
             )}
           </div>
         )}
-
         {Layout?.show_footer_mailing_subscription !== false && <Subscribe />}
         {bottom_footer.length > 0 && <TermsConditions />}
       </div>
@@ -60,7 +59,7 @@ export const Footer = () => {
   );
 };
 
-function GetStartedSection() {
+function FooterTopSection() {
   const { Layout } = useSharedData();
   const layout = useMut(Layout);
   const translations = layout?.translations;

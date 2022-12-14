@@ -38,6 +38,7 @@ const gql_query = jsonToGraphQLQuery({
       show_footer_mailing_subscription: true,
       bottom_footer: true,
       show_top_footer: true,
+      footer_type: true,
       ...qWithTranslations({
         titles: true,
         buttons: true,
