@@ -25,7 +25,7 @@ export function useRehypeReactProcessor(text: string, toc: boolean) {
       .use(rehypeParse, { fragment: true })
       .use(rehypeReact, { createElement, Fragment });
     if (toc) {
-      processor.use(rehypeSlug).use(rehypeToc, tocOptions);
+      processor.use(rehypeSlug).use(rehypeToc as any, tocOptions);
     }
     processor.process(text).then((file) => {
       setContent(file.result as any);

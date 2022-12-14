@@ -1,3 +1,4 @@
+import { useSharedData } from '@/app/store';
 import throttle from 'lodash/throttle';
 import { useCallback, useEffect, useRef, useState } from 'react';
 
@@ -5,6 +6,9 @@ import { Navbar } from './navbar/Navbar';
 import { TopBar } from './topBar/TopBar';
 
 export default function Header({ whiteNav }: { whiteNav?: boolean }) {
+  const { Layout } = useSharedData();
+  const hasTopbar = Layout?.show_topbar !== false;
+
   const [hasTop, setHasTop] = useState(true);
   const lastScrollY = useRef(0);
 
@@ -36,10 +40,10 @@ export default function Header({ whiteNav }: { whiteNav?: boolean }) {
   return (
     <header
       className={`fixed left-0 top-0 right-0 z-40 transition-transform translate-y-0 layout--header ${
-        !hasTop ? 'sd:-translate-y-[41px]' : ''
+        !hasTop && hasTopbar ? 'sd:-translate-y-[41px]' : ''
       }`}
     >
-      <TopBar />
+      {hasTopbar && <TopBar />}
       <Navbar whiteNav={whiteNav} />
     </header>
   );

@@ -70,9 +70,13 @@ export function Publishing({
                   <div className='flex justify-between'>
                     <div className='flex-1'>
                       <div className='bg-gray-100 w-16 h-16 relative rounded-[50%]'>
-                        {author?.image && (
+                        {(author?.image || CompanyDetails?.logo) && (
                           <Image
-                            src={author?.image?.src || ''}
+                            src={
+                              author?.image?.src ||
+                              CompanyDetails?.logo?.src ||
+                              ''
+                            }
                             className='w-full h-full rounded-[50%]'
                             layout='fill'
                             objectFit='cover'

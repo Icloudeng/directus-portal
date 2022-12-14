@@ -1,13 +1,41 @@
 import type { ID } from "@directus/sdk";
 
 import type {
+  ButtonVariant,
   DRTStatus,
   MDWithAsset,
   MDWithPoint,
   MDWithTranslation,
+  RepeaterBtn,
 } from "./base";
 import { CMS_MODELS } from "./constants";
 import { M2APageSection, M2APageSectionReusable } from "./m2a";
+
+// --------------- Layout -------------
+
+export type FooterBottom =
+  | "company_name"
+  | "terms_services"
+  | "privacy"
+  | "use_cookies"
+  | "payment_modes";
+
+export type MDLayout = {
+  site_background_color: string;
+  show_topbar: boolean;
+  show_footer_contacts: boolean;
+  show_footer_links: boolean;
+  show_footer_mailing_subscription: boolean;
+  show_top_footer: boolean;
+  footer_type: "full_footer" | "simple_footer";
+  bottom_footer: FooterBottom[];
+} & MDWithTranslation<{
+  titles: { title: string; color: string }[];
+  buttons: (Omit<RepeaterBtn, "variant"> & {
+    variant?: ButtonVariant | "text";
+  })[];
+}> &
+  Omit<DRTStatus, "status">;
 
 // --------------- language model types -------------
 
@@ -159,6 +187,16 @@ export type MDNavbarLink = {
   submenus: NavbarLinkSubmenu[];
 } & MDWithTranslation<{
   name: string;
+}> &
+  DRTStatus;
+
+export type MDNavbarButton = {
+  label: string;
+  url: string;
+  variant?: ButtonVariant;
+  external: boolean;
+} & MDWithTranslation<{
+  button_text: string;
 }> &
   DRTStatus;
 

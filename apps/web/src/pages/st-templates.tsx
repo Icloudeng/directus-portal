@@ -20,6 +20,7 @@ import {
   DumpHoverableMediaMenus,
   DumpLatestBlog,
   DumpLatestNews,
+  DumpLeftRightContent,
   DumpMarkdown,
   DumpMediaTabs,
   DumpNavAccordion,
@@ -39,6 +40,7 @@ import {
   getDumpChart,
 } from '@/app/models/dumps-templates';
 import { getServerSideTranslations } from '@/app/utils/server-translation';
+import Link from 'next/link';
 
 type Template = {
   title: string;
@@ -752,6 +754,26 @@ const templates: Template[] = [
       );
     },
   },
+  {
+    title: 'ST Left Right Contents',
+    content(title) {
+      return (
+        <section className='py-14 x-container'>
+          <h3
+            id={urlSafe(title)}
+            className='sticky top-8 z-50 bg-white p-2 inline-block text-primary-400 my-9'
+          >
+            {title}
+          </h3>
+          <Sts.ST_LeftRightContentsFC
+            items={DumpLeftRightContent}
+            sectionClass=''
+            sharedObject={{}}
+          />
+        </section>
+      );
+    },
+  },
 ];
 
 const grouped = templates.reduce((acc, template) => {
@@ -768,7 +790,9 @@ export default function Page() {
   return (
     <div>
       <div className='x-container'>
-        <h1>Templates ({templates.length})</h1>
+        <h1>
+          <Link href='/'>Templates ({templates.length})</Link>
+        </h1>
         <div className='flex my-3'>
           {grouped.map((list, i) => {
             return (

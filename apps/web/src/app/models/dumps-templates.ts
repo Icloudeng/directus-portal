@@ -14,6 +14,7 @@ import type {
   ST_HoverableMediaMenu,
   ST_LatestBlog,
   ST_LatestNew,
+  ST_LeftRightContent,
   ST_Markdown,
   ST_MediaTab,
   ST_NavAccordion,
@@ -2340,3 +2341,97 @@ export const getDumpChart = (type: ST_Chart['item']['type']): ST_Chart[] => {
     },
   ];
 };
+
+export const DumpLeftRightContent: ST_LeftRightContent[] = [
+  {
+    id: '92',
+    collection: 'ST_LeftRightContents',
+    item: {
+      image: {
+        id: 'a8424cc3-d347-4a9e-a929-7a938cbf3862',
+        type: 'image/jpeg',
+        src: 'http://127.0.0.1:8055/assets/a8424cc3-d347-4a9e-a929-7a938cbf3862?access_token=mdzjETutYM06z9ch56CmFkjIOWZCwraG',
+      },
+      image_svg:
+        '<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="sm:w-16 sm:h-16 w-10 h-10" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>',
+      read_more_url: '/readmore',
+      external: false,
+      translations: [
+        {
+          id: '2',
+          languages_code: {
+            code: 'en',
+            name: 'English',
+          },
+          title: 'Shooting Stars',
+          description:
+            'Multi-cloud skills are in high demand, so you can easily hop around between cloud computing providers.',
+        },
+      ],
+      id: '4d5553f6-92c9-4a02-b55b-d0e38f8e9a54',
+      status: 'published',
+      date_created: '2022-12-14T14:42:37.490Z',
+      date_updated: '2022-12-14T14:46:34.533Z',
+    },
+  },
+  {
+    id: '93',
+    collection: 'ST_LeftRightContents',
+    item: {
+      image: {
+        id: 'd38e3917-afb4-40bb-8c65-1a685efe7845',
+        type: 'image/jpeg',
+        src: 'http://127.0.0.1:8055/assets/d38e3917-afb4-40bb-8c65-1a685efe7845?access_token=mdzjETutYM06z9ch56CmFkjIOWZCwraG',
+      },
+      image_svg:
+        '<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="sm:w-16 sm:h-16 w-10 h-10" viewBox="0 0 24 24"><circle cx="6" cy="6" r="3"></circle><circle cx="6" cy="18" r="3"></circle><path d="M20 4L8.12 15.88M14.47 14.48L20 20M8.12 8.12L12 12"></path></svg>',
+      read_more_url: '/readmore',
+      external: false,
+      translations: [
+        {
+          id: '3',
+          languages_code: {
+            code: 'en',
+            name: 'English',
+          },
+          title: 'The Catalyzer',
+          description:
+            'Blue bottle crucifix vinyl post-ironic four dollar toast vegan taxidermy. Gastropub indxgo juice poutine.',
+        },
+      ],
+      id: 'eb9bb08b-4ff3-4108-bec4-619781a462c0',
+      status: 'published',
+      date_created: '2022-12-14T14:42:37.573Z',
+    },
+  },
+  {
+    id: '94',
+    collection: 'ST_LeftRightContents',
+    item: {
+      image: {
+        id: '57abfbfa-ce9c-428c-bfe0-af42ff0bd6cd',
+        type: 'image/jpeg',
+        src: 'http://127.0.0.1:8055/assets/57abfbfa-ce9c-428c-bfe0-af42ff0bd6cd?access_token=mdzjETutYM06z9ch56CmFkjIOWZCwraG',
+      },
+      image_svg:
+        '<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="sm:w-16 sm:h-16 w-10 h-10" viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>',
+      read_more_url: '/readmore',
+      external: false,
+      translations: [
+        {
+          id: '4',
+          languages_code: {
+            code: 'en',
+            name: 'English',
+          },
+          title: 'The 400 Blows',
+          description:
+            'Make yourself even more desirable to potential employers in the process.',
+        },
+      ],
+      id: '7049d469-3b4a-46cb-bea7-db5ca6c1e1bb',
+      status: 'published',
+      date_created: '2022-12-14T14:42:37.654Z',
+    },
+  },
+];

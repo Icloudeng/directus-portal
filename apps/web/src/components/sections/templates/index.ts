@@ -28,3 +28,4 @@ export * from './st-testimonials';
 export * from './st-timeline-ranges';
 export * from './st-transformed-image-carousels';
 export * from './st-values';
+export * from './st-left-right-contents';

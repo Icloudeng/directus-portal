@@ -15,6 +15,7 @@ function modelsWithTranslation<T>(models: T): WithTranslation<T> {
 
 export const CMS_MODELS = {
   ...modelsWithTranslation({
+    layout: "Layout",
     languages: "languages",
     topbar_links: "TopbarLinks",
     news: "News",
@@ -23,6 +24,7 @@ export const CMS_MODELS = {
     footer_link_items: "FooterLinkItems",
     company_details: "CompanyDetails",
     navbar_links: "NavbarLinks",
+    navbar_buttons: "NavbarButtons",
     pages: "Pages",
     home_hero: "HomeHero",
     home_sections: "HomeSections",
@@ -88,5 +90,6 @@ export const CMS_MODELS = {
     st_latest_news: "ST_LatestNews",
     st_latest_blog: "ST_LatestBlog",
     st_rich_text: "ST_RichText",
+    st_left_right_contents: "ST_LeftRightContents",
   } as const,
 };
