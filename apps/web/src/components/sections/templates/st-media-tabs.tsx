@@ -25,7 +25,7 @@ function HasPlayer({
     <div className='video-wrapper w-full mb-5'>
       <div
         className={`video-container relative w-full ${
-          !media?.src ? 'h-[15rem] ss:h-[27rem] md:h-[37rem]' : ''
+          !media?.src || media_url ? 'h-[15rem] ss:h-[27rem] md:h-[37rem]' : ''
         }  z-[1]`}
       >
         <HasMediaPlayer media={media} media_url={media_url} />

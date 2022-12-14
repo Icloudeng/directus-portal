@@ -2278,6 +2278,54 @@ collections:
       comment: null
       name: ST_LatestNews
       schema: public
+  - collection: ST_LeftRightContents
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: status
+      archive_value: archived
+      collapse: open
+      collection: ST_LeftRightContents
+      color: null
+      display_template: null
+      group: Section_Templates
+      hidden: true
+      icon: null
+      item_duplication_fields: null
+      note: null
+      singleton: false
+      sort: 51
+      sort_field: sort
+      translations: null
+      unarchive_value: draft
+    schema:
+      comment: null
+      name: ST_LeftRightContents
+      schema: public
+  - collection: ST_LeftRightContents_translations
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: ST_LeftRightContents_translations
+      color: null
+      display_template: null
+      group: Section_Templates
+      hidden: true
+      icon: import_export
+      item_duplication_fields: null
+      note: null
+      singleton: false
+      sort: 52
+      sort_field: null
+      translations: null
+      unarchive_value: null
+    schema:
+      comment: null
+      name: ST_LeftRightContents_translations
+      schema: public
   - collection: ST_Markdown
     meta:
       accountability: all
@@ -37030,6 +37078,751 @@ fields:
       schema: public
       table: ST_LatestNews
     type: uuid
+  - collection: ST_LeftRightContents
+    field: date_created
+    meta:
+      collection: ST_LeftRightContents
+      conditions: null
+      display: datetime
+      display_options:
+        relative: true
+      field: date_created
+      group: null
+      hidden: true
+      interface: datetime
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: 11
+      special:
+        - date-created
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      comment: null
+      data_type: timestamp with time zone
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: date_created
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: ST_LeftRightContents
+    type: timestamp
+  - collection: ST_LeftRightContents
+    field: date_updated
+    meta:
+      collection: ST_LeftRightContents
+      conditions: null
+      display: datetime
+      display_options:
+        relative: true
+      field: date_updated
+      group: null
+      hidden: true
+      interface: datetime
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: 13
+      special:
+        - date-updated
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      comment: null
+      data_type: timestamp with time zone
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: date_updated
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: ST_LeftRightContents
+    type: timestamp
+  - collection: ST_LeftRightContents
+    field: external
+    meta:
+      collection: ST_LeftRightContents
+      conditions: null
+      display: null
+      display_options: null
+      field: external
+      group: null
+      hidden: false
+      interface: boolean
+      note: null
+      options: null
+      readonly: false
+      required: true
+      sort: 7
+      special:
+        - cast-boolean
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      comment: null
+      data_type: boolean
+      default_value: false
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: external
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: ST_LeftRightContents
+    type: boolean
+  - collection: ST_LeftRightContents
+    field: id
+    meta:
+      collection: ST_LeftRightContents
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: 1
+      special:
+        - uuid
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: false
+      is_primary_key: true
+      is_unique: true
+      max_length: null
+      name: id
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: ST_LeftRightContents
+    type: uuid
+  - collection: ST_LeftRightContents
+    field: image
+    meta:
+      collection: ST_LeftRightContents
+      conditions: null
+      display: null
+      display_options: null
+      field: image
+      group: null
+      hidden: false
+      interface: file-image
+      note: null
+      options: null
+      readonly: false
+      required: true
+      sort: 3
+      special:
+        - file
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: directus_files
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: image
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: ST_LeftRightContents
+    type: uuid
+  - collection: ST_LeftRightContents
+    field: image_svg
+    meta:
+      collection: ST_LeftRightContents
+      conditions: null
+      display: null
+      display_options: null
+      field: image_svg
+      group: null
+      hidden: false
+      interface: input-code
+      note: null
+      options:
+        language: xml
+        lineWrapping: true
+      readonly: false
+      required: false
+      sort: 4
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: image_svg
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: ST_LeftRightContents
+    type: text
+  - collection: ST_LeftRightContents
+    field: notice-l8kx6m
+    meta:
+      collection: ST_LeftRightContents
+      conditions: null
+      display: null
+      display_options: null
+      field: notice-l8kx6m
+      group: null
+      hidden: false
+      interface: presentation-notice
+      note: null
+      options:
+        text: ST Left Right Contents
+      readonly: false
+      required: false
+      sort: 2
+      special:
+        - alias
+        - no-data
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema: null
+    type: alias
+  - collection: ST_LeftRightContents
+    field: read_more_url
+    meta:
+      collection: ST_LeftRightContents
+      conditions: null
+      display: null
+      display_options: null
+      field: read_more_url
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        trim: true
+      readonly: false
+      required: false
+      sort: 6
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      comment: null
+      data_type: character varying
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: 255
+      name: read_more_url
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: ST_LeftRightContents
+    type: string
+  - collection: ST_LeftRightContents
+    field: sort
+    meta:
+      collection: ST_LeftRightContents
+      conditions: null
+      display: null
+      display_options: null
+      field: sort
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 9
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: integer
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: sort
+      numeric_precision: 32
+      numeric_scale: 0
+      schema: public
+      table: ST_LeftRightContents
+    type: integer
+  - collection: ST_LeftRightContents
+    field: status
+    meta:
+      collection: ST_LeftRightContents
+      conditions: null
+      display: labels
+      display_options:
+        choices:
+          - text: $t:published
+            value: published
+            foreground: '#FFFFFF'
+            background: var(--primary)
+          - text: $t:draft
+            value: draft
+            foreground: '#18222F'
+            background: '#D3DAE4'
+          - text: $t:archived
+            value: archived
+            foreground: '#FFFFFF'
+            background: var(--warning)
+        showAsDot: true
+      field: status
+      group: null
+      hidden: false
+      interface: select-dropdown
+      note: null
+      options:
+        choices:
+          - text: $t:published
+            value: published
+          - text: $t:draft
+            value: draft
+          - text: $t:archived
+            value: archived
+      readonly: false
+      required: false
+      sort: 8
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: character varying
+      default_value: draft
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: false
+      is_primary_key: false
+      is_unique: false
+      max_length: 255
+      name: status
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: ST_LeftRightContents
+    type: string
+  - collection: ST_LeftRightContents
+    field: translations
+    meta:
+      collection: ST_LeftRightContents
+      conditions: null
+      display: null
+      display_options: null
+      field: translations
+      group: null
+      hidden: false
+      interface: translations
+      note: null
+      options:
+        userLanguage: true
+      readonly: false
+      required: true
+      sort: 5
+      special:
+        - translations
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema: null
+    type: alias
+  - collection: ST_LeftRightContents
+    field: user_created
+    meta:
+      collection: ST_LeftRightContents
+      conditions: null
+      display: user
+      display_options: null
+      field: user_created
+      group: null
+      hidden: true
+      interface: select-dropdown-m2o
+      note: null
+      options:
+        template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
+      readonly: true
+      required: false
+      sort: 10
+      special:
+        - user-created
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: directus_users
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: user_created
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: ST_LeftRightContents
+    type: uuid
+  - collection: ST_LeftRightContents
+    field: user_updated
+    meta:
+      collection: ST_LeftRightContents
+      conditions: null
+      display: user
+      display_options: null
+      field: user_updated
+      group: null
+      hidden: true
+      interface: select-dropdown-m2o
+      note: null
+      options:
+        template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
+      readonly: true
+      required: false
+      sort: 12
+      special:
+        - user-updated
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: directus_users
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: user_updated
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: ST_LeftRightContents
+    type: uuid
+  - collection: ST_LeftRightContents_translations
+    field: ST_LeftRightContents_id
+    meta:
+      collection: ST_LeftRightContents_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: ST_LeftRightContents_id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 4
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: ST_LeftRightContents
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: ST_LeftRightContents_id
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: ST_LeftRightContents_translations
+    type: uuid
+  - collection: ST_LeftRightContents_translations
+    field: description
+    meta:
+      collection: ST_LeftRightContents_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: description
+      group: null
+      hidden: false
+      interface: input-multiline
+      note: null
+      options:
+        softLength: 300
+        trim: true
+      readonly: false
+      required: true
+      sort: 3
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: description
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: ST_LeftRightContents_translations
+    type: text
+  - collection: ST_LeftRightContents_translations
+    field: id
+    meta:
+      collection: ST_LeftRightContents_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 1
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: integer
+      default_value: nextval('"ST_LeftRightContents_translations_id_seq"'::regclass)
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: true
+      is_generated: false
+      is_nullable: false
+      is_primary_key: true
+      is_unique: true
+      max_length: null
+      name: id
+      numeric_precision: 32
+      numeric_scale: 0
+      schema: public
+      table: ST_LeftRightContents_translations
+    type: integer
+  - collection: ST_LeftRightContents_translations
+    field: languages_code
+    meta:
+      collection: ST_LeftRightContents_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: languages_code
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 5
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: character varying
+      default_value: null
+      foreign_key_column: code
+      foreign_key_schema: public
+      foreign_key_table: languages
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: 255
+      name: languages_code
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: ST_LeftRightContents_translations
+    type: string
+  - collection: ST_LeftRightContents_translations
+    field: title
+    meta:
+      collection: ST_LeftRightContents_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: title
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        trim: true
+      readonly: false
+      required: true
+      sort: 2
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: character varying
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: 255
+      name: title
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: ST_LeftRightContents_translations
+    type: string
   - collection: ST_Markdown
     field: date_created
     meta:
@@ -51124,6 +51917,7 @@ relations:
         - ST_HoverableMediaMenus
         - ST_LatestBlog
         - ST_LatestNews
+        - ST_LeftRightContents
         - ST_Markdown
         - ST_MediaTabs
         - ST_NavAccordions
@@ -52990,6 +53784,116 @@ relations:
       on_delete: NO ACTION
       on_update: NO ACTION
       table: ST_LatestNews
+  - collection: ST_LeftRightContents
+    field: image
+    meta:
+      junction_field: null
+      many_collection: ST_LeftRightContents
+      many_field: image
+      one_allowed_collections: null
+      one_collection: directus_files
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    related_collection: directus_files
+    schema:
+      column: image
+      constraint_name: st_leftrightcontents_image_foreign
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: directus_files
+      on_delete: SET NULL
+      on_update: NO ACTION
+      table: ST_LeftRightContents
+  - collection: ST_LeftRightContents
+    field: user_created
+    meta:
+      junction_field: null
+      many_collection: ST_LeftRightContents
+      many_field: user_created
+      one_allowed_collections: null
+      one_collection: directus_users
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    related_collection: directus_users
+    schema:
+      column: user_created
+      constraint_name: st_leftrightcontents_user_created_foreign
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: directus_users
+      on_delete: NO ACTION
+      on_update: NO ACTION
+      table: ST_LeftRightContents
+  - collection: ST_LeftRightContents
+    field: user_updated
+    meta:
+      junction_field: null
+      many_collection: ST_LeftRightContents
+      many_field: user_updated
+      one_allowed_collections: null
+      one_collection: directus_users
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    related_collection: directus_users
+    schema:
+      column: user_updated
+      constraint_name: st_leftrightcontents_user_updated_foreign
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: directus_users
+      on_delete: NO ACTION
+      on_update: NO ACTION
+      table: ST_LeftRightContents
+  - collection: ST_LeftRightContents_translations
+    field: ST_LeftRightContents_id
+    meta:
+      junction_field: languages_code
+      many_collection: ST_LeftRightContents_translations
+      many_field: ST_LeftRightContents_id
+      one_allowed_collections: null
+      one_collection: ST_LeftRightContents
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: translations
+      sort_field: null
+    related_collection: ST_LeftRightContents
+    schema:
+      column: ST_LeftRightContents_id
+      constraint_name: st_leftrightcontents_translations_st_leftr__5b560c91_foreign
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: ST_LeftRightContents
+      on_delete: SET NULL
+      on_update: NO ACTION
+      table: ST_LeftRightContents_translations
+  - collection: ST_LeftRightContents_translations
+    field: languages_code
+    meta:
+      junction_field: ST_LeftRightContents_id
+      many_collection: ST_LeftRightContents_translations
+      many_field: languages_code
+      one_allowed_collections: null
+      one_collection: languages
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    related_collection: languages
+    schema:
+      column: languages_code
+      constraint_name: st_leftrightcontents_translations_languages_code_foreign
+      foreign_key_column: code
+      foreign_key_schema: public
+      foreign_key_table: languages
+      on_delete: SET NULL
+      on_update: NO ACTION
+      table: ST_LeftRightContents_translations
   - collection: ST_Markdown
     field: user_created
     meta:

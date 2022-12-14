@@ -41,7 +41,7 @@ export const Footer = () => {
                   hasFooterLinks ? 'justify-center' : 'justify-start'
                 } gap-20 sm:flex-[2.7] flex-[3.6] ml-1 xs:ml-3 px-4 `}
               >
-                {footer_links.map(({ id, links, translations }) => (
+                {footer_links?.map(({ id, links, translations }) => (
                   <FooterItemLinks
                     key={id}
                     title={translations?.name || ''}

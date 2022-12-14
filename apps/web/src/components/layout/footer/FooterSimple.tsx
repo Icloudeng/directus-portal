@@ -37,7 +37,7 @@ export const FooterSimple = () => {
               {FooterLinks.map((link) => {
                 const { translations } = mut(link, locale);
                 return (
-                  <div className='lg:w-1/6 md:w-1/2 w-full px-4'>
+                  <div className='lg:w-1/6 md:w-1/2 w-full px-4' key={link.id}>
                     <h2 className='title-font font-medium text-primary-400 trackingWidest text-sm mb-3'>
                       {translations?.name}
                     </h2>
@@ -45,7 +45,7 @@ export const FooterSimple = () => {
                       {link.links.map((item) => {
                         const { translations } = mut(item, locale);
                         return (
-                          <li>
+                          <li key={item.id}>
                             <UnstyledLink
                               href={item.url}
                               target={item.external ? '_blank' : undefined}

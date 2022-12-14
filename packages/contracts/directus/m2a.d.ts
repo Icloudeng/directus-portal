@@ -357,6 +357,20 @@ export type ST_RichText = MDHasM2A<
   ST_V<"st_rich_text">
 >;
 
+export type ST_LeftRightContent = MDHasM2A<
+  {
+    image: MDWithAsset;
+    image_svg?: string;
+    read_more_url?: string;
+    external: boolean;
+  } & MDWithTranslation<{
+    title: string;
+    description: string;
+  }> &
+    DRTStatus,
+  ST_V<"st_left_right_contents">
+>;
+
 //------------------- Page Sections --------------------//
 export type PS_Content =
   | ST_Value
@@ -388,7 +402,8 @@ export type PS_Content =
   | ST_Chart
   | ST_LatestNew
   | ST_LatestBlog
-  | ST_RichText;
+  | ST_RichText
+  | ST_LeftRightContent;
 
 export type M2APageSection = MDHasM2A<
   {
