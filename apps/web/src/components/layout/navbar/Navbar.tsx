@@ -54,7 +54,7 @@ export const Navbar = ({ whiteNav }: { whiteNav?: boolean }) => {
             <NavBarLinks />
           </div>
           <div className='hidden nav__buttons md:flex items-center flex-1 xl:flex-0 justify-end gap-5 ml-3'>
-            {NavbarButtons.map((button) => {
+            {NavbarButtons?.map((button) => {
               const { translations } = mut(button, locale);
               return (
                 <ButtonLink
