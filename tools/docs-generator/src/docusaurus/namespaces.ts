@@ -129,7 +129,7 @@ export async function generateNamespacesContent(
     position: number
   ) {
     const parent = mutableParent;
-    const itype = page.pages.length > 0 ? "parent" : "child";
+    const itype = (page.pages || []).length > 0 ? "parent" : "child";
 
     // Put page content
     const itemTree: NamespacesContentTree = {
@@ -202,7 +202,7 @@ export async function generateNamespacesContent(
     /**
      * Contruct page pages tree
      */
-    page.pages.forEach((npage, index) => {
+    (page.pages || []).forEach((npage, index) => {
       constructPageContentTree(npage, itemTree, index + 1);
     });
 
@@ -228,7 +228,7 @@ export async function generateNamespacesContent(
     /**
      * Contruct namespace pages tree
      */
-    nsp.pages.forEach((page, index) => {
+    (nsp.pages || []).forEach((page, index) => {
       constructPageContentTree(page, itemTree, index + 1);
     });
 
@@ -310,6 +310,7 @@ export async function constructNamespacePagesTree(
 ) {
   const new_pages = pagesById(pages);
   return await map(namespaces, async (namespace) => {
+    namespace.pages = namespace.pages || [];
     await forEach(namespace.pages, async (page) => {
       delete new_pages[page.id];
       await constructPagesTree(page, new_pages);

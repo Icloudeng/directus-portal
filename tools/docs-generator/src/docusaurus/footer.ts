@@ -70,6 +70,8 @@ export async function generateFooterContent(
    * Generate the footer links content
    */
   links.forEach((link) => {
+    link.items = link.items || [];
+
     let metaLink: FooterLinks[number] = {
       title: transKey(link.id, "name"), // the translation key (id + field name)
       items: [],

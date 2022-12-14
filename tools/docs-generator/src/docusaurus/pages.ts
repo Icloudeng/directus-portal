@@ -24,14 +24,15 @@ export function pagesById(pages: MDDCPage[]) {
  * @returns
  */
 export async function constructPagesTree(parent: MDDCPage, pages: PageById) {
+  parent.pages = parent.pages || [];
   await forEach(parent.pages, async (page, i) => {
     const $page = pages[page.id];
     delete pages[page.id];
     if ($page) {
-      parent.pages[i] = $page;
+      parent.pages![i] = $page;
       await constructPagesTree($page, pages);
     } else {
-      parent.pages.splice(i, 1);
+      parent.pages!.splice(i, 1);
     }
   });
   return parent;
