@@ -15077,32 +15077,6 @@ fields:
     schema: null
     type: alias
   - collection: Layout
-    field: Footer_Get_Started
-    meta:
-      collection: Layout
-      conditions: null
-      display: null
-      display_options: null
-      field: Footer_Get_Started
-      group: null
-      hidden: false
-      interface: group-detail
-      note: null
-      options: null
-      readonly: false
-      required: false
-      sort: 4
-      special:
-        - alias
-        - group
-        - no-data
-      translations: null
-      validation: null
-      validation_message: null
-      width: full
-    schema: null
-    type: alias
-  - collection: Layout
     field: Site
     meta:
       collection: Layout
@@ -15118,6 +15092,32 @@ fields:
       readonly: false
       required: false
       sort: 2
+      special:
+        - alias
+        - group
+        - no-data
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema: null
+    type: alias
+  - collection: Layout
+    field: Top_Footer
+    meta:
+      collection: Layout
+      conditions: null
+      display: null
+      display_options: null
+      field: Top_Footer
+      group: null
+      hidden: false
+      interface: group-detail
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 4
       special:
         - alias
         - group
@@ -15275,48 +15275,6 @@ fields:
       table: Layout
     type: timestamp
   - collection: Layout
-    field: footer_get_started_button_link
-    meta:
-      collection: Layout
-      conditions: null
-      display: null
-      display_options: null
-      field: footer_get_started_button_link
-      group: Footer_Get_Started
-      hidden: false
-      interface: input
-      note: null
-      options:
-        trim: true
-      readonly: false
-      required: false
-      sort: 3
-      special: null
-      translations: null
-      validation: null
-      validation_message: null
-      width: full
-    schema:
-      comment: null
-      data_type: character varying
-      default_value: null
-      foreign_key_column: null
-      foreign_key_schema: null
-      foreign_key_table: null
-      generation_expression: null
-      has_auto_increment: false
-      is_generated: false
-      is_nullable: true
-      is_primary_key: false
-      is_unique: false
-      max_length: 255
-      name: footer_get_started_button_link
-      numeric_precision: null
-      numeric_scale: null
-      schema: public
-      table: Layout
-    type: string
-  - collection: Layout
     field: id
     meta:
       collection: Layout
@@ -15395,48 +15353,6 @@ fields:
       is_unique: false
       max_length: null
       name: show_footer_contacts
-      numeric_precision: null
-      numeric_scale: null
-      schema: public
-      table: Layout
-    type: boolean
-  - collection: Layout
-    field: show_footer_get_started
-    meta:
-      collection: Layout
-      conditions: null
-      display: null
-      display_options: null
-      field: show_footer_get_started
-      group: Footer_Get_Started
-      hidden: false
-      interface: boolean
-      note: null
-      options: null
-      readonly: false
-      required: true
-      sort: 1
-      special:
-        - cast-boolean
-      translations: null
-      validation: null
-      validation_message: null
-      width: full
-    schema:
-      comment: null
-      data_type: boolean
-      default_value: true
-      foreign_key_column: null
-      foreign_key_schema: null
-      foreign_key_table: null
-      generation_expression: null
-      has_auto_increment: false
-      is_generated: false
-      is_nullable: true
-      is_primary_key: false
-      is_unique: false
-      max_length: null
-      name: show_footer_get_started
       numeric_precision: null
       numeric_scale: null
       schema: public
@@ -15527,6 +15443,48 @@ fields:
       table: Layout
     type: boolean
   - collection: Layout
+    field: show_top_footer
+    meta:
+      collection: Layout
+      conditions: null
+      display: null
+      display_options: null
+      field: show_top_footer
+      group: Top_Footer
+      hidden: false
+      interface: boolean
+      note: null
+      options: null
+      readonly: false
+      required: true
+      sort: 2
+      special:
+        - cast-boolean
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: boolean
+      default_value: true
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: show_top_footer
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: Layout
+    type: boolean
+  - collection: Layout
     field: show_topbar
     meta:
       collection: Layout
@@ -15582,6 +15540,27 @@ fields:
       note: null
       options:
         opacity: true
+        presets:
+          - name: Default
+            color: '#313B4D'
+          - name: Purple
+            color: '#6644FF'
+          - name: Blue
+            color: '#3399FF'
+          - name: Green
+            color: '#2ECDA7'
+          - name: Yellow
+            color: '#FFC23B'
+          - name: Orange
+            color: '#FFA439'
+          - name: Red
+            color: '#E35169'
+          - name: Black
+            color: '#18222F'
+          - name: Gray
+            color: '#A2B5CD'
+          - name: White
+            color: '#FFFFFF'
       readonly: false
       required: true
       sort: 1
@@ -15618,7 +15597,7 @@ fields:
       display: null
       display_options: null
       field: translations
-      group: Footer_Get_Started
+      group: Top_Footer
       hidden: false
       interface: translations
       note: null
@@ -15626,7 +15605,7 @@ fields:
         userLanguage: true
       readonly: false
       required: false
-      sort: 2
+      sort: 3
       special:
         - translations
       translations: null
@@ -15763,21 +15742,78 @@ fields:
       table: Layout_translations
     type: uuid
   - collection: Layout_translations
-    field: footer_get_started_texts
+    field: buttons
     meta:
       collection: Layout_translations
       conditions: null
       display: null
       display_options: null
-      field: footer_get_started_texts
+      field: buttons
       group: null
       hidden: false
-      interface: tags
+      interface: list
       note: null
-      options: null
+      options:
+        addLabel: Create Button
+        fields:
+          - field: name
+            name: name
+            type: string
+            meta:
+              field: name
+              width: full
+              type: string
+              interface: input
+              options:
+                placeholder: Button Name
+                trim: true
+                softLength: 100
+          - field: url
+            name: url
+            type: string
+            meta:
+              field: url
+              width: half
+              type: string
+              interface: input
+              options:
+                placeholder: URL
+                trim: true
+          - field: external
+            name: external
+            type: boolean
+            meta:
+              field: external
+              width: half
+              type: boolean
+              interface: boolean
+          - field: variant
+            name: variant
+            type: string
+            meta:
+              field: variant
+              width: full
+              type: string
+              interface: select-dropdown
+              note: Button Variant
+              options:
+                choices:
+                  - text: Text
+                    value: text
+                  - text: Primary
+                    value: primary
+                  - text: Outline
+                    value: outline
+                  - text: Ghost
+                    value: ghost
+                  - text: Light
+                    value: light
+                  - text: Dark
+                    value: dark
+                allowNone: true
       readonly: false
-      required: true
-      sort: 2
+      required: false
+      sort: 3
       special:
         - cast-json
       translations: null
@@ -15787,9 +15823,7 @@ fields:
     schema:
       comment: null
       data_type: json
-      default_value:
-        - Start your innovation
-        - today with cloud
+      default_value: []
       foreign_key_column: null
       foreign_key_schema: null
       foreign_key_table: null
@@ -15800,54 +15834,12 @@ fields:
       is_primary_key: false
       is_unique: false
       max_length: null
-      name: footer_get_started_texts
+      name: buttons
       numeric_precision: null
       numeric_scale: null
       schema: public
       table: Layout_translations
     type: json
-  - collection: Layout_translations
-    field: footer_leading_text_get_started_button
-    meta:
-      collection: Layout_translations
-      conditions: null
-      display: null
-      display_options: null
-      field: footer_leading_text_get_started_button
-      group: null
-      hidden: false
-      interface: input
-      note: null
-      options:
-        trim: true
-      readonly: false
-      required: false
-      sort: 3
-      special: null
-      translations: null
-      validation: null
-      validation_message: null
-      width: full
-    schema:
-      comment: null
-      data_type: character varying
-      default_value: Take first step right now
-      foreign_key_column: null
-      foreign_key_schema: null
-      foreign_key_table: null
-      generation_expression: null
-      has_auto_increment: false
-      is_generated: false
-      is_nullable: true
-      is_primary_key: false
-      is_unique: false
-      max_length: 255
-      name: footer_leading_text_get_started_button
-      numeric_precision: null
-      numeric_scale: null
-      schema: public
-      table: Layout_translations
-    type: string
   - collection: Layout_translations
     field: id
     meta:
@@ -15930,6 +15922,70 @@ fields:
       schema: public
       table: Layout_translations
     type: string
+  - collection: Layout_translations
+    field: titles
+    meta:
+      collection: Layout_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: titles
+      group: null
+      hidden: false
+      interface: list
+      note: null
+      options:
+        addLabel: Create Title
+        fields:
+          - field: title
+            name: title
+            type: string
+            meta:
+              field: title
+              width: full
+              type: string
+              interface: input
+              options:
+                trim: true
+          - field: color
+            name: color
+            type: string
+            meta:
+              field: color
+              width: full
+              type: string
+              interface: select-color
+              options:
+                opacity: true
+      readonly: false
+      required: false
+      sort: 2
+      special:
+        - cast-json
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: json
+      default_value: []
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: titles
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: Layout_translations
+    type: json
   - collection: Listmonk
     field: admin_password
     meta:

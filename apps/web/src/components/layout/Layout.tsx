@@ -1,3 +1,4 @@
+import { useSharedData } from '@/app/store';
 import { Footer } from './footer/Footer';
 import Header from './Header';
 import { MobileMenu } from './mobileMenu/MobileMenu';
@@ -9,10 +10,12 @@ export default function Layout({
   children: React.ReactNode;
   whiteNav?: boolean;
 }) {
+  const { Layout } = useSharedData();
   return (
     <div
       id='layout__container'
-      className='min-h-screen min-w-full flex flex-col bg-gradient-to-b from-[#353f53] to-darkBg pt-36'
+      className='min-h-screen min-w-full flex flex-col bg-gradient-to-b pt-36'
+      style={{ backgroundColor: Layout?.site_background_color || '#313B4D' }}
     >
       <Header whiteNav={whiteNav} />
       {whiteNav && <div className='h-14 sd:h-24 bg-white -mt-[8rem] xl:h-32' />}

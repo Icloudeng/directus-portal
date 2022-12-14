@@ -6,6 +6,7 @@ import type {
   MDWithAsset,
   MDWithPoint,
   MDWithTranslation,
+  RepeaterBtn,
 } from "./base";
 import { CMS_MODELS } from "./constants";
 import { M2APageSection, M2APageSectionReusable } from "./m2a";
@@ -18,8 +19,7 @@ export type MDLayout = {
   show_footer_contacts: boolean;
   show_footer_links: boolean;
   show_footer_mailing_subscription: boolean;
-  show_footer_get_started: boolean;
-  footer_get_started_button_link: string;
+  show_top_footer: boolean;
   bottom_footer: (
     | "company_name"
     | "terms_services"
@@ -28,10 +28,12 @@ export type MDLayout = {
     | "payment_modes"
   )[];
 } & MDWithTranslation<{
-  footer_get_started_texts: string[];
-  footer_leading_text_get_started_button?: string;
+  titles: { title: string; color: string }[];
+  buttons: (Omit<RepeaterBtn, "variant"> & {
+    variant?: ButtonVariant | "text";
+  })[];
 }> &
-  Omit<MDNewsBase, "status">;
+  Omit<DRTStatus, "status">;
 
 // --------------- language model types -------------
 

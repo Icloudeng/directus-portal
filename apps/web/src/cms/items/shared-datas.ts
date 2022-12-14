@@ -36,12 +36,11 @@ const gql_query = jsonToGraphQLQuery({
       show_footer_contacts: true,
       show_footer_links: true,
       show_footer_mailing_subscription: true,
-      show_footer_get_started: true,
       bottom_footer: true,
-      footer_get_started_button_link: true,
+      show_top_footer: true,
       ...qWithTranslations({
-        footer_get_started_texts: true,
-        footer_leading_text_get_started_button: true,
+        titles: true,
+        buttons: true,
       }),
     },
     [CMS_MODELS.languages]: {
