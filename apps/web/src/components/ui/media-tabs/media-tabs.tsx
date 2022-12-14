@@ -24,21 +24,23 @@ export function MediaTabs({ children }: PropsWithChildren) {
 
   return (
     <div className='w-full flex flex-col items-center gap-5'>
-      <div className='tab-container flex items-center justify-center mb-3 flex-wrap px-10 gap-3'>
-        {titles.map(({ title, index }) => {
-          return (
-            <Button
-              key={index}
-              onClick={() => setActive(index)}
-              className={`btn-tab-direction ${
-                index === active ? 'btn-tab-active' : ''
-              } py-3 font-semibold rounded-md border-none bg-[#f5f7fa] text-dark hover:bg-primary-400`}
-            >
-              {title}
-            </Button>
-          );
-        })}
-      </div>
+      {titles.length > 1 && (
+        <div className='tab-container flex items-center justify-center mb-3 flex-wrap px-10 gap-3'>
+            {titles.map(({ title, index }) => {
+                return (
+                    <Button
+                        key={index}
+                        onClick={() => setActive(index)}
+                        className={`btn-tab-direction ${
+                            index === active ? 'btn-tab-active' : ''
+                        } py-3 font-semibold rounded-md border-none bg-[#f5f7fa] text-dark hover:bg-primary-400`}
+                    >
+                    {title}
+                    </Button>
+                );
+            })}
+        </div>
+      )}
 
       <div className='w-full p-7 bg-[#f5f7fa] rounded-3xl'>{newChildren}</div>
     </div>
