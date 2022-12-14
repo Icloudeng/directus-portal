@@ -408,7 +408,7 @@ export type MDCampaign = {
 export type MDDCNamespace = {
   label: string;
   url: string;
-  pages: MDDCPage[];
+  pages?: MDDCPage[];
 } & MDWithTranslation<{
   name: string;
 }> &
@@ -419,7 +419,7 @@ export type MDDCPage = {
   parent_page?: MDDCPage;
   label: string;
   show_content: boolean;
-  pages: MDDCPage[];
+  pages?: MDDCPage[];
 } & MDWithTranslation<{
   name: string;
   description?: string;
@@ -437,7 +437,7 @@ type MDDCFooterLinkItem = {
 
 type MDDCFooterLink = {
   label: string;
-  items: MDDCFooterLinkItem[];
+  items?: MDDCFooterLinkItem[];
 } & MDWithTranslation<{
   name: string;
 }> &
@@ -445,7 +445,7 @@ type MDDCFooterLink = {
 
 export type MDDCFooter = {
   copyright?: string;
-  links: MDDCFooterLink[];
+  links?: MDDCFooterLink[];
 } & Omit<DRTStatus, "id" | "status">;
 
 export type MDDCLog = {

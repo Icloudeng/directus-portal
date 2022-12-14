@@ -174,7 +174,7 @@ export async function getItemsQuery() {
 
   if (res.data) {
     res.data.namespaces = res.data.namespaces.filter(
-      (nsp) => nsp.pages.length > 0
+      (nsp) => nsp.pages && nsp.pages.length > 0
     );
   }
 
