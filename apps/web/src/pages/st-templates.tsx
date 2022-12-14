@@ -793,7 +793,7 @@ export default function Page() {
         <h1>
           <Link href='/'>Templates ({templates.length})</Link>
         </h1>
-        <div className='flex my-3'>
+        <div className='flex flex-wrap my-3'>
           {grouped.map((list, i) => {
             return (
               <ul key={i} className='mr-6 mb-12'>
