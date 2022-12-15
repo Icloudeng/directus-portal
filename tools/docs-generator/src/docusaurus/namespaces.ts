@@ -39,10 +39,9 @@ export type NamespacesContentTree = {
   type: "parent" | "child"; // this can be tranducted as "folder" (parent) | "Child" (file)
   path: string; // parent path tree
   slug: string;
+  rootSlug: string;
   label?: string;
-  treeId: string;
-  pageId: ID;
-  rootId: ID;
+  id: ID;
   position?: number;
   show_content: boolean;
   content?: ContentTreeTrans;
@@ -69,7 +68,7 @@ function getFirstChildLink(
     return {
       type: "category",
       slug: contentTree.slug,
-      pathId: contentTree.path + `${contentTree.treeId}-overview`,
+      pathId: contentTree.path + `${contentTree.id}-overview`,
     };
   }
 
@@ -138,9 +137,6 @@ export async function generateNamespacesContent(
 
     const parent = mutableParent;
     const itype = (page.pages || []).length > 0 ? "parent" : "child";
-    const rootId = mutableParent.rootId;
-    const treeId = `${rootId}-${page.id}`;
-    const pageId = page.id;
 
     // Slugs
     const introSlug =
@@ -152,30 +148,37 @@ export async function generateNamespacesContent(
       ? parent.slug.slice(0, -1)
       : parent.slug;
 
+    const rootSlug = mutableParent.rootSlug;
+
     // Put page content
     const itemTree: NamespacesContentTree = {
       type: itype, // if page has children set it as parent
-      path: `${parent.path + treeId}/`, // this should end with /
-      treeId,
-      pageId,
-      rootId,
+      path: `${parent.path + page.id}/`, // this should end with /
+      id: page.id,
       label: page.label,
+      rootSlug,
       slug: `${
         // if the current page has parent type and it has show to content, then place the page slug at root
-        itype === "parent" && page.show_content ? "" : parentSlug
+        itype === "parent" && page.show_content
+          ? rootSlug === "/"
+            ? ""
+            : rootSlug
+          : parentSlug
       }${introSlug}`, // slug tree (if the page label is intro then consider it as root page)
       show_content: page.show_content,
       position,
       content: langs.reduce((acc, lang) => {
         const data = getTranslation(page.translations, lang);
+        const rootId = parent.path.split("/")[0];
+
         /**
          * Translate link category label
          */
         if (itype === "parent") {
-          const name_key = transKey(pageId, "name");
+          const name_key = transKey(page.id, "name");
           translations[lang][`sidebar.${rootId}.category.${name_key}`] = {
             message: data.name || "",
-            description: `The sidebar category ${pageId} in sidebar docs`,
+            description: `The sidebar category ${page.id} in sidebar docs`,
           };
         }
 
@@ -238,9 +241,8 @@ export async function generateNamespacesContent(
       type: "parent",
       path: `${nsp.id}/`, // this should end with / (slash)
       slug: `${nsp.url}`,
-      treeId: `${nsp.id}`,
-      rootId: nsp.id,
-      pageId: nsp.id,
+      rootSlug: `${nsp.url}`,
+      id: nsp.id,
       show_content: false,
       children: [],
     };
@@ -293,8 +295,7 @@ export async function generateNamespacesContent(
     return {
       type: "category",
       // we'are using page label as translation key for generated-index
-      label:
-        hasContent || !item.label ? transKey(item.pageId, "name") : item.label,
+      label: hasContent || !item.label ? transKey(item.id, "name") : item.label,
       link: hasContent
         ? {
             type: "doc",
@@ -310,7 +311,7 @@ export async function generateNamespacesContent(
   };
 
   tree.forEach((item) => {
-    sidebars[item.treeId] = item.children.map((child) => {
+    sidebars[item.id] = item.children.map((child) => {
       return constructSidebarTree(child);
     });
   });

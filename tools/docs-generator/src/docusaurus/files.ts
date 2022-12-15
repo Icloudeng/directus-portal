@@ -290,7 +290,7 @@ async function storeNamespacesContent(
     const itemContent = item.content ? item.content[lang] : undefined;
     const meta = {
       sidebar_position: params.position || item.position,
-      id: params.id || item.treeId,
+      id: params.id || item.id,
       slug: item.slug,
       ...(itemContent
         ? {
@@ -332,7 +332,7 @@ async function storeNamespacesContent(
         /**
          * Create overview markdown file if has show content to true
          */
-        const overviewFileId = `${item.treeId}-overview`;
+        const overviewFileId = `${item.id}-overview`;
         if (item.show_content) {
           const overviewText =
             docMeta(item, lang, {
