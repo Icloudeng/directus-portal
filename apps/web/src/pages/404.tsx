@@ -18,7 +18,7 @@ export default function NotFoundPage() {
     const oldPathname = iwindow.location.pathname;
     const detect = function () {
       const currentPathname = iwindow.location.pathname;
-      if (oldPathname !== currentPathname) {
+      if (oldPathname !== currentPathname && !currentPathname.startsWith('/custom-404')) {
         window.clearInterval(timerRef.current);
         route.push(currentPathname);
         setFased(true);
