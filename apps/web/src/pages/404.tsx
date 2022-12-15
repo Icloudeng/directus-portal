@@ -5,10 +5,22 @@ import { useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 
 export default function NotFoundPage() {
-  const ref = useRef<HTMLIFrameElement | null>(null);
   const route = useRouter();
-  const timerRef = useRef(0);
+
+  return (
+    <>
+      <Seo templateTitle='Not Found' />
+      {typeof window !== 'undefined' && <Content key={route.asPath} />}
+    </>
+  );
+}
+
+function Content() {
+  const ref = useRef<HTMLIFrameElement | null>(null);
   const [faced] = useState(false);
+  const route = useRouter();
+
+  const timerRef = useRef(0);
 
   useEffect(() => {
     if (!ref.current) return;
@@ -18,10 +30,7 @@ export default function NotFoundPage() {
     const oldPathname = iwindow.location.pathname;
     const detect = function () {
       const currentPathname = iwindow.location.pathname;
-      if (
-        oldPathname !== currentPathname &&
-        !currentPathname.startsWith('/custom-404')
-      ) {
+      if (oldPathname !== currentPathname) {
         window.clearInterval(timerRef.current);
         route.push(currentPathname);
       }
@@ -35,9 +44,6 @@ export default function NotFoundPage() {
 
   return (
     <>
-      <Seo templateTitle='Not Found' />
-
-
       {faced && <div className='fixed inset-0 h-full w-full z-20' />}
       <iframe
         src='/custom-404?iframed=true'
