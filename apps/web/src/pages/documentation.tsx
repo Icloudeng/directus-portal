@@ -1,12 +1,8 @@
-export default function Page() {
-  return <></>;
-}
+import { useEffect } from 'react'
 
-export async function getServerSideProps() {
-  return {
-    props: {},
-    redirect: {
-      destination: '/documentation', // redirectto docusaurus base url
-    },
-  };
+export default function Page() {
+    useEffect(() => {
+        window.location.replace(window.location.origin + '/documentation')
+    }, [])
+    return <></>;
 }
