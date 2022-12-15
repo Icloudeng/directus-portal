@@ -36,7 +36,7 @@ export default function NotFoundPage() {
       <Seo templateTitle='Not Found' />
       {faced && <div className='fixed inset-0 h-full w-full z-20' />}
       <iframe
-        src='custom-404'
+        src='/custom-404'
         ref={ref}
         className='fixed inset-0 h-full w-full z-10'
       />
