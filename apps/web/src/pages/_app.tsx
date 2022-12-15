@@ -10,6 +10,7 @@ import NextProgress from '@/components/ui/next-progress';
 
 import { ISharedData, SharedDataProvider } from '@/app/store';
 import { getGqlSharedData } from '@/cms/items';
+import { useRouter } from 'next/router';
 
 function MyApp({
   Component,
@@ -26,10 +27,24 @@ function MyApp({
           minimum: 0.3,
         }}
       />
-      <MatomoNext />
-      <ChatwootNext />
+      <AppServices />
       <Component {...pageProps} />
     </SharedDataProvider>
+  );
+}
+
+function AppServices() {
+  const { query } = useRouter();
+
+  if (query.iframed) {
+    return <></>;
+  }
+
+  return (
+    <>
+      <MatomoNext />
+      <ChatwootNext />
+    </>
   );
 }
 

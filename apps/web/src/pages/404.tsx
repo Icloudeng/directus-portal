@@ -18,7 +18,10 @@ export default function NotFoundPage() {
     const oldPathname = iwindow.location.pathname;
     const detect = function () {
       const currentPathname = iwindow.location.pathname;
-      if (oldPathname !== currentPathname && !currentPathname.startsWith('/custom-404')) {
+      if (
+        oldPathname !== currentPathname &&
+        !currentPathname.startsWith('/custom-404')
+      ) {
         window.clearInterval(timerRef.current);
         route.push(currentPathname);
       }
@@ -35,7 +38,7 @@ export default function NotFoundPage() {
       <Seo templateTitle='Not Found' />
       {faced && <div className='fixed inset-0 h-full w-full z-20' />}
       <iframe
-        src='/custom-404'
+        src='/custom-404?iframed=true'
         ref={ref}
         className='fixed inset-0 h-full w-full z-10'
       />
