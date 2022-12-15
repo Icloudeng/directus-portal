@@ -8,7 +8,7 @@ export default function NotFoundPage() {
   const ref = useRef<HTMLIFrameElement | null>(null);
   const route = useRouter();
   const timerRef = useRef(0);
-  const [faced, setFased] = useState(false);
+  const [faced] = useState(false);
 
   useEffect(() => {
     if (!ref.current) return;
@@ -18,10 +18,12 @@ export default function NotFoundPage() {
     const oldPathname = iwindow.location.pathname;
     const detect = function () {
       const currentPathname = iwindow.location.pathname;
-      if (oldPathname !== currentPathname && !currentPathname.startsWith('/custom-404')) {
+      if (
+        oldPathname !== currentPathname &&
+        !currentPathname.startsWith('/custom-404')
+      ) {
         window.clearInterval(timerRef.current);
         route.push(currentPathname);
-        setFased(true);
       }
     };
 
@@ -36,7 +38,7 @@ export default function NotFoundPage() {
       <Seo templateTitle='Not Found' />
       {faced && <div className='fixed inset-0 h-full w-full z-20' />}
       <iframe
-        src='/custom-404'
+        src='/custom-404?iframed=true'
         ref={ref}
         className='fixed inset-0 h-full w-full z-10'
       />
