@@ -137,6 +137,16 @@ export async function generateNamespacesContent(
     const parent = mutableParent;
     const itype = (page.pages || []).length > 0 ? "parent" : "child";
 
+    // Slugs
+    const introSlug =
+      itype === "child" && page.label.toLowerCase() === "intro"
+        ? "/"
+        : "/" + slug(page.label);
+
+    const parentSlug = parent.slug.endsWith("/")
+      ? parent.slug.slice(0, -1)
+      : parent.slug;
+
     // Put page content
     const itemTree: NamespacesContentTree = {
       type: itype, // if page has children set it as parent
@@ -144,12 +154,9 @@ export async function generateNamespacesContent(
       id: page.id,
       label: page.label,
       slug: `${
-        parent.slug.endsWith("/") ? parent.slug.slice(0, -1) : parent.slug
-      }${
-        itype === "child" && page.label.toLowerCase() === "intro"
-          ? "/"
-          : "/" + slug(page.label)
-      }`, // slug tree (if the page label is intro then consider it as root page)
+        // if the current page has parent type and it has show to content, then place the page slug at root
+        itype === "parent" && page.show_content ? "" : parentSlug
+      }${introSlug}`, // slug tree (if the page label is intro then consider it as root page)
       show_content: page.show_content,
       position,
       content: langs.reduce((acc, lang) => {
