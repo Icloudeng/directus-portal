@@ -8,7 +8,7 @@ export default function NotFoundPage() {
   const ref = useRef<HTMLIFrameElement | null>(null);
   const route = useRouter();
   const timerRef = useRef(0);
-  const [faced, setFased] = useState(false);
+  const [faced] = useState(false);
 
   useEffect(() => {
     if (!ref.current) return;
@@ -21,7 +21,6 @@ export default function NotFoundPage() {
       if (oldPathname !== currentPathname && !currentPathname.startsWith('/custom-404')) {
         window.clearInterval(timerRef.current);
         route.push(currentPathname);
-        setFased(true);
       }
     };
 
