@@ -9166,7 +9166,7 @@ fields:
       validation:
         _and:
           - url:
-              _regex: ^\/([a-z0-9/-]+)?$
+              _regex: ^\/([a-z0-9-]+)?$
       validation_message: null
       width: full
     schema:
