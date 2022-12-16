@@ -94,9 +94,9 @@
 # Docs App PM2 restart process (It should come of DOCS generator)
 - name: DOCS | Build docs app
   become: false
-  command: pnpm run build --filter=docs # Build only docs app from workspace
+  command: pnpm run build # Build only docs app from workspace
   args:
-    chdir: "{{ root_path }}"
+    chdir: "{{ root_path }}/apps/web"
   ignore_errors: true
 
 - name: Docs App | Delete old pm2 process
