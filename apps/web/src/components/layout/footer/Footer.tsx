@@ -32,13 +32,13 @@ export const Footer = () => {
         {Layout?.show_top_footer !== false && <FooterTopSection />}
 
         {showSection && (
-          <div className='middle-footer flex items-start justify-around py-10 divide-x-[1px] divide-gray-300 text-xs xs:text-sm'>
+          <div className='middle-footer flex items-start py-10 divide-x-[1px] divide-gray-300 text-xs xs:text-sm'>
             {Layout?.show_footer_contacts !== false && <ContactSection />}
 
             {Layout?.show_footer_links !== false && (
               <div
                 className={`middle-left grid grid-cols-1 ss:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:flex items-start ${
-                  hasFooterLinks ? 'justify-center' : 'justify-start'
+                  hasFooterLinks ? 'justify-around' : 'justify-start'
                 } gap-20 sm:flex-[2.7] flex-[3.6] ml-1 xs:ml-3 px-4 `}
               >
                 {footer_links?.map(({ id, links, translations }) => (
