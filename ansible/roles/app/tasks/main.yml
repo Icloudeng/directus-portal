@@ -87,16 +87,16 @@
   set_fact:
     docs_pm2_name: "{{ domain }}-docs"
 
-# Docs generator config (It should come of CMS)
+# Docs generator config (It should come after CMS)
 - include_tasks: docs-generator.yml
   when: has_docs_app
 
-# Docs App PM2 restart process (It should come of DOCS generator)
+# Docs App PM2 restart process (It should come after DOCS generator)
 - name: DOCS | Build docs app
   become: false
-  command: pnpm run build --filter=docs # Build only docs app from workspace
+  command: pnpm run build # Build only docs app from workspace
   args:
-    chdir: "{{ root_path }}"
+    chdir: "{{ root_path }}/apps/docs"
   ignore_errors: true
 
 - name: Docs App | Delete old pm2 process
