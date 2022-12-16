@@ -43,7 +43,7 @@ export const Navbar = ({ whiteNav }: { whiteNav?: boolean }) => {
             <NextImage
               useSkeleton
               src={CompanyDetails?.logo?.src || Logo.src}
-              width={80}
+              width={60}
               height={60}
               alt='icloudeng logo'
             />
