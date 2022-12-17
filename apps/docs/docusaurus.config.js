@@ -35,12 +35,12 @@ const config = {
           sidebarPath: require.resolve("./sidebars.js"),
           remarkPlugins: [
             // @ts-ignore
-            [require('@docusaurus/remark-plugin-npm2yarn'), {sync: true}],
+            [require("@docusaurus/remark-plugin-npm2yarn"), { sync: true }],
           ],
         },
         pages: {
           // @ts-ignore
-          remarkPlugins: [require('@docusaurus/remark-plugin-npm2yarn')],
+          remarkPlugins: [require("@docusaurus/remark-plugin-npm2yarn")],
         },
         blog: false,
         theme: {
@@ -52,7 +52,7 @@ const config = {
   markdown: {
     mermaid: true,
   },
-  themes: ['@docusaurus/theme-live-codeblock', '@docusaurus/theme-mermaid'],
+  themes: ["@docusaurus/theme-live-codeblock", "@docusaurus/theme-mermaid"],
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
