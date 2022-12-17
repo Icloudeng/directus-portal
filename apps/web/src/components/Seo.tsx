@@ -107,9 +107,10 @@ export default function Seo({ dynamicPage, ...props }: SeoProps) {
       )}
 
       {/* Favicons */}
-      {favicons.map((linkProps) => (
-        <link key={linkProps.href} {...linkProps} />
-      ))}
+      //   {favicons.map((linkProps) => (
+      //     <link key={linkProps.href} {...linkProps} />
+      //   ))}
+      <link rel='icon' href={cdT?.logo?.src || '/images/icloudenglogo.png'} />
       <meta name='msapplication-TileColor' content='#ffffff' />
       <meta
         name='msapplication-TileImage'
