@@ -77,7 +77,9 @@ export function generateNavbarContent({
    */
   if (companyDetails && companyDetails.logo) {
     meta.navbar.logo = {
-      src: `${DIRECTUS_URL}/assets/${companyDetails.logo.id}?access_token=${DIRECTUS_STATIC_TOKEN}`,
+      src: `${DIRECTUS_URL}/assets/${
+        companyDetails.logo.id
+      }?access_token=${DIRECTUS_STATIC_TOKEN}&width=${50}&height=${50}`,
       alt: companyDetails.website_title || "",
       // ...(WEBSITE_URL ? { href: WEBSITE_URL } : {}),
     };

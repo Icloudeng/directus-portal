@@ -150,6 +150,7 @@ type MDCompanyDetailField = {
   email?: string;
   website?: string;
   logo?: MDWithAsset;
+  logo_sm?: MDWithAsset;
   image?: MDWithAsset;
   addresses: MDAddress[];
   socials: MDSocial[];

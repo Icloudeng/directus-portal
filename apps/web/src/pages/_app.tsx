@@ -11,6 +11,7 @@ import NextProgress from '@/components/ui/next-progress';
 import { ISharedData, SharedDataProvider } from '@/app/store';
 import { getGqlSharedData } from '@/cms/items';
 import { useRouter } from 'next/router';
+import { AppCustomStyle } from '@/components/layout/AppCustomStyle';
 
 function MyApp({
   Component,
@@ -28,6 +29,7 @@ function MyApp({
         }}
       />
       <AppServices />
+      <AppCustomStyle />
       <Component {...pageProps} />
     </SharedDataProvider>
   );
