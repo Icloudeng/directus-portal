@@ -15,9 +15,10 @@ import { mut, useMut } from '@/cms/mut';
 import { Submenu } from './components/SubMenu';
 
 import Logo from '~/images/icloudenglogo.png';
+import { COMPANY_NAME } from '@/app/constant/env';
 
 export const Navbar = ({ whiteNav }: { whiteNav?: boolean }) => {
-  const { CompanyDetails, NavbarButtons, locale } = useSharedData();
+  const { CompanyDetails, NavbarButtons, locale, Layout } = useSharedData();
   const pagePosition = useScrollPosition();
   const onMouseClick = () => {
     const sidebarEl = document.querySelector('#mob--menu-El');
@@ -43,9 +44,9 @@ export const Navbar = ({ whiteNav }: { whiteNav?: boolean }) => {
             <NextImage
               useSkeleton
               src={CompanyDetails?.logo?.src || Logo.src}
-              width={60}
-              height={60}
-              alt='icloudeng logo'
+              width={Layout?.navbar_logo_width || 60}
+              height={Layout?.navbar_logo_height || 60}
+              alt={CompanyDetails?.company_name || COMPANY_NAME || 'Icloudeng'}
             />
           </UnstyledLink>
         </div>
