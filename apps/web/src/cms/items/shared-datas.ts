@@ -39,6 +39,8 @@ const gql_query = jsonToGraphQLQuery({
       bottom_footer: true,
       show_top_footer: true,
       footer_type: true,
+      navbar_logo_width: true,
+      navbar_logo_height: true,
       ...qWithTranslations({
         titles: true,
         buttons: true,

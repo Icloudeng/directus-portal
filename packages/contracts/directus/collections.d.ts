@@ -29,6 +29,8 @@ export type MDLayout = {
   show_top_footer: boolean;
   footer_type: "full_footer" | "simple_footer";
   bottom_footer: FooterBottom[];
+  navbar_logo_width: number;
+  navbar_logo_height: number;
 } & MDWithTranslation<{
   titles: { title: string; color: string }[];
   buttons: (Omit<RepeaterBtn, "variant"> & {
