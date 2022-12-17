@@ -107,8 +107,15 @@ export default function Seo({ dynamicPage, ...props }: SeoProps) {
       )}
 
       {/* Favicons */}
-      {[{rel: 'icon', href: cdT?.logo?.src || '/images/icloudenglogo.png'}].map((linkProps) => (
-          <link key={linkProps.href} {...linkProps} />
+      {(
+        [
+          {
+            rel: 'icon',
+            href: cdT?.logo_sm?.src || '/images/icloudenglogo.png',
+          },
+        ] as Favicons[]
+      ).map((linkProps) => (
+        <link key={linkProps.href} {...linkProps} />
       ))}
       <meta name='msapplication-TileColor' content='#ffffff' />
       <meta
@@ -126,17 +133,3 @@ type Favicons = {
   sizes?: string;
   type?: string;
 };
-
-// generate favicon from https://www.favicon-generator.org/ then replace the whole /public/favicon folder
-const favicons: Array<Favicons> = [
-  {
-    rel: 'icon',
-    type: 'image/png',
-    sizes: '16x16',
-    href: '/images/icloudenglogo.png',
-  },
-  {
-    rel: 'manifest',
-    href: '/favicon/manifest.json',
-  },
-];

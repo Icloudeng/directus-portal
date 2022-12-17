@@ -92,7 +92,11 @@ const gql_query = jsonToGraphQLQuery({
     [CMS_MODELS.company_details]: {
       ...qWithStatus,
       id: false, // single object|collection
-      logo: qWithQueryAsset(),
+      logo_sm: {
+        __aliasFor: 'logo',
+        ...qWithQueryAsset(),
+      },
+      logo: qWithQueryAsset(), // should come after logo_sm
       image: qWithQueryAsset(),
       company_name: true,
       website_title: true,
@@ -206,6 +210,7 @@ export async function getGqlSharedData() {
 
   if (CompanyDetails) {
     qWithAsset(access_token, CompanyDetails, 'logo');
+    qWithAsset(access_token, CompanyDetails, 'logo_sm', [128, 128]);
     qWithAsset(access_token, CompanyDetails, 'image');
     CompanyDetails?.socials?.forEach((social) =>
       qWithAsset(access_token, social, 'icon', [50, 50])

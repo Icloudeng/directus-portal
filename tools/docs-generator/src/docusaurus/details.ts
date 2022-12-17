@@ -36,7 +36,9 @@ export function generateDetailContent(companyDetails: CompanyDetail) {
    * Set favicon (use website title from cms)
    */
   if (companyDetails && companyDetails.logo) {
-    meta.favicon = `${DIRECTUS_URL}/assets/${companyDetails.logo.id}?access_token=${DIRECTUS_STATIC_TOKEN}`;
+    meta.favicon = `${DIRECTUS_URL}/assets/${
+      companyDetails.logo.id
+    }?access_token=${DIRECTUS_STATIC_TOKEN}&width=${50}&height=${50}`;
   }
 
   /**
