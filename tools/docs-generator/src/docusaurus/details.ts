@@ -22,7 +22,7 @@ export function generateDetailContent(companyDetails: CompanyDetail) {
    * Set navbar title (use website title from cms)
    */
   if (companyDetails && companyDetails.website_title) {
-    meta.title = companyDetails.website_title;
+    meta.title = `${companyDetails.website_title} Documentation`;
   }
 
   /**

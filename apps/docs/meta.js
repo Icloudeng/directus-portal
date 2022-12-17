@@ -13,7 +13,7 @@ try {
 const locales = meta.i18n?.locales || [];
 
 const config = {
-  title: meta.title || "Icloudeng",
+  title: meta.title || "Icloudeng Documentation",
   tagline: meta.tagline || "",
   url: meta.url || "https://icloudeng.com",
   favicon: meta.favicon || "img/favicon.ico",
