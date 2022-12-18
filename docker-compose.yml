@@ -26,16 +26,6 @@ services:
     volumes:
       - typesense-data:/data
 
-  docsearch-scraper:
-    image: typesense/docsearch-scraper
-    network_mode: "host"
-    environment:
-      - TYPESENSE_API_KEY=typesense-docsearch-scraper
-      - TYPESENSE_HOST="127.0.0.1"
-      - TYPESENSE_PORT=8108
-      - TYPESENSE_PROTOCOL=http
-      - 'CONFIG=$(cat ./tools/docsearch-scraper/docusaurus.json | jq -r tostring)'
-
 networks:
   icloudeng_portal: {}
 
