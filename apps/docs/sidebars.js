@@ -1,4 +1,3 @@
-// @ts-check
 const meta = require("./meta");
 
 /** @type {import('@docusaurus/plugin-content-docs').SidebarsConfig} */

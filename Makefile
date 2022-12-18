@@ -35,8 +35,18 @@ generate-ssh-key:
 # Mounts project database from docker
 .PHONY: postgres-docker
 postgres-docker:
-	docker-compose up -d
+	docker-compose up db -d
 
+# Mounts project typesense from docker
+.PHONY: typesense-docker
+typesense-docker:
+	docker-compose up typesense -d
+
+
+# Run docsearch-scraper from docker
+.PHONY: docsearch-scraper
+docsearch-scraper:
+	docker run --name=docsearch-scraper --rm --net=host -it --env-file=tools/docsearch-scraper/.env -e "CONFIG=$(cat ./tools/docsearch-scraper/docusaurus.json | jq -r tostring)" typesense/docsearch-scraper
 
 # ============================
 # App commands
