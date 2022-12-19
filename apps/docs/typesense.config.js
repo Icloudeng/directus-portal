@@ -6,7 +6,7 @@ module.exports = {
       {
         host: process.env.TYPESENSE_HOST,
         port: parseInt(process.env.TYPESENSE_PORT, 10),
-        protocol: "http",
+        protocol: process.env.TYPESENSE_PROTOCOL || "http",
       },
     ],
     apiKey: "typesense-docsearch-scraper", // must be the same as the port set on docker-compose.yml

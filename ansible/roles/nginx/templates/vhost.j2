@@ -110,6 +110,32 @@ server {
     }
 }
 
+################## -------------- Typesense server -------------- ##################
+
+upstream typesenseserver_upstream {
+  server {{ typesense_host }};
+}
+
+server {
+    listen      {{ typesense_getway_port }} ssl;
+    listen      [::]:{{ typesense_getway_port }} ssl;
+    server_name {{ domain }};
+
+    # SSL
+{% if letsencrypt %}
+    ssl_certificate         /etc/letsencrypt/live/{{ domain }}/fullchain.pem;
+    ssl_certificate_key     /etc/letsencrypt/live/{{ domain }}/privkey.pem;
+    ssl_trusted_certificate /etc/letsencrypt/live/{{ domain }}/chain.pem;
+{% endif %}
+
+    location ~ ^/.* {
+        proxy_pass http://typesenseserver_upstream;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+}
+
 
 ################## -------------- cms server -------------- ################## 
 
@@ -183,24 +209,5 @@ server {
 
     location / {
         return 301 https://{{ cms_domain }}$request_uri;
-    }
-}
-
-################## -------------- Typesense server -------------- ##################
-
-upstream typesenseserver_upstream {
-  server {{ typesense_host }};
-}
-
-server {
-    listen      {{ typesense_getway_port }};
-    listen      [::]:{{ typesense_getway_port }};
-    server_name {{ domain }};
-
-    location ~ ^/.* {
-        proxy_pass http://typesenseserver_upstream;
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
     }
 }
