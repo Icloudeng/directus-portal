@@ -29,6 +29,7 @@
   with_items:
     - http
     - https
+    - 8108
 
 - name: Firewall | Activation
   become: true
