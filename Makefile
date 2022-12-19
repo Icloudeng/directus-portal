@@ -35,12 +35,12 @@ generate-ssh-key:
 # Mounts project database from docker
 .PHONY: postgres-docker
 postgres-docker:
-	docker-compose up db -d
+	docker compose up db -d
 
 # Mounts project typesense from docker
 .PHONY: typesense-docker
 typesense-docker:
-	docker-compose up typesense -d
+	docker compose up typesense -d
 
 # ============================
 # Dev server

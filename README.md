@@ -28,7 +28,7 @@ git clone https://devops.icloudeng.com/icloudeng-system/icloudeng-portal.git
 
 ### Database
 
-For a quick start consider using docker and docker-compose
+For a quick start consider using docker and docker compose
 
 - `make postgres-docker`
 
