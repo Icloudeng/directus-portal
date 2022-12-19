@@ -91,10 +91,6 @@
 - include_tasks: docs-generator.yml
   when: has_docs_app
 
-# Config typesense and  docsearch-scraper (Tools)
-- include_tasks: docsearch-scraper.yml
-  when: has_docs_app and docker_install
-
 # Docs App PM2 restart process (It should come after DOCS generator)
 - name: DOCS | Build docs app
   become: false
@@ -115,6 +111,10 @@
   args:
     chdir: "{{ root_path }}/apps/docs"
   when: has_docs_app
+
+# Config typesense and docsearch-scraper (Tools)
+- include_tasks: docsearch-scraper.yml
+  when: has_docs_app and docker_install
 
 # Gerate pm2 scripts
 - name: PM2 | Generating a Startup Script
