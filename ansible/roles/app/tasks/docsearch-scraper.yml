@@ -13,6 +13,12 @@
     chdir: "{{ root_path }}"
     file: "{{ root_path }}/Makefile"
 
+- name: DOCSEARCH-SCRAPER | docsearch-scraper docs
+  become: false
+  command: "make docsearch-scraper"
+  args:
+    chdir: "{{ root_path }}"
+
 - name: "DOCSEARCH-SCRAPER | Cron docsearch-scraper docs"
   cron:
     name: "docusaurus-docsearch-scraper"
