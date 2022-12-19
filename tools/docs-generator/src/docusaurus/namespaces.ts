@@ -40,6 +40,7 @@ export type NamespacesContentTree = {
   path: string; // parent path tree
   slug: string;
   rootSlug: string;
+  root: boolean;
   label?: string;
   id: ID;
   position?: number;
@@ -153,6 +154,7 @@ export async function generateNamespacesContent(
     // Put page content
     const itemTree: NamespacesContentTree = {
       type: itype, // if page has children set it as parent
+      root: false,
       path: `${parent.path + page.id}/`, // this should end with /
       id: page.id,
       label: page.label,
@@ -239,6 +241,7 @@ export async function generateNamespacesContent(
   constructed.forEach((nsp) => {
     const itemTree: NamespacesContentTree = {
       type: "parent",
+      root: true,
       path: `${nsp.id}/`, // this should end with / (slash)
       slug: `${nsp.url}`,
       rootSlug: `${nsp.url}`,

@@ -1,14 +1,27 @@
 //@ts-check
 import { spawn } from "node:child_process";
-import jq from "node-jq";
+import fs from "node:fs/promises";
 import which from "which";
+import config from "./config.json" assert { type: "json" };
+
+const ORIGIN = "http://host.docker.internal:3100";
 
 (async () => {
   const docker = await which("docker");
+  const start_urls = config.start_urls;
 
-  const data = await jq.run(".", ["./config.json"], {
-    output: "string",
-  });
+  try {
+    /**
+     * @type {{url:string}[]}
+     */
+    const urls = JSON.parse(
+      await fs.readFile("./urls.json", { encoding: "utf-8" })
+    );
+
+    urls.forEach((path) => {
+      start_urls.push({ url: `${ORIGIN}/documentation${path.url}` });
+    });
+  } catch (_) {}
 
   await cmd(
     docker,
@@ -18,7 +31,7 @@ import which from "which";
     "--add-host=host.docker.internal:host-gateway",
     "--env-file=docker.env",
     "-e",
-    `CONFIG=${data}`,
+    `CONFIG=${JSON.stringify(config)}`,
     "typesense/docsearch-scraper"
   );
 })();

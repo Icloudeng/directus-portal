@@ -15,7 +15,6 @@
     "@types/node": "^18.11.17"
   },
   "dependencies": {
-    "node-jq": "^2.3.4",
     "which": "^3.0.0"
   }
 }
