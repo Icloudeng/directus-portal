@@ -42,17 +42,6 @@ postgres-docker:
 typesense-docker:
 	docker-compose up typesense -d
 
-
-# Run docsearch-scraper from docker
-.PHONY: docsearch-scraper
-docsearch-scraper:
-	docker run --name=docsearch-scraper --rm --add-host=host.docker.internal:host-gateway -it --env-file=tools/docsearch-scraper/.env -e "CONFIG=$(cat tools/docsearch-scraper/docusaurus.json | jq -r tostring)" typesense/docsearch-scraper
-
-# ============================
-# App commands
-# ============================
-
-
 # ============================
 # Dev server
 # ============================
