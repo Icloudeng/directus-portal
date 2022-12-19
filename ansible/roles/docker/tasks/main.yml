@@ -18,6 +18,7 @@
       - python3-pip
       - virtualenv
       - python3-setuptools
+      - lsb-release
     state: latest
     update_cache: true
 
@@ -36,7 +37,8 @@
     name:
       - docker-ce
       - docker-ce-cli
-      - docker-compose
+      - docker-compose-plugin
+      - containerd.io
     state: present
     update_cache: true
 

@@ -1,5 +1,5 @@
 - name: DOCSEARCH-SCRAPER(Docker Compose) | Mount and Run typesense
-  command: docker-compose up typesense -d
+  command: docker compose up typesense -d
   args:
     chdir: "{{ root_path }}"
 
