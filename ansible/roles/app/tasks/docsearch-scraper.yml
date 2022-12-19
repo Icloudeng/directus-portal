@@ -8,10 +8,10 @@
     timeout: 5
 
 - name: DOCSEARCH-SCRAPER | docsearch-scraper docs
-  make:
-    target: docsearch-scraper
+  become: false
+  command: "make docsearch-scraper"
+  args:
     chdir: "{{ root_path }}"
-    file: "{{ root_path }}/Makefile"
 
 - name: "DOCSEARCH-SCRAPER | Cron docsearch-scraper docs"
   cron:
