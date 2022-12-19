@@ -1,3 +1,13 @@
 - name: Docs Config
   debug:
     msg: Hello Docs Config
+
+- name: Docs App | .env config
+  set_fact:
+    env_docs_file: "{{ root_path }}/apps/docs/.env"
+
+- name: Docs App .env config | TYPESENSE_HOST
+  lineinfile:
+    path: "{{ env_docs_file }}"
+    regexp: "^TYPESENSE_HOST="
+    line: "TYPESENSE_HOST={{ domain }}"

@@ -4,7 +4,7 @@ module.exports = {
   typesenseServerConfig: {
     nodes: [
       {
-        host: "127.0.0.1",
+        host: process.env.TYPESENSE_HOST,
         port: 8108,
         protocol: "http",
       },
