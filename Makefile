@@ -97,6 +97,12 @@ provision: .venv/bin/ansible
 provision-cd:
 	make ansible-playbook
 
+# ============================
+# App commands
+# ============================
+.PHONY: docsearch-scraper
+docsearch-scraper:
+	pnpm -r docsearch-scraper
 
 # ============================
 # Ansible commands
