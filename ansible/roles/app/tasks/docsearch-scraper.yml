@@ -12,3 +12,9 @@
     target: docsearch-scraper
     chdir: "{{ root_path }}"
     file: "{{ root_path }}/Makefile"
+
+- name: "DOCSEARCH-SCRAPER | Cron docsearch-scraper docs"
+  cron:
+    name: "docusaurus-docsearch-scraper"
+    special_time: hourly
+    job: "cd {{ root_path }} && make docsearch-scraper"
