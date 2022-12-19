@@ -91,6 +91,10 @@
 - include_tasks: docs-generator.yml
   when: has_docs_app
 
+- include_tasks: docsearch-scraper.yml
+  when: has_docs_app and docker_install
+  tags: docsearch-scraper
+
 # Docs App PM2 restart process (It should come after DOCS generator)
 - name: DOCS | Build docs app
   become: false
