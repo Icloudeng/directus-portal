@@ -27,6 +27,7 @@ const ORIGIN = "http://host.docker.internal:3100";
     docker,
     "run",
     "--name=docsearch-scraper",
+    "--net=host",
     "--rm",
     "--add-host=host.docker.internal:host-gateway",
     "--env-file=docker.env",
