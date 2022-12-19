@@ -32,7 +32,10 @@ export const FooterSimple = () => {
   }, [] as string[]);
 
   return (
-    <footer className='sm:px-10 py-10 text-gray-300 z-0 bg-[#313b4d]'>
+    <footer
+      className='sm:px-10 py-10 text-gray-300 z-0'
+      style={{ backgroundColor: Layout?.site_background_color || '#313B4D' }}
+    >
       <div className='x-container-fluid flex flex-col gap-5 divide-y-2 divide-gray-800'>
         {Layout?.show_footer_links !== false && (
           <div className='container py-10 mx-auto'>

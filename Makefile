@@ -35,13 +35,12 @@ generate-ssh-key:
 # Mounts project database from docker
 .PHONY: postgres-docker
 postgres-docker:
-	docker-compose up -d
+	docker-compose up db -d
 
-
-# ============================
-# App commands
-# ============================
-
+# Mounts project typesense from docker
+.PHONY: typesense-docker
+typesense-docker:
+	docker-compose up typesense -d
 
 # ============================
 # Dev server
@@ -98,6 +97,12 @@ provision: .venv/bin/ansible
 provision-cd:
 	make ansible-playbook
 
+# ============================
+# App commands
+# ============================
+.PHONY: docsearch-scraper
+docsearch-scraper:
+	pnpm -r docsearch-scraper
 
 # ============================
 # Ansible commands

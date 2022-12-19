@@ -1,6 +1,12 @@
 ---
 # tasks file for ansible/roles/docker
-- name: Docker | Prerequisites
+- name: Docker | Install aptitude
+  apt:
+    name: aptitude
+    state: latest
+    update_cache: true
+
+- name: Docker | Install required system packages
   apt:
     name:
       - uidmap
@@ -9,17 +15,20 @@
       - curl
       - gnupg-agent
       - software-properties-common
+      - python3-pip
+      - virtualenv
+      - python3-setuptools
+    state: latest
+    update_cache: true
+
+- name: Docker | Add Docker GPG apt Key
+  apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
     state: present
 
-- name: Docker | Docker GPG Key
-  when: ansible_distribution == 'Debian'
-  apt_key:
-    url: https://download.docker.com/linux/debian/gpg
-
-- name: Docker | Docker repository
-  when: ansible_distribution == 'Debian'
+- name: Docker | Add Docker Repository
   apt_repository:
-    repo: deb [arch=amd64] https://download.docker.com/linux/debian {{ ansible_distribution_release }} stable
+    repo: deb https://download.docker.com/linux/ubuntu focal stable
     state: present
 
 - name: Docker | Install
@@ -27,9 +36,14 @@
     name:
       - docker-ce
       - docker-ce-cli
-      - containerd.io
       - docker-compose
     state: present
+    update_cache: true
+
+- name: Docker | Install Docker Module for Python
+  pip:
+    name: docker
+
 - name: Docker | Add group user
   user:
     name: "{{ ansible_user }}"

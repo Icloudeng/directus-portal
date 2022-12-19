@@ -34,6 +34,7 @@
   become: true
   ufw:
     state: enabled
-
-- include_tasks: docker.yml
-  when: docker
+#
+# Firewall docker
+# - include_tasks: docker.yml
+#   when: docker_install

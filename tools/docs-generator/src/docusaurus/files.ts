@@ -4,6 +4,7 @@ import { Buffer } from "buffer";
 import {
   CONTENT_DOCS_PATH,
   DEFAULT_LANG,
+  DOCSEARCH_SCRAPER_APP_PATH,
   I18N_CONTENT_DOCS_FOLDER,
   I18N_FILES,
   I18N_PATH,
@@ -20,6 +21,7 @@ import { I18nContent } from "./i18n";
 import { NamespacesContent, NamespacesContentTree } from "./namespaces";
 import yaml from "js-yaml";
 import { DetailContent } from "./details";
+import { StartUrls } from "./docsearch-scraper";
 
 const i18nFiles = Object.values(I18N_FILES);
 
@@ -400,6 +402,18 @@ async function storeNamespacesContent(
 }
 
 /**
+ * Store Docsearch scraper URLs configs
+ *
+ * @param urls
+ */
+async function storeDocSearchScraperContent(urls: StartUrls[]) {
+  await ensureWriteFile(
+    path.join(DOCSEARCH_SCRAPER_APP_PATH, "urls.json"),
+    JSON.stringify(urls)
+  );
+}
+
+/**
  * Export only what needed
  */
 export {
@@ -410,4 +424,5 @@ export {
   storeNamespacesContent,
   storeSidebarsContent,
   storeDetailContent,
+  storeDocSearchScraperContent,
 };

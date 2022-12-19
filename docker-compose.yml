@@ -13,8 +13,23 @@ services:
     volumes:
       - db-data:/var/lib/postgresql/data
 
+  typesense:
+    image: typesense/typesense:0.23.1
+    restart: on-failure
+    networks:
+      - icloudeng_portal
+    ports:
+      - 8108:8108
+    environment:
+      TYPESENSE_DATA_DIR: /data
+      TYPESENSE_ENABLE_CORS: true
+      TYPESENSE_API_KEY: typesense-docsearch-scraper
+    volumes:
+      - typesense-data:/data
+
 networks:
   icloudeng_portal: {}
 
 volumes:
   db-data:
+  typesense-data:

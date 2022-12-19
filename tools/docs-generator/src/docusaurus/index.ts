@@ -7,3 +7,4 @@ export * from "./pages";
 export * from "./translations";
 export type { MetaContent } from "./types.d";
 export * from "./details";
+export * from "./docsearch-scraper";

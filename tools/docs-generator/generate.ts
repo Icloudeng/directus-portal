@@ -14,6 +14,8 @@ import {
   storeSidebarsContent,
   generateDetailContent,
   storeDetailContent,
+  storeDocSearchScraperContent,
+  generateDocSearchScraperContent,
 } from "./src/docusaurus";
 
 const generator = async (logger = true) => {
@@ -107,6 +109,14 @@ const generator = async (logger = true) => {
    */
   await storeNamespacesContent(namespacesContent, languages);
   logger && Logger.info("=== Namespaces content generated and stored ===");
+
+  /**
+   * Generate Doc Search Scraper Content and store it
+   */
+  const urls = await generateDocSearchScraperContent(namespacesContent);
+
+  await storeDocSearchScraperContent(urls);
+  logger && Logger.info("=== stored Doc Search Scraper URLs ===");
 };
 
 /**

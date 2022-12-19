@@ -1,0 +1,20 @@
+- name: DOCSEARCH-SCRAPER(Docker Compose) | Mount and Run typesense
+  command: docker-compose up typesense -d
+  args:
+    chdir: "{{ root_path }}"
+
+- name: DOCSEARCH-SCRAPER | Sleep for 5 seconds and continue with play
+  wait_for:
+    timeout: 5
+
+- name: DOCSEARCH-SCRAPER | docsearch-scraper docs
+  make:
+    target: docsearch-scraper
+    chdir: "{{ root_path }}"
+    file: "{{ root_path }}/Makefile"
+
+- name: "DOCSEARCH-SCRAPER | Cron docsearch-scraper docs"
+  cron:
+    name: "docusaurus-docsearch-scraper"
+    special_time: hourly
+    job: "cd {{ root_path }} && make docsearch-scraper"

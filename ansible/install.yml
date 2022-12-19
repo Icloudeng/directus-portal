@@ -19,9 +19,9 @@
 
   roles:
     - { role: tools, tags: tools }
-    - { role: docker, tags: docker, when: docker or docker_install }
+    - { role: docker, tags: docker, when: docker_install }
     - { role: firewall, tags: firewall }
     - { role: nginx, tags: nginx }
-    - { role: pgsql, tags: pgsql, when: not docker }
-    - { role: node, tags: node, when: not docker }
+    - { role: pgsql, tags: pgsql }
+    - { role: node, tags: node }
     - { role: app, tags: app }

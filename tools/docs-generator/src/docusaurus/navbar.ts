@@ -1,11 +1,11 @@
 import type { MDDCNamespace } from "@apps/contracts";
-import type { ThemeConfig } from "@docusaurus/preset-classic";
+// import type { ThemeConfig } from "@docusaurus/preset-classic";
 import type { CompanyDetail, MDLang } from "../cms/type";
 import { NamespaceBaseLink, reArrangeNamespace } from "./namespaces";
 import { DIRECTUS_STATIC_TOKEN, DIRECTUS_URL, WEBSITE_URL } from "../constants";
 import { cmsTransTransformer, transKey, Translations } from "./translations";
 
-type NavbarItems = NonNullable<NonNullable<ThemeConfig["navbar"]>["items"]>;
+type NavbarItems = NonNullable<NonNullable<any["navbar"]>["items"]>;
 export type NavbarContent = {
   translations: Translations;
   meta: {

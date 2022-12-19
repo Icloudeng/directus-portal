@@ -6,6 +6,7 @@ const darkCodeTheme = require("prism-react-renderer/themes/nightOwl");
 const meta = require("./meta");
 const math = require("remark-math");
 const katex = require("rehype-katex");
+const typesense = require("./typesense.config");
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -66,7 +67,11 @@ const config = {
   markdown: {
     mermaid: true,
   },
-  themes: ["@docusaurus/theme-live-codeblock", "@docusaurus/theme-mermaid"],
+  themes: [
+    "@docusaurus/theme-live-codeblock",
+    "@docusaurus/theme-mermaid",
+    "docusaurus-theme-search-typesense",
+  ],
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
@@ -85,6 +90,7 @@ const config = {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
       },
+      typesense,
     }),
 };
 

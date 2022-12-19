@@ -4,13 +4,18 @@ export const DOCS_APP_PATH = path.resolve(process.cwd(), "../../apps/docs");
 
 export const PROJECT_ROOT_PATH = path.resolve(process.cwd(), "../../");
 
+export const DOCSEARCH_SCRAPER_APP_PATH = path.resolve(
+  process.cwd(),
+  "../docsearch-scraper"
+);
+
 export const DOCS_APP_NAME = "docs";
 
 export const DOCS_APP_PM2_NAME = process.env.DOCS_APP_PM2_NAME;
 
 export const I18N_PATH = path.resolve(DOCS_APP_PATH, "i18n");
 
-export const DEBOUNCE_EXECUTOR = process.env.DEBOUNCE_EXECUTOR !== 'false'
+export const DEBOUNCE_EXECUTOR = process.env.DEBOUNCE_EXECUTOR !== "false";
 
 export const I18N_FILES = {
   current: "docusaurus-plugin-content-docs/current.json",
