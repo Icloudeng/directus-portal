@@ -1,9 +1,9 @@
 import type { MDDCFooter } from "@apps/contracts";
-import type { ThemeConfig } from "@docusaurus/preset-classic";
+// import type { ThemeConfig } from "@docusaurus/preset-classic";
 import type { MDLang } from "../cms/type";
 import { cmsTransTransformer, transKey, Translations } from "./translations";
 
-type FooterLinks = NonNullable<NonNullable<ThemeConfig["footer"]>["links"]>;
+type FooterLinks = NonNullable<NonNullable<any["footer"]>["links"]>;
 export type FooterContent = {
   translations: Translations;
   meta: {
