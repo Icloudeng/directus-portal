@@ -5,7 +5,7 @@ module.exports = {
     nodes: [
       {
         host: process.env.TYPESENSE_HOST,
-        port: 8108,
+        port: parseInt(process.env.TYPESENSE_PORT, 10),
         protocol: "http",
       },
     ],
