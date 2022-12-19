@@ -8,12 +8,6 @@
     timeout: 5
 
 - name: DOCSEARCH-SCRAPER | docsearch-scraper docs
-  make:
-    target: docsearch-scraper
-    chdir: "{{ root_path }}"
-    file: "{{ root_path }}/Makefile"
-
-- name: DOCSEARCH-SCRAPER | docsearch-scraper docs
   become: false
   command: "make docsearch-scraper"
   args:
