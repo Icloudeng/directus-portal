@@ -113,7 +113,10 @@ const generator = async (logger = true) => {
   /**
    * Generate Doc Search Scraper Content and store it
    */
-  const urls = await generateDocSearchScraperContent(namespacesContent);
+  const urls = await generateDocSearchScraperContent(
+    namespacesContent,
+    languages
+  );
 
   await storeDocSearchScraperContent(urls);
   logger && Logger.info("=== stored Doc Search Scraper URLs ===");
