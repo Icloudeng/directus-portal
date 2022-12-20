@@ -12,14 +12,17 @@ const ORIGIN = "http://host.docker.internal:3100";
 
   try {
     /**
-     * @type {{url:string}[]}
+     * @type {{ url: string; variables: { lang: string[];};}[]}
      */
     const urls = JSON.parse(
-      await fs.readFile("./urls.json", { encoding: "utf-8" })
+      await fs.readFile("./start-urls.json", { encoding: "utf-8" })
     );
 
     urls.forEach((path) => {
-      start_urls.push({ url: `${ORIGIN}/documentation${path.url}` });
+      start_urls.push({
+        url: `${ORIGIN}/documentation/(?P<lang>.*?)${path.url}`,
+        variables: path.variables,
+      });
     });
   } catch (_) {}
 
