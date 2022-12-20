@@ -5,7 +5,7 @@ import { DEFAULT_LANG } from "../constants";
 
 export type StartUrls = {
   url: string;
-  variables: {
+  variables?: {
     lang: string[];
   };
 };
@@ -21,21 +21,29 @@ export function generateDocSearchScraperContent(
   languages: MDLang[]
 ) {
   const urls: StartUrls[] = [];
-  const langs = languages.map((l) => (l.code === DEFAULT_LANG ? "" : l.code));
+  const langs = languages.map((l) => l.code);
 
   function urlTree(node: NamespacesContentTree) {
-    if (node.type === "child") {
-      return urls.push({ url: node.slug, variables: { lang: langs } });
-    }
+    const appendUrl = (lang: string | undefined) => {
+      const ilang = lang ? `/${lang}` : "";
+      if (node.type === "child") {
+        return urls.push({ url: ilang + node.slug });
+      }
 
-    const hasContent = node.content && node.show_content;
+      const hasContent = node.content && node.show_content;
 
-    if (!node.root) {
-      urls.push({
-        url: hasContent ? node.slug : "/category/" + slug(node.label || ""),
-        variables: { lang: langs },
-      });
-    }
+      if (!node.root) {
+        urls.push({
+          url:
+            ilang +
+            (hasContent ? node.slug : "/category/" + slug(node.label || "")),
+        });
+      }
+    };
+
+    langs.forEach((lang) => {
+      appendUrl(lang === DEFAULT_LANG ? undefined : lang);
+    });
 
     node.children.forEach((newNode) => urlTree(newNode));
   }
