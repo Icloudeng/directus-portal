@@ -20,8 +20,7 @@ const ORIGIN = "http://host.docker.internal:3100";
 
     urls.forEach((path) => {
       start_urls.push({
-        url: `${ORIGIN}/documentation/(?P<lang>.*?)${path.url}`,
-        variables: path.variables,
+        url: `${ORIGIN}/documentation${path.url}`,
       });
     });
   } catch (_) {}
