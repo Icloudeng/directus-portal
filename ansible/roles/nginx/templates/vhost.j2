@@ -117,8 +117,8 @@ upstream typesenseserver_upstream {
 }
 
 server {
-    listen      {{ typesense_getway_port }} ssl;
-    listen      [::]:{{ typesense_getway_port }} ssl;
+    listen      {{ typesense_getway_port }} ssl http2;
+    listen      [::]:{{ typesense_getway_port }} ssl http2;
     server_name {{ domain }};
 
     # SSL
