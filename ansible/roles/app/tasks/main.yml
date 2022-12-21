@@ -52,12 +52,6 @@
     chdir: "{{ root_path }}/apps/cms"
     removes: "{{ root_path }}/apps/cms/snapshot.yaml"
 
-- name: CMS App | Create App User
-  become: false
-  command: "node create-app-user.js"
-  args:
-    chdir: "{{ root_path }}/apps/cms"
-
 # CMS App PM2 restart process
 - name: CMS App | Delete old pm2 process
   command: "pm2 delete {{ cms_domain }}"
@@ -67,6 +61,12 @@
 
 - name: CMS App | Start the server
   command: "pm2 start npm --name {{ cms_domain }} -- run start"
+  args:
+    chdir: "{{ root_path }}/apps/cms"
+
+- name: CMS App | Create App User
+  become: false
+  command: "node create-app-user.js"
   args:
     chdir: "{{ root_path }}/apps/cms"
 
