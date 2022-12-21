@@ -64,6 +64,11 @@
   args:
     chdir: "{{ root_path }}/apps/cms"
 
+- name: CMS App | Sleep for 10 seconds and continue with play
+  wait_for:
+    timeout: 10
+
+# CMS App | Create App User
 - name: CMS App | Create App User
   become: false
   command: "node create-app-user.js"
