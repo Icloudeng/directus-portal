@@ -150,6 +150,7 @@ export async function generateNamespacesContent(
       : parent.slug;
 
     const rootSlug = mutableParent.rootSlug;
+    const hasContent = itype === "parent" && page.show_content;
 
     // Put page content
     const itemTree: NamespacesContentTree = {
@@ -160,12 +161,11 @@ export async function generateNamespacesContent(
       label: page.label,
       rootSlug,
       slug: `${
-        // if the current page has parent type and it has show to content, then place the page slug at root
-        itype === "parent" && page.show_content
-          ? rootSlug === "/"
-            ? ""
-            : rootSlug
-          : parentSlug
+        /**
+         * if the current page has parent type and it has show to content,
+         * then place the page slug at  root of the namespace url, and lead it with g
+         */
+        hasContent ? (rootSlug === "/" ? "" : rootSlug) + "/g" : parentSlug
       }${introSlug}`, // slug tree (if the page label is intro then consider it as root page)
       show_content: page.show_content,
       position,

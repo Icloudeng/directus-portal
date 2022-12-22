@@ -6,7 +6,6 @@ import { createLogQuery, getCompanyDetailsQuery } from "./src/cms/queries";
 import { execFooterEvent, execGenerateAllEvent } from "./src/executors";
 import { IN_PROD, DEBOUNCE_EXECUTOR } from "./src/constants";
 import { executorQueue } from "./src/queue";
-import { unlinkPagesAndNamespacesContent } from "./src/docusaurus";
 
 /**
  * --------------------------------------------------------------------------------------
