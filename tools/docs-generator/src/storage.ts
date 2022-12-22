@@ -2,6 +2,7 @@ import fs from "fs";
 import * as fsPromises from "fs/promises";
 import path from "path";
 import { Readable } from "stream";
+import utils from "./utils";
 
 const DEFAULT_DIR_MODE = 0o755;
 const DEFAULT_FILE_MODE = 0o644;
@@ -322,6 +323,89 @@ const ensureDatafileIntegrityAsync = async (
   else await renameAsync(tempFilename, filename);
 };
 
+/**
+ * Takes a file function and checks if file exist
+ * whether parent directories exit or not
+ *
+ * @param file_path
+ * @param content
+ * @returns if file file exists before then return true
+ */
+async function ensureFileCreate(file_path: string, content = "{}") {
+  const exists = await existsAsync(file_path);
+
+  if (!exists) {
+    await mkdirAsync(utils.extractPathFile(file_path), {
+      recursive: true,
+      mode: DEFAULT_DIR_MODE,
+    });
+
+    await writeFileAsync(file_path, content, {
+      encoding: "utf-8",
+      mode: DEFAULT_FILE_MODE,
+    });
+    return null;
+  }
+
+  // means file exists before
+  return true;
+}
+
+async function ensureFolderCreate(path: string) {
+  await mkdirAsync(path, {
+    recursive: true,
+    mode: DEFAULT_DIR_MODE,
+  });
+}
+
+/**
+ * This will ensure to write in file
+ *
+ * @param file_path
+ * @param content
+ */
+async function ensureWriteFile(file_path: string, content: any) {
+  const existed = await ensureFileCreate(file_path, content);
+
+  /**
+   * If file exist them write the content
+   */
+  if (existed) {
+    await writeFileAsync(file_path, content, {
+      encoding: "utf-8",
+      mode: DEFAULT_FILE_MODE,
+    });
+  }
+}
+
+/**
+ * Takes a file function and checks if file exist,
+ * if not exist the create file and put content,
+ * at the end return the content
+ *
+ * @param file_path
+ * @param content
+ */
+async function ensureReadFile(file_path: string, content = "{}") {
+  const file = await readAsync(file_path);
+
+  if (!file.content) {
+    await mkdirAsync(utils.extractPathFile(file_path), {
+      recursive: true,
+      mode: DEFAULT_DIR_MODE,
+    });
+
+    await writeFileAsync(file_path, content, {
+      encoding: "utf-8",
+      mode: DEFAULT_FILE_MODE,
+    });
+
+    return Buffer.from(content);
+  }
+
+  return file.content;
+}
+
 // Interface
 export default {
   existsAsync,
@@ -340,4 +424,8 @@ export default {
   ensureFileDoesntExistAsync,
   DEFAULT_DIR_MODE,
   DEFAULT_FILE_MODE,
+  ensureFileCreate,
+  ensureFolderCreate,
+  ensureWriteFile,
+  ensureReadFile,
 };

@@ -6,6 +6,7 @@ import { createLogQuery, getCompanyDetailsQuery } from "./src/cms/queries";
 import { execFooterEvent, execGenerateAllEvent } from "./src/executors";
 import { IN_PROD, DEBOUNCE_EXECUTOR } from "./src/constants";
 import { executorQueue } from "./src/queue";
+import { unlinkPagesAndNamespacesContent } from "./src/docusaurus";
 
 /**
  * --------------------------------------------------------------------------------------
@@ -57,10 +58,7 @@ async function process({ type, data }: { type: DataType; data: DataPayload }) {
    * !we should handle every event action (create, update, delete) on its own logic or executorF
    */
   if (
-    type === "languages" ||
-    type === "namespaces" ||
-    type === "pages" ||
-    type === "meta"
+    (["languages", "namespaces", "pages", "meta"] as DataType[]).includes(type)
   ) {
     IN_PROD && processGenerateAllDebounce(type, data);
     !IN_PROD && processGenerateAll(type, data);
@@ -81,7 +79,7 @@ async function process({ type, data }: { type: DataType; data: DataPayload }) {
  */
 const processGenerateAll = (type: DataType, data: DataPayload) => {
   logEvent(`All Docs - Executor, type: ${type} | event: ${data.event}`);
-  executorQueue.exec(execGenerateAllEvent);
+  executorQueue.exec(() => execGenerateAllEvent(type, data));
 };
 const processGenerateAllDebounce = debounce(
   processGenerateAll,

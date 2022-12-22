@@ -14,8 +14,10 @@ import {
   generateFooterContent,
   storeDetailContent,
   storeFooterContent,
+  unlinkPagesAndNamespacesContent,
 } from "./docusaurus";
 import { executorQueue } from "./queue";
+import { DataPayload, DataType } from "@apps/docs-pubsub";
 
 const execAsync = promisify(exec);
 
@@ -121,7 +123,19 @@ async function docsBuilder(storeLogs = true) {
 /**
  * This function will regenerate all docs data and build for productionF
  */
-async function execGenerateAllEvent() {
+async function execGenerateAllEvent(type: DataType, data: DataPayload) {
+  /**
+   * Handle delete event
+   */
+  if (["namespaces", "pages"].includes(type) && data.event.endsWith("delete")) {
+    await unlinkPagesAndNamespacesContent(
+      data.keys && data.keys.length > 0 ? data.keys : data.key ? [data.key] : []
+    );
+  }
+
+  /**
+   * Regenerate all docs files
+   */
   await generateAll(false);
 
   if (IN_PROD && executorQueue.pending === 0) {
