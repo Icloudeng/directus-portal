@@ -1,6 +1,7 @@
 import * as async from "modern-async";
 import path from "path";
-import { Buffer } from "buffer";
+import glob from "glob";
+import rimraf from "rimraf";
 import {
   CONTENT_DOCS_PATH,
   DEFAULT_LANG,
@@ -9,136 +10,18 @@ import {
   I18N_FILES,
   I18N_PATH,
   METAFILE_PATH,
-} from "../constants";
-import storage from "../storage";
-import utils from "../utils";
-import { MetaContent } from "./types";
-import { NavbarContent } from "./navbar";
-import { Translations } from "./translations";
+} from "../../constants";
+import storage from "../../storage";
+import { MetaContent } from "../types";
+import { NavbarContent } from "../navbar";
+import { Translations } from "../translations";
 import { MDLang } from "src/cms/type";
-import { FooterContent } from "./footer";
-import { I18nContent } from "./i18n";
-import { NamespacesContent, NamespacesContentTree } from "./namespaces";
+import { FooterContent } from "../footer";
+import { I18nContent } from "../i18n";
+import { NamespacesContent, NamespacesContentTree } from "../namespaces";
 import yaml from "js-yaml";
-import { DetailContent } from "./details";
-import { StartUrls } from "./docsearch-scraper";
-
-const i18nFiles = Object.values(I18N_FILES);
-
-/**
- * Takes a file function and checks if file exist
- * whether parent directories exit or not
- *
- * @param file_path
- * @param content
- * @returns if file file exists before then return true
- */
-async function ensureFileCreate(file_path: string, content = "{}") {
-  const exists = await storage.existsAsync(file_path);
-
-  if (!exists) {
-    await storage.mkdirAsync(utils.extractPathFile(file_path), {
-      recursive: true,
-      mode: storage.DEFAULT_DIR_MODE,
-    });
-
-    await storage.writeFileAsync(file_path, content, {
-      encoding: "utf-8",
-      mode: storage.DEFAULT_FILE_MODE,
-    });
-    return null;
-  }
-
-  // means file exists before
-  return true;
-}
-
-async function ensureFolderCreate(path: string) {
-  await storage.mkdirAsync(path, {
-    recursive: true,
-    mode: storage.DEFAULT_DIR_MODE,
-  });
-}
-
-/**
- * This will ensure to write in file
- *
- * @param file_path
- * @param content
- */
-async function ensureWriteFile(file_path: string, content: any) {
-  const existed = await ensureFileCreate(file_path, content);
-
-  /**
-   * If file exist them write the content
-   */
-  if (existed) {
-    await storage.writeFileAsync(file_path, content, {
-      encoding: "utf-8",
-      mode: storage.DEFAULT_FILE_MODE,
-    });
-  }
-}
-
-/**
- * Takes a file function and checks if file exist,
- * if not exist the create file and put content,
- * at the end return the content
- *
- * @param file_path
- * @param content
- */
-async function ensureReadFile(file_path: string, content = "{}") {
-  const file = await storage.readAsync(file_path);
-
-  if (!file.content) {
-    await storage.mkdirAsync(utils.extractPathFile(file_path), {
-      recursive: true,
-      mode: storage.DEFAULT_DIR_MODE,
-    });
-
-    await storage.writeFileAsync(file_path, content, {
-      encoding: "utf-8",
-      mode: storage.DEFAULT_FILE_MODE,
-    });
-
-    return Buffer.from(content);
-  }
-
-  return file.content;
-}
-
-/**
- * Create docs i18n folders and create default files
- *
- * @param languages
- * @returns
- */
-function initDocsI18nFiles(languages: string[]) {
-  return async.forEach(languages, async (lang) => {
-    await async.forEach(i18nFiles, async (file) => {
-      const file_path = path.join(I18N_PATH, lang, file);
-      await ensureFileCreate(file_path);
-    });
-  });
-}
-
-/**
- * Create docs meta.json file if not exist
- */
-async function initDocsMetaFile() {
-  await ensureFileCreate(METAFILE_PATH);
-}
-
-/**
- * Init docs apps files
- *
- * @param languages
- */
-async function initDocsFiles(languages: MDLang[]) {
-  const langs = languages.map((l) => l.code);
-  await Promise.all([initDocsMetaFile(), initDocsI18nFiles(langs)]);
-}
+import { DetailContent } from "../details";
+import { StartUrls } from "../docsearch-scraper";
 
 //  ========================== Store content ========================================//
 /**
@@ -147,7 +30,7 @@ async function initDocsFiles(languages: MDLang[]) {
  * @returns
  */
 async function metaContent(): Promise<MetaContent> {
-  const metafile = await ensureReadFile(METAFILE_PATH);
+  const metafile = await storage.ensureReadFile(METAFILE_PATH);
   return JSON.parse(metafile as any);
 }
 
@@ -176,10 +59,10 @@ async function storeTranslationContent(
   const langs = Object.keys(translations);
   await async.forEach(langs, async (lang) => {
     const file_path = path.join(I18N_PATH, lang, I18N_FILES[ikey]);
-    const buffer = await ensureReadFile(file_path);
+    const buffer = await storage.ensureReadFile(file_path);
     const file: Translations[string] = JSON.parse(buffer as any);
 
-    await ensureWriteFile(
+    await storage.ensureWriteFile(
       file_path,
       JSON.stringify({
         ...file,
@@ -325,7 +208,7 @@ async function storeNamespacesContent(
 
     // Handle folder
     if (item.type === "parent") {
-      await ensureFolderCreate(content_path);
+      await storage.ensureFolderCreate(content_path);
 
       // Create parents details
       if (item.content) {
@@ -342,7 +225,7 @@ async function storeNamespacesContent(
               id: overviewFileId,
             }) + (itemContent.markdown || "");
 
-          await ensureWriteFile(
+          await storage.ensureWriteFile(
             path.join(content_path, overviewFileId + MD_EXT),
             overviewText
           );
@@ -365,7 +248,7 @@ async function storeNamespacesContent(
             : {}),
         });
         // write page folder meta file
-        await ensureWriteFile(
+        await storage.ensureWriteFile(
           path.join(content_path, "_category_.json"),
           detail
         );
@@ -380,7 +263,7 @@ async function storeNamespacesContent(
       const itemContent = item.content[lang];
       const mdText = docMeta(item, lang) + (itemContent.markdown || "");
 
-      await ensureWriteFile(content_path.slice(0, -1) + MD_EXT, mdText);
+      await storage.ensureWriteFile(content_path.slice(0, -1) + MD_EXT, mdText);
     }
 
     /**
@@ -407,10 +290,56 @@ async function storeNamespacesContent(
  * @param urls
  */
 async function storeDocSearchScraperContent(urls: StartUrls[]) {
-  await ensureWriteFile(
+  await storage.ensureWriteFile(
     path.join(DOCSEARCH_SCRAPER_APP_PATH, "start-urls.json"),
     JSON.stringify(urls)
   );
+}
+
+/**
+ * Remove folder and file correspoding to
+ *
+ * @param ids
+ */
+async function unlinkPagesAndNamespacesContent(ids: string[]) {
+  if (ids.length === 0) {
+    return Promise.resolve();
+  }
+
+  const unlinkByCwd = (cwd: string) =>
+    new Promise<void>((resolve) => {
+      const globIds = ids.map((id) => {
+        return `${escapeRegExp(id)}*`;
+      });
+
+      glob(
+        `**/+(${globIds.join("|")})`,
+        { absolute: true, cwd },
+        async function (er, files) {
+          if (er) return;
+
+          resolve(
+            await async.forEach(files, (file) => {
+              /**
+               * Remove file
+               */
+              return new Promise<any>((reslv) => rimraf(file, reslv));
+            })
+          );
+        }
+      );
+    });
+
+  /**
+   * For each docs content dir (i18n and docs)
+   */
+  await async.forEach([I18N_PATH, CONTENT_DOCS_PATH], async (cwd) => {
+    await unlinkByCwd(cwd);
+  });
+}
+
+function escapeRegExp(str: string) {
+  return str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); // $& means the whole matched string
 }
 
 /**
@@ -418,11 +347,11 @@ async function storeDocSearchScraperContent(urls: StartUrls[]) {
  */
 export {
   storeNavbarContent,
-  initDocsFiles,
   storeFooterContent,
   storeI18nContent,
   storeNamespacesContent,
   storeSidebarsContent,
   storeDetailContent,
   storeDocSearchScraperContent,
+  unlinkPagesAndNamespacesContent,
 };

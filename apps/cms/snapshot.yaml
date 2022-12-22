@@ -49219,11 +49219,14 @@ fields:
       note: null
       options: null
       readonly: false
-      required: false
-      sort: null
+      required: true
+      sort: 2
       special: null
       translations: null
-      validation: null
+      validation:
+        _and:
+          - code:
+              _regex: ^[a-z]{2}$
       validation_message: null
       width: full
     schema:
@@ -49272,7 +49275,7 @@ fields:
             value: rtl
       readonly: false
       required: false
-      sort: null
+      sort: 4
       special: null
       translations: null
       validation: null
@@ -49312,8 +49315,8 @@ fields:
       note: null
       options: null
       readonly: false
-      required: false
-      sort: null
+      required: true
+      sort: 3
       special:
         - file
       translations: null
@@ -49354,8 +49357,8 @@ fields:
       note: null
       options: null
       readonly: false
-      required: false
-      sort: null
+      required: true
+      sort: 1
       special: null
       translations: null
       validation: null

@@ -9,18 +9,17 @@ export type DataType = "pages" | "footer" | "meta" | "namespaces" | "languages";
 export type DataPayload = {
   payload: Record<string, any>;
   collection: string;
+  keys?: string[];
+  key?: string;
 } & (
   | {
       event: `${string}.items.update`;
-      key: string[];
     }
   | {
       event: `${string}.items.create`;
-      key: string;
     }
   | {
       event: `${string}.items.delete`;
-      key: string[];
       payload: never;
     }
   | {
