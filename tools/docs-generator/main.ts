@@ -59,7 +59,17 @@ async function process({ type, data }: { type: DataType; data: DataPayload }) {
   if (
     (["languages", "namespaces", "pages", "meta"] as DataType[]).includes(type)
   ) {
-    IN_PROD && processGenerateAllDebounce(type, data);
+    if (IN_PROD) {
+      /**
+       * For delete event on (namespaces | pages) don't debounce
+       */
+      if (["namespaces", "pages"].includes(type) && data.event.endsWith("delete")) {
+        processGenerateAll(type, data)
+      } else {
+        processGenerateAllDebounce(type, data);
+      }
+    }
+
     !IN_PROD && processGenerateAll(type, data);
 
     /**
