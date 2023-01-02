@@ -39,7 +39,7 @@ module.exports = {
   },
 
   experimental: {
-    transpilePackages: ['@apps/contracts', '@apps/listmonk-client'],
+    esmExternals: 'loose',
   },
 
   publicRuntimeConfig: {
