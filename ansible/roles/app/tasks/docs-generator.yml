@@ -1,6 +1,10 @@
-- name: DOCS Generator | .env config
+- name: DOCS Generator (Fact) | docs_gen_dir
   set_fact:
-    env_file: "{{ root_path }}/tools/docs-generator/.env"
+    docs_gen_dir: "{{ root_path }}/tools/docs-generator"
+
+- name: DOCS Generator (Fact) | docs_gen_dir
+  set_fact:
+    env_file: "{{ docs_gen_dir }}/.env"
 
 - name: DOCS Generator | PM2 Name
   set_fact:
@@ -40,22 +44,29 @@
   wait_for:
     timeout: 5
 
+- name: DOCS Generator | Recursively remove dist directory
+  become: false
+  command: "rm -rf dist/"
+  args:
+    chdir: "{{ docs_gen_dir }}"
+  ignore_errors: true
+
 - name: DOCS Generator | Generate all documentation from CMS
   become: false
   command: pnpm run generate
   args:
-    chdir: "{{ root_path }}/tools/docs-generator"
+    chdir: "{{ docs_gen_dir }}"
 
 - name: DOCS Generator | Delete old pm2 process
   command: "pm2 delete {{ pm2_name }}"
   args:
-    chdir: "{{ root_path }}/tools/docs-generator"
+    chdir: "{{ docs_gen_dir }}"
   ignore_errors: true
 
 - name: DOCS Generator | Start the server
   command: "pm2 start npm --name {{ pm2_name }} -- run start"
   args:
-    chdir: "{{ root_path }}/tools/docs-generator"
+    chdir: "{{ docs_gen_dir }}"
 
 - name: "DOCS Generator | CRON | PM2 {{ pm2_name }} restart"
   cron:

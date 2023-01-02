@@ -20,12 +20,26 @@ module.exports = {
         protocol: 'https',
         hostname: '**.icloudeng.com',
       },
+      {
+        protocol: 'https',
+        hostname: '**.smatflow.com',
+      },
+      {
+        protocol: 'https',
+        hostname: '**.smatflow.xyz',
+      },
     ],
-    domains: ['localhost', '127.0.0.1', 'flowbite.com', 'images.unsplash.com', 'dummyimage.com'],
+    domains: [
+      'localhost',
+      '127.0.0.1',
+      'flowbite.com',
+      'images.unsplash.com',
+      'dummyimage.com',
+    ],
   },
 
   experimental: {
-    esmExternals: 'loose',
+    transpilePackages: ['@apps/contracts', '@apps/listmonk-client'],
   },
 
   publicRuntimeConfig: {

@@ -4,6 +4,7 @@ import type { CompanyDetail, MDLang } from "../cms/type";
 import { NamespaceBaseLink, reArrangeNamespace } from "./namespaces";
 import { DIRECTUS_STATIC_TOKEN, DIRECTUS_URL, WEBSITE_URL } from "../constants";
 import { cmsTransTransformer, transKey, Translations } from "./translations";
+import utils from "../utils";
 
 type NavbarItems = NonNullable<NonNullable<any["navbar"]>["items"]>;
 export type NavbarContent = {
@@ -119,7 +120,7 @@ export function generateNavbarContent({
       datas: nsp.translations,
     });
 
-    const { type, ...link } = namespaceLinks[nsp.id];
+    const { type, ...link } = namespaceLinks[utils.strToBase64(nsp.id)]; // get link by page id in base64 (ref: "./namespaces.ts");
 
     /**
      * Insert the at the start of an array,

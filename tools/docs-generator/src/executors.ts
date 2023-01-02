@@ -9,13 +9,12 @@ import {
   getCompanyDetailsQuery,
   getFooterQuery,
 } from "./cms/queries";
+import { generateDetailContent, generateFooterContent } from "./docusaurus";
 import {
-  generateDetailContent,
-  generateFooterContent,
+  unlinkPagesAndNamespacesFilesContent,
   storeDetailContent,
   storeFooterContent,
-  unlinkPagesAndNamespacesContent,
-} from "./docusaurus";
+} from "./docusaurus/files";
 import { executorQueue } from "./queue";
 import { DataPayload, DataType } from "@apps/docs-pubsub";
 
@@ -128,7 +127,7 @@ async function execGenerateAllEvent(type: DataType, data: DataPayload) {
    * Handle delete event
    */
   if (["namespaces", "pages"].includes(type) && data.event.endsWith("delete")) {
-    await unlinkPagesAndNamespacesContent(
+    await unlinkPagesAndNamespacesFilesContent(
       data.keys && data.keys.length > 0 ? data.keys : data.key ? [data.key] : []
     );
   }
