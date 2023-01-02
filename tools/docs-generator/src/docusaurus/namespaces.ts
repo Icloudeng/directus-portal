@@ -2,9 +2,9 @@ import slug from "limax";
 import { forEach, map } from "modern-async";
 import type { MDDCNamespace, MDDCPage } from "@apps/contracts";
 import type { MDLang } from "../cms/type";
-import type { ID } from "@directus/sdk";
 import { constructPagesTree, pagesById } from "./pages";
 import { getTranslation, transKey, Translations } from "./translations";
+import utils from "../utils";
 
 export type NamespaceBaseLink = {
   [id: string]: {
@@ -42,7 +42,7 @@ export type NamespacesContentTree = {
   rootSlug: string;
   root: boolean;
   label?: string;
-  id: ID;
+  id: string;
   position?: number;
   show_content: boolean;
   content?: ContentTreeTrans;
@@ -138,6 +138,7 @@ export async function generateNamespacesContent(
 
     const parent = mutableParent;
     const itype = (page.pages || []).length > 0 ? "parent" : "child";
+    const nodeId = utils.strToBase64(page.id);
 
     // Slugs
     const introSlug =
@@ -156,8 +157,8 @@ export async function generateNamespacesContent(
     const itemTree: NamespacesContentTree = {
       type: itype, // if page has children set it as parent
       root: false,
-      path: `${parent.path + page.id}/`, // this should end with /
-      id: page.id,
+      path: `${parent.path + nodeId}/`, // this should end with /
+      id: nodeId,
       label: page.label,
       rootSlug,
       slug: `${
@@ -177,10 +178,10 @@ export async function generateNamespacesContent(
          * Translate link category label
          */
         if (itype === "parent") {
-          const name_key = transKey(page.id, "name");
+          const name_key = transKey(nodeId, "name");
           translations[lang][`sidebar.${rootId}.category.${name_key}`] = {
             message: data.name || "",
-            description: `The sidebar category ${page.id} in sidebar docs`,
+            description: `The sidebar category ${nodeId} in sidebar docs`,
           };
         }
 
@@ -191,7 +192,7 @@ export async function generateNamespacesContent(
           // link.generated-index.title
           translations[lang][`sidebar.${rootId}.category.${page.label}`] = {
             message: data.name || "",
-            description: `The sidebar category ${page.id} in sidebar docs`,
+            description: `The sidebar category ${nodeId} in sidebar docs`,
           };
           /**
            * Use page label as translation key for generated-index
@@ -200,7 +201,7 @@ export async function generateNamespacesContent(
             `sidebar.${rootId}.category.${page.label}.link.generated-index.title`
           ] = {
             message: data.name || "",
-            description: `The sidebar generated-index title ${page.id} in sidebar docs`,
+            description: `The sidebar generated-index title ${nodeId} in sidebar docs`,
           };
 
           // link.generated-index.description
@@ -208,7 +209,7 @@ export async function generateNamespacesContent(
             `sidebar.${rootId}.category.${page.label}.link.generated-index.description`
           ] = {
             message: data.description || "",
-            description: `The sidebar generated-index description ${page.id} in sidebar docs`,
+            description: `The sidebar generated-index description ${nodeId} in sidebar docs`,
           };
         }
 
@@ -239,13 +240,15 @@ export async function generateNamespacesContent(
    * Contruct namespace tree
    */
   constructed.forEach((nsp) => {
+    const nodeId = utils.strToBase64(nsp.id);
+
     const itemTree: NamespacesContentTree = {
       type: "parent",
       root: true,
-      path: `${nsp.id}/`, // this should end with / (slash)
+      path: `${nodeId}/`, // this should end with / (slash)
       slug: `${nsp.url}`,
       rootSlug: `${nsp.url}`,
-      id: nsp.id,
+      id: nodeId,
       show_content: false,
       children: [],
     };
@@ -261,7 +264,7 @@ export async function generateNamespacesContent(
     const firstChildLink = getFirstChildLink(itemTree)!;
 
     // Set namespace link meta
-    links[nsp.id] = {
+    links[nodeId] = {
       activeBasePath: nsp.url,
       to: firstChildLink?.slug || nsp.url,
       docId: firstChildLink?.pathId,

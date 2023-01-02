@@ -1,4 +1,3 @@
-export * from "./files";
 export * from "./footer";
 export * from "./navbar";
 export * from "./i18n";

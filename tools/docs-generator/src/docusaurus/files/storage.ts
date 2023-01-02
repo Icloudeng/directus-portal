@@ -22,6 +22,7 @@ import { NamespacesContent, NamespacesContentTree } from "../namespaces";
 import yaml from "js-yaml";
 import { DetailContent } from "../details";
 import { StartUrls } from "../docsearch-scraper";
+import utils from "../../utils";
 
 //  ========================== Store content ========================================//
 /**
@@ -301,7 +302,7 @@ async function storeDocSearchScraperContent(urls: StartUrls[]) {
  *
  * @param ids
  */
-async function unlinkPagesAndNamespacesContent(ids: string[]) {
+async function unlinkPagesAndNamespacesFilesContent(ids: string[]) {
   if (ids.length === 0) {
     return Promise.resolve();
   }
@@ -309,7 +310,8 @@ async function unlinkPagesAndNamespacesContent(ids: string[]) {
   const unlinkByCwd = (cwd: string) =>
     new Promise<void>((resolve) => {
       const globIds = ids.map((id) => {
-        return `${escapeRegExp(id)}*`;
+        const nodeId = utils.strToBase64(id);
+        return `${nodeId}*`;
       });
 
       glob(
@@ -338,10 +340,6 @@ async function unlinkPagesAndNamespacesContent(ids: string[]) {
   });
 }
 
-function escapeRegExp(str: string) {
-  return str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); // $& means the whole matched string
-}
-
 /**
  * Export only what needed
  */
@@ -353,5 +351,5 @@ export {
   storeSidebarsContent,
   storeDetailContent,
   storeDocSearchScraperContent,
-  unlinkPagesAndNamespacesContent,
+  unlinkPagesAndNamespacesFilesContent,
 };

@@ -4,19 +4,22 @@ import { createLogQuery, getItemsQuery } from "./src/cms/queries";
 import {
   generateNamespacesContent,
   generateNavbarContent,
+  generateFooterContent,
+  generateI18nContent,
+  generateDetailContent,
+  generateDocSearchScraperContent,
+} from "./src/docusaurus";
+
+import {
   initDocsFiles,
   storeNamespacesContent,
   storeNavbarContent,
-  generateFooterContent,
-  generateI18nContent,
   storeI18nContent,
   storeFooterContent,
   storeSidebarsContent,
-  generateDetailContent,
   storeDetailContent,
   storeDocSearchScraperContent,
-  generateDocSearchScraperContent,
-} from "./src/docusaurus";
+} from "./src/docusaurus/files";
 
 const generator = async (logger = true) => {
   logger && Logger.info("=============== Start Generating =================");

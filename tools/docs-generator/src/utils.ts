@@ -1,3 +1,5 @@
+import { Buffer } from "node:buffer";
+
 /**
  * Produces a duplicate-free version of the array, using === to test object equality. In particular only the first
  * occurrence of each value is kept. If you want to compute unique items based on a transformation, pass an iteratee
@@ -69,10 +71,25 @@ const escapeRegExp = (value: string) => {
   return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); // $& means the whole matched string
 };
 
+/**
+ * Convert string to base64 ans Escape special charactars
+ *
+ * @param str
+ * @returns
+ */
+const strToBase64 = (str: string | number | symbol) => {
+  return Buffer.from(str.toString())
+    .toString("base64")
+    .replace(/\//g, "a1")
+    .replace(/\+/g, "a2")
+    .replace(/\=/g, "a3");
+};
+
 export default {
   uniq,
   isDate,
   isRegExp,
   extractPathFile,
   escapeRegExp,
+  strToBase64,
 };
