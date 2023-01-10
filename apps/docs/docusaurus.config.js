@@ -1,7 +1,7 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 require("dotenv").config();
-const lightCodeTheme = require("prism-react-renderer/themes/nightOwlLight");
+// const lightCodeTheme = require("prism-react-renderer/themes/nightOwlLight");
 const darkCodeTheme = require("prism-react-renderer/themes/nightOwl");
 const meta = require("./meta");
 const math = require("remark-math");
@@ -87,7 +87,7 @@ const config = {
         ...meta.footer,
       },
       prism: {
-        theme: lightCodeTheme,
+        theme: darkCodeTheme,
         darkTheme: darkCodeTheme,
       },
       typesense,
