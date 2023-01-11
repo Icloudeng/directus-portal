@@ -6,15 +6,15 @@ import {
   MDWithAsset,
   MDWithTranslation,
   RepeaterBtn,
-} from "./base";
+} from "./base.type";
 import {
   MDBlog,
   MDNews,
   MDPlatformCategory,
   MPlansPricing,
   PlansPricingContent,
-} from "./collections";
-import { CMS_MODELS } from "./constants";
+} from "./collections.type";
+import { CMS_MODELS } from "../constants";
 
 export type ISharedObject = { [x: string]: any };
 export type STemplates_Props<T> = {
