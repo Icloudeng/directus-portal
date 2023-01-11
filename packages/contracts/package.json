@@ -5,8 +5,8 @@
   "main": "./dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsup index.ts --dts --sourcemap --onSuccess \"tsc --emitDeclarationOnly --declaration\"",
-    "dev": "tsup index.ts --dts --sourcemap --watch"
+    "build": "tsup index.ts --sourcemap --onSuccess \"tsc\"",
+    "dev": "tsup index.ts --sourcemap --watch --onSuccess \"tsc\""
   },
   "keywords": [],
   "author": "",
