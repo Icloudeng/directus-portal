@@ -17,8 +17,23 @@ import {
 } from "./docusaurus/files";
 import { executorQueue } from "./queue";
 import { DataPayload, DataType } from "@apps/docs-pubsub";
+import type { DRTStatus } from "@apps/contracts";
 
 const execAsync = promisify(exec);
+
+type Status = Pick<DRTStatus, "status">["status"];
+
+export const hasPageDeletion = (type: DataType, data: DataPayload) => {
+  const hasStatusChange =
+    data.event.endsWith("update") &&
+    data.payload.status &&
+    (["archived", "draft"] as Status[]).includes(data.payload.status);
+
+  return (
+    ["namespaces", "pages"].includes(type) &&
+    (data.event.endsWith("delete") || hasStatusChange)
+  );
+};
 
 /**
  * Restart the pm2 app proccess but if the build has succeed
@@ -126,7 +141,7 @@ async function execGenerateAllEvent(type: DataType, data: DataPayload) {
   /**
    * Handle delete event
    */
-  if (["namespaces", "pages"].includes(type) && data.event.endsWith("delete")) {
+  if (hasPageDeletion(type, data)) {
     await unlinkPagesAndNamespacesFilesContent(
       data.keys && data.keys.length > 0 ? data.keys : data.key ? [data.key] : []
     );

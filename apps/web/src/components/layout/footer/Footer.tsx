@@ -24,7 +24,7 @@ export const Footer = () => {
   const bottom_footer = Layout?.bottom_footer || [];
 
   return (
-    <div
+    <footer
       className='sm:px-10 py-10 text-gray-300 z-0'
       style={{ backgroundColor: Layout?.site_background_color || '#313B4D' }}
     >
@@ -55,7 +55,7 @@ export const Footer = () => {
         {Layout?.show_footer_mailing_subscription !== false && <Subscribe />}
         {bottom_footer.length > 0 && <TermsConditions />}
       </div>
-    </div>
+    </footer>
   );
 };
 

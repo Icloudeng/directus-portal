@@ -7,9 +7,9 @@ import type {
   MDWithPoint,
   MDWithTranslation,
   RepeaterBtn,
-} from "./base";
-import { CMS_MODELS } from "./constants";
-import { M2APageSection, M2APageSectionReusable } from "./m2a";
+} from "./base.type";
+import { CMS_MODELS } from "../constants";
+import { M2APageSection, M2APageSectionReusable } from "./m2a.type";
 
 // --------------- Layout -------------
 

@@ -3,7 +3,11 @@ import debounce from "lodash/debounce";
 import { connect, DataPayload, DataType } from "@apps/docs-pubsub";
 import { Logger } from "./src/logger";
 import { createLogQuery, getCompanyDetailsQuery } from "./src/cms/queries";
-import { execFooterEvent, execGenerateAllEvent } from "./src/executors";
+import {
+  execFooterEvent,
+  execGenerateAllEvent,
+  hasPageDeletion,
+} from "./src/executors";
 import { IN_PROD, DEBOUNCE_EXECUTOR } from "./src/constants";
 import { executorQueue } from "./src/queue";
 
@@ -63,8 +67,8 @@ async function process({ type, data }: { type: DataType; data: DataPayload }) {
       /**
        * For delete event on (namespaces | pages) don't debounce
        */
-      if (["namespaces", "pages"].includes(type) && data.event.endsWith("delete")) {
-        processGenerateAll(type, data)
+      if (hasPageDeletion(type, data)) {
+        processGenerateAll(type, data);
       } else {
         processGenerateAllDebounce(type, data);
       }

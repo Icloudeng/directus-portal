@@ -27,7 +27,7 @@ export const Navbar = ({ whiteNav }: { whiteNav?: boolean }) => {
   };
 
   return (
-    <div
+    <nav
       className={`nav__parent h-[70px] xl:h-[100px] ${
         whiteNav ? 'bg-white text-black shadow-sm' : ''
       } flex items-center xl:px-10 transition-all ease-in-out duration-100 ${
@@ -79,7 +79,7 @@ export const Navbar = ({ whiteNav }: { whiteNav?: boolean }) => {
           <AiOutlineMenuFold className='submenu-burger text-4xl' />
         </div>
       </div>
-    </div>
+    </nav>
   );
 };
 

@@ -1,4 +1,4 @@
-import { WithTranslation } from "./base";
+import { WithTranslation } from "./types/index";
 
 export const IMAGE_PRESETS = {
   sliders: "sliders",

@@ -5,14 +5,15 @@
   "main": "./dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsup index.ts --dts",
-    "dev": "tsup index.ts --dts --watch"
+    "build": "tsup index.ts --sourcemap --onSuccess \"tsc\"",
+    "dev": "tsup index.ts --sourcemap --watch --onSuccess \"tsc\""
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@directus/sdk": "^10.1.5",
-    "tsup": "^6.5.0"
+    "tsup": "^6.5.0",
+    "typescript": "^4.9.4"
   }
 }

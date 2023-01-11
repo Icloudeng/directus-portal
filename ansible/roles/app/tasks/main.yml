@@ -97,6 +97,13 @@
   when: has_docs_app
 
 # Docs App PM2 restart process (It should come after DOCS generator)
+- name: DOCS | Clear cache docs app
+  become: false
+  command: pnpm run clear # Build only docs app from workspace
+  args:
+    chdir: "{{ root_path }}/apps/docs"
+  ignore_errors: true
+
 - name: DOCS | Build docs app
   become: false
   command: pnpm run build # Build only docs app from workspace
