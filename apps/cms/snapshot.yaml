@@ -9615,7 +9615,7 @@ fields:
         trim: true
       readonly: false
       required: true
-      sort: 3
+      sort: 2
       special: null
       translations: null
       validation: null
@@ -9650,21 +9650,21 @@ fields:
       display_options: null
       field: namespace
       group: null
-      hidden: true
+      hidden: false
       interface: select-dropdown-m2o
       note: null
       options:
         enableCreate: false
         template: "{{status}}\_{{label}}"
-      readonly: false
+      readonly: true
       required: false
-      sort: 2
+      sort: 6
       special:
         - m2o
       translations: null
       validation: null
       validation_message: null
-      width: full
+      width: half
     schema:
       comment: null
       data_type: uuid
@@ -9728,13 +9728,13 @@ fields:
         template: "{{status}}\_{{label}}"
       readonly: true
       required: false
-      sort: 6
+      sort: 5
       special:
         - m2o
       translations: null
       validation: null
       validation_message: null
-      width: full
+      width: half
     schema:
       comment: null
       data_type: uuid
@@ -9770,7 +9770,7 @@ fields:
       options: null
       readonly: false
       required: true
-      sort: 4
+      sort: 3
       special:
         - cast-boolean
       translations: null
@@ -9916,7 +9916,7 @@ fields:
         userLanguage: true
       readonly: false
       required: true
-      sort: 5
+      sort: 4
       special:
         - translations
       translations: null
