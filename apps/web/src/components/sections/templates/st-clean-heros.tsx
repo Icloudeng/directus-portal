@@ -8,6 +8,9 @@ import { HasSvgText } from '@/components/ui/HasSvgText';
 import ButtonLink from '@/components/ui/links/ButtonLink';
 
 import { useMut } from '@/cms/mut';
+import clsxm from '@/lib/clsxm';
+import { testHexColor } from '@/app/utils/tests';
+import React from 'react';
 
 export function ST_CleanHerosFC({
   items,
@@ -78,14 +81,26 @@ export function ST_CleanHerosFC({
         </style>
       )}
 
-      {items.map((data) => {
-        return <Header {...data} key={data.item.id} />;
+      {items.map((data, i) => {
+        const color = testHexColor(data.item.text_color);
+        return (
+          <React.Fragment key={data.item.id}>
+            {color && (
+              <style jsx global>{`
+                .${sectionClass} .clean-hero--wrapper-${i} {
+                  color: ${color};
+                }
+              `}</style>
+            )}
+            <Header {...data} index={i} />
+          </React.Fragment>
+        );
       })}
     </>
   );
 }
 
-function Header({ item }: ST_CleanHero) {
+function Header({ item, index }: ST_CleanHero & { index: number }) {
   const { translations, image, image_svg, disposition } = useMut(item);
   const buttons = translations?.buttons || [];
 
@@ -93,29 +108,36 @@ function Header({ item }: ST_CleanHero) {
 
   return (
     <div
-      className={`flex max-h-[1000px] ${hasImage ? 'lg:justify-between' : ''} ${
-        disposition === 'text_right' ? 'flex-row-reverse' : ''
-      }`}
+      className={clsxm(
+        'flex max-h-[1000px]',
+        hasImage && ['lg:justify-between'],
+        disposition === 'text_right' && ['flex-row-reverse']
+      )}
     >
       <div
-        className={`${
+        className={clsxm(
+          'justify-center max-w-[460px] flex items-center flex-col mx-auto',
           hasImage
-            ? 'lg:items-start lg:mx-0 lg:w-1/2'
-            : 'xl:max-w-[560px] lg:max-w-[480px] '
-        } justify-center max-w-[460px] flex items-center flex-col mx-auto`}
+            ? ['lg:items-start lg:mx-0 lg:w-1/2']
+            : ['xl:max-w-[560px] lg:max-w-[480px]'],
+          `clean-hero--wrapper-${index}`
+        )}
       >
         <h1
-          className={`${
-            hasImage ? 'lg:text-start' : ''
-          } text-center text-[30px] sm:text-[45px] font-bold`}
+          className={clsxm(
+            'text-center text-[30px] sm:text-[45px] font-bold clean-hero--texts',
+            hasImage && ['lg:text-start']
+          )}
         >
           {translations?.title}
         </h1>
-        <div className='mt-[30px]'>
+
+        <div className='mt-[30px] clean-hero--texts'>
           <p
-            className={`${
-              hasImage ? 'lg:text-start' : ''
-            } text-center text-[18px] ss:text-[20px] font-light leading-[1.64]`}
+            className={clsxm(
+              'text-center text-[18px] ss:text-[20px] font-light leading-[1.64]',
+              hasImage && ['lg:text-start']
+            )}
           >
             {translations?.description}
           </p>

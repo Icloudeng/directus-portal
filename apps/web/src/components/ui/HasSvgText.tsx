@@ -17,7 +17,7 @@ export function HasSvgText({
       {valid && (
         <span {...props} dangerouslySetInnerHTML={{ __html: svgText }} />
       )}
-      {!valid && <span {...props}>{fallback}</span>}
+      {!valid && fallback && <span {...props}>{fallback}</span>}
     </>
   );
 }

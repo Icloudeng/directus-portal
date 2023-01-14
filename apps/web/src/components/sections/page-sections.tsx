@@ -13,6 +13,7 @@ import { useMut } from '@/cms/mut';
 
 import * as stfc from './templates';
 import { HasSvgText } from '../ui/HasSvgText';
+import clsxm from '@/lib/clsxm';
 
 const { section_templates } = CMS_MODELS;
 type ST = typeof section_templates;
@@ -70,7 +71,6 @@ function PageSection({
 }) {
   const item = useMut(section.item);
   const classId = `${section.collection}${index}-${item.id}`;
-  const styleId = `cstyle-${classId}`;
   const { background_color, background_svg, background_image } = section.item;
 
   const bg_color = testHexColor(background_color);
@@ -125,7 +125,7 @@ function PageSection({
   return (
     <>
       {(style || bg_color) && (
-        <style key={styleId} jsx global>
+        <style key={`cstyle-${classId}`} jsx global>
           {`
             ${fc(
               (style || '') +
@@ -149,10 +149,13 @@ function PageSection({
           `}
         </style>
       )}
+
       <div
-        className={`relative ${
-          !item.container ? 'overflow-hidden' : ''
-        } py-10 bg-white isolate page__section ${classId}`}
+        className={clsxm(
+          'relative py-10 bg-white isolate page__section',
+          classId,
+          !item.container && ['overflow-hidden']
+        )}
         style={{
           backgroundImage:
             background_image?.src && !hasSvg
@@ -170,9 +173,10 @@ function PageSection({
         )}
 
         <div
-          className={`${
-            item.container ? 'x-container ss:px-12' : ''
-          } page__section-container py-10 flex flex-col items-center gap-10`}
+          className={clsxm(
+            'page__section-container py-10 flex flex-col items-center gap-10',
+            item.container && ['x-container ss:px-12']
+          )}
         >
           <div className='flex flex-col items-center justify-center gap-7 mb-7 page__section-titles'>
             {item.translations?.title && (
@@ -187,7 +191,7 @@ function PageSection({
           </div>
 
           <div className='page__section-content w-full'>
-            {contents.map((content) => {
+            {contents.map((content, cidx) => {
               const STComponent = ST_COMPONENTS[content.st_key];
               const items = content.items;
               return (
@@ -199,6 +203,7 @@ function PageSection({
                         sectionClass={classId}
                         sectionId={section.id}
                         sharedObject={sharedObject}
+                        fcIndex={cidx}
                       />
                     </div>
                   )}

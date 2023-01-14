@@ -22,13 +22,14 @@ export type STemplates_Props<T> = {
   sectionClass: string;
   sectionId?: ID;
   sharedObject: ISharedObject;
+  fcIndex: number;
 };
 
 //------------------- Section templates --------------------//
 
 export type ST_Value = MDHasM2A<
   {
-    icon_svg: string;
+    icon_svg?: string;
     icon_bg_color?: string;
     flexible: boolean;
     rows: "dynamic" | "2";
@@ -111,6 +112,7 @@ export type ST_CleanHero = MDHasM2A<
   {
     image?: MDWithAsset;
     image_svg?: string;
+    text_color?: string;
     disposition: "text_left" | "text_right";
   } & MDWithTranslation<{
     title: string;
