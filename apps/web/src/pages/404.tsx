@@ -5,19 +5,17 @@ import { useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 
 export default function NotFoundPage() {
-  const route = useRouter();
-
   return (
     <>
       <Seo templateTitle='Not Found' />
-      {typeof window !== 'undefined' && <Content key={route.asPath} />}
+      <Content />
     </>
   );
 }
 
 function Content() {
   const ref = useRef<HTMLIFrameElement | null>(null);
-  const [faced] = useState(false);
+  const [faced, setFaced] = useState(false);
   const route = useRouter();
 
   const timerRef = useRef(0);
@@ -27,10 +25,11 @@ function Content() {
     const iwindow = ref.current.contentWindow;
     if (!iwindow) return;
 
-    const oldPathname = iwindow.location.pathname;
     const detect = function () {
       const currentPathname = iwindow.location.pathname;
-      if (oldPathname !== currentPathname) {
+
+      if (!currentPathname.startsWith('/custom-404')) {
+        setFaced(true);
         window.clearInterval(timerRef.current);
         route.push(currentPathname);
       }
