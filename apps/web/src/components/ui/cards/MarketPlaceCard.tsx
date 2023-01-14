@@ -81,6 +81,12 @@ export const MarketPlaceCard = ({
             {linkText}
           </ButtonLink>
         )}
+
+        {!link && titleLink && (
+          <ButtonLink className='w-full flex justify-center' href={titleLink}>
+            {titleLink}
+          </ButtonLink>
+        )}
       </div>
     </div>
   );

@@ -100,6 +100,7 @@ const q_ST: Query = {
     }),
     image_svg: true,
     disposition: true,
+    text_color: true,
     ...qWithTranslations({
       title: true,
       description: true,

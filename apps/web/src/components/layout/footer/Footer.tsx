@@ -8,6 +8,7 @@ import { FooterItemLinks } from './components/FooterItemLinks';
 import { Subscribe } from './components/Subscribe';
 import { TermsConditions } from './components/TermsConditions';
 import React from 'react';
+import clsxm from '@/lib/clsxm';
 
 export const Footer = () => {
   const { FooterLinks, Layout } = useSharedData();
@@ -37,9 +38,11 @@ export const Footer = () => {
 
             {Layout?.show_footer_links !== false && (
               <div
-                className={`middle-left grid grid-cols-1 ss:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:flex items-start ${
-                  hasFooterLinks ? 'justify-around' : 'justify-start'
-                } gap-20 sm:flex-[2.7] flex-[3.6] ml-1 xs:ml-3 px-4 `}
+                className={clsxm(
+                  'middle-left grid grid-cols-1 ss:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:flex items-start',
+                  'gap-20 sm:flex-[2.7] flex-[3.6] ml-1 xs:ml-3 px-4',
+                  hasFooterLinks ? ['justify-around'] : ['justify-start']
+                )}
               >
                 {footer_links?.map(({ id, links, translations }) => (
                   <FooterItemLinks

@@ -1,4 +1,5 @@
 import { useSharedData } from '@/app/store';
+import clsxm from '@/lib/clsxm';
 import throttle from 'lodash/throttle';
 import { useCallback, useEffect, useRef, useState } from 'react';
 
@@ -39,9 +40,10 @@ export default function Header({ whiteNav }: { whiteNav?: boolean }) {
 
   return (
     <header
-      className={`fixed left-0 top-0 right-0 z-40 transition-transform translate-y-0 layout--header ${
-        !hasTop && hasTopbar ? 'sd:-translate-y-[41px]' : ''
-      }`}
+      className={clsxm(
+        'fixed left-0 top-0 right-0 z-40 transition-transform translate-y-0 layout--header',
+        !hasTop && hasTopbar && ['sd:-translate-y-[41px]']
+      )}
     >
       {hasTopbar && <TopBar />}
       <Navbar whiteNav={whiteNav} />
