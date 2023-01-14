@@ -22,7 +22,7 @@ export type STemplates_Props<T> = {
   sectionClass: string;
   sectionId?: ID;
   sharedObject: ISharedObject;
-  fcIndex: number;
+  fcIndex?: number;
 };
 
 //------------------- Section templates --------------------//
