@@ -28,7 +28,7 @@ function Content() {
     const detect = function () {
       const currentPathname = iwindow.location.pathname;
 
-      if (!currentPathname.startsWith('/custom-404')) {
+      if (!currentPathname.includes('custom-404')) {
         setFaced(true);
         window.clearInterval(timerRef.current);
         route.push(currentPathname);
