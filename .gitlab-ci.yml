@@ -1,6 +1,6 @@
 default:
   tags:
-    - icloudeng-system-v15
+    - smatflow-projects-runner
 
 stages:
   - front-test
