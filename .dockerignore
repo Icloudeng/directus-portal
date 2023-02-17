@@ -1,0 +1,11 @@
+node_modules
+npm-debug.log
+.husky
+.venv
+.next
+.turbo
+.docusaurus
+i18n
+meta.json
+dist
+out/

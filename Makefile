@@ -4,6 +4,7 @@ python:=python3
 venv:=.venv/bin/activate
 source:=source
 sy := php bin/console
+registryHost :=registry-hub.smatflow.net/smatflow-projects/smatflow-portal
 
 ifeq ($(OS),Windows_NT)
 python:=python
@@ -35,12 +36,12 @@ generate-ssh-key:
 # Mounts project database from docker
 .PHONY: postgres-docker
 postgres-docker:
-	docker compose up db -d
+	docker compose -f docker/docker-compose.yml up db -d
 
 # Mounts project typesense from docker
 .PHONY: typesense-docker
 typesense-docker:
-	docker compose up typesense -d
+	docker compose -f docker/docker-compose.yml up typesense -d
 
 # ============================
 # Dev server
@@ -126,3 +127,12 @@ vault-gen:
 text?=
 gvault-gen:
 	ansible-vault encrypt_string --vault-password-file .vault_pass $(text)
+
+
+# ============================
+# Docker Build apps
+# ============================
+
+.PHONY: docker-cms-build
+docker-cms-build:
+	docker build -t $(registryHost)/cms -f docker/Dockerfile.cms . --build-arg --no-cache

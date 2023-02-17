@@ -31,6 +31,7 @@ async function main() {
 
   IN_PROD && Logger.info("=============== PROD Observing =================");
   !IN_PROD && Logger.info("=============== DEV Observing =================");
+
   DEBOUNCE_EXECUTOR &&
     Logger.info("======== Running with DEBOUNCE_EXECUTOR ========");
 

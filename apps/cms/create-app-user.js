@@ -1,4 +1,5 @@
 require("dotenv").config();
+require('dotenv').config({ override: true })
 const { Directus } = require("@directus/sdk");
 
 const directus = new Directus(`http://${process.env.HOST}:${process.env.PORT}`);
