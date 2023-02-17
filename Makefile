@@ -129,9 +129,9 @@ gvault-gen:
 	ansible-vault encrypt_string --vault-password-file .vault_pass $(text)
 
 
-# ============================
-# Docker Build apps
-# ============================
+# ================================================================
+# Docker Build apps ( ----------- CMS -----------)
+# ================================================================
 noCache?=
 ifndef noCache
  nocache=
@@ -147,6 +147,16 @@ docker-cms-build:
 docker-cms-push:
 	docker push $(registryHost)/cms
 
+
 .PHONY: docker-cms-pull
 docker-cms-pull:
 	docker pull $(registryHost)/cms
+
+
+.PHONY: docker-compose-cms
+docker-compose-cms:
+	docker compose -f docker/cms/docker-compose.yml up -d --build
+
+# ================================================================
+# Docker Build apps ( ----------- WEB -----------)
+# ================================================================

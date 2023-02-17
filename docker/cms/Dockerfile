@@ -53,8 +53,8 @@ COPY --from=builder /app/out/pnpm-lock.yaml ./pnpm-lock.yaml
 
 COPY --from=installer /app/apps/cms ./apps/cms
 COPY --from=installer /app/apps/cms/.env.sample ./apps/cms/.env
-COPY --from=installer /app/packages/*dist* ./app/packages/
-COPY --from=installer /app/packages/*package.json ./app/packages/
+COPY --from=installer /app/packages/*dist* ./apps/packages/
+COPY --from=installer /app/packages/*package.json ./apps/packages/
 
 # Automatically leverage output traces to reduce image size
 # COPY --from=installer /app/apps/cms/uploads ./apps/cms/uploads
