@@ -8,4 +8,5 @@ npm-debug.log
 i18n
 meta.json
 dist
-out/
+out
+uploads

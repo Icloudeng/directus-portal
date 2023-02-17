@@ -132,7 +132,21 @@ gvault-gen:
 # ============================
 # Docker Build apps
 # ============================
-
+noCache?=
+ifndef noCache
+ nocache=
+else
+ nocache=--no-cache
+endif
 .PHONY: docker-cms-build
 docker-cms-build:
-	docker build -t $(registryHost)/cms -f docker/Dockerfile.cms . --build-arg --no-cache
+	docker build -t $(registryHost)/cms -f docker/Dockerfile.cms . --no-cache
+
+
+.PHONY: docker-cms-push
+docker-cms-push:
+	docker push $(registryHost)/cms
+
+.PHONY: docker-cms-pull
+docker-cms-pull:
+	docker pull $(registryHost)/cms

@@ -1,25 +1,27 @@
-ARG WORK_APP=cms
-
 # This Dockerfile is copy-pasted into our main docs at /docs/handbook/deploying-with-docker.
 # Make sure you update both files!
 
-FROM node:alpine AS builder
+FROM node:lts-alpine AS builder
 # Check https://github.com/nodejs/docker-node/tree/b4117f9333da4138b03a546ec926ef50a31506c3#nodealpine to understand why libc6-compat might be needed.
-RUN apk add --no-cache libc6-compat
+RUN apk add --no-cache libc6-compat curl
 RUN apk update
-RUN curl -f https://get.pnpm.io/v6.16.js | node - add --global pnpm
+# 
+ENV PNPM_HOME=/root/.local/share/pnpm
+ENV PATH=$PATH:$PNPM_HOME
+RUN  curl -fsSL "https://github.com/pnpm/pnpm/releases/latest/download/pnpm-linuxstatic-x64" -o /bin/pnpm && chmod +x /bin/pnpm
 # Set working directory
 WORKDIR /app
-RUN pnpm add turbo -g
+RUN pnpm add turbo --global
 COPY . .
-RUN turbo prune --scope=${WORK_APP} --docker
+RUN chmod +x docker/scripts/start-cms.sh
+RUN turbo prune --scope=cms --docker
 
 
 # Add lockfile and package.json's of isolated subworkspace
-FROM node:alpine AS installer
+FROM node:lts-alpine AS installer
 RUN apk add --no-cache libc6-compat
 RUN apk update
-RUN curl -f https://get.pnpm.io/v6.16.js | node - add --global pnpm
+RUN corepack enable && corepack prepare pnpm@latest --activate
 # Set working directory
 WORKDIR /app
 # First install the dependencies (as they change less often)
@@ -31,27 +33,61 @@ RUN pnpm install
 COPY --from=builder /app/out/full/ .
 COPY turbo.json turbo.json
 # Build the apps
-RUN pnpm turbo run build --filter=${WORK_APP}...
+RUN pnpm turbo run build --filter=cms
 
 
 # Runner stage
-FROM node:alpine AS runner
-RUN curl -f https://get.pnpm.io/v6.16.js | node - add --global pnpm
+FROM node:lts-alpine AS runner
+RUN corepack enable && corepack prepare pnpm@latest --activate
 WORKDIR /app
+
 # Don't run production as root
-RUN addgroup --system --gid 1001 nodejs
-RUN adduser --system --uid 1001 ${WORK_APP}
-USER ${WORK_APP}
+# RUN addgroup --system --gid 1001 nodejs
+# RUN adduser --system --uid 1001 app
+# USER app
+
 # copy files
-COPY --from=installer /app/apps/${WORK_APP} .
-COPY --from=installer /app/apps/${WORK_APP}/.env.sample ./apps/${WORK_APP}/.env
-COPY --from=installer /app/packages/*dist* .
-COPY --from=installer /app/packages/*package.json .
+COPY .gitignore .gitignore
+COPY --from=builder /app/out/json/ .
+COPY --from=builder /app/out/pnpm-lock.yaml ./pnpm-lock.yaml
+
+COPY --from=installer /app/apps/cms ./apps/cms
+COPY --from=installer /app/apps/cms/.env.sample ./apps/cms/.env
+COPY --from=installer /app/packages/*dist* ./app/packages/
+COPY --from=installer /app/packages/*package.json ./app/packages/
+
 # Automatically leverage output traces to reduce image size
-COPY --from=installer --chown=${WORK_APP}:nodejs /app/apps/${WORK_APP}/uploads .
+# COPY --from=installer /app/apps/cms/uploads ./apps/cms/uploads
+
+RUN pnpm --filter "./apps/cms" install --frozen-lockfile --prod
+RUN pnpm store prune
+
 # Copy server runner server
-COPY docker/scripts/start-cms.sh ./start-cms.sh
-RUN chmod +x ./start-cms.sh
-ENV WORK_APP=${WORK_APP}
+COPY --from=builder /app/docker/scripts/start-cms.sh ./start-cms.sh
+
+RUN rm -rf /app/apps/cms/uploads
+
+RUN \
+    # Create data directories
+    mkdir -p \
+    ./apps/cms/database \
+    ./apps/cms/extensions \
+    ./apps/cms/uploads
+
+VOLUME \
+    /app/apps/cms/database \
+    /app/apps/cms/extensions \
+    /app/apps/cms/uploads
+
+ENV \
+  DB_CLIENT="sqlite3" \
+  DB_FILENAME="/app/apps/cms/database/database.sqlite" \
+  EXTENSIONS_PATH="/app/apps/cms/extensions" \
+  STORAGE_LOCAL_ROOT="/app/apps/cms/uploads"
+
+
+ENV WORK_APP=cms
+
+EXPOSE 8055
 
 CMD ["./start-cms.sh"]
