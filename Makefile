@@ -140,7 +140,7 @@ else
 endif
 .PHONY: docker-cms-build
 docker-cms-build:
-	docker build -t $(registryHost)/cms -f docker/Dockerfile.cms . --no-cache
+	docker build -t $(registryHost)/cms -f docker/cms/Dockerfile . $(nocache)
 
 
 .PHONY: docker-cms-push

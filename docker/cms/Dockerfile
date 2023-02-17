@@ -13,7 +13,7 @@ RUN  curl -fsSL "https://github.com/pnpm/pnpm/releases/latest/download/pnpm-linu
 WORKDIR /app
 RUN pnpm add turbo --global
 COPY . .
-RUN chmod +x docker/scripts/start-cms.sh
+RUN chmod +x docker/cms/start-cms.sh
 RUN turbo prune --scope=cms --docker
 
 
@@ -63,21 +63,21 @@ RUN pnpm --filter "./apps/cms" install --frozen-lockfile --prod
 RUN pnpm store prune
 
 # Copy server runner server
-COPY --from=builder /app/docker/scripts/start-cms.sh ./start-cms.sh
+COPY --from=builder /app/docker/cms/start-cms.sh ./start-cms.sh
 
 RUN rm -rf /app/apps/cms/uploads
 
 RUN \
-    # Create data directories
-    mkdir -p \
-    ./apps/cms/database \
-    ./apps/cms/extensions \
-    ./apps/cms/uploads
+  # Create data directories
+  mkdir -p \
+  ./apps/cms/database \
+  ./apps/cms/extensions \
+  ./apps/cms/uploads
 
 VOLUME \
-    /app/apps/cms/database \
-    /app/apps/cms/extensions \
-    /app/apps/cms/uploads
+  /app/apps/cms/database \
+  /app/apps/cms/extensions \
+  /app/apps/cms/uploads
 
 ENV \
   DB_CLIENT="sqlite3" \

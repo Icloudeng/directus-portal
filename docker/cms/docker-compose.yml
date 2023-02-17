@@ -1,0 +1,43 @@
+version: '3.8'
+services:
+  db:
+    image: postgis/postgis:12-3.2-alpine
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: portal
+      POSTGRES_DB: portal
+    ports:
+      - "5432:5432"
+    volumes:
+      - db-data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7.0.8
+    command: redis-server --appendonly yes
+    restart: unless-stopped
+    ports:
+      - 6380:6379
+    volumes:
+      - redis-data:/data
+
+  cms:
+    image: ${HOST_IMAGE:?error}
+    depends_on:
+      - db
+      - redis
+    restart: unless-stopped
+    env_file:
+      - .env
+    ports:
+      - 8055:8055
+    volumes:
+      - cms-database:/app/apps/cms/database
+      - cms-extensions:/app/apps/cms/extensions
+      - cms-uploads:/app/apps/cms/uploads
+
+volumes:
+  db-data:
+  redis-data:
+  cms-database:
+  cms-extensions:
+  cms-uploads:
