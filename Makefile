@@ -155,7 +155,7 @@ docker-cms-pull:
 
 .PHONY: docker-compose-cms
 docker-compose-cms:
-	docker compose -f docker/cms/docker-compose.yml up -d --build
+	docker compose -f docker/cms/docker-compose.yml up -d --force-recreate
 
 # ================================================================
 # Docker Build apps ( ----------- WEB -----------)
