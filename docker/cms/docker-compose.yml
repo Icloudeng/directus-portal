@@ -6,8 +6,6 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: portal
       POSTGRES_DB: portal
-    ports:
-      - "5432:5432"
     volumes:
       - db-data:/var/lib/postgresql/data
 
@@ -15,8 +13,6 @@ services:
     image: redis:7.0.8-alpine
     command: redis-server --appendonly yes
     restart: unless-stopped
-    ports:
-      - 6380:6379
     volumes:
       - redis-data:/data
 
@@ -27,6 +23,7 @@ services:
       - redis
     restart: unless-stopped
     env_file:
+      - ../../apps/cms/.env.sample
       - .env
     ports:
       - 8055:8055

@@ -52,9 +52,7 @@ COPY --from=builder /app/out/json/ .
 COPY --from=builder /app/out/pnpm-lock.yaml ./pnpm-lock.yaml
 
 COPY --from=installer /app/apps/cms ./apps/cms
-COPY --from=installer /app/apps/cms/.env.sample ./apps/cms/.env
-COPY --from=installer /app/packages/*dist* ./apps/packages/
-COPY --from=installer /app/packages/*package.json ./apps/packages/
+COPY --from=installer /app/packages/ ./packages/
 
 # Automatically leverage output traces to reduce image size
 # COPY --from=installer /app/apps/cms/uploads ./apps/cms/uploads
@@ -66,6 +64,8 @@ RUN pnpm store prune
 COPY --from=builder /app/docker/cms/start-cms.sh ./start-cms.sh
 
 RUN rm -rf /app/apps/cms/uploads
+RUN rm -rf ./apps/cms/.env
+RUN find ./packages/ -type d -regex ".*node_modules" -exec rm -rf "{}" \+
 
 RUN \
   # Create data directories
@@ -84,7 +84,6 @@ ENV \
   DB_FILENAME="/app/apps/cms/database/database.sqlite" \
   EXTENSIONS_PATH="/app/apps/cms/extensions" \
   STORAGE_LOCAL_ROOT="/app/apps/cms/uploads"
-
 
 ENV WORK_APP=cms
 
