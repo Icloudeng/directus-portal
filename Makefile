@@ -132,15 +132,9 @@ gvault-gen:
 # ================================================================
 # Docker Build apps ( ----------- CMS -----------)
 # ================================================================
-noCache?=
-ifndef noCache
- nocache=
-else
- nocache=--no-cache
-endif
 .PHONY: docker-cms-build
 docker-cms-build:
-	docker build -t $(registryHost)/cms -f docker/cms/Dockerfile . $(nocache)
+	docker build -t $(registryHost)/cms -f docker/cms/Dockerfile . --no-cache
 
 
 .PHONY: docker-cms-push
@@ -160,3 +154,21 @@ docker-compose-cms:
 # ================================================================
 # Docker Build apps ( ----------- WEB -----------)
 # ================================================================
+.PHONY: docker-web-build
+docker-web-build:
+	docker build -t $(registryHost)/web -f docker/web/Dockerfile . --no-cache
+
+
+.PHONY: docker-web-push
+docker-web-push:
+	docker push $(registryHost)/web
+
+
+.PHONY: docker-web-pull
+docker-web-pull:
+	docker pull $(registryHost)/web
+
+
+.PHONY: docker-compose-web
+docker-compose-web:
+	docker compose -f docker/web/docker-compose.yml up -d --force-recreate
