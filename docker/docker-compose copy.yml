@@ -1,0 +1,33 @@
+version: '3.8'
+services:
+  db:
+    image: postgis/postgis:12-3.2-alpine
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: icloudeng_portal
+    networks:
+      - icloudeng_portal
+    ports:
+      - "5432:5432"
+    volumes:
+      - db-data:/var/lib/postgresql/data
+
+  typesense:
+    image: typesense/typesense:0.23.1
+    restart: always
+    env_file:
+      - ./tools/typesense/docker.env
+    networks:
+      - icloudeng_portal
+    ports:
+      - 8108:8108
+    volumes:
+      - typesense-data:/data
+
+networks:
+  icloudeng_portal: {}
+
+volumes:
+  db-data:
+  typesense-data:
