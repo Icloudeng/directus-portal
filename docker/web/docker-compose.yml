@@ -23,7 +23,7 @@ services:
     environment:
       - DIRECTUS_EMAIL=admin@example.com
       - DIRECTUS_PASSWORD=password
-      - CMS_URL=http://127.0.0.1:8055
+      - CMS_URL=http://cms:8055
       - DIRECTUS_URL=http://cms:8055
     ports:
       - 3000:3000

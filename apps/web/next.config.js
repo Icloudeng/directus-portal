@@ -36,6 +36,7 @@ module.exports = {
       'flowbite.com',
       'images.unsplash.com',
       'dummyimage.com',
+      'cms', // docker
     ],
   },
 
