@@ -1,3 +1,4 @@
+import { CMS_URL } from '@/app/constant/env';
 import {
   DRTQueryT,
   DRTStatus,
@@ -6,8 +7,6 @@ import {
   QueryWithTranslation,
 } from '@apps/contracts';
 import { Filter, Sort } from '@directus/sdk';
-
-import { cms_url } from './directus';
 
 export const qWithStatus: DRTQueryT<DRTStatus> = {
   id: true,
@@ -44,6 +43,8 @@ export function qWithAsset<T extends { [x: string]: MDWithAsset | unknown }>(
   imageKey: keyof T = 'image',
   preset?: string | [number, number]
 ) {
+  const cms_url = CMS_URL;
+
   if (!data[imageKey]) return data;
   let preset_url = '';
   const asset = data[imageKey] as MDWithAsset;
