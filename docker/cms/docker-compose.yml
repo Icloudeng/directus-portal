@@ -17,7 +17,7 @@ services:
       - redis-data:/data
 
   cms:
-    image: ${HOST_IMAGE:?error}
+    image: registry-hub.smatflow.net/smatflow-projects/smatflow-portal/cms:latest
     depends_on:
       - db
       - redis

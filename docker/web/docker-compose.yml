@@ -1,33 +1,33 @@
 version: '3.8'
 services:
   db:
-    image: postgis/postgis:12-3.2-alpine
-    environment:
-      POSTGRES_USER: root
-      POSTGRES_PASSWORD: root
-      POSTGRES_DB: icloudeng_portal
-    networks:
-      - icloudeng_portal
-    ports:
-      - "5432:5432"
-    volumes:
-      - db-data:/var/lib/postgresql/data
+    extends:
+      file: ../cms/docker-compose.yml
+      service: db
 
-  typesense:
-    image: typesense/typesense:0.23.1
-    restart: always
+  redis:
+    extends:
+      file: ../cms/docker-compose.yml
+      service: redis
+
+  cms:
+    extends:
+      file: ../cms/docker-compose.yml
+      service: cms
+
+  web:
+    image: registry-hub.smatflow.net/smatflow-projects/smatflow-portal/web:latest
+    depends_on:
+      - cms
+    restart: unless-stopped
     env_file:
-      - ./tools/typesense/docker.env
-    networks:
-      - icloudeng_portal
+      - .env
     ports:
-      - 8108:8108
-    volumes:
-      - typesense-data:/data
-
-networks:
-  icloudeng_portal: {}
+      - 3000:3000
 
 volumes:
   db-data:
-  typesense-data:
+  redis-data:
+  cms-database:
+  cms-extensions:
+  cms-uploads:

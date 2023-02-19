@@ -31,7 +31,7 @@ COPY --from=builder /app/out/full/ .
 COPY turbo.json turbo.json
 # Build the apps
 RUN pnpm turbo run build --filter=web...
-
+RUN rm -rf apps/web/.env && rm -rf apps/web/.env.local
 
 
 # Runner stage

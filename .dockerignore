@@ -15,3 +15,4 @@
 **/*.log
 
 **/.vscode
+**/.env.local
