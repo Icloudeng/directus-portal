@@ -29,6 +29,9 @@ RUN pnpm install
 # Build the project
 COPY --from=builder /app/out/full/ .
 COPY turbo.json turbo.json
+
+ENV NEXT_SHARP_PATH=/app/apps/web/node_modules/sharp
+
 # Build the apps
 RUN pnpm turbo run build --filter=web...
 
@@ -53,14 +56,14 @@ RUN rm -rf ~/.pnpm-store
 RUN rm -rf /bin/pnpm
 RUN find ./packages/ -type d -regex ".*node_modules" -exec rm -rf "{}" \+
 
-ENV NODE_ENV=production
-ENV NEXT_TELEMETRY_DISABLED=1
-ENV NEXT_SHARP_PATH=/app/apps/web/node_modules/sharp
-
 # Don't run production as root
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
 USER nextjs
+
+ENV NODE_ENV=production
+ENV NEXT_TELEMETRY_DISABLED=1
+ENV NEXT_SHARP_PATH=/app/apps/web/node_modules/sharp
 
 COPY --from=installer --chown=nextjs:nodejs /app/apps/web/.next/standalone ./apps/web
 COPY --from=installer --chown=nextjs:nodejs /app/apps/web/.next/static ./apps/web/.next/static
