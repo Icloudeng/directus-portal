@@ -42,15 +42,20 @@ RUN corepack enable && corepack prepare pnpm@latest --activate
 
 COPY --from=builder /app/out/json/ .
 COPY --from=installer /app/apps/web/next.config.js ./apps/web/next.config.js
+COPY --from=installer /app/apps/web/next-i18next.config.js ./apps/web/next-i18next.config.js
 COPY --from=builder /app/out/pnpm-lock.yaml ./pnpm-lock.yaml
 
 RUN pnpm --filter "./apps/web" install --frozen-lockfile --ignore-scripts --prod
+RUN pnpm --filter "./apps/web" add sharp --frozen-lockfile --ignore-scripts --prod
 
 RUN pnpm store prune
 RUN corepack disable
 RUN rm -rf ~/.pnpm-store
 RUN rm -rf /bin/pnpm
 RUN find ./packages/ -type d -regex ".*node_modules" -exec rm -rf "{}" \+
+
+ENV NODE_ENV production
+ENV NEXT_TELEMETRY_DISABLED 1
 
 # Don't run production as root
 RUN addgroup --system --gid 1001 nodejs
@@ -62,5 +67,7 @@ COPY --from=installer --chown=nextjs:nodejs /app/apps/web/.next/static ./apps/we
 COPY --from=installer --chown=nextjs:nodejs /app/apps/web/public ./apps/web/public
 
 EXPOSE 3000
+
+ENV PORT 3000
 
 CMD node ./apps/web/server.js
