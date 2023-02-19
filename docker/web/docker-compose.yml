@@ -25,6 +25,8 @@ services:
       - DIRECTUS_PASSWORD=password
       - CMS_URL=http://cms:8055
       - DIRECTUS_URL=http://cms:8055
+    volumes:
+      - web-cache:/app/apps/web/.next/cache:rw
     ports:
       - 3000:3000
 
@@ -34,3 +36,4 @@ volumes:
   cms-database:
   cms-extensions:
   cms-uploads:
+  web-cache:
