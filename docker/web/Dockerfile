@@ -30,8 +30,6 @@ RUN pnpm install
 COPY --from=builder /app/out/full/ .
 COPY turbo.json turbo.json
 
-ENV NEXT_SHARP_PATH=/app/apps/web/node_modules/sharp
-
 # Build the apps
 RUN pnpm turbo run build --filter=web...
 
