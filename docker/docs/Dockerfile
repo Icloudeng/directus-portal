@@ -68,20 +68,28 @@ RUN rm -rf /bin/pnpm
 COPY docker/docs/start-docs.sh ./start-docs.sh
 RUN chmod +x ./start-docs.sh
 
-# Create nessesary files for docs
-RUN touch apps/docs/meta.json && echo "{}" > apps/docs/meta.json
-
 # Envs
 ENV NODE_ENV=production
 ENV PATH $PATH:/app/tools/pm2/node_modules/.bin
 ENV DOCS_APP_PM2_NAME=docs-app
 ENV DG_APP_PM2_NAME=docs-generator
 
+RUN \
+    # Create data directories
+    mkdir -p \
+    ./apps/docs/i18n \
+    ./apps/docs/docs \
+    ./apps/docs/meta \
+    ./apps/docs/build \
+    ./tools/docsearch-scraper/meta
+
+
 VOLUME \
     /app/apps/docs/i18n \
     /app/apps/docs/docs \
     /app/apps/docs/meta \
-    /app/apps/docs/build
+    /app/apps/docs/build \
+    /app/tools/docsearch-scraper/meta
 
 EXPOSE 3100
 

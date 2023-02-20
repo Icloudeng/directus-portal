@@ -11,6 +11,7 @@
 **/dist
 **/out
 **/uploads
+**/start-urls.json
 
 **/*.log
 

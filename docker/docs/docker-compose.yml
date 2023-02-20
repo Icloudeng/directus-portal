@@ -15,22 +15,37 @@ services:
       file: ../cms/docker-compose.yml
       service: cms
 
+  typesense:
+    image: typesense/typesense:0.23.1
+    restart: unless-stopped
+    env_file:
+      - ../../tools/typesense/docker.env
+    ports:
+      - 8108:8108
+    volumes:
+      - typesense-data:/data
+
   docs:
     image: registry-hub.smatflow.net/smatflow-projects/smatflow-portal/docs:latest
     depends_on:
       - cms
+      - typesense
     restart: unless-stopped
+    env_file:
+      - .env
     volumes:
       - docs-i18n:/app/apps/docs/i18n
       - docs-data:/app/apps/docs/docs
-      - docs-meta:/app/apps/docs/meta
+      - docs-meta:/app/apps/docs/metatools
       - docs-build:/app/apps/docs/build
+      - docs-scraper-meta:/app/tools/docsearch-scraper/meta
     ports:
       - 3100:3100
 
 volumes:
   db-data:
   redis-data:
+  typesense-data:
 
   cms-database:
   cms-extensions:
@@ -40,3 +55,4 @@ volumes:
   docs-data:
   docs-meta:
   docs-build:
+  docs-scraper-meta:
