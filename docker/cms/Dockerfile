@@ -55,9 +55,11 @@ COPY --from=installer /app/apps/cms ./apps/cms
 COPY --from=installer /app/packages/ ./packages/
 
 # Automatically leverage output traces to reduce image size
-# COPY --from=installer /app/apps/cms/uploads ./apps/cms/uploads
+RUN rm -rf ./package.json
 
 RUN pnpm --filter "./apps/cms" install --frozen-lockfile --prod
+# install concurrently
+RUN pnpm --filter "./apps/cms" add concurrently --prod
 RUN pnpm store prune
 
 # Copy server runner server

@@ -1,5 +1,4 @@
 require("dotenv").config();
-require('dotenv').config({ override: true })
 const { Directus } = require("@directus/sdk");
 
 const directus = new Directus(`http://${process.env.HOST}:${process.env.PORT}`);
@@ -48,6 +47,10 @@ async function createUser(role) {
 }
 
 async function main() {
+  await new Promise((resolve) => {
+    setTimeout(resolve, 1000 * 10);
+  });
+
   try {
     await directus.auth.login({
       email: process.env.ADMIN_EMAIL,
