@@ -1,30 +1,35 @@
 //@ts-check
+import * as dotenv from "dotenv";
 import { spawn } from "node:child_process";
 import fs from "node:fs/promises";
+import { setInterval } from "node:timers";
 import which from "which";
 import config from "./config.json" assert { type: "json" };
-import chokidar from "chokidar";
 
-const ORIGIN = "http://host.docker.internal:3100";
+dotenv.config({ path: "./docker.env" });
+
+const ORIGIN = process.env.DOCS_WEB_URL;
 const IS_DOCKER = process.env.IS_DOCKER;
 
 (async () => {
   const start_urls = config.start_urls;
 
-  try {
-    /**
-     * @type {{ url: string; variables: { lang: string[];};}[]}
-     */
-    const urls = JSON.parse(
-      await fs.readFile("./meta/start-urls.json", { encoding: "utf-8" })
-    );
+  const regenerateUrls = async () => {
+    try {
+      /**
+       * @type {{ url: string; variables: { lang: string[];};}[]}
+       */
+      const urls = JSON.parse(
+        await fs.readFile("./meta/start-urls.json", { encoding: "utf-8" })
+      );
 
-    urls.forEach((path) => {
-      start_urls.push({
-        url: `${ORIGIN}/documentation${path.url}`,
+      urls.forEach((path) => {
+        start_urls.push({
+          url: `${ORIGIN}/documentation${path.url}`,
+        });
       });
-    });
-  } catch (_) {}
+    } catch (_) {}
+  };
 
   if (IS_DOCKER) {
     const pipenv = await which("pipenv");
@@ -40,20 +45,28 @@ const IS_DOCKER = process.env.IS_DOCKER;
 
       console.log("scraping.....");
 
+      await regenerateUrls();
+
       pending.value = true;
 
-      await cmd(
+      // Exec scraper command
+      cmd(
         {
           ...(process.env || {}),
           CONFIG: JSON.stringify(config),
         },
         [pipenv, "run", "python", "-m", "src.index"]
-      ).finally(() => (pending.value = false));
+      )
+        .finally(() => {
+          pending.value = false;
+        })
+        .catch(console.log);
     };
 
-    exec();
-    chokidar.watch("./meta").on("all", exec);
+    setInterval(exec, 3000);
   } else {
+    // regenerate Urls
+    await regenerateUrls();
     const docker = await which("docker");
     await cmd(
       {

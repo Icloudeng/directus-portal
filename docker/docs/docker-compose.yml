@@ -21,8 +21,11 @@ services:
     extends:
       file: ../docsearch-scraper/docker-compose.yml
       service: docsearch-scraper
+    environment:
+      - TYPESENSE_HOST=typesense
+      - DOCS_WEB_URL=http://docs:3100
     volumes:
-      - docs-scraper-meta:/root/custom-scraper/meta:ro
+      - docs-scraper-meta:/root/custom-scraper/meta:rw
 
   typesense:
     image: typesense/typesense:0.23.1
@@ -47,7 +50,7 @@ services:
       - docs-data:/app/apps/docs/docs
       - docs-meta:/app/apps/docs/metatools
       - docs-build:/app/apps/docs/build
-      - docs-scraper-meta:/app/tools/docsearch-scraper/meta
+      - docs-scraper-meta:/app/tools/docsearch-scraper/meta:rw
     ports:
       - 3100:3100
 
