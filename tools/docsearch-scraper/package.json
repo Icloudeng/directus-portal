@@ -15,6 +15,7 @@
     "@types/node": "^18.11.17"
   },
   "dependencies": {
+    "chokidar": "^3.5.3",
     "which": "^3.0.0"
   }
 }

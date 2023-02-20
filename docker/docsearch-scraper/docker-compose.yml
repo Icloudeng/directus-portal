@@ -1,0 +1,14 @@
+version: '3.8'
+services:
+  docsearch-scraper:
+    image: registry-hub.smatflow.net/smatflow-projects/smatflow-portal/docsearch-scraper:latest
+    restart: unless-stopped
+    env_file:
+      - ../../tools/docsearch-scraper/docker.env
+    environment:
+      - TYPESENSE_HOST=typesense
+    volumes:
+      - docs-scraper-meta:/root/custom-scraper/meta:ro
+
+volumes:
+  docs-scraper-meta:

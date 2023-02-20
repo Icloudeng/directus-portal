@@ -390,8 +390,10 @@ importers:
   tools/docsearch-scraper:
     specifiers:
       '@types/node': ^18.11.17
+      chokidar: ^3.5.3
       which: ^3.0.0
     dependencies:
+      chokidar: 3.5.3
       which: 3.0.0
     devDependencies:
       '@types/node': 18.11.17

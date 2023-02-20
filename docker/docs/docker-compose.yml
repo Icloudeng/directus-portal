@@ -15,6 +15,15 @@ services:
       file: ../cms/docker-compose.yml
       service: cms
 
+  docsearch-scraper:
+    depends_on:
+      - typesense
+    extends:
+      file: ../docsearch-scraper/docker-compose.yml
+      service: docsearch-scraper
+    volumes:
+      - docs-scraper-meta:/root/custom-scraper/meta:ro
+
   typesense:
     image: typesense/typesense:0.23.1
     restart: unless-stopped
