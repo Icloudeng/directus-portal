@@ -1,0 +1,42 @@
+version: '3.8'
+services:
+  db:
+    extends:
+      file: ../cms/docker-compose.yml
+      service: db
+
+  redis:
+    extends:
+      file: ../cms/docker-compose.yml
+      service: redis
+
+  cms:
+    extends:
+      file: ../cms/docker-compose.yml
+      service: cms
+
+  docs:
+    image: registry-hub.smatflow.net/smatflow-projects/smatflow-portal/docs:latest
+    depends_on:
+      - cms
+    restart: unless-stopped
+    volumes:
+      - docs-i18n:/app/apps/docs/i18n
+      - docs-data:/app/apps/docs/docs
+      - docs-meta:/app/apps/docs/meta
+      - docs-build:/app/apps/docs/build
+    ports:
+      - 3100:3100
+
+volumes:
+  db-data:
+  redis-data:
+
+  cms-database:
+  cms-extensions:
+  cms-uploads:
+
+  docs-i18n:
+  docs-data:
+  docs-meta:
+  docs-build:

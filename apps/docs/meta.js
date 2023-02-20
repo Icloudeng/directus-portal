@@ -1,5 +1,5 @@
 const fs = require("fs");
-/** @type {import('docs-generator').MetaContent} */
+/** @type {import('../../tools/docs-generator').MetaContent} */
 let meta = {};
 
 try {

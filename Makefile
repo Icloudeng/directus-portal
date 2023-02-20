@@ -130,45 +130,24 @@ gvault-gen:
 
 
 # ================================================================
-# Docker Build apps ( ----------- CMS -----------)
+# Docker Build apps ( ----------- APPS -----------)
 # ================================================================
-.PHONY: docker-cms-build
-docker-cms-build:
-	docker build -t $(registryHost)/cms -f docker/cms/Dockerfile . --no-cache
+.PHONY: docker-image-build
+noCache?=--no-cache
+docker-image-build:
+	docker build -t $(registryHost)/$(app) -f docker/$(app)/Dockerfile . $(noCache)
 
 
-.PHONY: docker-cms-push
-docker-cms-push:
-	docker push $(registryHost)/cms
+.PHONY: docker-image-push
+docker-image-push:
+	docker push $(registryHost)/$(app)
 
 
-.PHONY: docker-cms-pull
-docker-cms-pull:
-	docker pull $(registryHost)/cms
+.PHONY: docker-image-pull
+docker-image-pull:
+	docker pull $(registryHost)/$(app)
 
 
-.PHONY: docker-compose-cms
-docker-compose-cms:
-	docker compose -f docker/cms/docker-compose.yml up -d --force-recreate
-
-# ================================================================
-# Docker Build apps ( ----------- WEB -----------)
-# ================================================================
-.PHONY: docker-web-build
-docker-web-build:
-	docker build -t $(registryHost)/web -f docker/web/Dockerfile . --no-cache
-
-
-.PHONY: docker-web-push
-docker-web-push:
-	docker push $(registryHost)/web
-
-
-.PHONY: docker-web-pull
-docker-web-pull:
-	docker pull $(registryHost)/web
-
-
-.PHONY: docker-compose-web
-docker-compose-web:
-	docker compose -f docker/web/docker-compose.yml up -d --force-recreate
+.PHONY: docker-compose-app
+docker-compose-app:
+	docker compose -f docker/$(app)/docker-compose.yml up -d --force-recreate
