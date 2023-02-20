@@ -48,7 +48,7 @@ async function createUser(role) {
 
 async function main() {
   await new Promise((resolve) => {
-    setTimeout(resolve, 1000 * 10);
+    setTimeout(resolve, 1000 * 20);
   });
 
   try {
