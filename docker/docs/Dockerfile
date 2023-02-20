@@ -49,24 +49,23 @@ COPY --from=installer /app/apps/docs ./apps/docs
 COPY --from=installer /app/packages ./packages
 COPY --from=installer /app/tools ./tools
 
-
 RUN rm -rf ./package.json
-RUN find ./packages/ -type d -regex ".*node_modules" -exec rm -rf "{}" \+
-RUN find ./tools/ -type d -regex ".*node_modules" -exec rm -rf "{}" \+
+RUN find . -type d -regex ".*node_modules" -exec rm -rf "{}" \+
 
-RUN pnpm --filter "./apps/docs" install --frozen-lockfile --ignore-scripts
-RUN pnpm --filter "./tools/docs-generator" install --frozen-lockfile --ignore-scripts --prod
-RUN pnpm --filter "./tools/pm2" install --frozen-lockfile --ignore-scripts --prod
+RUN pnpm \ 
+    --filter-prod="./apps/docs" \
+    --filter-prod="./packages/contracts" \
+    --filter-prod="./packages/docs-pubsub" \
+    --filter-prod="./tools/docs-generator" \
+    --filter-prod="./tools/pm2" \
+    install --frozen-lockfile --ignore-scripts --prod
 
-# Remove pm2 and its caches
+# clean pnpm cache
 RUN pnpm store prune
-RUN corepack disable
 RUN rm -rf ~/.pnpm-store
-RUN rm -rf /bin/pnpm
 
-# Copy runner script
-COPY docker/docs/start-docs.sh ./start-docs.sh
-RUN chmod +x ./start-docs.sh
+# Copy pm2 runner script
+COPY docker/docs/ecosystem.config.js ./ecosystem.config.js
 
 # Envs
 ENV NODE_ENV=production
@@ -93,4 +92,4 @@ VOLUME \
 
 EXPOSE 3100
 
-CMD ["./start-docs.sh"]
+CMD [ "pm2-runtime", "start", "ecosystem.config.js" ]
