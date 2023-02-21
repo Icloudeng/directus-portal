@@ -16,6 +16,9 @@ services:
       service: typesense
 
   cms:
+    depends_on:
+      - db
+      - redis
     extends:
       file: ../cms/docker-compose.yml
       service: cms
@@ -23,33 +26,21 @@ services:
   docsearch-scraper:
     depends_on:
       - typesense
+      - redis
     extends:
       file: ../docsearch-scraper/docker-compose.yml
       service: docsearch-scraper
-    environment:
-      - TYPESENSE_HOST=typesense
-      - DOCS_WEB_URL=http://docs:3100
-    volumes:
-      - docs-scraper-meta:/root/custom-scraper/meta:rw
 
   docs:
-    image: registry-hub.smatflow.net/smatflow-projects/smatflow-portal/docs:latest
     depends_on:
-      - cms
       - typesense
-    restart: unless-stopped
-    env_file:
-      - .env
-    volumes:
-      - docs-i18n:/app/apps/docs/i18n
-      - docs-data:/app/apps/docs/docs
-      - docs-meta:/app/apps/docs/metatools
-      - docs-build:/app/apps/docs/build
-      - docs-scraper-meta:/app/tools/docsearch-scraper/meta:rw
-    ports:
-      - 3100:3100
+    extends:
+      file: ../docs/docker-compose.yml
+      service: docs
 
   web:
+    depends_on:
+      - cms
     extends:
       file: ../web/docker-compose.yml
       service: web

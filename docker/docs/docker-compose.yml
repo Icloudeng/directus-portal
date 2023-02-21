@@ -26,11 +26,6 @@ services:
     extends:
       file: ../docsearch-scraper/docker-compose.yml
       service: docsearch-scraper
-    environment:
-      - TYPESENSE_HOST=typesense
-      - DOCS_WEB_URL=http://docs:3100
-    volumes:
-      - docs-scraper-meta:/root/custom-scraper/meta:rw
 
   docs:
     image: registry-hub.smatflow.net/smatflow-projects/smatflow-portal/docs:latest
