@@ -69,7 +69,7 @@ ansible-install-cd:
 
 
 tags?=
-ifndef tags
+ifdef tags
  TAGSD=
 else
  TAGSD=--tags $(tags)
@@ -132,8 +132,13 @@ gvault-gen:
 # ================================================================
 # Docker Build apps ( ----------- APPS -----------)
 # ================================================================
+no-cache?=
+ifndef no-cache
+ noCache=
+else
+ noCache=--no-cache
+endif
 .PHONY: docker-image-build
-noCache?=--no-cache
 docker-image-build:
 	docker build -t $(registryHost)/$(app) -f docker/$(app)/Dockerfile . $(noCache)
 

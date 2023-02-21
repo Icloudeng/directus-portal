@@ -1,20 +1,14 @@
 version: '3.8'
 services:
   db:
-    image: postgis/postgis:12-3.2-alpine
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: portal
-      POSTGRES_DB: portal
-    volumes:
-      - db-data:/var/lib/postgresql/data
+    extends:
+      file: ../database/docker-compose.yml
+      service: db
 
   redis:
-    image: redis:7.0.8-alpine
-    command: redis-server --appendonly yes
-    restart: unless-stopped
-    volumes:
-      - redis-data:/data
+    extends:
+      file: ../database/docker-compose.yml
+      service: redis
 
   cms:
     image: registry-hub.smatflow.net/smatflow-projects/smatflow-portal/cms:latest

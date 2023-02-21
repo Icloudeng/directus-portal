@@ -2,12 +2,12 @@ version: '3.8'
 services:
   db:
     extends:
-      file: ../cms/docker-compose.yml
+      file: ../database/docker-compose.yml
       service: db
 
   redis:
     extends:
-      file: ../cms/docker-compose.yml
+      file: ../database/docker-compose.yml
       service: redis
 
   cms:

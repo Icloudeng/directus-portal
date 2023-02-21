@@ -49,6 +49,11 @@ services:
     ports:
       - 3100:3100
 
+  web:
+    extends:
+      file: ../web/docker-compose.yml
+      service: web
+
 volumes:
   db-data:
   redis-data:
@@ -63,3 +68,4 @@ volumes:
   docs-meta:
   docs-build:
   docs-scraper-meta:
+  web-cache:
