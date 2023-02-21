@@ -38,7 +38,7 @@ services:
     volumes:
       - docs-i18n:/app/apps/docs/i18n
       - docs-data:/app/apps/docs/docs
-      - docs-meta:/app/apps/docs/metatools
+      - docs-meta:/app/apps/docs/meta
       - docs-build:/app/apps/docs/build
       - docs-scraper-meta:/app/tools/docsearch-scraper/meta:rw
     ports:

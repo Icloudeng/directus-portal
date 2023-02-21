@@ -34,6 +34,7 @@ COPY --from=builder /app/out/full/ .
 COPY turbo.json turbo.json
 # Build the apps
 RUN pnpm turbo run build --filter=cms
+RUN find . -type d -regex ".*node_modules" -exec rm -rf "{}" \+
 
 
 # Runner stage
@@ -51,15 +52,16 @@ COPY .gitignore .gitignore
 COPY --from=builder /app/out/json/ .
 COPY --from=builder /app/out/pnpm-lock.yaml ./pnpm-lock.yaml
 
-COPY --from=installer /app/apps/cms ./apps/cms
-COPY --from=installer /app/packages/ ./packages/
-
 # Automatically leverage output traces to reduce image size
 RUN rm -rf ./package.json
 
-RUN pnpm --filter "./apps/cms" install --frozen-lockfile --prod
+RUN pnpm --filter-prod "./apps/cms" install --frozen-lockfile --prod
 # install concurrently
-RUN pnpm --filter "./apps/cms" add concurrently --prod
+RUN pnpm --filter-prod "./apps/cms" add concurrently --prod
+
+COPY --from=installer /app/apps/cms ./apps/cms
+COPY --from=installer /app/packages/ ./packages/
+
 RUN pnpm store prune
 
 # Copy server runner server

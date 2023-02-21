@@ -33,6 +33,7 @@ COPY --from=builder /app/out/full/ .
 COPY turbo.json turbo.json
 # Build the apps
 RUN pnpm build --filter=docs --filter=docs-generator
+RUN find . -type d -regex ".*node_modules" -exec rm -rf "{}" \+
 
 
 
@@ -45,12 +46,7 @@ RUN corepack enable && corepack prepare pnpm@latest --activate
 COPY --from=builder /app/out/json/ .
 COPY --from=installer /app/pnpm-lock.yaml ./pnpm-lock.yaml
 
-COPY --from=installer /app/apps/docs ./apps/docs
-COPY --from=installer /app/packages ./packages
-COPY --from=installer /app/tools ./tools
-
 RUN rm -rf ./package.json
-RUN find . -type d -regex ".*node_modules" -exec rm -rf "{}" \+
 
 RUN pnpm \ 
     --filter-prod="./apps/docs" \
@@ -59,6 +55,11 @@ RUN pnpm \
     --filter-prod="./tools/docs-generator" \
     --filter-prod="./tools/pm2" \
     install --frozen-lockfile --ignore-scripts --prod
+
+
+COPY --from=installer /app/apps/docs ./apps/docs
+COPY --from=installer /app/packages ./packages
+COPY --from=installer /app/tools ./tools
 
 # clean pnpm cache
 RUN pnpm store prune
