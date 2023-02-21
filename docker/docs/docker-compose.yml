@@ -40,6 +40,7 @@ services:
       - docs-data:/app/apps/docs/docs
       - docs-meta:/app/apps/docs/meta
       - docs-build:/app/apps/docs/build
+      - docs-docusaurus:/app/apps/docs/.docusaurus
       - docs-scraper-meta:/app/tools/docsearch-scraper/meta:rw
     ports:
       - 3100:3100
@@ -58,3 +59,4 @@ volumes:
   docs-meta:
   docs-build:
   docs-scraper-meta:
+  docs-docusaurus:

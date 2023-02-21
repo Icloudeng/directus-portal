@@ -54,9 +54,13 @@ volumes:
   cms-extensions:
   cms-uploads:
 
+  web-cache:
+
   docs-i18n:
   docs-data:
   docs-meta:
   docs-build:
   docs-scraper-meta:
-  web-cache:
+  docs-docusaurus:
+
+

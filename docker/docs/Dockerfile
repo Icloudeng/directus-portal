@@ -88,7 +88,7 @@ VOLUME \
     /app/apps/docs/i18n \
     /app/apps/docs/docs \
     /app/apps/docs/meta \
-    /app/apps/docs/build \
+    /app/apps/docs/.docusaurus \
     /app/tools/docsearch-scraper/meta
 
 EXPOSE 3100
