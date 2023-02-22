@@ -4,6 +4,7 @@ python:=python3
 venv:=.venv/bin/activate
 source:=source
 sy := php bin/console
+registryHost :=registry-hub.smatflow.net/smatflow-projects/smatflow-portal
 
 ifeq ($(OS),Windows_NT)
 python:=python
@@ -35,12 +36,12 @@ generate-ssh-key:
 # Mounts project database from docker
 .PHONY: postgres-docker
 postgres-docker:
-	docker compose up db -d
+	docker compose -f docker/docker-compose.yml up db -d
 
 # Mounts project typesense from docker
 .PHONY: typesense-docker
 typesense-docker:
-	docker compose up typesense -d
+	docker compose -f docker/docker-compose.yml up typesense -d
 
 # ============================
 # Dev server
@@ -68,7 +69,7 @@ ansible-install-cd:
 
 
 tags?=
-ifndef tags
+ifdef tags
  TAGSD=
 else
  TAGSD=--tags $(tags)
@@ -126,3 +127,32 @@ vault-gen:
 text?=
 gvault-gen:
 	ansible-vault encrypt_string --vault-password-file .vault_pass $(text)
+
+
+# ================================================================
+# Docker Build apps ( ----------- APPS -----------)
+# ================================================================
+no-cache?=
+ifndef no-cache
+ noCache=
+else
+ noCache=--no-cache
+endif
+.PHONY: docker-image-build
+docker-image-build:
+	docker build -t $(registryHost)/$(app) -f docker/$(app)/Dockerfile . $(noCache)
+
+
+.PHONY: docker-image-push
+docker-image-push:
+	docker push $(registryHost)/$(app)
+
+
+.PHONY: docker-image-pull
+docker-image-pull:
+	docker pull $(registryHost)/$(app)
+
+
+.PHONY: docker-compose-app
+docker-compose-app:
+	docker compose -f docker/$(app)/docker-compose.yml up -d --force-recreate

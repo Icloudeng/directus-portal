@@ -47,6 +47,10 @@ async function createUser(role) {
 }
 
 async function main() {
+  await new Promise((resolve) => {
+    setTimeout(resolve, 1000 * 20);
+  });
+
   try {
     await directus.auth.login({
       email: process.env.ADMIN_EMAIL,

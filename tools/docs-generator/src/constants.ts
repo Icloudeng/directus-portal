@@ -16,6 +16,7 @@ export const DOCS_APP_PM2_NAME = process.env.DOCS_APP_PM2_NAME;
 export const I18N_PATH = path.resolve(DOCS_APP_PATH, "i18n");
 
 export const DEBOUNCE_EXECUTOR = process.env.DEBOUNCE_EXECUTOR !== "false";
+export const IS_DOCKER = process.env.IS_DOCKER !== "false";
 
 export const I18N_FILES = {
   current: "docusaurus-plugin-content-docs/current.json",
@@ -27,7 +28,7 @@ export const I18N_FILES = {
 export const I18N_CONTENT_DOCS_FOLDER = "docusaurus-plugin-content-docs";
 export const CONTENT_DOCS_PATH = path.resolve(DOCS_APP_PATH, "docs");
 
-export const METAFILE_PATH = path.resolve(DOCS_APP_PATH, "meta.json");
+export const METAFILE_PATH = path.resolve(DOCS_APP_PATH, "meta/meta.json");
 
 const url = process.env.DIRECTUS_URL || "";
 export const DIRECTUS_URL = url.endsWith("/")

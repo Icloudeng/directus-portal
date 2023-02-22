@@ -1,5 +1,5 @@
 module.exports = {
-  typesenseCollectionName: "icloudeng",
+  typesenseCollectionName: process.env.TYPESENSE_COLLECTION_NAME || "icloudeng",
 
   typesenseServerConfig: {
     nodes: [
@@ -9,7 +9,7 @@ module.exports = {
         protocol: process.env.TYPESENSE_PROTOCOL || "http",
       },
     ],
-    apiKey: "typesense-docsearch-scraper", // must be the same as the port set on docker-compose.yml
+    apiKey: process.env.TYPESENSE_API_KEY || "typesense-docsearch-scraper", // must be the same as the port set on docker-compose.yml
   },
 
   typesenseSearchParameters: {},

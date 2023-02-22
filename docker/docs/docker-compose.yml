@@ -1,0 +1,62 @@
+version: '3.8'
+services:
+  db:
+    extends:
+      file: ../database/docker-compose.yml
+      service: db
+
+  redis:
+    extends:
+      file: ../database/docker-compose.yml
+      service: redis
+
+  typesense:
+    extends:
+      file: ../database/docker-compose.yml
+      service: typesense
+
+  cms:
+    extends:
+      file: ../cms/docker-compose.yml
+      service: cms
+
+  docsearch-scraper:
+    depends_on:
+      - typesense
+    extends:
+      file: ../docsearch-scraper/docker-compose.yml
+      service: docsearch-scraper
+
+  docs:
+    image: registry-hub.smatflow.net/smatflow-projects/smatflow-portal/docs:latest
+    depends_on:
+      - cms
+      - typesense
+    restart: unless-stopped
+    env_file:
+      - .env
+    volumes:
+      - docs-i18n:/app/apps/docs/i18n
+      - docs-data:/app/apps/docs/docs
+      - docs-meta:/app/apps/docs/meta
+      - docs-build:/app/apps/docs/build
+      - docs-docusaurus:/app/apps/docs/.docusaurus
+      - docs-scraper-meta:/app/tools/docsearch-scraper/meta:rw
+    ports:
+      - 3100:3100
+
+volumes:
+  db-data:
+  redis-data:
+  typesense-data:
+
+  cms-database:
+  cms-extensions:
+  cms-uploads:
+
+  docs-i18n:
+  docs-data:
+  docs-meta:
+  docs-build:
+  docs-scraper-meta:
+  docs-docusaurus:

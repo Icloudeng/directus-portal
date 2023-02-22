@@ -1,0 +1,66 @@
+version: '3.8'
+services:
+  db:
+    extends:
+      file: ../database/docker-compose.yml
+      service: db
+
+  redis:
+    extends:
+      file: ../database/docker-compose.yml
+      service: redis
+
+  typesense:
+    extends:
+      file: ../database/docker-compose.yml
+      service: typesense
+
+  cms:
+    depends_on:
+      - db
+      - redis
+    extends:
+      file: ../cms/docker-compose.yml
+      service: cms
+
+  docsearch-scraper:
+    depends_on:
+      - typesense
+      - redis
+    extends:
+      file: ../docsearch-scraper/docker-compose.yml
+      service: docsearch-scraper
+
+  docs:
+    depends_on:
+      - typesense
+    extends:
+      file: ../docs/docker-compose.yml
+      service: docs
+
+  web:
+    depends_on:
+      - cms
+    extends:
+      file: ../web/docker-compose.yml
+      service: web
+
+volumes:
+  db-data:
+  redis-data:
+  typesense-data:
+
+  cms-database:
+  cms-extensions:
+  cms-uploads:
+
+  web-cache:
+
+  docs-i18n:
+  docs-data:
+  docs-meta:
+  docs-build:
+  docs-scraper-meta:
+  docs-docusaurus:
+
+

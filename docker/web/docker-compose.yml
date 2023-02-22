@@ -1,0 +1,39 @@
+version: '3.8'
+services:
+  db:
+    extends:
+      file: ../database/docker-compose.yml
+      service: db
+
+  redis:
+    extends:
+      file: ../database/docker-compose.yml
+      service: redis
+
+  cms:
+    extends:
+      file: ../cms/docker-compose.yml
+      service: cms
+
+  web:
+    image: registry-hub.smatflow.net/smatflow-projects/smatflow-portal/web:latest
+    depends_on:
+      - cms
+    restart: unless-stopped
+    environment:
+      - DIRECTUS_EMAIL=admin@example.com
+      - DIRECTUS_PASSWORD=password
+      - CMS_URL=http://cms:8055
+      - DIRECTUS_URL=http://cms:8055
+    volumes:
+      - web-cache:/app/apps/web/.next/cache:rw
+    ports:
+      - 3000:3000
+
+volumes:
+  db-data:
+  redis-data:
+  cms-database:
+  cms-extensions:
+  cms-uploads:
+  web-cache:

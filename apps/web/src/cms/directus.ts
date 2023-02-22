@@ -1,24 +1,22 @@
 import { Directus } from '@directus/sdk';
-import getConfig from 'next/config';
+import {
+  DIRECTUS_EMAIL,
+  DIRECTUS_PASSWORD,
+  DIRECTUS_STATIC_TOKEN,
+  DIRECTUS_URL,
+} from '@/app/constant/env';
 
-const { publicRuntimeConfig, serverRuntimeConfig } = getConfig();
-const { directus_url, cms_url: _cms_url } = publicRuntimeConfig;
-const { directus_email, directus_password, directus_token } =
-  serverRuntimeConfig;
-
-const directus = new Directus(directus_url);
-
-export const cms_url = _cms_url as string;
+const directus = new Directus(DIRECTUS_URL);
 
 export async function getDirectusClient() {
   if (await directus.auth.token) return directus;
 
-  if (directus_token) {
-    await directus.auth.static(directus_token);
-  } else if (directus_email && directus_password) {
+  if (DIRECTUS_STATIC_TOKEN) {
+    await directus.auth.static(DIRECTUS_STATIC_TOKEN);
+  } else if (DIRECTUS_EMAIL && DIRECTUS_PASSWORD) {
     await directus.auth.login({
-      email: directus_email,
-      password: directus_password,
+      email: DIRECTUS_EMAIL,
+      password: DIRECTUS_PASSWORD,
     });
   }
 

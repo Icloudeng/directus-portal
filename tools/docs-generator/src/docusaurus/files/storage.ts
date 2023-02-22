@@ -292,7 +292,7 @@ async function storeNamespacesContent(
  */
 async function storeDocSearchScraperContent(urls: StartUrls[]) {
   await storage.ensureWriteFile(
-    path.join(DOCSEARCH_SCRAPER_APP_PATH, "start-urls.json"),
+    path.join(DOCSEARCH_SCRAPER_APP_PATH, "meta/start-urls.json"),
     JSON.stringify(urls)
   );
 }
