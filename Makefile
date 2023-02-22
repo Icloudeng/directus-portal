@@ -159,7 +159,7 @@ docker-compose-app:
 
 
 .PHONY: docker-compose-up
-docker-image-up:
+docker-compose-up:
 	docker compose -f docker-compose.yml up -d --force-recreate
 
 .PHONY: docker-publish
