@@ -160,7 +160,7 @@ docker-compose-app:
 
 .PHONY: docker-compose-up
 docker-compose-up:
-	docker compose -f docker-compose.yml up -d --force-recreate
+	docker compose -p smatflow-portal -f docker-compose.yml up -d --force-recreate
 
 .PHONY: docker-publish
 docker-publish:
