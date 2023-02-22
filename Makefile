@@ -30,20 +30,6 @@ generate-ssh-key:
 
 
 # ============================
-# Docker commands
-# ============================
-
-# Mounts project database from docker
-.PHONY: postgres-docker
-postgres-docker:
-	docker compose -f docker/docker-compose.yml up db -d
-
-# Mounts project typesense from docker
-.PHONY: typesense-docker
-typesense-docker:
-	docker compose -f docker/docker-compose.yml up typesense -d
-
-# ============================
 # Dev server
 # ============================
 .PHONY: dev
@@ -128,6 +114,20 @@ text?=
 gvault-gen:
 	ansible-vault encrypt_string --vault-password-file .vault_pass $(text)
 
+# ============================
+# Docker commands
+# ============================
+
+# Mounts project database from docker
+.PHONY: postgres-docker
+postgres-docker:
+	docker compose -f ./docker-compose.yml up db -d
+
+# Mounts project typesense from docker
+.PHONY: typesense-docker
+typesense-docker:
+	docker compose -f ./docker-compose.yml up typesense -d
+
 
 # ================================================================
 # Docker Build apps ( ----------- APPS -----------)
@@ -157,6 +157,10 @@ docker-image-pull:
 docker-compose-app:
 	docker compose -f docker/$(app)/docker-compose.yml up -d --force-recreate
 
+
+.PHONY: docker-compose-up
+docker-image-up:
+	docker compose -f docker-compose.yml up -d --force-recreate
 
 .PHONY: docker-publish
 docker-publish:
