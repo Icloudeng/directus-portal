@@ -156,3 +156,15 @@ docker-image-pull:
 .PHONY: docker-compose-app
 docker-compose-app:
 	docker compose -f docker/$(app)/docker-compose.yml up -d --force-recreate
+
+
+.PHONY: docker-publish
+docker-publish:
+	make docker-image-build app=web no-cache=true
+	make docker-image-push app=web
+	make docker-image-build app=cms no-cache=true
+	make docker-image-push app=cms
+	make docker-image-build app=docs no-cache=true
+	make docker-image-push app=docs
+	make docker-image-build app=docsearch-scraper no-cache=true
+	make docker-image-push app=docsearch-scraper
