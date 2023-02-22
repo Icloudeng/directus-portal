@@ -35,20 +35,6 @@ async function main() {
   DEBOUNCE_EXECUTOR &&
     Logger.info("======== Running with DEBOUNCE_EXECUTOR ========");
 
-  /* A workaround for the issue that the first time the app is started, the namespaces are not
-  generated. */
-  if (IS_DOCKER && IN_PROD) {
-    Logger.info(
-      "======== (Docker env detected) start build at initial load ========"
-    );
-
-    processGenerateAll("namespaces", {
-      collection: "Namespaces",
-      event: `Namespaces.items.create`,
-      payload: {},
-    });
-  }
-
   /**
    * Start observing
    */
@@ -97,6 +83,17 @@ async function process({ type, data }: { type: DataType; data: DataPayload }) {
   } else if (type === "footer") {
     IN_PROD && processGenerateFooterDebounce(type, data);
     !IN_PROD && processGenerateFooter(type, data);
+  } else if (type === "server" && IS_DOCKER && IN_PROD) {
+    /* A workaround for the issue that the first time the app is started, the namespaces are not generated. */
+    Logger.info(
+      "======== (Docker env detected) start build at initial load ========"
+    );
+
+    processGenerateAll(type, {
+      collection: "Namespaces",
+      event: `Namespaces.items.create`,
+      payload: {},
+    });
   }
 }
 

@@ -4,7 +4,13 @@ const CHANNEL = "docs-generator-999";
 
 type Client = ReturnType<typeof createClient>;
 
-export type DataType = "pages" | "footer" | "meta" | "namespaces" | "languages";
+export type DataType =
+  | "pages"
+  | "footer"
+  | "meta"
+  | "namespaces"
+  | "languages"
+  | "server";
 
 export type DataPayload = {
   payload: Record<string, any>;
@@ -27,6 +33,13 @@ export type DataPayload = {
       key: never;
       item: any;
       to: any;
+      payload: never;
+    }
+  | {
+      event: never;
+      key: never;
+      item: never;
+      to: never;
       payload: never;
     }
 );
