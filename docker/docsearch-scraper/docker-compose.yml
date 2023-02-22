@@ -9,7 +9,7 @@ services:
       - TYPESENSE_HOST=typesense
       - DOCS_WEB_URL=http://docs:3100
     volumes:
-      - docs-scraper-meta:/root/custom-scraper/meta:ro
+      - docs-scraper-meta:/root/meta:ro
 
 volumes:
   docs-scraper-meta:

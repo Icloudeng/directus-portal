@@ -4,18 +4,18 @@ FROM typesense/docsearch-scraper as scraper
 RUN curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash - && \
     sudo apt-get install -y nodejs
 
-COPY tools/docsearch-scraper/package.json ./custom-scraper/package.json
+COPY tools/docsearch-scraper/package.json ./package.json
 
-RUN cd ./custom-scraper && npm install --omit=dev
+RUN npm install --omit=dev
 
-COPY tools/docsearch-scraper ./custom-scraper
+COPY tools/docsearch-scraper ./
 
 ENV IS_DOCKER=true
 
-RUN mkdir -p ./custom-scraper/meta
+RUN mkdir -p ./meta
 
-RUN chmod -R 777 ./custom-scraper/meta
+RUN chmod -R 777 ./meta
 
-VOLUME [ "/root/custom-scraper/meta" ]
+VOLUME [ "/root/meta" ]
 
-ENTRYPOINT ["node", "./custom-scraper/index.js"]
+ENTRYPOINT ["node", "index.js"]

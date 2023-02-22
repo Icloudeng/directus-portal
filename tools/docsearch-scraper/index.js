@@ -28,7 +28,9 @@ const IS_DOCKER = process.env.IS_DOCKER;
           url: `${ORIGIN}/documentation${path.url}`,
         });
       });
-    } catch (_) {}
+    } catch (error) {
+      console.log("parse error: ", error);
+    }
   };
 
   if (IS_DOCKER) {
@@ -63,7 +65,7 @@ const IS_DOCKER = process.env.IS_DOCKER;
         .catch(console.log);
     };
 
-    setInterval(exec, 3000);
+    setInterval(exec, 1000 * 30);
   } else {
     // regenerate Urls
     await regenerateUrls();
