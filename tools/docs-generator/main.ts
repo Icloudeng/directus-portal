@@ -38,6 +38,10 @@ async function main() {
   /* A workaround for the issue that the first time the app is started, the namespaces are not
   generated. */
   if (IS_DOCKER && IN_PROD) {
+    Logger.info(
+      "======== (Docker env detected) start build at initial load ========"
+    );
+
     processGenerateAll("namespaces", {
       collection: "Namespaces",
       event: `Namespaces.items.create`,
