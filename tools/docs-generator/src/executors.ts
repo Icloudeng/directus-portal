@@ -1,4 +1,5 @@
 import { spawn, exec } from "node:child_process";
+import * as readline from "node:readline/promises";
 import { promisify } from "node:util";
 import generateAll from "../generate";
 import { IN_PROD, DOCS_APP_PM2_NAME, DOCS_APP_PATH } from "./constants";
@@ -81,6 +82,11 @@ async function docsBuilder(storeLogs = true) {
     cwd: DOCS_APP_PATH,
   });
 
+  const rl = readline.createInterface({
+    input: pnpm.stdout,
+    output: pnpm.stdin,
+  });
+
   let error: null | string = null;
   let stdData = "";
 
@@ -96,6 +102,10 @@ async function docsBuilder(storeLogs = true) {
     error = err.message;
   });
 
+  rl.on("line", (stream) => {
+    console.log(stream);
+  });
+
   return new Promise<{ status: "ok" | "error" }>((resolve) => {
     pnpm.on("close", (code) => {
       const hasError = error !== null || (code !== 0 && code !== null);
@@ -105,6 +115,11 @@ async function docsBuilder(storeLogs = true) {
       resolve({
         status: hasError ? "error" : "ok",
       });
+
+      /**
+       * Close the readline.Interface instance and relinquishes control over the input and output streams
+       */
+      rl.close();
 
       /**
        * Store logs on cms

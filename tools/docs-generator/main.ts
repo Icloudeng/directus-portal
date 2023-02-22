@@ -8,7 +8,7 @@ import {
   execGenerateAllEvent,
   hasPageDeletion,
 } from "./src/executors";
-import { IN_PROD, DEBOUNCE_EXECUTOR } from "./src/constants";
+import { IN_PROD, DEBOUNCE_EXECUTOR, IS_DOCKER } from "./src/constants";
 import { executorQueue } from "./src/queue";
 
 /**
@@ -34,6 +34,16 @@ async function main() {
 
   DEBOUNCE_EXECUTOR &&
     Logger.info("======== Running with DEBOUNCE_EXECUTOR ========");
+
+  /* A workaround for the issue that the first time the app is started, the namespaces are not
+  generated. */
+  if (IS_DOCKER && IN_PROD) {
+    processGenerateAll("namespaces", {
+      collection: "Namespaces",
+      event: `Namespaces.items.create`,
+      payload: {},
+    });
+  }
 
   /**
    * Start observing
