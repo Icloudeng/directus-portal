@@ -34,6 +34,8 @@ services:
   docs:
     depends_on:
       - typesense
+      - redis
+      - cms
     extends:
       file: docker/docs/docker-compose.yml
       service: docs
