@@ -163,18 +163,12 @@ docker-compose-up:
 	docker compose -p smatflow-portal -f docker-compose.yml up -d --force-recreate
 
 .PHONY: docker-publish
-no-cache?=
-ifndef no-cache
- noCache=
-else
- noCache=no-cache=true
-endif
 docker-publish:
-	make docker-image-build app=web $(noCache)
+	make docker-image-build app=web
 	make docker-image-push app=web
-	make docker-image-build app=cms $(noCache)
+	make docker-image-build app=cms
 	make docker-image-push app=cms
-	make docker-image-build app=docs $(noCache)
+	make docker-image-build app=docs
 	make docker-image-push app=docs
-	make docker-image-build app=docsearch-scraper $(noCache)
+	make docker-image-build app=docsearch-scraper
 	make docker-image-push app=docsearch-scraper

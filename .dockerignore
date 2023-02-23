@@ -7,6 +7,7 @@
 **/.turbo
 **/.docusaurus
 **/i18n
+**/docs/docs/*/**/*.md
 **/meta.json
 **/dist
 **/out
