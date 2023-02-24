@@ -12,6 +12,8 @@ const emitter = (type: DataType) => {
 };
 
 export default defineHook(({ action }) => {
+  emitter("server")({});
+
   action(`${CMS_MODELS.dc_footer}.items.create`, emitter("footer"));
   action(`${CMS_MODELS.dc_footer}.items.update`, emitter("footer"));
   action(`${CMS_MODELS.dc_footer}.items.delete`, emitter("footer"));

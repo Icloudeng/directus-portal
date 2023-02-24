@@ -14,6 +14,8 @@ ENV IS_DOCKER=true
 
 RUN mkdir -p ./meta
 
+RUN touch ./meta/start-urls.json && echo "[]" > ./meta/start-urls.json
+
 RUN chmod -R 777 ./meta
 
 VOLUME [ "/root/meta" ]

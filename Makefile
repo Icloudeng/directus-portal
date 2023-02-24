@@ -30,20 +30,6 @@ generate-ssh-key:
 
 
 # ============================
-# Docker commands
-# ============================
-
-# Mounts project database from docker
-.PHONY: postgres-docker
-postgres-docker:
-	docker compose -f docker/docker-compose.yml up db -d
-
-# Mounts project typesense from docker
-.PHONY: typesense-docker
-typesense-docker:
-	docker compose -f docker/docker-compose.yml up typesense -d
-
-# ============================
 # Dev server
 # ============================
 .PHONY: dev
@@ -128,6 +114,20 @@ text?=
 gvault-gen:
 	ansible-vault encrypt_string --vault-password-file .vault_pass $(text)
 
+# ============================
+# Docker commands
+# ============================
+
+# Mounts project database from docker
+.PHONY: postgres-docker
+postgres-docker:
+	docker compose -f ./docker-compose.yml up db -d
+
+# Mounts project typesense from docker
+.PHONY: typesense-docker
+typesense-docker:
+	docker compose -f ./docker-compose.yml up typesense -d
+
 
 # ================================================================
 # Docker Build apps ( ----------- APPS -----------)
@@ -156,3 +156,19 @@ docker-image-pull:
 .PHONY: docker-compose-app
 docker-compose-app:
 	docker compose -f docker/$(app)/docker-compose.yml up -d --force-recreate
+
+
+.PHONY: docker-compose-up
+docker-compose-up:
+	docker compose -p smatflow-portal -f docker-compose.yml up -d --force-recreate
+
+.PHONY: docker-publish
+docker-publish:
+	make docker-image-build app=web
+	make docker-image-push app=web
+	make docker-image-build app=cms
+	make docker-image-push app=cms
+	make docker-image-build app=docs
+	make docker-image-push app=docs
+	make docker-image-build app=docsearch-scraper
+	make docker-image-push app=docsearch-scraper
