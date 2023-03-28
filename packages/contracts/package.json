@@ -12,8 +12,8 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@directus/sdk": "^10.1.5",
-    "tsup": "^6.5.0",
-    "typescript": "^4.9.4"
+    "@directus/sdk": "^10.3.3",
+    "tsup": "^6.7.0",
+    "typescript": "^4.9.5"
   }
 }
