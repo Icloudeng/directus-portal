@@ -38,7 +38,7 @@ export default function Header({ whiteNav }: { whiteNav?: boolean }) {
       window.removeEventListener('scroll', onScroll);
       window.removeEventListener('scroll', throttleScroll);
     };
-  }, []);
+  }, [onScroll]);
 
   return (
     <header

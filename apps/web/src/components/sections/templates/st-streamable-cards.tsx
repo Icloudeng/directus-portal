@@ -71,6 +71,7 @@ export function ST_StreamableCardsFC({
                                 src={item.image.src || ''}
                                 className='w-full h-full'
                                 layout='fill'
+                                alt={translations?.name}
                               />
                             )}
                           </>

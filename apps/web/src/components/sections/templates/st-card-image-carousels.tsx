@@ -89,6 +89,7 @@ function CarouselItem({
           src={image?.src || ''}
           layout='fill'
           className='absolute inset-0 w-full h-full object-cover object-bottom'
+          alt={translations?.title}
         />
         <div className='absolute inset-0 h-full w-full bg-gradient-to-br from-black/75'></div>
         <div className='relative min-h-[24rem] w-[100vw] ss:w-[70vw] md:w-[768px] p-12 flex flex-col justify-between items-start'>

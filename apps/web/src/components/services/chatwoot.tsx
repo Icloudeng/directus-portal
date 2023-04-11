@@ -60,7 +60,7 @@ function ChatwootWidget({
         });
       };
     })(document, 'script');
-  }, []);
+  }, [websiteToken, baseUrl]);
 
   useEffect(() => {
     if (locale && window.chatwootSettings) {

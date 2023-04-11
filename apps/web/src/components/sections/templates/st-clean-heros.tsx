@@ -32,7 +32,7 @@ export function ST_CleanHerosFC({
     return () => {
       Router.events.off('routeChangeStart', routerChangeStart);
     };
-  }, []);
+  }, [sharedObject, first.collection]);
 
   return (
     <>
@@ -174,10 +174,11 @@ function Header({ item, index }: ST_CleanHero & { index: number }) {
                 (image.height ? (
                   <Image
                     className='w-full h-auto'
-                    src={image.src!}
+                    src={image.src as string}
                     height={image.height}
                     width={image.width}
                     layout='responsive'
+                    alt={translations?.title}
                   />
                 ) : (
                   <img className='w-full h-auto' src={image?.src} />

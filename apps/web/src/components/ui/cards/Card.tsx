@@ -31,13 +31,13 @@ export function Card({
 
   const content = (
     <div className=''>
-      {!flexible_image && image && (
+      {!flexible_image && image?.src && (
         <div className='relative flex-1 min-h-[202px] w-full mb-3'>
           <Image
             className={`image object-cover ${
               border_card ? 'rounded-tl-xl rounded-tr-xl' : ''
             } h-full w-full `}
-            src={image.src!}
+            src={image.src}
             layout='fill'
             objectFit='cover'
             loading='lazy'

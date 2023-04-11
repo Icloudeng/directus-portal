@@ -28,6 +28,7 @@ export function ST_LeftRightContentsFC({
                 className='w-full h-full rounded-full'
                 layout='fill'
                 objectFit='cover'
+                alt={translations?.title}
               />
             }
           />

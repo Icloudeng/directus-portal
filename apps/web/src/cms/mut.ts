@@ -35,7 +35,7 @@ export function mut<T extends ParamsType>(
   if (Array.isArray(datas)) {
     datas?.forEach((data) => translate(data, lang));
   } else {
-    translate(datas!, lang);
+    datas && translate(datas, lang);
   }
 
   return datas as ReturnType<T>;

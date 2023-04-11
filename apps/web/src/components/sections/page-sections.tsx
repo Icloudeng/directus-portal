@@ -79,7 +79,7 @@ function PageSection({
   const hasSvg = background_svg && isSvg(background_svg);
 
   const style = useMemo(() => {
-    const { custom_css } = item;
+    const custom_css = item.custom_css;
     const match_css = (custom_css || '').match(VALID_CSS);
 
     if (!match_css || match_css.length === 0) return;

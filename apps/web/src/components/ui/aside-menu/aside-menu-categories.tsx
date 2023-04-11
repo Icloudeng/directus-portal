@@ -23,7 +23,9 @@ export function AsideMenuCategories<
       (r) => r.itemsNumber === null || r.itemsNumber === undefined
     );
     if (canSort) {
-      items.sort((a, b) => b.itemsNumber! - a.itemsNumber!);
+      items.sort(
+        (a, b) => (b.itemsNumber as number) - (a.itemsNumber as number)
+      );
     }
   }, [items]);
   const [active, setActive] = useState(0);
@@ -34,7 +36,7 @@ export function AsideMenuCategories<
       return cd === location.hash;
     });
     setActive(defaultP > -1 ? defaultP : 0);
-  }, []);
+  }, [hrefPrefix, items]);
 
   return (
     <div className='w-full flex flex-col lg:flex-row items-center lg:items-start gap-5 pt-7'>

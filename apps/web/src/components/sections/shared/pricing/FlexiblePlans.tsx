@@ -49,9 +49,12 @@ export const FlexiblePlans = ({
     defaultMT: defaultMT?.mt || null,
   });
 
-  const onMtChangeV = useCallback(({ mt }: { mt: MDMachineTemplate }) => {
-    onMtChange(mt);
-  }, []);
+  const onMtChangeV = useCallback(
+    ({ mt }: { mt: MDMachineTemplate }) => {
+      onMtChange(mt);
+    },
+    [onMtChange]
+  );
 
   return (
     <div className='section__bock max-w-[90vw] mx-auto'>
@@ -176,9 +179,10 @@ function PlatformsSelect({
   onChange?: (platforms: MDPlatform[]) => any;
 }) {
   const loadDatas = useCallback(async (inputValue: string) => {
-    const platforms = await fetch(`/api/platforms?q=${inputValue}`)
-      .then((res) => res.json())
-      .catch(console.error);
+    const platforms = await fetch(`/api/platforms?q=${inputValue}`).then(
+      (res) => res.json()
+    );
+
     if (!platforms) return [];
 
     return getPlatformOptions(platforms);

@@ -27,14 +27,12 @@ export function Publishing({
   const { CompanyDetails } = useSharedData();
 
   const onWebShare = useCallback(() => {
-    navigator
-      .share({
-        title: CompanyDetails?.company_name || COMPANY_NAME,
-        text: translations?.title,
-        url: location.origin + location.pathname,
-      })
-      .catch(console.error);
-  }, []);
+    navigator.share({
+      title: CompanyDetails?.company_name || COMPANY_NAME,
+      text: translations?.title,
+      url: location.origin + location.pathname,
+    });
+  }, [CompanyDetails?.company_name, translations?.title]);
 
   return (
     <>
@@ -80,6 +78,7 @@ export function Publishing({
                             className='w-full h-full rounded-[50%]'
                             layout='fill'
                             objectFit='cover'
+                            alt={CompanyDetails?.company_name}
                           />
                         )}
                       </div>
@@ -130,6 +129,7 @@ export function Publishing({
                       layout='fill'
                       className='w-full h-full'
                       objectFit='cover'
+                      alt={translations?.title}
                     />
                   </Link>
                 )}

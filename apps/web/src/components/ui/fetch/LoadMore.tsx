@@ -25,7 +25,7 @@ export function LoadMore({
 
   useEffect(() => {
     offset.current = limit;
-  }, [query]);
+  }, [query, offset, limit]);
 
   const loadData = useCallback(() => {
     onNewItems && items.length > 0 && onNewItems(items);
@@ -45,14 +45,14 @@ export function LoadMore({
         }
       })
       .finally(() => setLoading(false));
-  }, [offset.current, query, limit, items, onNewItems]);
+  }, [offset.current, query, limit, items, onNewItems, fetchUrl, queryName]);
 
   useEffect(() => {
     if (query !== lastQuery.current) {
       lastQuery.current = query;
       loadData();
     }
-  }, [query]);
+  }, [query, loadData]);
 
   return (
     <>

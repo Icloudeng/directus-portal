@@ -24,11 +24,11 @@ export function ST_NavAccordionsFC({
             title={translations?.title}
             description={translations?.description}
           >
-            {image && (
+            {image?.src && (
               <div className='relative h-[20rem] mb-2'>
                 <Image
                   className='image object-cover'
-                  src={image.src!}
+                  src={image.src}
                   layout='fill'
                   objectFit='cover'
                   alt={translations?.title}

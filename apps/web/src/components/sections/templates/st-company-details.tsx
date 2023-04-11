@@ -59,13 +59,14 @@ export function ST_CompanyDetailsFC(_: STemplates_Props<ST_CompanyDetail>) {
         </ul>
       </div>
       <div className='relative w-full md:w-1/2 md:px-9 mb-7 md:mb-0'>
-        {cmp?.image && (
+        {cmp?.image?.src && (
           <Image
             layout='responsive'
             width={728}
             height={514}
             objectFit='cover'
-            src={cmp.image.src!}
+            src={cmp.image.src as string}
+            alt={cmp.company_name}
           />
         )}
       </div>

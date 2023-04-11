@@ -42,10 +42,10 @@ export const MarketPlaceCard = ({
             svgText={icon_svg}
             className='st_flexible_icon'
             fallback={
-              icon && (
+              icon?.src && (
                 <Image
                   className='image object-cover w-full h-full'
-                  src={icon.src!}
+                  src={icon.src}
                   layout='fill'
                   objectFit='fill'
                   alt={title}
