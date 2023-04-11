@@ -7,13 +7,14 @@ import { CMS_MODELS } from '@apps/contracts';
 import isSvg from 'is-svg';
 import React, { FunctionComponent, useMemo, useRef } from 'react';
 
+import clsxm from '@/lib/clsxm';
+
 import { VALID_CSS } from '@/app/utils/regex';
 import { testHexColor } from '@/app/utils/tests';
 import { useMut } from '@/cms/mut';
 
 import * as stfc from './templates';
 import { HasSvgText } from '../ui/HasSvgText';
-import clsxm from '@/lib/clsxm';
 
 const { section_templates } = CMS_MODELS;
 type ST = typeof section_templates;

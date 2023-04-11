@@ -1,7 +1,9 @@
-import { useSharedData } from '@/app/store';
-import clsxm from '@/lib/clsxm';
 import throttle from 'lodash/throttle';
 import { useCallback, useEffect, useRef, useState } from 'react';
+
+import clsxm from '@/lib/clsxm';
+
+import { useSharedData } from '@/app/store';
 
 import { Navbar } from './navbar/Navbar';
 import { TopBar } from './topBar/TopBar';

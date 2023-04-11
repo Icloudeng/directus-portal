@@ -1,5 +1,6 @@
 import { GetServerSidePropsContext } from 'next';
 import { useTranslation } from 'next-i18next';
+
 import Seo from '@/components/Seo';
 
 import { getServerSideTranslations } from '@/app/utils/server-translation';

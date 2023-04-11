@@ -16,7 +16,7 @@ export function ST_SidedContentsFC({
       acc[acc.length - 1].push(item);
     }
     return acc;
-  }, [] as typeof items[]);
+  }, [] as (typeof items)[]);
 
   return (
     <>

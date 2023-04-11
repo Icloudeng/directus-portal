@@ -1,4 +1,5 @@
 import { GetStaticPropsContext } from 'next';
+import Link from 'next/link';
 import React from 'react';
 import { BsArrowUp } from 'react-icons/bs';
 
@@ -40,7 +41,6 @@ import {
   getDumpChart,
 } from '@/app/models/dumps-templates';
 import { getServerSideTranslations } from '@/app/utils/server-translation';
-import Link from 'next/link';
 
 type Template = {
   title: string;

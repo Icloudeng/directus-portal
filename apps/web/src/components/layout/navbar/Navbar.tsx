@@ -8,6 +8,7 @@ import ButtonLink from '@/components/ui/links/ButtonLink';
 import UnstyledLink from '@/components/ui/links/UnstyledLink';
 import NextImage from '@/components/ui/NextImage';
 
+import { COMPANY_NAME } from '@/app/constant/env';
 import { useScrollPosition } from '@/app/hooks/useScrollPosition';
 import { useSharedData } from '@/app/store';
 import { mut, useMut } from '@/cms/mut';
@@ -15,7 +16,6 @@ import { mut, useMut } from '@/cms/mut';
 import { Submenu } from './components/SubMenu';
 
 import Logo from '~/images/icloudenglogo.png';
-import { COMPANY_NAME } from '@/app/constant/env';
 
 export const Navbar = ({ whiteNav }: { whiteNav?: boolean }) => {
   const { CompanyDetails, NavbarButtons, locale, Layout } = useSharedData();

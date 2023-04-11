@@ -1,4 +1,4 @@
-import { createElement, Fragment, useEffect, useState } from 'react';
+import { createElement, Fragment, useEffect, useRef, useState } from 'react';
 import React from 'react';
 import rehypeParse from 'rehype-parse';
 import rehypeReact from 'rehype-react';
@@ -20,7 +20,7 @@ export function useRehypeReactProcessor(text: string, toc: boolean) {
     key
   );
 
-  useEffect(() => {
+  const init = useRef((text: string, toc: boolean) => {
     const processor = unified()
       .use(rehypeParse, { fragment: true })
       .use(rehypeReact, { createElement, Fragment });
@@ -31,7 +31,11 @@ export function useRehypeReactProcessor(text: string, toc: boolean) {
       setContent(file.result as any);
       setTimeout(() => setKey((s) => s + 1), 0);
     });
-  }, [text, toc]);
+  });
+
+  useEffect(() => {
+    init.current(text, toc);
+  }, [init, text, toc]);
 
   return { Content, tocParent };
 }

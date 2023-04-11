@@ -1,12 +1,12 @@
 import { GetServerSidePropsContext } from 'next';
+import { useTranslation } from 'next-i18next';
+import { RiAlarmWarningFill } from 'react-icons/ri';
 
 import Layout from '@/components/layout/Layout';
 import Seo from '@/components/Seo';
+import ArrowLink from '@/components/ui/links/ArrowLink';
 
 import { getServerSideTranslations } from '@/app/utils/server-translation';
-import { RiAlarmWarningFill } from 'react-icons/ri';
-import ArrowLink from '@/components/ui/links/ArrowLink';
-import { useTranslation } from 'next-i18next';
 
 export default function HomePage() {
   const { t } = useTranslation('404');

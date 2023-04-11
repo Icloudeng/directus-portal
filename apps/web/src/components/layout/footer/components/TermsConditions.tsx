@@ -1,3 +1,4 @@
+import { FooterBottom } from '@apps/contracts';
 import { useTranslation } from 'next-i18next';
 import { FaCcMastercard, FaCcPaypal, FaCcVisa } from 'react-icons/fa';
 
@@ -5,7 +6,6 @@ import UnstyledLink from '@/components/ui/links/UnstyledLink';
 
 import { COMPANY_NAME } from '@/app/constant/env';
 import { useSharedData } from '@/app/store';
-import { FooterBottom } from '@apps/contracts';
 
 export const TermsConditions = () => {
   const { t } = useTranslation();

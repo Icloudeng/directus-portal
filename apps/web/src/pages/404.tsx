@@ -1,8 +1,10 @@
 import { GetServerSidePropsContext } from 'next';
-import Seo from '@/components/Seo';
-import { getServerSideTranslations } from '@/app/utils/server-translation';
-import { useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/router';
+import { useEffect, useRef, useState } from 'react';
+
+import Seo from '@/components/Seo';
+
+import { getServerSideTranslations } from '@/app/utils/server-translation';
 
 export default function NotFoundPage() {
   return (

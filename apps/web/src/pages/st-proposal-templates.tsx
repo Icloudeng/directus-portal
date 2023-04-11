@@ -1,10 +1,11 @@
 import { GetStaticPropsContext } from 'next';
-import { SectionBoilerplate } from '@/components/sections/section-boilerplate';
-import { getServerSideTranslations } from '@/app/utils/server-translation';
-import { TopLeftRightContent } from '@/components/sections/more-ui/TopLeftRight';
-import { BlogTextContentVertical } from '@/components/sections/more-ui/BlogTextContentVertical';
-import { BlogTextContentHorizontal } from '@/components/sections/more-ui/BlogTextContentHorizontal';
 import Link from 'next/link';
+
+import { BlogTextContentHorizontal } from '@/components/sections/more-ui/BlogTextContentHorizontal';
+import { BlogTextContentVertical } from '@/components/sections/more-ui/BlogTextContentVertical';
+import { TopLeftRightContent } from '@/components/sections/more-ui/TopLeftRight';
+
+import { getServerSideTranslations } from '@/app/utils/server-translation';
 
 export default function Page() {
   return (

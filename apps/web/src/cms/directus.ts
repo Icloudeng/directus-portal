@@ -1,4 +1,5 @@
 import { Directus } from '@directus/sdk';
+
 import {
   DIRECTUS_EMAIL,
   DIRECTUS_PASSWORD,

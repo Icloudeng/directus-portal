@@ -80,7 +80,7 @@ export const TopBar: React.FC = () => {
 function TopbarNews() {
   const { News } = useSharedData();
   const data = useMut(News);
-  const $data = data[0] as typeof data[0] | undefined;
+  const $data = data[0] as (typeof data)[0] | undefined;
   const title = $data?.translations?.title || '';
 
   return (

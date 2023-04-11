@@ -1,4 +1,5 @@
 import { useSharedData } from '@/app/store';
+
 import { Footer } from './footer/Footer';
 import { FooterSimple } from './footer/FooterSimple';
 import Header from './Header';

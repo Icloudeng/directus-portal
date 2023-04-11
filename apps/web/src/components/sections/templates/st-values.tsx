@@ -1,10 +1,11 @@
 import type { ST_Value, STemplates_Props } from '@apps/contracts';
 
+import clsxm from '@/lib/clsxm';
+
 import { HasSvgText } from '@/components/ui/HasSvgText';
 
 import { testHexColor } from '@/app/utils/tests';
 import { useMut } from '@/cms/mut';
-import clsxm from '@/lib/clsxm';
 
 export function ST_ValuesFC({ items }: STemplates_Props<ST_Value>) {
   const first = items[0];

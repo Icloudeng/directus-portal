@@ -1,17 +1,17 @@
 import { GetServerSidePropsContext } from 'next';
 import { AppProps } from 'next/app';
 import { PHASE_PRODUCTION_BUILD } from 'next/constants';
+import { useRouter } from 'next/router';
 import { appWithTranslation } from 'next-i18next';
 
 import '@/styles/globals.css';
 
+import { AppCustomStyle } from '@/components/layout/AppCustomStyle';
 import { ChatwootNext, MatomoNext } from '@/components/services';
 import NextProgress from '@/components/ui/next-progress';
 
 import { ISharedData, SharedDataProvider } from '@/app/store';
 import { getGqlSharedData } from '@/cms/items';
-import { useRouter } from 'next/router';
-import { AppCustomStyle } from '@/components/layout/AppCustomStyle';
 
 function MyApp({
   Component,
