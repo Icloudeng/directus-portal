@@ -128,6 +128,10 @@ postgres-docker:
 typesense-docker:
 	docker compose -f ./docker-compose.yml up typesense -d
 
+# Mounts db redis from docker
+.PHONY: redis-docker
+redis-docker:
+	docker run --name redis -p 6380:6379 -d redis:7.0.8-alpine
 
 # ================================================================
 # Docker Build apps ( ----------- APPS -----------)
