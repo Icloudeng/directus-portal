@@ -2,6 +2,7 @@ import { useTranslation } from 'next-i18next';
 import { useEffect, useState } from 'react';
 
 import { InputWithIcon } from './InputWithIcon';
+import { useCallbackRef } from '@/app/hooks/useCallbackRef';
 
 type Props = {
   onChange?: (value: string) => void;
@@ -21,10 +22,11 @@ export function InputSearch({
 }: Props) {
   const { t } = useTranslation();
   const [value, setValue] = useState(defaultValue);
+  const onChangeRef = useCallbackRef(onChange);
 
   useEffect(() => {
-    onChange && onChange(value.trim());
-  }, [value]);
+    onChangeRef.current && onChangeRef.current(value.trim());
+  }, [value, onChangeRef]);
 
   return (
     <InputWithIcon

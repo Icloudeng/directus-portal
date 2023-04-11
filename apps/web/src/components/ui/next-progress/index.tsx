@@ -115,7 +115,7 @@ const NextProgress = React.memo(
         Router.events.off('routeChangeError', done);
         clearTimeout(timeout);
       };
-    }, []);
+    }, [delay, options]);
 
     return nextProgressStyles;
   },

@@ -40,10 +40,10 @@ export function HoverableMenus({ children }: PropsWithChildren) {
                 active === index ? 'image-zoom-active' : ''
               } img-direction relative h-[4rem] max-h-[4rem] w-[3rem] max-w-[3rem] rounded-sm`}
             >
-              {image && (
+              {image?.src && (
                 <Image
                   className='image object-cover'
-                  src={image.src!}
+                  src={image.src}
                   layout='fill'
                   objectFit='cover'
                   alt='Image'

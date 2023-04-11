@@ -49,7 +49,6 @@ export function MediaTabs({ children }: PropsWithChildren) {
 
 export function MediaTabsPane({
   children,
-  menuTitle,
   title,
   description,
   disposition,

@@ -14,6 +14,9 @@ export const ReactPortal = ({
   }, []);
 
   return mounted
-    ? ReactDOM.createPortal(children, document.querySelector(containerId)!)
+    ? ReactDOM.createPortal(
+        children,
+        document.querySelector(containerId) as Element
+      )
     : null;
 };

@@ -46,6 +46,7 @@ export function HasMediaPlayer({
           src={media?.src || ''}
           layout='fill'
           objectFit='cover'
+          alt='cover'
         />
       )}
     </>
