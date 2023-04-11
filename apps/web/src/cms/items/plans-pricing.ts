@@ -80,7 +80,9 @@ export async function getGqlPlansPricingQueries() {
   const directus = await getDirectusClient();
   const access_token = await directus.auth.token;
 
-  const res = await directus.graphql.items<PlansPricingContent>(queries);
+  const res = await directus.graphql
+    .items<PlansPricingContent>(queries)
+    .catch(console.error);
 
   if (res?.data && access_token) {
     const { machine_templates } = res.data;

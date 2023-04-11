@@ -41,7 +41,7 @@ function Content() {
     return () => {
       window.clearInterval(timerRef.current);
     };
-  }, [ref]);
+  }, [ref, route]);
 
   return (
     <>
@@ -58,7 +58,7 @@ function Content() {
 export async function getStaticProps({ locale }: GetServerSidePropsContext) {
   return {
     props: {
-      ...(await getServerSideTranslations(locale!, ['404'])),
+      ...(await getServerSideTranslations(locale as string, ['404'])),
     },
   };
 }

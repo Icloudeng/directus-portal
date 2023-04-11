@@ -27,11 +27,13 @@ export function Publishing({
   const { CompanyDetails } = useSharedData();
 
   const onWebShare = useCallback(() => {
-    navigator.share({
-      title: CompanyDetails?.company_name || COMPANY_NAME,
-      text: translations?.title,
-      url: location.origin + location.pathname,
-    });
+    navigator
+      .share({
+        title: CompanyDetails?.company_name || COMPANY_NAME,
+        text: translations?.title,
+        url: location.origin + location.pathname,
+      })
+      .catch(console.warn);
   }, [CompanyDetails?.company_name, translations?.title]);
 
   return (

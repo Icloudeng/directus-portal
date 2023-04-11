@@ -65,7 +65,7 @@ MyApp.getInitialProps = async ({
 
   if (res && res.data) {
     res.data.languages = res.data.languages.filter((lang) =>
-      locales!.includes(lang.code)
+      (locales as string[]).includes(lang.code)
     );
   }
 

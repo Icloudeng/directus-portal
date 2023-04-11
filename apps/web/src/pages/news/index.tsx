@@ -109,7 +109,7 @@ export async function getServerSideProps({
 
   return {
     props: {
-      ...(await getServerSideTranslations(locale!)),
+      ...(await getServerSideTranslations(locale as string)),
       news: res.data?.news || [],
     },
   };

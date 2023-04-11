@@ -1,8 +1,9 @@
 import { useTranslation } from 'next-i18next';
 import { useEffect, useState } from 'react';
 
-import { InputWithIcon } from './InputWithIcon';
 import { useCallbackRef } from '@/app/hooks/useCallbackRef';
+
+import { InputWithIcon } from './InputWithIcon';
 
 type Props = {
   onChange?: (value: string) => void;

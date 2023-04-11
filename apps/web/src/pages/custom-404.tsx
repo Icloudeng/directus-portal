@@ -38,7 +38,7 @@ export async function getServerSideProps({
 }: GetServerSidePropsContext) {
   return {
     props: {
-      ...(await getServerSideTranslations(locale!, ['404'])),
+      ...(await getServerSideTranslations(locale as string, ['404'])),
     },
   };
 }

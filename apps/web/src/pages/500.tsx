@@ -51,7 +51,7 @@ export default function NotFoundPage() {
 export async function getStaticProps({ locale }: GetServerSidePropsContext) {
   return {
     props: {
-      ...(await getServerSideTranslations(locale!, ['404'])),
+      ...(await getServerSideTranslations(locale as string, ['404'])),
     },
   };
 }

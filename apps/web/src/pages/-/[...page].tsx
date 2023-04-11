@@ -1,7 +1,6 @@
 import { GetServerSidePropsContext } from 'next';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
-import { useEffect } from 'react';
 
 import Layout from '@/components/layout/Layout';
 import { PageSections } from '@/components/sections/page-sections';
@@ -13,14 +12,10 @@ import { getGqlDynamicPages, QDynamicPagesType } from '@/cms/items';
 
 export default function Page(props: QDynamicPagesType<true>) {
   const { Pages } = props;
-  const page = Pages[0]!;
+  const page = Pages[0] as NonNullable<(typeof Pages)[number]>;
 
   const { t } = useTranslation();
   const { query } = useRouter();
-
-  useEffect(() => {
-    console.log('dynamic page ', page);
-  }, []);
 
   return (
     <Layout>
@@ -46,7 +41,7 @@ export async function getServerSideProps({
   locale,
   query,
 }: GetServerSidePropsContext) {
-  const page = query.page!;
+  const page = query.page as string | string[];
   let pathname = (page as string[]).join('/');
   pathname = pathname.endsWith('/') ? pathname : pathname + '/';
 
@@ -60,7 +55,7 @@ export async function getServerSideProps({
 
   return {
     props: {
-      ...(await getServerSideTranslations(locale!)),
+      ...(await getServerSideTranslations(locale as string)),
       ...(res?.data || {}),
     },
   };
