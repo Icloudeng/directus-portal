@@ -110,7 +110,7 @@ function Header({ item, index }: ST_CleanHero & { index: number }) {
   return (
     <div
       className={clsxm(
-        'flex max-h-[1000px]',
+        'flex max-h-[1000px] mt-[30px] sd:mt-0',
         hasImage && ['lg:justify-between'],
         disposition === 'text_right' && ['flex-row-reverse']
       )}
