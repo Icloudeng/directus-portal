@@ -80,13 +80,13 @@ export const useTypingAnimation = (
 // const { typingText, selectedTypingText, phase } = useTypingAnimation(typingTexts);
 
 {
-  /* <h1 
-    aria-label={selectedTypingText} 
+  /* <h1
+    aria-label={selectedTypingText}
     className={xclassnames(
-        phase !== TypePhase.Deleting && "end-cursor",  
-        `relative max-w-xl text-center 
+        phase !== TypePhase.Deleting && "end-cursor",
+        `relative max-w-xl text-center
         ${phase === TypePhase.Pausing && "blinking-cursor"}`
     )}>
-    Icloudeng {typingText}
+    Smatflow {typingText}
 </h1> */
 }

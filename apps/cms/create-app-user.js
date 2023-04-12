@@ -7,7 +7,7 @@ async function appRole() {
   let roleId = null;
   const token = await directus.roles.readByQuery({
     filter: {
-      name: "icloudeng-query",
+      name: "smatflow-query",
     },
   });
 
@@ -15,7 +15,7 @@ async function appRole() {
 
   if (!roleId) {
     const token = await directus.roles.createOne({
-      name: "icloudeng-query",
+      name: "smatflow-query",
       admin_access: true,
       app_access: false,
       icon: "app_registration",

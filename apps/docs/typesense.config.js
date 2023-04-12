@@ -1,5 +1,5 @@
 module.exports = {
-  typesenseCollectionName: process.env.TYPESENSE_COLLECTION_NAME || "icloudeng",
+  typesenseCollectionName: process.env.TYPESENSE_COLLECTION_NAME || "smatflow",
 
   typesenseServerConfig: {
     nodes: [

@@ -289,7 +289,7 @@ export const DumpSidedContent: ST_SidedContent[] = [
         {
           id: getId(),
           languages_code,
-          title: 'Icloudeng Makes It Simple to Embrace the Cloud',
+          title: 'Smatflow Makes It Simple to Embrace the Cloud',
           markdown_content: `
           ### text_bottom
           We take a hands-on approach to designing and implementing cloud solutions that make sense for the needs of your organization. We’ll help you assess if and when a move to the cloud is right and create a smooth transition for your team.
@@ -319,7 +319,7 @@ export const DumpSidedContent: ST_SidedContent[] = [
         {
           id: getId(),
           languages_code,
-          title: 'Icloudeng Makes It Simple to Embrace the Cloud',
+          title: 'Smatflow Makes It Simple to Embrace the Cloud',
           markdown_content: `
           ### text_top
           We take a hands-on approach to designing and implementing cloud solutions that make sense for the needs of your organization. We’ll help you assess if and when a move to the cloud is right and create a smooth transition for your team.
@@ -1238,7 +1238,7 @@ export const DumpTestimonials: ST_Testimonial[] = [
             name: 'English',
           },
           review_text:
-            'I am Brazilian, and after testing several and several sites, both Brazilian and foreign, I arrived at the icloudeng and stayed, in the others it was not 1-2 months, bad service, instabilities and disproportionate price to what was offered, when trying the Serverspace, I fell in love, because it meets my needs without any problems and with practicality my needs.',
+            'I am Brazilian, and after testing several and several sites, both Brazilian and foreign, I arrived at the smatflow and stayed, in the others it was not 1-2 months, bad service, instabilities and disproportionate price to what was offered, when trying the Serverspace, I fell in love, because it meets my needs without any problems and with practicality my needs.',
         },
       ],
       id: '08e56e47-76fc-4f69-8980-631a91932f0d',
@@ -1261,7 +1261,7 @@ export const DumpTestimonials: ST_Testimonial[] = [
             name: 'English',
           },
           review_text:
-            'I use Icloudeng because provides very stable and fast servers. Also, your site provides many features to the user, and I can build a new server or delete the previous server whenever I want. Fully automatic, as well as full support. Thanks for the importance you give to the user.',
+            'I use Smatflow because provides very stable and fast servers. Also, your site provides many features to the user, and I can build a new server or delete the previous server whenever I want. Fully automatic, as well as full support. Thanks for the importance you give to the user.',
         },
       ],
       id: 'd63e9c0f-af1a-4c54-9008-672589be785a',
@@ -1283,7 +1283,7 @@ export const DumpTestimonials: ST_Testimonial[] = [
             name: 'English',
           },
           review_text:
-            'Icloudeng has provided me Remote Desktop Services at a much cheaper price as compared to other providers in the market like AWS, Google Cloud or Microsoft Azure. Customer support is also helpful at most of the occasions.',
+            'Smatflow has provided me Remote Desktop Services at a much cheaper price as compared to other providers in the market like AWS, Google Cloud or Microsoft Azure. Customer support is also helpful at most of the occasions.',
         },
       ],
       id: '7c1b9035-030f-4a15-a4af-1a8fa1fd6c2f',
@@ -2131,7 +2131,7 @@ export const DumpLatestBlog: ST_LatestBlog[] = [
       date_created: '2022-11-21T05:35:21.678Z',
       blogs: [
         {
-          label: 'Top YouTube Channels for Developers from Icloudeng cloud',
+          label: 'Top YouTube Channels for Developers from Smatflow cloud',
           tags: [],
           slug: 'top-you-tube-channels-for-developers-from-serverspace-cloud',
           image: {
@@ -2148,7 +2148,7 @@ export const DumpLatestBlog: ST_LatestBlog[] = [
                 name: 'English',
               },
               markdown_content: '',
-              title: 'Top YouTube Channels for Developers from Icloudeng cloud',
+              title: 'Top YouTube Channels for Developers from Smatflow cloud',
               summary:
                 'Recently, our team made a survey among top developers from the U.S. and Europe. One of the questions was about YouTube bloggers they subscribed to. We put together the answers and select IT Influencers who share video programming tutorials and thoughts on technology trends',
             },
@@ -2186,7 +2186,7 @@ export const DumpLatestBlog: ST_LatestBlog[] = [
           date_created: '2022-11-21T05:15:52.662Z',
         },
         {
-          label: 'HostAdvice interview with Icloudeng',
+          label: 'HostAdvice interview with Smatflow',
           tags: [],
           slug: 'host-advice-interview-with-serverspace',
           image: {
@@ -2202,7 +2202,7 @@ export const DumpLatestBlog: ST_LatestBlog[] = [
                 code: 'en',
                 name: 'English',
               },
-              title: 'HostAdvice interview with Icloudeng',
+              title: 'HostAdvice interview with Smatflow',
               markdown_content: '',
               summary:
                 'Hostadvice talk with Mr. Vitaliy Gritsay from Serverspace and learn more about our company.Grab your preferred drink and enjoy this interview.',

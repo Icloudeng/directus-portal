@@ -1,10 +1,10 @@
 [tool.poetry]
-name = "icloudeng-portal"
+name = "smatflow-portal"
 version = "0.1.0"
 description = ""
 authors = ["Admin Smatflow <project@smatflow.com>"]
 readme = "README.md"
-packages = [{include = "icloudeng_portal"}]
+packages = [{include = "smatflow_portal"}]
 
 [tool.poetry.dependencies]
 python = "^3.10"

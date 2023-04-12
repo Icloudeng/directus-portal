@@ -15,7 +15,7 @@ import { mut, useMut } from '@/cms/mut';
 
 import { Submenu } from './components/SubMenu';
 
-import Logo from '~/images/icloudenglogo.png';
+import Logo from '~/images/logo.png';
 
 export const Navbar = ({ whiteNav }: { whiteNav?: boolean }) => {
   const { CompanyDetails, NavbarButtons, locale, Layout } = useSharedData();
@@ -46,7 +46,7 @@ export const Navbar = ({ whiteNav }: { whiteNav?: boolean }) => {
               src={CompanyDetails?.logo?.src || Logo.src}
               width={Layout?.navbar_logo_width || 60}
               height={Layout?.navbar_logo_height || 60}
-              alt={CompanyDetails?.company_name || COMPANY_NAME || 'Icloudeng'}
+              alt={CompanyDetails?.company_name || COMPANY_NAME || 'Smatflow'}
             />
           </UnstyledLink>
         </div>

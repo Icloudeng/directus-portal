@@ -1,4 +1,4 @@
-# Icloudeng Portal
+# Smatflow Portal
 
 ## Getting started
 
@@ -12,14 +12,14 @@ Here are the tools you must have to get started (Test or Development).
 
 ## Description
 
-This is the Icloudeng offical site repository.
+This is the Smatflow offical site repository.
 
 ## Installation
 
 **Clone the repository:**
 
 ```
-git clone https://devops.icloudeng.com/icloudeng-system/icloudeng-portal.git
+git clone https://hub.smatflow.net/smatflow-projects/smatflow-portal.git
 ```
 
 **Install packages**
@@ -75,7 +75,7 @@ to provision the remote server, run the following command:
 
 ## Authors and acknowledgment
 
-@icloudeng
+@smatflow
 
 ## License
 
