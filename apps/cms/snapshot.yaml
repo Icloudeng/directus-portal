@@ -3150,7 +3150,7 @@ fields:
       foreign_key_column: null
   - collection: Addresses
     field: localization
-    type: json
+    type: geometry.Point
     meta:
       collection: Addresses
       conditions: null
@@ -3165,16 +3165,15 @@ fields:
         defaultView:
           bearing: 0
           center:
-            lat: 0.062335897237062454
-            lng: -5.641399812817326
+            lat: -3.213278274162704
+            lng: 30.25684568718748
           pitch: 0
-          zoom: -0.1225475130115347
+          zoom: 2.0714876494364907
         geometryType: Point
       readonly: false
       required: false
       sort: 7
-      special:
-        - cast-json
+      special: null
       translations: null
       validation: null
       validation_message: null
@@ -3182,7 +3181,7 @@ fields:
     schema:
       name: localization
       table: Addresses
-      data_type: json
+      data_type: POINT
       default_value: null
       max_length: null
       numeric_precision: null

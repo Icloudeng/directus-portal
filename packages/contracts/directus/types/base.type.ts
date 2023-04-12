@@ -37,6 +37,11 @@ export type MDWithPointCoordinated =
       type: "Point";
     };
 
+export type MDPointMap = {
+  coordinates: [number, number];
+  type: "Point";
+};
+
 export type MDWithPoint =
   | MDWithPointCoordinated
   | {

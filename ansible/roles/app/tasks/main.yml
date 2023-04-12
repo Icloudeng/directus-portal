@@ -15,6 +15,12 @@
     chdir: "{{ root_path }}"
   ignore_errors: true
 
+- name: Databases(Makefiile) | Mount databases docker compose
+  make:
+    chdir: "{{ root_path }}"
+    target: db-docker
+  when: docker_install
+
 - name: App Client | Download client dependencies
   become: false
   command: pnpm install
