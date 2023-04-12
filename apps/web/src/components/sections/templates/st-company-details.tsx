@@ -1,5 +1,5 @@
-import dynamic from 'next/dynamic';
 import { ST_CompanyDetail, STemplates_Props } from '@apps/contracts';
+import dynamic from 'next/dynamic';
 import Image from 'next/legacy/image';
 import { useTranslation } from 'next-i18next';
 
