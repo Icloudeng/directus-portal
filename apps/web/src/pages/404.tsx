@@ -20,26 +20,21 @@ function Content() {
   const [faced, setFaced] = useState(false);
   const route = useRouter();
 
-  const timerRef = useRef(0);
-
   useEffect(() => {
     if (!ref.current) return;
     const iwindow = ref.current.contentWindow;
     if (!iwindow) return;
 
-    const detect = function () {
-      const currentPathname = iwindow.location.pathname;
+    setFaced(false);
 
-      if (!currentPathname.includes('custom-404')) {
-        setFaced(true);
-        window.clearInterval(timerRef.current);
-        route.push(currentPathname);
-      }
+    const onChange = (e: CustomEventInit) => {
+      route.push(e.detail);
+      setFaced(true);
     };
 
-    timerRef.current = window.setInterval(detect, 100);
+    iwindow.addEventListener('NextRouteChangeStart', onChange);
     return () => {
-      window.clearInterval(timerRef.current);
+      iwindow.removeEventListener('NextRouteChangeStart', onChange);
     };
   }, [ref, route]);
 

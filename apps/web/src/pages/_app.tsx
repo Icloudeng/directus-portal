@@ -1,8 +1,9 @@
 import { GetServerSidePropsContext } from 'next';
 import { AppProps } from 'next/app';
 import { PHASE_PRODUCTION_BUILD } from 'next/constants';
-import { useRouter } from 'next/router';
+import { Router, useRouter } from 'next/router';
 import { appWithTranslation } from 'next-i18next';
+import { useEffect } from 'react';
 
 import '@/styles/globals.css';
 
@@ -37,6 +38,14 @@ function MyApp({
 
 function AppServices() {
   const { query } = useRouter();
+
+  useEffect(() => {
+    Router.events.on('routeChangeStart', (path) => {
+      window.dispatchEvent(
+        new CustomEvent('NextRouteChangeStart', { detail: path })
+      );
+    });
+  }, []);
 
   if (query.iframed) {
     return <></>;
