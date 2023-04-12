@@ -12989,7 +12989,7 @@ fields:
       options: null
       readonly: true
       required: false
-      sort: 8
+      sort: 9
       special:
         - date-created
       translations: null
@@ -13029,7 +13029,7 @@ fields:
       options: null
       readonly: true
       required: false
-      sort: 10
+      sort: 11
       special:
         - date-updated
       translations: null
@@ -13234,7 +13234,7 @@ fields:
             value: archived
       readonly: false
       required: false
-      sort: 6
+      sort: 7
       special: null
       translations: null
       validation: null
@@ -13296,7 +13296,7 @@ fields:
         template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
       readonly: true
       required: false
-      sort: 7
+      sort: 8
       special:
         - user-created
       translations: null
@@ -13336,7 +13336,7 @@ fields:
         template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
       readonly: true
       required: false
-      sort: 9
+      sort: 10
       special:
         - user-updated
       translations: null
@@ -13489,7 +13489,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: 5
+      sort: 6
       special: null
       translations: null
       validation: null
@@ -13525,11 +13525,12 @@ fields:
       interface: input-multiline
       note: null
       options:
+        placeholder: Content Description
         softLength: 500
         trim: true
       readonly: false
       required: true
-      sort: 3
+      sort: 4
       special: null
       translations: null
       validation: null
@@ -13605,7 +13606,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: 6
+      sort: 7
       special: null
       translations: null
       validation: null
@@ -13628,6 +13629,45 @@ fields:
       foreign_key_table: languages
       foreign_key_column: code
   - collection: HomeHero_translations
+    field: page_title
+    type: string
+    meta:
+      collection: HomeHero_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: page_title
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        placeholder: Page title
+      readonly: false
+      required: false
+      sort: 2
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: page_title
+      table: HomeHero_translations
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: HomeHero_translations
     field: title
     type: string
     meta:
@@ -13641,11 +13681,11 @@ fields:
       interface: input
       note: null
       options:
-        placeholder: Title
+        placeholder: Content Title
         trim: true
       readonly: false
       required: true
-      sort: 2
+      sort: 3
       special: null
       translations: null
       validation: null
@@ -13683,7 +13723,7 @@ fields:
       options: null
       readonly: false
       required: true
-      sort: 4
+      sort: 5
       special:
         - cast-json
       translations: null
