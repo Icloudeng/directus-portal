@@ -32,7 +32,7 @@ const gql_query = jsonToGraphQLQuery({
       }),
     },
     [CMS_MODELS.home_sections]: {
-      id: true,
+      id: false,
       sections: pageSectionQuery,
     },
   },

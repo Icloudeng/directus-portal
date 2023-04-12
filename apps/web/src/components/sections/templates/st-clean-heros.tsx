@@ -181,7 +181,14 @@ function Header({ item, index }: ST_CleanHero & { index: number }) {
                     alt={translations?.title}
                   />
                 ) : (
-                  <img className='w-full h-auto' src={image?.src} />
+                  <Image
+                    width='0'
+                    height='0'
+                    sizes='100vw'
+                    className='w-full h-auto'
+                    src={image?.src || ''}
+                    alt={translations?.title}
+                  />
                 ))}
             </>
           }

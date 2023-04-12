@@ -179,17 +179,19 @@ function PageSection({
             item.container && ['x-container ss:px-12']
           )}
         >
-          <div className='flex flex-col items-center justify-center gap-7 mb-7 page__section-titles'>
-            {item.translations?.title && (
-              <h1 className='text-center'>{item.translations?.title}</h1>
-            )}
+          {(item.translations?.title || item.translations?.description) && (
+            <div className='flex flex-col items-center justify-center gap-7 mb-7 page__section-titles'>
+              {item.translations?.title && (
+                <h1 className='text-center'>{item.translations?.title}</h1>
+              )}
 
-            {item.translations?.description && (
-              <span className='max-w-xl text-center'>
-                {item.translations?.description}
-              </span>
-            )}
-          </div>
+              {item.translations?.description && (
+                <span className='max-w-xl text-center'>
+                  {item.translations?.description}
+                </span>
+              )}
+            </div>
+          )}
 
           <div className='page__section-content w-full'>
             {contents.map((content, cidx) => {
