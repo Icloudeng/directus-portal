@@ -334,6 +334,16 @@ const q_ST: Query = {
     }),
     ...qWithStatus,
   },
+  [section_templates.st_maps]: {
+    __typeName: section_templates.st_maps,
+    __args: qWithPublishedStatus(),
+    localization: true,
+    ...qWithTranslations({
+      label: true,
+      description: true,
+    }),
+    ...qWithStatus,
+  },
 };
 
 type PSQuery = {

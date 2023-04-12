@@ -114,7 +114,10 @@ export function ST_CompanyDetailsFC(_: STemplates_Props<ST_CompanyDetail>) {
 
                   {localization && (
                     <div className='w-full h-96'>
-                      <ReactLeaflet position={localization} />
+                      <ReactLeaflet
+                        position={localization}
+                        name={address_name}
+                      />
                     </div>
                   )}
                 </div>
