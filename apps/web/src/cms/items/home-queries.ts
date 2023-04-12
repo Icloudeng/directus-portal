@@ -29,6 +29,7 @@ const gql_query = jsonToGraphQLQuery({
         title: true,
         description: true,
         trailing_titles: true,
+        page_title: true,
       }),
     },
     [CMS_MODELS.home_sections]: {

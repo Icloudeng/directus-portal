@@ -230,6 +230,7 @@ export type MDHomePageHero = {
   title: string;
   description: string;
   trailing_titles: string[];
+  page_title: string;
 }> &
   Omit<DRTStatus, "id">;
 
