@@ -119,19 +119,9 @@ gvault-gen:
 # ============================
 
 # Mounts project database from docker
-.PHONY: postgres-docker
-postgres-docker:
-	docker compose -f ./docker-compose.yml up db -d
-
-# Mounts project typesense from docker
-.PHONY: typesense-docker
-typesense-docker:
-	docker compose -f ./docker-compose.yml up typesense -d
-
-# Mounts db redis from docker
-.PHONY: redis-docker
-redis-docker:
-	docker run --name redis -p 6380:6379 -d redis:7.0.8-alpine
+.PHONY: db-docker
+db-docker:
+	docker compose -p smatflow-portal -f ./docker-compose.db.yaml up -d
 
 # ================================================================
 # Docker Build apps ( ----------- APPS -----------)
