@@ -1,7 +1,8 @@
+import { ST_Map, STemplates_Props } from '@apps/contracts';
+import dynamic from 'next/dynamic';
+
 import { useSharedData } from '@/app/store';
 import { mut } from '@/cms/mut';
-import dynamic from 'next/dynamic';
-import { ST_Map, STemplates_Props } from '@apps/contracts';
 
 const ReactLeaflet = dynamic(() => import('@/components/ui/react-leaflet'), {
   ssr: false,
