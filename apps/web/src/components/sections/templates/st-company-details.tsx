@@ -89,7 +89,7 @@ export function ST_CompanyDetailsFC(_: STemplates_Props<ST_CompanyDetail>) {
               return (
                 <div
                   key={id}
-                  className='flex md:flex-row flex-col md:space-x-6 space-y-7 md:space-y-0 border-b pb-2'
+                  className='flex md:flex-row flex-col md:space-x-6 space-y-7 md:space-y-0 border-b py-4'
                 >
                   <div className='address-text'>
                     <span>{address_name}</span>
