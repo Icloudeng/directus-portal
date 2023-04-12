@@ -15,6 +15,7 @@ import type {
   ST_LatestBlog,
   ST_LatestNew,
   ST_LeftRightContent,
+  ST_Map,
   ST_Markdown,
   ST_MediaTab,
   ST_NavAccordion,
@@ -2432,6 +2433,49 @@ export const DumpLeftRightContent: ST_LeftRightContent[] = [
       id: '7049d469-3b4a-46cb-bea7-db5ca6c1e1bb',
       status: 'published',
       date_created: '2022-12-14T14:42:37.654Z',
+    },
+  },
+];
+
+export const DumpMaps: ST_Map[] = [
+  {
+    id: '4',
+    collection: 'ST_Maps',
+    item: {
+      localization: {
+        type: 'Point',
+        coordinates: [30.07628832806509, -1.912744011461044],
+      },
+      translations: [
+        {
+          id: '1',
+          languages_code: {
+            code: 'en',
+            name: 'English',
+          },
+          label: 'Congo DRC',
+          description: 'Test description',
+        },
+      ],
+      id: '0de47365-d143-4b18-8884-94c5db687a45',
+      status: 'published',
+      date_created: '2023-04-12T15:35:52.572Z',
+      date_updated: '2023-04-12T15:42:04.290Z',
+    },
+  },
+  {
+    id: '5',
+    collection: 'ST_Maps',
+    item: {
+      translations: [],
+      localization: {
+        type: 'Point',
+        coordinates: [30.059178301151775, -1.916239647117493],
+      },
+      id: '935681c4-51d1-4cf8-93bf-a54a2ab861d4',
+      status: 'published',
+      date_created: '2023-04-12T15:37:33.092Z',
+      date_updated: '2023-04-12T15:38:14.007Z',
     },
   },
 ];

@@ -22,6 +22,7 @@ import {
   DumpLatestBlog,
   DumpLatestNews,
   DumpLeftRightContent,
+  DumpMaps,
   DumpMarkdown,
   DumpMediaTabs,
   DumpNavAccordion,
@@ -770,6 +771,22 @@ const templates: Template[] = [
             sectionClass=''
             sharedObject={{}}
           />
+        </section>
+      );
+    },
+  },
+  {
+    title: 'ST Maps',
+    content(title) {
+      return (
+        <section className='py-14 x-container'>
+          <h3
+            id={urlSafe(title)}
+            className='sticky top-8 z-50 bg-white p-2 inline-block text-primary-400 my-9'
+          >
+            {title}
+          </h3>
+          <Sts.ST_MapsFC items={DumpMaps} sectionClass='' sharedObject={{}} />
         </section>
       );
     },
