@@ -5,7 +5,7 @@ default:
 stages:
   - front-test
   - deploy-coding
-  - deploy-testing
+  # - deploy-testing
 
 variables:
   PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
