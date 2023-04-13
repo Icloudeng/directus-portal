@@ -122,6 +122,13 @@
     line: 'AUTH_LDAP_CLIENT_URL="ldap://{{ ldap_client_url }}"'
   when: cms_ldap_authentication
 
+- name: App CMS .env config | AUTH_LDAP_DEFAULT_ROLE_ID
+  lineinfile:
+    path: "{{ env_file }}"
+    regexp: "{{ lr }}AUTH_LDAP_DEFAULT_ROLE_ID="
+    line: AUTH_LDAP_DEFAULT_ROLE_ID="{{ lookup('env', 'AUTH_LDAP_DEFAULT_ROLE_ID') }}"
+  when: cms_ldap_authentication and lookup('env', 'AUTH_LDAP_DEFAULT_ROLE_ID')
+
 # ----------------------- EMAIL configs --------------------------------------
 
 - name: App CMS .env config | EMAIL_TRANSPORT
