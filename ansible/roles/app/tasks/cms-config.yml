@@ -93,11 +93,11 @@
 
 # ----------------------- Cors configs --------------------------------------
 
-- name: App CMS .env config | CORS_ORIGIN
-  lineinfile:
-    path: "{{ env_file }}"
-    regexp: "{{ lr }}CORS_ORIGIN="
-    line: 'CORS_ORIGIN="https://{{ domain }}"'
+# - name: App CMS .env config | CORS_ORIGIN
+#   lineinfile:
+#     path: "{{ env_file }}"
+#     regexp: "{{ lr }}CORS_ORIGIN="
+#     line: 'CORS_ORIGIN=true'
 
 # ----------------------- LDAP configs --------------------------------------
 
@@ -113,6 +113,13 @@
     path: "{{ env_file }}"
     regexp: "^AUTH_LDAP_BIND_PASSWORD="
     line: "AUTH_LDAP_BIND_PASSWORD={{ ldap_user_bind_password }}"
+  when: cms_ldap_authentication
+
+- name: App CMS .env config | AUTH_LDAP_CLIENT_URL
+  lineinfile:
+    path: "{{ env_file }}"
+    regexp: "^AUTH_LDAP_CLIENT_URL="
+    line: 'AUTH_LDAP_CLIENT_URL="ldap://{{ ldap_client_url }}"'
   when: cms_ldap_authentication
 
 # ----------------------- EMAIL configs --------------------------------------
@@ -140,7 +147,7 @@
       EMAIL_SMTP_POOL=true
       EMAIL_SMTP_PORT={{ mailer_port }}
       EMAIL_SMTP_SECURE=false
-      EMAIL_SMTP_IGNORE_TLS=true
+      EMAIL_SMTP_IGNORE_TLS=false
       EMAIL_SMTP_USER="{{ mailer_user }}"
       EMAIL_SMTP_PASSWORD="{{ mailer_password }}"
     state: present

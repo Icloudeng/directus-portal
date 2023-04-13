@@ -179,6 +179,11 @@ server {
     # security
     include                 nginxconfig.io/security.conf;
 
+{% if enable_cms_cors %}
+    add_header Access-Control-Allow-Origin "{{ cms_domain }}";
+    add_header Access-Control-Allow-Origin "{{ domain }}";
+{% endif %}
+
     # Disable CEO index
     # add_header X-Robots-Tag "noindex, nofollow, nosnippet, noarchive";
 
