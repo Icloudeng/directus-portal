@@ -7,10 +7,15 @@
       - curl
     state: present
 
-- name: Outils | Install
+- name: Outils Redis | Install
   apt:
     name:
       - redis
+  when: not docker_install
+
+- name: Outils | Install
+  apt:
+    name:
       - fish
       - vim
       - git

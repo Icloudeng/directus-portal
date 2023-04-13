@@ -60,80 +60,56 @@
     path: "{{ env_file }}"
     regexp: "^APP_USER_TOKEN="
     line: "APP_USER_TOKEN={{ app_user_token }}"
-
+#
 # -------------------------------- Database config -------------------------------
+#
 - name: App CMS .env config | DB_DATABASE
   lineinfile:
     path: "{{ env_file }}"
     regexp: "^DB_DATABASE="
     line: "DB_DATABASE={{ database }}"
+  when: not docker_install
 
 - name: App CMS .env config | DB_USER
   lineinfile:
     path: "{{ env_file }}"
     regexp: "^DB_USER="
     line: "DB_USER={{ database }}"
+  when: not docker_install
 
 - name: App CMS .env config | DB_PASSWORD
   lineinfile:
     path: "{{ env_file }}"
     regexp: "^DB_PASSWORD="
     line: "DB_PASSWORD={{ database_password }}"
-
-# -------------------------------- Cache config -------------------------------
-- name: App CMS .env config | CACHE_ENABLED
-  lineinfile:
-    path: "{{ env_file }}"
-    regexp: "{{ lr }}CACHE_ENABLED="
-    line: "CACHE_ENABLED=true"
-
-- name: App CMS .env config | CACHE_STORE
-  lineinfile:
-    path: "{{ env_file }}"
-    regexp: "{{ lr }}CACHE_STORE="
-    line: "CACHE_STORE=redis"
-
-- name: App CMS .env config | CACHE_REDIS
-  lineinfile:
-    path: "{{ env_file }}"
-    regexp: "{{ lr }}CACHE_REDIS="
-    line: 'CACHE_REDIS="redis://@127.0.0.1:6379"'
-
+  when: not docker_install
+#
 # -------------------------------- Rate Limiter -------------------------------
-- name: App CMS .env config | RATE_LIMITER_ENABLED
-  lineinfile:
-    path: "{{ env_file }}"
-    regexp: "{{ lr }}RATE_LIMITER_ENABLED="
-    line: "RATE_LIMITER_ENABLED=true"
+# - name: App CMS .env config | RATE_LIMITER_ENABLED
+#   lineinfile:
+#     path: "{{ env_file }}"
+#     regexp: "{{ lr }}RATE_LIMITER_ENABLED="
+#     line: "RATE_LIMITER_ENABLED=true"
 
-- name: App CMS .env config | RATE_LIMITER_STORE
-  lineinfile:
-    path: "{{ env_file }}"
-    regexp: "{{ lr }}RATE_LIMITER_STORE="
-    line: "RATE_LIMITER_STORE=redis"
-
-- name: App CMS .env config | RATE_LIMITER_REDIS
-  lineinfile:
-    path: "{{ env_file }}"
-    regexp: "{{ lr }}RATE_LIMITER_REDIS="
-    line: 'RATE_LIMITER_REDIS="redis://@127.0.0.1:6379"'
-
-# ----------------------- Cors configs ------------------
-- name: App CMS .env config | CORS_ENABLED
-  lineinfile:
-    path: "{{ env_file }}"
-    regexp: "{{ lr }}CORS_ENABLED="
-    line: "CORS_ENABLED=false"
-
+# ----------------------- Cors configs --------------------------------------
 # - name: App CMS .env config | CORS_ORIGIN
 #   lineinfile:
 #     path: "{{ env_file }}"
 #     regexp: "{{ lr }}CORS_ORIGIN="
 #     line: 'CORS_ORIGIN="http://localhost, http://127.0.0.1, https://{{ cms_domain }}, https://{{ domain }}"'
 
-# ----------------------- MESSENGER ------------------
-- name: App CMS .env config | MESSENGER_STORE
+# ----------------------- LDAP configs --------------------------------------
+
+- name: App CMS .env config | AUTH_PROVIDERS
   lineinfile:
     path: "{{ env_file }}"
-    regexp: "{{ lr }}MESSENGER_STORE="
-    line: "MESSENGER_STORE=redis"
+    regexp: "^AUTH_PROVIDERS="
+    line: "AUTH_PROVIDERS=ldap"
+  when: cms_ldap_authentication
+
+- name: App CMS .env config | AUTH_LDAP_BIND_PASSWORD
+  lineinfile:
+    path: "{{ env_file }}"
+    regexp: "^AUTH_LDAP_BIND_PASSWORD="
+    line: "AUTH_LDAP_BIND_PASSWORD={{ ldap_user_bind_password }}"
+  when: cms_ldap_authentication
