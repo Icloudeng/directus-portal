@@ -46,6 +46,7 @@ deploy-coding:
     - eval $(ssh-agent -s)
     - ssh-add <(echo "$ANSIBLE_DEPLOY_KEY")
   script:
+    - echo "$AUTH_LDAP_DEFAULT_ROLE_ID"
     - make provision-cd limits=coding
   when: manual
 #
