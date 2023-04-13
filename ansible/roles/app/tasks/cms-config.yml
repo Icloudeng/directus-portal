@@ -135,7 +135,7 @@
     path: "{{ env_file }}"
     insertbefore: (^EMAIL_FROM.*)
     block: |
-      EMAIL_SMTP_HOST="mail.smatflow.net"
+      EMAIL_SMTP_HOST="{{ mailer_host }}"
       EMAIL_SMTP_POOL=true
       EMAIL_SMTP_PORT={{ mailer_port }}
       EMAIL_SMTP_SECURE=false
