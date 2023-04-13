@@ -76,10 +76,8 @@ export async function connect(redisUrl?: string) {
   if (!url) {
     throw new Error("Cannot find REDIS_URL");
   }
-  const client = createClient({ url });
-  await client.connect();
 
-  const pubsub = client.duplicate({ url });
+  const pubsub = createClient({ url });
 
   await pubsub.connect();
 
