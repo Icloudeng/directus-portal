@@ -92,11 +92,12 @@
 #     line: "RATE_LIMITER_ENABLED=true"
 
 # ----------------------- Cors configs --------------------------------------
-# - name: App CMS .env config | CORS_ORIGIN
-#   lineinfile:
-#     path: "{{ env_file }}"
-#     regexp: "{{ lr }}CORS_ORIGIN="
-#     line: 'CORS_ORIGIN="http://localhost, http://127.0.0.1, https://{{ cms_domain }}, https://{{ domain }}"'
+
+- name: App CMS .env config | CORS_ORIGIN
+  lineinfile:
+    path: "{{ env_file }}"
+    regexp: "{{ lr }}CORS_ORIGIN="
+    line: 'CORS_ORIGIN="https://{{ domain }}"'
 
 # ----------------------- LDAP configs --------------------------------------
 
@@ -113,3 +114,34 @@
     regexp: "^AUTH_LDAP_BIND_PASSWORD="
     line: "AUTH_LDAP_BIND_PASSWORD={{ ldap_user_bind_password }}"
   when: cms_ldap_authentication
+
+# ----------------------- EMAIL configs --------------------------------------
+
+- name: App CMS .env config | EMAIL_TRANSPORT
+  lineinfile:
+    path: "{{ env_file }}"
+    regexp: "^EMAIL_TRANSPORT="
+    line: "EMAIL_TRANSPORT=smtp"
+  when: mailer
+
+- name: App CMS .env config | EMAIL_FROM
+  lineinfile:
+    path: "{{ env_file }}"
+    regexp: "^EMAIL_FROM="
+    line: "EMAIL_FROM={{ mailer_from }}"
+  when: mailer
+
+- name: App CMS .env config  | EMAIL_* Configs
+  blockinfile:
+    path: "{{ env_file }}"
+    insertbefore: (^EMAIL_FROM.*)
+    block: |
+      EMAIL_SMTP_HOST="{{ mailer_host }}"
+      EMAIL_SMTP_POOL=true
+      EMAIL_SMTP_PORT={{ mailer_port }}
+      EMAIL_SMTP_SECURE=false
+      EMAIL_SMTP_IGNORE_TLS=true
+      EMAIL_SMTP_USER="{{ mailer_user }}"
+      EMAIL_SMTP_PASSWORD="{{ mailer_password }}"
+    state: present
+  when: mailer

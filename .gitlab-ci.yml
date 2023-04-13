@@ -29,7 +29,7 @@ front-test:
 
 deploy-coding:
   stage: deploy-coding
-  image: python:3.8
+  image: python:3.10
   only:
     refs:
       - main
@@ -51,7 +51,7 @@ deploy-coding:
 #
 # deploy-testing:
 #   stage: deploy-testing
-#   image: python:3.8
+#   image: python:3.10
 #   needs: [deploy-coding]
 #   only:
 #     refs:

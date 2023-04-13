@@ -55,7 +55,7 @@ ansible-install-cd:
 
 
 tags?=
-ifdef tags
+ifndef tags
  TAGSD=
 else
  TAGSD=--tags $(tags)
