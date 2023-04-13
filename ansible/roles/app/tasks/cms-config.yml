@@ -92,11 +92,12 @@
 #     line: "RATE_LIMITER_ENABLED=true"
 
 # ----------------------- Cors configs --------------------------------------
-# - name: App CMS .env config | CORS_ORIGIN
-#   lineinfile:
-#     path: "{{ env_file }}"
-#     regexp: "{{ lr }}CORS_ORIGIN="
-#     line: 'CORS_ORIGIN="http://localhost, http://127.0.0.1, https://{{ cms_domain }}, https://{{ domain }}"'
+
+- name: App CMS .env config | CORS_ORIGIN
+  lineinfile:
+    path: "{{ env_file }}"
+    regexp: "{{ lr }}CORS_ORIGIN="
+    line: 'CORS_ORIGIN="https://{{ domain }}"'
 
 # ----------------------- LDAP configs --------------------------------------
 
