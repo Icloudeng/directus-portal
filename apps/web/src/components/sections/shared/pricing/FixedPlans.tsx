@@ -29,7 +29,7 @@ export const FixedPlans = ({ fixed_plans, machine_templates }: Props) => {
     defaultM?.mt || null
   );
 
-  const onChangeSelect = useCallback((value: typeof template_options[0]) => {
+  const onChangeSelect = useCallback((value: (typeof template_options)[0]) => {
     setMachine(value.mt);
   }, []);
 

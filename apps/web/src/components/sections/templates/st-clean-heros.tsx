@@ -3,14 +3,15 @@ import isSvg from 'is-svg';
 import Image from 'next/legacy/image';
 import Router from 'next/router';
 import { useEffect } from 'react';
+import React from 'react';
+
+import clsxm from '@/lib/clsxm';
 
 import { HasSvgText } from '@/components/ui/HasSvgText';
 import ButtonLink from '@/components/ui/links/ButtonLink';
 
-import { useMut } from '@/cms/mut';
-import clsxm from '@/lib/clsxm';
 import { testHexColor } from '@/app/utils/tests';
-import React from 'react';
+import { useMut } from '@/cms/mut';
 
 export function ST_CleanHerosFC({
   items,
@@ -31,7 +32,7 @@ export function ST_CleanHerosFC({
     return () => {
       Router.events.off('routeChangeStart', routerChangeStart);
     };
-  }, []);
+  }, [sharedObject, first.collection]);
 
   return (
     <>
@@ -109,7 +110,7 @@ function Header({ item, index }: ST_CleanHero & { index: number }) {
   return (
     <div
       className={clsxm(
-        'flex max-h-[1000px]',
+        'flex max-h-[1000px] mt-[30px] sd:mt-0',
         hasImage && ['lg:justify-between'],
         disposition === 'text_right' && ['flex-row-reverse']
       )}
@@ -173,13 +174,21 @@ function Header({ item, index }: ST_CleanHero & { index: number }) {
                 (image.height ? (
                   <Image
                     className='w-full h-auto'
-                    src={image.src!}
+                    src={image.src as string}
                     height={image.height}
                     width={image.width}
                     layout='responsive'
+                    alt={translations?.title}
                   />
                 ) : (
-                  <img className='w-full h-auto' src={image?.src} />
+                  <Image
+                    width='0'
+                    height='0'
+                    sizes='100vw'
+                    className='w-full h-auto'
+                    src={image?.src || ''}
+                    alt={translations?.title}
+                  />
                 ))}
             </>
           }

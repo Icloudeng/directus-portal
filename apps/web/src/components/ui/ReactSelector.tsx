@@ -25,11 +25,12 @@ export function HasSvgOrImage({
       className='inline-flex mr-2 w-4 h-4 relative'
       fallback={
         <>
-          {icon && (
+          {icon?.src && (
             <Image
-              src={icon.src || ''}
+              src={icon.src}
               layout='fill'
               className='w-full h-full'
+              alt='icon'
             />
           )}
         </>

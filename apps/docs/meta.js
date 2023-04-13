@@ -13,12 +13,12 @@ try {
 const locales = meta.i18n?.locales || [];
 
 const config = {
-  title: meta.title || "Icloudeng Documentation",
+  title: meta.title || "Smatflow Documentation",
   tagline: meta.tagline || "",
-  url: meta.url || "https://icloudeng.com",
+  url: meta.url || "https://smatflow.com",
   favicon: meta.favicon || "img/favicon.ico",
-  organizationName: meta.organizationName || "icloudeng",
-  projectName: "icloudeng-portal",
+  organizationName: meta.organizationName || "smatflow",
+  projectName: "smatflow-portal",
   i18n: {
     defaultLocale: meta.i18n?.defaultLocale || "en",
     locales: locales.length > 0 && locales.includes("en") ? locales : ["en"],
@@ -27,7 +27,7 @@ const config = {
     },
   },
   navbar: {
-    title: meta.navbar?.title || "Icloudeng",
+    title: meta.navbar?.title || "Smatflow",
     logo: {
       src: "img/logo.svg",
       width: 32,
@@ -50,7 +50,7 @@ const config = {
     links: meta.footer?.links || [],
     copyright:
       meta.footer?.copyright ||
-      `Copyright © ${new Date().getFullYear()} Icloudeng, Inc. Built with Docusaurus.`,
+      `Copyright © ${new Date().getFullYear()} Smatflow, Inc. Built with Docusaurus.`,
   },
   sidebars:
     Object.keys(meta.sidebars || {}).length > 0 ? meta.sidebars : undefined,

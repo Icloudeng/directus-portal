@@ -7,14 +7,14 @@ import { useSharedData } from '@/app/store';
 import { useMut } from '@/cms/mut';
 
 const defaultMeta = {
-  title: 'Icloudeng',
-  siteName: 'Icloudeng',
+  title: 'Smatflow',
+  siteName: 'Smatflow',
   description:
     (COMPANY_NAME || '') + 'a giant cloud computing solution provider',
   url: WEBSITE_URL || '',
   type: 'website',
   robots: 'follow, index',
-  image: '/images/icloudeng-banner.jpg',
+  image: '/images/banner.jpg',
 };
 
 type SeoProps = {
@@ -111,7 +111,7 @@ export default function Seo({ dynamicPage, ...props }: SeoProps) {
         [
           {
             rel: 'icon',
-            href: cdT?.logo_sm?.src || '/images/icloudenglogo.png',
+            href: cdT?.logo_sm?.src || '/images/logo.png',
           },
         ] as Favicons[]
       ).map((linkProps) => (

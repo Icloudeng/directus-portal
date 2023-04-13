@@ -27,7 +27,7 @@ export const HomeHeroSection = ({ data }: { data: MDHomePageHero }) => {
       acc.push(onTypingProgress(index), value, 1000);
       return acc;
     }, [] as AccType[]);
-  }, [trailing_titles]);
+  }, [trailing_titles, onTypingProgress]);
 
   const contentText = (
     <div className='hero-left flex flex-col sd:w-1/2 gap-7'>
@@ -71,13 +71,15 @@ export const HomeHeroSection = ({ data }: { data: MDHomePageHero }) => {
                       actived ? 'opacity-100' : 'opacity-0'
                     }`}
                   >
-                    <Image
-                      className='image object-cover'
-                      src={src!}
-                      layout='fill'
-                      objectFit='cover'
-                      alt='accordion image'
-                    />
+                    {src && (
+                      <Image
+                        className='image object-cover'
+                        src={src}
+                        layout='fill'
+                        objectFit='cover'
+                        alt='accordion image'
+                      />
+                    )}
                   </div>
                 );
               })}
@@ -86,11 +88,11 @@ export const HomeHeroSection = ({ data }: { data: MDHomePageHero }) => {
         </div>
       ) : (
         <>
-          {image && (
+          {image?.src && (
             <div className='hero-right flex items-center justify-end max-w-xs sd:max-w-full sd:w-1/2'>
               <NextImage
                 useSkeleton
-                src={image.src!}
+                src={image.src}
                 imgClassName='!z-0'
                 width={500}
                 height={376}

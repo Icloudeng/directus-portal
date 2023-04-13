@@ -81,6 +81,7 @@ export function MarkdownContent({ children, toc = false, className }: Props) {
           rehypePlugins={
             toc ? [rehypeSlug, [rehypeToc as any, tocOptions]] : []
           }
+          //@ts-ignore
           remarkPlugins={[remarkGfm, remarkHtml]}
         >
           {children}

@@ -63,6 +63,7 @@
   notify: nginx reload
 
 - include_tasks: certificates.yml
+  when: letsencrypt
 
 - name: "Nginx | Vhost {{ domain }}"
   file:
@@ -72,12 +73,12 @@
   notify: nginx reload
 
 - include_tasks: letsencrypt.yml
-  when: letsencrypt
   loop:
     - "{{ domain }}"
     - "{{ cms_domain }}"
   loop_control:
     loop_var: domain_item
+  when: letsencrypt
 
 - name: CRON | Certbot new
   cron:

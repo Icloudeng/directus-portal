@@ -1,4 +1,5 @@
 import { GetStaticPropsContext } from 'next';
+import Link from 'next/link';
 import React from 'react';
 import { BsArrowUp } from 'react-icons/bs';
 
@@ -21,6 +22,7 @@ import {
   DumpLatestBlog,
   DumpLatestNews,
   DumpLeftRightContent,
+  DumpMaps,
   DumpMarkdown,
   DumpMediaTabs,
   DumpNavAccordion,
@@ -40,7 +42,6 @@ import {
   getDumpChart,
 } from '@/app/models/dumps-templates';
 import { getServerSideTranslations } from '@/app/utils/server-translation';
-import Link from 'next/link';
 
 type Template = {
   title: string;
@@ -774,6 +775,22 @@ const templates: Template[] = [
       );
     },
   },
+  {
+    title: 'ST Maps',
+    content(title) {
+      return (
+        <section className='py-14 x-container'>
+          <h3
+            id={urlSafe(title)}
+            className='sticky top-8 z-50 bg-white p-2 inline-block text-primary-400 my-9'
+          >
+            {title}
+          </h3>
+          <Sts.ST_MapsFC items={DumpMaps} sectionClass='' sharedObject={{}} />
+        </section>
+      );
+    },
+  },
 ];
 
 const grouped = templates.reduce((acc, template) => {
@@ -838,7 +855,7 @@ export default function Page() {
 export async function getStaticProps({ locale }: GetStaticPropsContext) {
   return {
     props: {
-      ...(await getServerSideTranslations(locale!)),
+      ...(await getServerSideTranslations(locale as string)),
     },
   };
 }

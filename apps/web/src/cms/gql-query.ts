@@ -1,4 +1,3 @@
-import { CMS_URL } from '@/app/constant/env';
 import {
   DRTQueryT,
   DRTStatus,
@@ -7,6 +6,8 @@ import {
   QueryWithTranslation,
 } from '@apps/contracts';
 import { Filter, Sort } from '@directus/sdk';
+
+import { CMS_URL } from '@/app/constant/env';
 
 export const qWithStatus: DRTQueryT<DRTStatus> = {
   id: true,

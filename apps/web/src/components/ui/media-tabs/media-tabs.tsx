@@ -26,19 +26,19 @@ export function MediaTabs({ children }: PropsWithChildren) {
     <div className='w-full flex flex-col items-center gap-5'>
       {titles.length > 1 && (
         <div className='tab-container flex items-center justify-center mb-3 flex-wrap px-10 gap-3'>
-            {titles.map(({ title, index }) => {
-                return (
-                    <Button
-                        key={index}
-                        onClick={() => setActive(index)}
-                        className={`btn-tab-direction ${
-                            index === active ? 'btn-tab-active' : ''
-                        } py-3 font-semibold rounded-md border-none bg-[#f5f7fa] text-dark hover:bg-primary-400`}
-                    >
-                    {title}
-                    </Button>
-                );
-            })}
+          {titles.map(({ title, index }) => {
+            return (
+              <Button
+                key={index}
+                onClick={() => setActive(index)}
+                className={`btn-tab-direction ${
+                  index === active ? 'btn-tab-active' : ''
+                } py-3 font-semibold rounded-md border-none bg-[#f5f7fa] text-dark hover:bg-primary-400`}
+              >
+                {title}
+              </Button>
+            );
+          })}
         </div>
       )}
 
@@ -49,7 +49,6 @@ export function MediaTabs({ children }: PropsWithChildren) {
 
 export function MediaTabsPane({
   children,
-  menuTitle,
   title,
   description,
   disposition,

@@ -95,7 +95,7 @@ export async function getServerSideProps({
   );
   return {
     props: {
-      ...(await getServerSideTranslations(locale!)),
+      ...(await getServerSideTranslations(locale as string)),
       blogs: res.data?.blogs || [],
     },
   };

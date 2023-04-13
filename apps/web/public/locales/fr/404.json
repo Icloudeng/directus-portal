@@ -1,7 +1,7 @@
 {
-    "Page Not Found": "Page non trouvée",
-    "Back to Home": "De retour à la page d'acceuil",
-    "500 - Server error": "500 - Erreur de serveur",
-    "Oops something went wrong. Try to refresh this page or": "Oups quelque chose s'est mal passé. Essayez d'actualiser cette page ou",
-    "feel free to contact us if the problem presists.": "n'hésitez pas à nous contacter si le problème persiste."
+  "Page Not Found": "Page non trouvée",
+  "Back to Home": "De retour à la page d'acceuil",
+  "500 - Server error": "500 - Erreur de serveur",
+  "Oops something went wrong. Try to refresh this page or": "Oups quelque chose s'est mal passé. Essayez d'actualiser cette page ou",
+  "feel free to contact us if the problem presists.": "n'hésitez pas à nous contacter si le problème persiste."
 }

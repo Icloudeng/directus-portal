@@ -1,10 +1,12 @@
-import { useSharedData } from '@/app/store';
-import { mut } from '@/cms/mut';
+import { ST_LeftRightContent, STemplates_Props } from '@apps/contracts';
+import Image from 'next/legacy/image';
+import { useTranslation } from 'next-i18next';
+
 import { HasSvgText } from '@/components/ui/HasSvgText';
 import UnstyledLink from '@/components/ui/links/UnstyledLink';
-import { STemplates_Props, ST_LeftRightContent } from '@apps/contracts';
-import { useTranslation } from 'next-i18next';
-import Image from 'next/legacy/image';
+
+import { useSharedData } from '@/app/store';
+import { mut } from '@/cms/mut';
 
 export function ST_LeftRightContentsFC({
   items,
@@ -26,6 +28,7 @@ export function ST_LeftRightContentsFC({
                 className='w-full h-full rounded-full'
                 layout='fill'
                 objectFit='cover'
+                alt={translations?.title}
               />
             }
           />

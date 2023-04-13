@@ -22,6 +22,6 @@
     - { role: docker, tags: docker, when: docker_install }
     - { role: firewall, tags: firewall }
     - { role: nginx, tags: nginx }
-    - { role: pgsql, tags: pgsql }
+    - { role: pgsql, tags: pgsql, when: not docker_install }
     - { role: node, tags: node }
     - { role: app, tags: app }

@@ -1,3 +1,7 @@
+import React from 'react';
+
+import clsxm from '@/lib/clsxm';
+
 import ButtonLink from '@/components/ui/links/ButtonLink';
 
 import { useSharedData } from '@/app/store';
@@ -7,8 +11,6 @@ import { ContactSection } from './components/ContactSection';
 import { FooterItemLinks } from './components/FooterItemLinks';
 import { Subscribe } from './components/Subscribe';
 import { TermsConditions } from './components/TermsConditions';
-import React from 'react';
-import clsxm from '@/lib/clsxm';
 
 export const Footer = () => {
   const { FooterLinks, Layout } = useSharedData();

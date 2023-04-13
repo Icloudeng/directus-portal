@@ -190,7 +190,9 @@ function pageSectionWithContent(sections: M2APageSection[]) {
         content.item.plan_pricing_contents = <PlansPricingContent>{};
         plan_pricing?.push('machine_templates');
         plan_pricing?.forEach((key) => {
-          content.item.plan_pricing_contents![key] = memo![key] as any;
+          content.item.plan_pricing_contents &&
+            memo &&
+            (content.item.plan_pricing_contents[key] = memo[key] as any);
         });
       },
     }),

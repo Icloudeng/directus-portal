@@ -26,7 +26,7 @@ export function ST_NavTabsFC({ items }: STemplates_Props<ST_NavTab>) {
                   {translations?.markdown_content || ''}
                 </MarkdownContent>
               </div>
-              {image && (
+              {image?.src && (
                 <div
                   className={`relative w-full sm:w-[40%] -order-1 ${
                     disposition === 'text_left' ? 'sm:order-1' : 'mr-4'
@@ -35,8 +35,9 @@ export function ST_NavTabsFC({ items }: STemplates_Props<ST_NavTab>) {
                   <Image
                     className='image object-cover'
                     layout='fill'
-                    src={image.src!}
+                    src={image.src}
                     loading='lazy'
+                    alt={translations?.name}
                   />
                 </div>
               )}

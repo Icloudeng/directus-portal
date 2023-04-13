@@ -134,7 +134,7 @@ export const MobileMenu = forwardRef<HTMLDivElement>((_, ref) => {
   const onMouseClick = useCallback(() => {
     document.body.classList.remove('mobile__model-open');
     targetEl.current?.classList.remove('mobile__menu-active');
-  }, [targetEl.current]);
+  }, [targetEl]);
 
   useEffect(() => {
     Router.events.on('routeChangeComplete', onMouseClick);
@@ -143,7 +143,7 @@ export const MobileMenu = forwardRef<HTMLDivElement>((_, ref) => {
       Router.events.off('routeChangeComplete', onMouseClick);
       Router.events.off('routeChangeError', onMouseClick);
     };
-  }, []);
+  }, [onMouseClick]);
 
   return (
     <div

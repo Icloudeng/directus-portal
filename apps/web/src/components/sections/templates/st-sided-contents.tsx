@@ -16,7 +16,7 @@ export function ST_SidedContentsFC({
       acc[acc.length - 1].push(item);
     }
     return acc;
-  }, [] as typeof items[]);
+  }, [] as (typeof items)[]);
 
   return (
     <>
@@ -58,7 +58,7 @@ function SidedContent({ item }: ST_SidedContent) {
           </MarkdownContent>
         </div>
       </div>
-      {image && (
+      {image?.src && (
         <div
           className={`${
             disposition === 'text_bottom' ? 'mt-0 md:mb-10' : 'mt-10'
@@ -67,7 +67,7 @@ function SidedContent({ item }: ST_SidedContent) {
           <div className='image-container relative h-[21rem]'>
             <Image
               className='image object-cover rounded-t-lg md:rounded-sm md:rounded-r-lg'
-              src={image.src!}
+              src={image.src}
               layout='fill'
               objectFit='cover'
               alt={translations?.title}

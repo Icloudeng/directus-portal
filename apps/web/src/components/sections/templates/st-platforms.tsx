@@ -20,18 +20,21 @@ export function ST_PlatformsFC({
   const { locale } = useSharedData();
   const { t } = useTranslation();
 
-  const onSearch = useCallback((value: string) => {
-    setCategories(
-      (item.categories || []).map((cat) => {
-        const $cat = { ...cat };
-        $cat.platforms = ($cat.platforms || []).filter((c) => {
-          const platname = c.name.trim().toLowerCase().replace(/\s+/g, '');
-          return platname.includes(value.toLowerCase().replace(/\s+/g, ''));
-        });
-        return $cat;
-      })
-    );
-  }, []);
+  const onSearch = useCallback(
+    (value: string) => {
+      setCategories(
+        (item.categories || []).map((cat) => {
+          const $cat = { ...cat };
+          $cat.platforms = ($cat.platforms || []).filter((c) => {
+            const platname = c.name.trim().toLowerCase().replace(/\s+/g, '');
+            return platname.includes(value.toLowerCase().replace(/\s+/g, ''));
+          });
+          return $cat;
+        })
+      );
+    },
+    [item.categories]
+  );
 
   return (
     <>
@@ -57,6 +60,7 @@ export function ST_PlatformsFC({
                         src={cat.icon?.src || ''}
                         layout='fill'
                         className='w-full h-full'
+                        alt={cat.name}
                       />
                     ) : (
                       <CatIcon />

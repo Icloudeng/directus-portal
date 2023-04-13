@@ -7,13 +7,15 @@ import Seo from '@/components/Seo';
 
 import { getServerSideTranslations } from '@/app/utils/server-translation';
 import { getGqlHomeQueries, QHomeHeroQueriesType } from '@/cms/items';
+import { useMut } from '@/cms/mut';
 
 export default function HomePage(props: Partial<QHomeHeroQueriesType<true>>) {
   const { HomeHero, HomeSections } = props;
+  const home = useMut(HomeHero);
 
   return (
     <Layout>
-      <Seo />
+      <Seo templateTitle={home?.translations?.page_title} />
 
       {HomeHero && HomeHero.status === 'published' && (
         <section className='hero-section py-10'>
@@ -33,7 +35,7 @@ export async function getServerSideProps({
 
   return {
     props: {
-      ...(await getServerSideTranslations(locale!, ['home'])),
+      ...(await getServerSideTranslations(locale as string, ['home'])),
       ...(res?.data || {}),
     },
   };

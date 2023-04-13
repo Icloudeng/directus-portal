@@ -3,6 +3,7 @@ import {
   ButtonVariant,
   DRTStatus,
   MDHasM2A,
+  MDPointMap,
   MDWithAsset,
   MDWithTranslation,
   RepeaterBtn,
@@ -373,6 +374,17 @@ export type ST_LeftRightContent = MDHasM2A<
   ST_V<"st_left_right_contents">
 >;
 
+export type ST_Map = MDHasM2A<
+  {
+    localization: MDPointMap;
+  } & MDWithTranslation<{
+    label: string;
+    description: string;
+  }> &
+    DRTStatus,
+  ST_V<"st_maps">
+>;
+
 //------------------- Page Sections --------------------//
 export type PS_Content =
   | ST_Value
@@ -405,7 +417,8 @@ export type PS_Content =
   | ST_LatestNew
   | ST_LatestBlog
   | ST_RichText
-  | ST_LeftRightContent;
+  | ST_LeftRightContent
+  | ST_Map;
 
 export type M2APageSection = MDHasM2A<
   {

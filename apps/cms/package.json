@@ -16,15 +16,15 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@directus/sdk": "^10.1.5",
+    "@directus/sdk": "^10.3.3",
     "@extensions/directus-extension-compaigns": "workspace:*",
     "@extensions/directus-extension-docs-publisher": "workspace:*",
     "@extensions/directus-extension-guests-replier": "workspace:*",
     "@extensions/directus-extension-newsletters": "workspace:*",
     "@extensions/directus-extension-searchable": "workspace:*",
-    "directus": "9.20.4",
+    "directus": "9.24.0",
     "dotenv": "^16.0.3",
-    "postgres": "^3.3.1",
-    "sqlite3": "^5.1.4"
+    "postgres": "^3.3.4",
+    "sqlite3": "^5.1.6"
   }
 }

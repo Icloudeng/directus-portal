@@ -5,6 +5,7 @@ import React, {
   PropsWithChildren,
   useCallback,
   useEffect,
+  useMemo,
   useRef,
   useState,
 } from 'react';
@@ -15,39 +16,41 @@ import { scrollToElement } from '@/app/utils/scroll-to-element';
 
 export function AsideMenu({ children }: PropsWithChildren) {
   const [active, setActive] = useState(0);
-  const arrChildren = React.Children.toArray(children);
   const hasClickScroll = useRef(false);
 
-  const titles = arrChildren
-    .map((child, index) => {
-      const node = child as React.ReactElement;
-      const title = node?.props?.menuTitle;
-      return title
-        ? {
-            title,
-            index,
-            href: title as string,
-            node,
-          }
-        : null;
-    })
-    .filter(Boolean)
-    .map((title, i) => {
-      const $title = title!;
-      $title.href =
-        $title.href.split(' ').join('-').toLowerCase() + '-aside_menu-' + i;
-      $title.node = React.cloneElement($title.node, {
-        href: $title.href,
-        last: i === arrChildren.length - 1,
+  const titles = useMemo(() => {
+    const arrChildren = React.Children.toArray(children);
+    return arrChildren
+      .map((child, index) => {
+        const node = child as React.ReactElement;
+        const title = node?.props?.menuTitle;
+        return title
+          ? {
+              title,
+              index,
+              href: title as string,
+              node,
+            }
+          : null;
+      })
+      .filter(Boolean)
+      .map((title, i) => {
+        const $title = title as NonNullable<typeof title>;
+        $title.href =
+          $title.href.split(' ').join('-').toLowerCase() + '-aside_menu-' + i;
+        $title.node = React.cloneElement($title.node, {
+          href: $title.href,
+          last: i === arrChildren.length - 1,
+        });
+        return $title;
       });
-      return $title;
-    });
+  }, [children]);
 
   const id = titles.map(({ title }) => title).join('');
 
   useEffect(() => {
     const elements = titles
-      .map(({ href }) => document.getElementById(href)!)
+      .map(({ href }) => document.getElementById(href) as HTMLElement)
       .filter(Boolean);
 
     const onScroll = throttle(() => {
@@ -72,14 +75,15 @@ export function AsideMenu({ children }: PropsWithChildren) {
     return () => {
       window.removeEventListener('scroll', onScroll);
     };
-  }, [id]);
+  }, [id, titles]);
 
   const onMenuClick = useCallback((index: number, href: string) => {
     return (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
       event.preventDefault();
       const cel = document.getElementById('label-' + href);
       if (!cel) return;
-      const rect = cel.getBoundingClientRect()!;
+
+      const rect = cel.getBoundingClientRect();
       hasClickScroll.current = true;
       let scrollHasStarted = false;
 

@@ -7,13 +7,14 @@ import { CMS_MODELS } from '@apps/contracts';
 import isSvg from 'is-svg';
 import React, { FunctionComponent, useMemo, useRef } from 'react';
 
+import clsxm from '@/lib/clsxm';
+
 import { VALID_CSS } from '@/app/utils/regex';
 import { testHexColor } from '@/app/utils/tests';
 import { useMut } from '@/cms/mut';
 
 import * as stfc from './templates';
 import { HasSvgText } from '../ui/HasSvgText';
-import clsxm from '@/lib/clsxm';
 
 const { section_templates } = CMS_MODELS;
 type ST = typeof section_templates;
@@ -78,7 +79,7 @@ function PageSection({
   const hasSvg = background_svg && isSvg(background_svg);
 
   const style = useMemo(() => {
-    const { custom_css } = item;
+    const custom_css = item.custom_css;
     const match_css = (custom_css || '').match(VALID_CSS);
 
     if (!match_css || match_css.length === 0) return;
@@ -178,17 +179,19 @@ function PageSection({
             item.container && ['x-container ss:px-12']
           )}
         >
-          <div className='flex flex-col items-center justify-center gap-7 mb-7 page__section-titles'>
-            {item.translations?.title && (
-              <h1 className='text-center'>{item.translations?.title}</h1>
-            )}
+          {(item.translations?.title || item.translations?.description) && (
+            <div className='flex flex-col items-center justify-center gap-7 mb-7 page__section-titles'>
+              {item.translations?.title && (
+                <h1 className='text-center'>{item.translations?.title}</h1>
+              )}
 
-            {item.translations?.description && (
-              <span className='max-w-xl text-center'>
-                {item.translations?.description}
-              </span>
-            )}
-          </div>
+              {item.translations?.description && (
+                <span className='max-w-xl text-center'>
+                  {item.translations?.description}
+                </span>
+              )}
+            </div>
+          )}
 
           <div className='page__section-content w-full'>
             {contents.map((content, cidx) => {

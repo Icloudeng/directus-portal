@@ -28,13 +28,14 @@ export const ReviewCard = ({
               clientPhoto ? 'relative h-[71px] w-[71px]' : 'p-4'
             } bg-primary-50 rounded-full  mb-4`}
           >
-            {clientPhoto && (
+            {clientPhoto?.src && (
               <Image
-                src={clientPhoto.src!}
+                src={clientPhoto.src}
                 className='rounded-full'
                 layout='fill'
                 loading='lazy'
                 objectFit='cover'
+                alt={clientName}
               />
             )}
             {!clientPhoto && (

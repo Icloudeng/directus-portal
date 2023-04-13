@@ -3,8 +3,8 @@ import type { ID } from "@directus/sdk";
 import type {
   ButtonVariant,
   DRTStatus,
+  MDPointMap,
   MDWithAsset,
-  MDWithPoint,
   MDWithTranslation,
   RepeaterBtn,
 } from "./base.type";
@@ -142,7 +142,7 @@ type MDAddress = {
   phone?: string;
   working_days?: string;
   working_time?: string;
-  localization: MDWithPoint;
+  localization: MDPointMap;
 } & DRTStatus;
 
 type MDCompanyDetailField = {
@@ -230,6 +230,7 @@ export type MDHomePageHero = {
   title: string;
   description: string;
   trailing_titles: string[];
+  page_title: string;
 }> &
   Omit<DRTStatus, "id">;
 

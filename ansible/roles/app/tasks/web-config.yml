@@ -1,25 +1,3 @@
-- name: App WEB .env config
-  set_fact:
-    env_file: "{{ root_path }}/apps/web/.env"
-
-- name: App WEB .env config | DIRECTUS_STATIC_TOKEN
-  lineinfile:
-    path: "{{ env_file }}"
-    regexp: "^DIRECTUS_STATIC_TOKEN="
-    line: "DIRECTUS_STATIC_TOKEN={{ app_user_token }}"
-
-- name: App WEB .env config | DIRECTUS_URL
-  lineinfile:
-    path: "{{ env_file }}"
-    regexp: "^DIRECTUS_URL="
-    line: "DIRECTUS_URL=https://{{ cms_domain }}/"
-
-- name: App WEB .env config | NEXT_PUBLIC_WEBSITE_URL
-  lineinfile:
-    path: "{{ env_file }}"
-    regexp: "^NEXT_PUBLIC_WEBSITE_URL="
-    line: "NEXT_PUBLIC_WEBSITE_URL=https://{{ domain }}/"
-
 - name: "Web App (Templates) | .env.local"
   template:
     src: .env.local-web

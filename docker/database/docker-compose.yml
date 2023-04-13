@@ -2,6 +2,7 @@ version: '3.8'
 services:
   db:
     image: postgis/postgis:12-3.2-alpine
+    restart: unless-stopped
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: portal
@@ -18,7 +19,7 @@ services:
 
   typesense:
     image: typesense/typesense:0.23.1
-    restart: always
+    restart: unless-stopped
     env_file:
       - ../../tools/typesense/docker.env
     ports:

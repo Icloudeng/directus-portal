@@ -15,11 +15,11 @@ module.exports = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: '**.icloudeng.xyz',
+        hostname: '**.smatflow.xyz',
       },
       {
         protocol: 'https',
-        hostname: '**.icloudeng.com',
+        hostname: '**.smatflow.com',
       },
       {
         protocol: 'https',

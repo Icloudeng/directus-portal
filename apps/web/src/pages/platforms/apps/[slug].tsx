@@ -1,6 +1,6 @@
 import { MDPlatform } from '@apps/contracts';
 import { GetServerSidePropsContext } from 'next';
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 import { useTranslation } from 'next-i18next';
 import { HiOutlineLink } from 'react-icons/hi';
 
@@ -42,10 +42,10 @@ export default function Page({ platform }: { platform: MDPlatform }) {
                   svgText={icon_svg}
                   className='st_flexible_icon'
                   fallback={
-                    icon && (
+                    icon?.src && (
                       <Image
                         className='image object-cover w-full h-full'
-                        src={icon.src!}
+                        src={icon.src}
                         layout='fill'
                         objectFit='fill'
                         alt={name}
@@ -132,7 +132,7 @@ export async function getServerSideProps({
 
   return {
     props: {
-      ...(await getServerSideTranslations(locale!)),
+      ...(await getServerSideTranslations(locale as string)),
       platform: res.data.platforms[0],
     },
   };

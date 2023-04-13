@@ -33,8 +33,8 @@ export function Publishing({
         text: translations?.title,
         url: location.origin + location.pathname,
       })
-      .catch(console.error);
-  }, []);
+      .catch(console.warn);
+  }, [CompanyDetails?.company_name, translations?.title]);
 
   return (
     <>
@@ -80,6 +80,7 @@ export function Publishing({
                             className='w-full h-full rounded-[50%]'
                             layout='fill'
                             objectFit='cover'
+                            alt={CompanyDetails?.company_name}
                           />
                         )}
                       </div>
@@ -130,6 +131,7 @@ export function Publishing({
                       layout='fill'
                       className='w-full h-full'
                       objectFit='cover'
+                      alt={translations?.title}
                     />
                   </Link>
                 )}

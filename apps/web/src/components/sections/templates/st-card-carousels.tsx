@@ -76,12 +76,12 @@ const CarouselItem = ({ item }: ST_CardCarousel) => {
 
   const imageContent = (
     <div className='image-container h-full relative w-full flex flex-[1.2] flex-col justify-between p-24 md:p-4'>
-      {image && (
+      {image?.src && (
         <Image
           className={`image object-cover rounded-t-lg md:rounded-sm ${
             disposition === 'text_right' ? 'md:rounded-l-lg' : 'md:rounded-r-lg'
           }`}
-          src={image.src!}
+          src={image.src}
           layout='fill'
           objectFit='cover'
           alt='Image'

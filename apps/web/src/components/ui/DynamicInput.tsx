@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai';
 
+import { useCallbackRef } from '@/app/hooks/useCallbackRef';
+
 type IDynamicInput = {
   withRange?: boolean;
   initValue: number;
@@ -29,14 +31,16 @@ export const DynamicInput = ({
   onChange,
 }: IDynamicInput) => {
   const [inputVal, setInputVal] = useState(initValue);
+  const total = minValue + minValue + stepValue;
+  const onChangeRef = useCallbackRef(onChange);
 
   useEffect(() => {
     setInputVal(minValue);
-  }, [minValue + minValue + stepValue]);
+  }, [minValue, total]);
 
   useEffect(() => {
-    onChange && onChange(inputVal);
-  }, [inputVal]);
+    onChangeRef.current && onChangeRef.current(inputVal);
+  }, [inputVal, onChangeRef]);
 
   return (
     <div

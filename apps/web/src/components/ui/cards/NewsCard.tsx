@@ -19,10 +19,11 @@ export function NewsCard({ title, summary, date, image, link }: Props) {
       <div className='news--image flex justify-start items-center shrink-0'>
         <div className='relative w-full h-[160px]'>
           <Image
-            src={image ? image.src! : '/svg/news.svg'}
+            src={image ? (image.src as string) : '/svg/news.svg'}
             className='w-full h-full'
             layout='fill'
             objectFit='cover'
+            alt={title}
           />
         </div>
       </div>
