@@ -1,4 +1,4 @@
-import { ICarouselButton, IDotButton } from '@/types/carouselTypes';
+import { ICarouselButton, IDotButton } from '@/types';
 
 export const DotButton = ({ position, selected, onClick }: IDotButton) => {
   return (
