@@ -1,6 +1,7 @@
 import {
   CMS_MODELS,
   MDChatwoot,
+  MDKroki,
   MDLayout,
   MDMatomo,
   MDNavbarButton,
@@ -179,6 +180,12 @@ const gql_query = jsonToGraphQLQuery({
       base_url: true,
       website_token: true,
     },
+    [CMS_MODELS.kroki]: {
+      ...qWithStatus,
+      id: false, // single object|collection
+      status: false,
+      kroki_server: true,
+    },
   },
 });
 
@@ -193,6 +200,7 @@ export type QShareDataType = {
   [CMS_MODELS.matomo]?: MDMatomo;
   [CMS_MODELS.layout]?: MDLayout;
   [CMS_MODELS.chatwoot]?: MDChatwoot;
+  [CMS_MODELS.kroki]?: MDKroki;
 };
 
 /**

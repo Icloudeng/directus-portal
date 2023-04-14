@@ -17,6 +17,7 @@ const defaultValue: ISharedData = {
   Layout: undefined,
   locale: 'en',
   Matomo: undefined,
+  Kroki: undefined,
   News: [],
 };
 

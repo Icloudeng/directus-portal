@@ -5,7 +5,7 @@ default:
 stages:
   - front-test
   - deploy-coding
-  # - deploy-testing
+  - deploy-testing
 
 variables:
   PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
@@ -50,25 +50,25 @@ deploy-coding:
     - make provision-cd limits=coding
   when: manual
 #
-# deploy-testing:
-#   stage: deploy-testing
-#   image: python:3.10
-#   needs: [deploy-coding]
-#   only:
-#     refs:
-#       - main
-#   cache:
-#     key: pip-cache
-#     paths:
-#       - .cache/pip
-#   environment:
-#     name: testing env
-#   before_script:
-#     - export ANSIBLE_HOST_KEY_CHECKING=False
-#     - bash cicd_vars.sh
-#     - make ansible-install-cd
-#     - eval $(ssh-agent -s)
-#     - ssh-add <(echo "$ANSIBLE_DEPLOY_KEY")
-#   script:
-#     - make provision-cd limits=testing
-#   when: manual
+deploy-testing:
+  stage: deploy-testing
+  image: python:3.10
+  needs: [deploy-coding]
+  only:
+    refs:
+      - main
+  cache:
+    key: pip-cache
+    paths:
+      - .cache/pip
+  environment:
+    name: testing env
+  before_script:
+    - export ANSIBLE_HOST_KEY_CHECKING=False
+    - bash cicd_vars.sh
+    - make ansible-install-cd
+    - eval $(ssh-agent -s)
+    - ssh-add <(echo "$ANSIBLE_DEPLOY_KEY")
+  script:
+    - echo "$AUTH_LDAP_DEFAULT_ROLE_ID"
+    - make provision-cd limits=testing
