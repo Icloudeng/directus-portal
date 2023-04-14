@@ -30,6 +30,18 @@ const alias = [
   'vega',
   'vegalite',
   'wavedrom',
+  'actdiag',
+  'bpmn',
+  'nwdiag',
+  'rackdiag',
+  'mermaid',
+  'diagramsnet',
+  'seqdiag',
+  'wireviz',
+  'excalidraw',
+  'dbml',
+  'packetdiag',
+  'blockdiag',
 ];
 
 export function hasKroki(node: Element) {
