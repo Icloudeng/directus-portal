@@ -37,7 +37,7 @@ type ContentTreeTrans = {
 
 export type NamespacesContentTree = {
   type: "parent" | "child"; // this can be tranducted as "folder" (parent) | "Child" (file)
-  path: string; // parent path tree
+  path: `${string}/`; // parent path tree
   slug: string;
   rootSlug: string;
   root: boolean;
@@ -45,6 +45,7 @@ export type NamespacesContentTree = {
   id: string;
   position?: number;
   show_content: boolean;
+  pageEntryPoint?: boolean;
   content?: ContentTreeTrans;
   children: NamespacesContentTree[];
 };
@@ -153,6 +154,17 @@ export async function generateNamespacesContent(
     const rootSlug = mutableParent.rootSlug;
     const hasContent = itype === "parent" && page.show_content;
 
+    /**
+     * slug tree (if the page label is intro then consider it as root page)
+     */
+    const finalSlug = `${
+      /**
+       * if the current page has parent type and it has show to content,
+       * then place the page slug at  root of the namespace url, and lead it with g
+       */
+      hasContent ? (rootSlug === "/" ? "" : rootSlug) + "/g" : parentSlug
+    }${introSlug}`;
+
     // Put page content
     const itemTree: NamespacesContentTree = {
       type: itype, // if page has children set it as parent
@@ -161,14 +173,9 @@ export async function generateNamespacesContent(
       id: nodeId,
       label: page.label,
       rootSlug,
-      slug: `${
-        /**
-         * if the current page has parent type and it has show to content,
-         * then place the page slug at  root of the namespace url, and lead it with g
-         */
-        hasContent ? (rootSlug === "/" ? "" : rootSlug) + "/g" : parentSlug
-      }${introSlug}`, // slug tree (if the page label is intro then consider it as root page)
+      slug: finalSlug,
       show_content: page.show_content,
+      pageEntryPoint: itype !== "parent" && finalSlug === "/",
       position,
       content: langs.reduce((acc, lang) => {
         const data = getTranslation(page.translations, lang);

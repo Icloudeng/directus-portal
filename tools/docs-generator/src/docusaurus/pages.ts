@@ -1,5 +1,5 @@
 import { MDDCPage } from "@apps/contracts";
-import { forEach } from "modern-async";
+import * as async from "modern-async";
 
 type PageById = Record<string, MDDCPage>;
 
@@ -25,7 +25,7 @@ export function pagesById(pages: MDDCPage[]) {
  */
 export async function constructPagesTree(parent: MDDCPage, pages: PageById) {
   parent.pages = parent.pages || [];
-  await forEach(parent.pages, async (page, i) => {
+  await async.forEach(parent.pages, async (page, i) => {
     const $page = pages[page.id];
     delete pages[page.id];
     if ($page) {
@@ -35,5 +35,6 @@ export async function constructPagesTree(parent: MDDCPage, pages: PageById) {
       parent.pages!.splice(i, 1);
     }
   });
+
   return parent;
 }
