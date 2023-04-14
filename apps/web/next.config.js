@@ -1,4 +1,5 @@
 const { i18n } = require('./next-i18next.config');
+const webpack = require('webpack');
 
 /** @type {import('next').NextConfig} */
 module.exports = {
@@ -15,19 +16,19 @@ module.exports = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: '**.smatflow.xyz',
-      },
-      {
-        protocol: 'https',
-        hostname: '**.smatflow.com',
-      },
-      {
-        protocol: 'https',
         hostname: '**.smatflow.com',
       },
       {
         protocol: 'https',
         hostname: '**.smatflow.xyz',
+      },
+      {
+        protocol: 'https',
+        hostname: '**.smatflow.net',
+      },
+      {
+        protocol: 'http',
+        hostname: '**.smatflow.smfl',
       },
     ],
     domains: [
@@ -37,6 +38,7 @@ module.exports = {
       'images.unsplash.com',
       'dummyimage.com',
       'cms', // docker
+      'kroki.io',
     ],
   },
 

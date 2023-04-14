@@ -407,6 +407,12 @@ export type MDCampaign = {
   transfer_initiated: boolean;
 } & DRTStatus;
 
+// --------------------------- Kroki ----------------------------------------------
+
+export type MDKroki = {
+  kroki_server: string;
+} & DRTStatus;
+
 // -------------------------------- DC * collections -----------------------------------------
 
 export type MDDCNamespace = {

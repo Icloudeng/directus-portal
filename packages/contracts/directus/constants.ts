@@ -38,6 +38,7 @@ export const CMS_MODELS = {
     newsletter: "Newsletter",
     chatwoot: "Chatwoot",
     matomo: "Matomo",
+    kroki: "Kroki",
     guest_replies: "GuestReplies",
     campaigns: "Campaigns",
     dc_namespaces: "DC_Namespaces",

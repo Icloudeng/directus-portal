@@ -1,15 +1,24 @@
 /* eslint-disable */
-// import tocCss from './toc.module.css';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
-import remarkHtml from 'remark-html';
-import { PrismAsyncLight as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { atomDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
-import { CodeComponent } from 'react-markdown/lib/ast-to-react';
-import { CopyToClipboard } from 'react-copy-to-clipboard';
-import { useEffect, useState } from 'react';
-import { FiCopy, FiCheck } from 'react-icons/fi';
+
+import {
+  CodeComponent,
+  ReactMarkdownProps,
+} from 'react-markdown/lib/ast-to-react';
+
+import {
+  ComponentType,
+  DetailedHTMLProps,
+  HTMLAttributes,
+  Suspense,
+} from 'react';
+import dynamic from 'next/dynamic';
+
 import { useRehypeToc } from '@/app/hooks/useRehypeToc';
+import clsxm from '@/lib/clsxm';
+import { hasKroki } from './kroki-utils';
+import { Highlighter } from './highlighter';
 
 type Props = {
   children: string;
@@ -17,6 +26,9 @@ type Props = {
   className?: string;
 };
 
+const KrokiDiagram = dynamic(() => import('./Kroki'), { ssr: false });
+
+// Code Component
 const Code: keyof JSX.IntrinsicElements | CodeComponent = ({
   node,
   inline,
@@ -24,39 +36,56 @@ const Code: keyof JSX.IntrinsicElements | CodeComponent = ({
   children,
   ...props
 }) => {
-  const match = /language-(\w+)/.exec(className || '');
-  const [copied, setCopied] = useState(false);
   const codeText = String(children).replace(/\n$/, '');
+  const { isKroki, diagramType } = hasKroki(node);
 
-  useEffect(() => {
-    setCopied(false);
-  }, [codeText]);
+  if (isKroki && codeText.trim()) {
+    return (
+      <Suspense fallback={`${diagramType} Diagram...`}>
+        <KrokiDiagram type={diagramType as string} value={codeText} />
+      </Suspense>
+    );
+  }
 
-  return !inline && match ? (
-    <div className='relative'>
-      <SyntaxHighlighter
-        children={String(children).replace(/\n$/, '')}
-        style={atomDark as any}
-        language={match[1]}
-        PreTag='div'
-        {...props}
-      />
-      <CopyToClipboard
-        text={codeText}
-        onCopy={() => {
-          setCopied(true);
-          setTimeout(() => setCopied(false), 2000);
-        }}
-      >
-        <button className='absolute top-3 text-white right-5'>
-          {copied ? <FiCheck /> : <FiCopy />}
-        </button>
-      </CopyToClipboard>
-    </div>
-  ) : (
+  // Code with Highlighter
+  const match = /language-(\w+)/.exec(className || '');
+  if (!inline && match) {
+    return <Highlighter match={match} codeText={codeText} props={props} />;
+  }
+
+  return (
     <code className={className} {...props}>
       {children}
     </code>
+  );
+};
+
+// Pre Component
+type PreComponent = ComponentType<
+  Omit<
+    DetailedHTMLProps<HTMLAttributes<HTMLPreElement>, HTMLPreElement>,
+    'ref'
+  > &
+    ReactMarkdownProps
+>;
+
+const Pre: keyof JSX.IntrinsicElements | PreComponent = ({
+  node,
+  className,
+  ...props
+}) => {
+  const withKrokiC = node.children.some((child) => {
+    return child.type === 'element' ? hasKroki(child).isKroki : false;
+  });
+
+  return (
+    <pre
+      {...props}
+      className={clsxm(
+        className,
+        withKrokiC && ['bg-transparent m-0 p-0 leading-none']
+      )}
+    />
   );
 };
 
@@ -77,12 +106,12 @@ export function MarkdownContent({ children, toc = false, className }: Props) {
         <ReactMarkdown
           components={{
             code: Code,
+            pre: Pre,
           }}
           rehypePlugins={
             toc ? [rehypeSlug, [rehypeToc as any, tocOptions]] : []
           }
-          //@ts-ignore
-          remarkPlugins={[remarkGfm, remarkHtml]}
+          remarkPlugins={[remarkGfm]}
         >
           {children}
         </ReactMarkdown>

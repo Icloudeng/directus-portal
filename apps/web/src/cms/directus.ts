@@ -15,6 +15,8 @@ export async function getDirectusClient() {
   if (DIRECTUS_STATIC_TOKEN) {
     await directus.auth.static(DIRECTUS_STATIC_TOKEN);
   } else if (DIRECTUS_EMAIL && DIRECTUS_PASSWORD) {
+    directus.auth.autoRefresh = true;
+
     await directus.auth.login({
       email: DIRECTUS_EMAIL,
       password: DIRECTUS_PASSWORD,
