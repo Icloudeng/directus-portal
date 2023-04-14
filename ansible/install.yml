@@ -16,13 +16,6 @@
     APP_DEBUG: "{{ app_debug }}"
 
   tasks:
-    - name: App CMS .env config
-      set_fact:
-        auth_ldap_role_id: "AUTH_LDAP_DEFAULT_ROLE_ID_{{ inventory_hostname | upper }}"
-      tags: debug
-    - debug:
-        msg: "fdsafds {{ lookup('env', auth_ldap_role_id) }} ---- {{ auth_ldap_role_id }}"
-      tags: debug
 
   roles:
     - { role: tools, tags: tools }
