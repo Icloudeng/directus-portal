@@ -119,6 +119,13 @@
     line: "AUTH_PROVIDERS=ldap"
   when: cms_ldap_authentication
 
+- name: App CMS .env config | Disable LDAP AUTH_PROVIDERS
+  lineinfile:
+    path: "{{ env_file }}"
+    regexp: "^AUTH_PROVIDERS="
+    line: 'AUTH_PROVIDERS=""'
+  when: not cms_ldap_authentication
+
 - name: App CMS .env config | AUTH_LDAP_BIND_PASSWORD
   lineinfile:
     path: "{{ env_file }}"
@@ -142,12 +149,19 @@
 
 # ----------------------- EMAIL configs --------------------------------------
 
-- name: App CMS .env config | EMAIL_TRANSPORT
+- name: App CMS .env config | SMTP EMAIL_TRANSPORT
   lineinfile:
     path: "{{ env_file }}"
     regexp: "^EMAIL_TRANSPORT="
     line: "EMAIL_TRANSPORT=smtp"
   when: mailer
+
+- name: App CMS .env config | Disable SMTP EMAIL_TRANSPORT
+  lineinfile:
+    path: "{{ env_file }}"
+    regexp: "^EMAIL_TRANSPORT="
+    line: "EMAIL_TRANSPORT=sendmail"
+  when: not mailer
 
 - name: App CMS .env config | EMAIL_FROM
   lineinfile:
