@@ -35,6 +35,7 @@ const config = {
       // @ts-ignore
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
+        debug: true,
         docs: {
           routeBasePath: "/",
           sidebarPath: require.resolve("./sidebars.js"),

@@ -9,6 +9,7 @@ import {
   I18N_CONTENT_DOCS_FOLDER,
   I18N_FILES,
   I18N_PATH,
+  INTRO_DOCS_FILE,
   METAFILE_PATH,
 } from "../../constants";
 import storage from "../../storage";
@@ -155,6 +156,8 @@ async function storeNamespacesContent(
   const tree = content.tree;
   const translations = content.translations;
 
+  const hasPageEntryPoint = { value: false };
+
   const getPath = (lang: string, ...files: string[]) =>
     path.join(I18N_PATH, lang, I18N_CONTENT_DOCS_FOLDER, ...files);
 
@@ -189,6 +192,17 @@ async function storeNamespacesContent(
     } as Record<string, string | number>;
 
     return `---\n${yaml.dump(meta)}\n---\n\n`;
+  };
+
+  const updateIntroFile = async (hasEntryPoint: boolean) => {
+    const file = await storage.readAsync(INTRO_DOCS_FILE);
+    if (!file.content) return;
+
+    const fileContent = file.content
+      .toString("utf-8")
+      .replace(/^slug\:.*$/m, hasEntryPoint ? "slug: /dc-intro" : "slug: /");
+
+    await storage.writeFileAsync(INTRO_DOCS_FILE, fileContent);
   };
 
   /**
@@ -267,6 +281,10 @@ async function storeNamespacesContent(
       await storage.ensureWriteFile(content_path.slice(0, -1) + MD_EXT, mdText);
     }
 
+    if (item.pageEntryPoint) {
+      hasPageEntryPoint.value = true;
+    }
+
     /**
      * Handle item childen if exist
      */
@@ -275,14 +293,20 @@ async function storeNamespacesContent(
     });
   };
 
+  /**
+   * Store page tree
+   */
   await Promise.all([
     storeTranslationContent("current", translations),
+
     async.forEach(tree, async (item) => {
       await async.forEach(langs, async (lang) => {
         await storeTree(item, lang);
       });
     }),
   ]);
+
+  await updateIntroFile(hasPageEntryPoint.value);
 }
 
 /**
