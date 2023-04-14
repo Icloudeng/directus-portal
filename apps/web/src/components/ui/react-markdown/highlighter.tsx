@@ -1,10 +1,8 @@
+import { useEffect, useState } from 'react';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
+import { FiCheck, FiCopy } from 'react-icons/fi';
 import { PrismAsyncLight as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { atomDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
-
-import { CopyToClipboard } from 'react-copy-to-clipboard';
-import { useEffect, useState } from 'react';
-
-import { FiCopy, FiCheck } from 'react-icons/fi';
 
 export function Highlighter({
   codeText,
@@ -24,12 +22,13 @@ export function Highlighter({
   return (
     <div className='relative'>
       <SyntaxHighlighter
-        children={codeText}
         style={atomDark as any}
         language={match[1]}
         PreTag='div'
         {...props}
-      />
+      >
+        {codeText}
+      </SyntaxHighlighter>
       <CopyToClipboard
         text={codeText}
         onCopy={() => {
