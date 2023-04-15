@@ -64,6 +64,9 @@ export function hasKroki(node: Element) {
 
   return {
     isKroki: Boolean(isKroki),
-    diagramType: lang === 'kroki' ? (meta?.get('type') as string) : lang,
+    diagramType: (lang === 'kroki'
+      ? (meta?.get('type') as string)
+      : lang
+    )?.trim(),
   };
 }
