@@ -26,7 +26,7 @@ type Props = {
   className?: string;
 };
 
-const KrokiDiagram = dynamic(() => import('./Kroki'), { ssr: false });
+const KrokiDiagram = dynamic(() => import('./Kroki'));
 
 // Code Component
 const Code: keyof JSX.IntrinsicElements | CodeComponent = ({
