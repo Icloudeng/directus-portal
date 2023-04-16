@@ -1,5 +1,5 @@
 - name: "Web App (Templates) | .env.local"
   template:
-    src: .env.local-web
+    src: .env.local-web.j2
     dest: "{{ root_path }}/apps/web/.env.local"
     force: yes
