@@ -39,6 +39,7 @@ module.exports = {
       'dummyimage.com',
       'cms', // docker
       'kroki.io',
+      'kroki.smatflow.net',
     ],
   },
 

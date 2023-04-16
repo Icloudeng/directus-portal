@@ -111,7 +111,11 @@ export default function Seo({ dynamicPage, ...props }: SeoProps) {
         [
           {
             rel: 'icon',
-            href: cdT?.logo_sm?.src || '/images/logo.png',
+            href: cdT?.logo_sm?.src
+              ? `/_next/image?url=${encodeURIComponent(
+                  cdT?.logo_sm?.src
+                )}&w=3840&q=75`
+              : '/images/logo.png',
           },
         ] as Favicons[]
       ).map((linkProps) => (
