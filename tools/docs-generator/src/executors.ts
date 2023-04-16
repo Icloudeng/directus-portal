@@ -24,7 +24,6 @@ import {
 import { executorQueue } from "./queue";
 import { DataPayload, DataType } from "@apps/docs-pubsub";
 import type { DRTStatus } from "@apps/contracts";
-import utils from "./utils";
 
 const execAsync = promisify(exec);
 
@@ -186,7 +185,7 @@ async function execGenerateAllEvent(type: DataType, data: DataPayload) {
 `restartPm2DocsAppProcess` function. This is likely used for development purposes to automatically
 reload the app when changes are made. */
   if (RELOAD_PM2_APP_WHEN_DEV && !IN_PROD) {
-    await utils.wait(1);
+    // await utils.wait(1);
     await restartPm2DocsAppProcess();
   }
 }
@@ -216,7 +215,7 @@ async function execFooterEvent() {
   }
 
   if (RELOAD_PM2_APP_WHEN_DEV && !IN_PROD) {
-    await utils.wait(1);
+    // await utils.wait(1);
     await restartPm2DocsAppProcess();
   }
 }
@@ -246,7 +245,7 @@ async function execDetailEvent() {
   }
 
   if (RELOAD_PM2_APP_WHEN_DEV && !IN_PROD) {
-    await utils.wait(1);
+    // await utils.wait(1);
     await restartPm2DocsAppProcess();
   }
 }
