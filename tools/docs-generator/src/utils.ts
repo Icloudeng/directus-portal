@@ -85,6 +85,15 @@ const strToBase64 = (str: string | number | symbol) => {
     .replace(/\=/g, "a3");
 };
 
+/**
+ * The function "wait" returns a promise that resolves after a specified number of seconds.
+ * @param {number} [seconds=1] - The `seconds` parameter is a number that specifies the amount of time
+ * to wait in seconds before resolving the promise. It has a default value of 1 second if no value is
+ * provided.
+ */
+const wait = (seconds: number = 1) =>
+  new Promise<never>((resolve) => setTimeout(resolve, seconds * 1000));
+
 export default {
   uniq,
   isDate,
@@ -92,4 +101,5 @@ export default {
   extractPathFile,
   escapeRegExp,
   strToBase64,
+  wait,
 };

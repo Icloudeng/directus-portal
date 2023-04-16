@@ -29,6 +29,8 @@
 - include_tasks: docs-config.yml
   when: has_docs_app
 
+############################### BUILD APPs #############################
+
 # Project Build
 - name: "Web App (Project Build) | delete .next folder"
   command: "rm -rf .next/"
@@ -39,6 +41,8 @@
   command: pnpm run build
   args:
     chdir: "{{ root_path }}"
+
+############################### CMS #############################
 
 # CMS App
 - name: CMS App | App bootstrap
@@ -74,6 +78,8 @@
   args:
     chdir: "{{ root_path }}/apps/cms"
 
+############################### WEB #############################
+
 # Web App PM2 restart process
 - name: Web App | Delete old pm2 process
   command: "pm2 delete {{ domain }}"
@@ -85,6 +91,16 @@
   command: "pm2 start npm --name {{ domain }} -- run start"
   args:
     chdir: "{{ root_path }}/apps/web"
+
+############################### DOCS #############################
+
+- name: DOCS | env mode var
+  set_fact:
+    docs_gen_env_var: "DOCS_GENERATOR_ENV__{{ inventory_hostname | upper }}"
+
+- name: DOCS | env mode
+  set_fact:
+    docs_gen_env: "{{ lookup('env', docs_gen_env_var) }}"
 
 # Docs App PM2 Name fact (It should set before docs generator)
 - name: DOCS | PM2 Name
@@ -115,11 +131,17 @@
   ignore_errors: true
   when: has_docs_app
 
-- name: Docs App | Start the server
+- name: Docs App | Start the server (PROD)
   command: "pm2 start npm --name {{ docs_pm2_name }} -- run serve"
   args:
     chdir: "{{ root_path }}/apps/docs"
-  when: has_docs_app
+  when: has_docs_app and docs_gen_env != "dev"
+
+- name: Docs App | Start the server (DEV)
+  command: "pm2 start npm --name {{ docs_pm2_name }} -- run dev"
+  args:
+    chdir: "{{ root_path }}/apps/docs"
+  when: has_docs_app and docs_gen_env == "dev"
 
 # Config typesense and docsearch-scraper (Tools)
 - include_tasks: docsearch-scraper.yml

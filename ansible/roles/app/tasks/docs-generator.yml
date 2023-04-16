@@ -6,14 +6,6 @@
   set_fact:
     env_file: "{{ docs_gen_dir }}/.env"
 
-- name: DOCS Generator | env mode var
-  set_fact:
-    docs_gen_env_var: "DOCS_GENERATOR_ENV__{{ inventory_hostname | upper }}"
-
-- name: DOCS Generator | env mode
-  set_fact:
-    docs_gen_env: "{{ lookup('env', docs_gen_env_var) }}"
-
 - name: DOCS Generator | PM2 Name
   set_fact:
     pm2_name: "{{ docs_pm2_name }}-generator"
