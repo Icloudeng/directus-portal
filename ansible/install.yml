@@ -24,4 +24,4 @@
     - { role: nginx, tags: nginx }
     - { role: pgsql, tags: pgsql, when: not docker_install }
     - { role: node, tags: node }
-    - { role: app, tags: app }
+    - { role: app, tags: app, become: false }

@@ -54,6 +54,7 @@
     - nginxconfig.io/letsencrypt.conf
     - nginxconfig.io/security.conf
     - nginxconfig.io/documentation.conf
+    - nginxconfig.io/typesense.conf
   notify: nginx reload
 
 - name: "Nginx | Vhost {{ domain }}"

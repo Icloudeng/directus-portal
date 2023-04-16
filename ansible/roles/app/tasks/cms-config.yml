@@ -1,5 +1,4 @@
 - name: App CMS | Copy Sample .env.sample to .env
-  become: false
   ansible.builtin.copy:
     src: "{{ root_path }}/apps/cms/.env.sample"
     dest: "{{ root_path }}/apps/cms/.env"

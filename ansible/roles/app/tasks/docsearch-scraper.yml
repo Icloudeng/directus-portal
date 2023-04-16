@@ -13,7 +13,6 @@
     timeout: 5
 
 - name: DOCSEARCH-SCRAPER | docsearch-scraper docs
-  become: false
   command: "make docsearch-scraper"
   args:
     chdir: "{{ root_path }}"
