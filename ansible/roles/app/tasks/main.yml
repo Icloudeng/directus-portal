@@ -36,7 +36,7 @@
     chdir: "{{ root_path }}/apps/web"
 
 - name: Project Build | Build all app packages (execpt docs)
-  command: pnpm run build --filter=!docs # Ingore docs, the docs-generator will build it
+  command: pnpm run build # Ingore docs, the docs-generator will build it
   args:
     chdir: "{{ root_path }}"
 
@@ -127,6 +127,7 @@
 
 # Gerate pm2 scripts
 - name: PM2 | Generating a Startup Script
+  become: true
   command: "pm2 startup"
 
 - name: PM2 | Save the app list to be restored at reboot
