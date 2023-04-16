@@ -23,4 +23,11 @@
     path: "{{ env_docs_file }}"
     regexp: "^TYPESENSE_PROTOCOL="
     line: "TYPESENSE_PROTOCOL=https"
-  when: letsencrypt
+  when: typesense_getway_port != 80
+
+- name: Docs App .env config | TYPESENSE_PROTOCOL
+  lineinfile:
+    path: "{{ env_docs_file }}"
+    regexp: "^TYPESENSE_PROTOCOL="
+    line: "TYPESENSE_PROTOCOL=http"
+  when: typesense_getway_port == 80

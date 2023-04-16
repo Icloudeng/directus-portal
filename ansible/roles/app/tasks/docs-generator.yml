@@ -29,14 +29,12 @@
     timeout: 5
 
 - name: DOCS Generator | Recursively remove dist directory
-  become: false
   command: "rm -rf dist/"
   args:
     chdir: "{{ docs_gen_dir }}"
   ignore_errors: true
 
 - name: DOCS Generator | Generate all documentation from CMS
-  become: false
   command: pnpm run generate
   args:
     chdir: "{{ docs_gen_dir }}"

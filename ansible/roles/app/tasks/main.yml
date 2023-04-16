@@ -1,7 +1,6 @@
 ---
 # tasks file for ansible/roles/app
 - name: App Repository | Clone
-  become: false
   git:
     repo: "{{ app_git_repo }}"
     dest: "{{ root_path }}"
@@ -9,7 +8,6 @@
     version: "{{ app_git_version }}"
 
 - name: PNPM | Setup
-  become: false
   command: pnpm setup
   args:
     chdir: "{{ root_path }}"
@@ -22,7 +20,6 @@
   when: docker_install
 
 - name: App Client | Download client dependencies
-  become: false
   command: pnpm install
   args:
     chdir: "{{ root_path }}"
@@ -38,21 +35,18 @@
   args:
     chdir: "{{ root_path }}/apps/web"
 
-- name: Project Build | Build all app packages (execpt docs)
-  become: false
-  command: pnpm run build --filter=!docs # Ingore docs, the docs-generator will build it
+- name: Project Build | Build all app packages
+  command: pnpm run build
   args:
     chdir: "{{ root_path }}"
 
 # CMS App
 - name: CMS App | App bootstrap
-  become: false
   command: pnpm run bootstrap
   args:
     chdir: "{{ root_path }}/apps/cms"
 
 - name: CMS App | App apply snapshot
-  become: false
   command: pnpm run apply
   args:
     chdir: "{{ root_path }}/apps/cms"
@@ -76,7 +70,6 @@
 
 # CMS App | Create App User
 - name: CMS App | Create App User
-  become: false
   command: "node create-app-user.js"
   args:
     chdir: "{{ root_path }}/apps/cms"
@@ -104,14 +97,12 @@
 
 # Docs App PM2 restart process (It should come after DOCS generator)
 - name: DOCS | Clear cache docs app
-  become: false
   command: pnpm run clear # Build only docs app from workspace
   args:
     chdir: "{{ root_path }}/apps/docs"
   ignore_errors: true
 
 - name: DOCS | Build docs app
-  become: false
   command: pnpm run build # Build only docs app from workspace
   args:
     chdir: "{{ root_path }}/apps/docs"
@@ -136,12 +127,14 @@
 
 # Gerate pm2 scripts
 - name: PM2 | Generating a Startup Script
+  become: true
   command: "pm2 startup"
 
 - name: PM2 | Save the app list to be restored at reboot
   command: "pm2 save"
 
 - name: Reload nginx
+  become: true
   service:
     name: nginx
     state: reloaded
