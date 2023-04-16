@@ -2,7 +2,12 @@ import { spawn, exec } from "node:child_process";
 import * as readline from "node:readline/promises";
 import { promisify } from "node:util";
 import generateAll from "../generate";
-import { IN_PROD, DOCS_APP_PM2_NAME, DOCS_APP_PATH } from "./constants";
+import {
+  IN_PROD,
+  DOCS_APP_PM2_NAME,
+  DOCS_APP_PATH,
+  RELOAD_PM2_APP_WHEN_DEV,
+} from "./constants";
 import which from "which";
 import { Logger } from "./logger";
 import {
@@ -19,6 +24,7 @@ import {
 import { executorQueue } from "./queue";
 import { DataPayload, DataType } from "@apps/docs-pubsub";
 import type { DRTStatus } from "@apps/contracts";
+import utils from "./utils";
 
 const execAsync = promisify(exec);
 
@@ -173,6 +179,16 @@ async function execGenerateAllEvent(type: DataType, data: DataPayload) {
      */
     await docsBuilder();
   }
+
+  /* This code block checks if the environment variable `RELOAD_PM2_APP_WHEN_DEV` is truthy and the
+`IN_PROD` variable is falsy. If both conditions are met, it waits for 1 millisecond using the
+`utils.wait` function and then restarts the PM2 process for the docs app using the
+`restartPm2DocsAppProcess` function. This is likely used for development purposes to automatically
+reload the app when changes are made. */
+  if (RELOAD_PM2_APP_WHEN_DEV && !IN_PROD) {
+    await utils.wait(1);
+    await restartPm2DocsAppProcess();
+  }
 }
 
 /**
@@ -198,6 +214,11 @@ async function execFooterEvent() {
      */
     await docsBuilder();
   }
+
+  if (RELOAD_PM2_APP_WHEN_DEV && !IN_PROD) {
+    await utils.wait(1);
+    await restartPm2DocsAppProcess();
+  }
 }
 
 /**
@@ -222,6 +243,11 @@ async function execDetailEvent() {
      * Build docs app
      */
     await docsBuilder();
+  }
+
+  if (RELOAD_PM2_APP_WHEN_DEV && !IN_PROD) {
+    await utils.wait(1);
+    await restartPm2DocsAppProcess();
   }
 }
 
