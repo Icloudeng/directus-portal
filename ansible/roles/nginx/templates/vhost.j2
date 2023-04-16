@@ -95,6 +95,9 @@ server {
     include nginxconfig.io/documentation.conf;
 {% endif %}
 
+    # add docs typesense config
+    include nginxconfig.io/typesense.conf;
+
     # additional config
     include nginxconfig.io/general.conf;
 }
