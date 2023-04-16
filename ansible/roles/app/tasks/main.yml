@@ -35,8 +35,8 @@
   args:
     chdir: "{{ root_path }}/apps/web"
 
-- name: Project Build | Build all app packages (execpt docs)
-  command: pnpm run build # Ingore docs, the docs-generator will build it
+- name: Project Build | Build all app packages
+  command: pnpm run build
   args:
     chdir: "{{ root_path }}"
 
