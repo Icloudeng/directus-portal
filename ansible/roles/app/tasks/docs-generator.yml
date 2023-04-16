@@ -6,39 +6,23 @@
   set_fact:
     env_file: "{{ docs_gen_dir }}/.env"
 
+- name: DOCS Generator | env mode var
+  set_fact:
+    docs_gen_env_var: "DOCS_GENERATOR_ENV__{{ inventory_hostname | upper }}"
+
+- name: DOCS Generator | env mode
+  set_fact:
+    docs_gen_env: "{{ lookup('env', docs_gen_env_var) }}"
+
 - name: DOCS Generator | PM2 Name
   set_fact:
     pm2_name: "{{ docs_pm2_name }}-generator"
 
-- name: DOCS Generator | .env config | WEBSITE_URL (letsencrypt == true)
-  lineinfile:
-    path: "{{ env_file }}"
-    regexp: "^WEBSITE_URL="
-    line: 'WEBSITE_URL="https://{{ domain }}/"'
-
-- name: DOCS Generator | .env config | DIRECTUS_STATIC_TOKEN
-  lineinfile:
-    path: "{{ env_file }}"
-    regexp: "^DIRECTUS_STATIC_TOKEN="
-    line: "DIRECTUS_STATIC_TOKEN={{ app_user_token }}"
-
-- name: DOCS Generator | .env config DIRECTUS_HOST
-  lineinfile:
-    path: "{{ env_file }}"
-    regexp: "^DIRECTUS_HOST="
-    line: "DIRECTUS_HOST=http://{{ cms_host }}"
-
-- name: DOCS Generator | .env config DIRECTUS_URL
-  lineinfile:
-    path: "{{ env_file }}"
-    regexp: "^DIRECTUS_URL="
-    line: "DIRECTUS_URL=https://{{ cms_domain }}"
-
-- name: "DOCS Generator (docs app) | .env config DOCS_APP_PM2_NAME | PM2 name ({{ docs_pm2_name }}) "
-  lineinfile:
-    path: "{{ env_file }}"
-    regexp: "^DOCS_APP_PM2_NAME="
-    line: "DOCS_APP_PM2_NAME={{ docs_pm2_name }}"
+- name: DOCS Generator | Default vhost
+  template:
+    src: .env.local-docs-gen.j2
+    dest: "{{ env_file }}.local"
+    force: yes
 
 - name: DOCS Generator | Sleep for 5 seconds and continue with play
   wait_for:
@@ -63,10 +47,17 @@
     chdir: "{{ docs_gen_dir }}"
   ignore_errors: true
 
-- name: DOCS Generator | Start the server
+- name: DOCS Generator | Start the server (PROD)
   command: "pm2 start npm --name {{ pm2_name }} -- run start"
   args:
     chdir: "{{ docs_gen_dir }}"
+  when: docs_gen_env != "dev"
+
+- name: DOCS Generator | Start the server (DEV)
+  command: "pm2 start npm --name {{ pm2_name }} -- run dev"
+  args:
+    chdir: "{{ docs_gen_dir }}"
+  when: docs_gen_env == "dev"
 
 - name: "DOCS Generator | CRON | PM2 {{ pm2_name }} restart"
   cron:

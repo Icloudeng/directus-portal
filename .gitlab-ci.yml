@@ -10,6 +10,8 @@ stages:
 variables:
   PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
 
+###################################
+
 front-test:
   image: node:16.16
   stage: front-test
@@ -26,6 +28,8 @@ front-test:
     - pnpm install
     # run test or build
     - pnpm run build
+
+######################################
 
 deploy-coding:
   stage: deploy-coding
@@ -47,9 +51,13 @@ deploy-coding:
     - ssh-add <(echo "$ANSIBLE_DEPLOY_KEY")
   script:
     - echo "$AUTH_LDAP_DEFAULT_ROLE_ID__CODING"
+    - echo "$DOCS_GENERATOR_ENV__CODING"
+
     - make provision-cd limits=coding
   when: manual
-#
+
+#######################################
+
 deploy-testing:
   stage: deploy-testing
   image: python:3.10
@@ -71,4 +79,6 @@ deploy-testing:
     - ssh-add <(echo "$ANSIBLE_DEPLOY_KEY")
   script:
     - echo "$AUTH_LDAP_DEFAULT_ROLE_ID__TESTING"
+    - echo "$DOCS_GENERATOR_ENV__TESTING"
+
     - make provision-cd limits=testing
