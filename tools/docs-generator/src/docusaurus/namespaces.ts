@@ -175,7 +175,7 @@ export async function generateNamespacesContent(
       rootSlug,
       slug: finalSlug,
       show_content: page.show_content,
-      pageEntryPoint: itype !== "parent" && finalSlug === "/",
+      pageEntryPoint: itype === "child" && finalSlug === "/",
       position,
       content: langs.reduce((acc, lang) => {
         const data = getTranslation(page.translations, lang);
