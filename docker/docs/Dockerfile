@@ -54,7 +54,7 @@ RUN pnpm \
     --filter-prod="./packages/docs-pubsub" \
     --filter-prod="./tools/docs-generator" \
     --filter-prod="./tools/pm2" \
-    install --frozen-lockfile --ignore-scripts --prod
+    install --no-frozen-lockfile --ignore-scripts --prod
 
 
 COPY --from=installer /app/apps/docs ./apps/docs
