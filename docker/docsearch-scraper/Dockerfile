@@ -1,5 +1,5 @@
 # Scraper (https://github.com/typesense/typesense-docsearch-scraper.git)
-FROM typesense/docsearch-scraper as scraper
+FROM typesense/docsearch-scraper:0.3.5 as scraper
 
 RUN curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash - && \
     sudo apt-get install -y nodejs
