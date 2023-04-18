@@ -6,6 +6,7 @@
 **/.next
 **/.turbo
 **/.docusaurus
+**/build
 **/i18n
 **/docs/docs/*/**/*.md
 **/meta.json
