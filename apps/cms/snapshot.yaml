@@ -1,5 +1,5 @@
 version: 1
-directus: 9.25.1
+directus: 9.25.2
 vendor: postgres
 collections:
   - collection: Addresses
@@ -8256,14 +8256,21 @@ fields:
             value: info
             color: '#3399FF'
             background: null
+            icon: info
+          - operator: eq
+            value: success
+            color: '#2ECDA7'
+            icon: check_circle
           - operator: eq
             value: warning
             background: null
             color: '#FFC23B'
+            icon: warning
           - operator: eq
             value: error
             background: null
             color: '#E35169'
+            icon: error
       field: type
       group: null
       hidden: false
@@ -8277,6 +8284,8 @@ fields:
             value: warning
           - text: error
             value: error
+          - text: success
+            value: success
       readonly: true
       required: true
       sort: 3

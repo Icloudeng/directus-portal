@@ -132,7 +132,7 @@ async function docsBuilder(storeLogs = true) {
       if (storeLogs) {
         createLogQuery({
           log: stdData,
-          type: hasError ? "error" : "info",
+          type: hasError ? "error" : "success",
         });
       }
 

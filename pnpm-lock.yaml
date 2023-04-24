@@ -32,8 +32,8 @@ importers:
         specifier: workspace:*
         version: link:../../packages/@extensions/directus-extension-searchable
       directus:
-        specifier: 9.25.1
-        version: 9.25.1
+        specifier: 9.25.2
+        version: 9.25.2
       dotenv:
         specifier: ^16.0.3
         version: 16.0.3
@@ -3429,27 +3429,27 @@ packages:
       kuler: 2.0.0
     dev: false
 
-  /@directus/api@9.25.1:
-    resolution: {integrity: sha512-ftEJ16IiC9193M7+ZWOgH+96PDpBtDLJ756RM+1cRzQRV4HUqzS933goTAZrQabfzQ/65k9CC+Q72YT1rX6RKA==}
+  /@directus/api@9.25.2:
+    resolution: {integrity: sha512-5HZfrCPmDGnBcpUxmd3lhnfEaoSQlVXxgvUWmhsdUJWgxv5Kws7y6NZqYIWLKp3J1qgyLsEk+6HvwOoYAWhpfQ==}
     engines: {node: '>=18.0.0'}
     dependencies:
       '@authenio/samlify-node-xmllint': 2.0.0(samlify@2.8.10)
       '@aws-sdk/client-ses': 3.292.0
-      '@directus/app': 9.25.1
-      '@directus/constants': 9.25.1
-      '@directus/exceptions': 9.25.1
-      '@directus/extensions-sdk': 9.25.1
+      '@directus/app': 9.25.2
+      '@directus/constants': 9.25.2
+      '@directus/exceptions': 9.25.2
+      '@directus/extensions-sdk': 9.25.2
       '@directus/format-title': 10.0.0
-      '@directus/schema': 9.25.1(mysql@2.18.1)(pg@8.10.0)(sqlite3@5.1.6)(tedious@15.1.3)
-      '@directus/specs': 9.25.1
-      '@directus/storage': 9.25.1
-      '@directus/storage-driver-azure': 9.25.1
-      '@directus/storage-driver-cloudinary': 9.25.1
-      '@directus/storage-driver-gcs': 9.25.1
-      '@directus/storage-driver-local': 9.25.1
-      '@directus/storage-driver-s3': 9.25.1
-      '@directus/update-check': 9.25.1
-      '@directus/utils': 9.25.1
+      '@directus/schema': 9.25.2(mysql@2.18.1)(pg@8.10.0)(sqlite3@5.1.6)(tedious@15.1.3)
+      '@directus/specs': 9.25.2
+      '@directus/storage': 9.25.2
+      '@directus/storage-driver-azure': 9.25.2
+      '@directus/storage-driver-cloudinary': 9.25.2
+      '@directus/storage-driver-gcs': 9.25.2
+      '@directus/storage-driver-local': 9.25.2
+      '@directus/storage-driver-s3': 9.25.2
+      '@directus/update-check': 9.25.2
+      '@directus/utils': 9.25.2
       '@godaddy/terminus': 4.11.2
       '@rollup/plugin-alias': 4.0.3(rollup@3.19.1)
       '@rollup/plugin-node-resolve': 15.0.1(rollup@3.19.1)
@@ -3479,7 +3479,6 @@ packages:
       fast-redact: 3.1.2
       flat: 5.0.2
       fs-extra: 11.1.0
-      globby: 11.1.0
       graphql: 16.6.0
       graphql-compose: 9.0.10(graphql@16.6.0)
       helmet: 6.0.1
@@ -3603,30 +3602,30 @@ packages:
       - whiskers
     dev: false
 
-  /@directus/app@9.25.1:
-    resolution: {integrity: sha512-9PZZlt1grXZpAGA8OKBYGwLmQ3MlPUhCUAHvTT596B3klgaD6YtLToX1XDHGlG+C6/Ats1z8hKLrTROugCZWYA==}
+  /@directus/app@9.25.2:
+    resolution: {integrity: sha512-LwbixQXT8GG4FGnD5BfDEOQZK41CbbREnmGezNzHw9G+XWG/NVYlrhkhnS3hln26hlJWo5fOmh6ZfTSgeNBIDA==}
     dependencies:
-      '@directus/composables': 9.25.1
+      '@directus/composables': 9.25.2
     dev: false
 
-  /@directus/composables@9.25.1:
-    resolution: {integrity: sha512-u/bRa1iCO44fOk11YTyRXB7vYRN9giVgHv2P+ZRGa4ReD0YSRxAzIfTBKbsVKskIT0eZ1t+O26Cxl6RlqbQ87w==}
+  /@directus/composables@9.25.2:
+    resolution: {integrity: sha512-DdBE0aq4x7hfwhA/CBE7kWqXxnONfUQ+LXeoik3gac0C3tweq/GWQQPlcF/8FEe9N7+IBH0spwHIEQex3IBwnw==}
     dependencies:
-      '@directus/constants': 9.25.1
-      '@directus/utils': 9.25.1
+      '@directus/constants': 9.25.2
+      '@directus/utils': 9.25.2
       lodash-es: 4.17.21
       nanoid: 4.0.2
       vue: 3.2.47
     dev: false
 
-  /@directus/constants@9.25.1:
-    resolution: {integrity: sha512-P2StrFFWFM711DSEmSS6/wHFB2b/LyjpVxFRCxfJ2+5xy6XYs8fu8xQOPKnufmNRm1Th9azIibfJA8VxeC8xPQ==}
+  /@directus/constants@9.25.2:
+    resolution: {integrity: sha512-hsCXwO2tMjZPngb+I6nWvwsfV/FGQFPgJ5RlKDQcDNR03WTrjNIT/8hnXi0qw39k8kXWdXoOmH39TTWNMnW6+w==}
     dependencies:
       zod: 3.21.4
     dev: false
 
-  /@directus/exceptions@9.25.1:
-    resolution: {integrity: sha512-fNEUdNv+ydZ9iXMhSIL7/UDKqLPdLZnJJAp1tZtvY1Q4PwZtXzI97AY4DXDbWDRWFaoIxTAk5vBPS+b/Q0kKCA==}
+  /@directus/exceptions@9.25.2:
+    resolution: {integrity: sha512-WfLXkVOL08NcZQl3hWzpULRxKDyZMKGGMnfYa17PyKWac7vsZQ+hG75dUmQJxuLulQO4gdnbFmqDJJysHwAH8A==}
     dev: false
 
   /@directus/extensions-sdk@9.20.4(typescript@4.9.5):
@@ -3735,20 +3734,20 @@ packages:
       - tedious
     dev: true
 
-  /@directus/extensions-sdk@9.25.1:
-    resolution: {integrity: sha512-UmfG4ykXT6+dOWBdWA1lOdzuhvEF/QWrTe5QCRc0hzdWzRu9EZefGxqIf8/LztYoVsKouErjYvYKxgUYfgwF2A==}
+  /@directus/extensions-sdk@9.25.2:
+    resolution: {integrity: sha512-owKnirLvL8Jo/cZLdp90O1BboJTu5XlACH12HwN18+VDbgHvSQerk/czD7MMsI5+Akq36Cb2lP5G9VtzwN/1jQ==}
     engines: {node: '>=12.20.0'}
     hasBin: true
     dependencies:
-      '@directus/composables': 9.25.1
-      '@directus/constants': 9.25.1
-      '@directus/types': 9.25.1
-      '@directus/utils': 9.25.1
-      '@rollup/plugin-commonjs': 23.0.4(rollup@3.19.1)
+      '@directus/composables': 9.25.2
+      '@directus/constants': 9.25.2
+      '@directus/types': 9.25.2
+      '@directus/utils': 9.25.2
+      '@rollup/plugin-commonjs': 24.1.0(rollup@3.19.1)
       '@rollup/plugin-json': 6.0.0(rollup@3.19.1)
       '@rollup/plugin-node-resolve': 15.0.1(rollup@3.19.1)
       '@rollup/plugin-replace': 5.0.2(rollup@3.19.1)
-      '@rollup/plugin-terser': 0.4.0(rollup@3.19.1)
+      '@rollup/plugin-terser': 0.4.1(rollup@3.19.1)
       '@rollup/plugin-virtual': 3.0.1(rollup@3.19.1)
       '@vue/compiler-sfc': 3.2.47
       chalk: 4.1.2
@@ -3771,8 +3770,8 @@ packages:
     engines: {node: '>=6.0.0'}
     dev: false
 
-  /@directus/schema@9.25.1(mysql@2.18.1)(pg@8.10.0)(sqlite3@5.1.6)(tedious@15.1.3):
-    resolution: {integrity: sha512-vbq8K6Z0r1l4StyXVHrlPuA3cvLNfGENX4CI2d3kn5qp340BwIqVRQeKjpd1dHsc+u0lL7hQhy1IWfU88BwaFg==}
+  /@directus/schema@9.25.2(mysql@2.18.1)(pg@8.10.0)(sqlite3@5.1.6)(tedious@15.1.3):
+    resolution: {integrity: sha512-RtGtia5XI6CmHFDKR9nvee828KFFqIGbIcT1gdRaxOt2nL8azb+v6duPj8l5EYR/FtZHo4AGwln19uLKDLS7Ow==}
     dependencies:
       knex: 2.4.2(mysql@2.18.1)(pg@8.10.0)(sqlite3@5.1.6)(tedious@15.1.3)
     transitivePeerDependencies:
@@ -3883,82 +3882,82 @@ packages:
       - tedious
     dev: true
 
-  /@directus/specs@9.25.1:
-    resolution: {integrity: sha512-3XhEPx/pqJHmQFBuc98fJNSKRkpBr/Bw1cNIcgWmxAtTYP9QzKBTPlxqlmG8by5FBURO4T+0z6IWqZw5U9xpXA==}
+  /@directus/specs@9.25.2:
+    resolution: {integrity: sha512-Yahsxl7OBozO4Ioc440RSUAXb5r4DjS7d7lJLweFNUpRk0WB3Dnk/NNOF2fykRotZuwRd9SMcVul4n/zLnblQQ==}
     dependencies:
       openapi3-ts: 3.2.0
     dev: false
 
-  /@directus/storage-driver-azure@9.25.1:
-    resolution: {integrity: sha512-9CwDLsbQ+vy2e5+UD4g34YrLtIKh/irXLy/d8nbJ2fhw1NSQN+ilwqEVX2iiMhdxKDgF01Ep+nFrSK5fIxMsMw==}
+  /@directus/storage-driver-azure@9.25.2:
+    resolution: {integrity: sha512-Bdvi4JTBrM2jT6WogyP8r+YaWLpgBdrFRhTFqvtCTStMZgyVvtwqXvIfc8b8pjmzfSg0e0Gl8CINeDIOZaIiDw==}
     dependencies:
       '@azure/storage-blob': 12.13.0
-      '@directus/storage': 9.25.1
-      '@directus/utils': 9.25.1
+      '@directus/storage': 9.25.2
+      '@directus/utils': 9.25.2
     transitivePeerDependencies:
       - encoding
     dev: false
 
-  /@directus/storage-driver-cloudinary@9.25.1:
-    resolution: {integrity: sha512-h5jp21CincoKMNbJzkmoFgsngZEJ1BzA+4idsLFvqHCvcwj/tUkypEOdyielyYuC+eJNEjnytgJYYDKk/J5Q3g==}
+  /@directus/storage-driver-cloudinary@9.25.2:
+    resolution: {integrity: sha512-+neYyy+E9DFgfENP6niOaSwwupnjhkuEdVnthW/SNs34NLbnGkFFFEzQJIVg5e7Bogwjwzh5AzlVGYYJhUSAcQ==}
     dependencies:
-      '@directus/storage': 9.25.1
-      '@directus/utils': 9.25.1
+      '@directus/storage': 9.25.2
+      '@directus/utils': 9.25.2
       p-queue: 7.3.4
       undici: 5.21.0
     dev: false
 
-  /@directus/storage-driver-gcs@9.25.1:
-    resolution: {integrity: sha512-G/wnylXhNH0y1OQgM5W3rP35XBb3s1E9D1esIVLavrRCgtPzC+jsdr8STj7dzUSmfymbPHD5hVX4gl4qqK4ssA==}
+  /@directus/storage-driver-gcs@9.25.2:
+    resolution: {integrity: sha512-kCffSfiT+Lblr1k6pPMkVex11sIRyeqtMugpkcA7PbT/aanRPNNj0BFFnDj13w1KAxgPCTasSvAWlpYQrViFWg==}
     dependencies:
-      '@directus/storage': 9.25.1
-      '@directus/utils': 9.25.1
+      '@directus/storage': 9.25.2
+      '@directus/utils': 9.25.2
       '@google-cloud/storage': 6.9.4
     transitivePeerDependencies:
       - encoding
       - supports-color
     dev: false
 
-  /@directus/storage-driver-local@9.25.1:
-    resolution: {integrity: sha512-CLD/h3YQR8L3AY/dWGTYZTmlcqqxgNvcOFXJkFQC44x/CmCQHIfeVtNC4ifg5v8eoMT6ntnHMoGQXMGFHfi7eg==}
+  /@directus/storage-driver-local@9.25.2:
+    resolution: {integrity: sha512-O2oT47av4YiSDZb2r5ODIgMPjeTmbnv9q7EtqONxuct3DnxoW2P0l1zixbJ0RcCWuAltZXvEQkdffz2H5svIDA==}
     dependencies:
-      '@directus/storage': 9.25.1
-      '@directus/utils': 9.25.1
+      '@directus/storage': 9.25.2
+      '@directus/utils': 9.25.2
     dev: false
 
-  /@directus/storage-driver-s3@9.25.1:
-    resolution: {integrity: sha512-bOj+w14Ebup1pPl/+qP1CeXM0ebRHHtRf9EseBEoyrexvep7RqAQRHU7FmwwcUmbQCTtaEfW71iUDRapU6szvg==}
+  /@directus/storage-driver-s3@9.25.2:
+    resolution: {integrity: sha512-quIgtNGlnY6WuBNACGZNXZm2iWScOuSZjqBuHiWMCO8NrjT6QGFE07qVRtvnzIXgGGTwDCKRKROgqMQD2O/eZw==}
     dependencies:
       '@aws-sdk/abort-controller': 3.292.0
       '@aws-sdk/client-s3': 3.292.0
       '@aws-sdk/lib-storage': 3.292.0(@aws-sdk/abort-controller@3.292.0)(@aws-sdk/client-s3@3.292.0)
-      '@directus/storage': 9.25.1
-      '@directus/utils': 9.25.1
+      '@directus/storage': 9.25.2
+      '@directus/utils': 9.25.2
     transitivePeerDependencies:
       - '@aws-sdk/signature-v4-crt'
       - aws-crt
     dev: false
 
-  /@directus/storage@9.25.1:
-    resolution: {integrity: sha512-nVqCtzeC4PTcdWFKB2H+6Wiwrv/II6EaV3HSg4pUeX9Fyk3yjRX2Jrp9KEnjPUVEE7Sk6Ilb0SULWRseGhDr8A==}
+  /@directus/storage@9.25.2:
+    resolution: {integrity: sha512-n2mrRSslMkcgphu9qp80YVnL8EGJhvHLd+fjKPpkmj/vRIY4FAIpHHFm21dmCVfEfCLWYABYG6RwYB+y0oUF0Q==}
     dev: false
 
-  /@directus/types@9.25.1:
-    resolution: {integrity: sha512-MCMLTf9QYqJC7x3i5otQbhVR+qNrFemIgqfKRGq4tGR0sahdJHZqPLgClMOxkDMzYDve/lFBuTFFC5T6vNT3vg==}
+  /@directus/types@9.25.2:
+    resolution: {integrity: sha512-I17can7dusZxxCdV5B6p3lphGGGcTfT9xQEWDZXegd55vfwapON/akj8Z4uYBtgiWzJ1qMkNGhfQZqhe4k6XGA==}
     dev: false
 
-  /@directus/update-check@9.25.1:
-    resolution: {integrity: sha512-ABobh/Rlu7ccbaJsrYiv1UpxSwgmcO3KoxT0VvB4te5Yn+SjElCVPRHjrapbzPv/scO329EeA9CjWwtsKyHJeg==}
+  /@directus/update-check@9.25.2:
+    resolution: {integrity: sha512-VR6gMSR0vHNHti+Qd0DHpAE7tigG68JfAXpUcpqQgvSHpeis6mlWU66Rgq1Jm0MJfMDYm6RBSa5heRdaS5NDpA==}
     dependencies:
       semver: 7.3.8
       undici: 5.21.0
     dev: false
 
-  /@directus/utils@9.25.1:
-    resolution: {integrity: sha512-ck2hJr9Bo7kMogGVDSWa2aM08khDk/2PzwYno+d+WImZcw041cUDz/oVKh7273lsmYHUyDTS9iC26QnQFDOlkg==}
+  /@directus/utils@9.25.2:
+    resolution: {integrity: sha512-hm9Nljc30V/1Wi0REQG6AMvsSTD9keS+tVdkC85Z8WXxu6izWNZfFLGu9+/7YIwCVrMM2JWo1Z9s54duH2C3cQ==}
     dependencies:
-      '@directus/constants': 9.25.1
-      '@directus/storage': 9.25.1
+      '@directus/constants': 9.25.2
+      '@directus/storage': 9.25.2
       date-fns: 2.29.3
       fs-extra: 11.1.0
       joi: 17.8.4
@@ -6542,8 +6541,8 @@ packages:
       rollup: 3.3.0
     dev: true
 
-  /@rollup/plugin-commonjs@23.0.4(rollup@3.19.1):
-    resolution: {integrity: sha512-bOPJeTZg56D2MCm+TT4psP8e8Jmf1Jsi7pFUMl8BN5kOADNzofNHe47+84WVCt7D095xPghC235/YKuNDEhczg==}
+  /@rollup/plugin-commonjs@24.1.0(rollup@3.19.1):
+    resolution: {integrity: sha512-eSL45hjhCWI0jCCXcNtLVqM5N1JlBGvlFfY0m6oOYnLCJ6N0qEXoZql4sY2MOUArzhH4SA/qBpTxvvZp2Sc+DQ==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
       rollup: ^2.68.0||^3.0.0
@@ -6556,7 +6555,7 @@ packages:
       estree-walker: 2.0.2
       glob: 8.1.0
       is-reference: 1.2.1
-      magic-string: 0.26.7
+      magic-string: 0.27.0
       rollup: 3.19.1
     dev: false
 
@@ -6708,8 +6707,8 @@ packages:
       terser: 5.16.8
     dev: true
 
-  /@rollup/plugin-terser@0.4.0(rollup@3.19.1):
-    resolution: {integrity: sha512-Ipcf3LPNerey1q9ZMjiaWHlNPEHNU/B5/uh9zXLltfEQ1lVSLLeZSgAtTPWGyw8Ip1guOeq+mDtdOlEj/wNxQw==}
+  /@rollup/plugin-terser@0.4.1(rollup@3.19.1):
+    resolution: {integrity: sha512-aKS32sw5a7hy+fEXVy+5T95aDIwjpGHCTv833HXVtyKMDoVS7pBr5K3L9hEQoNqbJFjfANPrNpIXlTQ7is00eA==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
       rollup: ^2.x || ^3.x
@@ -11069,12 +11068,12 @@ packages:
     dependencies:
       path-type: 4.0.0
 
-  /directus@9.25.1:
-    resolution: {integrity: sha512-kRI/StboGml61lNJKgjTnN+J5bq0R+5s+yKm2EHTxZ//aIYs0EfrGnDBkUj9PopYFf0XUum/oYYb5SNvbjOnew==}
+  /directus@9.25.2:
+    resolution: {integrity: sha512-qk47EJAdVrRrssYutvVi78Vocjd13tdcqaIWQMxRF0zGhE346BeOh1dPjWOY54kjov/lYP8AkXpa75FcUplEkQ==}
     engines: {node: '>=18.0.0'}
     hasBin: true
     dependencies:
-      '@directus/api': 9.25.1
+      '@directus/api': 9.25.2
     transitivePeerDependencies:
       - '@aws-sdk/signature-v4-crt'
       - arc-templates
@@ -12737,7 +12736,7 @@ packages:
     resolution: {integrity: sha512-MhLuK+2gUcnZe8ZHlaaINnQLl0xRIGRfcGk2yl8xoQAfHrSsL3rYu6FCmBdkdbhc9EPlwyGHewaRsvwRMJtAlA==}
 
   /fresh@0.5.2:
-    resolution: {integrity: sha512-zJ2mQYM18rEFOudeV4GShTGIQ7RbzA7ozbU9I/XBpm7kqgMywgmylMwXHxZJmkVoYkna9d2pVXVXPdYTP9ej8Q==}
+    resolution: {integrity: sha1-PYyt2Q2XZWn6g1qx+OSyOhBWBac=}
     engines: {node: '>= 0.6'}
 
   /fs-constants@1.0.0:
@@ -15711,6 +15710,7 @@ packages:
     engines: {node: '>=12'}
     dependencies:
       sourcemap-codec: 1.4.8
+    dev: true
 
   /magic-string@0.27.0:
     resolution: {integrity: sha512-8UnnX2PeRAPZuN12svgR9j7M1uWMovg/CEnIwIG0LFkXSJJe4PdfUGiTGl8V9bsBHFUtfVINcSyYxd7q+kx9fA==}
@@ -16015,7 +16015,7 @@ packages:
     dev: true
 
   /merge-descriptors@1.0.1:
-    resolution: {integrity: sha512-cCi6g3/Zr1iqQi6ySbseM1Xvooa98N0w31jzUYrXPX2xqObmFGHJ0tQ5u74H3mVh7wLouTseZyYIq39g8cNp1w==}
+    resolution: {integrity: sha1-sAqqVW3YtEVoFQ7J0blT8/kMu2E=}
 
   /merge-stream@2.0.0:
     resolution: {integrity: sha512-abv/qOcuPfk3URPfDzmZU1LKmuw8kT+0nIHvKrKgFrwifol/doWcdA4ZqsWQ8ENrFKkd67Mfpo/LovbIUsbt3w==}
@@ -22055,7 +22055,7 @@ packages:
     engines: {node: '>= 4'}
 
   /utils-merge@1.0.1:
-    resolution: {integrity: sha512-pMZTvIkT1d+TFGvDOqodOclx0QWkkgi6Tdoa8gC8ffGAAqz9pzPTZWAybbsHHoED/ztMtkv/VoYTYyShUn81hA==}
+    resolution: {integrity: sha1-n5VxD1CiZ5R7LMwSR0HBAoQn5xM=}
     engines: {node: '>= 0.4.0'}
 
   /uuid-validate@0.0.3:
