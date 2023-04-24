@@ -460,5 +460,5 @@ export type MDDCFooter = {
 
 export type MDDCLog = {
   log: string;
-  type: "info" | "warning" | "error";
+  type: "info" | "warning" | "error" | "success";
 } & Pick<DRTStatus, "date_created" | "id">;
