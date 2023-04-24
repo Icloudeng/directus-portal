@@ -152,6 +152,10 @@
   shell: "pm2 startup | grep sudo"
   register: pm2_startup_command
 
+- name: Debug pm2_startup_command stdout
+  debug:
+    var: pm2_startup_command.stdout
+
 - name: "Generate pm2 startup config (command -> {{ pm2_startup_command.stdout | trim }} )"
   shell: "{{ pm2_startup_command.stdout | trim }}"
   when: len(pm2_startup_command.stdout.strip()) > 4
