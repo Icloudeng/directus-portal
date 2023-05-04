@@ -36,6 +36,7 @@ front-test:
 deploy-coding:
   stage: deploy-coding
   image: python:3.10
+  needs: [front-test]
   only:
     refs:
       - main
