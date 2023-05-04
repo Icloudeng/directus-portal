@@ -125,6 +125,7 @@ db-docker:
 # ================================================================
 # Docker Build apps ( ----------- APPS -----------)
 # ================================================================
+
 ifeq ($(origin CI_REGISTRY_IMAGE),undefined)
 registryHost=registry-hub.smatflow.net/smatflow-projects/smatflow-portal
 else
