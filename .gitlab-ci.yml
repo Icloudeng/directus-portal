@@ -27,6 +27,7 @@ front-test:
   script:
     # Install PNPM and project Node dependencies.
     - npm install pnpm --location=global
+    - pnpm --version
     - pnpm install
     # run test or build
     - pnpm run build
