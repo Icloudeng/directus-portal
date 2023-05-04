@@ -6,6 +6,7 @@ stages:
   - front-test
   - deploy-coding
   - deploy-testing
+  - build-images
 
 variables:
   PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
@@ -82,3 +83,23 @@ deploy-testing:
     - echo "$DOCS_GENERATOR_ENV__TESTING"
 
     - make provision-cd limits=testing
+
+build-images:
+  image: docker:23.0.5
+  stage: build-images
+  needs: [front-test]
+  services:
+    - docker:23.0.5-dind
+  rules:
+    - if: $CI_COMMIT_TAG
+  before_script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - echo "$CI_COMMIT_TAG"
+    - echo "$CI_COMMIT_TAG_MESSAGE"
+  script:
+    - echo "Build Images, and create release"
+    # - make docker-publish
+  release:
+    tag_name: "$CI_COMMIT_TAG"
+    description: "$CI_COMMIT_TAG_MESSAGE"
+  when: manual

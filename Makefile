@@ -4,7 +4,6 @@ python:=python3
 venv:=.venv/bin/activate
 source:=source
 sy := php bin/console
-registryHost :=registry-hub.smatflow.net/smatflow-projects/smatflow-portal
 
 ifeq ($(OS),Windows_NT)
 python:=python
@@ -126,25 +125,41 @@ db-docker:
 # ================================================================
 # Docker Build apps ( ----------- APPS -----------)
 # ================================================================
+ifeq ($(origin CI_REGISTRY_IMAGE),undefined)
+registryHost=registry-hub.smatflow.net/smatflow-projects/smatflow-portal
+else
+registryHost=$(value CI_REGISTRY_IMAGE)
+endif
+
+# ###### CI_COMMIT_TAG ########
+ifeq ($(origin CI_COMMIT_TAG),undefined)
+tagImage=latest
+else
+tagImage=$(value CI_COMMIT_TAG)
+endif
+
+# ##### Cache #####
 no-cache?=
 ifndef no-cache
  noCache=
 else
  noCache=--no-cache
 endif
+
+
 .PHONY: docker-image-build
 docker-image-build:
-	docker build -t $(registryHost)/$(app) -f docker/$(app)/Dockerfile . $(noCache)
+	docker build --pull -t $(registryHost)/$(app):$(tagImage) -f docker/$(app)/Dockerfile . $(noCache)
 
 
 .PHONY: docker-image-push
 docker-image-push:
-	docker push $(registryHost)/$(app)
+	docker push $(registryHost)/$(app):$(tagImage)
 
 
 .PHONY: docker-image-pull
 docker-image-pull:
-	docker pull $(registryHost)/$(app)
+	docker pull $(registryHost)/$(app):$(tagImage)
 
 
 .PHONY: docker-compose-app
