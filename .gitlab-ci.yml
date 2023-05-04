@@ -29,7 +29,7 @@ front-test:
     - npm install pnpm --location=global
     - pnpm --version
 
-    - pnpm install --no-frozen-lockfile --force
+    - pnpm install --no-frozen-lockfile
     # run test or build
     - pnpm run build
 
