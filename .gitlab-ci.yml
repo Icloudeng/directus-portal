@@ -3,10 +3,10 @@ default:
     - smatflow-projects-runner
 
 stages:
+  - build-images
   - front-test
   - deploy-coding
   - deploy-testing
-  - build-images
 
 variables:
   PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
@@ -91,7 +91,7 @@ deploy-testing:
 build-images:
   image: docker:23.0.5
   stage: build-images
-  needs: [front-test]
+  # needs: [front-test]
   services:
     - docker:23.0.5-dind
   only:
