@@ -28,7 +28,8 @@ front-test:
     # Install PNPM and project Node dependencies.
     - npm install pnpm --location=global
     - pnpm --version
-    - pnpm install
+
+    - pnpm install --no-frozen-lockfile
     # run test or build
     - pnpm run build
 
