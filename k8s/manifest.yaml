@@ -1,0 +1,883 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f kompose.yaml -o k8s/manifest.yaml
+    kompose.version: 1.28.0 (HEAD)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: cms
+  name: cms
+spec:
+  ports:
+    - name: "8055"
+      port: 8055
+      targetPort: 8055
+  selector:
+    io.kompose.service: cms
+status:
+  loadBalancer: {}
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f kompose.yaml -o k8s/manifest.yaml
+    kompose.version: 1.28.0 (HEAD)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: docs
+  name: docs
+spec:
+  ports:
+    - name: "3100"
+      port: 3100
+      targetPort: 3100
+  selector:
+    io.kompose.service: docs
+status:
+  loadBalancer: {}
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f kompose.yaml -o k8s/manifest.yaml
+    kompose.version: 1.28.0 (HEAD)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: typesense
+  name: typesense
+spec:
+  ports:
+    - name: "8108"
+      port: 8108
+      targetPort: 8108
+  selector:
+    io.kompose.service: typesense
+status:
+  loadBalancer: {}
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f kompose.yaml -o k8s/manifest.yaml
+    kompose.version: 1.28.0 (HEAD)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: web
+  name: web
+spec:
+  ports:
+    - name: "3000"
+      port: 3000
+      targetPort: 3000
+  selector:
+    io.kompose.service: web
+status:
+  loadBalancer: {}
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f kompose.yaml -o k8s/manifest.yaml
+    kompose.version: 1.28.0 (HEAD)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: cms
+  name: cms
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: cms
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f kompose.yaml -o k8s/manifest.yaml
+        kompose.version: 1.28.0 (HEAD)
+      creationTimestamp: null
+      labels:
+        io.kompose.network/icloudeng-portal-default: "true"
+        io.kompose.service: cms
+    spec:
+      containers:
+        - env:
+            - name: ACCESS_TOKEN_TTL
+              value: 15m
+            - name: ADMIN_EMAIL
+              value: admin@example.com
+            - name: ADMIN_PASSWORD
+              value: password
+            - name: APP_USER_EMAIL
+              value: app@example.com
+            - name: APP_USER_PASSWORD
+              value: password
+            - name: APP_USER_TOKEN
+              value: mdzjETutYM06z9ch56CmFkjIOWZCwraG
+            - name: ASSETS_CACHE_TTL
+              value: 30m
+            - name: AUTH_LDAP_BIND_DN
+              value: string:uid=admin,cn=users,cn=accounts,dc=smatflow,dc=com
+            - name: AUTH_LDAP_BIND_PASSWORD
+              value: passw0rd
+            - name: AUTH_LDAP_CLIENT_URL
+              value: ldap://ipa.smatflow.net
+            - name: AUTH_LDAP_DRIVER
+              value: ldap
+            - name: AUTH_LDAP_FIRST_NAME_ATTRIBUTE
+              value: givenName
+            - name: AUTH_LDAP_GROUP_ATTRIBUTE
+              value: member
+            - name: AUTH_LDAP_GROUP_DN
+              value: string:cn=groups,cn=accounts,dc=smatflow,dc=com
+            - name: AUTH_LDAP_GROUP_SCOPE
+              value: one
+            - name: AUTH_LDAP_LAST_NAME_ATTRIBUTE
+              value: sn
+            - name: AUTH_LDAP_MAIL_ATTRIBUTE
+              value: mail
+            - name: AUTH_LDAP_USER_ATTRIBUTE
+              value: uid
+            - name: AUTH_LDAP_USER_DN
+              value: string:cn=users,cn=accounts,dc=smatflow,dc=com
+            - name: AUTH_LDAP_USER_SCOPE
+              value: one
+            - name: AUTH_PROVIDERS
+            - name: CACHE_AUTO_PURGE
+              value: "true"
+            - name: CACHE_ENABLED
+              value: "true"
+            - name: CACHE_NAMESPACE
+              value: directus-cache
+            - name: CACHE_REDIS
+              value: redis://redis:6379
+            - name: CACHE_STORE
+              value: redis
+            - name: CACHE_TTL
+              value: 30m
+            - name: CORS_ALLOWED_HEADERS
+              value: Content-Type,Authorization
+            - name: CORS_CREDENTIALS
+              value: "true"
+            - name: CORS_ENABLED
+              value: "false"
+            - name: CORS_EXPOSED_HEADERS
+              value: Content-Range
+            - name: CORS_MAX_AGE
+              value: "18000"
+            - name: CORS_METHODS
+              value: GET,POST,PATCH,DELETE
+            - name: CORS_ORIGIN
+              value: "true"
+            - name: DB_CLIENT
+              value: postgres
+            - name: DB_DATABASE
+              value: portal
+            - name: DB_HOST
+              value: db
+            - name: DB_PASSWORD
+              value: portal
+            - name: DB_PORT
+              value: "5432"
+            - name: DB_USER
+              value: postgres
+            - name: EMAIL_FROM
+              value: no-reply@smatflow.com
+            - name: EMAIL_SENDMAIL_NEW_LINE
+              value: unix
+            - name: EMAIL_SENDMAIL_PATH
+              value: /usr/sbin/sendmail
+            - name: EMAIL_TRANSPORT
+              value: sendmail
+            - name: EXTENSIONS_AUTO_RELOAD
+              value: "false"
+            - name: EXTENSIONS_PATH
+              value: ./extensions
+            - name: HOST
+              value: 0.0.0.0
+            - name: KEY
+              value: 255d861b-5ea1-5996-9aa3-922530ec40b1
+            - name: LOG_LEVEL
+              value: info
+            - name: LOG_STYLE
+              value: pretty
+            - name: MAX_PAYLOAD_SIZE
+              value: 1mb
+            - name: MESSENGER_NAMESPACE
+              value: directus
+            - name: MESSENGER_REDIS
+              value: redis://@127.0.0.1:6379/0
+            - name: MESSENGER_STORE
+              value: redis
+            - name: PORT
+              value: "8055"
+            - name: PUBLIC_URL
+              value: http://localhost:8055
+            - name: RATE_LIMITER_DURATION
+              value: "1"
+            - name: RATE_LIMITER_ENABLED
+              value: "false"
+            - name: RATE_LIMITER_GLOBAL_REDIS
+              value: redis://@127.0.0.1:6379/1
+            - name: RATE_LIMITER_POINTS
+              value: "50"
+            - name: RATE_LIMITER_REDIS
+              value: redis://@127.0.0.1:6379/1
+            - name: RATE_LIMITER_STORE
+              value: redis
+            - name: REDIS_URL
+              value: redis://redis:6379
+            - name: REFRESH_TOKEN_COOKIE_NAME
+              value: directus_refresh_token
+            - name: REFRESH_TOKEN_COOKIE_SAME_SITE
+              value: lax
+            - name: REFRESH_TOKEN_COOKIE_SECURE
+              value: "false"
+            - name: REFRESH_TOKEN_TTL
+              value: 7d
+            - name: ROOT_REDIRECT
+              value: ./admin
+            - name: SECRET
+              value: 6116487b-cda1-52c2-b5b5-c8022c45e263
+            - name: STORAGE_LOCAL_DRIVER
+              value: local
+            - name: STORAGE_LOCAL_ROOT
+              value: ./uploads
+            - name: STORAGE_LOCATIONS
+              value: local
+          image: registry-hub.smatflow.net/smatflow-projects/smatflow-portal/cms:latest
+          name: cms
+          ports:
+            - containerPort: 8055
+          resources: {}
+          volumeMounts:
+            - mountPath: /app/apps/cms/database
+              name: cms-database
+            - mountPath: /app/apps/cms/extensions
+              name: cms-extensions
+            - mountPath: /app/apps/cms/uploads
+              name: cms-uploads
+      restartPolicy: Always
+      imagePullSecrets:
+        - name: regcred
+      volumes:
+        - name: cms-database
+          persistentVolumeClaim:
+            claimName: cms-database
+        - name: cms-extensions
+          persistentVolumeClaim:
+            claimName: cms-extensions
+        - name: cms-uploads
+          persistentVolumeClaim:
+            claimName: cms-uploads
+status: {}
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  creationTimestamp: null
+  labels:
+    io.kompose.service: cms-database
+  name: cms-database
+spec:
+  storageClassName: ""
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 100Mi
+status: {}
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  creationTimestamp: null
+  labels:
+    io.kompose.service: cms-extensions
+  name: cms-extensions
+spec:
+  storageClassName: ""
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 100Mi
+status: {}
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  creationTimestamp: null
+  labels:
+    io.kompose.service: cms-uploads
+  name: cms-uploads
+spec:
+  storageClassName: ""
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+status: {}
+
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  creationTimestamp: null
+  name: icloudeng-portal-default
+spec:
+  ingress:
+    - from:
+        - podSelector:
+            matchLabels:
+              io.kompose.network/icloudeng-portal-default: "true"
+  podSelector:
+    matchLabels:
+      io.kompose.network/icloudeng-portal-default: "true"
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f kompose.yaml -o k8s/manifest.yaml
+    kompose.version: 1.28.0 (HEAD)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: db
+  name: db
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: db
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f kompose.yaml -o k8s/manifest.yaml
+        kompose.version: 1.28.0 (HEAD)
+      creationTimestamp: null
+      labels:
+        io.kompose.network/icloudeng-portal-default: "true"
+        io.kompose.service: db
+    spec:
+      containers:
+        - env:
+            - name: POSTGRES_DB
+              value: portal
+            - name: POSTGRES_PASSWORD
+              value: portal
+            - name: POSTGRES_USER
+              value: postgres
+          image: postgis/postgis:12-3.2-alpine
+          name: db
+          resources: {}
+          volumeMounts:
+            - mountPath: /var/lib/postgresql/data
+              name: db-data
+      restartPolicy: Always
+      volumes:
+        - name: db-data
+          persistentVolumeClaim:
+            claimName: db-data
+status: {}
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  creationTimestamp: null
+  labels:
+    io.kompose.service: db-data
+  name: db-data
+spec:
+  storageClassName: ""
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+status: {}
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f kompose.yaml -o k8s/manifest.yaml
+    kompose.version: 1.28.0 (HEAD)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: docs
+  name: docs
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: docs
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f kompose.yaml -o k8s/manifest.yaml
+        kompose.version: 1.28.0 (HEAD)
+      creationTimestamp: null
+      labels:
+        io.kompose.network/icloudeng-portal-default: "true"
+        io.kompose.service: docs
+    spec:
+      containers:
+        - env:
+            - name: DEBOUNCE_EXECUTOR
+              value: "false"
+            - name: DEFAULT_LANG
+              value: en
+            - name: DEFAULT_LANG_NAME
+              value: English
+            - name: DIRECTUS_HOST
+              value: http://cms:8055
+            - name: DIRECTUS_STATIC_TOKEN
+              value: mdzjETutYM06z9ch56CmFkjIOWZCwraG
+            - name: DIRECTUS_URL
+              value: http://127.0.0.1:8055
+            - name: DOCS_APP_PM2_NAME
+              value: docs-app
+            - name: ENV
+              value: prod
+            - name: IS_DOCKER
+              value: "true"
+            - name: REDIS_URL
+              value: redis://redis:6379
+            - name: TYPESENSE_API_KEY
+              value: typesense-docsearch-scraper
+            - name: TYPESENSE_COLLECTION_NAME
+              value: smatflow
+            - name: TYPESENSE_HOST
+              value: 127.0.0.1
+            - name: TYPESENSE_PORT
+              value: "8108"
+            - name: TYPESENSE_PROTOCOL
+              value: http
+            - name: WEBSITE_URL
+              value: http://localhost:3000
+          image: registry-hub.smatflow.net/smatflow-projects/smatflow-portal/docs:latest
+          name: docs
+          ports:
+            - containerPort: 3100
+          resources: {}
+          volumeMounts:
+            - mountPath: /app/apps/docs/.docusaurus
+              name: docs-docusaurus
+            - mountPath: /app/apps/docs/build
+              name: docs-build
+            - mountPath: /app/apps/docs/docs
+              name: docs-data
+            - mountPath: /app/apps/docs/i18n
+              name: docs-i18n
+            - mountPath: /app/apps/docs/meta
+              name: docs-meta
+            - mountPath: /app/tools/docsearch-scraper/meta
+              name: docs-scraper-meta
+      restartPolicy: Always
+      imagePullSecrets:
+        - name: regcred
+      volumes:
+        - name: docs-docusaurus
+          persistentVolumeClaim:
+            claimName: docs-docusaurus
+        - name: docs-build
+          persistentVolumeClaim:
+            claimName: docs-build
+        - name: docs-data
+          persistentVolumeClaim:
+            claimName: docs-data
+        - name: docs-i18n
+          persistentVolumeClaim:
+            claimName: docs-i18n
+        - name: docs-meta
+          persistentVolumeClaim:
+            claimName: docs-meta
+        - name: docs-scraper-meta
+          persistentVolumeClaim:
+            claimName: docs-scraper-meta
+status: {}
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  creationTimestamp: null
+  labels:
+    io.kompose.service: docs-docusaurus
+  name: docs-docusaurus
+spec:
+  storageClassName: ""
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 100Mi
+status: {}
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  creationTimestamp: null
+  labels:
+    io.kompose.service: docs-build
+  name: docs-build
+spec:
+  storageClassName: ""
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 100Mi
+status: {}
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  creationTimestamp: null
+  labels:
+    io.kompose.service: docs-data
+  name: docs-data
+spec:
+  storageClassName: ""
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 100Mi
+status: {}
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  creationTimestamp: null
+  labels:
+    io.kompose.service: docs-i18n
+  name: docs-i18n
+spec:
+  storageClassName: ""
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 100Mi
+status: {}
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  creationTimestamp: null
+  labels:
+    io.kompose.service: docs-meta
+  name: docs-meta
+spec:
+  storageClassName: ""
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 100Mi
+status: {}
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  creationTimestamp: null
+  labels:
+    io.kompose.service: docs-scraper-meta
+  name: docs-scraper-meta
+spec:
+  storageClassName: ""
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 100Mi
+status: {}
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f kompose.yaml -o k8s/manifest.yaml
+    kompose.version: 1.28.0 (HEAD)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: docsearch-scraper
+  name: docsearch-scraper
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: docsearch-scraper
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f kompose.yaml -o k8s/manifest.yaml
+        kompose.version: 1.28.0 (HEAD)
+      creationTimestamp: null
+      labels:
+        io.kompose.network/icloudeng-portal-default: "true"
+        io.kompose.service: docsearch-scraper
+    spec:
+      containers:
+        - env:
+            - name: DOCS_WEB_URL
+              value: http://docs:3100
+            - name: TYPESENSE_API_KEY
+              value: typesense-docsearch-scraper
+            - name: TYPESENSE_HOST
+              value: typesense
+            - name: TYPESENSE_PORT
+              value: "8108"
+            - name: TYPESENSE_PROTOCOL
+              value: http
+          image: registry-hub.smatflow.net/smatflow-projects/smatflow-portal/docsearch-scraper:latest
+          name: docsearch-scraper
+          resources: {}
+          volumeMounts:
+            - mountPath: /root/meta
+              name: docs-scraper-meta
+              readOnly: true
+      restartPolicy: Always
+      imagePullSecrets:
+        - name: regcred
+      volumes:
+        - name: docs-scraper-meta
+          persistentVolumeClaim:
+            claimName: docs-scraper-meta
+            readOnly: true
+status: {}
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f kompose.yaml -o k8s/manifest.yaml
+    kompose.version: 1.28.0 (HEAD)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: redis
+  name: redis
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: redis
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f kompose.yaml -o k8s/manifest.yaml
+        kompose.version: 1.28.0 (HEAD)
+      creationTimestamp: null
+      labels:
+        io.kompose.network/icloudeng-portal-default: "true"
+        io.kompose.service: redis
+    spec:
+      containers:
+        - args:
+            - redis-server
+            - --appendonly
+            - "yes"
+          image: redis:7.0.8-alpine
+          name: redis
+          resources: {}
+          volumeMounts:
+            - mountPath: /data
+              name: redis-data
+      restartPolicy: Always
+      volumes:
+        - name: redis-data
+          persistentVolumeClaim:
+            claimName: redis-data
+status: {}
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  creationTimestamp: null
+  labels:
+    io.kompose.service: redis-data
+  name: redis-data
+spec:
+  storageClassName: ""
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 100Mi
+status: {}
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f kompose.yaml -o k8s/manifest.yaml
+    kompose.version: 1.28.0 (HEAD)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: typesense
+  name: typesense
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: typesense
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f kompose.yaml -o k8s/manifest.yaml
+        kompose.version: 1.28.0 (HEAD)
+      creationTimestamp: null
+      labels:
+        io.kompose.network/icloudeng-portal-default: "true"
+        io.kompose.service: typesense
+    spec:
+      containers:
+        - env:
+            - name: TYPESENSE_API_KEY
+              value: typesense-docsearch-scraper
+            - name: TYPESENSE_CORS_DOMAINS
+            - name: TYPESENSE_DATA_DIR
+              value: /data
+            - name: TYPESENSE_ENABLE_CORS
+              value: "true"
+          image: typesense/typesense:0.23.1
+          name: typesense
+          ports:
+            - containerPort: 8108
+          resources: {}
+          volumeMounts:
+            - mountPath: /data
+              name: typesense-data
+      restartPolicy: Always
+      volumes:
+        - name: typesense-data
+          persistentVolumeClaim:
+            claimName: typesense-data
+status: {}
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  creationTimestamp: null
+  labels:
+    io.kompose.service: typesense-data
+  name: typesense-data
+spec:
+  storageClassName: ""
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 100Mi
+status: {}
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f kompose.yaml -o k8s/manifest.yaml
+    kompose.version: 1.28.0 (HEAD)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: web
+  name: web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: web
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f kompose.yaml -o k8s/manifest.yaml
+        kompose.version: 1.28.0 (HEAD)
+      creationTimestamp: null
+      labels:
+        io.kompose.network/icloudeng-portal-default: "true"
+        io.kompose.service: web
+    spec:
+      containers:
+        - env:
+            - name: CMS_URL
+              value: http://cms:8055
+            - name: DIRECTUS_EMAIL
+              value: admin@example.com
+            - name: DIRECTUS_PASSWORD
+              value: password
+            - name: DIRECTUS_URL
+              value: http://cms:8055
+          image: registry-hub.smatflow.net/smatflow-projects/smatflow-portal/web:latest
+          name: web
+          ports:
+            - containerPort: 3000
+          resources: {}
+          volumeMounts:
+            - mountPath: /app/apps/web/.next/cache
+              name: web-cache
+      restartPolicy: Always
+      imagePullSecrets:
+        - name: regcred
+      volumes:
+        - name: web-cache
+          persistentVolumeClaim:
+            claimName: web-cache
+status: {}
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  creationTimestamp: null
+  labels:
+    io.kompose.service: web-cache
+  name: web-cache
+spec:
+  storageClassName: ""
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 100Mi
+status: {}
