@@ -182,3 +182,10 @@ docker-publish:
 	make docker-image-push app=docs
 	make docker-image-build app=docsearch-scraper
 	make docker-image-push app=docsearch-scraper
+
+
+.PHONY: kompose-convert
+kompose-convert:
+	docker compose -f docker-compose.yml config > kompose.yaml
+	kompose convert -f kompose.yaml -o k8s/manifest.yaml
+	rm kompose.yaml
