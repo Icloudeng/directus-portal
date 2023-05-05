@@ -268,6 +268,8 @@ spec:
             - mountPath: /app/apps/cms/uploads
               name: cms-uploads
       restartPolicy: Always
+      imagePullSecrets:
+        - name: regcred
       volumes:
         - name: cms-database
           persistentVolumeClaim:
@@ -289,6 +291,7 @@ metadata:
     io.kompose.service: cms-database
   name: cms-database
 spec:
+  storageClassName: ""
   accessModes:
     - ReadWriteOnce
   resources:
@@ -305,6 +308,7 @@ metadata:
     io.kompose.service: cms-extensions
   name: cms-extensions
 spec:
+  storageClassName: ""
   accessModes:
     - ReadWriteOnce
   resources:
@@ -321,11 +325,12 @@ metadata:
     io.kompose.service: cms-uploads
   name: cms-uploads
 spec:
+  storageClassName: ""
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 100Mi
+      storage: 1Gi
 status: {}
 
 ---
@@ -402,11 +407,12 @@ metadata:
     io.kompose.service: db-data
   name: db-data
 spec:
+  storageClassName: ""
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 100Mi
+      storage: 5Gi
 status: {}
 
 ---
@@ -490,6 +496,8 @@ spec:
             - mountPath: /app/tools/docsearch-scraper/meta
               name: docs-scraper-meta
       restartPolicy: Always
+      imagePullSecrets:
+        - name: regcred
       volumes:
         - name: docs-docusaurus
           persistentVolumeClaim:
@@ -520,6 +528,7 @@ metadata:
     io.kompose.service: docs-docusaurus
   name: docs-docusaurus
 spec:
+  storageClassName: ""
   accessModes:
     - ReadWriteOnce
   resources:
@@ -536,6 +545,7 @@ metadata:
     io.kompose.service: docs-build
   name: docs-build
 spec:
+  storageClassName: ""
   accessModes:
     - ReadWriteOnce
   resources:
@@ -552,6 +562,7 @@ metadata:
     io.kompose.service: docs-data
   name: docs-data
 spec:
+  storageClassName: ""
   accessModes:
     - ReadWriteOnce
   resources:
@@ -568,6 +579,7 @@ metadata:
     io.kompose.service: docs-i18n
   name: docs-i18n
 spec:
+  storageClassName: ""
   accessModes:
     - ReadWriteOnce
   resources:
@@ -584,6 +596,7 @@ metadata:
     io.kompose.service: docs-meta
   name: docs-meta
 spec:
+  storageClassName: ""
   accessModes:
     - ReadWriteOnce
   resources:
@@ -600,6 +613,7 @@ metadata:
     io.kompose.service: docs-scraper-meta
   name: docs-scraper-meta
 spec:
+  storageClassName: ""
   accessModes:
     - ReadWriteOnce
   resources:
@@ -655,6 +669,8 @@ spec:
               name: docs-scraper-meta
               readOnly: true
       restartPolicy: Always
+      imagePullSecrets:
+        - name: regcred
       volumes:
         - name: docs-scraper-meta
           persistentVolumeClaim:
@@ -717,6 +733,7 @@ metadata:
     io.kompose.service: redis-data
   name: redis-data
 spec:
+  storageClassName: ""
   accessModes:
     - ReadWriteOnce
   resources:
@@ -785,6 +802,7 @@ metadata:
     io.kompose.service: typesense-data
   name: typesense-data
 spec:
+  storageClassName: ""
   accessModes:
     - ReadWriteOnce
   resources:
@@ -839,6 +857,8 @@ spec:
             - mountPath: /app/apps/web/.next/cache
               name: web-cache
       restartPolicy: Always
+      imagePullSecrets:
+        - name: regcred
       volumes:
         - name: web-cache
           persistentVolumeClaim:
@@ -854,10 +874,10 @@ metadata:
     io.kompose.service: web-cache
   name: web-cache
 spec:
+  storageClassName: ""
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
       storage: 100Mi
 status: {}
-
