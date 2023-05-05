@@ -183,9 +183,17 @@ docker-publish:
 	make docker-image-build app=docsearch-scraper
 	make docker-image-push app=docsearch-scraper
 
+# ============================
+# Kubernetes targets
+# ============================
 
 .PHONY: kompose-convert
 kompose-convert:
 	docker compose -f docker-compose.yml config > kompose.yaml
 	kompose convert -f kompose.yaml -o k8s/manifest.yaml
 	rm kompose.yaml
+
+
+.PHONY: k8s-apply
+k8s-apply:
+	kubectl apply -f k8s/manifest.yaml -n smatflow-portal 
