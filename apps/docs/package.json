@@ -16,16 +16,16 @@
     "typecheck": "tsc"
   },
   "dependencies": {
-    "@docusaurus/core": "2.4.0",
-    "@docusaurus/plugin-debug": "^2.4.0",
-    "@docusaurus/preset-classic": "2.4.0",
-    "@docusaurus/remark-plugin-npm2yarn": "^2.4.0",
-    "@docusaurus/theme-classic": "^2.4.0",
-    "@docusaurus/theme-live-codeblock": "^2.4.0",
-    "@docusaurus/theme-mermaid": "^2.4.0",
+    "@docusaurus/core": "2.2.0",
+    "@docusaurus/plugin-debug": "^2.2.0",
+    "@docusaurus/preset-classic": "2.2.0",
+    "@docusaurus/remark-plugin-npm2yarn": "^2.2.0",
+    "@docusaurus/theme-classic": "^2.2.0",
+    "@docusaurus/theme-live-codeblock": "^2.2.0",
+    "@docusaurus/theme-mermaid": "^2.2.0",
     "@mdx-js/react": "^1.6.22",
     "clsx": "^1.2.1",
-    "docusaurus-theme-search-typesense": "0.11.0",
+    "docusaurus-theme-search-typesense": "0.8.0-0",
     "dotenv": "^16.0.3",
     "get-youtube-id": "^1.0.1",
     "hast-util-is-element": "1.1.0",
@@ -33,15 +33,15 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-lite-youtube-embed": "^2.3.52",
-    "react-player": "^2.12.0",
-    "rehype-katex": "^5.0.0",
-    "remark-math": "^3.0.1"
+    "react-player": "^2.11.0",
+    "rehype-katex": "5",
+    "remark-math": "3"
   },
   "devDependencies": {
-    "@docusaurus/module-type-aliases": "2.4.0",
-    "@docusaurus/types": "^2.4.0",
-    "@tsconfig/docusaurus": "^1.0.7",
-    "@types/node": "^18.15.10",
+    "@docusaurus/module-type-aliases": "2.2.0",
+    "@docusaurus/types": "^2.2.0",
+    "@tsconfig/docusaurus": "^1.0.5",
+    "@types/node": "^18.11.10",
     "typescript": "^4.9.5"
   },
   "browserslist": {
