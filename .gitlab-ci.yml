@@ -4,14 +4,16 @@ default:
 
 stages:
   - front-test
-  - deploy-coding
   - deploy-testing
+  - deploy-staging
+  - deploy-production
+
   - build-images
 
 variables:
   PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
 
-###################################
+############## Front assets build test #####################
 
 front-test:
   image: node:16.16
@@ -33,10 +35,11 @@ front-test:
     # run test or build
     - pnpm run build
 
-######################################
+# ############# Servers deployments #########################
 
-deploy-coding:
-  stage: deploy-coding
+# ######## testing (Coding) #####
+deploy-testing:
+  stage: deploy-testing
   image: python:3.10
   needs: [front-test]
   only:
@@ -48,36 +51,7 @@ deploy-coding:
     paths:
       - .cache/pip
   environment:
-    name: coding env
-  before_script:
-    - export ANSIBLE_HOST_KEY_CHECKING=False
-    - bash cicd_vars.sh
-    - make ansible-install-cd
-    - eval $(ssh-agent -s)
-    - ssh-add <(echo "$ANSIBLE_DEPLOY_KEY")
-  script:
-    - echo "$AUTH_LDAP_DEFAULT_ROLE_ID__CODING"
-    - echo "$DOCS_GENERATOR_ENV__CODING"
-
-    - make provision-cd limits=coding
-  when: manual
-
-#######################################
-
-deploy-testing:
-  stage: deploy-testing
-  image: python:3.10
-  needs: [deploy-coding]
-  only:
-    refs:
-      - main
-      - tags
-  cache:
-    key: pip-cache
-    paths:
-      - .cache/pip
-  environment:
-    name: testing env
+    name: testing-env
   before_script:
     - export ANSIBLE_HOST_KEY_CHECKING=False
     - bash cicd_vars.sh
@@ -89,6 +63,70 @@ deploy-testing:
     - echo "$DOCS_GENERATOR_ENV__TESTING"
 
     - make provision-cd limits=testing
+  when: manual
+
+# ######## Staging ##############################
+
+deploy-staging:
+  stage: deploy-staging
+  image: python:3.10
+  needs: [deploy-testing]
+  only:
+    refs:
+      - main
+      - tags
+    variables:
+      - $CI_COMMIT_TAG
+  cache:
+    key: pip-cache
+    paths:
+      - .cache/pip
+  environment:
+    name: staging-env
+  before_script:
+    - export ANSIBLE_HOST_KEY_CHECKING=False
+    - bash cicd_vars.sh
+    - make ansible-install-cd
+    - eval $(ssh-agent -s)
+    - ssh-add <(echo "$ANSIBLE_DEPLOY_KEY")
+  script:
+    - echo "$AUTH_LDAP_DEFAULT_ROLE_ID__CODING"
+    - echo "$DOCS_GENERATOR_ENV__CODING"
+
+    - make provision-cd limits=coding
+
+# ######## Production ##############################
+
+deploy-production:
+  stage: deploy-production
+  image: python:3.10
+  needs: [deploy-testing]
+  only:
+    refs:
+      - main
+      - tags
+    variables:
+      - $CI_COMMIT_TAG
+  cache:
+    key: pip-cache
+    paths:
+      - .cache/pip
+  environment:
+    name: staging-env
+  before_script:
+    - export ANSIBLE_HOST_KEY_CHECKING=False
+    - bash cicd_vars.sh
+    - make ansible-install-cd
+    - eval $(ssh-agent -s)
+    - ssh-add <(echo "$ANSIBLE_DEPLOY_KEY")
+  script:
+    - echo "$AUTH_LDAP_DEFAULT_ROLE_ID__PRODUCTION"
+    - echo "$DOCS_GENERATOR_ENV__PRODUCTION"
+
+    - make provision-cd limits=production
+  when: manual
+
+# ############# Build docker images #########################
 
 build-images:
   image: docker:23.0.5
