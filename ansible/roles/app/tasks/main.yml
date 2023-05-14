@@ -14,6 +14,7 @@
   ignore_errors: true
 
 - name: Databases(Makefiile) | Mount databases docker compose
+  become: true
   make:
     chdir: "{{ root_path }}"
     target: db-docker
