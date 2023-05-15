@@ -36,6 +36,26 @@ front-test:
     # run test or build
     - pnpm run build
 
+
+############## Create release #####################
+
+release:
+  stage: release
+  image: registry.gitlab.com/gitlab-org/release-cli:latest
+  needs: [front-test]
+  script:
+    - echo "Create release"
+  only:
+    refs:
+      - tags
+    variables:
+      - $CI_COMMIT_TAG
+  release:
+    name: '$CI_COMMIT_TAG'
+    tag_name: '$CI_COMMIT_TAG'
+    description: "$CI_COMMIT_TAG_MESSAGE"
+
+
 # ############# Servers deployments #########################
 
 # ######## testing (Coding) #####
@@ -152,19 +172,3 @@ build-images:
     - echo "Build Images, and create release"
     - make docker-publish
   when: manual
-
-release:
-  stage: release
-  image: registry.gitlab.com/gitlab-org/release-cli:latest
-  needs: [front-test]
-  script:
-    - echo "Create release"
-  only:
-    refs:
-      - tags
-    variables:
-      - $CI_COMMIT_TAG
-  release:
-    name: '$CI_COMMIT_TAG'
-    tag_name: '$CI_COMMIT_TAG'
-    description: "$CI_COMMIT_TAG_MESSAGE"
