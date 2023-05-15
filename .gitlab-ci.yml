@@ -155,6 +155,7 @@ build-images:
 
 release:
   stage: release
+  image: registry.gitlab.com/gitlab-org/release-cli:latest
   needs: [front-test]
   script:
     - echo "Create release"
