@@ -107,7 +107,6 @@ deploy-production:
       - tags
     variables:
       - $CI_COMMIT_TAG
-      - $ANSIBLE_VAULT_PASS
   cache:
     key: pip-cache
     paths:
