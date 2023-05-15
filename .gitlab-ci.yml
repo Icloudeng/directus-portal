@@ -4,12 +4,13 @@ default:
 
 stages:
   - front-test
+  - release
+
   - deploy-testing
   - deploy-staging
   - deploy-production
 
   - build-images
-  - release
 
 variables:
   PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
