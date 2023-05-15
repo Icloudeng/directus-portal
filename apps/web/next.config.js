@@ -1,9 +1,11 @@
 const { i18n } = require('./next-i18next.config');
-const webpack = require('webpack');
 
 /** @type {import('next').NextConfig} */
 module.exports = {
   output: 'standalone',
+
+  reactStrictMode: true,
+
   i18n,
 
   eslint: {
@@ -44,22 +46,9 @@ module.exports = {
   },
 
   experimental: {
+    appDir: false,
     esmExternals: 'loose',
   },
-
-  publicRuntimeConfig: {
-    directus_url: process.env.DIRECTUS_URL,
-    cms_url: process.env.CMS_URL,
-  },
-
-  serverRuntimeConfig: {
-    directus_email: process.env.DIRECTUS_EMAIL,
-    directus_password: process.env.DIRECTUS_PASSWORD,
-    directus_token: process.env.DIRECTUS_STATIC_TOKEN,
-  },
-
-  reactStrictMode: true,
-
   // SVGR
   webpack(config) {
     config.module.rules.push({
