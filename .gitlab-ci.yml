@@ -155,6 +155,7 @@ build-images:
 
 release:
   stage: release
+  image: registry.gitlab.com/gitlab-org/release-cli:latest
   needs: [front-test]
   script:
     - echo "Create release"
@@ -164,5 +165,6 @@ release:
     variables:
       - $CI_COMMIT_TAG
   release:
+    name: '$CI_COMMIT_TAG'
     tag_name: '$CI_COMMIT_TAG'
     description: "$CI_COMMIT_TAG_MESSAGE"
