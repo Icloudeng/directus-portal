@@ -142,6 +142,7 @@ build-images:
     variables:
       - $CI_COMMIT_TAG
   before_script:
+    - apt-get update && apt-get install make
     - echo "user:$CI_REGISTRY_USER -- pwd:$CI_REGISTRY_PASSWORD -- registry:$CI_REGISTRY"
     - echo "$CI_REGISTRY_PASSWORD" | docker login --username $CI_REGISTRY_USER --password-stdin $CI_REGISTRY
     - echo "$CI_REGISTRY_IMAGE"
