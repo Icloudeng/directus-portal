@@ -155,7 +155,9 @@ docker-image-build:
 
 .PHONY: docker-image-push
 docker-image-push:
+	docker tag $(registryHost)/$(app):$(tagImage) $(registryHost)/$(app):latest
 	docker push $(registryHost)/$(app):$(tagImage)
+	docker push $(registryHost)/$(app):latest
 
 
 .PHONY: docker-image-pull
