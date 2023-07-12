@@ -13,7 +13,7 @@ import { LoadMore } from '@/components/ui/fetch/LoadMore';
 import { SearchForm } from '@/components/ui/form-control/SearchFrom';
 
 import { useSharedData } from '@/app/store';
-import { toLocaleDateString } from '@/app/utils/helpers';
+import { formatDate } from '@/app/utils/helpers';
 import { getServerSideTranslations } from '@/app/utils/server-translation';
 import { getGqlListNewsQuery } from '@/cms/items';
 import { mut } from '@/cms/mut';
@@ -71,7 +71,7 @@ export default function Page({ news }: { news: MDNews[] }) {
                       image={image}
                       title={translations?.title || ''}
                       summary={translations?.summary}
-                      date={toLocaleDateString(date_created)}
+                      date={formatDate(date_created)}
                       link={'/news/' + slug}
                     />
                   </div>

@@ -3,6 +3,7 @@ import { ST_LatestNew, STemplates_Props } from '@apps/contracts';
 import { NewsCard } from '@/components/ui/cards/NewsCard';
 
 import { useSharedData } from '@/app/store';
+import { formatDate } from '@/app/utils/helpers';
 import { mut } from '@/cms/mut';
 
 export function ST_LatestNewsFC({ items }: STemplates_Props<ST_LatestNew>) {
@@ -22,11 +23,7 @@ export function ST_LatestNewsFC({ items }: STemplates_Props<ST_LatestNew>) {
               image={image}
               title={translations?.title || ''}
               summary={translations?.summary}
-              date={new Date(date_created).toLocaleDateString('en-US', {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric',
-              })}
+              date={formatDate(date_created)}
               link={'/news/' + slug}
             />
           </div>
