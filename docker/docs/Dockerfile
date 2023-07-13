@@ -29,7 +29,6 @@ COPY --from=builder /app/out/pnpm-lock.yaml ./pnpm-lock.yaml
 RUN pnpm install
 # Build the project
 COPY --from=builder /app/out/full/ .
-COPY turbo.json turbo.json
 # Build the apps
 RUN pnpm build --filter=docs --filter=docs-generator
 RUN find . -type d -regex ".*node_modules" -exec rm -rf "{}" \+

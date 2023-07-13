@@ -16,8 +16,6 @@ import TabItem from '@theme/TabItem';
 import ReactPlayer from 'react-player'
 ```
 
-<!-- ====================================== Module 1 ====================================== -->
-
 ## (1) Youtube video player
 
 > Youtube video player
@@ -62,8 +60,6 @@ import GetYoutubeVideoId from '@site/src/components/GetYoutubeId';
 ```
 
 ---
-
-<!-- ====================================== Module 2 ====================================== -->
 
 ## (2) Videos player
 
@@ -115,8 +111,6 @@ import ReactPlayer from 'react-player'
 
 ---
 
-<!-- ====================================== Module 3 ====================================== -->
-
 ## (3) Code blocks
 
 [More Examples](https://docusaurus.io/docs/markdown-features/code-blocks)
@@ -144,8 +138,6 @@ console.log("Every repo must come with a mascot.");
 ```
 
 ---
-
-<!-- ====================================== Module 4 ====================================== -->
 
 ## (4) Interactive code editor
 
@@ -211,8 +203,6 @@ function Clock(props) {
 
 ---
 
-<!-- ====================================== Module 5 ====================================== -->
-
 ## (5) Details element
 
 > Details element example
@@ -261,8 +251,6 @@ function Clock(props) {
 
 ---
 
-<!-- ====================================== Module 6 ====================================== -->
-
 ## (6) Tabs
 
 #### Code
@@ -270,9 +258,10 @@ function Clock(props) {
 [More Examples](https://docusaurus.io/docs/markdown-features/tabs)
 
 <!-- prettier-ignore-start -->
+
 ```jsx
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
 
 <Tabs>
   <TabItem value="apple" label="Apple" default>
@@ -284,10 +273,8 @@ import TabItem from '@theme/TabItem';
   <TabItem value="banana" label="Banana">
     This is a banana 🍌
   </TabItem>
-</Tabs>
+</Tabs>;
 ```
-
-<!-- prettier-ignore-end -->
 
 #### Preview
 
@@ -308,8 +295,6 @@ import TabItem from '@theme/TabItem';
 ```
 
 ---
-
-<!-- ====================================== Module 7 ====================================== -->
 
 ## (7) Admonitions
 
@@ -389,8 +374,6 @@ Some **content** with _Markdown_ `syntax`. Check [this `api`](#).
 
 ---
 
-<!-- ====================================== Module 8 ====================================== -->
-
 ## (8) Diagrams
 
 - [More Examples](https://docusaurus.io/docs/markdown-features/diagrams)
@@ -428,8 +411,6 @@ graph TD;
 
 ---
 
-<!-- ====================================== Module 9 ====================================== -->
-
 ## (9) Math Equations
 
 Please read [KaTeX](https://katex.org) documentation for more details.
@@ -446,16 +427,12 @@ $f$ is continuous at $x$, $F$ is differentiable at $x$ with $F'(x)=f(x)$.
 
 ```mdx-code-block
 <BrowserWindow>
-```
 
 Let $f\colon[a,b] \to \R$ be Riemann integrable. Let $F\colon[a,b]\to\R$ be $F(x)=
 \int_{a}^{x} f(t)\,dt$. Then $F$ is continuous, and at all $x$ such that $f$ is continuous at $x$, $F$ is differentiable at $x$ with $F'(x)=f(x)$.
 
-```mdx-code-block
 </BrowserWindow>
 ```
-
----
 
 ---
 
