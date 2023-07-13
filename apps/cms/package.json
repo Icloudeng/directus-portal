@@ -6,6 +6,7 @@
     "dev": "directus start",
     "start": "directus start",
     "directus": "directus",
+    "create-app-user": "node ./create-app-user.js",
     "setup": "directus bootstrap && directus schema apply --yes snapshot.yaml",
     "snapshot": "directus schema snapshot ./snapshot.yaml",
     "bootstrap": "directus bootstrap",

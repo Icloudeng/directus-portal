@@ -12,8 +12,7 @@ RUN pnpm add turbo --global
 COPY . .
 RUN turbo prune --scope=docs --scope=docs-generator --scope=pm2 --docker
 RUN find . -type d -regex ".*node_modules" -exec rm -rf "{}" \+
-
-
+RUN cd /app/out/full/apps/docs/docs && rm -rfv !\(".gitignore"\|"dc-modules.md"\|"intro.md"\)
 
 
 # Add lockfile and package.json's of isolated subworkspace
@@ -30,7 +29,6 @@ COPY --from=builder /app/out/pnpm-lock.yaml ./pnpm-lock.yaml
 RUN pnpm install
 # Build the project
 COPY --from=builder /app/out/full/ .
-COPY turbo.json turbo.json
 # Build the apps
 RUN pnpm build --filter=docs --filter=docs-generator
 RUN find . -type d -regex ".*node_modules" -exec rm -rf "{}" \+
