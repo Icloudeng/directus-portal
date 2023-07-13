@@ -7,7 +7,7 @@ import {
   FaTwitter,
   FaYoutube,
 } from 'react-icons/fa';
-import { GoMailRead } from 'react-icons/go';
+import { GoMail } from 'react-icons/go';
 
 import UnstyledLink from '@/components/ui/links/UnstyledLink';
 
@@ -63,7 +63,7 @@ export const ContactSection = () => {
 
       {data?.support_email && (
         <div className='flex items-center gap-2 mt-3'>
-          <GoMailRead fontSize={20} />
+          <GoMail fontSize={20} />
           <span>
             <UnstyledLink
               className='hover:text-primary-400'
