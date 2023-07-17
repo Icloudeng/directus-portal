@@ -1,5 +1,5 @@
 version: 1
-directus: 9.25.2
+directus: 9.26.0
 vendor: postgres
 collections:
   - collection: Addresses
@@ -1216,7 +1216,7 @@ collections:
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: 3
+      sort: 4
       sort_field: sort
       translations: null
       unarchive_value: draft
@@ -1406,13 +1406,13 @@ collections:
       collection: PartnersRequests
       color: null
       display_template: null
-      group: null
+      group: Guests
       hidden: false
       icon: null
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: 12
+      sort: 3
       sort_field: sort
       translations: null
       unarchive_value: draft
@@ -3006,7 +3006,7 @@ collections:
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: 14
+      sort: 12
       sort_field: null
       translations: null
       unarchive_value: null
@@ -3020,13 +3020,13 @@ collections:
       collection: languages
       color: null
       display_template: null
-      group: null
+      group: Settings
       hidden: false
       icon: null
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: 13
+      sort: 8
       sort_field: null
       translations: null
       unarchive_value: null
