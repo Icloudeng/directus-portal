@@ -19,6 +19,10 @@ export const TopBar: React.FC = () => {
     targetEl.current?.classList.toggle('active');
   };
 
+  const closeLangDropdown = () => {
+    targetEl.current?.classList.remove('active');
+  };
+
   const language = languages.find((lg) => lg.code === locale);
 
   return (
@@ -66,7 +70,7 @@ export const TopBar: React.FC = () => {
               </button>
               <div className='lang-switcher__submenu absolute flex flex-col gap-[1px] border border-b-textGray py-2 top-full -left-5 bg-white z-50 invisible opacity-0'>
                 {languages.map((lang, i) => (
-                  <LangList key={i} {...lang} />
+                  <LangList key={i} onClick={closeLangDropdown} {...lang} />
                 ))}
               </div>
             </nav>

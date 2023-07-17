@@ -1,6 +1,8 @@
 import { FooterBottom } from '@apps/contracts';
 import { useTranslation } from 'next-i18next';
 
+import clsxm from '@/lib/clsxm';
+
 import Button from '@/components/ui/buttons/Button';
 import UnstyledLink from '@/components/ui/links/UnstyledLink';
 import { Spinner } from '@/components/ui/Spinner';
@@ -99,10 +101,10 @@ export const FooterSimple = () => {
         </div>
         <div className='bg-gray-800 bg-opacity-50'>
           <div className='container mx-auto py-4 px-5 flex flex-wrap flex-col sm:flex-row'>
-            <p className='text-gray-500 text-sm text-center sm:text-left'>
+            <p className='text-gray-400 text-sm text-center sm:text-left'>
               <UnstyledLink
                 href='#'
-                className='text-gray-600 ml-1'
+                className='ml-1 cursor-default'
                 target='_blank'
                 rel='noopener noreferrer'
               >
@@ -119,7 +121,7 @@ export const FooterSimple = () => {
             </p>
 
             {bottom_footer.includes('company_name') && (
-              <span className='sm:ml-auto sm:mt-0 mt-2 sm:w-auto w-full sm:text-left text-center text-gray-500 text-sm'>
+              <span className='sm:ml-auto sm:mt-0 mt-2 sm:w-auto w-full sm:text-left text-center text-sm'>
                 {CompanyDetails?.company_name || COMPANY_NAME}
               </span>
             )}
@@ -150,7 +152,10 @@ function Subscription() {
           placeholder={t('Enter your email')}
           id='footer-field'
           name='footer-field'
-          className='w-full bg-transparent bg-opacity-50 rounded-sm border border-primary-400 focus:ring-1 focus:bg-transparent focus:ring-primary-400 focus:border-primary-500 text-base outline-none py-1 px-3 leading-8 transition-colors duration-200 ease-in-out'
+          className={clsxm(
+            'w-full bg-transparent placeholder-gray-300 bg-opacity-50 rounded-sm border border-primary-400 focus:ring-1 focus:bg-transparent',
+            'focus:ring-primary-400 focus:border-primary-500 text-base outline-none py-1 px-3 leading-8 transition-colors duration-200 ease-in-out'
+          )}
         />
         {error && (
           <div className='w-full text-center mt-2 text-red-500 lg:max-w-[400px]'>
