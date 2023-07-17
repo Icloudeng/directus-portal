@@ -4,6 +4,8 @@ import { useCallback, useRef } from 'react';
 import { AiOutlineMenuFold } from 'react-icons/ai';
 import { VscChevronDown } from 'react-icons/vsc';
 
+import clsxm from '@/lib/clsxm';
+
 import ButtonLink from '@/components/ui/links/ButtonLink';
 import UnstyledLink from '@/components/ui/links/UnstyledLink';
 import NextImage from '@/components/ui/NextImage';
@@ -28,15 +30,15 @@ export const Navbar = ({ whiteNav }: { whiteNav?: boolean }) => {
 
   return (
     <nav
-      className={`nav__parent h-[70px] xl:h-[100px] ${
-        whiteNav ? 'bg-white text-black shadow-sm' : ''
-      } flex items-center xl:px-10 transition-all ease-in-out duration-100 ${
-        pagePosition > 40
-          ? 'xl:h-[70px] shadow-md backdrop-blur-sm bg-white/90 text-black nav__fixed'
-          : !whiteNav
-          ? 'text-white'
-          : ''
-      }`}
+      className={clsxm(
+        'nav__parent h-[70px] xl:h-[100px]',
+        whiteNav && ['bg-white text-black shadow-sm'],
+        'flex items-center xl:px-10 transition-all ease-in-out duration-100',
+        pagePosition > 40 && [
+          'xl:h-[70px] shadow-md backdrop-blur-sm bg-white/90 text-black nav__fixed',
+        ],
+        pagePosition <= 40 && !whiteNav && ['text-white']
+      )}
     >
       <div className='relative x-container-fluid flex items-center justify-between gap-4 h-full'>
         <div className='nav__logo xl:w-[20%]'>

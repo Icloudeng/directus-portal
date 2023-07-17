@@ -3,7 +3,12 @@ import { useRouter } from 'next/router';
 
 import NextImage from '@/components/ui/NextImage';
 
-export const LangList = ({ icon_flag, name, code }: Partial<MDLanguage>) => {
+export const LangList = ({
+  icon_flag,
+  name,
+  code,
+  onClick,
+}: Partial<MDLanguage> & { onClick?: () => void }) => {
   const router = useRouter();
 
   const onToggleLanguageClick = (newLocale: string) => {
@@ -15,7 +20,10 @@ export const LangList = ({ icon_flag, name, code }: Partial<MDLanguage>) => {
     <div className='lang-switcher__item px-5 py-2 hover:bg-textGray'>
       <a
         className='flex items-center gap-[6px] cursor-pointer'
-        onClick={() => onToggleLanguageClick(code || '')}
+        onClick={() => {
+          onToggleLanguageClick(code || '');
+          onClick && onClick();
+        }}
       >
         <span>
           <NextImage

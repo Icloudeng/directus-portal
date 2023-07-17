@@ -22,12 +22,16 @@ export default function Layout({
     >
       <Header whiteNav={whiteNav} />
       {whiteNav && <div className='h-14 sd:h-24 bg-white -mt-[8rem] xl:h-32' />}
-      <div className='flex-1 flex flex-col justify-center z-0 main__content'>
+
+      <div className='main__content z-0 flex flex-col justify-center'>
         {children}
       </div>
+
       {Layout?.footer_type !== 'simple_footer' && <Footer />}
       {Layout?.footer_type === 'simple_footer' && <FooterSimple />}
+
       <MobileMenu />
+
       <div className='bg-overlay hidden fixed top-0 sd:top-10 left-0 bg-black/60 w-full h-full z-40' />
     </div>
   );
