@@ -14469,7 +14469,8 @@ fields:
       hidden: false
       interface: group-detail
       note: null
-      options: null
+      options:
+        start: closed
       readonly: false
       required: false
       sort: 4
@@ -14494,7 +14495,8 @@ fields:
       hidden: false
       interface: group-detail
       note: null
-      options: null
+      options:
+        start: closed
       readonly: false
       required: false
       sort: 3
@@ -14519,7 +14521,8 @@ fields:
       hidden: false
       interface: group-detail
       note: null
-      options: null
+      options:
+        start: closed
       readonly: false
       required: false
       sort: 2
@@ -14544,7 +14547,8 @@ fields:
       hidden: false
       interface: group-detail
       note: null
-      options: null
+      options:
+        start: closed
       readonly: false
       required: false
       sort: 5
