@@ -28,7 +28,7 @@ export default function Layout({
       {Layout?.footer_type !== 'simple_footer' && <Footer />}
       {Layout?.footer_type === 'simple_footer' && <FooterSimple />}
       <MobileMenu />
-      <div className='bg-overlay hidden fixed top-0 sd:top-10 left-0 bg-green-300 bg-black/60 w-full h-full z-40' />
+      <div className='bg-overlay hidden fixed top-0 sd:top-10 left-0 bg-black/60 w-full h-full z-40' />
     </div>
   );
 }

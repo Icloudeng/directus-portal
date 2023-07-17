@@ -5,6 +5,7 @@ import { TypeAnimation } from 'react-type-animation';
 
 import NextImage from '@/components/ui/NextImage';
 
+import { useSharedData } from '@/app/store';
 import { useMut } from '@/cms/mut';
 
 type AccType =
@@ -13,7 +14,9 @@ type AccType =
   | number;
 
 export const HomeHeroSection = ({ data }: { data: MDHomePageHero }) => {
+  const shared = useSharedData();
   const { translations, image, images, disposition } = useMut(data);
+
   const trailing_titles = translations?.trailing_titles;
   const [imageKey, setImageKey] = useState(0);
 
@@ -35,6 +38,7 @@ export const HomeHeroSection = ({ data }: { data: MDHomePageHero }) => {
         <h1 className='font-extrabold text-4xl sd:text-2xl sm:text-[2.2rem] md:text-[2.7rem] -mb-4 text-center sd:text-start md:leading-[3rem]'>
           <span className='block'>{translations?.title}</span>
           <TypeAnimation
+            key={shared.locale}
             sequence={trailingTitles}
             speed={40}
             className='font-extrabold leading-[1.3] text-4xl sd:text-2xl sm:text-[2.2rem] md:text-[2.7rem] md:leading-[3rem]'
