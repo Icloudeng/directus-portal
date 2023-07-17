@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
 import { useCallback, useEffect, useState } from 'react';
 
-import { CleanHero } from '@/components/layout/footer/CleanHero';
+import { CleanHero } from '@/components/layout/CleanHero';
 import Layout from '@/components/layout/Layout';
 import Seo from '@/components/Seo';
 import { BlingCard } from '@/components/ui/cards/BlingCard';
