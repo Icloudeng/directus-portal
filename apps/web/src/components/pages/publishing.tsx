@@ -136,7 +136,7 @@ export function Publishing({
                   </Link>
                 )}
                 <p className='mb-10'>{translations?.summary}</p>
-                <div className='prose md:prose-lg lg:prose-xl mb-4 w-full'>
+                <div className='prose md:prose-lg lg:prose-xl mb-4 w-full max-w-none'>
                   <MarkdownContent>
                     {translations?.markdown_content || ''}
                   </MarkdownContent>

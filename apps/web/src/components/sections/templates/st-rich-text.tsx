@@ -12,9 +12,7 @@ export function ST_RichTextFC({ items }: STemplates_Props<ST_RichText>) {
         const { translations, toc } = mut(item, locale);
         return (
           <div
-            className={`prose md:prose-lg lg:prose-xl mb-4 w-full ${
-              toc ? 'max-w-none' : ''
-            }`}
+            className={`prose md:prose-lg lg:prose-xl mb-4 w-full max-w-none`}
             key={item.id}
           >
             <TextContent text={translations?.text || ''} toc={toc} />
