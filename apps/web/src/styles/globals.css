@@ -187,12 +187,6 @@ body {
   transition: 0.3s opacity ease;
 }
 
-.menu-top__item.dropdown .menu-top__link.active + .submenu__mob {
-  /* opacity: 1; */
-  display: block;
-  /* transition: 0.3s ease; */
-}
-
 .menu-top__item.dropdown .menu-top__link.active .submenu-show__chevron {
   transform: rotateX(180deg);
   transition: 0.3s ease;

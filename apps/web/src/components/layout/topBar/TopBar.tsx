@@ -2,6 +2,8 @@ import { useTranslation } from 'next-i18next';
 import React from 'react';
 import { VscChevronDown, VscChevronRight } from 'react-icons/vsc';
 
+import clsxm from '@/lib/clsxm';
+
 import { LangList } from '@/components/layout/topBar/components/ListData';
 import UnstyledLink from '@/components/ui/links/UnstyledLink';
 import NextImage from '@/components/ui/NextImage';
@@ -26,12 +28,12 @@ export const TopBar: React.FC = () => {
   const language = languages.find((lg) => lg.code === locale);
 
   return (
-    <div className='hidden sd:block border-b border-b-textGray bg-white px-10 z-50 topbar--line'>
+    <div className='block border-b border-b-textGray bg-white px-3 sd:px-10 z-50 topbar--line'>
       <div className='h-10 flex items-center justify-start'>
         <div className='flex flex-1 items-center mr-auto overflow-hidden flex-nowrap'>
           {News && News.length > 0 && (
             <>
-              <UnstyledLink href='/news'>
+              <UnstyledLink href='/news' className='hidden sd:block'>
                 <div className=' h-5 px-2 border border-primary-400 flex items-center justify-center rounded-sm'>
                   <span className='uppercase text-[0.6rem] text-primary-400'>
                     {t('TOPBAR_NEWS')}
@@ -94,7 +96,10 @@ function TopbarNews() {
           <UnstyledLink
             title={title}
             href={'/news/' + $data.slug}
-            className='animated-underline mx-3 text-xs flex items-center justify-start text-textDark'
+            className={clsxm(
+              'animated-underline ml-2 text-xs flex items-center justify-start text-textDark',
+              'truncate'
+            )}
           >
             {title.length > 50 ? title.substring(0, 50) + '...' : title}
           </UnstyledLink>
