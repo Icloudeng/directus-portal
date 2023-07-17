@@ -48,7 +48,7 @@ export function Publishing({
       />
       <div className='bg-white '>
         <div className='x-container'>
-          <div className='item--content-wrapper flex py-10 w-full md:mt-10'>
+          <div className='item--content-wrapper flex py-10 w-full mt-10'>
             <div className='w-[110px] pt-1 md:block hidden'>
               <div className='mb-3'>
                 <span className='capitalize bg-primary-500 text-white p-1 rounded-md text-xs'>
