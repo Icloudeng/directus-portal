@@ -20,7 +20,7 @@ export const Subscribe = () => {
         <p className='text-2xl font-bold text-center'>
           {t('Join our mailing list')}
         </p>
-        <p className='text-xs max-w-md text-center uppercase font-extralight'>
+        <p className='text-xs max-w-md text-center uppercase font-normal'>
           {t('JOIN_MAIL_TEXT')}
         </p>
       </div>
@@ -36,7 +36,7 @@ export const Subscribe = () => {
             required
             name='email'
             onKeyUp={onKeyUp}
-            className='border-none font-extralight bg-transparent ring-1 ring-primary-400 rounded-sm h-12 max-w-[20rem] w-full px-2 font-base outline-none focus:ring-2'
+            className='border-none placeholder-gray-300 bg-transparent ring-1 rounded-sm h-12 max-w-[20rem] w-full px-2 font-base outline-none focus:ring-2'
           />
           <div>
             <Button

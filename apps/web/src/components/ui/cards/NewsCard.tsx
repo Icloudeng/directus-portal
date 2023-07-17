@@ -13,7 +13,7 @@ type Props = {
 export function NewsCard({ title, summary, date, image, link }: Props) {
   return (
     <Link
-      href={link}
+      href={link || ''}
       className='news--wrapper flex flex-col items-stretch rounded-[2px] h-[550px] transition bg-white no-underline hover:shadow-lg'
     >
       <div className='news--image flex justify-start items-center shrink-0'>
