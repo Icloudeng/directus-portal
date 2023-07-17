@@ -31,7 +31,7 @@ const SubmenuItem = ({
       key={id}
       href={url}
       target={external ? '_blank' : undefined}
-      className='-m-3 p-3 flex items-start navbar__link-icon'
+      className='-m-3 p-3 flex items-start navbar__link-icon font-medium'
     >
       {!featured && <HasSvgText svgText={icon_svg} />}
       <div className='ml-4'>
@@ -49,7 +49,7 @@ const SubMenu = ({ data }: { data: NavbarLinkSubmenu }) => {
   return (
     <div className='flex items-center justify-between'>
       <div className='flex flex-col'>
-        <span className='text-sm text-gray-300 uppercase mb-1 mt-3'>
+        <span className='text-sm text-gray-400 uppercase mb-1 mt-3'>
           {translations?.name?.toUpperCase() || (featured ? 'FEATURED' : '')}
         </span>
         <div className='flex flex-col items-start py-4 gap-3'>
@@ -87,7 +87,7 @@ function Submenu({
         <button
           type='button'
           className={clsxm(
-            'menu-top__link w-full flex items-center justify-between my-5',
+            'menu-top__link w-full flex items-center justify-between my-5 text-base font-medium',
             active && ['active']
           )}
         >
@@ -100,14 +100,17 @@ function Submenu({
           )}
 
           {hasMenu && (
-            <VscChevronDown className='submenu-show__chevron text-primary-500 text-sm' />
+            <VscChevronDown
+              size={20}
+              className='submenu-show__chevron text-primary-500 text-base'
+            />
           )}
         </button>
 
         {hasMenu && (
           <div
             className={clsxm(
-              'submenu__mob bg-white pl-2 rounded mb-1',
+              'submenu__mob bg-white pl-3 rounded mb-10',
               !active && ['hidden']
             )}
             onClick={(e) => e.stopPropagation()}
@@ -173,13 +176,15 @@ export const MobileMenu = forwardRef<HTMLDivElement>((_, ref) => {
         <GrClose className='bg-primary-100 rounded p-2' size={25} />
       </span>
 
-      <div className=' overflow-y-auto max-h-full sd:pb-[53px] pb-3'>
+      <div className='overflow-y-auto max-h-full sd:pb-[53px] pb-3'>
         <div className='relative w-full flex flex-col font-normal mt-14 min-h-full'>
           <ul className='menu-top flex flex-col items-center'>
             {navbar_links.map((link) => {
               return <Submenu key={link.id} {...link} />;
             })}
+          </ul>
 
+          <ul className='menu-top flex flex-col items-center sm:hidden'>
             {topbar_links.length > 0 &&
               topbar_links.map((link) => {
                 return (
