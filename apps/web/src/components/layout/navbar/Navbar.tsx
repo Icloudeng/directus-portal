@@ -1,6 +1,6 @@
 import type { I_MDWithUserTranslation } from '@apps/contracts';
 import type { MDNavbarLink } from '@apps/contracts';
-import { useCallback, useRef } from 'react';
+import { useCallback, useRef, useState } from 'react';
 import { AiOutlineMenuFold } from 'react-icons/ai';
 import { VscChevronDown } from 'react-icons/vsc';
 
@@ -112,7 +112,7 @@ function NavbarLink({
   const hasSubmenus = submenus.length > 0;
   const submenuRef = useRef<HTMLDivElement | null>(null);
 
-  const btnRef = useRef<HTMLButtonElement>(null);
+  const [opened, setOpened] = useState(false);
 
   const hanlder = useCallback(() => {
     if (!submenuRef.current) return;
@@ -126,27 +126,26 @@ function NavbarLink({
     el.style.transform = `translateX(-${rest + 20}px)`;
   }, []);
 
-  const onMouseHover = () => {
-    btnRef.current?.classList.add('active');
-  };
-  const onMouseOut = () => {
-    btnRef.current?.classList.remove('active');
-  };
+  const onMouseHover = () => setOpened(true);
+  const onMouseOut = () => setOpened(false);
 
   return (
     <li
       key={id}
       onMouseOver={hasSubmenus ? onMouseHover : undefined}
       onMouseOut={hasSubmenus ? onMouseOut : undefined}
-      className={`menu-top__item ${
-        hasSubmenus ? 'relative dropdown' : ''
-      } hover:text-primary-400`}
+      className={clsxm(
+        'menu-top__item hover:text-primary-400',
+        hasSubmenus && ['relative dropdown']
+      )}
     >
       <button
-        ref={btnRef}
         type='button'
         onMouseOver={hasSubmenus ? hanlder : undefined}
-        className='menu-top__link flex items-center gap-1'
+        className={clsxm(
+          'menu-top__link flex items-center gap-1 py-2',
+          opened && ['active']
+        )}
       >
         {url && !hasSubmenus ? (
           <UnstyledLink target={external ? '_blank' : undefined} href={url}>
@@ -164,9 +163,11 @@ function NavbarLink({
       {hasSubmenus && (
         <div
           ref={submenuRef}
-          className={`submenu absolute rounded-3xl pt-[2.5rem] ${
-            pagePosition > 40 ? 'top-[.45rem]' : 'top-[1.4rem]'
-          } -left-[100%] invisible opacity-0`}
+          className={clsxm(
+            'submenu absolute rounded-3xl pt-[2.5rem]',
+            '-left-[100%] invisible opacity-0',
+            pagePosition > 40 ? ['top-[.45rem]'] : ['top-[1.4rem]']
+          )}
         >
           <div className='flex rounded-lg shadow-lg bg-primary-50 ring-1 ring-black divide-x-[1px] ring-opacity-5 overflow-hidden'>
             {submenus.map((submenu) => {
