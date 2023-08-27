@@ -66,7 +66,7 @@ ENV NEXT_TELEMETRY_DISABLED=1
 ENV NEXT_SHARP_PATH=/app/apps/web/node_modules/sharp
 
 # If user custom user then add (COPY --from=installer --chown=nextjs:nodejs ...)
-COPY --from=installer /app/apps/web/.next/standalone ./apps/web
+COPY --from=installer /app/apps/web/.next/standalone ./
 COPY --from=installer /app/apps/web/.next/static ./apps/web/.next/static
 COPY --from=installer /app/apps/web/public ./apps/web/public
 
