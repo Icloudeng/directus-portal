@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-app
+  namespace: smatflow-portal
+spec:
+  selector:
+    matchLabels:
+      app: web-app
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: web-app
+    spec:
+      containers:
+        - image: registry-hub.smatflow.net/smatflow-projects/smatflow-portal/web
+          name: web-app
+          resources:
+            limits:
+              cpu: "200m"
+              memory: "550M"
+          ports:
+            - containerPort: 3000
+              name: web-app
+      restartPolicy: Always
+      imagePullSecrets:
+        - name: regcred
+
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: web-app
+spec:
+  selector:
+    app: web-app
+  type: LoadBalancer
+  ports:
+    - name: web-app
+      port: 80
+      targetPort: 3000
