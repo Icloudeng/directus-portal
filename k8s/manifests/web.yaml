@@ -1,3 +1,36 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: web-app
+  namespace: smatflow-portal
+  # labels:
+  #   app: web-app
+data:
+  .env: |
+    NEXT_PUBLIC_COMPANY_NAME="Smatflow LTD"
+    NEXT_PUBLIC_WEBSITE_URL=https://www.smatflow.xyz
+
+    CMS_URL=https://portaladmin.smatflow.xyz
+    DIRECTUS_URL=https://portaladmin.smatflow.xyz
+    DIRECTUS_STATIC_TOKEN=mdzjETutYM06z9ch56CmFkjIOWZCwraG
+
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: web-app
+  namespace: smatflow-portal
+spec:
+  selector:
+    app: web-app
+  ports:
+    - name: web-app
+      port: 80
+      targetPort: 3000
+  type: LoadBalancer
+  # externalTrafficPolicy: Local
+
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -23,20 +56,21 @@ spec:
           ports:
             - containerPort: 3000
               name: web-app
+
+          volumeMounts:
+            - name: config
+              mountPath: "/app/apps/web"
+              readOnly: true
+
       restartPolicy: Always
+
       imagePullSecrets:
         - name: regcred
 
----
-kind: Service
-apiVersion: v1
-metadata:
-  name: web-app
-spec:
-  selector:
-    app: web-app
-  type: LoadBalancer
-  ports:
-    - name: web-app
-      port: 80
-      targetPort: 3000
+      volumes:
+        - name: config
+          configMap:
+            name: web-app
+            items:
+              - key: ".env"
+                path: ".env"
