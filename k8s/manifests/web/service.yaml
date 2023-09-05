@@ -1,0 +1,13 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: web-app
+spec:
+  selector:
+    app: web-app
+  ports:
+    - name: web-app
+      port: 80
+      targetPort: 3000
+  type: LoadBalancer
+  # externalTrafficPolicy: Local

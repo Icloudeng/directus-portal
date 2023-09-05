@@ -1,0 +1,9 @@
+namespace: smatflow-portal
+
+helmCharts:
+  - name: redis
+    repo: https://charts.bitnami.com/bitnami
+    version: 18.0.2
+    releaseName: redis
+    namespace: smatflow-portal
+    valuesFile: values.yaml

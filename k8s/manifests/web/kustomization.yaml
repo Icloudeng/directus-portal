@@ -1,0 +1,10 @@
+namespace: smatflow-portal
+
+resources:
+  - "service.yaml"
+  - "deployment.yaml"
+
+configMapGenerator:
+  - name: web-app-config
+    envs:
+      - ".env.config"
