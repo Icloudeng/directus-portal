@@ -3,6 +3,7 @@ namespace: smatflow-portal
 resources:
   - "service.yaml"
   - "deployment.yaml"
+  - "volume.yaml"
 
 configMapGenerator:
   - name: web-app-config
