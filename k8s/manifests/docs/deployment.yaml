@@ -28,6 +28,9 @@ spec:
           ports:
             - containerPort: 3100
               name: docs-app
+          env:
+            - name: TYPESENSE_HOST
+              value: "$(TYPESENSE_SERVICE_HOST)"
           envFrom:
             - configMapRef:
                 name: docs-app-config
