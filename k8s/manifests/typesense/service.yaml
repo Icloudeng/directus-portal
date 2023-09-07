@@ -8,7 +8,7 @@ spec:
   ports:
     - port: 8108
       name: typesense
-  clusterIP: None
+      targetPort: 8108
   type: LoadBalancer
   selector:
     app: typesense

@@ -49,9 +49,6 @@ spec:
             - name: data-volume
               mountPath: /app/apps/docs/.docusaurus
               subPath: .docusaurus
-            - name: data-volume
-              mountPath: /app/apps/docs/.docusaurus
-              subPath: .docusaurus
             - name: docsearch-scraper-volume
               mountPath: /app/tools/docsearch-scraper/meta
       volumes:
