@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cms-app
+spec:
+  selector:
+    matchLabels:
+      app: cms-app
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: cms-app
+    spec:
+      restartPolicy: Always
+      imagePullSecrets:
+        - name: regcred
+      initContainers:
+        - name: wait
+          image: busybox:1.28
+          command: ["sh", "-c", "sleep 60"]
+      containers:
+        - image: registry-hub.smatflow.net/smatflow-projects/smatflow-portal/cms
+          name: cms-app
+          resources:
+            limits:
+              cpu: "200m"
+              memory: "550M"
+            requests:
+              cpu: "200m"
+              memory: "550M"
+          ports:
+            - containerPort: 8055
+              name: cms-app
+          envFrom:
+            - configMapRef:
+                name: cms-app-config
+            - secretRef:
+                name: cms-app-secrets
+          volumeMounts:
+            - name: data-volume
+              mountPath: /app/apps/cms/database
+              subPath: database
+            - name: data-volume
+              mountPath: /app/apps/cms/extensions
+              subPath: extensions
+            - name: data-volume
+              mountPath: /app/apps/cms/uploads
+              subPath: uploads
+      volumes:
+        - name: data-volume
+          persistentVolumeClaim:
+            claimName: cms-app-pvc
