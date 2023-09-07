@@ -1,0 +1,61 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: docs-app
+spec:
+  selector:
+    matchLabels:
+      app: docs-app
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: docs-app
+    spec:
+      restartPolicy: Always
+      imagePullSecrets:
+        - name: regcred
+      containers:
+        - image: registry-hub.smatflow.net/smatflow-projects/smatflow-portal/docs
+          name: docs-app
+          resources:
+            requests:
+              cpu: "200m"
+              memory: "550M"
+            limits:
+              cpu: "800m"
+              memory: "1Gi"
+          ports:
+            - containerPort: 3100
+              name: docs-app
+          envFrom:
+            - configMapRef:
+                name: docs-app-config
+            - secretRef:
+                name: docs-app-secrets
+          volumeMounts:
+            - name: data-volume
+              mountPath: /app/apps/docs/i18n
+              subPath: i18n
+            - name: data-volume
+              mountPath: /app/apps/docs/docs
+              subPath: docs
+            - name: data-volume
+              mountPath: /app/apps/docs/meta
+              subPath: meta
+            - name: data-volume
+              mountPath: /app/apps/docs/build
+              subPath: build
+            - name: data-volume
+              mountPath: /app/apps/docs/.docusaurus
+              subPath: .docusaurus
+            - name: data-volume
+              mountPath: /app/apps/docs/.docusaurus
+              subPath: .docusaurus
+            - name: data-volume
+              mountPath: /app/tools/docsearch-scraper/meta
+              subPath: docsearch-scraper-meta
+      volumes:
+        - name: data-volume
+          persistentVolumeClaim:
+            claimName: docs-app-pvc

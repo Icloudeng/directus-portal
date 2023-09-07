@@ -1,4 +1,4 @@
-version: '3.8'
+version: "3.8"
 services:
   docsearch-scraper:
     image: registry-hub.smatflow.net/smatflow-projects/smatflow-portal/docsearch-scraper:latest
