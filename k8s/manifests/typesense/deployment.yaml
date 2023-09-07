@@ -6,10 +6,9 @@ spec:
   selector:
     matchLabels:
       app: typesense
-  replicas: 2
+  replicas: 1
   serviceName: "typesense"
-  minReadySeconds: 10
-  podManagementPolicy: "Parallel"
+  # podManagementPolicy: "Parallel"
   template:
     metadata:
       labels:

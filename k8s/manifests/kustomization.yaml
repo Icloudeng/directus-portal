@@ -11,6 +11,7 @@ resources:
   - "cms"
   - "docs"
   - "docsearch-scraper"
+  - "ingress.yaml"
 
 secretGenerator:
   - name: regcred

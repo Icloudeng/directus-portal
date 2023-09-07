@@ -16,7 +16,7 @@ spec:
       imagePullSecrets:
         - name: regcred
       containers:
-        - image: registry-hub.smatflow.net/smatflow-projects/smatflow-portal/web
+        - image: registry-hub.smatflow.net/smatflow-projects/smatflow-portal/web:latest
           name: web-app
           resources:
             limits:

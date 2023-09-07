@@ -29,8 +29,11 @@ const IS_DOCKER = process.env.IS_DOCKER;
         });
       });
     } catch (error) {
-      console.log("parse error: ", error);
+      // console.log("parse error: ", error);
+      return false;
     }
+
+    return true;
   };
 
   if (IS_DOCKER) {
@@ -45,9 +48,11 @@ const IS_DOCKER = process.env.IS_DOCKER;
         return;
       }
 
-      console.log("scraping.....");
+      if (!(await regenerateUrls())) {
+        return;
+      }
 
-      await regenerateUrls();
+      console.log("scraping.....");
 
       pending.value = true;
 
@@ -65,10 +70,13 @@ const IS_DOCKER = process.env.IS_DOCKER;
         .catch(console.log);
     };
 
-    setInterval(exec, 1000 * 30);
+    setInterval(exec, 1000 * 10);
   } else {
     // regenerate Urls
-    await regenerateUrls();
+    if (!(await regenerateUrls())) {
+      return;
+    }
+
     const docker = await which("docker");
     await cmd(
       {
