@@ -52,10 +52,12 @@ spec:
             - name: data-volume
               mountPath: /app/apps/docs/.docusaurus
               subPath: .docusaurus
-            - name: data-volume
+            - name: docsearch-scraper-volume
               mountPath: /app/tools/docsearch-scraper/meta
-              subPath: docsearch-scraper-meta
       volumes:
         - name: data-volume
           persistentVolumeClaim:
             claimName: docs-app-pvc
+        - name: docsearch-scraper-volume
+          persistentVolumeClaim:
+            claimName: docsearch-scraper-pvc
