@@ -3,16 +3,14 @@ kind: Kustomization
 namespace: smatflow-portal
 
 resources:
-  - "service.yaml"
   - "deployment.yaml"
-  - "volume.yaml"
 
 configMapGenerator:
-  - name: typesense-config
+  - name: docsearch-scraper-config
     envs:
       - ".env.config"
 
 secretGenerator:
-  - name: typesense-secrets
+  - name: docsearch-scraper-secrets
     envs:
       - ".env.secrets"

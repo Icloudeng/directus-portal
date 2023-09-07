@@ -32,11 +32,11 @@ spec:
             requests:
               cpu: "500m"
               memory: 1Gi
-          command:
-            - --data-dir
-            - /data
-            - --api-key=xyz
-            - --enable-cors
+          envFrom:
+            - configMapRef:
+                name: typesense-config
+            - secretRef:
+                name: typesense-secrets
       volumes:
         - name: typesense-data
           persistentVolumeClaim:
