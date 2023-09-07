@@ -8,8 +8,7 @@ spec:
       app: typesense
   replicas: 2
   serviceName: "typesense"
-  minReadySeconds: 10
-  podManagementPolicy: "Parallel"
+  # podManagementPolicy: "Parallel"
   template:
     metadata:
       labels:
