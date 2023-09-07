@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: typesense
+  labels:
+    app: typesense
+spec:
+  ports:
+    - port: 8108
+      name: typesense
+      targetPort: typesense
+  type: LoadBalancer
+  selector:
+    app: typesense

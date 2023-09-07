@@ -1,0 +1,14 @@
+auth:
+  enabled: false
+
+master:
+  persistence:
+    enabled: true
+    storageClass: "longhorn"
+    size: 1Gi
+
+replica:
+  persistence:
+    enabled: true
+    storageClass: "longhorn"
+    size: 1Gi

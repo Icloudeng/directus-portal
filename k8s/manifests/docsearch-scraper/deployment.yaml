@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: docsearch-scraper
+spec:
+  selector:
+    matchLabels:
+      app: docsearch-scraper
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: docsearch-scraper
+    spec:
+      restartPolicy: Always
+      imagePullSecrets:
+        - name: regcred
+      containers:
+        - image: registry-hub.smatflow.net/smatflow-projects/smatflow-portal/docsearch-scraper
+          name: docsearch-scraper
+          resources:
+            requests:
+              cpu: "200m"
+              memory: "550M"
+            limits:
+              cpu: "800m"
+              memory: "1Gi"
+          envFrom:
+            - configMapRef:
+                name: docsearch-scraper-config
+            - secretRef:
+                name: docsearch-scraper-secrets
+          volumeMounts:
+            - name: docsearch-scraper-volume
+              mountPath: /root/meta
+              readOnly: true
+      volumes:
+        - name: docsearch-scraper-volume
+          persistentVolumeClaim:
+            claimName: docsearch-scraper-pvc

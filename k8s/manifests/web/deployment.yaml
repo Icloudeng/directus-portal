@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-app
+spec:
+  selector:
+    matchLabels:
+      app: web-app
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: web-app
+    spec:
+      restartPolicy: Always
+      imagePullSecrets:
+        - name: regcred
+      containers:
+        - image: registry-hub.smatflow.net/smatflow-projects/smatflow-portal/web
+          name: web-app
+          resources:
+            limits:
+              cpu: "200m"
+              memory: "550M"
+            requests:
+              cpu: "200m"
+              memory: "550M"
+          ports:
+            - containerPort: 3000
+              name: web-app
+          envFrom:
+            - configMapRef:
+                name: web-app-config
+            - secretRef:
+                name: web-app-secrets
+          volumeMounts:
+            - name: cache-volume
+              mountPath: /app/apps/web/.next/cache
+      volumes:
+        - name: cache-volume
+          persistentVolumeClaim:
+            claimName: web-app-pvc

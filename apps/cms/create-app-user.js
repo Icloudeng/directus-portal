@@ -48,7 +48,10 @@ async function createUser(role) {
 
 async function main() {
   await new Promise((resolve) => {
-    setTimeout(resolve, 1000 * 20);
+    setTimeout(
+      resolve,
+      process.env.IS_DOCKER === "true" ? 1000 * 80 : 1000 * 30
+    );
   });
 
   try {

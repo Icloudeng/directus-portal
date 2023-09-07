@@ -1,0 +1,16 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: smatflow-portal
+
+resources:
+  - "deployment.yaml"
+
+configMapGenerator:
+  - name: docsearch-scraper-config
+    envs:
+      - ".env.config"
+
+secretGenerator:
+  - name: docsearch-scraper-secrets
+    envs:
+      - ".env.secrets"

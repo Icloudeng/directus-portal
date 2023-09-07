@@ -1,0 +1,12 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: docs-app
+spec:
+  selector:
+    app: docs-app
+  ports:
+    - name: docs-app
+      port: 80
+      targetPort: docs-app
+  type: LoadBalancer

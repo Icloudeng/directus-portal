@@ -1,0 +1,12 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: cms-app
+spec:
+  selector:
+    app: cms-app
+  ports:
+    - name: cms-app
+      port: 80
+      targetPort: 8055
+  type: LoadBalancer
