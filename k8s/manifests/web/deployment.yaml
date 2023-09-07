@@ -31,6 +31,8 @@ spec:
           envFrom:
             - configMapRef:
                 name: web-app-config
+            - secretRef:
+                name: web-app-secrets
           volumeMounts:
             - name: cache-volume
               mountPath: /app/apps/web/.next/cache

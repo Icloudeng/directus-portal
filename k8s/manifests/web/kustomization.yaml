@@ -11,3 +11,8 @@ configMapGenerator:
   - name: web-app-config
     envs:
       - ".env.config"
+
+secretGenerator:
+  - name: web-app-secrets
+    envs:
+      - ".env.secrets"
