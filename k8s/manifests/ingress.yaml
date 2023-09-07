@@ -6,10 +6,26 @@ spec:
   rules:
     - http:
         paths:
-          - path: /bar
+          - path: /
             pathType: Exact
             backend:
               service:
-                name: service1
+                name: web-app
+                port:
+                  number: 80
+
+          - path: /documentation
+            pathType: Exact
+            backend:
+              service:
+                name: docs-app
+                port:
+                  number: 80
+
+          - path: /admin
+            pathType: Exact
+            backend:
+              service:
+                name: cms-app
                 port:
                   number: 80

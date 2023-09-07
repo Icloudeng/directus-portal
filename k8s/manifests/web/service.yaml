@@ -11,3 +11,4 @@ spec:
       targetPort: 3000
   type: LoadBalancer
   # externalTrafficPolicy: Local
+  # loadBalancerIP: ""
