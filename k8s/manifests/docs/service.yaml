@@ -8,5 +8,5 @@ spec:
   ports:
     - name: docs-app
       port: 80
-      targetPort: 3100
+      targetPort: docs-app
   type: LoadBalancer

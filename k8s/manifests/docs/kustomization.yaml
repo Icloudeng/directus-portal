@@ -4,6 +4,7 @@ namespace: smatflow-portal
 
 resources:
   - "service.yaml"
+  - "docsearch-scraper-volume.yaml"
   - "volume.yaml"
   - "deployment.yaml"
 
