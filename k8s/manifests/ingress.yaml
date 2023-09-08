@@ -2,12 +2,16 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: app-ingress
+  annotations:
+    # use the shared ingress-nginx
+    kubernetes.io/ingress.class: "nginx"
 spec:
+  ingressClassName: nginx
   rules:
     - http:
         paths:
           - path: /
-            pathType: Exact
+            pathType: Prefix
             backend:
               service:
                 name: web-app
@@ -15,7 +19,7 @@ spec:
                   number: 80
 
           - path: /documentation
-            pathType: Exact
+            pathType: Prefix
             backend:
               service:
                 name: docs-app
@@ -23,7 +27,7 @@ spec:
                   number: 80
 
           - path: /admin
-            pathType: Exact
+            pathType: Prefix
             backend:
               service:
                 name: cms-app
