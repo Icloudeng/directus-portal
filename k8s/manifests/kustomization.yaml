@@ -3,6 +3,7 @@ kind: Kustomization
 namespace: smatflow-portal
 
 resources:
+  - "dockerconfig.yaml"
   - "namespace.yaml"
   - "postgres"
   - "redis"
@@ -12,9 +13,10 @@ resources:
   - "docs"
   - "docsearch-scraper"
   - "ingress.yaml"
-
-secretGenerator:
-  - name: regcred
-    type: kubernetes.io/dockerconfigjson
-    files:
-      - .dockerconfigjson
+#
+# Use Kubeseal to encrypt dockerconfigjson
+# secretGenerator:
+#   - name: regcred
+#     type: kubernetes.io/dockerconfigjson
+#     files:
+#       - .dockerconfigjson
