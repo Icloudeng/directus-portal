@@ -1,0 +1,15 @@
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: regcred
+  namespace: smatflow-portal
+spec:
+  encryptedData:
+    .dockerconfigjson: AgBS3BqGtcUIDh5dOs2Q7ud58zFoLoH97zutGvINGqpZSF4emyGzWY0z6gpWjSfLGdEbNlZP3klg6rPpeSwu1I2+yx8R4SJ/A8XJLzibaBfW6Bhm6yygZo4p2ZCD8cLypC0d8uCKzQL2u3FsRycv6Zbn/zofTGUtbzGKEBy1v4PkUCL/eiauhDK4YdIZqN9vQLK/OsmgWyXhBc5WjvnviD2SWZQHh2UT7OImbwIm3SHbmjB2blOUlrOGfZmDiKm/jHXJ74pP6TjoZw35HOfrOzxWNIaKNocnD6hXPKxsZ2AbVf3ArUIShVMptPNUZEInPVd+CmnXNXR0DS3Qo+bDeXjn8A2ULvcxy4J8xS4ffOlRp6ogyF8j/DcmYIBWm5prbyWn3cgf7gP7W2z+QlQGMbdeG5JiRIggIVp0Sz61rsIArVP6NAvkKxIO4PJgUBIbVtX5mNoRmVIU4yhaFtFHR6kMJIE/c5r0cyZPWDjNOO9gC7NO5DjMt1F068b5dBZXuyAjJBqr2jSMoUlhG9Wzct/IElEZft8I/4sO0R/VLcIggAxRd1fGhaQvEYgE+kd5Na7QXib2PKWckul9emyfSoT7y5gWPWSlOVyP3YdGH+d1qAsN2ZD2/FgdCwv/FLeBasdV1v13CuoGVQWEv4Ayit9c5B9E8ASdX66FJwQkyNiFD0jvFxATLmYQPaXxQ4aj9Rraf/O92tmgH+hn+kZLb0vjcXMUG+4mUMPRnFnQpnuitYudZNdUob/QTdUZqIQYl4wEEIoW8lV6pq3keRRus3F5AKh06b7JCLa1jeoRdj30YFAqoqOEFUd4Sk0tLTeZJBqUuYA7gwAbbw2bejH7uqen5urTiLNCyUc86gOpPH3/rqTz0NMj+4ipvQUv5zxnwUUCHm2uLPP796RyYIttEtci9WUM++V3HlwOlB9hfiH6h+jEbNXgetL9yMD/doEC5CjwRnybyCusKuQyBDS5LH0VQX8zW+gkXw==
+  template:
+    metadata:
+      creationTimestamp: null
+      name: regcred
+      namespace: smatflow-portal
+    type: kubernetes.io/dockerconfigjson
