@@ -9,6 +9,7 @@ Here are the tools you must have to get started (Test or Development).
 - Npm
 - PNPM (install with: `npm install -g pnpm`)
 - Make
+- Redis
 
 ## Description
 
