@@ -17,8 +17,6 @@ spec:
     push:
       branch: main
   interval: 30m0s
-  secretRef:
-    name: flux-system
   sourceRef:
     kind: GitRepository
     name: flux-system
