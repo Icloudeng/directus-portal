@@ -1,0 +1,47 @@
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImageRepository
+metadata:
+  name: smatflow-portal-web
+  namespace: flux-system
+spec:
+  image: registry-hub.smatflow.net/smatflow-projects/smatflow-portal/web
+  interval: 5m0s
+  secretRef:
+    name: regcred
+
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImageRepository
+metadata:
+  name: smatflow-portal-docs
+  namespace: flux-system
+spec:
+  image: registry-hub.smatflow.net/smatflow-projects/smatflow-portal/docs
+  interval: 5m0s
+  secretRef:
+    name: regcred
+
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImageRepository
+metadata:
+  name: smatflow-portal-cms
+  namespace: flux-system
+spec:
+  image: registry-hub.smatflow.net/smatflow-projects/smatflow-portal/cms
+  interval: 5m0s
+  secretRef:
+    name: regcred
+
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImageRepository
+metadata:
+  name: smatflow-portal-docsearch-scraper
+  namespace: flux-system
+spec:
+  image: registry-hub.smatflow.net/smatflow-projects/smatflow-portal/docsearch-scraper
+  interval: 5m0s
+  secretRef:
+    name: regcred

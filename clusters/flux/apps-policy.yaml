@@ -1,0 +1,51 @@
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImagePolicy
+metadata:
+  name: smatflow-portal-web
+  namespace: flux-system
+spec:
+  imageRepositoryRef:
+    name: smatflow-portal-web
+  policy:
+    semver:
+      range: v1.4.x
+
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImagePolicy
+metadata:
+  name: smatflow-portal-docs
+  namespace: flux-system
+spec:
+  imageRepositoryRef:
+    name: smatflow-portal-docs
+  policy:
+    semver:
+      range: v1.4.x
+
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImagePolicy
+metadata:
+  name: smatflow-portal-cms
+  namespace: flux-system
+spec:
+  imageRepositoryRef:
+    name: smatflow-portal-cms
+  policy:
+    semver:
+      range: v1.4.x
+
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImagePolicy
+metadata:
+  name: smatflow-portal-docsearch-scraper
+  namespace: flux-system
+spec:
+  imageRepositoryRef:
+    name: smatflow-portal-docsearch-scraper
+  policy:
+    semver:
+      range: v1.4.x
