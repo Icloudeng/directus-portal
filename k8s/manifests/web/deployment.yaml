@@ -16,8 +16,9 @@ spec:
       imagePullSecrets:
         - name: regcred
       containers:
-        - image: registry-hub.smatflow.net/smatflow-projects/smatflow-portal/web:latest
+        - image: registry-hub.smatflow.net/smatflow-projects/smatflow-portal/web:latest # {"$imagepolicy": "flux-system:smatflow-portal-web"}
           name: web-app
+          imagePullPolicy: IfNotPresent
           resources:
             limits:
               cpu: "200m"
