@@ -466,7 +466,7 @@ metadata:
   name: redis-replicas
   namespace: smatflow-portal
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app.kubernetes.io/component: replica
