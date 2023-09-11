@@ -11,7 +11,7 @@ spec:
         branch: main
     commit:
       author:
-        email: paradoxe.ngwasi@smatflow.com
+        email: fluxcdbot@users.noreply.smatflow.com
         name: fluxcdbot
       messageTemplate: "{{range .Updated.Images}}{{println .}}{{end}}"
     push:
