@@ -9,7 +9,7 @@ spec:
     name: smatflow-portal-web
   policy:
     semver:
-      range: v1.4.x
+      range: v1.x.x
 
 ---
 apiVersion: image.toolkit.fluxcd.io/v1beta2
@@ -22,7 +22,7 @@ spec:
     name: smatflow-portal-docs
   policy:
     semver:
-      range: v1.4.x
+      range: v1.x.x
 
 ---
 apiVersion: image.toolkit.fluxcd.io/v1beta2
@@ -35,7 +35,7 @@ spec:
     name: smatflow-portal-cms
   policy:
     semver:
-      range: v1.4.x
+      range: v1.x.x
 
 ---
 apiVersion: image.toolkit.fluxcd.io/v1beta2
@@ -48,4 +48,4 @@ spec:
     name: smatflow-portal-docsearch-scraper
   policy:
     semver:
-      range: v1.4.x
+      range: v1.x.x
