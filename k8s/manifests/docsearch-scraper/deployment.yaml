@@ -16,7 +16,7 @@ spec:
       imagePullSecrets:
         - name: regcred
       containers:
-        - image: registry-hub.smatflow.net/smatflow-projects/smatflow-portal/docsearch-scraper:v1.4.14 # {"$imagepolicy": "flux-system:smatflow-portal-docsearch-scraper"}
+        - image: registry-hub.smatflow.net/smatflow-projects/smatflow-portal/docsearch-scraper:v1.4.15 # {"$imagepolicy": "flux-system:smatflow-portal-docsearch-scraper"}
           name: docsearch-scraper
           imagePullPolicy: IfNotPresent
           resources:

@@ -16,7 +16,7 @@ spec:
       imagePullSecrets:
         - name: regcred
       containers:
-        - image: registry-hub.smatflow.net/smatflow-projects/smatflow-portal/web:v1.4.14 # {"$imagepolicy": "flux-system:smatflow-portal-web"}
+        - image: registry-hub.smatflow.net/smatflow-projects/smatflow-portal/web:v1.4.15 # {"$imagepolicy": "flux-system:smatflow-portal-web"}
           name: web-app
           imagePullPolicy: IfNotPresent
           resources:
