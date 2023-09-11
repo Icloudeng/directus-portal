@@ -11,7 +11,7 @@ spec:
     branch: main
   secretRef:
     name: flux-system
-  url: ssh://git@hub.smatflow.net/smatflow-projects/smatflow-portal
+  url: https://hub.smatflow.net/smatflow-projects/smatflow-portal.git
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
