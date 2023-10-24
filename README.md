@@ -1,4 +1,4 @@
-# Smatflow Portal
+# Site Portal
 
 ## Getting started
 
@@ -20,7 +20,7 @@ This is the Smatflow offical site repository.
 **Clone the repository:**
 
 ```
-git clone https://hub.smatflow.net/smatflow-projects/smatflow-portal.git
+git clone https://hub.site.net/smatflow-projects/smatflow-portal.git
 ```
 
 **Install packages**
