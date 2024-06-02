@@ -2,7 +2,7 @@
 # tasks file for ansible/roles/app
 - name: App Repository | Clone
   git:
-    repo: "{{ repo_url }}"
+    repo: "{{ repository_url }}"
     dest: "{{ root_path }}"
     force: yes
     version: "{{ app_git_version }}"

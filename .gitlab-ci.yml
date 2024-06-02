@@ -59,7 +59,7 @@ front-test:
   script:
     - |
       ansible-playbook --vault-password-file .vault_pass ansible/install.yml -u "$ANSIBLE_SERVER_USER" -i "$ANSIBLE_SERVER_HOST," --extra-vars '{
-        "repo_url": "$CI_REPOSITORY_URL",
+        "repository_url": "$CI_REPOSITORY_URL",
         "domain_var": "$SITE_DOMAIN",
         "cms_domain_var": "$CMS_DOMAIN"
       }'
