@@ -57,12 +57,7 @@ front-test:
     - ssh-add <(echo "$ANSIBLE_DEPLOY_KEY")
 
   script:
-    - |
-      ansible-playbook --vault-password-file .vault_pass ansible/install.yml -u "$ANSIBLE_SERVER_USER" -i "$ANSIBLE_SERVER_HOST," --extra-vars '{
-        "repository_url": "$CI_REPOSITORY_URL",
-        "domain_var": "$SITE_DOMAIN",
-        "cms_domain_var": "$CMS_DOMAIN"
-      }'
+    - ansible-playbook --vault-password-file .vault_pass ansible/install.yml -u "$ANSIBLE_SERVER_USER" -i "$ANSIBLE_SERVER_HOST," --extra-vars "repository_url=$CI_REPOSITORY_URL domain_var=$SITE_DOMAIN cms_domain_var=$CMS_DOMAIN"
 
 deploy-testing:
   extends: .deploy
