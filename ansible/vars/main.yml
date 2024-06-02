@@ -5,6 +5,9 @@ app_git_version: main
 docker_install: true
 letsencrypt: false
 
+# BUILDER
+pnpm_version: "9.1.4"
+
 # Domains
 company_domain: "{{ company_domain_var | default('smatflow.com') }}"
 domain: "{{ domain_var }}"

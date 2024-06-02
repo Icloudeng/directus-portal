@@ -28,7 +28,7 @@ front-test:
 
   script:
     # Install PNPM and project Node dependencies.
-    - npm install pnpm --location=global
+    - npm install pnpm@9.1.4 --location=global
     - pnpm --version
 
     - pnpm install
