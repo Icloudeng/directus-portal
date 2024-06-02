@@ -2,7 +2,7 @@
 # tasks file for ansible/roles/app
 - name: App Repository | Clone
   git:
-    repo: "{{ app_git_repo }}"
+    repo: "{{ repo_url }}"
     dest: "{{ root_path }}"
     force: yes
     version: "{{ app_git_version }}"
@@ -95,13 +95,9 @@
 
 ############################### DOCS #############################
 
-- name: DOCS | env mode var
-  set_fact:
-    docs_gen_env_var: "DOCS_GENERATOR_ENV__{{ inventory_hostname | upper }}"
-
 - name: DOCS | env mode
   set_fact:
-    docs_gen_env: "{{ lookup('env', docs_gen_env_var) }}"
+    docs_gen_env: "{{ lookup('env', 'DOCS_GENERATOR_ENV') }}"
 
 # Docs App PM2 Name fact (It should set before docs generator)
 - name: DOCS | PM2 Name

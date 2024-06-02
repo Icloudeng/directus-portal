@@ -1,8 +1,10 @@
 ---
 # https://docs.ansible.com/ansible/latest/collections/ansible/builtin/
 - name: Install all applications prerequisites
-  hosts: remote
+  hosts: all
   become: yes
+  vars_files:
+    - vars/main.yml
 
   pre_tasks:
     - name: "APT | Update & Upgrade"
