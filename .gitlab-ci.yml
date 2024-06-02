@@ -16,7 +16,7 @@ variables:
 ############## Front assets build test #####################
 
 front-test:
-  image: node:16.16
+  image: node:18
   stage: front-test
   cache:
     key: node_modules-cache
