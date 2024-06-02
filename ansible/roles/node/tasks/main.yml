@@ -23,6 +23,7 @@
 - name: NPM | Install PNPM
   npm:
     name: pnpm
+    version: "{{ pnpm_version }}"
     global: yes
     state: latest
 

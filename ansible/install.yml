@@ -1,10 +1,30 @@
 ---
 # https://docs.ansible.com/ansible/latest/collections/ansible/builtin/
 - name: Install all applications prerequisites
-  hosts: remote
+  hosts: all
   become: yes
+  vars:
+    required_vars:
+      - domain
+      - cms_domain
+      - repository_url
+      - company_domain
+
+  vars_files:
+    - vars/main.yml
 
   pre_tasks:
+    - name: Assert each variable in the list is defined and non-empty
+      assert:
+        that:
+          - item is defined
+          - item | length > 0
+        fail_msg: "The variable '{{ item }}' must be defined and non-empty"
+        success_msg: "'{{ item }}' is defined and non-empty"
+      loop: "{{ required_vars }}"
+      loop_control:
+        loop_var: item
+
     - name: "APT | Update & Upgrade"
       become: yes
       apt:
@@ -14,8 +34,6 @@
   environment:
     APP_ENV: "{{ app_env }}"
     APP_DEBUG: "{{ app_debug }}"
-
-  tasks:
 
   roles:
     - { role: tools, tags: tools }
