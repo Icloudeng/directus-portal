@@ -43,7 +43,7 @@ enable_cms_cors: false
 database: portal
 
 # Cms
-cms_ldap_authentication: false
+cms_ldap_authentication: "{{ cms_ldap_auth_var | default(false) }}"
 app_user_token: mdzjETutYM06z9ch56CmFkjIOWZCwraG
 ldap_client_url: ipa.smatflow.net
 
