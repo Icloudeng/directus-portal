@@ -113,12 +113,14 @@
   command: pnpm run clear # Build only docs app from workspace
   args:
     chdir: "{{ root_path }}/apps/docs"
+  when: has_docs_app
   ignore_errors: true
 
 - name: DOCS | Build docs app
   command: pnpm run build # Build only docs app from workspace
   args:
     chdir: "{{ root_path }}/apps/docs"
+  when: has_docs_app
   ignore_errors: true
 
 - name: Docs App | Delete old pm2 process
