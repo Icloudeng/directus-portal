@@ -7,6 +7,7 @@ import NextImage from '@/components/ui/NextImage';
 
 import { useSharedData } from '@/app/store';
 import { useMut } from '@/cms/mut';
+import clsxm from '@/lib/clsxm';
 
 type AccType =
   | ((element: HTMLElement | null) => void | Promise<void>)
@@ -35,35 +36,52 @@ export const HomeHeroSection = ({ data }: { data: MDHomePageHero }) => {
   const contentText = (
     <div className='hero-left flex flex-col sd:w-1/2 gap-7'>
       <div className='flex flex-col items-center sd:items-start gap-4 sm:gap-7'>
-        <h1 className='font-extrabold text-4xl sd:text-2xl sm:text-[2.2rem] md:text-[2.7rem] -mb-4 text-center sd:text-start md:leading-[3rem]'>
-          <span className='block'>{translations?.title}</span>
-          <TypeAnimation
-            key={shared.locale}
-            sequence={trailingTitles}
-            speed={40}
-            className='font-extrabold leading-[1.3] text-4xl sd:text-2xl sm:text-[2.2rem] md:text-[2.7rem] md:leading-[3rem]'
-            wrapper='span'
-            repeat={Infinity}
-            cursor={true}
-          />
+        <h1
+          className={clsxm(
+            'font-extrabold text-4xl sd:text-2xl sm:text-[2.2rem] md:text-[2.7rem] -mb-4 text-center sd:text-start md:leading-[3rem]',
+            !translations?.title && trailingTitles.length === 0 && 'hidden'
+          )}
+        >
+          {translations?.title && (
+            <span className='block'>{translations?.title}</span>
+          )}
+
+          {trailingTitles.length > 0 && (
+            <TypeAnimation
+              key={shared.locale}
+              sequence={trailingTitles}
+              speed={40}
+              className='font-extrabold leading-[1.3] text-4xl sd:text-2xl sm:text-[2.2rem] md:text-[2.7rem] md:leading-[3rem]'
+              wrapper='span'
+              repeat={Infinity}
+              cursor={true}
+            />
+          )}
         </h1>
       </div>
 
-      <span className='text-gray-300 text-center sd:text-start max-w-lg leading-[1.5] sm:text-[1rem] md:text-[20px] sd:w-[95%]'>
-        {translations?.description}
-      </span>
+      {translations?.description && (
+        <span className='text-gray-300 text-center sd:text-start max-w-lg leading-[1.5] sm:text-[1rem] md:text-[20px] sd:w-[95%]'>
+          {translations?.description}
+        </span>
+      )}
     </div>
   );
 
   const contentImage = (
     <>
       {images.length > 0 ? (
-        <div className='relative hero-right flex items-center justify-end h-80 max-w-xs sd:max-w-full w-full sd:w-1/2'>
+        <div
+          className={clsxm(
+            'relative hero-right flex items-center justify-end h-80 max-w-xs sd:max-w-full w-full sd:w-1/2',
+            disposition === 'text_left' ? 'justify-end' : 'justify-start'
+          )}
+        >
           <div className='overflow-hidden w-full h-full'>
             <div className='flex w-full h-full relative'>
               {images.map(({ directus_files_id: { id, src } }, index) => {
                 const len = images.length - 1;
-                const actived =
+                const activated =
                   imageKey > len && imageKey > index
                     ? true
                     : imageKey === index;
@@ -71,9 +89,10 @@ export const HomeHeroSection = ({ data }: { data: MDHomePageHero }) => {
                 return (
                   <div
                     key={id}
-                    className={`absolute transition-opacity duration-300 inset-0 ${
-                      actived ? 'opacity-100' : 'opacity-0'
-                    }`}
+                    className={clsxm(
+                      'absolute transition-opacity duration-300 inset-0',
+                      activated ? 'opacity-100' : 'opacity-0'
+                    )}
                   >
                     {src && (
                       <Image
@@ -93,7 +112,12 @@ export const HomeHeroSection = ({ data }: { data: MDHomePageHero }) => {
       ) : (
         <>
           {image?.src && (
-            <div className='hero-right flex items-center justify-end max-w-xs sd:max-w-full sd:w-1/2'>
+            <div
+              className={clsxm(
+                'hero-right flex items-center  max-w-xs sd:max-w-full sd:w-1/2',
+                disposition === 'text_left' ? 'justify-end' : 'justify-start'
+              )}
+            >
               <NextImage
                 useSkeleton
                 src={image.src}
