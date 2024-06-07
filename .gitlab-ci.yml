@@ -4,7 +4,10 @@ default:
 
 stages:
   - front-test
-  - deploy-testing
+  - deploy-site-smatflow-org
+  - deploy-www-smatflow-org
+  - deploy-3d-smatflow-org
+  - deploy-www-civicflow-org
 
   # - release
   # - deploy-production
@@ -57,13 +60,34 @@ front-test:
     - ssh-add <(echo "$ANSIBLE_DEPLOY_KEY")
 
   script:
-    - export CMS_LDAP_ENABLED_VAR=$([ "$CMS_LDAP_ENABLED" = "true" ] && echo "true" || echo "false")
+    - export CMS_LDAP_ENABLED_VAR=$([ "$CMS_LDAP_ENABLED" = "true" ] && echo true || echo false)
     - export EXTRA_VARS="repository_url=$CI_REPOSITORY_URL domain_var=$SITE_DOMAIN cms_domain_var=$CMS_DOMAIN cms_ldap_auth_var=$CMS_LDAP_ENABLED_VAR"
     - ansible-playbook --vault-password-file .vault_pass ansible/install.yml -u "$ANSIBLE_SERVER_USER" -i "$ANSIBLE_SERVER_HOST," --extra-vars "$EXTRA_VARS"
 
-deploy-testing:
+deploy-site-smatflow-org:
   extends: .deploy
-  stage: deploy-testing
+  stage: deploy-site-smatflow-org
   environment:
-    name: testing
+    name: site-smatflow-org
+  when: manual
+
+deploy-www-smatflow-org:
+  extends: .deploy
+  stage: deploy-www-smatflow-org
+  environment:
+    name: www-smatflow-org
+  when: manual
+
+deploy-3d-smatflow-org:
+  extends: .deploy
+  stage: deploy-3d-smatflow-org
+  environment:
+    name: 3d-smatflow-org
+  when: manual
+
+deploy-www-civicflow-org:
+  extends: .deploy
+  stage: deploy-www-civicflow-org
+  environment:
+    name: www-civicflow-org
   when: manual
