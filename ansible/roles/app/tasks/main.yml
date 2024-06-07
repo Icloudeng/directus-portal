@@ -39,7 +39,7 @@
     chdir: "{{ root_path }}/apps/web"
 
 - name: Project Build | Build all app packages
-  command: pnpm run build
+  command: pnpm run build --filter=!docs
   args:
     chdir: "{{ root_path }}"
 

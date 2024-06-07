@@ -113,35 +113,35 @@
     path: "{{ env_file }}"
     regexp: "^AUTH_PROVIDERS="
     line: "AUTH_PROVIDERS=ldap"
-  when: cms_ldap_authentication
+  when: cms_ldap_authentication == true
 
 - name: App CMS .env config | Disable LDAP AUTH_PROVIDERS
   lineinfile:
     path: "{{ env_file }}"
     regexp: "^AUTH_PROVIDERS="
     line: 'AUTH_PROVIDERS=""'
-  when: not cms_ldap_authentication
+  when: cms_ldap_authentication == false
 
 - name: App CMS .env config | AUTH_LDAP_BIND_PASSWORD
   lineinfile:
     path: "{{ env_file }}"
     regexp: "^AUTH_LDAP_BIND_PASSWORD="
     line: "AUTH_LDAP_BIND_PASSWORD={{ ldap_user_bind_password }}"
-  when: cms_ldap_authentication
+  when: cms_ldap_authentication == true
 
 - name: App CMS .env config | AUTH_LDAP_CLIENT_URL
   lineinfile:
     path: "{{ env_file }}"
     regexp: "^AUTH_LDAP_CLIENT_URL="
     line: 'AUTH_LDAP_CLIENT_URL="ldap://{{ ldap_client_url }}"'
-  when: cms_ldap_authentication
+  when: cms_ldap_authentication == true
 
 - name: "App CMS .env config | AUTH_LDAP_DEFAULT_ROLE_ID"
   lineinfile:
     path: "{{ env_file }}"
     regexp: "{{ lr }}AUTH_LDAP_DEFAULT_ROLE_ID="
     line: AUTH_LDAP_DEFAULT_ROLE_ID="{{ lookup('env', 'AUTH_LDAP_DEFAULT_ROLE_ID') }}"
-  when: cms_ldap_authentication and lookup('env', 'AUTH_LDAP_DEFAULT_ROLE_ID')
+  when: cms_ldap_authentication == true and lookup('env', 'AUTH_LDAP_DEFAULT_ROLE_ID')
 
 # ----------------------- EMAIL configs --------------------------------------
 
