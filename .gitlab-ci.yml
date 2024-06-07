@@ -55,7 +55,7 @@ front-test:
     - ssh-add <(echo "$ANSIBLE_DEPLOY_KEY")
 
   script:
-    - export CMS_LDAP_ENABLED_VAR=$([ "$CMS_LDAP_ENABLED" = "true" ] && echo true || echo false)
+    - export CMS_LDAP_ENABLED_VAR=$([ "$CMS_LDAP_ENABLED" = "true" ] && echo "true" || echo "false")
     - export EXTRA_VARS="repository_url=$CI_REPOSITORY_URL domain_var=$SITE_DOMAIN cms_domain_var=$CMS_DOMAIN cms_ldap_auth_var=$CMS_LDAP_ENABLED_VAR"
     - ansible-playbook --vault-password-file .vault_pass ansible/install.yml -u "$ANSIBLE_SERVER_USER" -i "$ANSIBLE_SERVER_HOST," --extra-vars "$EXTRA_VARS"
 
