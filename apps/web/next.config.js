@@ -47,7 +47,6 @@ module.exports = {
   },
 
   experimental: {
-    appDir: false,
     esmExternals: 'loose',
   },
   // SVGR
