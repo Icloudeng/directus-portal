@@ -58,7 +58,7 @@ export async function getGqlHomeQueries() {
 
   if (HomeHero) {
     qWithAsset(access_token, HomeHero, 'image');
-    HomeHero.images.forEach((image) =>
+    (HomeHero.images || []).forEach((image) =>
       qWithAsset(access_token, image, 'directus_files_id')
     );
   }

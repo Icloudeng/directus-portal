@@ -33,7 +33,7 @@ generate-ssh-key:
 # ============================
 .PHONY: dev
 dev:
-	@pnpm run dev
+	pnpm dev --filter=web --filter=cms --filter=@apps/contracts
 
 # ============================
 # Deployment

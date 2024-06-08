@@ -52,7 +52,7 @@ export async function pageSectionsAdapters<T extends ParamPageSectionReusable>(
 function pageSectionExtractReusableM2A(
   data: ParamPageSectionReusable
 ): ParamPageSection {
-  const sections = data.sections.filter(
+  const sections = (data.sections || []).filter(
     (m2a) => m2a.item.status === 'published'
   );
 
@@ -153,7 +153,7 @@ function pageSectionsWithAssets(
 }
 
 function pageSectionPublished(data: ParamPageSection) {
-  data.sections = data.sections.filter(({ item }) => {
+  data.sections = (data.sections || []).filter(({ item }) => {
     const reusable = item.reusable !== undefined;
     if (reusable && item.status !== 'draft') {
       return true;

@@ -1,10 +1,13 @@
 import {
   CMS_MODELS,
   MDChatwoot,
+  MDFooterLayout,
   MDKroki,
-  MDLayout,
   MDMatomo,
   MDNavbarButton,
+  MDNavbarLayout,
+  MDSiteLayout,
+  MDTopbarLayout,
 } from '@apps/contracts';
 import {
   MDCompanyDetail,
@@ -28,24 +31,11 @@ import {
 
 const gql_query = jsonToGraphQLQuery({
   query: {
-    [CMS_MODELS.layout]: {
+    [CMS_MODELS.site_layout]: {
       ...qWithStatus,
       id: false, // single object|collection
       status: false,
       site_background_color: true,
-      show_topbar: true,
-      show_footer_contacts: true,
-      show_footer_links: true,
-      show_footer_mailing_subscription: true,
-      bottom_footer: true,
-      show_top_footer: true,
-      footer_type: true,
-      navbar_logo_width: true,
-      navbar_logo_height: true,
-      ...qWithTranslations({
-        titles: true,
-        buttons: true,
-      }),
     },
     [CMS_MODELS.languages]: {
       code: true,
@@ -62,6 +52,12 @@ const gql_query = jsonToGraphQLQuery({
       ...qWithTranslations({
         name: true,
       }),
+    },
+    [CMS_MODELS.topbar_layout]: {
+      ...qWithStatus,
+      id: false, // single object|collection
+      status: false,
+      show_topbar: true,
     },
     [CMS_MODELS.news]: {
       __args: qWithPublishedStatus({
@@ -91,6 +87,21 @@ const gql_query = jsonToGraphQLQuery({
           name: true,
         }),
       },
+    },
+    [CMS_MODELS.footer_layout]: {
+      ...qWithStatus,
+      id: false, // single object|collection
+      status: false,
+      show_footer_contacts: true,
+      show_footer_links: true,
+      show_footer_mailing_subscription: true,
+      bottom_footer: true,
+      show_top_footer: true,
+      footer_type: true,
+      ...qWithTranslations({
+        titles: true,
+        buttons: true,
+      }),
     },
     [CMS_MODELS.company_details]: {
       ...qWithStatus,
@@ -168,6 +179,13 @@ const gql_query = jsonToGraphQLQuery({
       }),
       ...qWithStatus,
     },
+    [CMS_MODELS.navbar_layout]: {
+      ...qWithStatus,
+      id: false, // single object|collection
+      status: false,
+      navbar_logo_width: true,
+      navbar_logo_height: true,
+    },
     [CMS_MODELS.matomo]: {
       ...qWithStatus,
       id: false, // single object|collection
@@ -192,13 +210,16 @@ const gql_query = jsonToGraphQLQuery({
 export type QShareDataType = {
   [CMS_MODELS.languages]: MDLanguage[];
   [CMS_MODELS.topbar_links]: MDTopbarLink[];
-  [CMS_MODELS.navbar_buttons]: MDNavbarButton[];
+  [CMS_MODELS.topbar_layout]?: MDTopbarLayout;
   [CMS_MODELS.news]: MDTopbarNew[];
   [CMS_MODELS.footer_links]: MDFooterLink[];
+  [CMS_MODELS.footer_layout]?: MDFooterLayout;
+  [CMS_MODELS.navbar_buttons]: MDNavbarButton[];
   [CMS_MODELS.navbar_links]: MDNavbarLink[];
+  [CMS_MODELS.navbar_layout]?: MDNavbarLayout;
   [CMS_MODELS.company_details]?: MDCompanyDetail;
   [CMS_MODELS.matomo]?: MDMatomo;
-  [CMS_MODELS.layout]?: MDLayout;
+  [CMS_MODELS.site_layout]?: MDSiteLayout;
   [CMS_MODELS.chatwoot]?: MDChatwoot;
   [CMS_MODELS.kroki]?: MDKroki;
 };

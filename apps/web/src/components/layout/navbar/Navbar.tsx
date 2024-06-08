@@ -20,7 +20,8 @@ import { Submenu } from './components/SubMenu';
 import Logo from '~/images/logo.png';
 
 export const Navbar = ({ whiteNav }: { whiteNav?: boolean }) => {
-  const { CompanyDetails, NavbarButtons, locale, Layout } = useSharedData();
+  const { CompanyDetails, NavbarButtons, locale, NavbarLayout } =
+    useSharedData();
   const pagePosition = useScrollPosition();
   const onMouseClick = () => {
     const sidebarEl = document.querySelector('#mob--menu-El');
@@ -46,8 +47,8 @@ export const Navbar = ({ whiteNav }: { whiteNav?: boolean }) => {
             <NextImage
               useSkeleton
               src={CompanyDetails?.logo?.src || Logo.src}
-              width={Layout?.navbar_logo_width || 60}
-              height={Layout?.navbar_logo_height || 60}
+              width={NavbarLayout?.navbar_logo_width || 60}
+              height={NavbarLayout?.navbar_logo_height || 60}
               alt={CompanyDetails?.company_name || COMPANY_NAME || 'Smatflow'}
             />
           </UnstyledLink>

@@ -20,17 +20,26 @@ export type FooterBottom =
   | "use_cookies"
   | "payment_modes";
 
-export type MDLayout = {
+export type MDSiteLayout = {
   site_background_color: string;
+} & Omit<DRTStatus, "status">;
+
+export type MDTopbarLayout = {
   show_topbar: boolean;
+} & Omit<DRTStatus, "status">;
+
+export type MDNavbarLayout = {
+  navbar_logo_width: number;
+  navbar_logo_height: number;
+} & Omit<DRTStatus, "status">;
+
+export type MDFooterLayout = {
   show_footer_contacts: boolean;
   show_footer_links: boolean;
   show_footer_mailing_subscription: boolean;
   show_top_footer: boolean;
   footer_type: "full_footer" | "simple_footer";
   bottom_footer: FooterBottom[];
-  navbar_logo_width: number;
-  navbar_logo_height: number;
 } & MDWithTranslation<{
   titles: { title: string; color: string }[];
   buttons: (Omit<RepeaterBtn, "variant"> & {

@@ -17,9 +17,10 @@ import { socialIcons } from './components/ContactSection';
 import { SocialMedia } from './components/SocialMedia';
 
 export const FooterSimple = () => {
-  const { FooterLinks, Layout, locale, CompanyDetails } = useSharedData();
+  const { FooterLinks, FooterLayout, SiteLayout, locale, CompanyDetails } =
+    useSharedData();
   const socials = CompanyDetails?.socials || [];
-  const bottom_footer = Layout?.bottom_footer || [];
+  const bottom_footer = FooterLayout?.bottom_footer || [];
 
   const itemValues = [
     'company_name',
@@ -39,10 +40,12 @@ export const FooterSimple = () => {
   return (
     <footer
       className='sm:px-10 py-10 text-gray-300 z-0'
-      style={{ backgroundColor: Layout?.site_background_color || '#313B4D' }}
+      style={{
+        backgroundColor: SiteLayout?.site_background_color || '#313B4D',
+      }}
     >
       <div className='x-container-fluid flex flex-col gap-5 divide-y-2 divide-gray-800'>
-        {Layout?.show_footer_links !== false && (
+        {FooterLayout?.show_footer_links !== false && (
           <div className='container py-10 mx-auto'>
             <div className='flex flex-wrap justify-between md:text-left text-center -mb-10 -mx-4'>
               {FooterLinks.map((link) => {
@@ -77,11 +80,11 @@ export const FooterSimple = () => {
 
         <div className='border-t border-gray-200'>
           <div className='container py-8 flex flex-col-reverse lg:flex-row mx-auto items-center'>
-            {Layout?.show_footer_mailing_subscription !== false && (
+            {FooterLayout?.show_footer_mailing_subscription === true && (
               <Subscription />
             )}
 
-            {Layout?.show_footer_contacts !== false && (
+            {FooterLayout?.show_footer_contacts === true && (
               <span className='inline-flex lg:ml-auto lg:mb-0 mb-6 w-full justify-center md:justify-start md:w-auto'>
                 {socials.map(({ link, icon, id, social_name }) => (
                   <SocialMedia

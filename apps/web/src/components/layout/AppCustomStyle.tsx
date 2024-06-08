@@ -1,13 +1,13 @@
 import { useSharedData } from '@/app/store';
 
 export function AppCustomStyle() {
-  const { Layout } = useSharedData();
+  const { SiteLayout } = useSharedData();
   return (
     <>
-      {Layout?.site_background_color && (
+      {SiteLayout?.site_background_color && (
         <style jsx global>{`
           .prose {
-            --tw-prose-pre-bg: ${Layout?.site_background_color};
+            --tw-prose-pre-bg: ${SiteLayout?.site_background_color};
           }
         `}</style>
       )}
