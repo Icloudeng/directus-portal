@@ -1,13 +1,13 @@
 import {
   CMS_MODELS,
   MDChatwoot,
+  MDFooterLayout,
   MDKroki,
-  MDSiteLayout,
   MDMatomo,
   MDNavbarButton,
-  MDTopbarLayout,
   MDNavbarLayout,
-  MDFooterLayout,
+  MDSiteLayout,
+  MDTopbarLayout,
 } from '@apps/contracts';
 import {
   MDCompanyDetail,

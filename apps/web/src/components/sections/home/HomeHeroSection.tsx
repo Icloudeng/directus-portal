@@ -3,11 +3,12 @@ import Image from 'next/legacy/image';
 import { useCallback, useMemo, useState } from 'react';
 import { TypeAnimation } from 'react-type-animation';
 
+import clsxm from '@/lib/clsxm';
+
 import NextImage from '@/components/ui/NextImage';
 
 import { useSharedData } from '@/app/store';
 import { useMut } from '@/cms/mut';
-import clsxm from '@/lib/clsxm';
 
 type AccType =
   | ((element: HTMLElement | null) => void | Promise<void>)
