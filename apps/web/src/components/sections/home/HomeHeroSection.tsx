@@ -38,11 +38,11 @@ export const HomeHeroSection = ({ data }: { data: MDHomePageHero }) => {
   }, [trailing_titles, onTypingProgress]);
 
   const contentText = (
-    <div className='hero-left flex flex-col sd:w-1/2 gap-7'>
-      <div className='flex flex-col items-center sd:items-start gap-4 sm:gap-7'>
+    <div className='hero-left sd:w-1/2'>
+      <div className='flex flex-col items-center sd:items-start gap-4 sm:gap-7 mb-6'>
         <h1
           className={clsxm(
-            'font-extrabold text-4xl sd:text-2xl sm:text-[2.2rem] md:text-[2.7rem] -mb-4 text-center sd:text-start md:leading-[3rem]',
+            'font-extrabold text-4xl sd:text-2xl sm:text-[2.3rem] -mb-4 text-center sd:text-start md:leading-[3rem]',
             !translations?.title && trailingTitles.length === 0 && 'hidden'
           )}
         >
@@ -71,7 +71,7 @@ export const HomeHeroSection = ({ data }: { data: MDHomePageHero }) => {
       )}
 
       {buttons.length > 0 && (
-        <div className='mt-9 flex flex-wrap justify-center gap-3'>
+        <div className='flex flex-wrap gap-3 mt-6'>
           {buttons.map((btn, i) => {
             return (
               <div key={i}>
