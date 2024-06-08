@@ -31,6 +31,7 @@ export type MDTopbarLayout = {
 export type MDNavbarLayout = {
   navbar_logo_width: number;
   navbar_logo_height: number;
+  navbar_logo_rounded: boolean;
 } & Omit<DRTStatus, "status">;
 
 export type MDFooterLayout = {
@@ -240,6 +241,7 @@ export type MDHomePageHero = {
   description: string;
   trailing_titles: string[];
   page_title: string;
+  buttons?: RepeaterBtn[];
 }> &
   Omit<DRTStatus, "id">;
 

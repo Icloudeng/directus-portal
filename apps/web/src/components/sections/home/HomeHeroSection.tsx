@@ -9,6 +9,7 @@ import NextImage from '@/components/ui/NextImage';
 
 import { useSharedData } from '@/app/store';
 import { useMut } from '@/cms/mut';
+import ButtonLink from '@/components/ui/links/ButtonLink';
 
 type AccType =
   | ((element: HTMLElement | null) => void | Promise<void>)
@@ -18,6 +19,8 @@ type AccType =
 export const HomeHeroSection = ({ data }: { data: MDHomePageHero }) => {
   const shared = useSharedData();
   const { translations, image, images, disposition } = useMut(data);
+
+  const buttons = translations?.buttons || [];
 
   const trailing_titles = translations?.trailing_titles;
   const [imageKey, setImageKey] = useState(0);
@@ -65,6 +68,25 @@ export const HomeHeroSection = ({ data }: { data: MDHomePageHero }) => {
         <span className='text-gray-300 text-center sd:text-start max-w-lg leading-[1.5] sm:text-[1rem] md:text-[20px] sd:w-[95%]'>
           {translations?.description}
         </span>
+      )}
+
+      {buttons.length > 0 && (
+        <div className='mt-9 flex flex-wrap justify-center gap-3'>
+          {buttons.map((btn, i) => {
+            return (
+              <div key={i}>
+                <ButtonLink
+                  href={btn.url}
+                  className='px-7 py-3'
+                  variant={btn.variant}
+                  target={btn.external ? '_blank' : undefined}
+                >
+                  {btn.name}
+                </ButtonLink>
+              </div>
+            );
+          })}
+        </div>
       )}
     </div>
   );

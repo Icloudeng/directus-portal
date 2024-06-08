@@ -14035,7 +14035,7 @@ fields:
             value: text_right
       readonly: false
       required: true
-      sort: 5
+      sort: 6
       special: null
       translations: null
       validation: null
@@ -14451,7 +14451,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: 6
+      sort: 7
       special: null
       translations: null
       validation: null
@@ -14473,6 +14473,99 @@ fields:
       has_auto_increment: false
       foreign_key_table: HomeHero
       foreign_key_column: id
+  - collection: HomeHero_translations
+    field: buttons
+    type: json
+    meta:
+      collection: HomeHero_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: buttons
+      group: null
+      hidden: false
+      interface: list
+      note: null
+      options:
+        fields:
+          - field: name
+            name: name
+            type: string
+            meta:
+              field: name
+              width: full
+              type: string
+              interface: input
+              options:
+                placeholder: Button Name
+                trim: true
+                softLength: 100
+          - field: url
+            name: url
+            type: string
+            meta:
+              field: url
+              width: half
+              type: string
+              interface: input
+              options:
+                placeholder: URL
+                trim: true
+          - field: external
+            name: external
+            type: boolean
+            meta:
+              field: external
+              width: half
+              type: boolean
+              interface: boolean
+          - field: variant
+            name: variant
+            type: string
+            meta:
+              field: variant
+              width: full
+              type: string
+              interface: select-dropdown
+              note: Button Variant
+              options:
+                choices:
+                  - text: Primary
+                    value: primary
+                  - text: Outline
+                    value: outline
+                  - text: Ghost
+                    value: ghost
+                  - text: Light
+                    value: light
+                  - text: Dark
+                    value: dark
+                allowNone: true
+      readonly: false
+      required: false
+      sort: 6
+      special:
+        - cast-json
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: buttons
+      table: HomeHero_translations
+      data_type: json
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
   - collection: HomeHero_translations
     field: description
     type: text
@@ -14568,7 +14661,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: 7
+      sort: 8
       special: null
       translations: null
       validation: null
@@ -14684,7 +14777,7 @@ fields:
       note: null
       options: null
       readonly: false
-      required: true
+      required: false
       sort: 5
       special:
         - cast-json
@@ -17436,6 +17529,45 @@ fields:
       max_length: null
       numeric_precision: 32
       numeric_scale: 0
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: NavbarLayout
+    field: navbar_logo_rounded
+    type: boolean
+    meta:
+      collection: NavbarLayout
+      conditions: null
+      display: null
+      display_options: null
+      field: navbar_logo_rounded
+      group: Logo
+      hidden: false
+      interface: boolean
+      note: null
+      options: null
+      readonly: false
+      required: true
+      sort: 3
+      special:
+        - cast-boolean
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: navbar_logo_rounded
+      table: NavbarLayout
+      data_type: boolean
+      default_value: false
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
       is_nullable: true
       is_unique: false
       is_primary_key: false

@@ -46,6 +46,9 @@ export const Navbar = ({ whiteNav }: { whiteNav?: boolean }) => {
           <UnstyledLink href='/'>
             <NextImage
               useSkeleton
+              imgClassName={
+                NavbarLayout?.navbar_logo_rounded ? 'rounded-full' : undefined
+              }
               src={CompanyDetails?.logo?.src || Logo.src}
               width={NavbarLayout?.navbar_logo_width || 60}
               height={NavbarLayout?.navbar_logo_height || 60}

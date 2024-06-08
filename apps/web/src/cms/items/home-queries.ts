@@ -30,6 +30,7 @@ const gql_query = jsonToGraphQLQuery({
         description: true,
         trailing_titles: true,
         page_title: true,
+        buttons: true,
       }),
     },
     [CMS_MODELS.home_sections]: {
