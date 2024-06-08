@@ -233,7 +233,7 @@ export type MDPage<PS = false> = {
 
 // ---------------- Home Page, Hero section -------------------------
 export type MDHomePageHero = {
-  image: MDWithAsset;
+  image?: MDWithAsset;
   images: { id: ID; directus_files_id: MDWithAsset }[];
   disposition: "text_left" | "text_right";
 } & MDWithTranslation<{
