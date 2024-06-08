@@ -38,7 +38,7 @@ dev:
 
 .PHONY: dev-web
 dev-web:
-	pnpm dev --filter=web --filter=cms
+	pnpm dev --filter=web --filter=cms --filter=@apps/contracts
 
 # ============================
 # Deployment

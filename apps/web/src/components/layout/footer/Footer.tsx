@@ -13,32 +13,34 @@ import { Subscribe } from './components/Subscribe';
 import { TermsConditions } from './components/TermsConditions';
 
 export const Footer = () => {
-  const { FooterLinks, Layout } = useSharedData();
+  const { FooterLinks, FooterLayout, SiteLayout } = useSharedData();
   const footer_links = useMut(FooterLinks);
 
   const showSection =
-    Layout?.show_footer_contacts !== false ||
-    Layout.show_footer_links !== false;
+    FooterLayout?.show_footer_contacts !== false ||
+    FooterLayout.show_footer_links !== false;
 
   const hasFooterLinks =
-    Layout?.show_footer_contacts === false &&
-    Layout.show_footer_links !== false;
+    FooterLayout?.show_footer_contacts === false &&
+    FooterLayout.show_footer_links !== false;
 
-  const bottom_footer = Layout?.bottom_footer || [];
+  const bottom_footer = FooterLayout?.bottom_footer || [];
 
   return (
     <footer
       className='sm:px-10 py-10 text-gray-300 z-0'
-      style={{ backgroundColor: Layout?.site_background_color || '#313B4D' }}
+      style={{
+        backgroundColor: SiteLayout?.site_background_color || '#313B4D',
+      }}
     >
       <div className='x-container-fluid flex flex-col gap-5 divide-y-2 divide-gray-800'>
-        {Layout?.show_top_footer !== false && <FooterTopSection />}
+        {FooterLayout?.show_top_footer === true && <FooterTopSection />}
 
         {showSection && (
           <div className='middle-footer flex items-start py-10 divide-x-[1px] divide-gray-300 text-xs xs:text-sm'>
-            {Layout?.show_footer_contacts !== false && <ContactSection />}
+            {FooterLayout?.show_footer_contacts === true && <ContactSection />}
 
-            {Layout?.show_footer_links !== false && (
+            {FooterLayout?.show_footer_links !== false && (
               <div
                 className={clsxm(
                   'middle-left grid grid-cols-1 ss:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:flex items-start',
@@ -57,7 +59,9 @@ export const Footer = () => {
             )}
           </div>
         )}
-        {Layout?.show_footer_mailing_subscription !== false && <Subscribe />}
+        {FooterLayout?.show_footer_mailing_subscription === true && (
+          <Subscribe />
+        )}
         {bottom_footer.length > 0 && <TermsConditions />}
       </div>
     </footer>
@@ -65,8 +69,8 @@ export const Footer = () => {
 };
 
 function FooterTopSection() {
-  const { Layout } = useSharedData();
-  const layout = useMut(Layout);
+  const { FooterLayout } = useSharedData();
+  const layout = useMut(FooterLayout);
   const translations = layout?.translations;
 
   const texts = translations?.titles || [];

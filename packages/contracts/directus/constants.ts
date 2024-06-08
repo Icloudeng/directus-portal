@@ -15,16 +15,19 @@ function modelsWithTranslation<T>(models: T): WithTranslation<T> {
 
 export const CMS_MODELS = {
   ...modelsWithTranslation({
-    layout: "Layout",
+    site_layout: "SiteLayout",
     languages: "languages",
     topbar_links: "TopbarLinks",
+    topbar_layout: "TopbarLayout",
     news: "News",
     blog: "Blog",
     footer_links: "FooterLinks",
     footer_link_items: "FooterLinkItems",
+    footer_layout: "FooterLayout",
     company_details: "CompanyDetails",
     navbar_links: "NavbarLinks",
     navbar_buttons: "NavbarButtons",
+    navbar_layout: "NavbarLayout",
     pages: "Pages",
     home_hero: "HomeHero",
     home_sections: "HomeSections",

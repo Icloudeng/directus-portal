@@ -9,8 +9,8 @@ import { Navbar } from './navbar/Navbar';
 import { TopBar } from './topBar/TopBar';
 
 export default function Header({ whiteNav }: { whiteNav?: boolean }) {
-  const { Layout } = useSharedData();
-  const hasTopbar = Layout?.show_topbar !== false;
+  const { TopbarLayout } = useSharedData();
+  const hasTopbar = TopbarLayout?.show_topbar !== false;
 
   const [hasTop, setHasTop] = useState(true);
   const lastScrollY = useRef(0);

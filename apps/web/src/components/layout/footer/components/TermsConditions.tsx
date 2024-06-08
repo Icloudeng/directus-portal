@@ -9,8 +9,8 @@ import { useSharedData } from '@/app/store';
 
 export const TermsConditions = () => {
   const { t } = useTranslation();
-  const { CompanyDetails, Layout } = useSharedData();
-  const bottom_footer = Layout?.bottom_footer || [];
+  const { CompanyDetails, FooterLayout } = useSharedData();
+  const bottom_footer = FooterLayout?.bottom_footer || [];
 
   const itemValues = [
     'company_name',
