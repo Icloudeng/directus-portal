@@ -8,7 +8,7 @@
     "directus": "directus",
     "create-app-user": "node ./create-app-user.js",
     "setup": "directus bootstrap && directus schema apply --yes snapshot.yaml",
-    "snapshot": "directus schema snapshot ./snapshot.yaml",
+    "snapshot": "directus schema snapshot --yes ./snapshot.yaml",
     "bootstrap": "directus bootstrap",
     "apply": "directus schema apply --yes snapshot.yaml",
     "test": "echo \"Error: no test specified\" && exit 1"

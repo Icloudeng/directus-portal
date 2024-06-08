@@ -18,7 +18,7 @@ collections:
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: 5
+      sort: 6
       sort_field: sort
       translations: null
       unarchive_value: draft
@@ -150,7 +150,7 @@ collections:
       item_duplication_fields: null
       note: null
       singleton: true
-      sort: 3
+      sort: 4
       sort_field: null
       translations: null
       unarchive_value: draft
@@ -172,7 +172,7 @@ collections:
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: 7
+      sort: 8
       sort_field: null
       translations: null
       unarchive_value: null
@@ -504,6 +504,50 @@ collections:
       sort_field: null
       translations: null
       unarchive_value: null
+  - collection: FooterLayout
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: FooterLayout
+      color: null
+      display_template: null
+      group: Footer
+      hidden: false
+      icon: null
+      item_duplication_fields: null
+      note: null
+      singleton: true
+      sort: 5
+      sort_field: null
+      translations: null
+      unarchive_value: null
+    schema:
+      name: FooterLayout
+  - collection: FooterLayout_translations
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: FooterLayout_translations
+      color: null
+      display_template: null
+      group: Footer
+      hidden: true
+      icon: import_export
+      item_duplication_fields: null
+      note: null
+      singleton: false
+      sort: 6
+      sort_field: null
+      translations: null
+      unarchive_value: null
+    schema:
+      name: FooterLayout_translations
   - collection: FooterLinkItems
     meta:
       accountability: all
@@ -828,50 +872,6 @@ collections:
       unarchive_value: null
     schema:
       name: Kroki
-  - collection: Layout
-    meta:
-      accountability: all
-      archive_app_filter: true
-      archive_field: null
-      archive_value: null
-      collapse: open
-      collection: Layout
-      color: null
-      display_template: null
-      group: Settings
-      hidden: false
-      icon: null
-      item_duplication_fields: null
-      note: null
-      singleton: true
-      sort: 1
-      sort_field: null
-      translations: null
-      unarchive_value: null
-    schema:
-      name: Layout
-  - collection: Layout_translations
-    meta:
-      accountability: all
-      archive_app_filter: true
-      archive_field: null
-      archive_value: null
-      collapse: open
-      collection: Layout_translations
-      color: null
-      display_template: null
-      group: Settings
-      hidden: true
-      icon: import_export
-      item_duplication_fields: null
-      note: null
-      singleton: false
-      sort: 2
-      sort_field: null
-      translations: null
-      unarchive_value: null
-    schema:
-      name: Layout_translations
   - collection: Listmonk
     meta:
       accountability: all
@@ -1002,6 +1002,28 @@ collections:
       unarchive_value: null
     schema:
       name: NavbarButtons_translations
+  - collection: NavbarLayout
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: NavbarLayout
+      color: null
+      display_template: null
+      group: Navbar
+      hidden: false
+      icon: null
+      item_duplication_fields: null
+      note: null
+      singleton: true
+      sort: 9
+      sort_field: null
+      translations: null
+      unarchive_value: null
+    schema:
+      name: NavbarLayout
   - collection: NavbarLinkSubmenuItems
     meta:
       accountability: all
@@ -1194,7 +1216,7 @@ collections:
       item_duplication_fields: null
       note: null
       singleton: true
-      sort: 4
+      sort: 5
       sort_field: null
       translations: null
       unarchive_value: null
@@ -2904,6 +2926,28 @@ collections:
       sort_field: null
       translations: null
       unarchive_value: null
+  - collection: SiteLayout
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: SiteLayout
+      color: null
+      display_template: null
+      group: Settings
+      hidden: false
+      icon: null
+      item_duplication_fields: null
+      note: null
+      singleton: true
+      sort: 2
+      sort_field: null
+      translations: null
+      unarchive_value: null
+    schema:
+      name: SiteLayout
   - collection: Socials
     meta:
       accountability: all
@@ -2920,7 +2964,7 @@ collections:
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: 6
+      sort: 7
       sort_field: sort
       translations: null
       unarchive_value: draft
@@ -2946,6 +2990,28 @@ collections:
       sort_field: null
       translations: null
       unarchive_value: null
+  - collection: TopbarLayout
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: TopbarLayout
+      color: null
+      display_template: null
+      group: TopBar
+      hidden: false
+      icon: null
+      item_duplication_fields: null
+      note: null
+      singleton: true
+      sort: 3
+      sort_field: null
+      translations: null
+      unarchive_value: null
+    schema:
+      name: TopbarLayout
   - collection: TopbarLinks
     meta:
       accountability: all
@@ -3026,7 +3092,7 @@ collections:
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: 8
+      sort: 9
       sort_field: null
       translations: null
       unarchive_value: null
@@ -11000,6 +11066,807 @@ fields:
       has_auto_increment: false
       foreign_key_table: directus_users
       foreign_key_column: id
+  - collection: FooterLayout
+    field: Personalization
+    type: alias
+    meta:
+      collection: FooterLayout
+      conditions: null
+      display: null
+      display_options: null
+      field: Personalization
+      group: null
+      hidden: false
+      interface: group-detail
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 3
+      special:
+        - alias
+        - group
+        - no-data
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+  - collection: FooterLayout
+    field: TopFooter
+    type: alias
+    meta:
+      collection: FooterLayout
+      conditions: null
+      display: null
+      display_options: null
+      field: TopFooter
+      group: null
+      hidden: false
+      interface: group-detail
+      note: null
+      options:
+        start: closed
+      readonly: false
+      required: false
+      sort: 4
+      special:
+        - alias
+        - group
+        - no-data
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+  - collection: FooterLayout
+    field: bottom_footer
+    type: json
+    meta:
+      collection: FooterLayout
+      conditions: null
+      display: null
+      display_options: null
+      field: bottom_footer
+      group: Personalization
+      hidden: false
+      interface: select-multiple-dropdown
+      note: null
+      options:
+        allowNone: true
+        allowOther: true
+        choices:
+          - text: Company Name
+            value: company_name
+          - text: Terms of services
+            value: terms_services
+          - text: Privacy
+            value: privacy
+          - text: Use of Cookies
+            value: use_cookies
+          - text: Payment Modes
+            value: payment_modes
+      readonly: false
+      required: true
+      sort: 4
+      special:
+        - cast-json
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: bottom_footer
+      table: FooterLayout
+      data_type: json
+      default_value:
+        - company_name
+        - payment_modes
+        - privacy
+        - terms_services
+        - use_cookies
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: FooterLayout
+    field: date_created
+    type: timestamp
+    meta:
+      collection: FooterLayout
+      conditions: null
+      display: datetime
+      display_options:
+        relative: true
+      field: date_created
+      group: null
+      hidden: true
+      interface: datetime
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: 6
+      special:
+        - date-created
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: date_created
+      table: FooterLayout
+      data_type: timestamp with time zone
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: FooterLayout
+    field: date_updated
+    type: timestamp
+    meta:
+      collection: FooterLayout
+      conditions: null
+      display: datetime
+      display_options:
+        relative: true
+      field: date_updated
+      group: null
+      hidden: true
+      interface: datetime
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: 8
+      special:
+        - date-updated
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: date_updated
+      table: FooterLayout
+      data_type: timestamp with time zone
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: FooterLayout
+    field: footer_type
+    type: string
+    meta:
+      collection: FooterLayout
+      conditions: null
+      display: null
+      display_options: null
+      field: footer_type
+      group: null
+      hidden: false
+      interface: select-dropdown
+      note: null
+      options:
+        choices:
+          - text: Full Footer
+            value: full_footer
+          - text: Simple Footer
+            value: simple_footer
+      readonly: false
+      required: true
+      sort: 2
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: footer_type
+      table: FooterLayout
+      data_type: character varying
+      default_value: full_footer
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: FooterLayout
+    field: id
+    type: uuid
+    meta:
+      collection: FooterLayout
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: 1
+      special:
+        - uuid
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: id
+      table: FooterLayout
+      data_type: uuid
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: true
+      is_primary_key: true
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: FooterLayout
+    field: show_footer_contacts
+    type: boolean
+    meta:
+      collection: FooterLayout
+      conditions: null
+      display: null
+      display_options: null
+      field: show_footer_contacts
+      group: Personalization
+      hidden: false
+      interface: boolean
+      note: null
+      options: null
+      readonly: false
+      required: true
+      sort: 1
+      special:
+        - cast-boolean
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: show_footer_contacts
+      table: FooterLayout
+      data_type: boolean
+      default_value: true
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: FooterLayout
+    field: show_footer_links
+    type: boolean
+    meta:
+      collection: FooterLayout
+      conditions: null
+      display: null
+      display_options: null
+      field: show_footer_links
+      group: Personalization
+      hidden: false
+      interface: boolean
+      note: null
+      options: null
+      readonly: false
+      required: true
+      sort: 2
+      special:
+        - cast-boolean
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: show_footer_links
+      table: FooterLayout
+      data_type: boolean
+      default_value: true
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: FooterLayout
+    field: show_footer_mailing_subscription
+    type: boolean
+    meta:
+      collection: FooterLayout
+      conditions: null
+      display: null
+      display_options: null
+      field: show_footer_mailing_subscription
+      group: Personalization
+      hidden: false
+      interface: boolean
+      note: null
+      options: null
+      readonly: false
+      required: true
+      sort: 3
+      special:
+        - cast-boolean
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: show_footer_mailing_subscription
+      table: FooterLayout
+      data_type: boolean
+      default_value: true
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: FooterLayout
+    field: show_top_footer
+    type: boolean
+    meta:
+      collection: FooterLayout
+      conditions: null
+      display: null
+      display_options: null
+      field: show_top_footer
+      group: TopFooter
+      hidden: false
+      interface: boolean
+      note: null
+      options: null
+      readonly: false
+      required: true
+      sort: 1
+      special:
+        - cast-boolean
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: show_top_footer
+      table: FooterLayout
+      data_type: boolean
+      default_value: false
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: FooterLayout
+    field: translations
+    type: alias
+    meta:
+      collection: FooterLayout
+      conditions: null
+      display: null
+      display_options: null
+      field: translations
+      group: TopFooter
+      hidden: false
+      interface: translations
+      note: null
+      options:
+        languageField: code
+      readonly: false
+      required: false
+      sort: 2
+      special:
+        - translations
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+  - collection: FooterLayout
+    field: user_created
+    type: uuid
+    meta:
+      collection: FooterLayout
+      conditions: null
+      display: user
+      display_options: null
+      field: user_created
+      group: null
+      hidden: true
+      interface: select-dropdown-m2o
+      note: null
+      options:
+        template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
+      readonly: true
+      required: false
+      sort: 5
+      special:
+        - user-created
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: user_created
+      table: FooterLayout
+      data_type: uuid
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: directus_users
+      foreign_key_column: id
+  - collection: FooterLayout
+    field: user_updated
+    type: uuid
+    meta:
+      collection: FooterLayout
+      conditions: null
+      display: user
+      display_options: null
+      field: user_updated
+      group: null
+      hidden: true
+      interface: select-dropdown-m2o
+      note: null
+      options:
+        template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
+      readonly: true
+      required: false
+      sort: 7
+      special:
+        - user-updated
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: user_updated
+      table: FooterLayout
+      data_type: uuid
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: directus_users
+      foreign_key_column: id
+  - collection: FooterLayout_translations
+    field: FooterLayout_id
+    type: uuid
+    meta:
+      collection: FooterLayout_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: FooterLayout_id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 4
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: FooterLayout_id
+      table: FooterLayout_translations
+      data_type: uuid
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: FooterLayout
+      foreign_key_column: id
+  - collection: FooterLayout_translations
+    field: buttons
+    type: json
+    meta:
+      collection: FooterLayout_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: buttons
+      group: null
+      hidden: false
+      interface: list
+      note: null
+      options:
+        addLabel: Create Text or Button
+        fields:
+          - field: name
+            name: name
+            type: string
+            meta:
+              field: name
+              width: full
+              type: string
+              interface: input
+              options:
+                placeholder: Button Name
+                trim: true
+                softLength: 100
+          - field: url
+            name: url
+            type: string
+            meta:
+              field: url
+              width: half
+              type: string
+              interface: input
+              options:
+                placeholder: URL
+                trim: true
+          - field: external
+            name: external
+            type: boolean
+            meta:
+              field: external
+              width: half
+              type: boolean
+              interface: boolean
+          - field: variant
+            name: variant
+            type: string
+            meta:
+              field: variant
+              width: full
+              type: string
+              interface: select-dropdown
+              note: Button Variant
+              options:
+                choices:
+                  - text: Text
+                    value: text
+                  - text: Primary
+                    value: primary
+                  - text: Outline
+                    value: outline
+                  - text: Ghost
+                    value: ghost
+                  - text: Light
+                    value: light
+                  - text: Dark
+                    value: dark
+                allowNone: true
+      readonly: false
+      required: false
+      sort: 3
+      special:
+        - cast-json
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: buttons
+      table: FooterLayout_translations
+      data_type: json
+      default_value: []
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: FooterLayout_translations
+    field: id
+    type: integer
+    meta:
+      collection: FooterLayout_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 1
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: id
+      table: FooterLayout_translations
+      data_type: integer
+      default_value: nextval('"FooterLayout_translations_id_seq"'::regclass)
+      max_length: null
+      numeric_precision: 32
+      numeric_scale: 0
+      is_nullable: false
+      is_unique: true
+      is_primary_key: true
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: true
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: FooterLayout_translations
+    field: languages_code
+    type: string
+    meta:
+      collection: FooterLayout_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: languages_code
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 5
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: languages_code
+      table: FooterLayout_translations
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: languages
+      foreign_key_column: code
+  - collection: FooterLayout_translations
+    field: titles
+    type: json
+    meta:
+      collection: FooterLayout_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: titles
+      group: null
+      hidden: false
+      interface: list
+      note: null
+      options:
+        addLabel: Create Title
+        fields:
+          - field: title
+            name: title
+            type: string
+            meta:
+              field: title
+              width: full
+              type: string
+              interface: input
+              options:
+                trim: true
+          - field: color
+            name: color
+            type: string
+            meta:
+              field: color
+              width: full
+              type: string
+              interface: select-color
+              options:
+                opacity: true
+      readonly: false
+      required: false
+      sort: 2
+      special:
+        - cast-json
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: titles
+      table: FooterLayout_translations
+      data_type: json
+      default_value: []
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
   - collection: FooterLinkItems
     field: date_created
     type: timestamp
@@ -14456,1039 +15323,6 @@ fields:
       has_auto_increment: false
       foreign_key_table: directus_users
       foreign_key_column: id
-  - collection: Layout
-    field: Footer
-    type: alias
-    meta:
-      collection: Layout
-      conditions: null
-      display: null
-      display_options: null
-      field: Footer
-      group: null
-      hidden: false
-      interface: group-detail
-      note: null
-      options:
-        start: closed
-      readonly: false
-      required: false
-      sort: 4
-      special:
-        - alias
-        - group
-        - no-data
-      translations: null
-      validation: null
-      validation_message: null
-      width: full
-  - collection: Layout
-    field: Navbar
-    type: alias
-    meta:
-      collection: Layout
-      conditions: null
-      display: null
-      display_options: null
-      field: Navbar
-      group: null
-      hidden: false
-      interface: group-detail
-      note: null
-      options:
-        start: closed
-      readonly: false
-      required: false
-      sort: 3
-      special:
-        - alias
-        - group
-        - no-data
-      translations: null
-      validation: null
-      validation_message: null
-      width: full
-  - collection: Layout
-    field: Site
-    type: alias
-    meta:
-      collection: Layout
-      conditions: null
-      display: null
-      display_options: null
-      field: Site
-      group: null
-      hidden: false
-      interface: group-detail
-      note: null
-      options:
-        start: closed
-      readonly: false
-      required: false
-      sort: 2
-      special:
-        - alias
-        - group
-        - no-data
-      translations: null
-      validation: null
-      validation_message: null
-      width: full
-  - collection: Layout
-    field: Top_Footer
-    type: alias
-    meta:
-      collection: Layout
-      conditions: null
-      display: null
-      display_options: null
-      field: Top_Footer
-      group: null
-      hidden: false
-      interface: group-detail
-      note: null
-      options:
-        start: closed
-      readonly: false
-      required: false
-      sort: 5
-      special:
-        - alias
-        - group
-        - no-data
-      translations: null
-      validation: null
-      validation_message: null
-      width: full
-  - collection: Layout
-    field: bottom_footer
-    type: json
-    meta:
-      collection: Layout
-      conditions: null
-      display: null
-      display_options: null
-      field: bottom_footer
-      group: Footer
-      hidden: false
-      interface: select-multiple-dropdown
-      note: null
-      options:
-        allowNone: true
-        allowOther: true
-        choices:
-          - text: Company Name
-            value: company_name
-          - text: Terms of services
-            value: terms_services
-          - text: Privacy
-            value: privacy
-          - text: Use of Cookies
-            value: use_cookies
-          - text: Payment Modes
-            value: payment_modes
-      readonly: false
-      required: true
-      sort: 4
-      special:
-        - cast-json
-      translations: null
-      validation: null
-      validation_message: null
-      width: half
-    schema:
-      name: bottom_footer
-      table: Layout
-      data_type: json
-      default_value:
-        - company_name
-        - payment_modes
-        - privacy
-        - terms_services
-        - use_cookies
-      max_length: null
-      numeric_precision: null
-      numeric_scale: null
-      is_nullable: true
-      is_unique: false
-      is_primary_key: false
-      is_generated: false
-      generation_expression: null
-      has_auto_increment: false
-      foreign_key_table: null
-      foreign_key_column: null
-  - collection: Layout
-    field: date_created
-    type: timestamp
-    meta:
-      collection: Layout
-      conditions: null
-      display: datetime
-      display_options:
-        relative: true
-      field: date_created
-      group: null
-      hidden: true
-      interface: datetime
-      note: null
-      options: null
-      readonly: true
-      required: false
-      sort: 7
-      special:
-        - date-created
-      translations: null
-      validation: null
-      validation_message: null
-      width: half
-    schema:
-      name: date_created
-      table: Layout
-      data_type: timestamp with time zone
-      default_value: null
-      max_length: null
-      numeric_precision: null
-      numeric_scale: null
-      is_nullable: true
-      is_unique: false
-      is_primary_key: false
-      is_generated: false
-      generation_expression: null
-      has_auto_increment: false
-      foreign_key_table: null
-      foreign_key_column: null
-  - collection: Layout
-    field: date_updated
-    type: timestamp
-    meta:
-      collection: Layout
-      conditions: null
-      display: datetime
-      display_options:
-        relative: true
-      field: date_updated
-      group: null
-      hidden: true
-      interface: datetime
-      note: null
-      options: null
-      readonly: true
-      required: false
-      sort: 9
-      special:
-        - date-updated
-      translations: null
-      validation: null
-      validation_message: null
-      width: half
-    schema:
-      name: date_updated
-      table: Layout
-      data_type: timestamp with time zone
-      default_value: null
-      max_length: null
-      numeric_precision: null
-      numeric_scale: null
-      is_nullable: true
-      is_unique: false
-      is_primary_key: false
-      is_generated: false
-      generation_expression: null
-      has_auto_increment: false
-      foreign_key_table: null
-      foreign_key_column: null
-  - collection: Layout
-    field: footer_type
-    type: string
-    meta:
-      collection: Layout
-      conditions: null
-      display: null
-      display_options: null
-      field: footer_type
-      group: Site
-      hidden: false
-      interface: select-dropdown
-      note: null
-      options:
-        choices:
-          - text: Full Footer
-            value: full_footer
-          - text: Simple Footer
-            value: simple_footer
-      readonly: false
-      required: true
-      sort: 3
-      special: null
-      translations: null
-      validation: null
-      validation_message: null
-      width: full
-    schema:
-      name: footer_type
-      table: Layout
-      data_type: character varying
-      default_value: full_footer
-      max_length: 255
-      numeric_precision: null
-      numeric_scale: null
-      is_nullable: true
-      is_unique: false
-      is_primary_key: false
-      is_generated: false
-      generation_expression: null
-      has_auto_increment: false
-      foreign_key_table: null
-      foreign_key_column: null
-  - collection: Layout
-    field: id
-    type: uuid
-    meta:
-      collection: Layout
-      conditions: null
-      display: null
-      display_options: null
-      field: id
-      group: null
-      hidden: true
-      interface: input
-      note: null
-      options: null
-      readonly: true
-      required: false
-      sort: 1
-      special:
-        - uuid
-      translations: null
-      validation: null
-      validation_message: null
-      width: full
-    schema:
-      name: id
-      table: Layout
-      data_type: uuid
-      default_value: null
-      max_length: null
-      numeric_precision: null
-      numeric_scale: null
-      is_nullable: false
-      is_unique: true
-      is_primary_key: true
-      is_generated: false
-      generation_expression: null
-      has_auto_increment: false
-      foreign_key_table: null
-      foreign_key_column: null
-  - collection: Layout
-    field: navbar_logo_height
-    type: integer
-    meta:
-      collection: Layout
-      conditions: null
-      display: null
-      display_options: null
-      field: navbar_logo_height
-      group: Navbar
-      hidden: false
-      interface: input
-      note: null
-      options:
-        max: 500
-        min: 5
-      readonly: false
-      required: true
-      sort: 2
-      special: null
-      translations: null
-      validation: null
-      validation_message: null
-      width: half
-    schema:
-      name: navbar_logo_height
-      table: Layout
-      data_type: integer
-      default_value: 60
-      max_length: null
-      numeric_precision: 32
-      numeric_scale: 0
-      is_nullable: true
-      is_unique: false
-      is_primary_key: false
-      is_generated: false
-      generation_expression: null
-      has_auto_increment: false
-      foreign_key_table: null
-      foreign_key_column: null
-  - collection: Layout
-    field: navbar_logo_width
-    type: integer
-    meta:
-      collection: Layout
-      conditions: null
-      display: null
-      display_options: null
-      field: navbar_logo_width
-      group: Navbar
-      hidden: false
-      interface: input
-      note: null
-      options:
-        max: 500
-        min: 5
-      readonly: false
-      required: true
-      sort: 1
-      special: null
-      translations: null
-      validation: null
-      validation_message: null
-      width: half
-    schema:
-      name: navbar_logo_width
-      table: Layout
-      data_type: integer
-      default_value: 60
-      max_length: null
-      numeric_precision: 32
-      numeric_scale: 0
-      is_nullable: true
-      is_unique: false
-      is_primary_key: false
-      is_generated: false
-      generation_expression: null
-      has_auto_increment: false
-      foreign_key_table: null
-      foreign_key_column: null
-  - collection: Layout
-    field: show_footer_contacts
-    type: boolean
-    meta:
-      collection: Layout
-      conditions: null
-      display: null
-      display_options: null
-      field: show_footer_contacts
-      group: Footer
-      hidden: false
-      interface: boolean
-      note: null
-      options: null
-      readonly: false
-      required: true
-      sort: 1
-      special:
-        - cast-boolean
-      translations: null
-      validation: null
-      validation_message: null
-      width: half
-    schema:
-      name: show_footer_contacts
-      table: Layout
-      data_type: boolean
-      default_value: true
-      max_length: null
-      numeric_precision: null
-      numeric_scale: null
-      is_nullable: true
-      is_unique: false
-      is_primary_key: false
-      is_generated: false
-      generation_expression: null
-      has_auto_increment: false
-      foreign_key_table: null
-      foreign_key_column: null
-  - collection: Layout
-    field: show_footer_links
-    type: boolean
-    meta:
-      collection: Layout
-      conditions: null
-      display: null
-      display_options: null
-      field: show_footer_links
-      group: Footer
-      hidden: false
-      interface: boolean
-      note: null
-      options: null
-      readonly: false
-      required: true
-      sort: 2
-      special:
-        - cast-boolean
-      translations: null
-      validation: null
-      validation_message: null
-      width: half
-    schema:
-      name: show_footer_links
-      table: Layout
-      data_type: boolean
-      default_value: true
-      max_length: null
-      numeric_precision: null
-      numeric_scale: null
-      is_nullable: true
-      is_unique: false
-      is_primary_key: false
-      is_generated: false
-      generation_expression: null
-      has_auto_increment: false
-      foreign_key_table: null
-      foreign_key_column: null
-  - collection: Layout
-    field: show_footer_mailing_subscription
-    type: boolean
-    meta:
-      collection: Layout
-      conditions: null
-      display: null
-      display_options: null
-      field: show_footer_mailing_subscription
-      group: Footer
-      hidden: false
-      interface: boolean
-      note: null
-      options: null
-      readonly: false
-      required: true
-      sort: 3
-      special:
-        - cast-boolean
-      translations: null
-      validation: null
-      validation_message: null
-      width: half
-    schema:
-      name: show_footer_mailing_subscription
-      table: Layout
-      data_type: boolean
-      default_value: true
-      max_length: null
-      numeric_precision: null
-      numeric_scale: null
-      is_nullable: true
-      is_unique: false
-      is_primary_key: false
-      is_generated: false
-      generation_expression: null
-      has_auto_increment: false
-      foreign_key_table: null
-      foreign_key_column: null
-  - collection: Layout
-    field: show_top_footer
-    type: boolean
-    meta:
-      collection: Layout
-      conditions: null
-      display: null
-      display_options: null
-      field: show_top_footer
-      group: Top_Footer
-      hidden: false
-      interface: boolean
-      note: null
-      options: null
-      readonly: false
-      required: true
-      sort: 2
-      special:
-        - cast-boolean
-      translations: null
-      validation: null
-      validation_message: null
-      width: full
-    schema:
-      name: show_top_footer
-      table: Layout
-      data_type: boolean
-      default_value: true
-      max_length: null
-      numeric_precision: null
-      numeric_scale: null
-      is_nullable: true
-      is_unique: false
-      is_primary_key: false
-      is_generated: false
-      generation_expression: null
-      has_auto_increment: false
-      foreign_key_table: null
-      foreign_key_column: null
-  - collection: Layout
-    field: show_topbar
-    type: boolean
-    meta:
-      collection: Layout
-      conditions: null
-      display: null
-      display_options: null
-      field: show_topbar
-      group: Site
-      hidden: false
-      interface: boolean
-      note: null
-      options: null
-      readonly: false
-      required: true
-      sort: 2
-      special:
-        - cast-boolean
-      translations: null
-      validation: null
-      validation_message: null
-      width: half
-    schema:
-      name: show_topbar
-      table: Layout
-      data_type: boolean
-      default_value: true
-      max_length: null
-      numeric_precision: null
-      numeric_scale: null
-      is_nullable: true
-      is_unique: false
-      is_primary_key: false
-      is_generated: false
-      generation_expression: null
-      has_auto_increment: false
-      foreign_key_table: null
-      foreign_key_column: null
-  - collection: Layout
-    field: site_background_color
-    type: string
-    meta:
-      collection: Layout
-      conditions: null
-      display: null
-      display_options: null
-      field: site_background_color
-      group: Site
-      hidden: false
-      interface: select-color
-      note: null
-      options:
-        opacity: true
-        presets:
-          - name: Default
-            color: '#313B4D'
-          - name: Purple
-            color: '#6644FF'
-          - name: Blue
-            color: '#3399FF'
-          - name: Green
-            color: '#2ECDA7'
-          - name: Yellow
-            color: '#FFC23B'
-          - name: Orange
-            color: '#FFA439'
-          - name: Red
-            color: '#E35169'
-          - name: Black
-            color: '#18222F'
-          - name: Gray
-            color: '#A2B5CD'
-          - name: White
-            color: '#FFFFFF'
-      readonly: false
-      required: true
-      sort: 1
-      special: null
-      translations: null
-      validation: null
-      validation_message: null
-      width: half
-    schema:
-      name: site_background_color
-      table: Layout
-      data_type: character varying
-      default_value: '#313b4d'
-      max_length: 255
-      numeric_precision: null
-      numeric_scale: null
-      is_nullable: true
-      is_unique: false
-      is_primary_key: false
-      is_generated: false
-      generation_expression: null
-      has_auto_increment: false
-      foreign_key_table: null
-      foreign_key_column: null
-  - collection: Layout
-    field: translations
-    type: alias
-    meta:
-      collection: Layout
-      conditions: null
-      display: null
-      display_options: null
-      field: translations
-      group: Top_Footer
-      hidden: false
-      interface: translations
-      note: null
-      options:
-        userLanguage: true
-      readonly: false
-      required: false
-      sort: 3
-      special:
-        - translations
-      translations: null
-      validation: null
-      validation_message: null
-      width: full
-  - collection: Layout
-    field: user_created
-    type: uuid
-    meta:
-      collection: Layout
-      conditions: null
-      display: user
-      display_options: null
-      field: user_created
-      group: null
-      hidden: true
-      interface: select-dropdown-m2o
-      note: null
-      options:
-        template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
-      readonly: true
-      required: false
-      sort: 6
-      special:
-        - user-created
-      translations: null
-      validation: null
-      validation_message: null
-      width: half
-    schema:
-      name: user_created
-      table: Layout
-      data_type: uuid
-      default_value: null
-      max_length: null
-      numeric_precision: null
-      numeric_scale: null
-      is_nullable: true
-      is_unique: false
-      is_primary_key: false
-      is_generated: false
-      generation_expression: null
-      has_auto_increment: false
-      foreign_key_table: directus_users
-      foreign_key_column: id
-  - collection: Layout
-    field: user_updated
-    type: uuid
-    meta:
-      collection: Layout
-      conditions: null
-      display: user
-      display_options: null
-      field: user_updated
-      group: null
-      hidden: true
-      interface: select-dropdown-m2o
-      note: null
-      options:
-        template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
-      readonly: true
-      required: false
-      sort: 8
-      special:
-        - user-updated
-      translations: null
-      validation: null
-      validation_message: null
-      width: half
-    schema:
-      name: user_updated
-      table: Layout
-      data_type: uuid
-      default_value: null
-      max_length: null
-      numeric_precision: null
-      numeric_scale: null
-      is_nullable: true
-      is_unique: false
-      is_primary_key: false
-      is_generated: false
-      generation_expression: null
-      has_auto_increment: false
-      foreign_key_table: directus_users
-      foreign_key_column: id
-  - collection: Layout_translations
-    field: Layout_id
-    type: uuid
-    meta:
-      collection: Layout_translations
-      conditions: null
-      display: null
-      display_options: null
-      field: Layout_id
-      group: null
-      hidden: true
-      interface: null
-      note: null
-      options: null
-      readonly: false
-      required: false
-      sort: 4
-      special: null
-      translations: null
-      validation: null
-      validation_message: null
-      width: full
-    schema:
-      name: Layout_id
-      table: Layout_translations
-      data_type: uuid
-      default_value: null
-      max_length: null
-      numeric_precision: null
-      numeric_scale: null
-      is_nullable: true
-      is_unique: false
-      is_primary_key: false
-      is_generated: false
-      generation_expression: null
-      has_auto_increment: false
-      foreign_key_table: Layout
-      foreign_key_column: id
-  - collection: Layout_translations
-    field: buttons
-    type: json
-    meta:
-      collection: Layout_translations
-      conditions: null
-      display: null
-      display_options: null
-      field: buttons
-      group: null
-      hidden: false
-      interface: list
-      note: null
-      options:
-        addLabel: Create Text or Button
-        fields:
-          - field: name
-            name: name
-            type: string
-            meta:
-              field: name
-              width: full
-              type: string
-              interface: input
-              options:
-                placeholder: Button Name
-                trim: true
-                softLength: 100
-          - field: url
-            name: url
-            type: string
-            meta:
-              field: url
-              width: half
-              type: string
-              interface: input
-              options:
-                placeholder: URL
-                trim: true
-          - field: external
-            name: external
-            type: boolean
-            meta:
-              field: external
-              width: half
-              type: boolean
-              interface: boolean
-          - field: variant
-            name: variant
-            type: string
-            meta:
-              field: variant
-              width: full
-              type: string
-              interface: select-dropdown
-              note: Button Variant
-              options:
-                choices:
-                  - text: Text
-                    value: text
-                  - text: Primary
-                    value: primary
-                  - text: Outline
-                    value: outline
-                  - text: Ghost
-                    value: ghost
-                  - text: Light
-                    value: light
-                  - text: Dark
-                    value: dark
-                allowNone: true
-      readonly: false
-      required: false
-      sort: 3
-      special:
-        - cast-json
-      translations: null
-      validation: null
-      validation_message: null
-      width: full
-    schema:
-      name: buttons
-      table: Layout_translations
-      data_type: json
-      default_value: []
-      max_length: null
-      numeric_precision: null
-      numeric_scale: null
-      is_nullable: true
-      is_unique: false
-      is_primary_key: false
-      is_generated: false
-      generation_expression: null
-      has_auto_increment: false
-      foreign_key_table: null
-      foreign_key_column: null
-  - collection: Layout_translations
-    field: id
-    type: integer
-    meta:
-      collection: Layout_translations
-      conditions: null
-      display: null
-      display_options: null
-      field: id
-      group: null
-      hidden: true
-      interface: null
-      note: null
-      options: null
-      readonly: false
-      required: false
-      sort: 1
-      special: null
-      translations: null
-      validation: null
-      validation_message: null
-      width: full
-    schema:
-      name: id
-      table: Layout_translations
-      data_type: integer
-      default_value: nextval('"Layout_translations_id_seq"'::regclass)
-      max_length: null
-      numeric_precision: 32
-      numeric_scale: 0
-      is_nullable: false
-      is_unique: true
-      is_primary_key: true
-      is_generated: false
-      generation_expression: null
-      has_auto_increment: true
-      foreign_key_table: null
-      foreign_key_column: null
-  - collection: Layout_translations
-    field: languages_code
-    type: string
-    meta:
-      collection: Layout_translations
-      conditions: null
-      display: null
-      display_options: null
-      field: languages_code
-      group: null
-      hidden: true
-      interface: null
-      note: null
-      options: null
-      readonly: false
-      required: false
-      sort: 5
-      special: null
-      translations: null
-      validation: null
-      validation_message: null
-      width: full
-    schema:
-      name: languages_code
-      table: Layout_translations
-      data_type: character varying
-      default_value: null
-      max_length: 255
-      numeric_precision: null
-      numeric_scale: null
-      is_nullable: true
-      is_unique: false
-      is_primary_key: false
-      is_generated: false
-      generation_expression: null
-      has_auto_increment: false
-      foreign_key_table: languages
-      foreign_key_column: code
-  - collection: Layout_translations
-    field: titles
-    type: json
-    meta:
-      collection: Layout_translations
-      conditions: null
-      display: null
-      display_options: null
-      field: titles
-      group: null
-      hidden: false
-      interface: list
-      note: null
-      options:
-        addLabel: Create Title
-        fields:
-          - field: title
-            name: title
-            type: string
-            meta:
-              field: title
-              width: full
-              type: string
-              interface: input
-              options:
-                trim: true
-          - field: color
-            name: color
-            type: string
-            meta:
-              field: color
-              width: full
-              type: string
-              interface: select-color
-              options:
-                opacity: true
-      readonly: false
-      required: false
-      sort: 2
-      special:
-        - cast-json
-      translations: null
-      validation: null
-      validation_message: null
-      width: full
-    schema:
-      name: titles
-      table: Layout_translations
-      data_type: json
-      default_value: []
-      max_length: null
-      numeric_precision: null
-      numeric_scale: null
-      is_nullable: true
-      is_unique: false
-      is_primary_key: false
-      is_generated: false
-      generation_expression: null
-      has_auto_increment: false
-      foreign_key_table: null
-      foreign_key_column: null
   - collection: Listmonk
     field: admin_password
     type: string
@@ -17426,6 +17260,310 @@ fields:
       has_auto_increment: false
       foreign_key_table: languages
       foreign_key_column: code
+  - collection: NavbarLayout
+    field: Logo
+    type: alias
+    meta:
+      collection: NavbarLayout
+      conditions: null
+      display: null
+      display_options: null
+      field: Logo
+      group: null
+      hidden: false
+      interface: group-detail
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 2
+      special:
+        - alias
+        - group
+        - no-data
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+  - collection: NavbarLayout
+    field: date_created
+    type: timestamp
+    meta:
+      collection: NavbarLayout
+      conditions: null
+      display: datetime
+      display_options:
+        relative: true
+      field: date_created
+      group: null
+      hidden: true
+      interface: datetime
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: 4
+      special:
+        - date-created
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: date_created
+      table: NavbarLayout
+      data_type: timestamp with time zone
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: NavbarLayout
+    field: date_updated
+    type: timestamp
+    meta:
+      collection: NavbarLayout
+      conditions: null
+      display: datetime
+      display_options:
+        relative: true
+      field: date_updated
+      group: null
+      hidden: true
+      interface: datetime
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: 6
+      special:
+        - date-updated
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: date_updated
+      table: NavbarLayout
+      data_type: timestamp with time zone
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: NavbarLayout
+    field: id
+    type: uuid
+    meta:
+      collection: NavbarLayout
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: 1
+      special:
+        - uuid
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: id
+      table: NavbarLayout
+      data_type: uuid
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: true
+      is_primary_key: true
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: NavbarLayout
+    field: navbar_logo_height
+    type: integer
+    meta:
+      collection: NavbarLayout
+      conditions: null
+      display: null
+      display_options: null
+      field: navbar_logo_height
+      group: Logo
+      hidden: false
+      interface: input
+      note: null
+      options:
+        max: 500
+        min: 5
+      readonly: false
+      required: true
+      sort: 2
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: navbar_logo_height
+      table: NavbarLayout
+      data_type: integer
+      default_value: 60
+      max_length: null
+      numeric_precision: 32
+      numeric_scale: 0
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: NavbarLayout
+    field: navbar_logo_width
+    type: integer
+    meta:
+      collection: NavbarLayout
+      conditions: null
+      display: null
+      display_options: null
+      field: navbar_logo_width
+      group: Logo
+      hidden: false
+      interface: input
+      note: null
+      options:
+        max: 500
+        min: 5
+      readonly: false
+      required: true
+      sort: 1
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: navbar_logo_width
+      table: NavbarLayout
+      data_type: integer
+      default_value: 60
+      max_length: null
+      numeric_precision: 32
+      numeric_scale: 0
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: NavbarLayout
+    field: user_created
+    type: uuid
+    meta:
+      collection: NavbarLayout
+      conditions: null
+      display: user
+      display_options: null
+      field: user_created
+      group: null
+      hidden: true
+      interface: select-dropdown-m2o
+      note: null
+      options:
+        template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
+      readonly: true
+      required: false
+      sort: 3
+      special:
+        - user-created
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: user_created
+      table: NavbarLayout
+      data_type: uuid
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: directus_users
+      foreign_key_column: id
+  - collection: NavbarLayout
+    field: user_updated
+    type: uuid
+    meta:
+      collection: NavbarLayout
+      conditions: null
+      display: user
+      display_options: null
+      field: user_updated
+      group: null
+      hidden: true
+      interface: select-dropdown-m2o
+      note: null
+      options:
+        template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
+      readonly: true
+      required: false
+      sort: 5
+      special:
+        - user-updated
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: user_updated
+      table: NavbarLayout
+      data_type: uuid
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: directus_users
+      foreign_key_column: id
   - collection: NavbarLinkSubmenuItems
     field: date_created
     type: timestamp
@@ -45880,6 +46018,265 @@ fields:
       has_auto_increment: false
       foreign_key_table: null
       foreign_key_column: null
+  - collection: SiteLayout
+    field: date_created
+    type: timestamp
+    meta:
+      collection: SiteLayout
+      conditions: null
+      display: datetime
+      display_options:
+        relative: true
+      field: date_created
+      group: null
+      hidden: true
+      interface: datetime
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: 3
+      special:
+        - date-created
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: date_created
+      table: SiteLayout
+      data_type: timestamp with time zone
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: SiteLayout
+    field: date_updated
+    type: timestamp
+    meta:
+      collection: SiteLayout
+      conditions: null
+      display: datetime
+      display_options:
+        relative: true
+      field: date_updated
+      group: null
+      hidden: true
+      interface: datetime
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: 5
+      special:
+        - date-updated
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: date_updated
+      table: SiteLayout
+      data_type: timestamp with time zone
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: SiteLayout
+    field: id
+    type: uuid
+    meta:
+      collection: SiteLayout
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: 1
+      special:
+        - uuid
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: id
+      table: SiteLayout
+      data_type: uuid
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: true
+      is_primary_key: true
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: SiteLayout
+    field: site_background_color
+    type: string
+    meta:
+      collection: SiteLayout
+      conditions: null
+      display: null
+      display_options: null
+      field: site_background_color
+      group: null
+      hidden: false
+      interface: select-color
+      note: null
+      options:
+        opacity: true
+        presets:
+          - name: Default
+            color: '#313B4D'
+          - name: Purple
+            color: '#6644FF'
+          - name: Blue
+            color: '#3399FF'
+          - name: Green
+            color: '#2ECDA7'
+          - name: Yellow
+            color: '#FFC23B'
+          - name: Orange
+            color: '#FFA439'
+          - name: Red
+            color: '#E35169'
+          - name: Black
+            color: '#18222F'
+          - name: Gray
+            color: '#A2B5CD'
+          - name: White
+            color: '#FFFFFF'
+      readonly: false
+      required: true
+      sort: 2
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: site_background_color
+      table: SiteLayout
+      data_type: character varying
+      default_value: '#313b4d'
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: SiteLayout
+    field: user_created
+    type: uuid
+    meta:
+      collection: SiteLayout
+      conditions: null
+      display: user
+      display_options: null
+      field: user_created
+      group: null
+      hidden: true
+      interface: select-dropdown-m2o
+      note: null
+      options:
+        template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
+      readonly: true
+      required: false
+      sort: 6
+      special:
+        - user-created
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: user_created
+      table: SiteLayout
+      data_type: uuid
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: directus_users
+      foreign_key_column: id
+  - collection: SiteLayout
+    field: user_updated
+    type: uuid
+    meta:
+      collection: SiteLayout
+      conditions: null
+      display: user
+      display_options: null
+      field: user_updated
+      group: null
+      hidden: true
+      interface: select-dropdown-m2o
+      note: null
+      options:
+        template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
+      readonly: true
+      required: false
+      sort: 4
+      special:
+        - user-updated
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: user_updated
+      table: SiteLayout
+      data_type: uuid
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: directus_users
+      foreign_key_column: id
   - collection: Socials
     field: company_details_id
     type: uuid
@@ -46323,6 +46720,244 @@ fields:
     schema:
       name: user_updated
       table: Socials
+      data_type: uuid
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: directus_users
+      foreign_key_column: id
+  - collection: TopbarLayout
+    field: date_created
+    type: timestamp
+    meta:
+      collection: TopbarLayout
+      conditions: null
+      display: datetime
+      display_options:
+        relative: true
+      field: date_created
+      group: null
+      hidden: true
+      interface: datetime
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: 4
+      special:
+        - date-created
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: date_created
+      table: TopbarLayout
+      data_type: timestamp with time zone
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: TopbarLayout
+    field: date_updated
+    type: timestamp
+    meta:
+      collection: TopbarLayout
+      conditions: null
+      display: datetime
+      display_options:
+        relative: true
+      field: date_updated
+      group: null
+      hidden: true
+      interface: datetime
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: 6
+      special:
+        - date-updated
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: date_updated
+      table: TopbarLayout
+      data_type: timestamp with time zone
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: TopbarLayout
+    field: id
+    type: uuid
+    meta:
+      collection: TopbarLayout
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: 1
+      special:
+        - uuid
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: id
+      table: TopbarLayout
+      data_type: uuid
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: true
+      is_primary_key: true
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: TopbarLayout
+    field: show_topbar
+    type: boolean
+    meta:
+      collection: TopbarLayout
+      conditions: null
+      display: null
+      display_options: null
+      field: show_topbar
+      group: null
+      hidden: false
+      interface: boolean
+      note: null
+      options: null
+      readonly: false
+      required: true
+      sort: 2
+      special:
+        - cast-boolean
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: show_topbar
+      table: TopbarLayout
+      data_type: boolean
+      default_value: true
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: TopbarLayout
+    field: user_created
+    type: uuid
+    meta:
+      collection: TopbarLayout
+      conditions: null
+      display: user
+      display_options: null
+      field: user_created
+      group: null
+      hidden: true
+      interface: select-dropdown-m2o
+      note: null
+      options:
+        template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
+      readonly: true
+      required: false
+      sort: 3
+      special:
+        - user-created
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: user_created
+      table: TopbarLayout
+      data_type: uuid
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: directus_users
+      foreign_key_column: id
+  - collection: TopbarLayout
+    field: user_updated
+    type: uuid
+    meta:
+      collection: TopbarLayout
+      conditions: null
+      display: user
+      display_options: null
+      field: user_updated
+      group: null
+      hidden: true
+      interface: select-dropdown-m2o
+      note: null
+      options:
+        template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
+      readonly: true
+      required: false
+      sort: 5
+      special:
+        - user-updated
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: user_updated
+      table: TopbarLayout
       data_type: uuid
       default_value: null
       max_length: null
@@ -48168,6 +48803,90 @@ relations:
       constraint_name: flexibleplans_user_updated_foreign
       on_update: NO ACTION
       on_delete: NO ACTION
+  - collection: FooterLayout
+    field: user_created
+    related_collection: directus_users
+    meta:
+      junction_field: null
+      many_collection: FooterLayout
+      many_field: user_created
+      one_allowed_collections: null
+      one_collection: directus_users
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    schema:
+      table: FooterLayout
+      column: user_created
+      foreign_key_table: directus_users
+      foreign_key_column: id
+      constraint_name: footerlayout_user_created_foreign
+      on_update: NO ACTION
+      on_delete: NO ACTION
+  - collection: FooterLayout
+    field: user_updated
+    related_collection: directus_users
+    meta:
+      junction_field: null
+      many_collection: FooterLayout
+      many_field: user_updated
+      one_allowed_collections: null
+      one_collection: directus_users
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    schema:
+      table: FooterLayout
+      column: user_updated
+      foreign_key_table: directus_users
+      foreign_key_column: id
+      constraint_name: footerlayout_user_updated_foreign
+      on_update: NO ACTION
+      on_delete: NO ACTION
+  - collection: FooterLayout_translations
+    field: FooterLayout_id
+    related_collection: FooterLayout
+    meta:
+      junction_field: languages_code
+      many_collection: FooterLayout_translations
+      many_field: FooterLayout_id
+      one_allowed_collections: null
+      one_collection: FooterLayout
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: translations
+      sort_field: null
+    schema:
+      table: FooterLayout_translations
+      column: FooterLayout_id
+      foreign_key_table: FooterLayout
+      foreign_key_column: id
+      constraint_name: footerlayout_translations_footerlayout_id_foreign
+      on_update: NO ACTION
+      on_delete: SET NULL
+  - collection: FooterLayout_translations
+    field: languages_code
+    related_collection: languages
+    meta:
+      junction_field: FooterLayout_id
+      many_collection: FooterLayout_translations
+      many_field: languages_code
+      one_allowed_collections: null
+      one_collection: languages
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    schema:
+      table: FooterLayout_translations
+      column: languages_code
+      foreign_key_table: languages
+      foreign_key_column: code
+      constraint_name: footerlayout_translations_languages_code_foreign
+      on_update: NO ACTION
+      on_delete: SET NULL
   - collection: FooterLinkItems
     field: footer_links_id
     related_collection: FooterLinks
@@ -48709,90 +49428,6 @@ relations:
       constraint_name: kroki_user_updated_foreign
       on_update: NO ACTION
       on_delete: NO ACTION
-  - collection: Layout
-    field: user_created
-    related_collection: directus_users
-    meta:
-      junction_field: null
-      many_collection: Layout
-      many_field: user_created
-      one_allowed_collections: null
-      one_collection: directus_users
-      one_collection_field: null
-      one_deselect_action: nullify
-      one_field: null
-      sort_field: null
-    schema:
-      table: Layout
-      column: user_created
-      foreign_key_table: directus_users
-      foreign_key_column: id
-      constraint_name: layout_user_created_foreign
-      on_update: NO ACTION
-      on_delete: NO ACTION
-  - collection: Layout
-    field: user_updated
-    related_collection: directus_users
-    meta:
-      junction_field: null
-      many_collection: Layout
-      many_field: user_updated
-      one_allowed_collections: null
-      one_collection: directus_users
-      one_collection_field: null
-      one_deselect_action: nullify
-      one_field: null
-      sort_field: null
-    schema:
-      table: Layout
-      column: user_updated
-      foreign_key_table: directus_users
-      foreign_key_column: id
-      constraint_name: layout_user_updated_foreign
-      on_update: NO ACTION
-      on_delete: NO ACTION
-  - collection: Layout_translations
-    field: Layout_id
-    related_collection: Layout
-    meta:
-      junction_field: languages_code
-      many_collection: Layout_translations
-      many_field: Layout_id
-      one_allowed_collections: null
-      one_collection: Layout
-      one_collection_field: null
-      one_deselect_action: nullify
-      one_field: translations
-      sort_field: null
-    schema:
-      table: Layout_translations
-      column: Layout_id
-      foreign_key_table: Layout
-      foreign_key_column: id
-      constraint_name: layout_translations_layout_id_foreign
-      on_update: NO ACTION
-      on_delete: SET NULL
-  - collection: Layout_translations
-    field: languages_code
-    related_collection: languages
-    meta:
-      junction_field: Layout_id
-      many_collection: Layout_translations
-      many_field: languages_code
-      one_allowed_collections: null
-      one_collection: languages
-      one_collection_field: null
-      one_deselect_action: nullify
-      one_field: null
-      sort_field: null
-    schema:
-      table: Layout_translations
-      column: languages_code
-      foreign_key_table: languages
-      foreign_key_column: code
-      constraint_name: layout_translations_languages_code_foreign
-      on_update: NO ACTION
-      on_delete: SET NULL
   - collection: Listmonk
     field: user_created
     related_collection: directus_users
@@ -49024,6 +49659,48 @@ relations:
       constraint_name: navbarbuttons_translations_languages_code_foreign
       on_update: NO ACTION
       on_delete: SET NULL
+  - collection: NavbarLayout
+    field: user_created
+    related_collection: directus_users
+    meta:
+      junction_field: null
+      many_collection: NavbarLayout
+      many_field: user_created
+      one_allowed_collections: null
+      one_collection: directus_users
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    schema:
+      table: NavbarLayout
+      column: user_created
+      foreign_key_table: directus_users
+      foreign_key_column: id
+      constraint_name: navbarlayout_user_created_foreign
+      on_update: NO ACTION
+      on_delete: NO ACTION
+  - collection: NavbarLayout
+    field: user_updated
+    related_collection: directus_users
+    meta:
+      junction_field: null
+      many_collection: NavbarLayout
+      many_field: user_updated
+      one_allowed_collections: null
+      one_collection: directus_users
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    schema:
+      table: NavbarLayout
+      column: user_updated
+      foreign_key_table: directus_users
+      foreign_key_column: id
+      constraint_name: navbarlayout_user_updated_foreign
+      on_update: NO ACTION
+      on_delete: NO ACTION
   - collection: NavbarLinkSubmenuItems
     field: navbar_link_submenus_id
     related_collection: NavbarLinkSubmenus
@@ -53054,6 +53731,48 @@ relations:
       constraint_name: st_values_translations_languages_code_foreign
       on_update: NO ACTION
       on_delete: SET NULL
+  - collection: SiteLayout
+    field: user_created
+    related_collection: directus_users
+    meta:
+      junction_field: null
+      many_collection: SiteLayout
+      many_field: user_created
+      one_allowed_collections: null
+      one_collection: directus_users
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    schema:
+      table: SiteLayout
+      column: user_created
+      foreign_key_table: directus_users
+      foreign_key_column: id
+      constraint_name: sitelayout_user_created_foreign
+      on_update: NO ACTION
+      on_delete: NO ACTION
+  - collection: SiteLayout
+    field: user_updated
+    related_collection: directus_users
+    meta:
+      junction_field: null
+      many_collection: SiteLayout
+      many_field: user_updated
+      one_allowed_collections: null
+      one_collection: directus_users
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    schema:
+      table: SiteLayout
+      column: user_updated
+      foreign_key_table: directus_users
+      foreign_key_column: id
+      constraint_name: sitelayout_user_updated_foreign
+      on_update: NO ACTION
+      on_delete: NO ACTION
   - collection: Socials
     field: company_details_id
     related_collection: CompanyDetails
@@ -53136,6 +53855,48 @@ relations:
       foreign_key_table: directus_users
       foreign_key_column: id
       constraint_name: socials_user_updated_foreign
+      on_update: NO ACTION
+      on_delete: NO ACTION
+  - collection: TopbarLayout
+    field: user_created
+    related_collection: directus_users
+    meta:
+      junction_field: null
+      many_collection: TopbarLayout
+      many_field: user_created
+      one_allowed_collections: null
+      one_collection: directus_users
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    schema:
+      table: TopbarLayout
+      column: user_created
+      foreign_key_table: directus_users
+      foreign_key_column: id
+      constraint_name: topbarlayout_user_created_foreign
+      on_update: NO ACTION
+      on_delete: NO ACTION
+  - collection: TopbarLayout
+    field: user_updated
+    related_collection: directus_users
+    meta:
+      junction_field: null
+      many_collection: TopbarLayout
+      many_field: user_updated
+      one_allowed_collections: null
+      one_collection: directus_users
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    schema:
+      table: TopbarLayout
+      column: user_updated
+      foreign_key_table: directus_users
+      foreign_key_column: id
+      constraint_name: topbarlayout_user_updated_foreign
       on_update: NO ACTION
       on_delete: NO ACTION
   - collection: TopbarLinks
