@@ -43,7 +43,7 @@ export const Navbar = ({ whiteNav }: { whiteNav?: boolean }) => {
     >
       <div className='relative x-container-fluid flex items-center justify-between gap-4 h-full'>
         <div className='nav__logo xl:w-[20%]'>
-          <UnstyledLink href='/'>
+          <UnstyledLink href='/' className='inline-block'>
             <NextImage
               useSkeleton
               imgClassName={
