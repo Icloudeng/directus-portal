@@ -31,6 +31,7 @@ export type MDTopbarLayout = {
 export type MDNavbarLayout = {
   navbar_logo_width: number;
   navbar_logo_height: number;
+  navbar_logo_rounded: boolean;
 } & Omit<DRTStatus, "status">;
 
 export type MDFooterLayout = {
@@ -232,7 +233,7 @@ export type MDPage<PS = false> = {
 
 // ---------------- Home Page, Hero section -------------------------
 export type MDHomePageHero = {
-  image: MDWithAsset;
+  image?: MDWithAsset;
   images: { id: ID; directus_files_id: MDWithAsset }[];
   disposition: "text_left" | "text_right";
 } & MDWithTranslation<{
@@ -240,6 +241,7 @@ export type MDHomePageHero = {
   description: string;
   trailing_titles: string[];
   page_title: string;
+  buttons?: RepeaterBtn[];
 }> &
   Omit<DRTStatus, "id">;
 

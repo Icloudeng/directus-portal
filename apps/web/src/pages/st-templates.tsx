@@ -19,6 +19,7 @@ import {
   DumpGroupedLogos,
   DumpGuestQuestions,
   DumpHoverableMediaMenus,
+  DumpIframe,
   DumpLatestBlog,
   DumpLatestNews,
   DumpLeftRightContent,
@@ -787,6 +788,27 @@ const templates: Template[] = [
             {title}
           </h3>
           <Sts.ST_MapsFC items={DumpMaps} sectionClass='' sharedObject={{}} />
+        </section>
+      );
+    },
+  },
+
+  {
+    title: 'ST Iframe',
+    content(title) {
+      return (
+        <section className='py-14 x-container'>
+          <h3
+            id={urlSafe(title)}
+            className='sticky top-8 z-50 bg-white p-2 inline-block text-primary-400 my-9'
+          >
+            {title}
+          </h3>
+          <Sts.ST_IframeFC
+            items={DumpIframe}
+            sectionClass=''
+            sharedObject={{}}
+          />
         </section>
       );
     },

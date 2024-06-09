@@ -10,6 +10,7 @@ export * from './st-gallery';
 export * from './st-grouped-logos';
 export * from './st-guest-questions';
 export * from './st-hoverable-media-menus';
+export * from './st-iframe';
 export * from './st-latest-blog';
 export * from './st-latest-news';
 export * from './st-left-right-contents';

@@ -185,6 +185,7 @@ const gql_query = jsonToGraphQLQuery({
       status: false,
       navbar_logo_width: true,
       navbar_logo_height: true,
+      navbar_logo_rounded: true,
     },
     [CMS_MODELS.matomo]: {
       ...qWithStatus,

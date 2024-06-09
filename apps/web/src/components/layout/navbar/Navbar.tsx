@@ -43,9 +43,12 @@ export const Navbar = ({ whiteNav }: { whiteNav?: boolean }) => {
     >
       <div className='relative x-container-fluid flex items-center justify-between gap-4 h-full'>
         <div className='nav__logo xl:w-[20%]'>
-          <UnstyledLink href='/'>
+          <UnstyledLink href='/' className='inline-block'>
             <NextImage
               useSkeleton
+              imgClassName={
+                NavbarLayout?.navbar_logo_rounded ? 'rounded-full' : undefined
+              }
               src={CompanyDetails?.logo?.src || Logo.src}
               width={NavbarLayout?.navbar_logo_width || 60}
               height={NavbarLayout?.navbar_logo_height || 60}
