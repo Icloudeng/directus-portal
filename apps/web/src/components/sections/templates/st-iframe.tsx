@@ -19,7 +19,7 @@ function Iframe(props: { item: ST_Iframe }) {
       width='100%'
       style={{ height: item.height }}
       scrolling={item.scrolling ? undefined : 'no'}
-      className={'w-full h-full'}
+      className='w-full h-full'
     />
   );
 }
