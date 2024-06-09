@@ -344,6 +344,14 @@ const q_ST: Query = {
     }),
     ...qWithStatus,
   },
+  [section_templates.st_iframe]: {
+    __typeName: section_templates.st_iframe,
+    __args: qWithPublishedStatus(),
+    url: true,
+    height: true,
+    scrolling: true,
+    ...qWithStatus,
+  },
 };
 
 type PSQuery = {

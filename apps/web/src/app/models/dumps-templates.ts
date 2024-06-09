@@ -12,6 +12,7 @@ import type {
   ST_GroupedLogo,
   ST_GuestQuestion,
   ST_HoverableMediaMenu,
+  ST_Iframe,
   ST_LatestBlog,
   ST_LatestNew,
   ST_LeftRightContent,
@@ -2476,6 +2477,22 @@ export const DumpMaps: ST_Map[] = [
       status: 'published',
       date_created: '2023-04-12T15:37:33.092Z',
       date_updated: '2023-04-12T15:38:14.007Z',
+    },
+  },
+];
+
+export const DumpIframe: ST_Iframe[] = [
+  {
+    id: '1',
+    collection: 'ST_Iframe',
+    item: {
+      url: 'https://example.com/',
+      height: 400,
+      scrolling: false,
+      id: '5f65024e-a682-48c8-a61b-dbb96aa475f4',
+      status: 'published',
+      date_created: '2024-06-09T21:32:42.087Z',
+      date_updated: '2024-06-09T21:51:05.258Z',
     },
   },
 ];

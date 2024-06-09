@@ -385,6 +385,15 @@ export type ST_Map = MDHasM2A<
   ST_V<"st_maps">
 >;
 
+export type ST_Iframe = MDHasM2A<
+  {
+    url: string;
+    height: number;
+    scrolling: boolean;
+  } & DRTStatus,
+  ST_V<"st_iframe">
+>;
+
 //------------------- Page Sections --------------------//
 export type PS_Content =
   | ST_Value
@@ -418,7 +427,8 @@ export type PS_Content =
   | ST_LatestBlog
   | ST_RichText
   | ST_LeftRightContent
-  | ST_Map;
+  | ST_Map
+  | ST_Iframe;
 
 export type M2APageSection = MDHasM2A<
   {
