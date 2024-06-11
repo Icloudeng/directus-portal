@@ -208,6 +208,15 @@ const q_ST: Query = {
     __typeName: section_templates.st_gallery,
     __args: qWithPublishedStatus(),
     image: qWithQueryAsset({ type: true }),
+    pagination_buttons: true,
+    prev_next_buttons: true,
+    autoplay: true,
+    disposition: true,
+    ...qWithTranslations({
+      title: true,
+      description: true,
+      buttons: true,
+    }),
     ...qWithStatus,
   },
   [section_templates.st_grouped_logos]: {

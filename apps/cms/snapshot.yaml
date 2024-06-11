@@ -1714,7 +1714,7 @@ collections:
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: 34
+      sort: 35
       sort_field: sort
       translations: null
       unarchive_value: draft
@@ -1868,7 +1868,7 @@ collections:
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: 38
+      sort: 39
       sort_field: sort
       translations: null
       unarchive_value: draft
@@ -1890,7 +1890,7 @@ collections:
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: 39
+      sort: 40
       sort_field: null
       translations: null
       unarchive_value: null
@@ -1912,7 +1912,7 @@ collections:
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: 45
+      sort: 46
       sort_field: sort
       translations: null
       unarchive_value: draft
@@ -1934,7 +1934,7 @@ collections:
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: 46
+      sort: 47
       sort_field: null
       translations: null
       unarchive_value: null
@@ -2000,7 +2000,7 @@ collections:
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: 35
+      sort: 36
       sort_field: sort
       translations: null
       unarchive_value: draft
@@ -2028,6 +2028,28 @@ collections:
       unarchive_value: draft
     schema:
       name: ST_Gallery
+  - collection: ST_Gallery_translations
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: ST_Gallery_translations
+      color: null
+      display_template: null
+      group: Section_Templates
+      hidden: true
+      icon: import_export
+      item_duplication_fields: null
+      note: null
+      singleton: false
+      sort: 33
+      sort_field: null
+      translations: null
+      unarchive_value: null
+    schema:
+      name: ST_Gallery_translations
   - collection: ST_GroupedLogos
     meta:
       accountability: all
@@ -2044,7 +2066,7 @@ collections:
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: 33
+      sort: 34
       sort_field: sort
       translations: null
       unarchive_value: draft
@@ -2066,7 +2088,7 @@ collections:
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: 40
+      sort: 41
       sort_field: sort
       translations: null
       unarchive_value: draft
@@ -2132,7 +2154,7 @@ collections:
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: 55
+      sort: 56
       sort_field: sort
       translations: null
       unarchive_value: draft
@@ -2154,7 +2176,7 @@ collections:
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: 48
+      sort: 49
       sort_field: sort
       translations: null
       unarchive_value: draft
@@ -2176,7 +2198,7 @@ collections:
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: 47
+      sort: 48
       sort_field: sort
       translations: null
       unarchive_value: draft
@@ -2198,7 +2220,7 @@ collections:
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: 51
+      sort: 52
       sort_field: sort
       translations: null
       unarchive_value: draft
@@ -2220,7 +2242,7 @@ collections:
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: 52
+      sort: 53
       sort_field: null
       translations: null
       unarchive_value: null
@@ -2242,7 +2264,7 @@ collections:
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: 53
+      sort: 54
       sort_field: sort
       translations: null
       unarchive_value: draft
@@ -2264,7 +2286,7 @@ collections:
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: 54
+      sort: 55
       sort_field: null
       translations: null
       unarchive_value: null
@@ -2286,7 +2308,7 @@ collections:
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: 43
+      sort: 44
       sort_field: sort
       translations: null
       unarchive_value: draft
@@ -2308,7 +2330,7 @@ collections:
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: 44
+      sort: 45
       sort_field: null
       translations: null
       unarchive_value: null
@@ -2550,7 +2572,7 @@ collections:
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: 49
+      sort: 50
       sort_field: sort
       translations: null
       unarchive_value: draft
@@ -2572,7 +2594,7 @@ collections:
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: 50
+      sort: 51
       sort_field: null
       translations: null
       unarchive_value: null
@@ -2594,7 +2616,7 @@ collections:
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: 41
+      sort: 42
       sort_field: sort
       translations: null
       unarchive_value: draft
@@ -2616,7 +2638,7 @@ collections:
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: 42
+      sort: 43
       sort_field: null
       translations: null
       unarchive_value: null
@@ -2814,7 +2836,7 @@ collections:
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: 36
+      sort: 37
       sort_field: sort
       translations: null
       unarchive_value: draft
@@ -2836,7 +2858,7 @@ collections:
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: 37
+      sort: 38
       sort_field: null
       translations: null
       unarchive_value: null
@@ -33082,6 +33104,45 @@ fields:
       foreign_key_table: directus_users
       foreign_key_column: id
   - collection: ST_Gallery
+    field: autoplay
+    type: boolean
+    meta:
+      collection: ST_Gallery
+      conditions: null
+      display: null
+      display_options: null
+      field: autoplay
+      group: null
+      hidden: false
+      interface: boolean
+      note: null
+      options: null
+      readonly: false
+      required: true
+      sort: 8
+      special:
+        - cast-boolean
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: autoplay
+      table: ST_Gallery
+      data_type: boolean
+      default_value: false
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: ST_Gallery
     field: date_created
     type: timestamp
     meta:
@@ -33098,7 +33159,7 @@ fields:
       options: null
       readonly: true
       required: false
-      sort: 7
+      sort: 12
       special:
         - date-created
       translations: null
@@ -33138,7 +33199,7 @@ fields:
       options: null
       readonly: true
       required: false
-      sort: 9
+      sort: 14
       special:
         - date-updated
       translations: null
@@ -33151,6 +33212,49 @@ fields:
       data_type: timestamp with time zone
       default_value: null
       max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: ST_Gallery
+    field: disposition
+    type: string
+    meta:
+      collection: ST_Gallery
+      conditions: null
+      display: null
+      display_options: null
+      field: disposition
+      group: null
+      hidden: false
+      interface: select-dropdown
+      note: null
+      options:
+        choices:
+          - text: Text Right
+            value: text_right
+          - text: Text Left
+            value: text_left
+      readonly: false
+      required: true
+      sort: 7
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: disposition
+      table: ST_Gallery
+      data_type: character varying
+      default_value: text_left
+      max_length: 255
       numeric_precision: null
       numeric_scale: null
       is_nullable: true
@@ -33265,6 +33369,84 @@ fields:
       validation_message: null
       width: full
   - collection: ST_Gallery
+    field: pagination_buttons
+    type: boolean
+    meta:
+      collection: ST_Gallery
+      conditions: null
+      display: null
+      display_options: null
+      field: pagination_buttons
+      group: null
+      hidden: false
+      interface: boolean
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 4
+      special:
+        - cast-boolean
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: pagination_buttons
+      table: ST_Gallery
+      data_type: boolean
+      default_value: true
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: ST_Gallery
+    field: prev_next_buttons
+    type: boolean
+    meta:
+      collection: ST_Gallery
+      conditions: null
+      display: null
+      display_options: null
+      field: prev_next_buttons
+      group: null
+      hidden: false
+      interface: boolean
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 5
+      special:
+        - cast-boolean
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: prev_next_buttons
+      table: ST_Gallery
+      data_type: boolean
+      default_value: true
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: ST_Gallery
     field: sort
     type: integer
     meta:
@@ -33280,7 +33462,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: 5
+      sort: 10
       special: null
       translations: null
       validation: null
@@ -33339,7 +33521,7 @@ fields:
             value: archived
       readonly: false
       required: false
-      sort: 4
+      sort: 9
       special: null
       translations: null
       validation: null
@@ -33362,6 +33544,30 @@ fields:
       foreign_key_table: null
       foreign_key_column: null
   - collection: ST_Gallery
+    field: translations
+    type: alias
+    meta:
+      collection: ST_Gallery
+      conditions: null
+      display: null
+      display_options: null
+      field: translations
+      group: null
+      hidden: false
+      interface: translations
+      note: null
+      options:
+        languageField: code
+      readonly: false
+      required: false
+      sort: 6
+      special:
+        - translations
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+  - collection: ST_Gallery
     field: user_created
     type: uuid
     meta:
@@ -33378,7 +33584,7 @@ fields:
         template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
       readonly: true
       required: false
-      sort: 6
+      sort: 11
       special:
         - user-created
       translations: null
@@ -33418,7 +33624,7 @@ fields:
         template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
       readonly: true
       required: false
-      sort: 8
+      sort: 13
       special:
         - user-updated
       translations: null
@@ -33441,6 +33647,290 @@ fields:
       has_auto_increment: false
       foreign_key_table: directus_users
       foreign_key_column: id
+  - collection: ST_Gallery_translations
+    field: ST_Gallery_id
+    type: uuid
+    meta:
+      collection: ST_Gallery_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: ST_Gallery_id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 5
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: ST_Gallery_id
+      table: ST_Gallery_translations
+      data_type: uuid
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: ST_Gallery
+      foreign_key_column: id
+  - collection: ST_Gallery_translations
+    field: buttons
+    type: json
+    meta:
+      collection: ST_Gallery_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: buttons
+      group: null
+      hidden: false
+      interface: list
+      note: null
+      options:
+        fields:
+          - field: name
+            name: name
+            type: string
+            meta:
+              field: name
+              width: full
+              type: string
+              interface: input
+              options:
+                placeholder: Button Name
+                trim: true
+                softLength: 100
+          - field: url
+            name: url
+            type: string
+            meta:
+              field: url
+              width: half
+              type: string
+              interface: input
+              options:
+                placeholder: URL
+                trim: true
+          - field: external
+            name: external
+            type: boolean
+            meta:
+              field: external
+              width: half
+              type: boolean
+              interface: boolean
+          - field: variant
+            name: variant
+            type: string
+            meta:
+              field: variant
+              width: full
+              type: string
+              interface: select-dropdown
+              note: Button Variant
+              options:
+                choices:
+                  - text: Primary
+                    value: primary
+                  - text: Outline
+                    value: outline
+                  - text: Ghost
+                    value: ghost
+                  - text: Light
+                    value: light
+                  - text: Dark
+                    value: dark
+                allowNone: true
+      readonly: false
+      required: false
+      sort: 4
+      special:
+        - cast-json
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: buttons
+      table: ST_Gallery_translations
+      data_type: json
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: ST_Gallery_translations
+    field: description
+    type: text
+    meta:
+      collection: ST_Gallery_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: description
+      group: null
+      hidden: false
+      interface: input-multiline
+      note: null
+      options:
+        trim: true
+      readonly: false
+      required: false
+      sort: 3
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: description
+      table: ST_Gallery_translations
+      data_type: text
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: ST_Gallery_translations
+    field: id
+    type: integer
+    meta:
+      collection: ST_Gallery_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 1
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: id
+      table: ST_Gallery_translations
+      data_type: integer
+      default_value: nextval('"ST_Gallery_translations_id_seq"'::regclass)
+      max_length: null
+      numeric_precision: 32
+      numeric_scale: 0
+      is_nullable: false
+      is_unique: true
+      is_primary_key: true
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: true
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: ST_Gallery_translations
+    field: languages_code
+    type: string
+    meta:
+      collection: ST_Gallery_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: languages_code
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 6
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: languages_code
+      table: ST_Gallery_translations
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: languages
+      foreign_key_column: code
+  - collection: ST_Gallery_translations
+    field: title
+    type: string
+    meta:
+      collection: ST_Gallery_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: title
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options: {}
+      readonly: false
+      required: false
+      sort: 2
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: title
+      table: ST_Gallery_translations
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
   - collection: ST_GroupedLogos
     field: date_created
     type: timestamp
@@ -52461,6 +52951,48 @@ relations:
       constraint_name: st_gallery_user_updated_foreign
       on_update: NO ACTION
       on_delete: NO ACTION
+  - collection: ST_Gallery_translations
+    field: ST_Gallery_id
+    related_collection: ST_Gallery
+    meta:
+      junction_field: languages_code
+      many_collection: ST_Gallery_translations
+      many_field: ST_Gallery_id
+      one_allowed_collections: null
+      one_collection: ST_Gallery
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: translations
+      sort_field: null
+    schema:
+      table: ST_Gallery_translations
+      column: ST_Gallery_id
+      foreign_key_table: ST_Gallery
+      foreign_key_column: id
+      constraint_name: st_gallery_translations_st_gallery_id_foreign
+      on_update: NO ACTION
+      on_delete: SET NULL
+  - collection: ST_Gallery_translations
+    field: languages_code
+    related_collection: languages
+    meta:
+      junction_field: ST_Gallery_id
+      many_collection: ST_Gallery_translations
+      many_field: languages_code
+      one_allowed_collections: null
+      one_collection: languages
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    schema:
+      table: ST_Gallery_translations
+      column: languages_code
+      foreign_key_table: languages
+      foreign_key_column: code
+      constraint_name: st_gallery_translations_languages_code_foreign
+      on_update: NO ACTION
+      on_delete: SET NULL
   - collection: ST_GroupedLogos
     field: image
     related_collection: directus_files
