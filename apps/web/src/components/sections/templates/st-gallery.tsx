@@ -6,11 +6,11 @@ import {
   NextButton,
   PrevButton,
 } from '@/components/ui/carouselButtons/CarouselButtons';
+import ButtonLink from '@/components/ui/links/ButtonLink';
 
 import { useCustomerEmblaCarousel } from '@/app/hooks/useCustomEmblaCarousel';
-import { mut } from '@/cms/mut';
 import { useSharedData } from '@/app/store';
-import ButtonLink from '@/components/ui/links/ButtonLink';
+import { mut } from '@/cms/mut';
 
 export function ST_GalleryFC({ items }: STemplates_Props<ST_Gallery>) {
   const { locale } = useSharedData();
