@@ -43,6 +43,8 @@ export const CMS_MODELS = {
     matomo: "Matomo",
     kroki: "Kroki",
     guest_replies: "GuestReplies",
+    forms: "Forms",
+    form_options: "FormOptions",
     campaigns: "Campaigns",
     dc_namespaces: "DC_Namespaces",
     dc_pages: "DC_Pages",
@@ -97,5 +99,6 @@ export const CMS_MODELS = {
     st_left_right_contents: "ST_LeftRightContents",
     st_maps: "ST_Maps",
     st_iframe: "ST_Iframe",
+    st_form_input: "ST_FormInput",
   } as const,
 };

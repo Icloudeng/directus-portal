@@ -94,7 +94,7 @@ export const BecomePartner = () => {
         />
       </div>
       {success && (
-        <div className='w-4/5 my-3 bg-green-300 p-4 rounded-md text-white'>
+        <div className='w-4/5 my-3 bg-green-400 p-4 rounded-md text-white opacity-95'>
           {t('PARTER_REQUEST_SENT')}
         </div>
       )}

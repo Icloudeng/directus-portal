@@ -1,4 +1,4 @@
-import { FormEvent, useState } from 'react';
+import { FormEvent, useRef, useState } from 'react';
 
 import { useFetch } from './useFetch';
 
@@ -6,12 +6,23 @@ export function useFormSubmit(url: string, successTimeout = 1000 * 60) {
   const [errors, setErrors] = useState({});
   const [success, setSuccess] = useState(false);
   const { callFetch, loading } = useFetch();
+  const metadata = useRef<{ [key: string]: any }>({});
 
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const target = e.currentTarget;
     const form = new FormData(target);
+
+    Object.keys(metadata.current).forEach((key) => {
+      const value = metadata.current[key];
+
+      form.set(
+        `metadata.${key}`,
+        typeof value === 'object' ? JSON.stringify(value) : value.toString()
+      );
+    });
+
     const data = Object.fromEntries(form.entries());
     setErrors({});
     setSuccess(false);
@@ -28,8 +39,13 @@ export function useFormSubmit(url: string, successTimeout = 1000 * 60) {
           setSuccess(true);
           setTimeout(() => setSuccess(false), successTimeout);
           form.forEach((_, key) => {
-            (target.querySelector(`[name=${key}]`) as HTMLInputElement).value =
-              '';
+            const input = target?.querySelector<HTMLInputElement>(
+              `[name="${key}"]`
+            );
+
+            if (input) {
+              input.value = '';
+            }
           });
         }
       });
@@ -40,5 +56,6 @@ export function useFormSubmit(url: string, successTimeout = 1000 * 60) {
     success,
     loading,
     onSubmit,
+    metadata,
   };
 }

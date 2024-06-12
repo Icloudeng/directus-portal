@@ -636,6 +636,70 @@ collections:
       unarchive_value: null
     schema:
       name: FooterLinks_translations
+  - collection: Form
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: Form
+      color: '#284076'
+      display_template: null
+      group: null
+      hidden: false
+      icon: folder
+      item_duplication_fields: null
+      note: null
+      singleton: false
+      sort: 9
+      sort_field: null
+      translations: null
+      unarchive_value: null
+  - collection: FormOptions
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: FormOptions
+      color: null
+      display_template: null
+      group: Form
+      hidden: false
+      icon: null
+      item_duplication_fields: null
+      note: null
+      singleton: true
+      sort: 2
+      sort_field: null
+      translations: null
+      unarchive_value: null
+    schema:
+      name: FormOptions
+  - collection: Forms
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: status
+      archive_value: archived
+      collapse: open
+      collection: Forms
+      color: null
+      display_template: null
+      group: Form
+      hidden: false
+      icon: null
+      item_duplication_fields: null
+      note: null
+      singleton: false
+      sort: 1
+      sort_field: sort
+      translations: null
+      unarchive_value: draft
+    schema:
+      name: Forms
   - collection: GuestQuestions
     meta:
       accountability: all
@@ -696,7 +760,7 @@ collections:
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: 9
+      sort: 10
       sort_field: null
       translations: null
       unarchive_value: null
@@ -846,7 +910,7 @@ collections:
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: 10
+      sort: 11
       sort_field: null
       translations: null
       unarchive_value: null
@@ -2006,6 +2070,50 @@ collections:
       unarchive_value: draft
     schema:
       name: ST_CompanyDetails
+  - collection: ST_FormInput
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: status
+      archive_value: archived
+      collapse: open
+      collection: ST_FormInput
+      color: null
+      display_template: "{{name}}\_-\_{{group}} - {{status}}"
+      group: Section_Templates
+      hidden: true
+      icon: null
+      item_duplication_fields: null
+      note: null
+      singleton: false
+      sort: 57
+      sort_field: sort
+      translations: null
+      unarchive_value: draft
+    schema:
+      name: ST_FormInput
+  - collection: ST_FormInput_translations
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: ST_FormInput_translations
+      color: null
+      display_template: null
+      group: Section_Templates
+      hidden: true
+      icon: import_export
+      item_duplication_fields: null
+      note: null
+      singleton: false
+      sort: 58
+      sort_field: null
+      translations: null
+      unarchive_value: null
+    schema:
+      name: ST_FormInput_translations
   - collection: ST_Gallery
     meta:
       accountability: all
@@ -2966,7 +3074,7 @@ collections:
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: 11
+      sort: 12
       sort_field: null
       translations: null
       unarchive_value: null
@@ -3116,7 +3224,7 @@ collections:
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: 12
+      sort: 13
       sort_field: null
       translations: null
       unarchive_value: null
@@ -12993,6 +13101,526 @@ fields:
       numeric_precision: null
       numeric_scale: null
       is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: FormOptions
+    field: date_created
+    type: timestamp
+    meta:
+      collection: FormOptions
+      conditions: null
+      display: datetime
+      display_options:
+        relative: true
+      field: date_created
+      group: null
+      hidden: true
+      interface: datetime
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: 4
+      special:
+        - date-created
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: date_created
+      table: FormOptions
+      data_type: timestamp with time zone
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: FormOptions
+    field: date_updated
+    type: timestamp
+    meta:
+      collection: FormOptions
+      conditions: null
+      display: datetime
+      display_options:
+        relative: true
+      field: date_updated
+      group: null
+      hidden: true
+      interface: datetime
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: 6
+      special:
+        - date-updated
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: date_updated
+      table: FormOptions
+      data_type: timestamp with time zone
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: FormOptions
+    field: id
+    type: uuid
+    meta:
+      collection: FormOptions
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: 1
+      special:
+        - uuid
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: id
+      table: FormOptions
+      data_type: uuid
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: true
+      is_primary_key: true
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: FormOptions
+    field: user_created
+    type: uuid
+    meta:
+      collection: FormOptions
+      conditions: null
+      display: user
+      display_options: null
+      field: user_created
+      group: null
+      hidden: true
+      interface: select-dropdown-m2o
+      note: null
+      options:
+        template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
+      readonly: true
+      required: false
+      sort: 3
+      special:
+        - user-created
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: user_created
+      table: FormOptions
+      data_type: uuid
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: directus_users
+      foreign_key_column: id
+  - collection: FormOptions
+    field: user_updated
+    type: uuid
+    meta:
+      collection: FormOptions
+      conditions: null
+      display: user
+      display_options: null
+      field: user_updated
+      group: null
+      hidden: true
+      interface: select-dropdown-m2o
+      note: null
+      options:
+        template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
+      readonly: true
+      required: false
+      sort: 5
+      special:
+        - user-updated
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: user_updated
+      table: FormOptions
+      data_type: uuid
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: directus_users
+      foreign_key_column: id
+  - collection: FormOptions
+    field: web_hooks
+    type: json
+    meta:
+      collection: FormOptions
+      conditions: null
+      display: null
+      display_options: null
+      field: web_hooks
+      group: null
+      hidden: false
+      interface: list
+      note: null
+      options:
+        fields:
+          - field: url
+            name: url
+            type: string
+            meta:
+              field: url
+              width: half
+              type: string
+              interface: input
+              note: URL
+              required: true
+              options:
+                trim: true
+          - field: action
+            name: action
+            type: string
+            meta:
+              field: action
+              width: half
+              type: string
+              interface: select-dropdown
+              required: true
+              options:
+                choices:
+                  - text: Create
+                    value: create
+              note: On Action
+        template: '{{ url }}'
+      readonly: false
+      required: false
+      sort: 2
+      special:
+        - cast-json
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: web_hooks
+      table: FormOptions
+      data_type: json
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: Forms
+    field: data
+    type: json
+    meta:
+      collection: Forms
+      conditions: null
+      display: formatted-json-value
+      display_options: null
+      field: data
+      group: null
+      hidden: false
+      interface: list
+      note: null
+      options: null
+      readonly: true
+      required: true
+      sort: 3
+      special:
+        - cast-json
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: data
+      table: Forms
+      data_type: json
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: Forms
+    field: date_created
+    type: timestamp
+    meta:
+      collection: Forms
+      conditions: null
+      display: datetime
+      display_options:
+        relative: true
+      field: date_created
+      group: null
+      hidden: true
+      interface: datetime
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: 6
+      special:
+        - date-created
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: date_created
+      table: Forms
+      data_type: timestamp with time zone
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: Forms
+    field: group
+    type: string
+    meta:
+      collection: Forms
+      conditions: null
+      display: null
+      display_options: null
+      field: group
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        trim: true
+      readonly: true
+      required: true
+      sort: 2
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: group
+      table: Forms
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: Forms
+    field: id
+    type: uuid
+    meta:
+      collection: Forms
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: 1
+      special:
+        - uuid
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: id
+      table: Forms
+      data_type: uuid
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: true
+      is_primary_key: true
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: Forms
+    field: sort
+    type: integer
+    meta:
+      collection: Forms
+      conditions: null
+      display: null
+      display_options: null
+      field: sort
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 5
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: sort
+      table: Forms
+      data_type: integer
+      default_value: null
+      max_length: null
+      numeric_precision: 32
+      numeric_scale: 0
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: Forms
+    field: status
+    type: string
+    meta:
+      collection: Forms
+      conditions: null
+      display: labels
+      display_options:
+        choices:
+          - text: $t:published
+            value: published
+            foreground: '#FFFFFF'
+            background: var(--primary)
+          - text: $t:draft
+            value: draft
+            foreground: '#18222F'
+            background: '#D3DAE4'
+          - text: $t:archived
+            value: archived
+            foreground: '#FFFFFF'
+            background: var(--warning)
+        showAsDot: true
+      field: status
+      group: null
+      hidden: false
+      interface: select-dropdown
+      note: null
+      options:
+        choices:
+          - text: $t:published
+            value: published
+          - text: $t:draft
+            value: draft
+          - text: $t:archived
+            value: archived
+      readonly: false
+      required: false
+      sort: 4
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: status
+      table: Forms
+      data_type: character varying
+      default_value: draft
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
       is_unique: false
       is_primary_key: false
       is_generated: false
@@ -33103,6 +33731,886 @@ fields:
       has_auto_increment: false
       foreign_key_table: directus_users
       foreign_key_column: id
+  - collection: ST_FormInput
+    field: date_created
+    type: timestamp
+    meta:
+      collection: ST_FormInput
+      conditions: null
+      display: datetime
+      display_options:
+        relative: true
+      field: date_created
+      group: null
+      hidden: true
+      interface: datetime
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: 14
+      special:
+        - date-created
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: date_created
+      table: ST_FormInput
+      data_type: timestamp with time zone
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: ST_FormInput
+    field: date_updated
+    type: timestamp
+    meta:
+      collection: ST_FormInput
+      conditions: null
+      display: datetime
+      display_options:
+        relative: true
+      field: date_updated
+      group: null
+      hidden: true
+      interface: datetime
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: 16
+      special:
+        - date-updated
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: date_updated
+      table: ST_FormInput
+      data_type: timestamp with time zone
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: ST_FormInput
+    field: default_value
+    type: string
+    meta:
+      collection: ST_FormInput
+      conditions: null
+      display: null
+      display_options: null
+      field: default_value
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        placeholder: Default Value
+        trim: true
+      readonly: false
+      required: false
+      sort: 8
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: default_value
+      table: ST_FormInput
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: ST_FormInput
+    field: full_width
+    type: boolean
+    meta:
+      collection: ST_FormInput
+      conditions: null
+      display: null
+      display_options: null
+      field: full_width
+      group: null
+      hidden: false
+      interface: boolean
+      note: null
+      options: null
+      readonly: false
+      required: true
+      sort: 7
+      special:
+        - cast-boolean
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: full_width
+      table: ST_FormInput
+      data_type: boolean
+      default_value: false
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: ST_FormInput
+    field: group
+    type: string
+    meta:
+      collection: ST_FormInput
+      conditions: null
+      display: null
+      display_options: null
+      field: group
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: true
+      sort: 3
+      special: null
+      translations: null
+      validation:
+        _and:
+          - group:
+              _regex: ^[a-z]+$
+      validation_message: null
+      width: half
+    schema:
+      name: group
+      table: ST_FormInput
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: ST_FormInput
+    field: id
+    type: uuid
+    meta:
+      collection: ST_FormInput
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: 1
+      special:
+        - uuid
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: id
+      table: ST_FormInput
+      data_type: uuid
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: true
+      is_primary_key: true
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: ST_FormInput
+    field: name
+    type: string
+    meta:
+      collection: ST_FormInput
+      conditions: null
+      display: null
+      display_options: null
+      field: name
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        placeholder: Input Name
+      readonly: false
+      required: true
+      sort: 2
+      special: null
+      translations: null
+      validation:
+        _and:
+          - name:
+              _regex: ^[a-z]+$
+      validation_message: null
+      width: half
+    schema:
+      name: name
+      table: ST_FormInput
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: ST_FormInput
+    field: options
+    type: json
+    meta:
+      collection: ST_FormInput
+      conditions: null
+      display: null
+      display_options: null
+      field: options
+      group: null
+      hidden: false
+      interface: list
+      note: null
+      options:
+        fields:
+          - field: property
+            name: property
+            type: string
+            meta:
+              field: property
+              type: string
+              interface: input
+              required: true
+              options:
+                trim: true
+              width: half
+          - field: value
+            name: value
+            type: string
+            meta:
+              field: value
+              width: half
+              type: string
+              interface: input
+              options:
+                trim: true
+        template: '{{ property }} - {{ value }}'
+      readonly: false
+      required: false
+      sort: 10
+      special:
+        - cast-json
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: options
+      table: ST_FormInput
+      data_type: json
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: ST_FormInput
+    field: regex
+    type: string
+    meta:
+      collection: ST_FormInput
+      conditions: null
+      display: null
+      display_options: null
+      field: regex
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 9
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: regex
+      table: ST_FormInput
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: ST_FormInput
+    field: required
+    type: boolean
+    meta:
+      collection: ST_FormInput
+      conditions: null
+      display: null
+      display_options: null
+      field: required
+      group: null
+      hidden: false
+      interface: boolean
+      note: null
+      options: null
+      readonly: false
+      required: true
+      sort: 6
+      special:
+        - cast-boolean
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: required
+      table: ST_FormInput
+      data_type: boolean
+      default_value: true
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: ST_FormInput
+    field: sort
+    type: integer
+    meta:
+      collection: ST_FormInput
+      conditions: null
+      display: null
+      display_options: null
+      field: sort
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 12
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: sort
+      table: ST_FormInput
+      data_type: integer
+      default_value: null
+      max_length: null
+      numeric_precision: 32
+      numeric_scale: 0
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: ST_FormInput
+    field: status
+    type: string
+    meta:
+      collection: ST_FormInput
+      conditions: null
+      display: labels
+      display_options:
+        choices:
+          - text: $t:published
+            value: published
+            foreground: '#FFFFFF'
+            background: var(--primary)
+          - text: $t:draft
+            value: draft
+            foreground: '#18222F'
+            background: '#D3DAE4'
+          - text: $t:archived
+            value: archived
+            foreground: '#FFFFFF'
+            background: var(--warning)
+        showAsDot: true
+      field: status
+      group: null
+      hidden: false
+      interface: select-dropdown
+      note: null
+      options:
+        choices:
+          - text: $t:published
+            value: published
+          - text: $t:draft
+            value: draft
+          - text: $t:archived
+            value: archived
+      readonly: false
+      required: false
+      sort: 11
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: status
+      table: ST_FormInput
+      data_type: character varying
+      default_value: draft
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: ST_FormInput
+    field: translations
+    type: alias
+    meta:
+      collection: ST_FormInput
+      conditions: null
+      display: null
+      display_options: null
+      field: translations
+      group: null
+      hidden: false
+      interface: translations
+      note: null
+      options:
+        languageField: code
+      readonly: false
+      required: false
+      sort: 5
+      special:
+        - translations
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+  - collection: ST_FormInput
+    field: type
+    type: string
+    meta:
+      collection: ST_FormInput
+      conditions: null
+      display: null
+      display_options: null
+      field: type
+      group: null
+      hidden: false
+      interface: select-dropdown
+      note: null
+      options:
+        choices:
+          - text: Text
+            value: text
+          - text: Number
+            value: number
+          - text: Password
+            value: password
+          - text: Textarea
+            value: textarea
+          - text: Email
+            value: email
+          - text: Url
+            value: url
+          - text: Tel
+            value: tel
+          - text: Color
+            value: color
+          - text: Date
+            value: date
+          - text: Radio
+            value: radio
+          - text: Checkbox
+            value: checkbox
+          - text: Submit
+            value: submit
+          - text: Hidden
+            value: hidden
+          - text: Time
+            value: time
+      readonly: false
+      required: true
+      sort: 4
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: type
+      table: ST_FormInput
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: ST_FormInput
+    field: user_created
+    type: uuid
+    meta:
+      collection: ST_FormInput
+      conditions: null
+      display: user
+      display_options: null
+      field: user_created
+      group: null
+      hidden: true
+      interface: select-dropdown-m2o
+      note: null
+      options:
+        template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
+      readonly: true
+      required: false
+      sort: 13
+      special:
+        - user-created
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: user_created
+      table: ST_FormInput
+      data_type: uuid
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: directus_users
+      foreign_key_column: id
+  - collection: ST_FormInput
+    field: user_updated
+    type: uuid
+    meta:
+      collection: ST_FormInput
+      conditions: null
+      display: user
+      display_options: null
+      field: user_updated
+      group: null
+      hidden: true
+      interface: select-dropdown-m2o
+      note: null
+      options:
+        template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
+      readonly: true
+      required: false
+      sort: 15
+      special:
+        - user-updated
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: user_updated
+      table: ST_FormInput
+      data_type: uuid
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: directus_users
+      foreign_key_column: id
+  - collection: ST_FormInput_translations
+    field: ST_FormInput_id
+    type: uuid
+    meta:
+      collection: ST_FormInput_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: ST_FormInput_id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 4
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: ST_FormInput_id
+      table: ST_FormInput_translations
+      data_type: uuid
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: ST_FormInput
+      foreign_key_column: id
+  - collection: ST_FormInput_translations
+    field: id
+    type: integer
+    meta:
+      collection: ST_FormInput_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 1
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: id
+      table: ST_FormInput_translations
+      data_type: integer
+      default_value: nextval('"ST_FormInput_translations_id_seq"'::regclass)
+      max_length: null
+      numeric_precision: 32
+      numeric_scale: 0
+      is_nullable: false
+      is_unique: true
+      is_primary_key: true
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: true
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: ST_FormInput_translations
+    field: label
+    type: string
+    meta:
+      collection: ST_FormInput_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: label
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        trim: true
+      readonly: false
+      required: false
+      sort: 2
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: label
+      table: ST_FormInput_translations
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: ST_FormInput_translations
+    field: languages_code
+    type: string
+    meta:
+      collection: ST_FormInput_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: languages_code
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 5
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: languages_code
+      table: ST_FormInput_translations
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: languages
+      foreign_key_column: code
+  - collection: ST_FormInput_translations
+    field: placeholder
+    type: string
+    meta:
+      collection: ST_FormInput_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: placeholder
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        trim: true
+      readonly: false
+      required: false
+      sort: 3
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: placeholder
+      table: ST_FormInput_translations
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
   - collection: ST_Gallery
     field: autoplay
     type: boolean
@@ -50143,6 +51651,48 @@ relations:
       constraint_name: footerlinks_translations_languages_code_foreign
       on_update: NO ACTION
       on_delete: SET NULL
+  - collection: FormOptions
+    field: user_created
+    related_collection: directus_users
+    meta:
+      junction_field: null
+      many_collection: FormOptions
+      many_field: user_created
+      one_allowed_collections: null
+      one_collection: directus_users
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    schema:
+      table: FormOptions
+      column: user_created
+      foreign_key_table: directus_users
+      foreign_key_column: id
+      constraint_name: formoptions_user_created_foreign
+      on_update: NO ACTION
+      on_delete: NO ACTION
+  - collection: FormOptions
+    field: user_updated
+    related_collection: directus_users
+    meta:
+      junction_field: null
+      many_collection: FormOptions
+      many_field: user_updated
+      one_allowed_collections: null
+      one_collection: directus_users
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    schema:
+      table: FormOptions
+      column: user_updated
+      foreign_key_table: directus_users
+      foreign_key_column: id
+      constraint_name: formoptions_user_updated_foreign
+      on_update: NO ACTION
+      on_delete: NO ACTION
   - collection: GuestQuestions
     field: user_created
     related_collection: directus_users
@@ -51456,6 +53006,7 @@ relations:
         - ST_Charts
         - ST_CleanHeros
         - ST_CompanyDetails
+        - ST_FormInput
         - ST_Gallery
         - ST_GroupedLogos
         - ST_GuestQuestions
@@ -52888,6 +54439,90 @@ relations:
       constraint_name: st_companydetails_user_updated_foreign
       on_update: NO ACTION
       on_delete: NO ACTION
+  - collection: ST_FormInput
+    field: user_created
+    related_collection: directus_users
+    meta:
+      junction_field: null
+      many_collection: ST_FormInput
+      many_field: user_created
+      one_allowed_collections: null
+      one_collection: directus_users
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    schema:
+      table: ST_FormInput
+      column: user_created
+      foreign_key_table: directus_users
+      foreign_key_column: id
+      constraint_name: st_forminput_user_created_foreign
+      on_update: NO ACTION
+      on_delete: NO ACTION
+  - collection: ST_FormInput
+    field: user_updated
+    related_collection: directus_users
+    meta:
+      junction_field: null
+      many_collection: ST_FormInput
+      many_field: user_updated
+      one_allowed_collections: null
+      one_collection: directus_users
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    schema:
+      table: ST_FormInput
+      column: user_updated
+      foreign_key_table: directus_users
+      foreign_key_column: id
+      constraint_name: st_forminput_user_updated_foreign
+      on_update: NO ACTION
+      on_delete: NO ACTION
+  - collection: ST_FormInput_translations
+    field: ST_FormInput_id
+    related_collection: ST_FormInput
+    meta:
+      junction_field: languages_code
+      many_collection: ST_FormInput_translations
+      many_field: ST_FormInput_id
+      one_allowed_collections: null
+      one_collection: ST_FormInput
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: translations
+      sort_field: null
+    schema:
+      table: ST_FormInput_translations
+      column: ST_FormInput_id
+      foreign_key_table: ST_FormInput
+      foreign_key_column: id
+      constraint_name: st_forminput_translations_st_forminput_id_foreign
+      on_update: NO ACTION
+      on_delete: SET NULL
+  - collection: ST_FormInput_translations
+    field: languages_code
+    related_collection: languages
+    meta:
+      junction_field: ST_FormInput_id
+      many_collection: ST_FormInput_translations
+      many_field: languages_code
+      one_allowed_collections: null
+      one_collection: languages
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    schema:
+      table: ST_FormInput_translations
+      column: languages_code
+      foreign_key_table: languages
+      foreign_key_column: code
+      constraint_name: st_forminput_translations_languages_code_foreign
+      on_update: NO ACTION
+      on_delete: SET NULL
   - collection: ST_Gallery
     field: image
     related_collection: directus_files
