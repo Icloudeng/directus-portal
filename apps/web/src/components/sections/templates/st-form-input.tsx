@@ -1,12 +1,14 @@
-import { useFormSubmit } from '@/app/hooks/useFormSubmit';
-import { useSharedData } from '@/app/store';
-import { mut, useMut } from '@/cms/mut';
-import { Spinner } from '@/components/ui/Spinner';
+import { ST_FormInput, STemplates_Props } from '@apps/contracts';
+import { useTranslation } from 'next-i18next';
+
 import Button from '@/components/ui/buttons/Button';
 import InputField from '@/components/ui/form-control/InputField';
 import { TextArea } from '@/components/ui/form-control/TextArea';
-import { ST_FormInput, STemplates_Props } from '@apps/contracts';
-import { useTranslation } from 'next-i18next';
+import { Spinner } from '@/components/ui/Spinner';
+
+import { useFormSubmit } from '@/app/hooks/useFormSubmit';
+import { useSharedData } from '@/app/store';
+import { mut, useMut } from '@/cms/mut';
 
 export function ST_FormInputFC({ items }: STemplates_Props<ST_FormInput>) {
   const { t } = useTranslation();
@@ -19,20 +21,20 @@ export function ST_FormInputFC({ items }: STemplates_Props<ST_FormInput>) {
       data[index - 1] && data[index - 1].item.group != item.group
   );
 
-  if (hasSameGroup) {
-    return (
-      <div className='flex justify-center'>
-        <h3 className='text-2xl text-red-400 text-center'>
-          {'All form inputs must have the same group name'}
-        </h3>
-      </div>
-    );
-  }
-
   const submitButton = items.find(({ item }) => item.type === 'submit');
   const inputs = items.filter(({ item }) => item.type !== 'submit');
 
   const submitButtonTranslation = useMut(submitButton?.item);
+
+  if (hasSameGroup) {
+    return (
+      <div className='flex justify-center'>
+        <h3 className='text-2xl text-red-400 text-center'>
+          All form inputs must have the same group name
+        </h3>
+      </div>
+    );
+  }
 
   return (
     <form

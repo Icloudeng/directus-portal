@@ -1,8 +1,9 @@
 import { useTranslation } from 'next-i18next';
 import { HTMLInputTypeAttribute, useId } from 'react';
 
-import { useErrorInput } from '@/app/hooks/useErrorInput';
 import clsxm from '@/lib/clsxm';
+
+import { useErrorInput } from '@/app/hooks/useErrorInput';
 
 type InputField = {
   inputLabel: string;
