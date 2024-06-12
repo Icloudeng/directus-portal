@@ -14,6 +14,7 @@ type InputField = {
   border?: boolean;
   className?: string;
   required?: boolean;
+  pattern?: string;
 };
 
 function InputField({
@@ -25,6 +26,7 @@ function InputField({
   border = true,
   className,
   required,
+  pattern,
 }: InputField) {
   const { error, onKeyUp } = useErrorInput(inputID, errors);
   const { t } = useTranslation();
@@ -46,6 +48,7 @@ function InputField({
           id={inputID + id}
           onKeyUp={onKeyUp}
           required={required}
+          pattern={pattern}
           className={clsxm(
             `block w-full rounded-sm bg-gray-50 py-3 px-4 focus:border-primary-400 focus:ring-primary-400 sm:text-sm`,
             error ? 'border-red-400' : 'border-gray-300'

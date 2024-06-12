@@ -53,6 +53,7 @@ export function ST_FormInputFC({ items }: STemplates_Props<ST_FormInput>) {
               key={inputItem.id}
               errors={errors}
               inputID={inputItem.name}
+              required={inputItem.required}
               inputLabel={inputItem.translations?.label || inputItem.name}
               inputPlaceholder={inputItem.translations?.placeholder || ''}
               className={inputItem.full_width ? 'w-full' : 'w-[48%]'}
@@ -66,6 +67,8 @@ export function ST_FormInputFC({ items }: STemplates_Props<ST_FormInput>) {
             inputType={inputItem.type}
             errors={errors}
             inputID={inputItem.name}
+            required={inputItem.required}
+            pattern={inputItem.regex || undefined}
             inputLabel={inputItem.translations?.label || inputItem.name}
             inputPlaceholder={inputItem.translations?.placeholder || ''}
             className={inputItem.full_width ? 'w-full' : 'w-[48%]'}
