@@ -1,8 +1,15 @@
+import Autoplay from 'embla-carousel-autoplay';
 import useEmblaCarousel from 'embla-carousel-react';
 import { useCallback, useEffect, useState } from 'react';
 
-export const useCustomerEmblaCarousel = (startIndex = 0) => {
-  const [viewportRef, embla] = useEmblaCarousel({ loop: false, startIndex });
+export const useCustomerEmblaCarousel = (
+  startIndex = 0,
+  autoplay?: boolean
+) => {
+  const [viewportRef, embla] = useEmblaCarousel(
+    { loop: autoplay, startIndex },
+    autoplay ? [Autoplay({ playOnInit: true, delay: 5000 })] : undefined
+  );
 
   const scrollPrev = useCallback(() => embla && embla.scrollPrev(), [embla]);
   const scrollNext = useCallback(() => embla && embla.scrollNext(), [embla]);
@@ -28,6 +35,10 @@ export const useCustomerEmblaCarousel = (startIndex = 0) => {
     embla.on('select', onSelect);
     onSelect();
     setScrollSnaps(embla.scrollSnapList() as any);
+
+    return () => {
+      embla.off('select', onSelect);
+    };
   }, [embla, setScrollSnaps, onSelect]);
 
   return {

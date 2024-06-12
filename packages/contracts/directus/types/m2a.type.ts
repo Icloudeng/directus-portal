@@ -230,7 +230,18 @@ export type ST_Testimonial = MDHasM2A<
 >;
 
 export type ST_Gallery = MDHasM2A<
-  { image: MDWithAsset } & DRTStatus,
+  {
+    image: MDWithAsset;
+    pagination_buttons?: boolean;
+    prev_next_buttons?: boolean;
+    autoplay: boolean;
+    disposition: "text_left" | "text_right";
+  } & MDWithTranslation<{
+    title: string;
+    description?: string;
+    buttons?: RepeaterBtn[];
+  }> &
+    DRTStatus,
   ST_V<"st_gallery">
 >;
 

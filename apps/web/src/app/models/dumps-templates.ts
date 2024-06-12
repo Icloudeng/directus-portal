@@ -1296,45 +1296,61 @@ export const DumpTestimonials: ST_Testimonial[] = [
 
 export const DumpGallery: ST_Gallery[] = [
   {
-    id: '48',
+    id: '2',
     collection: 'ST_Gallery',
     item: {
       image: {
-        id: '13d96468-bb41-49b8-a3c7-5670a0a3cb2f',
-        type: 'image/webp',
-        src: 'https://flowbite.com/docs/images/blog/image-1.jpg',
-      },
-      id: 'abb9a478-c3e1-448d-8e8f-b4cc53e51631',
-      status: 'published',
-      date_created: '2022-10-28T11:40:54.609Z',
-    },
-  },
-  {
-    id: '49',
-    collection: 'ST_Gallery',
-    item: {
-      image: {
-        id: '3ebc59df-88e7-4d15-8a4c-61ba235ee004',
+        id: '20c17e17-a1d5-44d9-8074-746ac391e0ef',
         type: 'image/jpeg',
         src: 'https://flowbite.com/docs/images/blog/image-2.jpg',
       },
-      id: '0e5e660c-6cc4-4032-9081-fa6a80a7ec6d',
+      pagination_buttons: true,
+      prev_next_buttons: true,
+      autoplay: true,
+      disposition: 'text_left',
+      translations: [
+        {
+          id: '1',
+          languages_code: {
+            code: 'en',
+            name: 'English',
+          },
+          title: 'Sweet Tooth - Saison',
+          description:
+            'Créée par Jim Mickle et produite par Robert Downey Jr. et Susan Downey, cette nouvelle saison sera composée de huit épisodes. L’occasion pour les abonnés de retrouver le petit Gus, mi-humain mi-cerf, qui va vivre de nouvelles aventures trépidantes.',
+          buttons: [
+            {
+              name: 'Read More',
+              url: '/readmore',
+              external: true,
+            },
+          ],
+        },
+      ],
+      id: 'a4c62aa9-337f-4ab3-a8f0-8985684957d4',
       status: 'published',
-      date_created: '2022-10-28T11:40:54.653Z',
+      date_created: '2024-06-11T22:54:09.035Z',
+      date_updated: '2024-06-11T23:29:28.955Z',
     },
   },
   {
-    id: '50',
+    id: '3',
     collection: 'ST_Gallery',
     item: {
       image: {
-        id: 'd7c60e1f-36aa-4a06-a482-3999382eea93',
-        type: 'image/jpeg',
-        src: 'https://flowbite.com/docs/images/blog/image-3.jpg',
+        id: 'bf1c59ee-237e-44a5-8bf8-4715937be143',
+        type: 'image/png',
+        src: 'https://flowbite.com/docs/images/blog/image-1.jpg',
       },
-      id: '0a1dacdc-f431-4d39-9863-8ba867a43404',
+      translations: [],
+      pagination_buttons: true,
+      prev_next_buttons: true,
+      autoplay: true,
+      disposition: 'text_left',
+      id: '36934fd7-c73e-41f9-b141-14c6c36d5068',
       status: 'published',
-      date_created: '2022-10-28T11:40:54.692Z',
+      date_created: '2024-06-11T22:55:05.838Z',
+      date_updated: '2024-06-11T23:13:45.559Z',
     },
   },
 ];
