@@ -6,6 +6,7 @@
   "NO_CONTENT_FOUND": "No content found for {{ page }}'s page",
   "PATERNER_FORM_SUBMIT": "Submit",
   "PARTER_REQUEST_SENT": "Your request has been sent, we will inform you by email after verification of the information provided.",
+  "FORM_SUBMITTED": "Your submission has been successfully received.",
   "GUEST_QUESTION_SENT": "Thank you for your interest, we will get back to you as soon as possible.",
   "SUBSCRIPTION_SUCCESS": "An e-mail has been sent to you to confirm your subscription"
 }

@@ -13,41 +13,9 @@ import { M2APageSection, M2APageSectionReusable } from "./m2a.type";
 
 // --------------- Layout -------------
 
-export type FooterBottom =
-  | "company_name"
-  | "terms_services"
-  | "privacy"
-  | "use_cookies"
-  | "payment_modes";
-
 export type MDSiteLayout = {
   site_background_color: string;
 } & Omit<DRTStatus, "status">;
-
-export type MDTopbarLayout = {
-  show_topbar: boolean;
-} & Omit<DRTStatus, "status">;
-
-export type MDNavbarLayout = {
-  navbar_logo_width: number;
-  navbar_logo_height: number;
-  navbar_logo_rounded: boolean;
-} & Omit<DRTStatus, "status">;
-
-export type MDFooterLayout = {
-  show_footer_contacts: boolean;
-  show_footer_links: boolean;
-  show_footer_mailing_subscription: boolean;
-  show_top_footer: boolean;
-  footer_type: "full_footer" | "simple_footer";
-  bottom_footer: FooterBottom[];
-} & MDWithTranslation<{
-  titles: { title: string; color: string }[];
-  buttons: (Omit<RepeaterBtn, "variant"> & {
-    variant?: ButtonVariant | "text";
-  })[];
-}> &
-  Omit<DRTStatus, "status">;
 
 // --------------- language model types -------------
 
@@ -108,7 +76,34 @@ export type MDTopbarLink = MDWithTranslation<{ name: string }> & {
   external: boolean;
 } & DRTStatus;
 
+export type MDTopbarLayout = {
+  show_topbar: boolean;
+} & Omit<DRTStatus, "status">;
+
 // --------------- footer link item model types -------------
+
+export type FooterBottom =
+  | "company_name"
+  | "terms_services"
+  | "privacy"
+  | "use_cookies"
+  | "payment_modes";
+
+export type MDFooterLayout = {
+  show_footer_contacts: boolean;
+  show_footer_links: boolean;
+  show_footer_mailing_subscription: boolean;
+  show_top_footer: boolean;
+  footer_type: "full_footer" | "simple_footer";
+  bottom_footer: FooterBottom[];
+} & MDWithTranslation<{
+  titles: { title: string; color: string }[];
+  buttons: (Omit<RepeaterBtn, "variant"> & {
+    variant?: ButtonVariant | "text";
+  })[];
+}> &
+  Omit<DRTStatus, "status">;
+
 type MDFooterLinkItemField = {
   id: ID;
   external: boolean;
@@ -178,6 +173,12 @@ export type MDCompanyDetail = MDWithTranslation<MDCompanyDetailFieldTrans> &
   Omit<DRTStatus, "id">;
 
 //  ------------------ Navbar Links types  ---------------------
+
+export type MDNavbarLayout = {
+  navbar_logo_width: number;
+  navbar_logo_height: number;
+  navbar_logo_rounded: boolean;
+} & Omit<DRTStatus, "status">;
 
 export type NavbarLinkSubmenuItem = MDWithTranslation<{
   name: string;
@@ -366,6 +367,16 @@ export type MDGuestReplie = {
   message: string;
   state: "sent" | "failed" | "sending";
   transfer_initiated: boolean;
+} & DRTStatus;
+
+//  ---------------- Forms -------------------------
+
+export type MDForms = {
+  group: string;
+} & Pick<DRTStatus, "status" | "date_created">;
+
+export type MDFormOptions = {
+  web_hooks: { url: string; action: "create" }[];
 } & DRTStatus;
 
 //  ---------------- Newsletters Subscriptions -------------------------

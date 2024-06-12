@@ -405,6 +405,40 @@ export type ST_Iframe = MDHasM2A<
   ST_V<"st_iframe">
 >;
 
+type HTMLInputTypeAttribute =
+  | "checkbox"
+  | "color"
+  | "date"
+  | "email"
+  | "textarea"
+  | "hidden"
+  | "number"
+  | "password"
+  | "radio"
+  | "submit"
+  | "tel"
+  | "text"
+  | "time"
+  | "url";
+
+export type ST_FormInput = MDHasM2A<
+  {
+    name: string;
+    group: string;
+    type: HTMLInputTypeAttribute;
+    default_value?: string;
+    required: boolean;
+    full_width: boolean;
+    options?: { property: string; value: string }[];
+    regex?: string;
+  } & MDWithTranslation<{
+    label?: string;
+    placeholder?: string;
+  }> &
+    DRTStatus,
+  ST_V<"st_form_input">
+>;
+
 //------------------- Page Sections --------------------//
 export type PS_Content =
   | ST_Value
@@ -439,7 +473,8 @@ export type PS_Content =
   | ST_RichText
   | ST_LeftRightContent
   | ST_Map
-  | ST_Iframe;
+  | ST_Iframe
+  | ST_FormInput;
 
 export type M2APageSection = MDHasM2A<
   {

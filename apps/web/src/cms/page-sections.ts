@@ -361,6 +361,24 @@ const q_ST: Query = {
     scrolling: true,
     ...qWithStatus,
   },
+
+  [section_templates.st_form_input]: {
+    __typeName: section_templates.st_form_input,
+    __args: qWithPublishedStatus(),
+    name: true,
+    group: true,
+    type: true,
+    default_value: true,
+    required: true,
+    full_width: true,
+    options: true,
+    regex: true,
+    ...qWithTranslations({
+      label: true,
+      placeholder: true,
+    }),
+    ...qWithStatus,
+  },
 };
 
 type PSQuery = {
