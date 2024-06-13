@@ -43,6 +43,8 @@ export function ST_FormInputFC({ items }: STemplates_Props<ST_FormInput>) {
       method='POST'
       className='max-w-3xl w-full flex flex-row gap-4 flex-wrap justify-between items-center mx-auto'
     >
+      <input type='hidden' name='_group' hidden value={items[0].item.group} />
+
       {inputs.map((input) => {
         const inputItem = mut(input.item, locale);
 
