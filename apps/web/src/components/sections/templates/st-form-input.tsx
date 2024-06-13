@@ -13,6 +13,7 @@ import { mut, useMut } from '@/cms/mut';
 export function ST_FormInputFC({ items }: STemplates_Props<ST_FormInput>) {
   const { t } = useTranslation();
   const { locale } = useSharedData();
+
   const { onSubmit, success, metadata, loading, errors } =
     useFormSubmit('/api/forms');
 
@@ -42,6 +43,8 @@ export function ST_FormInputFC({ items }: STemplates_Props<ST_FormInput>) {
       method='POST'
       className='max-w-3xl w-full flex flex-row gap-4 flex-wrap justify-between items-center mx-auto'
     >
+      <input type='hidden' name='_group' hidden value={items[0].item.group} />
+
       {inputs.map((input) => {
         const inputItem = mut(input.item, locale);
 
@@ -54,6 +57,7 @@ export function ST_FormInputFC({ items }: STemplates_Props<ST_FormInput>) {
               errors={errors}
               inputID={inputItem.name}
               required={inputItem.required}
+              defaultValue={inputItem.default_value}
               inputLabel={inputItem.translations?.label || inputItem.name}
               inputPlaceholder={inputItem.translations?.placeholder || ''}
               className={inputItem.full_width ? 'w-full' : 'w-[48%]'}
@@ -68,6 +72,7 @@ export function ST_FormInputFC({ items }: STemplates_Props<ST_FormInput>) {
             errors={errors}
             inputID={inputItem.name}
             required={inputItem.required}
+            defaultValue={inputItem.default_value}
             pattern={inputItem.regex || undefined}
             inputLabel={inputItem.translations?.label || inputItem.name}
             inputPlaceholder={inputItem.translations?.placeholder || ''}

@@ -373,10 +373,17 @@ export type MDGuestReplie = {
 
 export type MDForms = {
   group: string;
+  data: any;
 } & Pick<DRTStatus, "status" | "date_created">;
 
+export type MDFormOptionsWebhook = {
+  url: string;
+  group?: string;
+  action: "create";
+};
+
 export type MDFormOptions = {
-  web_hooks: { url: string; action: "create" }[];
+  web_hooks: MDFormOptionsWebhook[];
 } & DRTStatus;
 
 //  ---------------- Newsletters Subscriptions -------------------------

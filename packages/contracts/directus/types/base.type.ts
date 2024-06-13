@@ -75,7 +75,7 @@ export type I_MDWithUserTranslation<T> = {
     : T[k];
 };
 
-type ValueOf<T> = T[keyof T];
+export type ValueOf<T> = T[keyof T];
 
 export type MDQueryFields<T> = ValueOf<Pick<QueryOne<T>, "fields">>;
 

@@ -32,7 +32,7 @@ export default async function handle(
     return res.status(400).json(errors);
   }
 
-  const datas = await storePartnerRequest(body);
+  const data = await storePartnerRequest(body);
 
-  res.status(200).json(datas);
+  res.status(200).json(data);
 }

@@ -1,7 +1,9 @@
 import {
   ISharedObject,
   M2APageSection,
+  PS_Content,
   STemplates_Props,
+  ValueOf,
 } from '@apps/contracts';
 import { CMS_MODELS } from '@apps/contracts';
 import isSvg from 'is-svg';
@@ -20,37 +22,43 @@ const { section_templates } = CMS_MODELS;
 type ST = typeof section_templates;
 
 type TST_FC = {
-  +readonly [k in keyof ST]: FunctionComponent<STemplates_Props<any>>;
+  [k in ValueOf<ST>]: FunctionComponent<STemplates_Props<any>>;
+};
+
+type TPageSectionContent = {
+  collection: ValueOf<ST>;
+  items: PS_Content[];
 };
 
 const fcs = Object.create(stfc);
+
 /**
  * All components of the section template should be added here following the key-value convention
  */
 const ST_COMPONENTS = (Object.keys(section_templates) as (keyof ST)[]).reduce(
-  (acc, stkey) => {
-    const stvalue = section_templates[stkey];
-    const component = fcs[stvalue + 'FC'];
+  (acc, stKey) => {
+    const stValue = section_templates[stKey];
+    const component = fcs[stValue + 'FC'];
     if (!component) {
       throw new Error(
-        `Cannot find component corresponding to ${stvalue}'s template`
+        `Cannot find component corresponding to ${stValue}'s template`
       );
     }
-    acc[stkey] = component;
+    acc[stValue] = component;
     return acc;
   },
-  {} as { [x: string]: any }
-) as TST_FC;
+  {} as TST_FC
+);
 
 // ------------------------------ ---------------------- ------------------//
 // ------------------------------Page Sections Component ------------------//
 // ------------------------------ ---------------------- ------------------//
 
-function st(condition: any, style: string) {
+function showStyleCss(condition: any, style: string) {
   return !condition ? '' : style;
 }
 
-function fc(css: string) {
+function styleCssTrim(css: string) {
   return css
     .replace(/\n/g, '')
     .split(';')
@@ -112,15 +120,19 @@ function PageSection({
   }, [item.custom_css, classId]);
 
   const contents = useMemo(() => {
-    const st_keys = Object.keys(section_templates) as (keyof ST)[];
-    return st_keys.map((key) => {
-      const st_value = section_templates[key];
-      return {
-        st_key: key,
-        st_value: st_value,
-        items: item.contents.filter((k) => k.collection === st_value),
-      };
-    });
+    return item.contents.reduce((acc, content) => {
+      const collection = content.collection;
+      const exists = acc.find((k) => k.collection === collection);
+
+      if (!exists) {
+        acc.push({
+          collection: collection,
+          items: item.contents.filter((k) => k.collection === collection),
+        });
+      }
+
+      return acc;
+    }, [] as TPageSectionContent[]);
   }, [item.contents]);
 
   return (
@@ -128,9 +140,9 @@ function PageSection({
       {(style || bg_color) && (
         <style key={`cstyle-${classId}`} jsx global>
           {`
-            ${fc(
+            ${styleCssTrim(
               (style || '') +
-                st(
+                showStyleCss(
                   bg_color,
                   `.${classId}:before {
                 content: '';
@@ -193,20 +205,21 @@ function PageSection({
             </div>
           )}
 
-          <div className='page__section-content w-full'>
-            {contents.map((content, cidx) => {
-              const STComponent = ST_COMPONENTS[content.st_key];
+          <div className='page__section-content w-full flex flex-col gap-10'>
+            {contents.map((content, cIdx) => {
+              const STComponent = ST_COMPONENTS[content.collection];
               const items = content.items;
+
               return (
-                <React.Fragment key={content.st_value}>
+                <React.Fragment key={content.collection}>
                   {STComponent && items.length > 0 && (
-                    <div className={`w-full st__content-${content.st_value}`}>
+                    <div className={`w-full st__content-${content.collection}`}>
                       <STComponent
                         items={items}
                         sectionClass={classId}
                         sectionId={section.id}
                         sharedObject={sharedObject}
-                        fcIndex={cidx}
+                        fcIndex={cIdx}
                       />
                     </div>
                   )}
