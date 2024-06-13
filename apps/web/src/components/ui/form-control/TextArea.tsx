@@ -12,6 +12,7 @@ type ITextArea = {
   errors?: { [x: string]: any };
   className?: string;
   required?: boolean;
+  defaultValue?: string;
 };
 
 export const TextArea = ({
@@ -21,6 +22,7 @@ export const TextArea = ({
   errors,
   className,
   required,
+  defaultValue,
 }: ITextArea) => {
   const { error, onKeyUp } = useErrorInput(inputID, errors);
   const { t } = useTranslation();
@@ -40,6 +42,7 @@ export const TextArea = ({
         onKeyUp={onKeyUp}
         name={inputID}
         required={required}
+        defaultValue={defaultValue}
         className={`block p-2.5 px-4 w-full text-sm text-gray-900 bg-gray-50 rounded-sm border ${
           error ? 'border-red-400' : 'border-gray-300'
         } focus:ring-primary-400 focus:border-primary-400`}
