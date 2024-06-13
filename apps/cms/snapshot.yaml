@@ -13348,6 +13348,18 @@ fields:
                   - text: Create
                     value: create
               note: On Action
+          - field: group
+            name: group
+            type: string
+            meta:
+              field: group
+              width: full
+              type: string
+              interface: input
+              note: null
+              options:
+                trim: true
+                placeholder: Form Group
         template: '{{ url }}'
       readonly: false
       required: false
@@ -13380,14 +13392,18 @@ fields:
     meta:
       collection: Forms
       conditions: null
-      display: formatted-json-value
-      display_options: null
+      display: labels
+      display_options:
+        choices: null
+        showAsDot: true
       field: data
       group: null
       hidden: false
-      interface: list
+      interface: input-code
       note: null
-      options: null
+      options:
+        lineNumber: false
+        lineWrapping: true
       readonly: true
       required: true
       sort: 3
@@ -13424,13 +13440,13 @@ fields:
         relative: true
       field: date_created
       group: null
-      hidden: true
+      hidden: false
       interface: datetime
       note: null
       options: null
       readonly: true
       required: false
-      sort: 6
+      sort: 4
       special:
         - date-created
       translations: null
@@ -13547,7 +13563,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: 5
+      sort: 6
       special: null
       translations: null
       validation: null
@@ -13606,7 +13622,7 @@ fields:
             value: archived
       readonly: false
       required: false
-      sort: 4
+      sort: 5
       special: null
       translations: null
       validation: null
