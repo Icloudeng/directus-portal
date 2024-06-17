@@ -42,7 +42,7 @@ export const Navbar = ({ whiteNav }: { whiteNav?: boolean }) => {
       )}
     >
       <div className='relative x-container-fluid flex items-center justify-between gap-4 h-full'>
-        <div className='nav__logo xl:w-[20%]'>
+        <div className='nav__logo'>
           <UnstyledLink href='/' className='inline-block'>
             <NextImage
               useSkeleton
@@ -56,11 +56,13 @@ export const Navbar = ({ whiteNav }: { whiteNav?: boolean }) => {
             />
           </UnstyledLink>
         </div>
+
         <div className='w-full flex items-center justify-between font-normal h-full'>
-          <div className='hidden nav__menu xl:flex items-center h-full'>
+          <div className='hidden nav__menu xl:flex items-center h-full flex-1 justify-center'>
             <NavBarLinks />
           </div>
-          <div className='hidden nav__buttons md:flex items-center flex-1 xl:flex-0 justify-end gap-5 ml-3'>
+
+          <div className='hidden nav__buttons md:flex items-center xl:flex-0 justify-end gap-5 ml-3'>
             {NavbarButtons?.map((button) => {
               const { translations } = mut(button, locale);
               return (
