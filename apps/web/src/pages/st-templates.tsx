@@ -580,7 +580,7 @@ const templates: Template[] = [
     },
   },
   {
-    title: 'ST Latest News',
+    title: 'ST Latest Blog',
     content(title) {
       return (
         <section className='py-14 x-container'>
