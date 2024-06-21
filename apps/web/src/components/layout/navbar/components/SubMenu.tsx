@@ -1,11 +1,12 @@
 import { NavbarLinkSubmenu, NavbarLinkSubmenuItem } from '@apps/contracts';
 import React from 'react';
 
+import clsxm from '@/lib/clsxm';
+
 import { HasSvgText } from '@/components/ui/HasSvgText';
 import UnstyledLink from '@/components/ui/links/UnstyledLink';
 
 import { useMut } from '@/cms/mut';
-import clsxm from '@/lib/clsxm';
 
 export const Submenu = React.memo(({ data }: { data: NavbarLinkSubmenu }) => {
   const { featured, translations, items } = useMut(data);

@@ -1,6 +1,8 @@
 import { MDWithAsset, RepeaterBtn } from '@apps/contracts';
 import Image from 'next/legacy/image';
 
+import clsxm from '@/lib/clsxm';
+
 import ButtonLink from '../links/ButtonLink';
 import UnstyledLink from '../links/UnstyledLink';
 
@@ -20,7 +22,7 @@ export function Card({
   clickable_card,
   buttons,
   border_card,
-  background_color,
+  background_color: backgroundColor,
   title,
   description,
   flexible_image,
@@ -30,13 +32,14 @@ export function Card({
   const btns = buttons || [];
 
   const content = (
-    <div className=''>
+    <div className='flex flex-col justify-between h-full'>
       {!flexible_image && image?.src && (
         <div className='relative flex-1 min-h-[202px] w-full mb-3'>
           <Image
-            className={`image object-cover ${
+            className={clsxm(
+              `image object-cover h-full w-full`,
               border_card ? 'rounded-tl-xl rounded-tr-xl' : ''
-            } h-full w-full `}
+            )}
             src={image.src}
             layout='fill'
             objectFit='cover'
@@ -48,9 +51,10 @@ export function Card({
       {flexible_image && image && (
         <div className='flex-1 w-full mb-3 relative'>
           <Image
-            className={`h-full w-full ${
+            className={clsxm(
+              `h-full w-full`,
               border_card ? 'rounded-tl-xl rounded-tr-xl' : ''
-            }`}
+            )}
             src={image.src || ''}
             height={image.height}
             width={image.width}
@@ -61,11 +65,13 @@ export function Card({
       )}
 
       <div
-        className={`w-full flex-[1.1] overflow-hidden ${
+        className={clsxm(
+          `w-full flex-[1.1] overflow-hidden my-2`,
           border_card ? 'px-5' : 'px-1'
-        } my-2`}
+        )}
       >
         <h4 className='leading-6 tracking-tight mb-3'>{title}</h4>
+
         {description && (
           <p className='font-normal text-sm text-gray-500 tracking-tight'>
             {description}
@@ -75,9 +81,10 @@ export function Card({
 
       {btns.length > 0 && (
         <div
-          className={`my-3 flex flex-wrap justify-between ${
+          className={clsxm(
+            'my-3 flex flex-wrap justify-between  gap-3',
             border_card ? 'px-5' : 'px-1'
-          } gap-3`}
+          )}
         >
           {btns.map((btn, i) => {
             return (
@@ -100,12 +107,11 @@ export function Card({
 
   return (
     <div
-      className={`flex basis:auto flex-col relative w-full min-h-[24rem] md:basis-[calc((100%_-_32px)_/_3)]  ${
+      className={clsxm(
+        'relative w-full min-h-[24rem] md:basis-[calc((100%_-_32px)_/_3)]',
         border_card ? 'border border-gray-200 shadow-md rounded-xl' : ''
-      }`}
-      style={{
-        backgroundColor: background_color,
-      }}
+      )}
+      style={{ backgroundColor }}
     >
       {hasClick && (
         <UnstyledLink

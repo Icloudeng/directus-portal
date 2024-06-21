@@ -41,7 +41,7 @@ export function ST_FormInputFC({ items }: STemplates_Props<ST_FormInput>) {
     <form
       onSubmit={onSubmit}
       method='POST'
-      className='max-w-3xl w-full flex flex-row gap-4 flex-wrap justify-between items-center mx-auto'
+      className='max-w-3xl w-full flex flex-row gap-4 flex-wrap justify-between items-start mx-auto'
     >
       <input type='hidden' name='_group' hidden value={items[0].item.group} />
 
