@@ -31003,12 +31003,12 @@ fields:
             color: '#A2B5CD'
       readonly: false
       required: true
-      sort: 7
+      sort: 6
       special: null
       translations: null
       validation: null
       validation_message: null
-      width: full
+      width: half
     schema:
       name: background_color
       table: ST_Cards
@@ -31041,13 +31041,13 @@ fields:
       options: null
       readonly: false
       required: true
-      sort: 6
+      sort: 7
       special:
         - cast-boolean
       translations: null
       validation: null
       validation_message: null
-      width: full
+      width: half
     schema:
       name: border_card
       table: ST_Cards

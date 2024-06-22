@@ -113,7 +113,7 @@ export function Card({
         'relative w-full min-h-[24rem] md:basis-[calc((100%_-_32px)_/_3)]',
         border_card && 'border border-gray-200 shadow-md rounded-xl',
         hover_animation &&
-          'hover:-translate-y-2 hover:shadow-xl transition-all duration-300'
+          'hover:-translate-y-1 hover:shadow-xl transition-all duration-300'
       )}
       style={{ backgroundColor }}
     >
