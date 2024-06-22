@@ -30,7 +30,7 @@ export const Submenu = React.memo(({ data }: { data: NavbarLinkSubmenu }) => {
         {groupName && (
           <span
             className={clsxm(
-              `text-sm text-gray-300 mt-1 mb-4`,
+              `text-sm text-gray-300 mt-1 mb-4 font-semibold`,
               featured && 'font-bold underline underline-offset-8'
             )}
           >
