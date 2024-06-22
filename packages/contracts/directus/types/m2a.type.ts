@@ -291,6 +291,7 @@ export type ST_Card = MDHasM2A<
     border_card: boolean;
     background_color: string;
     clickable_card: boolean;
+    hover_animation?: boolean;
   } & MDWithTranslation<{
     title: string;
     description?: string;

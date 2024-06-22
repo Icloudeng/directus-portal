@@ -1,6 +1,8 @@
 import { ST_Chart, STemplates_Props } from '@apps/contracts';
 import dynamic from 'next/dynamic';
 
+import clsxm from '@/lib/clsxm';
+
 import { MarkdownContent } from '@/components/ui/react-markdown/MarkdownContent';
 
 import { useSharedData } from '@/app/store';
@@ -20,12 +22,14 @@ export function ST_ChartsFC({ items }: STemplates_Props<ST_Chart>) {
         const { translations } = mut(item.item, locale);
         const markdown_content = translations?.markdown_content;
         const hasTextContent = item.item.show_text && markdown_content;
+
         return (
           <div
             key={item.item.id}
-            className={`mb-5 ${
-              hasTextContent ? 'flex flex-col-reverse md:flex-row' : ''
-            }`}
+            className={clsxm(
+              `mb-5`,
+              hasTextContent && 'flex flex-col-reverse md:flex-row'
+            )}
           >
             {hasTextContent && (
               <div className='prose w-full md:w-1/2'>
@@ -34,9 +38,10 @@ export function ST_ChartsFC({ items }: STemplates_Props<ST_Chart>) {
             )}
 
             <div
-              className={`my-5 w-full relative h-[250px] md:h-[400px] ${
-                hasTextContent ? 'md:w-1/2' : ''
-              }`}
+              className={clsxm(
+                `my-5 w-full relative h-[250px] md:h-[400px]`,
+                hasTextContent && 'md:w-1/2'
+              )}
             >
               <ChartContent item={item} />
             </div>
