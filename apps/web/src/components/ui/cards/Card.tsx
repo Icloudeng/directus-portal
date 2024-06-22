@@ -14,6 +14,7 @@ type Props = {
   clickable_card: boolean;
   title: string;
   description?: string;
+  hover_animation?: boolean;
   buttons?: RepeaterBtn[];
 };
 
@@ -26,6 +27,7 @@ export function Card({
   title,
   description,
   flexible_image,
+  hover_animation,
 }: Props) {
   const btn = buttons ? buttons[0] : undefined;
   const hasClick = btn && clickable_card;
@@ -109,7 +111,9 @@ export function Card({
     <div
       className={clsxm(
         'relative w-full min-h-[24rem] md:basis-[calc((100%_-_32px)_/_3)]',
-        border_card ? 'border border-gray-200 shadow-md rounded-xl' : ''
+        border_card && 'border border-gray-200 shadow-md rounded-xl',
+        hover_animation &&
+          'hover:-translate-y-2 hover:shadow-xl transition-all duration-300'
       )}
       style={{ backgroundColor }}
     >

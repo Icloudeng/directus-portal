@@ -260,6 +260,7 @@ const q_ST: Query = {
     border_card: true,
     background_color: true,
     clickable_card: true,
+    hover_animation: true,
     ...qWithTranslations({
       title: true,
       description: true,

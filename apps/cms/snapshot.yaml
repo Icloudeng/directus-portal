@@ -31086,7 +31086,7 @@ fields:
       translations: null
       validation: null
       validation_message: null
-      width: full
+      width: half
     schema:
       name: clickable_card
       table: ST_Cards
@@ -31120,7 +31120,7 @@ fields:
       options: null
       readonly: true
       required: false
-      sort: 12
+      sort: 13
       special:
         - date-created
       translations: null
@@ -31160,7 +31160,7 @@ fields:
       options: null
       readonly: true
       required: false
-      sort: 14
+      sort: 15
       special:
         - date-updated
       translations: null
@@ -31211,6 +31211,45 @@ fields:
       table: ST_Cards
       data_type: boolean
       default_value: false
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: ST_Cards
+    field: hover_animation
+    type: boolean
+    meta:
+      collection: ST_Cards
+      conditions: null
+      display: null
+      display_options: null
+      field: hover_animation
+      group: null
+      hidden: false
+      interface: boolean
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 9
+      special:
+        - cast-boolean
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: hover_animation
+      table: ST_Cards
+      data_type: boolean
+      default_value: true
       max_length: null
       numeric_precision: null
       numeric_scale: null
@@ -31341,7 +31380,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: 10
+      sort: 11
       special: null
       translations: null
       validation: null
@@ -31400,7 +31439,7 @@ fields:
             value: archived
       readonly: false
       required: false
-      sort: 9
+      sort: 10
       special: null
       translations: null
       validation: null
@@ -31463,7 +31502,7 @@ fields:
         template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
       readonly: true
       required: false
-      sort: 11
+      sort: 12
       special:
         - user-created
       translations: null
@@ -31503,7 +31542,7 @@ fields:
         template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
       readonly: true
       required: false
-      sort: 13
+      sort: 14
       special:
         - user-updated
       translations: null

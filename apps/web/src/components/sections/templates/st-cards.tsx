@@ -23,6 +23,7 @@ export function ST_CardsFC({ items }: STemplates_Props<ST_Card>) {
             border_card={item.border_card}
             flexible_image={item.flexible_image}
             title={translations?.title || ''}
+            hover_animation={item.hover_animation}
           />
         );
       })}
