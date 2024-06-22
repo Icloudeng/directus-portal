@@ -41,7 +41,7 @@ import {
   DumpTransformedImageCarousels,
   DumpValue,
   getDumpChart,
-} from '@/app/models/dumps-templates';
+} from '@/app/fixtures/templates-fixtures';
 import { getServerSideTranslations } from '@/app/utils/server-translation';
 
 type Template = {

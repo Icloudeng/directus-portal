@@ -17,23 +17,21 @@ export const Submenu = React.memo(({ data }: { data: NavbarLinkSubmenu }) => {
   return (
     <div
       className={clsxm(
-        `flex w-[17rem]`,
-        featured ? 'flex-col p-7' : 'items-start justify-between bg-white'
+        `flex w-[15rem] p-4`,
+        featured ? 'flex-col' : 'items-start justify-between bg-white'
       )}
     >
       <div
         className={clsxm(
           `flex flex-col w-full`,
-          featured ? 'items-start gap-10 h-full' : 'items-center'
+          featured ? 'items-start h-full' : 'items-center'
         )}
       >
         {groupName && (
           <span
             className={clsxm(
-              `text-sm text-gray-300`,
-              featured
-                ? 'mt-1 font-bold underline underline-offset-8'
-                : 'mb-1 mt-7'
+              `text-sm text-gray-300 mt-1 mb-4 font-semibold`,
+              featured && 'font-bold underline underline-offset-8'
             )}
           >
             {groupName}
@@ -43,8 +41,8 @@ export const Submenu = React.memo(({ data }: { data: NavbarLinkSubmenu }) => {
         <div
           className={
             featured
-              ? 'flex flex-col items-start justify-center flex-1 h-full gap-10 w-full'
-              : 'relative grid gap-6 px-5 py-6 sm:gap-6 sm:p-8 w-full'
+              ? 'flex flex-col items-start justify-center flex-1 h-full gap-1 w-full'
+              : 'relative grid gap-1 w-full'
           }
         >
           {items.map((item) => {
@@ -69,7 +67,7 @@ const SubmenuItem = ({
       href={url}
       target={external ? '_blank' : undefined}
       className={clsxm(
-        '-m-3 p-3 flex items-start rounded-lg w-full',
+        'p-3 pl-2 flex items-start rounded-lg w-full',
         `animated-underline`,
         featured ? 'hover:bg-primary-100' : 'hover:bg-gray-50 navbar__link-icon'
       )}

@@ -1,6 +1,13 @@
 import type { I_MDWithUserTranslation } from '@apps/contracts';
 import type { MDNavbarLink } from '@apps/contracts';
-import { useCallback, useRef, useState } from 'react';
+import {
+  Popover,
+  PopoverButton,
+  PopoverGroup,
+  PopoverPanel,
+  Transition,
+} from '@headlessui/react';
+import { Fragment, useState } from 'react';
 import { AiOutlineMenuFold } from 'react-icons/ai';
 import { VscChevronDown } from 'react-icons/vsc';
 
@@ -97,13 +104,15 @@ function NavBarLinks() {
   const pagePosition = useScrollPosition();
 
   return (
-    <ul className='menu-top flex items-center gap-9'>
-      {links.map((link) => {
-        return (
-          <NavbarLink key={link.id} {...link} pagePosition={pagePosition} />
-        );
-      })}
-    </ul>
+    <PopoverGroup>
+      <ul className='menu-top flex items-center gap-9'>
+        {links.map((link) => {
+          return (
+            <NavbarLink key={link.id} {...link} pagePosition={pagePosition} />
+          );
+        })}
+      </ul>
+    </PopoverGroup>
   );
 }
 
@@ -113,75 +122,76 @@ function NavbarLink({
   translations,
   url,
   external,
-  pagePosition,
 }: I_MDWithUserTranslation<MDNavbarLink> & { pagePosition: number }) {
   const hasSubmenus = submenus.length > 0;
-  const submenuRef = useRef<HTMLDivElement | null>(null);
 
   const [opened, setOpened] = useState(false);
 
-  const hanlder = useCallback(() => {
-    if (!submenuRef.current) return;
-    const el = submenuRef.current;
-    const rect = el.getBoundingClientRect();
-    const screenX = window.screen.width;
-    const elX = rect.x + rect.width;
-    if (elX <= screenX) return;
-
-    const rest = elX - screenX;
-    el.style.transform = `translateX(-${rest + 20}px)`;
-  }, []);
-
-  const onMouseHover = () => setOpened(true);
-  const onMouseOut = () => setOpened(false);
+  const onMouseHover = () => hasSubmenus && setOpened(true);
+  const onMouseOut = () => hasSubmenus && setOpened(false);
 
   return (
     <li
       key={id}
-      onMouseOver={hasSubmenus ? onMouseHover : undefined}
-      onMouseOut={hasSubmenus ? onMouseOut : undefined}
+      onMouseEnter={onMouseHover}
+      onMouseLeave={onMouseOut}
       className={clsxm(
         'menu-top__item hover:text-primary-400',
         hasSubmenus && ['relative dropdown']
       )}
     >
-      <button
-        type='button'
-        onMouseOver={hasSubmenus ? hanlder : undefined}
-        className={clsxm(
-          'menu-top__link flex items-center gap-1 py-2',
-          opened && ['active']
-        )}
-      >
-        {url && !hasSubmenus ? (
-          <UnstyledLink target={external ? '_blank' : undefined} href={url}>
-            {translations?.name}
-          </UnstyledLink>
-        ) : (
-          <a className='cursor-pointer'>{translations?.name}</a>
-        )}
-
-        {hasSubmenus && (
-          <VscChevronDown className='submenu-show__chevron text-primary-500 text-sm' />
-        )}
-      </button>
-
-      {hasSubmenus && (
-        <div
-          ref={submenuRef}
+      <Popover className='group relative'>
+        <PopoverButton
+          type='button'
+          onClick={(e) => e.preventDefault()}
           className={clsxm(
-            'submenu absolute rounded-3xl pt-[2.5rem]',
-            '-left-[100%] invisible opacity-0',
-            pagePosition > 40 ? ['top-[.45rem]'] : ['top-[1.4rem]']
+            'menu-top__link flex items-center gap-1 py-2 outline-none border-none',
+            opened && 'text-primary-400'
           )}
         >
-          <div className='flex rounded-lg shadow-lg bg-primary-50 ring-1 ring-black divide-x-[1px] ring-opacity-5 overflow-hidden'>
-            {submenus.map((submenu) => {
-              return <Submenu key={submenu.id} data={submenu} />;
-            })}
-          </div>
-        </div>
-      )}
+          {url && !hasSubmenus ? (
+            <UnstyledLink target={external ? '_blank' : undefined} href={url}>
+              {translations?.name}
+            </UnstyledLink>
+          ) : (
+            <a className='cursor-pointer'>{translations?.name}</a>
+          )}
+
+          {hasSubmenus && (
+            <VscChevronDown
+              className={clsxm(
+                'text-primary-500 text-sm transition-transform',
+                opened && 'rotate-180'
+              )}
+            />
+          )}
+        </PopoverButton>
+
+        {hasSubmenus && (
+          <Transition
+            show={opened}
+            as={Fragment}
+            enter='transition ease-out duration-200'
+            enterFrom='opacity-0 translate-y-1'
+            enterTo='opacity-100 translate-y-0'
+            leave='transition ease-in duration-150'
+            leaveFrom='opacity-100 translate-y-0'
+            leaveTo='opacity-0 translate-y-1'
+          >
+            <PopoverPanel
+              static
+              anchor='bottom'
+              className='submenu z-50 shadow-lg'
+            >
+              <div className='flex rounded-lg bg-primary-50 ring-1 ring-black divide-x-[1px] ring-opacity-5 overflow-hidden'>
+                {submenus.map((submenu) => {
+                  return <Submenu key={submenu.id} data={submenu} />;
+                })}
+              </div>
+            </PopoverPanel>
+          </Transition>
+        )}
+      </Popover>
     </li>
   );
 }
