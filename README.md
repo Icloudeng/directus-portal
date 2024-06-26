@@ -55,6 +55,13 @@ For a quick start consider using docker and docker compose
 
 Starts development servers for (cms: http://localhost:8055/ and web: http://localhost:3000/)
 
+
+**Admin Account**
+
+- email: admin@example.com
+- password: password
+
+
 ## Monorepos
 
 The project was designed on a monorepo architecture, actually there are two apps as project packages:
