@@ -27,6 +27,7 @@ export * from './st-rich-text';
 export * from './st-side-text-medias';
 export * from './st-sided-contents';
 export * from './st-simple-card-links';
+export * from './st-simple-cards';
 export * from './st-streamable-cards';
 export * from './st-testimonials';
 export * from './st-timeline-ranges';
