@@ -34,7 +34,7 @@ For a quick start consider using docker and docker compose
 
 ### Copy CMS env file
 
-- `cp apps/cms/.env.example apps/cms/.env`
+- `cp apps/cms/.env.sample apps/cms/.env`
 
 ### Setup CMS
 
