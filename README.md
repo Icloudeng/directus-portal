@@ -36,6 +36,11 @@ For a quick start consider using docker and docker compose
 
 - `cp apps/cms/.env.sample apps/cms/.env`
 
+
+### Build Packages
+
+- `pnpm build`
+
 ### Setup CMS
 
 - `pnpm run -r setup`
