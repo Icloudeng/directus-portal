@@ -6,10 +6,9 @@ This should be private and only admins and developers have permission to edit it
 Here are the tools you must have to get started (Test or Development).
 
 - NodeJS
-- Npm
+- NPM
 - PNPM (install with: `npm install -g pnpm`)
-- Make
-- Redis
+- Docker
 
 ## Description
 
@@ -31,7 +30,25 @@ git clone https://hub.smatflow.net/smatflow-projects/smatflow-portal.git
 
 For a quick start consider using docker and docker compose
 
-- `make postgres-docker`
+- `docker compose -f docker-compose.db.yaml up`
+
+### Copy CMS env file
+
+- `cp apps/cms/.env.example apps/cms/.env`
+
+### Setup CMS
+
+- `pnpm run -r setup`
+
+### Create App User
+
+- `pnpm run -r create-app-user`
+
+## Server
+
+- `pnpm dev --filter=web --filter=cms --filter=@apps/contracts`
+
+Starts development servers for (cms: http://localhost:8055/ and web: http://localhost:3000/)
 
 ## Monorepos
 
@@ -39,6 +56,7 @@ The project was designed on a monorepo architecture, actually there are two apps
 
 - `apps/cms`: CMS part powered by Directus
 - `apps/web`: Web Part made with NextJs
+- `apps/docs`: DOCS Part made with Docusaurus
 
 ## Configuration
 
@@ -46,33 +64,6 @@ The default configuration can work without needing to modify it, but in cases wh
 
 - `apps/cms/.env` CMS configuration file
 - `apps/web/.env` Web configuration (Here you need to create a new configuration file called .env.local where you put your customization, instead of modifying the actual file)
-
-## Server
-
-To start the development server run the following command on your terminal
-
-- `make postgres-docker` mount database container
-- `pnpm -r bootstrap` bootstrap cms configuration (To run once)
-- `pnpm run dev` start development servers for (cms: http://localhost:8055/ and web: http://localhost:3000/)
-
-
-## Test and Deploy
-
-**Ansible Install**
-
-> it is recommended to use a virtual environment, you can create it and install ansible with the following command:
-
-- `make ansible-install` this will create the virtual environment and install ansible
-
-**Configuration**
-
-To customize the ansible inventory, you can edit the `ansible/hosts.yml` file
-
-**Provisioning**
-
-to provision the remote server, run the following command:
-
-- `make provision`
 
 ## Authors and acknowledgment
 
