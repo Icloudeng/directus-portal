@@ -27,6 +27,7 @@ import type {
   ST_RichText,
   ST_SidedContent,
   ST_SideTextMedia,
+  ST_SimpleCard,
   ST_SimpleCardLink,
   ST_StreamableCard,
   ST_Testimonial,
@@ -2509,6 +2510,78 @@ export const DumpIframe: ST_Iframe[] = [
       status: 'published',
       date_created: '2024-06-09T21:32:42.087Z',
       date_updated: '2024-06-09T21:51:05.258Z',
+    },
+  },
+];
+
+export const DumpSimpleCard: ST_SimpleCard[] = [
+  {
+    id: '12',
+    collection: 'ST_SimpleCards',
+    item: {
+      icon_svg:
+        '<svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16" height="200px" width="200px" xmlns="http://www.w3.org/2000/svg"><path d="M9.669.864 8 0 6.331.864l-1.858.282-.842 1.68-1.337 1.32L2.6 6l-.306 1.854 1.337 1.32.842 1.68 1.858.282L8 12l1.669-.864 1.858-.282.842-1.68 1.337-1.32L13.4 6l.306-1.854-1.337-1.32-.842-1.68zm1.196 1.193.684 1.365 1.086 1.072L12.387 6l.248 1.506-1.086 1.072-.684 1.365-1.51.229L8 10.874l-1.355-.702-1.51-.229-.684-1.365-1.086-1.072L3.614 6l-.25-1.506 1.087-1.072.684-1.365 1.51-.229L8 1.126l1.356.702z"></path><path d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1z"></path></svg>',
+      translations: [
+        {
+          id: '1',
+          languages_code: {
+            code: 'en',
+            name: 'English',
+          },
+          title: 'Shooting Stars',
+          description:
+            'Fingerstache flexitarian street art 8-bit waist co, subway tile poke farm.',
+        },
+      ],
+      id: '973bfdd4-4431-412e-913f-172537bd9302',
+      status: 'published',
+      date_created: '2024-06-26T14:44:45.544Z',
+    },
+  },
+  {
+    id: '13',
+    collection: 'ST_SimpleCards',
+    item: {
+      icon_svg:
+        '<svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16" height="200px" width="200px" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="m8.543 3.948 1.316 1.316L8.543 6.58zm0 8.104 1.316-1.316L8.543 9.42zm-1.41-4.043L4.275 5.133l.827-.827L7.377 6.58V1.128l4.137 4.136L8.787 8.01l2.745 2.745-4.136 4.137V9.42l-2.294 2.274-.827-.827zM7.903 16c3.498 0 5.904-1.655 5.904-8.01 0-6.335-2.406-7.99-5.903-7.99S2 1.655 2 8.01C2 14.344 4.407 16 7.904 16Z"></path></svg>',
+      translations: [
+        {
+          id: '2',
+          languages_code: {
+            code: 'en',
+            name: 'English',
+          },
+          title: 'The Catalyzer',
+          description:
+            'Fingerstache flexitarian street art 8-bit waist co, subway tile poke farm.',
+        },
+      ],
+      id: '3187f22a-5062-4591-9bf4-b8098e166985',
+      status: 'published',
+      date_created: '2024-06-26T15:11:35.627Z',
+    },
+  },
+  {
+    id: '14',
+    collection: 'ST_SimpleCards',
+    item: {
+      icon_svg:
+        '<svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16" height="200px" width="200px" xmlns="http://www.w3.org/2000/svg"><path d="M8 3a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 3m8 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5m-13.5.5a.5.5 0 0 0 0-1h-2a.5.5 0 0 0 0 1zm11.157-6.157a.5.5 0 0 1 0 .707l-1.414 1.414a.5.5 0 1 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0m-9.9 2.121a.5.5 0 0 0 .707-.707L3.05 5.343a.5.5 0 1 0-.707.707zM8 7a4 4 0 0 0-4 4 .5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5 4 4 0 0 0-4-4"></path></svg>',
+      translations: [
+        {
+          id: '3',
+          languages_code: {
+            code: 'en',
+            name: 'English',
+          },
+          title: 'Neptune',
+          description:
+            'Fingerstache flexitarian street art 8-bit waist co, subway tile poke farm.',
+        },
+      ],
+      id: '3d478c1a-f1bc-4598-bf7c-d3ff4fcad48e',
+      status: 'published',
+      date_created: '2024-06-26T15:12:31.868Z',
     },
   },
 ];

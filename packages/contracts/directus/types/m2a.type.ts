@@ -440,6 +440,17 @@ export type ST_FormInput = MDHasM2A<
   ST_V<"st_form_input">
 >;
 
+export type ST_SimpleCard = MDHasM2A<
+  {
+    icon_svg: string;
+  } & MDWithTranslation<{
+    title: string;
+    description: string;
+  }> &
+    DRTStatus,
+  ST_V<"st_simple_cards">
+>;
+
 //------------------- Page Sections --------------------//
 export type PS_Content =
   | ST_Value
