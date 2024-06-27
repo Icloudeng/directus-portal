@@ -4,6 +4,7 @@ import type {
   ST_Button,
   ST_Card,
   ST_CardCarousel,
+  ST_CardContent,
   ST_CardImageCarousel,
   ST_Chart,
   ST_CleanHero,
@@ -2582,6 +2583,109 @@ export const DumpSimpleCard: ST_SimpleCard[] = [
       id: '3d478c1a-f1bc-4598-bf7c-d3ff4fcad48e',
       status: 'published',
       date_created: '2024-06-26T15:12:31.868Z',
+    },
+  },
+];
+
+export const DumpCardContent: ST_CardContent[] = [
+  {
+    id: '15',
+    collection: 'ST_CardContents',
+    item: {
+      image: {
+        id: '20c17e17-a1d5-44d9-8074-746ac391e0ef',
+        src: 'https://flowbite.com/docs/images/blog/image-1.jpg',
+      },
+      translations: [
+        {
+          id: '1',
+          languages_code: {
+            code: 'en',
+            name: 'English',
+          },
+          title: 'Shooting Stars',
+          description:
+            'Swag shoivdigoitch literally meditation subway tile tumblr cold-pressed. Gastropub street art beard dreamcatcher neutra, ethical XOXO lumbersexual.',
+          buttons: [
+            {
+              name: 'Lire plus',
+              url: '/read-more',
+              variant: 'outline',
+              external: false,
+            },
+          ],
+        },
+      ],
+      id: '131c3ec7-693d-40e4-8e19-4dd975737518',
+      status: 'published',
+      date_created: '2024-06-27T16:53:20.204Z',
+      date_updated: '2024-06-27T17:13:25.981Z',
+    },
+  },
+  {
+    id: '16',
+    collection: 'ST_CardContents',
+    item: {
+      image: {
+        id: 'bf1c59ee-237e-44a5-8bf8-4715937be143',
+        src: 'https://flowbite.com/docs/images/blog/image-2.jpg',
+      },
+      translations: [
+        {
+          id: '2',
+          languages_code: {
+            code: 'en',
+            name: 'English',
+          },
+          title: 'The Catalyzer',
+          description:
+            'Swag shoivdigoitch literally meditation subway tile tumblr cold-pressed. Gastropub street art beard dreamcatcher neutra, ethical XOXO lumbersexual.',
+          buttons: [
+            {
+              name: 'Learn More',
+              url: '/learn-more',
+              variant: 'primary',
+              external: false,
+            },
+          ],
+        },
+      ],
+      id: '481d0b7b-1079-46d0-a272-f33951ce8629',
+      status: 'published',
+      date_created: '2024-06-27T17:16:22.937Z',
+    },
+  },
+  {
+    id: '17',
+    collection: 'ST_CardContents',
+    item: {
+      image: {
+        id: 'abc39829-a6c5-46b3-b649-4a7efdf46417',
+        src: 'https://flowbite.com/docs/images/blog/image-3.jpg',
+      },
+      translations: [
+        {
+          id: '3',
+          languages_code: {
+            code: 'en',
+            name: 'English',
+          },
+          title: 'The 400 Blows',
+          description:
+            'Swag shoivdigoitch literally meditation subway tile tumblr cold-pressed. Gastropub street art beard dreamcatcher neutra, ethical XOXO lumbersexual.',
+          buttons: [
+            {
+              name: 'Show Moer',
+              url: '/show-more',
+              variant: 'dark',
+              external: false,
+            },
+          ],
+        },
+      ],
+      id: '2c3cca7f-b908-46c5-9e06-23b18217c9a9',
+      status: 'published',
+      date_created: '2024-06-27T17:17:47.196Z',
     },
   },
 ];
