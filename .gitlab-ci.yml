@@ -8,7 +8,7 @@ stages:
   - deploy-www-smatflow-org
   - deploy-3d-smatflow-org
   - deploy-www-civicflow-org
-  - deploy-www-civicflow-academy
+  - deploy-www-smatflow-academy
 
 variables:
   PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
@@ -88,9 +88,9 @@ deploy-www-civicflow-org:
     name: www-civicflow-org
   when: manual
 
-deploy-www-civicflow-academy:
+deploy-www-smatflow-academy:
   extends: .deploy
-  stage: deploy-www-civicflow-academy
+  stage: deploy-www-smatflow-academy
   environment:
-    name: www-civicflow-academy
+    name: www-smatflow-academy
   when: manual
