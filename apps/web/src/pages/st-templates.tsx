@@ -11,6 +11,7 @@ import {
   DumpBecomePartnerForms,
   DumpButton,
   DumpCardCarousel,
+  DumpCardContent,
   DumpCardImageCarousel,
   DumpCards,
   DumpCleanHero,
@@ -828,6 +829,28 @@ const templates: Template[] = [
           </h3>
           <Sts.ST_SimpleCardsFC
             items={DumpSimpleCard}
+            sectionClass=''
+            sharedObject={{}}
+          />
+        </section>
+      );
+    },
+  },
+
+  {
+    title: 'ST Card Content',
+    content(title) {
+      return (
+        <section className='py-14 x-container'>
+          <h3
+            id={urlSafe(title)}
+            className='sticky top-8 z-50 bg-white p-2 inline-block text-primary-400 my-9'
+          >
+            {title}
+          </h3>
+
+          <Sts.ST_CardContentsFC
+            items={DumpCardContent}
             sectionClass=''
             sharedObject={{}}
           />

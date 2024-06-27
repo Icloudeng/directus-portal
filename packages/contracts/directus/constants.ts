@@ -101,5 +101,6 @@ export const CMS_MODELS = {
     st_iframe: "ST_Iframe",
     st_form_input: "ST_FormInput",
     st_simple_cards: "ST_SimpleCards",
+    st_card_contents: "ST_CardContents",
   } as const,
 };
