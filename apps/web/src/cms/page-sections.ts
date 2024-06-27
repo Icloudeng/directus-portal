@@ -391,6 +391,18 @@ const q_ST: Query = {
     }),
     ...qWithStatus,
   },
+
+  [section_templates.st_card_contents]: {
+    __typeName: section_templates.st_card_contents,
+    __args: qWithPublishedStatus(),
+    image: qWithQueryAsset(),
+    ...qWithTranslations({
+      title: true,
+      description: true,
+      buttons: true,
+    }),
+    ...qWithStatus,
+  },
 };
 
 type PSQuery = {

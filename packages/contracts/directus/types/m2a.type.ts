@@ -451,6 +451,18 @@ export type ST_SimpleCard = MDHasM2A<
   ST_V<"st_simple_cards">
 >;
 
+export type ST_CardContent = MDHasM2A<
+  {
+    image: MDWithAsset;
+  } & MDWithTranslation<{
+    title: string;
+    description: string;
+    buttons?: RepeaterBtn[];
+  }> &
+    DRTStatus,
+  ST_V<"st_card_contents">
+>;
+
 //------------------- Page Sections --------------------//
 export type PS_Content =
   | ST_Value
