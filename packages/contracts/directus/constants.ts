@@ -102,5 +102,7 @@ export const CMS_MODELS = {
     st_form_input: "ST_FormInput",
     st_simple_cards: "ST_SimpleCards",
     st_card_contents: "ST_CardContents",
+    st_coloured_cards: "ST_ColouredCards",
+    st_feature_cards: "ST_FeatureCards",
   } as const,
 };

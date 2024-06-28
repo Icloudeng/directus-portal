@@ -24,9 +24,6 @@ const {
   },
 } = CMS_MODELS;
 
-const { st_media_tabs, st_testimonials, st_side_text_medias } =
-  section_templates;
-
 type ParamPageSectionReusable = {
   [x: string]: any;
   sections: M2APageSectionReusable[];
@@ -127,14 +124,17 @@ function pageSectionsWithAssets(
       if (!st) return;
 
       switch (st.collection) {
-        case st_media_tabs:
+        case section_templates.st_media_tabs:
           qWithAssets(access_token, st.item.translations, 'media');
           break;
-        case st_side_text_medias:
+        case section_templates.st_side_text_medias:
           qWithAsset(access_token, st.item, 'media');
           break;
-        case st_testimonials:
+        case section_templates.st_testimonials:
           qWithAsset(access_token, st.item, 'image', [71, 71]);
+          break;
+        case section_templates.st_coloured_cards:
+          qWithAsset(access_token, st.item, 'background_image');
           break;
         default:
           // Actually all templates modeles uses image as default key for assets

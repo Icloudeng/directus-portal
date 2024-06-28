@@ -15,6 +15,7 @@ import {
   DumpCardImageCarousel,
   DumpCards,
   DumpCleanHero,
+  DumpColouredCard,
   DumpCompanyDetails,
   DumpGallery,
   DumpGroupedLogos,
@@ -44,6 +45,10 @@ import {
   DumpValue,
   getDumpChart,
 } from '@/app/fixtures/templates-fixtures';
+import {
+  DumpFeatureCard,
+  DumpFormInput,
+} from '@/app/fixtures/templates-fixtures2';
 import { getServerSideTranslations } from '@/app/utils/server-translation';
 
 type Template = {
@@ -62,7 +67,6 @@ const templates: Template[] = [
             id={urlSafe(title)}
             className='sticky top-8 z-50 bg-white p-2 inline-block text-primary-400 my-9'
           >
-            {' '}
             {title}
           </h3>
           <Sts.ST_CardCarouselsFC
@@ -851,6 +855,72 @@ const templates: Template[] = [
 
           <Sts.ST_CardContentsFC
             items={DumpCardContent}
+            sectionClass=''
+            sharedObject={{}}
+          />
+        </section>
+      );
+    },
+  },
+
+  {
+    title: 'ST Coloured Cards',
+    content(title) {
+      return (
+        <section className='py-14 x-container'>
+          <h3
+            id={urlSafe(title)}
+            className='sticky top-8 z-50 bg-white p-2 inline-block text-primary-400 my-9'
+          >
+            {title}
+          </h3>
+
+          <Sts.ST_ColouredCardsFC
+            items={DumpColouredCard}
+            sectionClass=''
+            sharedObject={{}}
+          />
+        </section>
+      );
+    },
+  },
+
+  {
+    title: 'ST Form Input',
+    content(title) {
+      return (
+        <section className='py-14 x-container'>
+          <h3
+            id={urlSafe(title)}
+            className='sticky top-8 z-50 bg-white p-2 inline-block text-primary-400 my-9'
+          >
+            {title}
+          </h3>
+
+          <Sts.ST_FormInputFC
+            items={DumpFormInput}
+            sectionClass=''
+            sharedObject={{}}
+          />
+        </section>
+      );
+    },
+  },
+
+  {
+    title: 'ST Feature Cards',
+    content(title) {
+      return (
+        <section className='py-14 x-container'>
+          <h3
+            id={urlSafe(title)}
+            className='sticky top-8 z-50 bg-white p-2 inline-block text-primary-400 my-9'
+          >
+            {title}
+          </h3>
+
+          <Sts.ST_FeatureCardsFC
+            items={DumpFeatureCard}
             sectionClass=''
             sharedObject={{}}
           />

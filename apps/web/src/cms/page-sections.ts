@@ -403,6 +403,33 @@ const q_ST: Query = {
     }),
     ...qWithStatus,
   },
+
+  [section_templates.st_coloured_cards]: {
+    __typeName: section_templates.st_coloured_cards,
+    __args: qWithPublishedStatus(),
+    icon_svg: true,
+    background_color: true,
+    leading_card: true,
+    background_image: qWithQueryAsset(),
+    read_more_url: true,
+    ...qWithTranslations({
+      title: true,
+      description: true,
+      read_more: true,
+    }),
+    ...qWithStatus,
+  },
+
+  [section_templates.st_feature_cards]: {
+    __typeName: section_templates.st_feature_cards,
+    __args: qWithPublishedStatus(),
+    icon_svg: true,
+    ...qWithTranslations({
+      title: true,
+      description: true,
+    }),
+    ...qWithStatus,
+  },
 };
 
 type PSQuery = {

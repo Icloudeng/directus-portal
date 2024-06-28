@@ -463,6 +463,33 @@ export type ST_CardContent = MDHasM2A<
   ST_V<"st_card_contents">
 >;
 
+export type ST_ColouredCard = MDHasM2A<
+  {
+    icon_svg: string;
+    background_color: string;
+    leading_card: boolean;
+    background_image?: MDWithAsset;
+    read_more_url?: string;
+  } & MDWithTranslation<{
+    title: string;
+    description: string;
+    read_more?: string;
+  }> &
+    DRTStatus,
+  ST_V<"st_coloured_cards">
+>;
+
+export type ST_FeatureCard = MDHasM2A<
+  {
+    icon_svg?: string;
+  } & MDWithTranslation<{
+    title: string;
+    description: string;
+  }> &
+    DRTStatus,
+  ST_V<"st_feature_cards">
+>;
+
 //------------------- Page Sections --------------------//
 export type PS_Content =
   | ST_Value
@@ -498,7 +525,11 @@ export type PS_Content =
   | ST_LeftRightContent
   | ST_Map
   | ST_Iframe
-  | ST_FormInput;
+  | ST_FormInput
+  | ST_SimpleCard
+  | ST_CardContent
+  | ST_ColouredCard
+  | ST_FeatureCard;
 
 export type M2APageSection = MDHasM2A<
   {
