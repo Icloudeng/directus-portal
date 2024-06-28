@@ -4,32 +4,15 @@ import {
   DisclosureButton,
   DisclosurePanel,
 } from '@headlessui/react';
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 
 import clsxm from '@/lib/clsxm';
 
 import { useMut } from '@/cms/mut';
 
 export function ST_FAQsFC({ items }: STemplates_Props<ST_FAQ>) {
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (!ref.current) return;
-
-    const firstTrigger =
-      ref.current.querySelector<HTMLButtonElement>('.accordion-toggle');
-
-    setTimeout(() => {
-      firstTrigger?.click();
-    }, 0);
-  }, [ref]);
-
   return (
-    <div
-      className='accordion-group'
-      ref={ref}
-      data-accordion='default-accordion'
-    >
+    <div className='accordion-group' data-accordion='default-accordion'>
       {items.map((item, index) => (
         <STFAQ key={item.id} item={item} index={index} />
       ))}
@@ -41,7 +24,7 @@ function STFAQ(props: { item: ST_FAQ; index: number }) {
   const item = useMut(props.item.item);
 
   return (
-    <Disclosure>
+    <Disclosure defaultOpen={props.index === 0}>
       {({ open, close }) => {
         return (
           <>
