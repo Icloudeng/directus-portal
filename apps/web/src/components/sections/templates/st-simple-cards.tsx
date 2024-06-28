@@ -6,7 +6,7 @@ import { useMut } from '@/cms/mut';
 
 export function ST_SimpleCardsFC({ items }: STemplates_Props<ST_SimpleCard>) {
   return (
-    <div className='flex flex-wrap -m-4'>
+    <div className='flex flex-wrap'>
       {items.map((item) => {
         return <STSimpleCard key={item.item.id} item={item} />;
       })}

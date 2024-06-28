@@ -6,6 +6,7 @@ export * from './st-card-image-carousels';
 export * from './st-cards';
 export * from './st-charts';
 export * from './st-clean-heros';
+export * from './st-coloured-cards';
 export * from './st-company-details';
 export * from './st-form-input';
 export * from './st-gallery';

@@ -8,6 +8,7 @@ import type {
   ST_CardImageCarousel,
   ST_Chart,
   ST_CleanHero,
+  ST_ColouredCard,
   ST_CompanyDetail,
   ST_Gallery,
   ST_GroupedLogo,
@@ -2686,6 +2687,92 @@ export const DumpCardContent: ST_CardContent[] = [
       id: '2c3cca7f-b908-46c5-9e06-23b18217c9a9',
       status: 'published',
       date_created: '2024-06-27T17:17:47.196Z',
+    },
+  },
+];
+
+export const DumpColouredCard: ST_ColouredCard[] = [
+  {
+    id: '18',
+    collection: 'ST_ColouredCards',
+    item: {
+      icon_svg:
+        '<svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="200px" width="200px" xmlns="http://www.w3.org/2000/svg"><path d="M11 7h2v7h-2zm0 8h2v2h-2z"></path><path d="m21.707 7.293-5-5A.996.996 0 0 0 16 2H8a.996.996 0 0 0-.707.293l-5 5A.996.996 0 0 0 2 8v8c0 .266.105.52.293.707l5 5A.996.996 0 0 0 8 22h8c.266 0 .52-.105.707-.293l5-5A.996.996 0 0 0 22 16V8a.996.996 0 0 0-.293-.707zM20 15.586 15.586 20H8.414L4 15.586V8.414L8.414 4h7.172L20 8.414v7.172z"></path></svg>',
+      background_color: '#313b4d',
+      leading_card: true,
+      background_image: {
+        id: 'bf1c59ee-237e-44a5-8bf8-4715937be143',
+        src: 'https://flowbite.com/docs/images/blog/image-1.jpg',
+      },
+      read_more_url: '/view-more',
+      translations: [
+        {
+          id: '1',
+          languages_code: {
+            code: 'en',
+            name: 'English',
+          },
+          title: 'Accomplish tasks swiftly with online tools.',
+          description:
+            'Get quoted and covered in under 10 minutes online. no paperwork or waiting any more',
+          read_more: 'View More',
+        },
+      ],
+      id: '29df4a55-e3ce-4109-939e-8fbf00fef86e',
+      status: 'published',
+      date_created: '2024-06-28T10:03:47.039Z',
+      date_updated: '2024-06-28T13:09:52.987Z',
+    },
+  },
+  {
+    id: '19',
+    collection: 'ST_ColouredCards',
+    item: {
+      icon_svg:
+        '<svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">\n                                  <path d="M24.6429 11.4286C24.6429 14.3872 20.2457 16.7857 14.8214 16.7857C9.3972 16.7857 5 14.3872 5 11.4286M24.6429 16.7857C24.6429 19.7444 20.2457 22.1429 14.8214 22.1429C9.3972 22.1429 5 19.7444 5 16.7857M24.6429 22.1429C24.6429 25.1015 20.2457 27.5 14.8214 27.5C9.3972 27.5 5 25.1015 5 22.1429M24.6429 6.96429C24.6429 9.42984 20.2457 11.4286 14.8214 11.4286C9.3972 11.4286 5 9.42984 5 6.96429C5 4.49873 9.3972 2.5 14.8214 2.5C20.2457 2.5 24.6429 4.49873 24.6429 6.96429Z" stroke="white" stroke-width="2" stroke-linecap="round"></path>\n                                  </svg>',
+      background_color: '#FFA439',
+      leading_card: false,
+      translations: [
+        {
+          id: '2',
+          languages_code: {
+            code: 'en',
+            name: 'English',
+          },
+          title: 'Improved technology yields greater value',
+          description:
+            'We’ve eliminated old analogue process with state-of-the art tech',
+        },
+      ],
+      id: 'd1bdaabb-3d02-42ff-ab29-3fa87857d0b6',
+      status: 'published',
+      date_created: '2024-06-28T10:07:49.147Z',
+    },
+  },
+  {
+    id: '20',
+    collection: 'ST_ColouredCards',
+    item: {
+      icon_svg:
+        '<svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">\n                                  <path d="M26.7301 15.661C26.7301 22.1995 21.306 27.5 14.6151 27.5C7.9241 27.5 2.5 22.1995 2.5 15.661C2.5 9.1225 7.9241 3.822 14.6151 3.822M18.1313 10.1507L18.1313 4.85383C18.1313 3.22503 19.6455 2.00299 21.1519 2.70013C23.7608 3.90751 26.6177 6.25557 27.456 10.2563C27.7542 11.6798 26.4931 12.8563 25.0064 12.8368L20.7873 12.7814C19.3147 12.762 18.1313 11.5899 18.1313 10.1507Z" stroke="white" stroke-width="2" stroke-linecap="round"></path>\n                                  </svg>',
+      background_color: '#2ECDA7',
+      leading_card: false,
+
+      translations: [
+        {
+          id: '3',
+          languages_code: {
+            code: 'en',
+            name: 'English',
+          },
+          title: 'Build wealth with insurance planning',
+          description:
+            'Every life plan policy has a built-in wealth bonus, and we contribute too',
+        },
+      ],
+      id: '84b21037-fd6f-401b-8edc-b7e73b050044',
+      status: 'published',
+      date_created: '2024-06-28T10:07:49.167Z',
     },
   },
 ];
