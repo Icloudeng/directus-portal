@@ -499,6 +499,18 @@ export type ST_FAQ = MDHasM2A<
   ST_V<"st_faqs">
 >;
 
+export type ST_FeatureListWithIcon = MDHasM2A<
+  {
+    icon_svg: string;
+    color: string;
+  } & MDWithTranslation<{
+    title: string;
+    features: string[];
+  }> &
+    DRTStatus,
+  ST_V<"st_feature_list_with_icons">
+>;
+
 //------------------- Page Sections --------------------//
 export type PS_Content =
   | ST_Value
@@ -539,7 +551,8 @@ export type PS_Content =
   | ST_CardContent
   | ST_ColouredCard
   | ST_FeatureCard
-  | ST_FAQ;
+  | ST_FAQ
+  | ST_FeatureListWithIcon;
 
 export type M2APageSection = MDHasM2A<
   {

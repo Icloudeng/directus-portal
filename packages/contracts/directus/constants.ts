@@ -105,5 +105,6 @@ export const CMS_MODELS = {
     st_coloured_cards: "ST_ColouredCards",
     st_feature_cards: "ST_FeatureCards",
     st_faqs: "ST_FAQs",
+    st_feature_list_with_icons: "ST_FeatureListWithIcons",
   } as const,
 };

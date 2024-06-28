@@ -1,4 +1,9 @@
-import { ST_FAQ, ST_FeatureCard, ST_FormInput } from '@apps/contracts';
+import {
+  ST_FAQ,
+  ST_FeatureCard,
+  ST_FeatureListWithIcon,
+  ST_FormInput,
+} from '@apps/contracts';
 
 export const DumpFormInput: ST_FormInput[] = [
   {
@@ -253,6 +258,95 @@ export const DumpFAQ: ST_FAQ[] = [
       id: 'ecfab0b5-8520-4312-9db1-5510dad3d1ac',
       status: 'published',
       date_created: '2024-06-28T14:57:34.097Z',
+    },
+  },
+];
+
+export const DumpFeatureListWithIcon: ST_FeatureListWithIcon[] = [
+  {
+    id: '30',
+    collection: 'ST_FeatureListWithIcons',
+    item: {
+      icon_svg:
+        '<svg class="text-primary-600 dark:text-primary-300" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 3a1 1 0 000 2v8a2 2 0 002 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L10 15.414l2.293 2.293a1 1 0 001.414-1.414L12.414 15H15a2 2 0 002-2V5a1 1 0 100-2H3zm11.707 4.707a1 1 0 00-1.414-1.414L10 9.586 8.707 8.293a1 1 0 00-1.414 0l-2 2a1 1 0 101.414 1.414L8 10.414l1.293 1.293a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>',
+      color: '#3399FF',
+      translations: [
+        {
+          id: '1',
+          languages_code: {
+            code: 'en',
+            name: 'English',
+          },
+          title: 'Project Management',
+          features: [
+            'Unified Contribution Graph',
+            'Org activity graph',
+            'Org dependency insights',
+            'Milestones',
+            'Repo insights',
+          ],
+        },
+      ],
+      id: '4cf761fc-b8d8-494d-b8b5-96a4351a5d51',
+      status: 'published',
+      date_created: '2024-06-28T21:24:55.168Z',
+    },
+  },
+  {
+    id: '31',
+    collection: 'ST_FeatureListWithIcons',
+    item: {
+      icon_svg:
+        '<svg fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z"></path></svg>',
+      color: '#FFA439',
+      translations: [
+        {
+          id: '2',
+          languages_code: {
+            code: 'en',
+            name: 'English',
+          },
+          title: 'Collaborative Coding',
+          features: [
+            'Dynamic reports and dashboards',
+            'Code review assignments',
+            'Team discussions',
+            'Protected branches',
+            'Draft pull requests',
+          ],
+        },
+      ],
+      id: 'ed6ec2f7-d0a4-4436-be5d-7eb03b7df870',
+      status: 'published',
+      date_created: '2024-06-28T21:24:55.192Z',
+    },
+  },
+  {
+    id: '32',
+    collection: 'ST_FeatureListWithIcons',
+    item: {
+      icon_svg:
+        '<svg fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6 6V5a3 3 0 013-3h2a3 3 0 013 3v1h2a2 2 0 012 2v3.57A22.952 22.952 0 0110 13a22.95 22.95 0 01-8-1.43V8a2 2 0 012-2h2zm2-1a1 1 0 011-1h2a1 1 0 011 1v1H8V5zm1 5a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1z" clip-rule="evenodd"></path><path d="M2 13.692V16a2 2 0 002 2h12a2 2 0 002-2v-2.308A24.974 24.974 0 0110 15c-2.796 0-5.487-.46-8-1.308z"></path></svg>',
+      color: '#E35169',
+      translations: [
+        {
+          id: '3',
+          languages_code: {
+            code: 'en',
+            name: 'English',
+          },
+          title: 'Enterprise Security',
+          features: [
+            'Required reviews',
+            'Dependabot security and',
+            'Dependency graph',
+            'GitHub Advisory Database',
+          ],
+        },
+      ],
+      id: '0f7bbc16-5d58-4569-8115-cca00a2f8ae3',
+      status: 'published',
+      date_created: '2024-06-28T21:24:55.212Z',
     },
   },
 ];

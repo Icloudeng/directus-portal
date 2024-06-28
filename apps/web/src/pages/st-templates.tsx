@@ -48,6 +48,7 @@ import {
 import {
   DumpFAQ,
   DumpFeatureCard,
+  DumpFeatureListWithIcon,
   DumpFormInput,
 } from '@/app/fixtures/templates-fixtures2';
 import { getServerSideTranslations } from '@/app/utils/server-translation';
@@ -943,6 +944,28 @@ const templates: Template[] = [
           </h3>
 
           <Sts.ST_FAQsFC items={DumpFAQ} sectionClass='' sharedObject={{}} />
+        </section>
+      );
+    },
+  },
+
+  {
+    title: 'ST Feature List With Icons',
+    content(title) {
+      return (
+        <section className='py-14 x-container'>
+          <h3
+            id={urlSafe(title)}
+            className='sticky top-8 z-50 bg-white p-2 inline-block text-primary-400 my-9'
+          >
+            {title}
+          </h3>
+
+          <Sts.ST_FeatureListWithIconsFC
+            items={DumpFeatureListWithIcon}
+            sectionClass=''
+            sharedObject={{}}
+          />
         </section>
       );
     },
