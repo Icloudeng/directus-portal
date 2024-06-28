@@ -24,8 +24,12 @@ export function HasSvgText({
 }
 
 export const ParseSvgText = React.memo(
-  (props: JSX.IntrinsicElements['svg'] & { text: string }) => {
+  (props: JSX.IntrinsicElements['svg'] & { text?: string }) => {
     const { text, ...restProps } = props;
+
+    if (!text || !isSvg(text)) {
+      return <></>;
+    }
 
     return parse(text, {
       trim: true,

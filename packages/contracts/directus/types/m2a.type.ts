@@ -479,6 +479,17 @@ export type ST_ColouredCard = MDHasM2A<
   ST_V<"st_coloured_cards">
 >;
 
+export type ST_FeatureCard = MDHasM2A<
+  {
+    icon_svg?: string;
+  } & MDWithTranslation<{
+    title: string;
+    description: string;
+  }> &
+    DRTStatus,
+  ST_V<"st_feature_cards">
+>;
+
 //------------------- Page Sections --------------------//
 export type PS_Content =
   | ST_Value
@@ -517,7 +528,8 @@ export type PS_Content =
   | ST_FormInput
   | ST_SimpleCard
   | ST_CardContent
-  | ST_ColouredCard;
+  | ST_ColouredCard
+  | ST_FeatureCard;
 
 export type M2APageSection = MDHasM2A<
   {
