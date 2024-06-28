@@ -4,7 +4,7 @@ import {
   DisclosureButton,
   DisclosurePanel,
 } from '@headlessui/react';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 
 import clsxm from '@/lib/clsxm';
 
@@ -90,7 +90,14 @@ function STFAQ(props: { item: ST_FAQ; index: number }) {
 }
 
 function AutoClose(props: { open: boolean; close: () => void }) {
+  const firstLoad = useRef(false);
+
   useEffect(() => {
+    if (!firstLoad.current) {
+      firstLoad.current = true;
+      return;
+    }
+
     if (props.open) {
       window.dispatchEvent(new Event('auto-close'));
       window.addEventListener('auto-close', props.close);
@@ -102,7 +109,7 @@ function AutoClose(props: { open: boolean; close: () => void }) {
     return () => {
       window.removeEventListener('auto-close', props.close);
     };
-  }, [props.open, props.close]);
+  }, [props.open, props.close, firstLoad]);
 
   return <></>;
 }
