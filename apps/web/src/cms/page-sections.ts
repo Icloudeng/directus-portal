@@ -440,6 +440,18 @@ const q_ST: Query = {
     }),
     ...qWithStatus,
   },
+
+  [section_templates.st_feature_list_with_icons]: {
+    __typeName: section_templates.st_feature_list_with_icons,
+    __args: qWithPublishedStatus(),
+    icon_svg: true,
+    color: true,
+    ...qWithTranslations({
+      title: true,
+      features: true,
+    }),
+    ...qWithStatus,
+  },
 };
 
 type PSQuery = {

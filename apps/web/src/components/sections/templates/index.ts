@@ -10,6 +10,7 @@ export * from './st-coloured-cards';
 export * from './st-company-details';
 export * from './st-faqs';
 export * from './st-feature-cards';
+export * from './st-feature-list-with-icons';
 export * from './st-form-input';
 export * from './st-gallery';
 export * from './st-grouped-logos';
