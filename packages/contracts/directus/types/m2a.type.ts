@@ -490,6 +490,15 @@ export type ST_FeatureCard = MDHasM2A<
   ST_V<"st_feature_cards">
 >;
 
+export type ST_FAQ = MDHasM2A<
+  MDWithTranslation<{
+    title: string;
+    content: string;
+  }> &
+    DRTStatus,
+  ST_V<"st_faqs">
+>;
+
 //------------------- Page Sections --------------------//
 export type PS_Content =
   | ST_Value
@@ -529,7 +538,8 @@ export type PS_Content =
   | ST_SimpleCard
   | ST_CardContent
   | ST_ColouredCard
-  | ST_FeatureCard;
+  | ST_FeatureCard
+  | ST_FAQ;
 
 export type M2APageSection = MDHasM2A<
   {

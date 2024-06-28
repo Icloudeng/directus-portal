@@ -23,28 +23,32 @@ export function HasSvgText({
   );
 }
 
-export const ParseSvgText = React.memo(
-  (props: JSX.IntrinsicElements['svg'] & { text?: string }) => {
-    const { text, ...restProps } = props;
+export const ParseSvgText = React.memo<
+  JSX.IntrinsicElements['svg'] & { text?: string }
+>((props) => {
+  const { text, ...restProps } = props;
 
-    if (!text || !isSvg(text)) {
-      return <></>;
-    }
-
-    return parse(text, {
-      trim: true,
-      transform(reactNode: any) {
-        if (reactNode.type === 'svg') {
-          return React.cloneElement(reactNode, {
-            ...reactNode.props,
-            ...restProps,
-          });
-        }
-
-        return <Fragment key={Math.random()}>{reactNode}</Fragment>;
-      },
-    });
+  if (!text || !isSvg(text)) {
+    return <></>;
   }
-);
+
+  return (
+    <>
+      {parse(text, {
+        trim: true,
+        transform(reactNode: any) {
+          if (reactNode.type === 'svg') {
+            return React.cloneElement(reactNode, {
+              ...reactNode.props,
+              ...restProps,
+            });
+          }
+
+          return <Fragment key={Math.random()}>{reactNode}</Fragment>;
+        },
+      })}
+    </>
+  );
+});
 
 ParseSvgText.displayName = 'ParseSvgText';

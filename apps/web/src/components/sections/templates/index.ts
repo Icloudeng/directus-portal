@@ -8,6 +8,7 @@ export * from './st-charts';
 export * from './st-clean-heros';
 export * from './st-coloured-cards';
 export * from './st-company-details';
+export * from './st-faqs';
 export * from './st-feature-cards';
 export * from './st-form-input';
 export * from './st-gallery';
