@@ -1,13 +1,14 @@
 import { ST_FAQ, STemplates_Props } from '@apps/contracts';
-
-import { useMut } from '@/cms/mut';
-import clsxm from '@/lib/clsxm';
-import { useEffect, useRef } from 'react';
 import {
   Disclosure,
   DisclosureButton,
   DisclosurePanel,
 } from '@headlessui/react';
+import { useEffect, useRef } from 'react';
+
+import clsxm from '@/lib/clsxm';
+
+import { useMut } from '@/cms/mut';
 
 export function ST_FAQsFC({ items }: STemplates_Props<ST_FAQ>) {
   const ref = useRef<HTMLDivElement>(null);
