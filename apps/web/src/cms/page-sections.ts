@@ -430,6 +430,16 @@ const q_ST: Query = {
     }),
     ...qWithStatus,
   },
+
+  [section_templates.st_faqs]: {
+    __typeName: section_templates.st_faqs,
+    __args: qWithPublishedStatus(),
+    ...qWithTranslations({
+      title: true,
+      content: true,
+    }),
+    ...qWithStatus,
+  },
 };
 
 type PSQuery = {

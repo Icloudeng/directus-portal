@@ -1,4 +1,4 @@
-import { ST_FeatureCard, ST_FormInput } from '@apps/contracts';
+import { ST_FAQ, ST_FeatureCard, ST_FormInput } from '@apps/contracts';
 
 export const DumpFormInput: ST_FormInput[] = [
   {
@@ -187,6 +187,72 @@ export const DumpFeatureCard: ST_FeatureCard[] = [
       id: '6dce6f26-5d88-416c-ae26-42822f121a14',
       status: 'published',
       date_created: '2024-06-28T14:03:11.967Z',
+    },
+  },
+];
+
+export const DumpFAQ: ST_FAQ[] = [
+  {
+    id: '27',
+    collection: 'ST_FAQs',
+    item: {
+      translations: [
+        {
+          id: '1',
+          languages_code: {
+            code: 'en',
+            name: 'English',
+          },
+          title: 'How do I update my billing information?',
+          content:
+            "<p>To contact customer support, look for a 'Contact us' or 'Help' button or link on the website or platform. You may be able to email, call, or chat with customer support for assistance.</p>",
+        },
+      ],
+      id: 'adce7504-ffec-4bc6-976d-9f4f874e8e8f',
+      status: 'published',
+      date_created: '2024-06-28T14:57:34.043Z',
+    },
+  },
+  {
+    id: '28',
+    collection: 'ST_FAQs',
+    item: {
+      translations: [
+        {
+          id: '2',
+          languages_code: {
+            code: 'en',
+            name: 'English',
+          },
+          title: 'How can I contact customer support?',
+          content:
+            "<p>To contact customer support, look for a 'Contact us' or 'Help' button or link on the website or platform. You may be able to email, call, or chat with customer support for assistance.</p>",
+        },
+      ],
+      id: '5f5f0a33-e533-42e9-ab4e-0f416ee9ba7b',
+      status: 'published',
+      date_created: '2024-06-28T14:57:34.069Z',
+    },
+  },
+  {
+    id: '29',
+    collection: 'ST_FAQs',
+    item: {
+      translations: [
+        {
+          id: '3',
+          languages_code: {
+            code: 'en',
+            name: 'English',
+          },
+          title: 'How do I update my profile information?',
+          content:
+            "<p>To contact customer support, look for a 'Contact us' or 'Help' button or link on the website or platform. You may be able to email, call, or chat with customer support for assistance.</p>",
+        },
+      ],
+      id: 'ecfab0b5-8520-4312-9db1-5510dad3d1ac',
+      status: 'published',
+      date_created: '2024-06-28T14:57:34.097Z',
     },
   },
 ];
