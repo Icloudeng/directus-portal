@@ -452,6 +452,21 @@ const q_ST: Query = {
     }),
     ...qWithStatus,
   },
+
+  [section_templates.st_videos]: {
+    __typeName: section_templates.st_videos,
+    __args: qWithPublishedStatus(),
+    video_url: true,
+    video_file: qWithQueryAsset({ type: true }),
+    ...qWithStatus,
+  },
+
+  [section_templates.st_images]: {
+    __typeName: section_templates.st_images,
+    __args: qWithPublishedStatus(),
+    image: qWithQueryAsset(),
+    ...qWithStatus,
+  },
 };
 
 type PSQuery = {

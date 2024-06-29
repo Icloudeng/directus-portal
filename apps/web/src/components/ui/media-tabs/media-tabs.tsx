@@ -1,6 +1,8 @@
 import React from 'react';
 import { PropsWithChildren, useState } from 'react';
 
+import clsxm from '@/lib/clsxm';
+
 import Button from '@/components/ui/buttons/Button';
 
 export function MediaTabs({ children }: PropsWithChildren) {
@@ -73,7 +75,7 @@ export function MediaTabsPane({
     </>
   );
   return (
-    <div className={`relative w-full ${active ? '' : 'hidden'}`}>
+    <div className={clsxm('relative w-full', !active && 'hidden')}>
       {disposition === 'text_bottom' ? (
         <>
           {children}

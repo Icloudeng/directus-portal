@@ -136,6 +136,9 @@ function pageSectionsWithAssets(
         case section_templates.st_coloured_cards:
           qWithAsset(access_token, st.item, 'background_image');
           break;
+        case section_templates.st_videos:
+          qWithAsset(access_token, st.item, 'video_file');
+          break;
         default:
           // Actually all templates modeles uses image as default key for assets
           qWithAsset(access_token, st.item, 'image' as any);

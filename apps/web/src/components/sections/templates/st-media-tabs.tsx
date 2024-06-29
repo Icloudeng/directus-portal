@@ -1,6 +1,8 @@
 import { ST_MediaTab, STemplates_Props } from '@apps/contracts';
 import { MDWithAsset } from '@apps/contracts';
 
+import clsxm from '@/lib/clsxm';
+
 import { HasMediaPlayer } from '@/components/ui/HasMediaPlayer';
 import {
   MediaTabs,
@@ -24,9 +26,11 @@ function HasPlayer({
   return (
     <div className='video-wrapper w-full mb-5'>
       <div
-        className={`video-container relative w-full ${
-          !media?.src || media_url ? 'h-[15rem] ss:h-[27rem] md:h-[37rem]' : ''
-        }  z-[1]`}
+        className={clsxm(
+          'video-container relative w-full',
+          (!media?.src || media_url) && 'h-[15rem] ss:h-[27rem] md:h-[37rem]',
+          'z-[1]'
+        )}
       >
         <HasMediaPlayer media={media} media_url={media_url} />
       </div>

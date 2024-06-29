@@ -511,6 +511,21 @@ export type ST_FeatureListWithIcon = MDHasM2A<
   ST_V<"st_feature_list_with_icons">
 >;
 
+export type ST_Video = MDHasM2A<
+  {
+    video_url?: string;
+    video_file?: MDWithAsset;
+  } & DRTStatus,
+  ST_V<"st_videos">
+>;
+
+export type ST_Image = MDHasM2A<
+  {
+    image?: MDWithAsset;
+  } & DRTStatus,
+  ST_V<"st_images">
+>;
+
 //------------------- Page Sections --------------------//
 export type PS_Content =
   | ST_Value
@@ -552,7 +567,9 @@ export type PS_Content =
   | ST_ColouredCard
   | ST_FeatureCard
   | ST_FAQ
-  | ST_FeatureListWithIcon;
+  | ST_FeatureListWithIcon
+  | ST_Video
+  | ST_Image;
 
 export type M2APageSection = MDHasM2A<
   {
