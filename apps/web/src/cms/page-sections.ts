@@ -474,6 +474,19 @@ const q_ST: Query = {
     date: true,
     ...qWithStatus,
   },
+
+  [section_templates.st_hero_with_media_backgrounds]: {
+    __typeName: section_templates.st_hero_with_media_backgrounds,
+    __args: qWithPublishedStatus(),
+    media: qWithQueryAsset({ type: true }),
+    animated: true,
+    ...qWithTranslations({
+      title: true,
+      description: true,
+      buttons: true,
+    }),
+    ...qWithStatus,
+  },
 };
 
 type PSQuery = {

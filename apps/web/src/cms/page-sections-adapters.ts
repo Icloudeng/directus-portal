@@ -130,6 +130,9 @@ function pageSectionsWithAssets(
         case section_templates.st_side_text_medias:
           qWithAsset(access_token, st.item, 'media');
           break;
+        case section_templates.st_hero_with_media_backgrounds:
+          qWithAsset(access_token, st.item, 'media');
+          break;
         case section_templates.st_testimonials:
           qWithAsset(access_token, st.item, 'image', [71, 71]);
           break;

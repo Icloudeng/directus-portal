@@ -26,7 +26,10 @@ export function ST_GalleryFC({ items }: STemplates_Props<ST_Gallery>) {
     selectedIndex,
     scrollSnaps,
     scrollTo,
-  } = useCustomerEmblaCarousel(0, first.item.autoplay);
+  } = useCustomerEmblaCarousel({
+    startIndex: 0,
+    autoplay: first.item.autoplay,
+  });
 
   return (
     <div className='w-full h-full'>

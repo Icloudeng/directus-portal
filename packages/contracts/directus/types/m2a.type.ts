@@ -533,6 +533,19 @@ export type ST_Countdown = MDHasM2A<
   ST_V<"st_countdowns">
 >;
 
+export type ST_HeroWithMediaBackground = MDHasM2A<
+  {
+    media: MDWithAsset;
+    animated: boolean;
+  } & MDWithTranslation<{
+    title: string;
+    description?: string;
+    buttons?: RepeaterBtn[];
+  }> &
+    DRTStatus,
+  ST_V<"st_hero_with_media_backgrounds">
+>;
+
 //------------------- Page Sections --------------------//
 export type PS_Content =
   | ST_Value
@@ -577,7 +590,8 @@ export type PS_Content =
   | ST_FeatureListWithIcon
   | ST_Video
   | ST_Image
-  | ST_Countdown;
+  | ST_Countdown
+  | ST_HeroWithMediaBackground;
 
 export type M2APageSection = MDHasM2A<
   {

@@ -33,10 +33,13 @@ export type ICarouselData = {
 export type ICarouselButton = {
   enabled: boolean;
   onClick: React.MouseEventHandler;
+  className?: string;
+  white?: boolean;
 };
 
 export type IDotButton = {
   position: number;
   selected: boolean;
   onClick: React.MouseEventHandler;
+  className?: string;
 };
