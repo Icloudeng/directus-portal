@@ -16,6 +16,7 @@ export * from './st-form-input';
 export * from './st-gallery';
 export * from './st-grouped-logos';
 export * from './st-guest-questions';
+export * from './st-hero-with-media-backgrounds';
 export * from './st-hoverable-media-menus';
 export * from './st-iframe';
 export * from './st-images';
