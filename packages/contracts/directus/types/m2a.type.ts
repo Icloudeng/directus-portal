@@ -526,6 +526,13 @@ export type ST_Image = MDHasM2A<
   ST_V<"st_images">
 >;
 
+export type ST_Countdown = MDHasM2A<
+  {
+    date: string;
+  } & DRTStatus,
+  ST_V<"st_countdowns">
+>;
+
 //------------------- Page Sections --------------------//
 export type PS_Content =
   | ST_Value
@@ -569,7 +576,8 @@ export type PS_Content =
   | ST_FAQ
   | ST_FeatureListWithIcon
   | ST_Video
-  | ST_Image;
+  | ST_Image
+  | ST_Countdown;
 
 export type M2APageSection = MDHasM2A<
   {

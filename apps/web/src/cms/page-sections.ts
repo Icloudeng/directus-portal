@@ -467,6 +467,13 @@ const q_ST: Query = {
     image: qWithQueryAsset(),
     ...qWithStatus,
   },
+
+  [section_templates.st_countdowns]: {
+    __typeName: section_templates.st_countdowns,
+    __args: qWithPublishedStatus(),
+    date: true,
+    ...qWithStatus,
+  },
 };
 
 type PSQuery = {

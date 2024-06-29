@@ -1,4 +1,5 @@
 import {
+  ST_Countdown,
   ST_FAQ,
   ST_FeatureCard,
   ST_FeatureListWithIcon,
@@ -378,6 +379,25 @@ export const DumpImage: ST_Image[] = [
       id: '6a08175f-7731-48cb-b8c1-dca6b03b94be',
       status: 'published',
       date_created: '2024-06-29T07:33:24.326Z',
+    },
+  },
+];
+
+function addDays(date: Date, days: number): Date {
+  const result = new Date(date);
+  result.setDate(result.getDate() + days);
+  return result;
+}
+
+export const DumpCountdown: ST_Countdown[] = [
+  {
+    id: '1',
+    collection: 'ST_Countdowns',
+    item: {
+      date: addDays(new Date(), 5).toISOString(),
+      id: '1',
+      status: 'published',
+      date_created: '2024-06-29T07:32:19.670Z',
     },
   },
 ];

@@ -59,5 +59,9 @@
   "Load more": "Voir Plus",
   "Updated": "Actualisé",
   "SUBSCRIPTION_SUCCESS": "Un e-mail vous a été envoyé pour confirmer votre inscription",
-  "Read More": "Lire Plus"
+  "Read More": "Lire Plus",
+  "DAYS": "jours",
+  "HOURS": "heures",
+  "MINUTES": "minutes",
+  "SECONDS": "secondes"
 }
