@@ -2023,7 +2023,7 @@ export const DumpPlatforms: ST_Platform[] = [
                 id: 'db55ef6a-741f-4a32-84ae-3a8aadc90885',
                 width: 512,
                 height: 512,
-                src: 'http://127.0.0.1:8055/assets/db55ef6a-741f-4a32-84ae-3a8aadc90885?access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjIyM2RhYzkzLTcwMDgtNGZlYS1iNzg2LWU5NzhlZWI1NjMyMCIsInJvbGUiOiJiZmQwZTJkOC0zZWI0LTQwZTAtYTY1Ni04MjUzMGUwZDhjYmQiLCJhcHBfYWNjZXNzIjp0cnVlLCJhZG1pbl9hY2Nlc3MiOnRydWUsImlhdCI6MTY2ODQ4Njc0OCwiZXhwIjoxNjY4NDkwMzQ4LCJpc3MiOiJkaXJlY3R1cyJ9.ygekIq9xtk_AkN3XsOmLl50aeB8lDA9HIF9cc2P1wFg',
+                src: 'https://odoocdn.com/openerp_website/static/src/img/assets/svg/odoo_logo.svg',
               },
               icon_svg:
                 '<svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M0 0h24v24H0zm0 0h24v24H0zm0 0h24v24H0zm0 0h24v24H0z"></path><path d="M16.14 12.5c0 1-.1 1.85-.3 2.55-.2.7-.48 1.27-.83 1.7-.36.44-.79.75-1.3.95-.51.2-1.07.3-1.7.3-.62 0-1.18-.1-1.69-.3-.51-.2-.95-.51-1.31-.95-.36-.44-.65-1.01-.85-1.7-.2-.7-.3-1.55-.3-2.55v-2.04c0-1 .1-1.85.3-2.55.2-.7.48-1.26.84-1.69.36-.43.8-.74 1.31-.93C10.81 5.1 11.38 5 12 5c.63 0 1.19.1 1.7.29.51.19.95.5 1.31.93.36.43.64.99.84 1.69.2.7.3 1.54.3 2.55v2.04zm-2.11-2.36c0-.64-.05-1.18-.13-1.62-.09-.44-.22-.79-.4-1.06-.17-.27-.39-.46-.64-.58-.25-.13-.54-.19-.86-.19-.32 0-.61.06-.86.18s-.47.31-.64.58c-.17.27-.31.62-.4 1.06s-.13.98-.13 1.62v2.67c0 .64.05 1.18.14 1.62.09.45.23.81.4 1.09s.39.48.64.61.54.19.87.19c.33 0 .62-.06.87-.19s.46-.33.63-.61c.17-.28.3-.64.39-1.09.09-.45.13-.99.13-1.62v-2.66z"></path></svg>',
@@ -2371,7 +2371,7 @@ export const DumpLeftRightContent: ST_LeftRightContent[] = [
       image: {
         id: 'a8424cc3-d347-4a9e-a929-7a938cbf3862',
         type: 'image/jpeg',
-        src: 'http://127.0.0.1:8055/assets/a8424cc3-d347-4a9e-a929-7a938cbf3862?access_token=mdzjETutYM06z9ch56CmFkjIOWZCwraG',
+        src: 'https://flowbite.com/docs/images/blog/image-1.jpg',
       },
       image_svg:
         '<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="sm:w-16 sm:h-16 w-10 h-10" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>',
@@ -2402,7 +2402,7 @@ export const DumpLeftRightContent: ST_LeftRightContent[] = [
       image: {
         id: 'd38e3917-afb4-40bb-8c65-1a685efe7845',
         type: 'image/jpeg',
-        src: 'http://127.0.0.1:8055/assets/d38e3917-afb4-40bb-8c65-1a685efe7845?access_token=mdzjETutYM06z9ch56CmFkjIOWZCwraG',
+        src: 'https://flowbite.com/docs/images/blog/image-2.jpg',
       },
       image_svg:
         '<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="sm:w-16 sm:h-16 w-10 h-10" viewBox="0 0 24 24"><circle cx="6" cy="6" r="3"></circle><circle cx="6" cy="18" r="3"></circle><path d="M20 4L8.12 15.88M14.47 14.48L20 20M8.12 8.12L12 12"></path></svg>',
@@ -2432,7 +2432,7 @@ export const DumpLeftRightContent: ST_LeftRightContent[] = [
       image: {
         id: '57abfbfa-ce9c-428c-bfe0-af42ff0bd6cd',
         type: 'image/jpeg',
-        src: 'http://127.0.0.1:8055/assets/57abfbfa-ce9c-428c-bfe0-af42ff0bd6cd?access_token=mdzjETutYM06z9ch56CmFkjIOWZCwraG',
+        src: 'https://flowbite.com/docs/images/blog/image-3.jpg',
       },
       image_svg:
         '<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="sm:w-16 sm:h-16 w-10 h-10" viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>',
