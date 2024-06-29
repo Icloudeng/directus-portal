@@ -46,10 +46,13 @@ import {
   getDumpChart,
 } from '@/app/fixtures/templates-fixtures';
 import {
+  DumpCountdown,
   DumpFAQ,
   DumpFeatureCard,
   DumpFeatureListWithIcon,
   DumpFormInput,
+  DumpImage,
+  DumpVideo,
 } from '@/app/fixtures/templates-fixtures2';
 import { getServerSideTranslations } from '@/app/utils/server-translation';
 
@@ -963,6 +966,72 @@ const templates: Template[] = [
 
           <Sts.ST_FeatureListWithIconsFC
             items={DumpFeatureListWithIcon}
+            sectionClass=''
+            sharedObject={{}}
+          />
+        </section>
+      );
+    },
+  },
+
+  {
+    title: 'ST Videos',
+    content(title) {
+      return (
+        <section className='py-14 x-container'>
+          <h3
+            id={urlSafe(title)}
+            className='sticky top-8 z-50 bg-white p-2 inline-block text-primary-400 my-9'
+          >
+            {title}
+          </h3>
+
+          <Sts.ST_VideosFC
+            items={DumpVideo}
+            sectionClass=''
+            sharedObject={{}}
+          />
+        </section>
+      );
+    },
+  },
+
+  {
+    title: 'ST Images',
+    content(title) {
+      return (
+        <section className='py-14 x-container'>
+          <h3
+            id={urlSafe(title)}
+            className='sticky top-8 z-50 bg-white p-2 inline-block text-primary-400 my-9'
+          >
+            {title}
+          </h3>
+
+          <Sts.ST_ImagesFC
+            items={DumpImage}
+            sectionClass=''
+            sharedObject={{}}
+          />
+        </section>
+      );
+    },
+  },
+
+  {
+    title: 'ST Countdowns',
+    content(title) {
+      return (
+        <section className='py-14 x-container'>
+          <h3
+            id={urlSafe(title)}
+            className='sticky top-8 z-50 bg-white p-2 inline-block text-primary-400 my-9'
+          >
+            {title}
+          </h3>
+
+          <Sts.ST_CountdownsFC
+            items={DumpCountdown}
             sectionClass=''
             sharedObject={{}}
           />

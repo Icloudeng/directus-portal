@@ -106,5 +106,8 @@ export const CMS_MODELS = {
     st_feature_cards: "ST_FeatureCards",
     st_faqs: "ST_FAQs",
     st_feature_list_with_icons: "ST_FeatureListWithIcons",
+    st_videos: "ST_Videos",
+    st_images: "ST_Images",
+    st_countdowns: "ST_Countdowns",
   } as const,
 };

@@ -1,8 +1,11 @@
 import {
+  ST_Countdown,
   ST_FAQ,
   ST_FeatureCard,
   ST_FeatureListWithIcon,
   ST_FormInput,
+  ST_Image,
+  ST_Video,
 } from '@apps/contracts';
 
 export const DumpFormInput: ST_FormInput[] = [
@@ -347,6 +350,54 @@ export const DumpFeatureListWithIcon: ST_FeatureListWithIcon[] = [
       id: '0f7bbc16-5d58-4569-8115-cca00a2f8ae3',
       status: 'published',
       date_created: '2024-06-28T21:24:55.212Z',
+    },
+  },
+];
+
+export const DumpVideo: ST_Video[] = [
+  {
+    id: '34',
+    collection: 'ST_Videos',
+    item: {
+      video_url: 'https://vimeo.com/347119375',
+      id: '95addbac-d807-4cf7-8e06-9caa82219647',
+      status: 'published',
+      date_created: '2024-06-29T07:32:19.670Z',
+    },
+  },
+];
+
+export const DumpImage: ST_Image[] = [
+  {
+    id: '36',
+    collection: 'ST_Images',
+    item: {
+      image: {
+        id: 'bf1c59ee-237e-44a5-8bf8-4715937be143',
+        src: 'https://flowbite.com/docs/images/blog/image-1.jpg',
+      },
+      id: '6a08175f-7731-48cb-b8c1-dca6b03b94be',
+      status: 'published',
+      date_created: '2024-06-29T07:33:24.326Z',
+    },
+  },
+];
+
+function addDays(date: Date, days: number): Date {
+  const result = new Date(date);
+  result.setDate(result.getDate() + days);
+  return result;
+}
+
+export const DumpCountdown: ST_Countdown[] = [
+  {
+    id: '1',
+    collection: 'ST_Countdowns',
+    item: {
+      date: addDays(new Date(), 5).toISOString(),
+      id: '1',
+      status: 'published',
+      date_created: '2024-06-29T07:32:19.670Z',
     },
   },
 ];

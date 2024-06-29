@@ -38,47 +38,49 @@ export function ST_CleanHerosFC({
     <>
       {sharedObject[first.collection] === first.item.id && (
         <style key={first.collection} jsx global>
-          {`
-            .nav__parent:not(.nav__fixed) {
-              --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-              --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
-              --tw-text-opacity: 1;
-              background-color: #fff;
-              box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
-                var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-              color: rgb(0 0 0 / var(--tw-text-opacity));
-            }
-            .${sectionClass} {
-              margin-top: -4rem;
-              padding-bottom: 6rem;
-              order: -1;
-            }
-            @media screen and (max-width: 620px) {
-              .${sectionClass} {
-                padding-bottom: 4rem;
+          {
+            /*css*/ `
+              .nav__parent:not(.nav__fixed) {
+                --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+                --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
+                --tw-text-opacity: 1;
+                background-color: #fff;
+                box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
+                  var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+                color: rgb(0 0 0 / var(--tw-text-opacity));
               }
-            }
-
-            @media screen and (max-width: 719px) {
               .${sectionClass} {
-                margin-top: -9rem;
+                margin-top: -4rem;
+                padding-bottom: 6rem;
+                order: -1;
               }
-            }
+              @media screen and (max-width: 620px) {
+                .${sectionClass} {
+                  padding-bottom: 4rem;
+                }
+              }
 
-            .${sectionClass}:before {
-              content: '';
-              position: absolute;
-              display: block;
-              width: 100%;
-              height: 100%;
-              top: 0;
-              left: 0;
-              right: 0;
-              bottom: 0;
-              z-index: -9;
-              background-color: #f5f7fa;
-            }
-          `}
+              @media screen and (max-width: 719px) {
+                .${sectionClass} {
+                  margin-top: -9rem;
+                }
+              }
+
+              .${sectionClass}:before {
+                content: '';
+                position: absolute;
+                display: block;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                z-index: -9;
+                background-color: #f5f7fa;
+              }
+            `
+          }
         </style>
       )}
 
