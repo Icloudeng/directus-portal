@@ -22,7 +22,9 @@ export function ST_TransformedImageCarouselsFC({
     selectedIndex,
     scrollSnaps,
     scrollTo,
-  } = useCustomerEmblaCarousel(items.length > 1 ? 1 : 0);
+  } = useCustomerEmblaCarousel({
+    startIndex: items.length > 1 ? 1 : 0,
+  });
 
   return (
     <div className='w-full relative h-full'>

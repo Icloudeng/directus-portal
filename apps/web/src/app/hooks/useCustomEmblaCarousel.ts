@@ -1,14 +1,27 @@
 import Autoplay from 'embla-carousel-autoplay';
+import Fade from 'embla-carousel-fade';
 import useEmblaCarousel from 'embla-carousel-react';
 import { useCallback, useEffect, useState } from 'react';
 
-export const useCustomerEmblaCarousel = (
+type Params = {
+  startIndex?: number;
+  autoplay?: boolean;
+  loop?: boolean;
+  fade?: boolean;
+};
+
+export const useCustomerEmblaCarousel = ({
   startIndex = 0,
-  autoplay?: boolean
-) => {
+  autoplay,
+  loop,
+  fade,
+}: Params = {}) => {
   const [viewportRef, embla] = useEmblaCarousel(
-    { loop: autoplay, startIndex },
-    autoplay ? [Autoplay({ playOnInit: true, delay: 5000 })] : undefined
+    { loop: loop || autoplay, startIndex },
+    [
+      ...(fade ? [Fade()] : []),
+      ...(autoplay ? [Autoplay({ playOnInit: true, delay: 5000 })] : []),
+    ]
   );
 
   const scrollPrev = useCallback(() => embla && embla.scrollPrev(), [embla]);

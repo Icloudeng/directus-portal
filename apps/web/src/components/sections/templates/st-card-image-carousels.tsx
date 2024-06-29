@@ -25,7 +25,9 @@ export function ST_CardImageCarouselsFC({
     selectedIndex,
     scrollSnaps,
     scrollTo,
-  } = useCustomerEmblaCarousel(first.item.initial_index || 0);
+  } = useCustomerEmblaCarousel({
+    startIndex: first.item.initial_index || 0,
+  });
 
   return (
     <>
