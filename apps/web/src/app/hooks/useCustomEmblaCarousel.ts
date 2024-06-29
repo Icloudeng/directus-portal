@@ -1,5 +1,5 @@
-import Autoplay from 'embla-carousel-autoplay';
-import Fade from 'embla-carousel-fade';
+import AutoplayPlugin from 'embla-carousel-autoplay';
+import FadePlugin from 'embla-carousel-fade';
 import useEmblaCarousel from 'embla-carousel-react';
 import { useCallback, useEffect, useState } from 'react';
 
@@ -19,8 +19,8 @@ export const useCustomerEmblaCarousel = ({
   const [viewportRef, embla] = useEmblaCarousel(
     { loop: loop || autoplay, startIndex },
     [
-      ...(fade ? [Fade()] : []),
-      ...(autoplay ? [Autoplay({ playOnInit: true, delay: 5000 })] : []),
+      ...(fade ? [FadePlugin()] : []),
+      ...(autoplay ? [AutoplayPlugin({ playOnInit: true, delay: 5000 })] : []),
     ]
   );
 

@@ -4,6 +4,7 @@ import {
   ST_FeatureCard,
   ST_FeatureListWithIcon,
   ST_FormInput,
+  ST_HeroWithMediaBackground,
   ST_Image,
   ST_Video,
 } from '@apps/contracts';
@@ -398,6 +399,72 @@ export const DumpCountdown: ST_Countdown[] = [
       id: '1',
       status: 'published',
       date_created: '2024-06-29T07:32:19.670Z',
+    },
+  },
+];
+
+export const DumpHeroWithMediaBackground: ST_HeroWithMediaBackground[] = [
+  {
+    id: '40',
+    collection: 'ST_HeroWithMediaBackgrounds',
+    item: {
+      media: {
+        id: 'bf1c59ee-237e-44a5-8bf8-4715937be143',
+        type: 'image/png',
+        src: 'https://flowbite.com/docs/images/blog/image-1.jpg',
+      },
+      animated: true,
+      translations: [
+        {
+          id: '1',
+          languages_code: {
+            code: 'en',
+            name: 'English',
+          },
+          title: 'Fashion Week',
+          description: 'with TailwindCSS',
+          buttons: [
+            {
+              name: 'Get Started',
+              url: '/get-started',
+              variant: 'light',
+              external: false,
+            },
+          ],
+        },
+      ],
+      id: '7da1d002-621f-47f3-8ad5-31b49279cbf7',
+      status: 'published',
+      date_created: '2024-06-29T12:35:55.041Z',
+      date_updated: '2024-06-29T13:58:13.056Z',
+    },
+  },
+  {
+    id: '41',
+    collection: 'ST_HeroWithMediaBackgrounds',
+    item: {
+      media: {
+        id: '20c17e17-a1d5-44d9-8074-746ac391e0ef',
+        type: 'image/jpeg',
+        src: 'https://flowbite.com/docs/images/blog/image-2.jpg',
+      },
+      animated: true,
+      translations: [
+        {
+          id: '2',
+          languages_code: {
+            code: 'en',
+            name: 'English',
+          },
+          title: 'Brand New Sunglasses',
+          description: 'Real Time Location',
+          buttons: [],
+        },
+      ],
+      id: '6eb3b49d-4503-4a01-95fa-d1066a92279c',
+      status: 'published',
+      date_created: '2024-06-29T19:01:26.470Z',
+      date_updated: '2024-06-29T20:57:20.046Z',
     },
   },
 ];
