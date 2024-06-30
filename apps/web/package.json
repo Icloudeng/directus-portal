@@ -25,6 +25,7 @@
     "clsx": "^1.2.1",
     "cookies-next": "^2.1.2",
     "d3-shape": "^3.2.0",
+    "embla-carousel-auto-scroll": "^8.1.5",
     "embla-carousel-autoplay": "^8.1.5",
     "embla-carousel-fade": "^8.1.5",
     "embla-carousel-react": "^8.1.5",

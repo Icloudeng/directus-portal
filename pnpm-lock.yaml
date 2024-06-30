@@ -153,6 +153,9 @@ importers:
       d3-shape:
         specifier: ^3.2.0
         version: 3.2.0
+      embla-carousel-auto-scroll:
+        specifier: ^8.1.5
+        version: 8.1.5(embla-carousel@8.1.5)
       embla-carousel-autoplay:
         specifier: ^8.1.5
         version: 8.1.5(embla-carousel@8.1.5)
@@ -6499,6 +6502,11 @@ packages:
 
   elkjs@0.8.2:
     resolution: {integrity: sha512-L6uRgvZTH+4OF5NE/MBbzQx/WYpru1xCBE9respNj6qznEewGUIfhzmm7horWWxbNO2M0WckQypGctR8lH79xQ==}
+
+  embla-carousel-auto-scroll@8.1.5:
+    resolution: {integrity: sha512-LpU6Slbhrb+YzmsH9qi6J8Hde+vEq+oxIgO2zQkiVRfu2ImvOsenKZyd0ZDYj/YN/Mt+C4VVx5a2kCHXGYoXPA==}
+    peerDependencies:
+      embla-carousel: 8.1.5
 
   embla-carousel-autoplay@8.1.5:
     resolution: {integrity: sha512-9pHIezRqiO9yism7wRFwmM1j/W9c9hBNX4hq3F4aTPbK84M0M57ryG8QUwhbsTGJbDoBBVTm//YEd0T6i/5YgA==}
@@ -17896,7 +17904,7 @@ snapshots:
 
   '@pm2/pm2-version-check@1.0.4':
     dependencies:
-      debug: 4.3.4
+      debug: 4.3.5(supports-color@9.4.0)
     transitivePeerDependencies:
       - supports-color
 
@@ -21180,6 +21188,10 @@ snapshots:
   electron-to-chromium@1.4.815: {}
 
   elkjs@0.8.2: {}
+
+  embla-carousel-auto-scroll@8.1.5(embla-carousel@8.1.5):
+    dependencies:
+      embla-carousel: 8.1.5
 
   embla-carousel-autoplay@8.1.5(embla-carousel@8.1.5):
     dependencies:
