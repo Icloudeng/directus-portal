@@ -29,7 +29,7 @@ export const ParseSvgText = React.memo<
   const { text, ...restProps } = props;
 
   if (!text || !isSvg(text)) {
-    return props.fallback || <></>;
+    return <>{props.fallback || null}</>;
   }
 
   return (

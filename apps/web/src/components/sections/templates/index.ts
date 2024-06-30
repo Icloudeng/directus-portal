@@ -32,6 +32,7 @@ export * from './st-page-aside-menus';
 export * from './st-plans-pricing';
 export * from './st-platforms';
 export * from './st-rich-text';
+export * from './st-side-text-features';
 export * from './st-side-text-medias';
 export * from './st-sided-contents';
 export * from './st-simple-card-links';

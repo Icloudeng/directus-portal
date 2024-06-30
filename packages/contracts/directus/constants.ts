@@ -110,5 +110,6 @@ export const CMS_MODELS = {
     st_images: "ST_Images",
     st_countdowns: "ST_Countdowns",
     st_hero_with_media_backgrounds: "ST_HeroWithMediaBackgrounds",
+    st_side_text_features: "ST_SideTextFeatures",
   } as const,
 };
