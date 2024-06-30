@@ -2,6 +2,8 @@ import { ST_TransformedImageCarousel, STemplates_Props } from '@apps/contracts';
 import { MDWithAsset } from '@apps/contracts';
 import Image from 'next/legacy/image';
 
+import clsxm from '@/lib/clsxm';
+
 import {
   DotButton,
   NextButton,
@@ -34,21 +36,23 @@ export function ST_TransformedImageCarouselsFC({
           <NextButton enabled={nextBtnEnabled} onClick={scrollNext} />
         </div>
       </div>
+
       <div
-        className='w-full overflow-x-clip snap-mandatory snap-x h-full px-5'
+        className='w-full overflow-x-clip snap-mandatory snap-x h-full px-5 embla__viewport'
         ref={viewportRef}
       >
-        <div className='w-full flex gap-16 h-full'>
+        <div className='w-full flex gap-16 h-full embla__container'>
           {items.map(({ item }, index) => (
             <ImageCard
               key={item.id}
-              className={`${
-                index !== selectedIndex
-                  ? index > selectedIndex
+              className={clsxm(
+                index !== selectedIndex && [
+                  index > selectedIndex
                     ? 'rotate-[30deg] scale-[.75] -z-10 opacity-40'
-                    : '-rotate-[30deg] scale-[.75] opacity-40'
-                  : 'rounded-xl'
-              }`}
+                    : '-rotate-[30deg] scale-[.75] opacity-40',
+                ],
+                index === selectedIndex && 'rounded-xl'
+              )}
               image={item.image}
             />
           ))}
@@ -76,16 +80,20 @@ export const ImageCard = ({
   className: string;
 }) => {
   return (
-    <div className='snap-center w-full '>
+    <div className='snap-center grow-0 shrink-0 basis-[34%] min-w-0'>
       <div
-        className={`relative h-60 sm:h-72 lg:h-96 w-[60vw] ss:w-[40vw] sm:w-[35vw] lg:w-[30vw] max-w-screen-xl flex-shrink-0 overflow-hidden ${className} scl transition-all duration-500`}
+        className={clsxm(
+          'relative h-60 sm:h-72 lg:h-96 w-[60vw] ss:w-[40vw] sm:w-[35vw] lg:w-[30vw] max-w-screen-xl',
+          'flex-shrink-0 overflow-hidden scl transition-all duration-500',
+          className
+        )}
       >
         <Image
           src={image?.src || ''}
           layout='fill'
           alt='Image'
           objectFit='cover'
-          loading='lazy'
+          loading='eager'
           className='absolute inset-0 w-full h-full object-cover object-bottom'
         />
         {/* <div className='absolute inset-0 h-full w-full bg-gradient-to-br from-black/75'></div> */}
