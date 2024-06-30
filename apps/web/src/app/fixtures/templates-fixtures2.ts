@@ -1,4 +1,5 @@
 import {
+  ST_ContentStepper,
   ST_Countdown,
   ST_FAQ,
   ST_FeatureCard,
@@ -514,6 +515,51 @@ export const DumpSideTextFeatures: ST_SideTextFeature[] = [
       status: 'published',
       date_created: '2024-06-30T09:34:52.238Z',
       date_updated: '2024-06-30T10:12:03.533Z',
+    },
+  },
+];
+
+export const DumpContentSteppers: ST_ContentStepper[] = [
+  {
+    id: '45',
+    collection: 'ST_ContentSteppers',
+    item: {
+      translations: [
+        {
+          id: '1',
+          languages_code: {
+            code: 'en',
+            name: 'English',
+          },
+          title: 'User info',
+          content:
+            '<h3 id="styling" class="group whitespace-pre-wrap"><span aria-hidden="true">Styling</span></h3>\n<p>Headless UI keeps track of a lot of state about each component, like which tab is currently selected, whether a popover is open or closed, or which item in a menu is currently focused via the keyboard.</p>\n<p>But because the components are headless and completely unstyled out of the box, you can\'t see this information in your UI until you provide the styles you want for each state yourself.</p>\n<h3 id="using-data-attributes" class="group whitespace-pre-wrap"></h3>',
+        },
+      ],
+      id: '43d78e41-7698-4441-aa06-ee303f5fc30a',
+      status: 'published',
+      date_created: '2024-06-30T11:00:29.943Z',
+    },
+  },
+  {
+    id: '46',
+    collection: 'ST_ContentSteppers',
+    item: {
+      translations: [
+        {
+          id: '2',
+          languages_code: {
+            code: 'en',
+            name: 'English',
+          },
+          title: 'Company info',
+          content:
+            '<p>The easiest way to style the different states of a Headless UI component is using the&nbsp;<code>data-*</code>&nbsp;attributes that each component exposes.</p>\n<p>For example, the&nbsp;<code>Tab</code>&nbsp;component exposes a&nbsp;<code>data-selected</code>&nbsp;attribute, which tells you if the tab is currently selected, and a&nbsp;<code>data-hover</code> attribute, which tells you if the tab is currently being hovered by the mouse.</p>',
+        },
+      ],
+      id: '3473881e-f94d-49d5-8055-f915baeca66f',
+      status: 'published',
+      date_created: '2024-06-30T11:00:29.969Z',
     },
   },
 ];

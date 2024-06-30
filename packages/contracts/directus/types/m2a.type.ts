@@ -565,6 +565,15 @@ export type ST_SideTextFeature = MDHasM2A<
   ST_V<"st_side_text_features">
 >;
 
+export type ST_ContentStepper = MDHasM2A<
+  MDWithTranslation<{
+    title: string;
+    content: string;
+  }> &
+    DRTStatus,
+  ST_V<"st_content_steppers">
+>;
+
 //------------------- Page Sections --------------------//
 export type PS_Content =
   | ST_Value
@@ -611,7 +620,8 @@ export type PS_Content =
   | ST_Image
   | ST_Countdown
   | ST_HeroWithMediaBackground
-  | ST_SideTextFeature;
+  | ST_SideTextFeature
+  | ST_ContentStepper;
 
 export type M2APageSection = MDHasM2A<
   {
