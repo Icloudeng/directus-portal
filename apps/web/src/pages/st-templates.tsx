@@ -46,6 +46,7 @@ import {
   getDumpChart,
 } from '@/app/fixtures/templates-fixtures';
 import {
+  DumpContentSteppers,
   DumpCountdown,
   DumpFAQ,
   DumpFeatureCard,
@@ -1079,6 +1080,28 @@ const templates: Template[] = [
 
           <Sts.ST_SideTextFeaturesFC
             items={DumpSideTextFeatures}
+            sectionClass=''
+            sharedObject={{}}
+          />
+        </section>
+      );
+    },
+  },
+
+  {
+    title: 'ST Content Steppers',
+    content(title) {
+      return (
+        <section className='py-14 x-container'>
+          <h3
+            id={urlSafe(title)}
+            className='sticky top-8 z-50 bg-white p-2 inline-block text-primary-400 my-9'
+          >
+            {title}
+          </h3>
+
+          <Sts.ST_ContentSteppersFC
+            items={DumpContentSteppers}
             sectionClass=''
             sharedObject={{}}
           />

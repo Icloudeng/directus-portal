@@ -501,6 +501,16 @@ const q_ST: Query = {
     }),
     ...qWithStatus,
   },
+
+  [section_templates.st_content_steppers]: {
+    __typeName: section_templates.st_content_steppers,
+    __args: qWithPublishedStatus(),
+    ...qWithTranslations({
+      title: true,
+      content: true,
+    }),
+    ...qWithStatus,
+  },
 };
 
 type PSQuery = {

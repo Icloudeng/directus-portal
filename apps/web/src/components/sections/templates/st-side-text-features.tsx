@@ -50,7 +50,7 @@ function SideTextFeature({ item }: ST_SideTextFeature) {
       <div
         className={clsxm('md:7/12 lg:w-1/2', !sided && 'md:w-full lg:w-full')}
       >
-        <h2 className='text-2xl font-bold text-gray-900 md:text-3xl'>
+        <h2 className='text-2xl font-semibold text-gray-700 md:text-3xl'>
           {translations?.title}
         </h2>
 
