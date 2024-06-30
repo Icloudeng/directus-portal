@@ -2,6 +2,8 @@ import type { ST_CardImageCarousel, STemplates_Props } from '@apps/contracts';
 import Image from 'next/legacy/image';
 import { useTranslation } from 'next-i18next';
 
+import clsxm from '@/lib/clsxm';
+
 import {
   DotButton,
   NextButton,
@@ -83,9 +85,10 @@ function CarouselItem({
   return (
     <div className='snap-center w-full'>
       <div
-        className={`relative flex-shrink-0 max-w[95vw] w-full overflow-hidden rounded-3xl ${
+        className={clsxm(
+          `relative flex-shrink-0 max-w[95vw] w-full overflow-hidden rounded-3xl scl transition-all duration-500`,
           !active ? '' : 'scale-[.85]'
-        } scl transition-all duration-500`}
+        )}
       >
         <Image
           src={image?.src || ''}

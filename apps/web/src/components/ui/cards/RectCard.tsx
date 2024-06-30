@@ -1,14 +1,22 @@
 import Image from 'next/legacy/image';
 import { ReactNode } from 'react';
 
+import clsxm from '@/lib/clsxm';
+
 type IRectCard = {
   cardText?: string;
   cardLogo?: string | ReactNode;
+  className?: string;
 };
 
-export const RectCard = ({ cardText, cardLogo }: IRectCard) => {
+export const RectCard = ({ cardText, cardLogo, className }: IRectCard) => {
   return (
-    <div className='flex items-center justify-center bg-[#f5f7fa] gap-2 shadow-md max-w-[12rem] min-w-[12rem] p-6 rounded-lg mr-8'>
+    <div
+      className={clsxm(
+        'flex items-center justify-center bg-[#f5f7fa] gap-2 shadow-md max-w-[12rem] min-w-[12rem] p-6 rounded-lg mr-8',
+        className
+      )}
+    >
       <div>
         {cardLogo && (
           <div className='relative w-7 h-7 rounded-sm'>
@@ -27,6 +35,7 @@ export const RectCard = ({ cardText, cardLogo }: IRectCard) => {
           </div>
         )}
       </div>
+
       <h3
         className='overflow-hidden text-xl whitespace-nowrap'
         title={cardText}

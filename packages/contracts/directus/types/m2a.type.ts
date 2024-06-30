@@ -546,6 +546,25 @@ export type ST_HeroWithMediaBackground = MDHasM2A<
   ST_V<"st_hero_with_media_backgrounds">
 >;
 
+export type ST_SideTextFeature = MDHasM2A<
+  {
+    image: MDWithAsset;
+    disposition: "text_left" | "text_right";
+    sided: boolean;
+  } & MDWithTranslation<{
+    title: string;
+    description: string;
+    features?: {
+      title: string;
+      color: string;
+      icon_svg: string;
+      description?: string;
+    }[];
+  }> &
+    DRTStatus,
+  ST_V<"st_side_text_features">
+>;
+
 //------------------- Page Sections --------------------//
 export type PS_Content =
   | ST_Value
@@ -591,7 +610,8 @@ export type PS_Content =
   | ST_Video
   | ST_Image
   | ST_Countdown
-  | ST_HeroWithMediaBackground;
+  | ST_HeroWithMediaBackground
+  | ST_SideTextFeature;
 
 export type M2APageSection = MDHasM2A<
   {

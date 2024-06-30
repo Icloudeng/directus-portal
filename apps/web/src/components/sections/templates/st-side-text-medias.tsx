@@ -1,5 +1,7 @@
 import { ST_SideTextMedia, STemplates_Props } from '@apps/contracts';
 
+import clsxm from '@/lib/clsxm';
+
 import { HasMediaPlayer } from '@/components/ui/HasMediaPlayer';
 import ButtonLink from '@/components/ui/links/ButtonLink';
 
@@ -46,47 +48,51 @@ function Content({ item }: ST_SideTextMedia) {
 
   return (
     <div
-      className={`flex lg:justify-between ${
-        sided
-          ? disposition === 'text_right'
-            ? 'lg:flex-row-reverse'
-            : 'lg:flex-row'
-          : 'lg:items-center'
-      } flex-col mb-5 lg:gap-6`}
+      className={clsxm(
+        `flex lg:justify-between flex-col mb-5 lg:gap-6`,
+        sided && [
+          disposition === 'text_right' ? 'lg:flex-row-reverse' : 'lg:flex-row',
+        ],
+        !sided && 'lg:items-center'
+      )}
     >
       <div
-        className={`${
+        className={clsxm(
+          `w-full lg:mx-0 justify-center flex items-center flex-col mx-auto`,
           sided ? 'lg:w-1/2 lg:items-start' : 'lg:w-4/5'
-        } w-full lg:mx-0 justify-center flex items-center flex-col mx-auto`}
+        )}
       >
         <h1
-          className={`${
-            sided ? 'lg:text-start' : ''
-          } text-center leading-10 text-[30px] md:text-[40px] font-bold`}
+          className={clsxm(
+            `text-center leading-10 text-[30px] md:text-[40px] font-bold`,
+            sided && 'lg:text-start'
+          )}
         >
           {translations?.title}
         </h1>
         <div className='mt-[30px]'>
           <p
-            className={`${
-              sided ? 'lg:text-start' : ''
-            } text-center text-[18px] ss:text-[20px] font-light leading-[1.64]`}
+            className={clsxm(
+              `text-center text-[18px] ss:text-[20px] font-light leading-[1.64]`,
+              sided && 'lg:text-start'
+            )}
           >
             {translations?.description}
           </p>
         </div>
-        <div className={`${sided ? 'lg:block' : ''} hidden`}>{buttonNode}</div>
+        <div className={clsxm(sided && 'lg:block')}>{buttonNode}</div>
       </div>
 
       <div
-        className={`${
+        className={clsxm(
+          `relative w-full mt-4 lg:flex video-plyr h-[15rem] ss:min-h-[27rem] md:min-h-[29rem]`,
           sided ? 'lg:w-1/2' : 'lg:w-4/5'
-        } relative w-full mt-4 lg:flex video-plyr h-[15rem] ss:min-h-[27rem] md:min-h-[29rem] `}
+        )}
       >
         <HasMediaPlayer media={media} media_url={media_url} />
       </div>
 
-      <div className={`${sided ? 'lg:hidden' : ''} block`}>{buttonNode}</div>
+      <div className={clsxm(`block`, sided && 'lg:hidden')}>{buttonNode}</div>
     </div>
   );
 }

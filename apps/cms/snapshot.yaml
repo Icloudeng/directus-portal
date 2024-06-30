@@ -3016,6 +3016,50 @@ collections:
       unarchive_value: null
     schema:
       name: ST_RichText_translations
+  - collection: ST_SideTextFeatures
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: status
+      archive_value: archived
+      collapse: open
+      collection: ST_SideTextFeatures
+      color: null
+      display_template: '{{status}} {{id}}'
+      group: Section_Templates
+      hidden: true
+      icon: null
+      item_duplication_fields: null
+      note: null
+      singleton: false
+      sort: 76
+      sort_field: sort
+      translations: null
+      unarchive_value: draft
+    schema:
+      name: ST_SideTextFeatures
+  - collection: ST_SideTextFeatures_translations
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: ST_SideTextFeatures_translations
+      color: null
+      display_template: null
+      group: Section_Templates
+      hidden: true
+      icon: import_export
+      item_duplication_fields: null
+      note: null
+      singleton: false
+      sort: 77
+      sort_field: null
+      translations: null
+      unarchive_value: null
+    schema:
+      name: ST_SideTextFeatures_translations
   - collection: ST_SideTextMedias
     meta:
       accountability: all
@@ -48623,6 +48667,724 @@ fields:
       has_auto_increment: false
       foreign_key_table: null
       foreign_key_column: null
+  - collection: ST_SideTextFeatures
+    field: date_created
+    type: timestamp
+    meta:
+      collection: ST_SideTextFeatures
+      conditions: null
+      display: datetime
+      display_options:
+        relative: true
+      field: date_created
+      group: null
+      hidden: true
+      interface: datetime
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: 9
+      special:
+        - date-created
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: date_created
+      table: ST_SideTextFeatures
+      data_type: timestamp with time zone
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: ST_SideTextFeatures
+    field: date_updated
+    type: timestamp
+    meta:
+      collection: ST_SideTextFeatures
+      conditions: null
+      display: datetime
+      display_options:
+        relative: true
+      field: date_updated
+      group: null
+      hidden: true
+      interface: datetime
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: 11
+      special:
+        - date-updated
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: date_updated
+      table: ST_SideTextFeatures
+      data_type: timestamp with time zone
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: ST_SideTextFeatures
+    field: disposition
+    type: string
+    meta:
+      collection: ST_SideTextFeatures
+      conditions: null
+      display: null
+      display_options: null
+      field: disposition
+      group: null
+      hidden: false
+      interface: select-dropdown
+      note: null
+      options:
+        choices:
+          - text: Text Left
+            value: text_left
+          - text: Text Right
+            value: text_right
+      readonly: false
+      required: true
+      sort: 4
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: disposition
+      table: ST_SideTextFeatures
+      data_type: character varying
+      default_value: text_left
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: ST_SideTextFeatures
+    field: id
+    type: uuid
+    meta:
+      collection: ST_SideTextFeatures
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: 1
+      special:
+        - uuid
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: id
+      table: ST_SideTextFeatures
+      data_type: uuid
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: true
+      is_primary_key: true
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: ST_SideTextFeatures
+    field: image
+    type: uuid
+    meta:
+      collection: ST_SideTextFeatures
+      conditions: null
+      display: null
+      display_options: null
+      field: image
+      group: null
+      hidden: false
+      interface: file-image
+      note: null
+      options: null
+      readonly: false
+      required: true
+      sort: 2
+      special:
+        - file
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: image
+      table: ST_SideTextFeatures
+      data_type: uuid
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: directus_files
+      foreign_key_column: id
+  - collection: ST_SideTextFeatures
+    field: sided
+    type: boolean
+    meta:
+      collection: ST_SideTextFeatures
+      conditions: null
+      display: null
+      display_options: null
+      field: sided
+      group: null
+      hidden: false
+      interface: boolean
+      note: null
+      options: null
+      readonly: false
+      required: true
+      sort: 5
+      special:
+        - cast-boolean
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: sided
+      table: ST_SideTextFeatures
+      data_type: boolean
+      default_value: true
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: ST_SideTextFeatures
+    field: sort
+    type: integer
+    meta:
+      collection: ST_SideTextFeatures
+      conditions: null
+      display: null
+      display_options: null
+      field: sort
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 7
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: sort
+      table: ST_SideTextFeatures
+      data_type: integer
+      default_value: null
+      max_length: null
+      numeric_precision: 32
+      numeric_scale: 0
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: ST_SideTextFeatures
+    field: status
+    type: string
+    meta:
+      collection: ST_SideTextFeatures
+      conditions: null
+      display: labels
+      display_options:
+        choices:
+          - text: $t:published
+            value: published
+            foreground: '#FFFFFF'
+            background: var(--primary)
+          - text: $t:draft
+            value: draft
+            foreground: '#18222F'
+            background: '#D3DAE4'
+          - text: $t:archived
+            value: archived
+            foreground: '#FFFFFF'
+            background: var(--warning)
+        showAsDot: true
+      field: status
+      group: null
+      hidden: false
+      interface: select-dropdown
+      note: null
+      options:
+        choices:
+          - text: $t:published
+            value: published
+          - text: $t:draft
+            value: draft
+          - text: $t:archived
+            value: archived
+      readonly: false
+      required: false
+      sort: 6
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: status
+      table: ST_SideTextFeatures
+      data_type: character varying
+      default_value: draft
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: ST_SideTextFeatures
+    field: translations
+    type: alias
+    meta:
+      collection: ST_SideTextFeatures
+      conditions: null
+      display: null
+      display_options: null
+      field: translations
+      group: null
+      hidden: false
+      interface: translations
+      note: null
+      options:
+        languageField: code
+      readonly: false
+      required: true
+      sort: 3
+      special:
+        - translations
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+  - collection: ST_SideTextFeatures
+    field: user_created
+    type: uuid
+    meta:
+      collection: ST_SideTextFeatures
+      conditions: null
+      display: user
+      display_options: null
+      field: user_created
+      group: null
+      hidden: true
+      interface: select-dropdown-m2o
+      note: null
+      options:
+        template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
+      readonly: true
+      required: false
+      sort: 8
+      special:
+        - user-created
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: user_created
+      table: ST_SideTextFeatures
+      data_type: uuid
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: directus_users
+      foreign_key_column: id
+  - collection: ST_SideTextFeatures
+    field: user_updated
+    type: uuid
+    meta:
+      collection: ST_SideTextFeatures
+      conditions: null
+      display: user
+      display_options: null
+      field: user_updated
+      group: null
+      hidden: true
+      interface: select-dropdown-m2o
+      note: null
+      options:
+        template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
+      readonly: true
+      required: false
+      sort: 10
+      special:
+        - user-updated
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: user_updated
+      table: ST_SideTextFeatures
+      data_type: uuid
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: directus_users
+      foreign_key_column: id
+  - collection: ST_SideTextFeatures_translations
+    field: ST_SideTextFeatures_id
+    type: uuid
+    meta:
+      collection: ST_SideTextFeatures_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: ST_SideTextFeatures_id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 5
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: ST_SideTextFeatures_id
+      table: ST_SideTextFeatures_translations
+      data_type: uuid
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: ST_SideTextFeatures
+      foreign_key_column: id
+  - collection: ST_SideTextFeatures_translations
+    field: description
+    type: text
+    meta:
+      collection: ST_SideTextFeatures_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: description
+      group: null
+      hidden: false
+      interface: input-multiline
+      note: null
+      options:
+        trim: true
+      readonly: false
+      required: true
+      sort: 3
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: description
+      table: ST_SideTextFeatures_translations
+      data_type: text
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: ST_SideTextFeatures_translations
+    field: features
+    type: json
+    meta:
+      collection: ST_SideTextFeatures_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: features
+      group: null
+      hidden: false
+      interface: list
+      note: null
+      options:
+        fields:
+          - field: title
+            name: title
+            type: string
+            meta:
+              field: title
+              width: half
+              type: string
+              interface: input
+              required: true
+              options:
+                trim: true
+          - field: color
+            name: color
+            type: string
+            meta:
+              field: color
+              width: half
+              type: string
+              interface: select-color
+              required: true
+          - field: icon_svg
+            name: icon_svg
+            type: text
+            meta:
+              field: icon_svg
+              width: full
+              type: text
+              interface: input-code
+              required: true
+              options:
+                language: xml
+                lineWrapping: true
+                template: <svg></svg>
+          - field: description
+            name: description
+            type: text
+            meta:
+              field: description
+              width: full
+              type: text
+              interface: input-multiline
+              options:
+                softLength: 255
+                trim: true
+        template: '{{ title }}'
+      readonly: false
+      required: false
+      sort: 4
+      special:
+        - cast-json
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: features
+      table: ST_SideTextFeatures_translations
+      data_type: json
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: ST_SideTextFeatures_translations
+    field: id
+    type: integer
+    meta:
+      collection: ST_SideTextFeatures_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 1
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: id
+      table: ST_SideTextFeatures_translations
+      data_type: integer
+      default_value: nextval('"ST_SideTextFeatures_translations_id_seq"'::regclass)
+      max_length: null
+      numeric_precision: 32
+      numeric_scale: 0
+      is_nullable: false
+      is_unique: true
+      is_primary_key: true
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: true
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: ST_SideTextFeatures_translations
+    field: languages_code
+    type: string
+    meta:
+      collection: ST_SideTextFeatures_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: languages_code
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 6
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: languages_code
+      table: ST_SideTextFeatures_translations
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: languages
+      foreign_key_column: code
+  - collection: ST_SideTextFeatures_translations
+    field: title
+    type: string
+    meta:
+      collection: ST_SideTextFeatures_translations
+      conditions: null
+      display: null
+      display_options: null
+      field: title
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        trim: true
+      readonly: false
+      required: true
+      sort: 2
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: title
+      table: ST_SideTextFeatures_translations
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
   - collection: ST_SideTextMedias
     field: date_created
     type: timestamp
@@ -58924,6 +59686,7 @@ relations:
         - ST_PlansPricing
         - ST_Platforms
         - ST_RichText
+        - ST_SideTextFeatures
         - ST_SideTextMedias
         - ST_SidedContents
         - ST_SimpleCardLinks
@@ -62376,6 +63139,111 @@ relations:
       foreign_key_table: languages
       foreign_key_column: code
       constraint_name: st_richtext_translations_languages_code_foreign
+      on_update: NO ACTION
+      on_delete: SET NULL
+  - collection: ST_SideTextFeatures
+    field: image
+    related_collection: directus_files
+    meta:
+      junction_field: null
+      many_collection: ST_SideTextFeatures
+      many_field: image
+      one_allowed_collections: null
+      one_collection: directus_files
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    schema:
+      table: ST_SideTextFeatures
+      column: image
+      foreign_key_table: directus_files
+      foreign_key_column: id
+      constraint_name: st_sidetextfeatures_image_foreign
+      on_update: NO ACTION
+      on_delete: SET NULL
+  - collection: ST_SideTextFeatures
+    field: user_created
+    related_collection: directus_users
+    meta:
+      junction_field: null
+      many_collection: ST_SideTextFeatures
+      many_field: user_created
+      one_allowed_collections: null
+      one_collection: directus_users
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    schema:
+      table: ST_SideTextFeatures
+      column: user_created
+      foreign_key_table: directus_users
+      foreign_key_column: id
+      constraint_name: st_sidetextfeatures_user_created_foreign
+      on_update: NO ACTION
+      on_delete: NO ACTION
+  - collection: ST_SideTextFeatures
+    field: user_updated
+    related_collection: directus_users
+    meta:
+      junction_field: null
+      many_collection: ST_SideTextFeatures
+      many_field: user_updated
+      one_allowed_collections: null
+      one_collection: directus_users
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    schema:
+      table: ST_SideTextFeatures
+      column: user_updated
+      foreign_key_table: directus_users
+      foreign_key_column: id
+      constraint_name: st_sidetextfeatures_user_updated_foreign
+      on_update: NO ACTION
+      on_delete: NO ACTION
+  - collection: ST_SideTextFeatures_translations
+    field: ST_SideTextFeatures_id
+    related_collection: ST_SideTextFeatures
+    meta:
+      junction_field: languages_code
+      many_collection: ST_SideTextFeatures_translations
+      many_field: ST_SideTextFeatures_id
+      one_allowed_collections: null
+      one_collection: ST_SideTextFeatures
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: translations
+      sort_field: null
+    schema:
+      table: ST_SideTextFeatures_translations
+      column: ST_SideTextFeatures_id
+      foreign_key_table: ST_SideTextFeatures
+      foreign_key_column: id
+      constraint_name: st_sidetextfeatures_translations_st_sidete__1335b5ad_foreign
+      on_update: NO ACTION
+      on_delete: SET NULL
+  - collection: ST_SideTextFeatures_translations
+    field: languages_code
+    related_collection: languages
+    meta:
+      junction_field: ST_SideTextFeatures_id
+      many_collection: ST_SideTextFeatures_translations
+      many_field: languages_code
+      one_allowed_collections: null
+      one_collection: languages
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    schema:
+      table: ST_SideTextFeatures_translations
+      column: languages_code
+      foreign_key_table: languages
+      foreign_key_column: code
+      constraint_name: st_sidetextfeatures_translations_languages_code_foreign
       on_update: NO ACTION
       on_delete: SET NULL
   - collection: ST_SideTextMedias

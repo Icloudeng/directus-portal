@@ -1,3 +1,4 @@
+import AutoScrollPlugin from 'embla-carousel-auto-scroll';
 import AutoplayPlugin from 'embla-carousel-autoplay';
 import FadePlugin from 'embla-carousel-fade';
 import useEmblaCarousel from 'embla-carousel-react';
@@ -8,6 +9,12 @@ type Params = {
   autoplay?: boolean;
   loop?: boolean;
   fade?: boolean;
+  watchDrag?: boolean;
+  autoScroll?: {
+    playOnInit?: boolean;
+    direction?: 'forward' | 'backward';
+    speed?: number;
+  };
 };
 
 export const useCustomerEmblaCarousel = ({
@@ -15,12 +22,19 @@ export const useCustomerEmblaCarousel = ({
   autoplay,
   loop,
   fade,
+  autoScroll,
+  watchDrag = true,
 }: Params = {}) => {
   const [viewportRef, embla] = useEmblaCarousel(
-    { loop: loop || autoplay, startIndex },
+    {
+      loop: loop || autoplay,
+      startIndex,
+      watchDrag: watchDrag,
+    },
     [
       ...(fade ? [FadePlugin()] : []),
       ...(autoplay ? [AutoplayPlugin({ playOnInit: true, delay: 5000 })] : []),
+      ...(autoScroll ? [AutoScrollPlugin(autoScroll)] : []),
     ]
   );
 
