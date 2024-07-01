@@ -163,7 +163,7 @@ function STHeroWithMediaBackground({
       <div
         className={clsxm(
           'absolute top-0 left-0 w-full h-full overflow-hidden',
-          'after:content-[""] after:absolute after:w-full after:h-full after:bg-black after:bg-opacity-50'
+          'after:content-[""] after:absolute after:w-full after:h-full after:bg-black after:bg-opacity-60'
         )}
       >
         {hasVideo && (
