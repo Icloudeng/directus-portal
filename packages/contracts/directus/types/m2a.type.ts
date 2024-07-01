@@ -573,6 +573,18 @@ export type ST_ContentStepper = MDHasM2A<
     DRTStatus,
   ST_V<"st_content_steppers">
 >;
+export type ST_TimelineCard = MDHasM2A<
+  {
+    color: string;
+  } & MDWithTranslation<{
+    card_title: string;
+    title: string;
+    desc: string;
+  }> &
+    DRTStatus,
+  ST_V<"st_timeline_cards">
+>;
+
 
 //------------------- Page Sections --------------------//
 export type PS_Content =
@@ -621,7 +633,8 @@ export type PS_Content =
   | ST_Countdown
   | ST_HeroWithMediaBackground
   | ST_SideTextFeature
-  | ST_ContentStepper;
+  | ST_ContentStepper
+  | ST_TimelineCard;
 
 export type M2APageSection = MDHasM2A<
   {

@@ -363,6 +363,20 @@ const q_ST: Query = {
     ...qWithStatus,
   },
 
+  [section_templates.st_timeline_cards]: {
+    __typeName: section_templates.st_timeline_cards,
+    __args: qWithPublishedStatus(),
+    color: true,
+    ...qWithTranslations({
+      card_title: true,
+      title: true,
+      desc: true,
+    }),
+    ...qWithStatus,
+  },
+
+  
+
   [section_templates.st_form_input]: {
     __typeName: section_templates.st_form_input,
     __args: qWithPublishedStatus(),
@@ -512,6 +526,8 @@ const q_ST: Query = {
     ...qWithStatus,
   },
 };
+
+
 
 type PSQuery = {
   [k in Exclude<GE_Vls, typeof page_sections_categories>]: {

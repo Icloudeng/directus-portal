@@ -308,3 +308,5 @@ input[type='range']::-webkit-slider-thumb {
     width: 100%;
   }
 }
+
+@import "timeline.css"
