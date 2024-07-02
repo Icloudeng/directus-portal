@@ -5,10 +5,11 @@ default:
 stages:
   - front-test
   - deploy-site-smatflow-org
-  - deploy-www-smatflow-org
   - deploy-3d-smatflow-org
-  - deploy-www-civicflow-org
+  - deploy-www-smatflow-org
   - deploy-www-smatflow-academy
+  - deploy-www-smatflow-com
+  - deploy-www-civicflow-org
 
 variables:
   PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
@@ -93,4 +94,11 @@ deploy-www-smatflow-academy:
   stage: deploy-www-smatflow-academy
   environment:
     name: www-smatflow-academy
+  when: manual
+
+deploy-www-smatflow-com:
+  extends: .deploy
+  stage: deploy-www-smatflow-com
+  environment:
+    name: www-smatflow-com
   when: manual
