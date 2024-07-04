@@ -22,13 +22,13 @@ export default function Page(props: QDynamicPagesType<true>) {
       <Seo dynamicPage={page} />
       {page.sections.length === 0 && (
         <div className='relative py-10 bg-white isolate'>
-          <div className='flex justify-center'>
+          <div className='flex justify-center  x-container w-full md:w-1/3'>
             <div className='rounded-[10%]'>
-              <UnderConstructionSvg />
+              <UnderConstructionSvg className='w-full h-auto' />
             </div>
           </div>
           <h4 className='text-center my-24'>
-            {t('NO_CONTENT_FOUND', { page: query.page })}
+            {t('UNDER_CONSTRUCTION', { page: query.page })}
           </h4>
         </div>
       )}
