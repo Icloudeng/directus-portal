@@ -57416,7 +57416,7 @@ fields:
       options: null
       readonly: false
       required: true
-      sort: 2
+      sort: 3
       special: null
       translations: null
       validation:
@@ -57468,7 +57468,7 @@ fields:
             value: rtl
       readonly: false
       required: false
-      sort: 4
+      sort: 5
       special: null
       translations: null
       validation: null
@@ -57506,7 +57506,7 @@ fields:
       options: null
       readonly: false
       required: true
-      sort: 3
+      sort: 4
       special:
         - file
       translations: null
@@ -57545,7 +57545,7 @@ fields:
       options: null
       readonly: false
       required: true
-      sort: 1
+      sort: 2
       special: null
       translations: null
       validation: null
@@ -57567,6 +57567,33 @@ fields:
       has_auto_increment: false
       foreign_key_table: null
       foreign_key_column: null
+  - collection: languages
+    field: notice-t7yun5
+    type: alias
+    meta:
+      collection: languages
+      conditions: null
+      display: null
+      display_options: null
+      field: notice-t7yun5
+      group: null
+      hidden: false
+      interface: presentation-notice
+      note: null
+      options:
+        color: info
+        icon: translate
+        text: Supported Codes (en, fr, es, rw, sw)
+      readonly: false
+      required: false
+      sort: 1
+      special:
+        - alias
+        - no-data
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
 relations:
   - collection: Addresses
     field: company_details_id
