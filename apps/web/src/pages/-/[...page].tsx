@@ -5,10 +5,10 @@ import { useTranslation } from 'next-i18next';
 import Layout from '@/components/layout/Layout';
 import { PageSections } from '@/components/sections/page-sections';
 import Seo from '@/components/Seo';
+import { UnderConstructionSvg } from '@/components/ui/svgs/UnderConstruction';
 
 import { getServerSideTranslations } from '@/app/utils/server-translation';
 import { getGqlDynamicPages, QDynamicPagesType } from '@/cms/items';
-import { UnderConstructionSvg } from '@/components/ui/svgs/UnderConstruction';
 
 export default function Page(props: QDynamicPagesType<true>) {
   const { Pages } = props;
