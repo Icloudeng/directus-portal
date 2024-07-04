@@ -5,10 +5,10 @@ import { useTranslation } from 'next-i18next';
 import Layout from '@/components/layout/Layout';
 import { PageSections } from '@/components/sections/page-sections';
 import Seo from '@/components/Seo';
-import { EmptyCanvasSvg } from '@/components/ui/svgs/EmptyCanvas';
 
 import { getServerSideTranslations } from '@/app/utils/server-translation';
 import { getGqlDynamicPages, QDynamicPagesType } from '@/cms/items';
+import { UnderConstructionSvg } from '@/components/ui/svgs/UnderConstruction';
 
 export default function Page(props: QDynamicPagesType<true>) {
   const { Pages } = props;
@@ -24,7 +24,7 @@ export default function Page(props: QDynamicPagesType<true>) {
         <div className='relative py-10 bg-white isolate'>
           <div className='flex justify-center'>
             <div className='rounded-[10%]'>
-              <EmptyCanvasSvg />
+              <UnderConstructionSvg />
             </div>
           </div>
           <h4 className='text-center my-24'>

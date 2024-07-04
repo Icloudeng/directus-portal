@@ -6,7 +6,7 @@ import Seo from '@/components/Seo';
 import { getServerSideTranslations } from '@/app/utils/server-translation';
 
 export default function NotFoundPage() {
-  const { t } = useTranslation('404');
+  const { t } = useTranslation();
   return (
     <>
       <Seo templateTitle='500 - Server error' />

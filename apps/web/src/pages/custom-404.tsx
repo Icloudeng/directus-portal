@@ -9,7 +9,7 @@ import ArrowLink from '@/components/ui/links/ArrowLink';
 import { getServerSideTranslations } from '@/app/utils/server-translation';
 
 export default function HomePage() {
-  const { t } = useTranslation('404');
+  const { t } = useTranslation();
 
   return (
     <Layout>
