@@ -90,7 +90,7 @@ server {
         # add_header X-Cache-Status $upstream_cache_status;
     }
 
-{% if has_docs_app %}
+{% if docs_enabled %}
     # add docs app config
     include nginxconfig.io/documentation.conf;
 {% endif %}

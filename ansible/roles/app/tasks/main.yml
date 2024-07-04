@@ -28,7 +28,7 @@
 - include_tasks: cms-config.yml
 - include_tasks: web-config.yml
 - include_tasks: docs-config.yml
-  when: has_docs_app
+  when: (docs_enabled | bool)
 
 ############################### BUILD APPs #############################
 
@@ -106,21 +106,21 @@
 
 # Docs generator config (It should come after CMS)
 - include_tasks: docs-generator.yml
-  when: has_docs_app
+  when: (docs_enabled | bool)
 
 # Docs App PM2 restart process (It should come after DOCS generator)
 - name: DOCS | Clear cache docs app
   command: pnpm run clear # Build only docs app from workspace
   args:
     chdir: "{{ root_path }}/apps/docs"
-  when: has_docs_app
+  when: (docs_enabled | bool)
   ignore_errors: true
 
 - name: DOCS | Build docs app
   command: pnpm run build # Build only docs app from workspace
   args:
     chdir: "{{ root_path }}/apps/docs"
-  when: has_docs_app
+  when: (docs_enabled | bool)
   ignore_errors: true
 
 - name: Docs App | Delete old pm2 process
@@ -128,23 +128,23 @@
   args:
     chdir: "{{ root_path }}/apps/docs"
   ignore_errors: true
-  when: has_docs_app
+  when: (docs_enabled | bool)
 
 - name: Docs App | Start the server (PROD)
   command: "pm2 start npm --name {{ docs_pm2_name }} -- run serve"
   args:
     chdir: "{{ root_path }}/apps/docs"
-  when: has_docs_app and docs_gen_env != "dev"
+  when: (docs_enabled | bool) and docs_gen_env != "dev"
 
 - name: Docs App | Start the server (DEV)
   command: "pm2 start npm --name {{ docs_pm2_name }} -- run dev"
   args:
     chdir: "{{ root_path }}/apps/docs"
-  when: has_docs_app and docs_gen_env == "dev"
+  when: (docs_enabled | bool) and docs_gen_env == "dev"
 
 # Config typesense and docsearch-scraper (Tools)
 - include_tasks: docsearch-scraper.yml
-  when: has_docs_app and docker_install
+  when: (docs_enabled | bool) and docker_install
 
 # Gerate pm2 scripts
 - name: PM2 | Generating a Startup Script

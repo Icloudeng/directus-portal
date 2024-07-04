@@ -22,7 +22,7 @@ docs_port: 3100
 cms_port: 8055
 app_env: prod # dev, prod, test
 app_debug: 0 # 0 or 1
-has_docs_app: false # activate docs app
+docs_enabled: "{{ docs_enabled_var | bool }}" # activate docs app
 
 # Typesense
 typesense_port: 8108
@@ -43,7 +43,7 @@ enable_cms_cors: false
 database: portal
 
 # Cms
-cms_ldap_authentication: "{{ cms_ldap_auth_var | default(false) }}"
+cms_ldap_authentication: "{{ cms_ldap_auth_var | bool }}"
 app_user_token: mdzjETutYM06z9ch56CmFkjIOWZCwraG
 ldap_client_url: ipa.smatflow.net
 
