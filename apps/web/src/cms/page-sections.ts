@@ -375,6 +375,43 @@ const q_ST: Query = {
     ...qWithStatus,
   },
 
+  [section_templates.st_horizontal_timeline]: {
+    __typeName: section_templates.st_horizontal_timeline,
+    __args: qWithPublishedStatus(),
+    link: true,
+    color: true,
+    ...qWithTranslations({
+      small_title: true,
+      title: true,
+      description: true,
+      link_text: true,
+    }),
+    ...qWithStatus,
+  },
+  
+ 
+
+  [section_templates.st_horizontal_cards]: {
+    __typeName: section_templates.st_horizontal_cards,
+    __args: qWithPublishedStatus(),
+    image: qWithQueryAsset({
+      width: true,
+      height: true,
+    }),
+    flexible_image: true,
+    border_card: true,
+    background_color: true,
+    clickable_card: true,
+    hover_animation: true,
+    ...qWithTranslations({
+      small_title: true,
+      big_title: true,
+      desc: true,
+      buttons: true,
+    }),
+    ...qWithStatus,
+  },
+
   
 
   [section_templates.st_form_input]: {
@@ -515,6 +552,8 @@ const q_ST: Query = {
     }),
     ...qWithStatus,
   },
+
+  
 
   [section_templates.st_content_steppers]: {
     __typeName: section_templates.st_content_steppers,

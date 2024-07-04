@@ -45,3 +45,5 @@ export * from './st-transformed-image-carousels';
 export * from './st-values';
 export * from './st-videos';
 export * from './st-timeline-cards';
+export * from './st-horizontal-cards';
+export * from './st-horizontal-timeline';
