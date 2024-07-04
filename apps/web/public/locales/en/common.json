@@ -4,6 +4,7 @@
   "TERM_PRIVACY": "Privacy",
   "TOPBAR_NEWS": "news",
   "NO_CONTENT_FOUND": "No content found for {{ page }}'s page",
+  "UNDER_CONSTRUCTION": "Page {{ page }} Under construction",
   "PATERNER_FORM_SUBMIT": "Submit",
   "PARTER_REQUEST_SENT": "Your request has been sent, we will inform you by email after verification of the information provided.",
   "FORM_SUBMITTED": "Your submission has been successfully received.",
