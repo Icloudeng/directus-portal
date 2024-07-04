@@ -374,6 +374,16 @@ const q_ST: Query = {
     }),
     ...qWithStatus,
   },
+  [section_templates.st_popup]: {
+    __typeName: section_templates.st_popup,
+    __args: qWithPublishedStatus(),
+    ...qWithTranslations({
+      title: true,
+      description: true,
+      button_text: true,
+    }),
+    ...qWithStatus,
+  },
 
   [section_templates.st_horizontal_timeline]: {
     __typeName: section_templates.st_horizontal_timeline,

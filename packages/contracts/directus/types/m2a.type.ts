@@ -585,6 +585,16 @@ export type ST_TimelineCard = MDHasM2A<
   ST_V<"st_timeline_cards">
 >;
 
+export type ST_Popup = MDHasM2A<
+   MDWithTranslation<{
+    title: string;
+    description: string;
+    button_text: string;
+  }> &
+    DRTStatus,
+  ST_V<"st_popup">
+>;
+
 export type ST_HorizontalTimeline = MDHasM2A<
   {
     color: string;
@@ -669,6 +679,7 @@ export type PS_Content =
   | ST_ContentStepper
   | ST_HorizontalCards
   | ST_HorizontalTimeline
+  | ST_Popup
   | ST_TimelineCard;
 
 export type M2APageSection = MDHasM2A<

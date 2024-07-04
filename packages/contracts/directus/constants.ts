@@ -114,6 +114,7 @@ export const CMS_MODELS = {
     st_content_steppers: "ST_ContentSteppers",
     st_horizontal_cards: "ST_HorizontalCards",
     st_timeline_cards: "ST_TimelineCards",
+    st_popup: "ST_Popup",
     st_horizontal_timeline: "ST_HorizontalTimeline",
   } as const,
 };

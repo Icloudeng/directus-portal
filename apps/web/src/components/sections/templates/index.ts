@@ -47,3 +47,4 @@ export * from './st-videos';
 export * from './st-timeline-cards';
 export * from './st-horizontal-cards';
 export * from './st-horizontal-timeline';
+export * from './st-popup';
