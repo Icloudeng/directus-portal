@@ -2,19 +2,20 @@ import { ST_HorizontalCards, STemplates_Props } from '@apps/contracts';
 
 import { HorizontalCard } from '@/components/ui/cards/HorizontalCard';
 
-
 import { useSharedData } from '@/app/store';
 import { mut } from '@/cms/mut';
 
-export function ST_HorizontalCardsFC({ items }: STemplates_Props<ST_HorizontalCards>) {
+export function ST_HorizontalCardsFC({
+  items,
+}: STemplates_Props<ST_HorizontalCards>) {
   const { locale } = useSharedData();
 
   return (
-    <div >
+    <div>
       {items.map(({ item }) => {
         const { translations } = mut(item, locale);
         return (
-          <HorizontalCard 
+          <HorizontalCard
             key={item.id}
             buttons={translations?.buttons}
             image={item.image}
@@ -30,7 +31,5 @@ export function ST_HorizontalCardsFC({ items }: STemplates_Props<ST_HorizontalCa
         );
       })}
     </div>
-    
   );
 }
-

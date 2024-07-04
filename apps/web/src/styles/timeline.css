@@ -1,6 +1,6 @@
 /* #region  /**=========== timelineCards css =========== */
- 
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap");
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
 
 .body_timeline {
   --color: rgba(30, 30, 30);
@@ -10,9 +10,8 @@
   align-content: center;
   gap: 2rem;
   padding: 1rem;
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
   color: var(--color);
-
 }
 
 .h1_timeline {
@@ -34,7 +33,7 @@
 
 /* line */
 .ul_timeline::before {
-  content: "";
+  content: '';
   grid-column: 1;
   grid-row: 1 / span 20;
   background: rgb(225, 225, 225);
@@ -80,7 +79,7 @@
 
 /* date flap */
 .ul_timeline .li_timeline .date_timeline::before {
-  content: "";
+  content: '';
   width: var(--inlineP);
   aspect-ratio: 1;
   background: var(--accent-color);
@@ -94,7 +93,7 @@
 
 /* circle */
 .ul_timeline .li_timeline .date_timeline::after {
-  content: "";
+  content: '';
   position: absolute;
   width: 2rem;
   aspect-ratio: 1;
@@ -128,7 +127,7 @@
 /* shadows */
 .ul_timeline .li_timeline .title_timeline::before,
 .ul_timeline .li_timeline .descr_timeline::before {
-  content: "";
+  content: '';
   position: absolute;
   width: 90%;
   height: 0.5rem;
@@ -188,18 +187,15 @@
   color: var(--color);
 }
 
-
-
-.card_sf_timeline>* {
+.card_sf_timeline > * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
 }
 
-
 .card_sf_timeline {
   background: var(--light-bg);
-  font-family: "Space Grotesk", sans-serif;
+  font-family: 'Space Grotesk', sans-serif;
   color: var(--dark);
 }
 
@@ -243,8 +239,10 @@
   background: #fff;
   box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
 }
-.box_timeline:hover{
-box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+.box_timeline:hover {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 }
 
 .box-top_timeline {
@@ -285,7 +283,7 @@ box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 
   margin-top: auto;
   padding: 16px;
   color: white;
-  background: #41516C;
+  background: #41516c;
   box-shadow: 0px 0px 0px 1px black inset;
   transition: background 0.4s ease;
 }

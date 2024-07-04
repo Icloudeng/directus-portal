@@ -36,9 +36,9 @@ export function HorizontalCard({
   const btns = buttons || [];
 
   const content = (
-    <div className="relative flex w-full max-w-[48rem] flex-row rounded-xl bg-white bg-clip-border text-gray-700">
+    <div className='relative flex w-full max-w-[48rem] flex-row rounded-xl bg-white bg-clip-border text-gray-700'>
       {!flexible_image && image?.src && (
-        <div className="relative m-0 w-2/5 shrink-0 overflow-hidden rounded-xl rounded-r-none bg-white bg-clip-border text-gray-700">
+        <div className='relative m-0 w-2/5 shrink-0 overflow-hidden rounded-xl rounded-r-none bg-white bg-clip-border text-gray-700'>
           <Image
             className={clsxm(
               `h-full w-full object-cover`,
@@ -55,10 +55,7 @@ export function HorizontalCard({
       {flexible_image && image && (
         <div className='relative m-0 w-2/5 shrink-0 overflow-hidden rounded-xl rounded-r-none bg-white bg-clip-border text-gray-700'>
           <Image
-            className={clsxm(
-              `h-full w-full`,
-              border_card ? ' ' : ''
-            )}
+            className={clsxm(`h-full w-full`, border_card ? ' ' : '')}
             src={image.src || ''}
             height={image.height}
             width={image.width}
@@ -68,23 +65,16 @@ export function HorizontalCard({
         </div>
       )}
 
-      <div
-          className={clsxm(
-            `p-6`,
-            border_card ? 'px-5' : 'px-1'
-          )}
-        >
-        <h6 className="mb-4 block font-sans text-base font-semibold uppercase leading-relaxed tracking-normal text-pink-500 antialiased">
-              {small_title}
+      <div className={clsxm(`p-6`, border_card ? 'px-5' : 'px-1')}>
+        <h6 className='mb-4 block font-sans text-base font-semibold uppercase leading-relaxed tracking-normal text-pink-500 antialiased'>
+          {small_title}
         </h6>
-        <h4 className="mb-2 block font-sans text-2xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased">
-              {big_title}
+        <h4 className='mb-2 block font-sans text-2xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased'>
+          {big_title}
         </h4>
-        <p className="mb-8 block font-sans text-base font-normal leading-relaxed text-gray-700 antialiased">
-              {desc}
+        <p className='mb-8 block font-sans text-base font-normal leading-relaxed text-gray-700 antialiased'>
+          {desc}
         </p>
-        
-        
 
         {btns.length > 0 && (
           <div
@@ -134,6 +124,5 @@ export function HorizontalCard({
       )}
       {content}
     </div>
-
   );
 }

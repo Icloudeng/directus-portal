@@ -398,8 +398,6 @@ const q_ST: Query = {
     }),
     ...qWithStatus,
   },
-  
- 
 
   [section_templates.st_horizontal_cards]: {
     __typeName: section_templates.st_horizontal_cards,
@@ -421,8 +419,6 @@ const q_ST: Query = {
     }),
     ...qWithStatus,
   },
-
-  
 
   [section_templates.st_form_input]: {
     __typeName: section_templates.st_form_input,
@@ -563,8 +559,6 @@ const q_ST: Query = {
     ...qWithStatus,
   },
 
-  
-
   [section_templates.st_content_steppers]: {
     __typeName: section_templates.st_content_steppers,
     __args: qWithPublishedStatus(),
@@ -575,8 +569,6 @@ const q_ST: Query = {
     ...qWithStatus,
   },
 };
-
-
 
 type PSQuery = {
   [k in Exclude<GE_Vls, typeof page_sections_categories>]: {
