@@ -90,6 +90,18 @@ provision-cd:
 docsearch-scraper:
 	pnpm -r docsearch-scraper
 
+
+
+.PHONY: snapshot
+snapshot:
+	pnpm -r snapshot
+
+
+
+.PHONY: lint-fix
+lint-fix:
+	pnpm -r lint:fix
+
 # ============================
 # Ansible commands
 # ============================
