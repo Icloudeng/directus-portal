@@ -511,6 +511,12 @@ const q_ST: Query = {
     }),
     ...qWithStatus,
   },
+
+  [section_templates.st_usecases]: {
+    __typeName: section_templates.st_usecases,
+    __args: qWithPublishedStatus(),
+    ...qWithStatus,
+  },
 };
 
 type PSQuery = {

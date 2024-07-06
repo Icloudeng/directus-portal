@@ -574,6 +574,8 @@ export type ST_ContentStepper = MDHasM2A<
   ST_V<"st_content_steppers">
 >;
 
+export type ST_Usecase = MDHasM2A<DRTStatus, ST_V<"st_usecases">>;
+
 //------------------- Page Sections --------------------//
 export type PS_Content =
   | ST_Value
@@ -621,7 +623,8 @@ export type PS_Content =
   | ST_Countdown
   | ST_HeroWithMediaBackground
   | ST_SideTextFeature
-  | ST_ContentStepper;
+  | ST_ContentStepper
+  | ST_Usecase;
 
 export type M2APageSection = MDHasM2A<
   {

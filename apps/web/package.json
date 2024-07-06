@@ -22,6 +22,8 @@
     "@directus/sdk": "^10.3.5",
     "@headlessui/react": "^2.1.1",
     "@jsdevtools/rehype-toc": "^3.0.2",
+    "@syncfusion/ej2-base": "^26.1.37",
+    "@syncfusion/ej2-react-treegrid": "^26.1.40",
     "clsx": "^1.2.1",
     "cookies-next": "^2.1.2",
     "d3-shape": "^3.2.0",
