@@ -41,6 +41,7 @@ export * from './st-simple-cards';
 export * from './st-streamable-cards';
 export * from './st-testimonials';
 export * from './st-timeline-ranges';
+export * from './st-timeline-cards';
 export * from './st-transformed-image-carousels';
 export * from './st-values';
 export * from './st-videos';

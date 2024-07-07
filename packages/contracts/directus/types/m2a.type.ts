@@ -546,6 +546,18 @@ export type ST_HeroWithMediaBackground = MDHasM2A<
   ST_V<"st_hero_with_media_backgrounds">
 >;
 
+export type ST_TimelineCards = MDHasM2A<
+  {
+    color: string;
+  } & MDWithTranslation<{
+    card_title: string;
+    title: string;
+    desc: string;
+  }> &
+    DRTStatus,
+  ST_V<"st_timeline_cards">
+>;
+
 export type ST_SideTextFeature = MDHasM2A<
   {
     image: MDWithAsset;
@@ -621,6 +633,7 @@ export type PS_Content =
   | ST_Countdown
   | ST_HeroWithMediaBackground
   | ST_SideTextFeature
+  | ST_TimelineCards
   | ST_ContentStepper;
 
 export type M2APageSection = MDHasM2A<
