@@ -63,7 +63,9 @@ export function ST_ContentSteppersFC({
           return (
             <TabPanel
               key={id}
-              className={clsxm('px-0 overflow-hidden prose mb-4 w-full')}
+              className={clsxm(
+                'px-0 overflow-hidden prose mb-4 w-full max-w-none'
+              )}
               dangerouslySetInnerHTML={{
                 __html: translations?.content || '',
               }}
