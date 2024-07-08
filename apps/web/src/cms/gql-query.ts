@@ -48,7 +48,7 @@ export function qWithAsset<T extends { [x: string]: MDWithAsset | unknown }>(
 
   if (!data[imageKey]) return data;
   let preset_url = '';
-  const asset = data[imageKey] as MDWithAsset;
+  const asset = data[imageKey] as unknown as MDWithAsset;
 
   switch (typeof preset) {
     case 'string':
