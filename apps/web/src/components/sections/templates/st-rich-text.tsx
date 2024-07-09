@@ -1,5 +1,7 @@
 import { ST_RichText, STemplates_Props } from '@apps/contracts';
 
+import clsxm from '@/lib/clsxm';
+
 import { useRehypeReactProcessor } from '@/app/hooks/useRehypeReactProcessor';
 import { useSharedData } from '@/app/store';
 import { mut } from '@/cms/mut';
@@ -26,7 +28,7 @@ export function ST_RichTextFC({ items }: STemplates_Props<ST_RichText>) {
 function TextContent({ toc, text }: { toc: boolean; text: string }) {
   const { tocParent, Content } = useRehypeReactProcessor(text, toc);
   return (
-    <div className={`w-full ${toc ? 'lg:flex' : ''}`}>
+    <div className={clsxm(`w-full`, toc && 'lg:flex')}>
       {toc && (
         <div className='lg:w-[30%] lg:mt-10'>
           <div
@@ -35,7 +37,7 @@ function TextContent({ toc, text }: { toc: boolean; text: string }) {
           />
         </div>
       )}
-      <div className={`${toc ? 'lg:w-[70%]' : ''}`}>{Content}</div>
+      <div className={clsxm(toc && 'lg:w-[70%]')}>{Content}</div>
     </div>
   );
 }

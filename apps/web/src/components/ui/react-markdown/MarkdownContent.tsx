@@ -102,7 +102,7 @@ export function MarkdownContent({ children, toc = false, className }: Props) {
           />
         </div>
       )}
-      <div className={`${toc ? 'lg:w-[70%]' : ''}`}>
+      <div className={clsxm(toc && 'lg:w-[70%]')}>
         <ReactMarkdown
           components={{
             code: Code,
