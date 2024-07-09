@@ -34,7 +34,7 @@ export function ST_PageAsideMenusFC({
             menuTitle={translations?.menu_name || 'Menu-' + i}
             hrefTitle={enTranslations?.menu_name || 'Menu-' + i}
           >
-            <div className='prose md:prose-lg lg:prose-xl mb-5'>
+            <div className='prose md:prose-lg lg:prose-xl mb-5 max-w-none'>
               <MarkdownContent>
                 {translations?.markdown_content || ''}
               </MarkdownContent>
