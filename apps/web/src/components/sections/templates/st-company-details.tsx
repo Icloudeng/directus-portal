@@ -100,19 +100,24 @@ export function ST_CompanyDetailsFC(_: STemplates_Props<ST_CompanyDetail>) {
                     <span>{address_name}</span>
                     <div className='space-y-1 mb-4' key={id}>
                       <ul>
-                        <li>
-                          <p className='font-light text-gray-400'>
-                            {working_days}, {working_time}
-                          </p>
-                        </li>
-                        <li>
-                          <p className='font-light text-gray-400'>
-                            {t('Phone')}:{' '}
-                            <a href={`tel:${phone}`} className='underline'>
-                              {phone}
-                            </a>
-                          </p>
-                        </li>
+                        {(working_days || working_time) && (
+                          <li>
+                            <p className='font-light text-gray-400'>
+                              {working_days}, {working_time}
+                            </p>
+                          </li>
+                        )}
+
+                        {phone && (
+                          <li>
+                            <p className='font-light text-gray-400'>
+                              {t('Phone')}:{' '}
+                              <a href={`tel:${phone}`} className='underline'>
+                                {phone}
+                              </a>
+                            </p>
+                          </li>
+                        )}
                       </ul>
                     </div>
                   </div>
