@@ -1,5 +1,4 @@
 import { ST_PageAsideMenu, STemplates_Props } from '@apps/contracts';
-import cloneDeep from 'lodash/cloneDeep';
 
 import {
   AsideMenu,
@@ -22,7 +21,7 @@ export function ST_PageAsideMenusFC({
     <AsideMenu>
       {items.map((aside, i) => {
         const { translations: enTranslations } = mut(
-          cloneDeep(aside.item),
+          { ...aside.item },
           DEFAULT_LANG
         );
 

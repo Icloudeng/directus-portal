@@ -51,14 +51,15 @@ const translate = (
   const translations = data.translations;
   const default_lang = translations[0]?.languages_code?.code || '';
 
-  const find = ($lang: string) =>
-    translations.find((trans) => {
+  const find = ($lang: string) => {
+    return translations.find((trans) => {
       const code = trans.languages_code?.code;
       return code === $lang;
     }) as any;
+  };
 
-  for (const nlang of [lang, default_lang]) {
-    data.translations = find(nlang);
+  for (const itemLang of [lang, default_lang]) {
+    data.translations = find(itemLang);
     if (data.translations) break;
   }
 
