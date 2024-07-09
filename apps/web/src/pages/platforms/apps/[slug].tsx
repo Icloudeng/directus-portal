@@ -103,7 +103,7 @@ export default function Page({ platform }: { platform: MDPlatform }) {
                 <h5 className='font-semibold text-2xl mb-2'>
                   {t('Documentation')}
                 </h5>
-                <div className='prose md:prose-lg lg:prose-xl w-full'>
+                <div className='prose md:prose-lg w-full'>
                   <MarkdownContent>
                     {translations?.documentation || ''}
                   </MarkdownContent>

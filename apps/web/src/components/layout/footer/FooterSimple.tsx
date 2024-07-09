@@ -52,9 +52,9 @@ export const FooterSimple = () => {
                 const { translations } = mut(link, locale);
                 return (
                   <div className='lg:w-1/6 md:w-1/2 w-full px-4' key={link.id}>
-                    <h2 className='title-font font-medium text-primary-400 trackingWidest text-sm mb-3'>
+                    <h3 className='title-font font-medium text-primary-400 trackingWidest text-sm mb-3'>
                       {translations?.name}
-                    </h2>
+                    </h3>
                     <nav className='list-none mb-10'>
                       {link.links.map((item) => {
                         const { translations } = mut(item, locale);

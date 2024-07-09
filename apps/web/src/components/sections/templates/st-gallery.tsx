@@ -65,9 +65,9 @@ export function ST_GalleryFC({ items }: STemplates_Props<ST_Gallery>) {
                         <div className='relative w-full md:w-2/3 p-12 flex flex-col justify-between items-start'>
                           <div className=''>
                             {translations?.title && (
-                              <h2 className='mb-3 w-2/3 text-3xl font-semibold tracking-tight text-white'>
+                              <h3 className='mb-3 w-2/3 text-3xl font-semibold tracking-tight text-white'>
                                 {translations?.title}
-                              </h2>
+                              </h3>
                             )}
 
                             {translations?.description && (

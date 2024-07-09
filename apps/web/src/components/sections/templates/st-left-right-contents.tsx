@@ -36,9 +36,9 @@ export function ST_LeftRightContentsFC({
 
         const text = (
           <>
-            <h2 className='text-gray-900 text-lg title-font font-medium mb-2'>
+            <h3 className='text-gray-900 text-lg title-font font-medium mb-2'>
               {translations?.title}
-            </h2>
+            </h3>
             <p className='leading-relaxed text-base'>
               {translations?.description}
             </p>

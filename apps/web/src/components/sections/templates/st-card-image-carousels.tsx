@@ -99,9 +99,9 @@ function CarouselItem({
         <div className='absolute inset-0 h-full w-full bg-gradient-to-br from-black/75'></div>
         <div className='relative min-h-[24rem] w-[100vw] ss:w-[70vw] md:w-[768px] p-12 flex flex-col justify-between items-start'>
           <div className=''>
-            <h2 className='mb-3 w-2/3 text-3xl font-semibold tracking-tight text-white'>
+            <h3 className='mb-3 w-2/3 text-3xl font-semibold tracking-tight text-white'>
               {translations?.title}
-            </h2>
+            </h3>
             <p className='font-medium text-white mb-3'>
               {translations?.description}
             </p>

@@ -30,9 +30,9 @@ function STCardContent(props: { item: ST_CardContent }) {
           loading='lazy'
         />
       </div>
-      <h2 className='text-xl font-medium title-font text-gray-900 mt-5'>
+      <h3 className='text-xl font-medium title-font text-gray-900 mt-5'>
         {item.translations?.title}
-      </h2>
+      </h3>
       <p className='text-base leading-relaxed mt-2'>
         {item.translations?.description}
       </p>

@@ -25,9 +25,9 @@ function STSimpleCard(props: { item: ST_SimpleCard }) {
             <HasSvgText svgText={item.icon_svg} className='st_value_icon' />
           )}
         </div>
-        <h2 className='text-lg text-gray-900 font-medium title-font mb-2'>
+        <h3 className='text-lg text-gray-900 font-medium title-font mb-2'>
           {item.translations?.title}
-        </h2>
+        </h3>
         <p className='leading-relaxed text-base'>
           {item.translations?.description}
         </p>

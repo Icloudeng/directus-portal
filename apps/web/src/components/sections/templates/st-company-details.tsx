@@ -19,7 +19,7 @@ export function ST_CompanyDetailsFC(_: STemplates_Props<ST_CompanyDetail>) {
     <>
       <div className='flex md:flex-row flex-col-reverse justify-between'>
         <div className='company--details md:w-1/2'>
-          <h2 className='md:text-4xl text-2xl mb-8'>{t('Company details')}</h2>
+          <h3 className='md:text-4xl text-2xl mb-8'>{t('Company details')}</h3>
           <ul className='list-disc ml-8'>
             {cmp?.company_name && (
               <li className='mb-3'>
@@ -78,9 +78,9 @@ export function ST_CompanyDetailsFC(_: STemplates_Props<ST_CompanyDetail>) {
 
       {cmp?.addresses && (
         <div className='mt-10'>
-          <h2 className='md:text-2xl text-xl mb-5'>
+          <h3 className='md:text-2xl text-xl mb-5'>
             {cmp.addresses.length > 1 ? t('Addresses') : t('Address')}
-          </h2>
+          </h3>
 
           {cmp.addresses.map(
             ({

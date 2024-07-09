@@ -28,9 +28,9 @@ function CardLink({ item }: ST_SimpleCardLink) {
     >
       <div className='flex h-full justify-start flex-col items-center'>
         <div className='lg:max-h-[400px] max-h-[500px] mb-[15px] min-h-[115px] w-full'>
-          <div className='text-[20px] xl:text-[26px] xl:mt-[6px] leading-[1.3] font-medium text-[#1d2330] mb-[22px]'>
+          <h3 className='text-[20px] xl:text-[26px] xl:mt-[6px] leading-[1.3] font-medium text-[#1d2330] mb-[22px]'>
             {translations?.title}
-          </div>
+          </h3>
           <div className='text-[12px] text-[#446086] min-h-[63px]'>
             {translations?.description}
           </div>

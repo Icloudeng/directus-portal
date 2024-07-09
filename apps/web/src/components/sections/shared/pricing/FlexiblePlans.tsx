@@ -144,10 +144,10 @@ export const FlexiblePlans = ({
             </div>
             <div className='calculator__right ss:flex-1 flex flex-row ss:flex-col items-start ss:items-center justify-between'>
               <div className='calc-price flex flex-col gap-3'>
-                <h2>
+                <h3 className='h2'>
                   {currency} {monthly_cost}{' '}
                   <span className='text-sm font-normal'>/{t('mo')}</span>
-                </h2>
+                </h3>
                 {monthly_cost !== true_monthly_cost && (
                   <span className='opacity-60 line-through text-sm'>
                     {currency} {true_monthly_cost} /{t('mo')}
