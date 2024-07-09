@@ -36,6 +36,7 @@ const gql_query = jsonToGraphQLQuery({
       id: false, // single object|collection
       status: false,
       site_background_color: true,
+      primary_color: true,
     },
     [CMS_MODELS.languages]: {
       code: true,

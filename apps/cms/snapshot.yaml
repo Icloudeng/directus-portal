@@ -56526,7 +56526,7 @@ fields:
       options: null
       readonly: true
       required: false
-      sort: 3
+      sort: 4
       special:
         - date-created
       translations: null
@@ -56566,7 +56566,7 @@ fields:
       options: null
       readonly: true
       required: false
-      sort: 5
+      sort: 6
       special:
         - date-updated
       translations: null
@@ -56629,6 +56629,45 @@ fields:
       foreign_key_table: null
       foreign_key_column: null
   - collection: SiteLayout
+    field: primary_color
+    type: string
+    meta:
+      collection: SiteLayout
+      conditions: null
+      display: null
+      display_options: null
+      field: primary_color
+      group: null
+      hidden: false
+      interface: select-color
+      note: null
+      options:
+        presets: null
+      readonly: false
+      required: false
+      sort: 3
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: primary_color
+      table: SiteLayout
+      data_type: character varying
+      default_value: '#60a5fa'
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: SiteLayout
     field: site_background_color
     type: string
     meta:
@@ -56671,7 +56710,7 @@ fields:
       translations: null
       validation: null
       validation_message: null
-      width: half
+      width: full
     schema:
       name: site_background_color
       table: SiteLayout
@@ -56705,7 +56744,7 @@ fields:
         template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
       readonly: true
       required: false
-      sort: 6
+      sort: 7
       special:
         - user-created
       translations: null
@@ -56745,7 +56784,7 @@ fields:
         template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
       readonly: true
       required: false
-      sort: 4
+      sort: 5
       special:
         - user-updated
       translations: null
