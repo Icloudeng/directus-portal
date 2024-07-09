@@ -1,4 +1,4 @@
-import { MDBlog, MDNews } from '@apps/contracts';
+import { MDBlog, MDNews } from '@packages/contracts';
 import Image from 'next/legacy/image';
 import Link from 'next/link';
 import { useTranslation } from 'next-i18next';

@@ -1,4 +1,7 @@
-import { ST_HeroWithMediaBackground, STemplates_Props } from '@apps/contracts';
+import {
+  ST_HeroWithMediaBackground,
+  STemplates_Props,
+} from '@packages/contracts';
 import Image from 'next/legacy/image';
 import { Router } from 'next/router';
 import { useEffect } from 'react';

@@ -1,4 +1,4 @@
-import { MDMachineTemplate, MDPlatform } from '@apps/contracts';
+import { MDMachineTemplate, MDPlatform } from '@packages/contracts';
 import throttle from 'lodash/throttle';
 import Link from 'next/link';
 import { useTranslation } from 'next-i18next';

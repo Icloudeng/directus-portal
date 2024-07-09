@@ -1,4 +1,4 @@
-import { ST_Button, STemplates_Props } from '@apps/contracts';
+import { ST_Button, STemplates_Props } from '@packages/contracts';
 
 import ButtonLink from '@/components/ui/links/ButtonLink';
 

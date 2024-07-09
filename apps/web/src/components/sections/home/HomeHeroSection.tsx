@@ -1,4 +1,4 @@
-import { MDHomePageHero } from '@apps/contracts';
+import { MDHomePageHero } from '@packages/contracts';
 import Image from 'next/legacy/image';
 import { useCallback, useMemo, useState } from 'react';
 import { TypeAnimation } from 'react-type-animation';

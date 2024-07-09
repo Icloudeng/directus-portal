@@ -1,9 +1,9 @@
-import { ST_FAQ, STemplates_Props } from '@apps/contracts';
 import {
   Disclosure,
   DisclosureButton,
   DisclosurePanel,
 } from '@headlessui/react';
+import { ST_FAQ, STemplates_Props } from '@packages/contracts';
 import { useEffect, useRef } from 'react';
 
 import clsxm from '@/lib/clsxm';

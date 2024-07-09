@@ -1,6 +1,6 @@
 import slug from "limax";
 import { forEach, map } from "modern-async";
-import type { MDDCNamespace, MDDCPage } from "@apps/contracts";
+import type { MDDCNamespace, MDDCPage } from "@packages/contracts";
 import type { MDLang } from "../cms/type";
 import { constructPagesTree, pagesById } from "./pages";
 import { getTranslation, transKey, Translations } from "./translations";

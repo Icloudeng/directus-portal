@@ -1,5 +1,5 @@
-import { CMS_MODELS } from '@apps/contracts';
-import { NewslettersSubscription } from '@apps/contracts';
+import { CMS_MODELS } from '@packages/contracts';
+import { NewslettersSubscription } from '@packages/contracts';
 
 import { getDirectusClient } from '../directus';
 

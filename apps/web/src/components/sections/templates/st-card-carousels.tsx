@@ -1,4 +1,4 @@
-import type { ST_CardCarousel, STemplates_Props } from '@apps/contracts';
+import type { ST_CardCarousel, STemplates_Props } from '@packages/contracts';
 import Image from 'next/legacy/image';
 import { useTranslation } from 'next-i18next';
 

@@ -1,4 +1,4 @@
-import { CMS_MODELS, M2APageSection } from '@apps/contracts';
+import { CMS_MODELS, M2APageSection } from '@packages/contracts';
 import { jsonToGraphQLQuery } from 'json-to-graphql-query';
 
 import { getDirectusClient } from '../directus';

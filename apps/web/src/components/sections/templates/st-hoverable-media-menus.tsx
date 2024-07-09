@@ -1,4 +1,4 @@
-import { ST_HoverableMediaMenu, STemplates_Props } from '@apps/contracts';
+import { ST_HoverableMediaMenu, STemplates_Props } from '@packages/contracts';
 
 import {
   HoverableMenus,

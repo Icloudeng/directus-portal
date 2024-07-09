@@ -1,5 +1,5 @@
 {
-  "name": "cms",
+  "name": "@apps/cms",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -18,11 +18,11 @@
   "license": "ISC",
   "dependencies": {
     "@directus/sdk": "^10.3.3",
-    "@extensions/directus-extension-compaigns": "workspace:*",
-    "@extensions/directus-extension-docs-publisher": "workspace:*",
-    "@extensions/directus-extension-guests-replier": "workspace:*",
-    "@extensions/directus-extension-newsletters": "workspace:*",
-    "@extensions/directus-extension-searchable": "workspace:*",
+    "@directus-extension/compaigns": "workspace:*",
+    "@directus-extension/docs-publisher": "workspace:*",
+    "@directus-extension/guests-replier": "workspace:*",
+    "@directus-extension/newsletters": "workspace:*",
+    "@directus-extension/searchable": "workspace:*",
     "directus": "9.26.0",
     "dotenv": "^16.0.3",
     "postgres": "^3.3.4",

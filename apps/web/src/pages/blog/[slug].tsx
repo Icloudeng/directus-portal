@@ -1,4 +1,4 @@
-import { MDBlog } from '@apps/contracts';
+import { MDBlog } from '@packages/contracts';
 import { GetServerSidePropsContext } from 'next';
 
 import Layout from '@/components/layout/Layout';

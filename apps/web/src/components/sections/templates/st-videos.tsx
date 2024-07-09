@@ -1,4 +1,4 @@
-import { MDWithAsset, ST_Video, STemplates_Props } from '@apps/contracts';
+import { MDWithAsset, ST_Video, STemplates_Props } from '@packages/contracts';
 
 import clsxm from '@/lib/clsxm';
 

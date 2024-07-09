@@ -1,5 +1,5 @@
-import type { PartnerRequest } from '@apps/contracts';
-import { CMS_MODELS } from '@apps/contracts';
+import type { PartnerRequest } from '@packages/contracts';
+import { CMS_MODELS } from '@packages/contracts';
 
 import { getDirectusClient } from '../directus';
 

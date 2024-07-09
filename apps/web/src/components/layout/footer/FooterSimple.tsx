@@ -1,4 +1,4 @@
-import { FooterBottom } from '@apps/contracts';
+import { FooterBottom } from '@packages/contracts';
 import { useTranslation } from 'next-i18next';
 
 import clsxm from '@/lib/clsxm';

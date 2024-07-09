@@ -1,4 +1,4 @@
-import type { MDWithTranslation } from "@apps/contracts";
+import type { MDWithTranslation } from "@packages/contracts";
 import type { ID } from "@directus/sdk";
 import { DEFAULT_LANG } from "../constants";
 

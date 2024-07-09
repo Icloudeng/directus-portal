@@ -1,6 +1,6 @@
 import { defineHook } from "@directus/extensions-sdk";
-import { CMS_MODELS, MDAuthor, MDCampaign, MDListmonk } from "@apps/contracts";
-import { ListmonkClient } from "@apps/listmonk-client";
+import { CMS_MODELS, MDAuthor, MDCampaign, MDListmonk } from "@packages/contracts";
+import { ListmonkClient } from "@packages/listmonk-client";
 
 type Register = Parameters<Parameters<typeof defineHook>["0"]>["0"];
 type Action = Parameters<Register["action"]>;

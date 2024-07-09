@@ -1,4 +1,4 @@
-import { ST_NavTab, STemplates_Props } from '@apps/contracts';
+import { ST_NavTab, STemplates_Props } from '@packages/contracts';
 import Image from 'next/legacy/image';
 
 import { MarkdownContent } from '@/components/ui/react-markdown/MarkdownContent';

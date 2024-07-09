@@ -1,9 +1,9 @@
-import { I_MDWithUserTranslation } from '@apps/contracts';
+import { I_MDWithUserTranslation } from '@packages/contracts';
 import {
   MDNavbarLink,
   NavbarLinkSubmenu,
   NavbarLinkSubmenuItem,
-} from '@apps/contracts';
+} from '@packages/contracts';
 import { Router } from 'next/router';
 import { forwardRef, useCallback, useEffect, useState } from 'react';
 import { GrClose } from 'react-icons/gr';

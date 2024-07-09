@@ -1,5 +1,5 @@
-import { ST_MediaTab, STemplates_Props } from '@apps/contracts';
-import { MDWithAsset } from '@apps/contracts';
+import { ST_MediaTab, STemplates_Props } from '@packages/contracts';
+import { MDWithAsset } from '@packages/contracts';
 
 import clsxm from '@/lib/clsxm';
 

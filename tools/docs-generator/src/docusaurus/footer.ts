@@ -1,4 +1,4 @@
-import type { MDDCFooter } from "@apps/contracts";
+import type { MDDCFooter } from "@packages/contracts";
 // import type { ThemeConfig } from "@docusaurus/preset-classic";
 import type { MDLang } from "../cms/type";
 import { cmsTransTransformer, transKey, Translations } from "./translations";

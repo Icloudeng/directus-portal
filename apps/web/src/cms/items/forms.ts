@@ -1,4 +1,4 @@
-import { CMS_MODELS, MDFormOptions, MDForms } from '@apps/contracts';
+import { CMS_MODELS, MDFormOptions, MDForms } from '@packages/contracts';
 
 import { getDirectusClient } from '../directus';
 

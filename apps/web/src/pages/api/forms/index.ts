@@ -1,4 +1,4 @@
-import { MDFormOptionsWebhook } from '@apps/contracts';
+import { MDFormOptionsWebhook } from '@packages/contracts';
 import ky from 'ky';
 import { NextApiRequest, NextApiResponse } from 'next';
 

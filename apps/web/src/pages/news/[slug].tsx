@@ -1,4 +1,4 @@
-import { MDNews } from '@apps/contracts';
+import { MDNews } from '@packages/contracts';
 import { GetServerSidePropsContext } from 'next';
 
 import Layout from '@/components/layout/Layout';

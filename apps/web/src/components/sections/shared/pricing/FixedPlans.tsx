@@ -1,4 +1,4 @@
-import { MDFixedPlan, MDMachineTemplate } from '@apps/contracts';
+import { MDFixedPlan, MDMachineTemplate } from '@packages/contracts';
 import round from 'lodash/round';
 import { useTranslation } from 'next-i18next';
 import { useCallback, useState } from 'react';

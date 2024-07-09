@@ -1,4 +1,4 @@
-import { MDPage } from '@apps/contracts';
+import { MDPage } from '@packages/contracts';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 

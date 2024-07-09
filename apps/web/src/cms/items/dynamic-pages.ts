@@ -1,5 +1,5 @@
-import { CMS_MODELS } from '@apps/contracts';
-import { MDPage } from '@apps/contracts';
+import { CMS_MODELS } from '@packages/contracts';
+import { MDPage } from '@packages/contracts';
 import { jsonToGraphQLQuery, VariableType } from 'json-to-graphql-query';
 
 import { getDirectusClient } from '../directus';

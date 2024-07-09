@@ -8,7 +8,7 @@ import {
   MDNavbarLayout,
   MDSiteLayout,
   MDTopbarLayout,
-} from '@apps/contracts';
+} from '@packages/contracts';
 import {
   MDCompanyDetail,
   MDFooterLink,
@@ -17,7 +17,7 @@ import {
   MDTopbarLink,
   MDTopbarNew,
   NavbarLinkSubmenu,
-} from '@apps/contracts';
+} from '@packages/contracts';
 import { jsonToGraphQLQuery } from 'json-to-graphql-query';
 
 import { getDirectusClient } from '../directus';

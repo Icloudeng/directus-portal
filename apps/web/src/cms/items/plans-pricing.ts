@@ -1,9 +1,9 @@
-import { CMS_MODELS } from '@apps/contracts';
+import { CMS_MODELS } from '@packages/contracts';
 import {
   MPlansPricing,
   PlansPricingContent,
   TPlansPricing,
-} from '@apps/contracts';
+} from '@packages/contracts';
 import { jsonToGraphQLQuery } from 'json-to-graphql-query';
 
 import { getDirectusClient } from '../directus';

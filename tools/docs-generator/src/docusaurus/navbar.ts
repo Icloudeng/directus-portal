@@ -1,4 +1,4 @@
-import type { MDDCNamespace } from "@apps/contracts";
+import type { MDDCNamespace } from "@packages/contracts";
 // import type { ThemeConfig } from "@docusaurus/preset-classic";
 import type { CompanyDetail, MDLang } from "../cms/type";
 import { NamespaceBaseLink, reArrangeNamespace } from "./namespaces";

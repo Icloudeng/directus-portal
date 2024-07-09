@@ -1,4 +1,4 @@
-import { MDPlatform } from '@apps/contracts';
+import { MDPlatform } from '@packages/contracts';
 import { GetServerSidePropsContext } from 'next';
 import Image from 'next/legacy/image';
 import { useTranslation } from 'next-i18next';

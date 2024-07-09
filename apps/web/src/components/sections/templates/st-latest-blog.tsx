@@ -1,4 +1,4 @@
-import { ST_LatestBlog, STemplates_Props } from '@apps/contracts';
+import { ST_LatestBlog, STemplates_Props } from '@packages/contracts';
 
 import { BlingCard } from '@/components/ui/cards/BlingCard';
 

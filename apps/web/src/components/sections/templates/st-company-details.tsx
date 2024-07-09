@@ -1,4 +1,4 @@
-import { ST_CompanyDetail, STemplates_Props } from '@apps/contracts';
+import { ST_CompanyDetail, STemplates_Props } from '@packages/contracts';
 import dynamic from 'next/dynamic';
 import Image from 'next/legacy/image';
 import { useTranslation } from 'next-i18next';

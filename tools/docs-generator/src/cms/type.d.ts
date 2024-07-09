@@ -1,4 +1,4 @@
-import type { MDLanguage, MDCompanyDetail } from "@apps/contracts";
+import type { MDLanguage, MDCompanyDetail } from "@packages/contracts";
 
 export type MDLang = Pick<MDLanguage, "code" | "name">;
 

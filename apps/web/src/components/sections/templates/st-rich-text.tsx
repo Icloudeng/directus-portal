@@ -1,4 +1,4 @@
-import { ST_RichText, STemplates_Props } from '@apps/contracts';
+import { ST_RichText, STemplates_Props } from '@packages/contracts';
 
 import clsxm from '@/lib/clsxm';
 

@@ -1,4 +1,4 @@
-import { ST_Chart, STemplates_Props } from '@apps/contracts';
+import { ST_Chart, STemplates_Props } from '@packages/contracts';
 import dynamic from 'next/dynamic';
 
 import clsxm from '@/lib/clsxm';

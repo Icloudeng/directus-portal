@@ -8,7 +8,7 @@ import {
   QueryWithTranslation,
   MDQueryFields,
   MDDCLog,
-} from "@apps/contracts";
+} from "@packages/contracts";
 import { Filter, Sort } from "@directus/sdk";
 import { jsonToGraphQLQuery } from "json-to-graphql-query";
 import { DEFAULT_LANG, DEFAULT_LANG_NAME } from "../constants";

@@ -1,5 +1,5 @@
 {
-  "name": "web",
+  "name": "@apps/web",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -17,8 +17,8 @@
     "prepare": "cd ../.. &&  husky install"
   },
   "dependencies": {
-    "@apps/contracts": "workspace:*",
-    "@apps/listmonk-client": "workspace:*",
+    "@packages/contracts": "workspace:*",
+    "@packages/listmonk-client": "workspace:*",
     "@directus/sdk": "^10.3.5",
     "@headlessui/react": "^2.1.1",
     "@jsdevtools/rehype-toc": "^3.0.2",

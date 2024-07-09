@@ -29,8 +29,8 @@
     "typescript": "^4.9.5"
   },
   "dependencies": {
-    "@apps/contracts": "workspace:*",
-    "@apps/docs-pubsub": "workspace:*",
+    "@packages/contracts": "workspace:*",
+    "@packages/docs-pubsub": "workspace:*",
     "@directus/sdk": "^10.3.3",
     "dotenv": "^16.0.3",
     "glob": "^8.1.0",

@@ -1,4 +1,4 @@
-import { ST_GuestQuestion, STemplates_Props } from '@apps/contracts';
+import { ST_GuestQuestion, STemplates_Props } from '@packages/contracts';
 
 import { ReachOut } from '../shared/reach-out/ReachOut';
 

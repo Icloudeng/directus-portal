@@ -1,6 +1,6 @@
 import { defineEndpoint } from "@directus/extensions-sdk";
 import type { Filter } from "@directus/sdk";
-import { CMS_MODELS } from "@apps/contracts";
+import { CMS_MODELS } from "@packages/contracts";
 
 type Handler = (
   req: {

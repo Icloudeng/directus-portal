@@ -1,5 +1,5 @@
 // import type { LatLngExpression } from 'leaflet';
-import { MDPointMap } from '@apps/contracts';
+import { MDPointMap } from '@packages/contracts';
 import Leaflet from 'leaflet';
 import marderIcon from 'leaflet/dist/images/marker-icon.png';
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';

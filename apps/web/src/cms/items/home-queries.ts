@@ -1,7 +1,7 @@
-import { CMS_MODELS } from '@apps/contracts';
-import { M2APageSection, M2APageSectionReusable } from '@apps/contracts';
-import { MDHomePageHero } from '@apps/contracts';
 import { ID } from '@directus/sdk';
+import { CMS_MODELS } from '@packages/contracts';
+import { M2APageSection, M2APageSectionReusable } from '@packages/contracts';
+import { MDHomePageHero } from '@packages/contracts';
 import { jsonToGraphQLQuery } from 'json-to-graphql-query';
 
 import { getDirectusClient } from '../directus';

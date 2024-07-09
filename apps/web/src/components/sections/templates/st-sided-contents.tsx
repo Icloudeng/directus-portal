@@ -1,4 +1,4 @@
-import type { ST_SidedContent, STemplates_Props } from '@apps/contracts';
+import type { ST_SidedContent, STemplates_Props } from '@packages/contracts';
 import Image from 'next/legacy/image';
 
 import { MarkdownContent } from '@/components/ui/react-markdown/MarkdownContent';

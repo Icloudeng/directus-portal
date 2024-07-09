@@ -1,4 +1,4 @@
-import { ST_TimelineCard, STemplates_Props } from '@apps/contracts';
+import { ST_TimelineCard, STemplates_Props } from '@packages/contracts';
 
 import { useMut } from '@/cms/mut';
 

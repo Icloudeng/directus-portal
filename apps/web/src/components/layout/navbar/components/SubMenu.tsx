@@ -1,4 +1,4 @@
-import { NavbarLinkSubmenu, NavbarLinkSubmenuItem } from '@apps/contracts';
+import { NavbarLinkSubmenu, NavbarLinkSubmenuItem } from '@packages/contracts';
 import React from 'react';
 
 import clsxm from '@/lib/clsxm';

@@ -1,4 +1,4 @@
-import { MDWithAsset, RepeaterBtn } from '@apps/contracts';
+import { MDWithAsset, RepeaterBtn } from '@packages/contracts';
 import Image from 'next/legacy/image';
 
 import clsxm from '@/lib/clsxm';

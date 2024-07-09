@@ -1,4 +1,4 @@
-import { ST_CardContent, STemplates_Props } from '@apps/contracts';
+import { ST_CardContent, STemplates_Props } from '@packages/contracts';
 import Image from 'next/legacy/image';
 
 import ButtonLink from '@/components/ui/links/ButtonLink';

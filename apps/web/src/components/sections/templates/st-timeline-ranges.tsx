@@ -1,4 +1,4 @@
-import { ST_TimelineRange, STemplates_Props } from '@apps/contracts';
+import { ST_TimelineRange, STemplates_Props } from '@packages/contracts';
 import { useState } from 'react';
 
 import {

@@ -1,4 +1,8 @@
-import { MDFlexiblePlan, MDMachineTemplate, MDPlatform } from '@apps/contracts';
+import {
+  MDFlexiblePlan,
+  MDMachineTemplate,
+  MDPlatform,
+} from '@packages/contracts';
 import cloneDeep from 'lodash/cloneDeep';
 import round from 'lodash/round';
 import React, { useCallback, useEffect, useRef, useState } from 'react';

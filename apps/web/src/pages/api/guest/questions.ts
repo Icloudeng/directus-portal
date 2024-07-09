@@ -1,4 +1,4 @@
-import { GuestQuestion } from '@apps/contracts';
+import { GuestQuestion } from '@packages/contracts';
 import { NextApiRequest, NextApiResponse } from 'next';
 
 import { validateForm } from '@/app/utils/validations';

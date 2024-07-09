@@ -1,6 +1,6 @@
 import "./src/env";
 import debounce from "lodash/debounce";
-import { connect, DataPayload, DataType } from "@apps/docs-pubsub";
+import { connect, DataPayload, DataType } from "@packages/docs-pubsub";
 import { Logger } from "./src/logger";
 import { createLogQuery, getCompanyDetailsQuery } from "./src/cms/queries";
 import {

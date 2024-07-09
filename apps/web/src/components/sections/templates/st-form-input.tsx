@@ -1,4 +1,4 @@
-import { ST_FormInput, STemplates_Props } from '@apps/contracts';
+import { ST_FormInput, STemplates_Props } from '@packages/contracts';
 import { useTranslation } from 'next-i18next';
 
 import Button from '@/components/ui/buttons/Button';

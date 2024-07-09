@@ -1,11 +1,11 @@
+import { Filter, Sort } from '@directus/sdk';
 import {
   DRTQueryT,
   DRTStatus,
   MDQueryFields,
   MDWithAsset,
   QueryWithTranslation,
-} from '@apps/contracts';
-import { Filter, Sort } from '@directus/sdk';
+} from '@packages/contracts';
 
 import { CMS_URL } from '@/app/constant/env';
 

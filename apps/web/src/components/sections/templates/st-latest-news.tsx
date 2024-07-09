@@ -1,4 +1,4 @@
-import { ST_LatestNew, STemplates_Props } from '@apps/contracts';
+import { ST_LatestNew, STemplates_Props } from '@packages/contracts';
 
 import { NewsCard } from '@/components/ui/cards/NewsCard';
 

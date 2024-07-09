@@ -51,7 +51,7 @@ For a quick start consider using docker and docker compose
 
 ## Server
 
-- `pnpm dev --filter=web --filter=cms --filter=@apps/contracts`
+- `pnpm dev --filter=web --filter=cms --filter=@packages/contracts`
 
 Starts development servers for (cms: http://localhost:8055/ and web: http://localhost:3000/)
 

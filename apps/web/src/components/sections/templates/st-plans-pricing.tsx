@@ -1,4 +1,4 @@
-import { ST_PlansPricing, STemplates_Props } from '@apps/contracts';
+import { ST_PlansPricing, STemplates_Props } from '@packages/contracts';
 
 import { HasPlansPricing } from '../shared/pricing/HasPlansPricing';
 

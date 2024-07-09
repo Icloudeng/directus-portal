@@ -1,4 +1,4 @@
-import type { ST_CleanHero, STemplates_Props } from '@apps/contracts';
+import type { ST_CleanHero, STemplates_Props } from '@packages/contracts';
 import isSvg from 'is-svg';
 import Image from 'next/legacy/image';
 import Router from 'next/router';

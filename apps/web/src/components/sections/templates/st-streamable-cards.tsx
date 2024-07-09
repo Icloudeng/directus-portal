@@ -1,4 +1,4 @@
-import { ST_StreamableCard, STemplates_Props } from '@apps/contracts';
+import { ST_StreamableCard, STemplates_Props } from '@packages/contracts';
 import Image from 'next/legacy/image';
 import { useMemo } from 'react';
 

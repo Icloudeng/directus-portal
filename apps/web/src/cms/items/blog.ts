@@ -1,5 +1,5 @@
-import { CMS_MODELS } from '@apps/contracts';
-import { MDBlog } from '@apps/contracts';
+import { CMS_MODELS } from '@packages/contracts';
+import { MDBlog } from '@packages/contracts';
 import { jsonToGraphQLQuery, VariableType } from 'json-to-graphql-query';
 
 import { newsQuery } from './news';

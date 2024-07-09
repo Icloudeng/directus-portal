@@ -4,7 +4,7 @@ import {
   MDGuestReplie,
   MDGuestQuestion,
   MDAuthor,
-} from "@apps/contracts";
+} from "@packages/contracts";
 
 const CREATE_EVENT = `${CMS_MODELS.guest_replies}.items.create` as const;
 const UPDATE_EVENT = `${CMS_MODELS.guest_replies}.items.update` as const;

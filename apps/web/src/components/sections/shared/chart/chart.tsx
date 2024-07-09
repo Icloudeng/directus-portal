@@ -1,4 +1,4 @@
-import { ChartDataSetData, ST_Chart } from '@apps/contracts';
+import { ChartDataSetData, ST_Chart } from '@packages/contracts';
 import { stackOffsetWiggle } from 'd3-shape';
 import { useMemo } from 'react';
 import { AxisOptions, Chart, UserSerie } from 'react-charts';

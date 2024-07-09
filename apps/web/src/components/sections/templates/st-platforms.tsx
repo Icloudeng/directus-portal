@@ -1,4 +1,4 @@
-import { ST_Platform, STemplates_Props } from '@apps/contracts';
+import { ST_Platform, STemplates_Props } from '@packages/contracts';
 import Image from 'next/legacy/image';
 import { useTranslation } from 'next-i18next';
 import { useCallback, useState } from 'react';

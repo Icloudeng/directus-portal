@@ -1,5 +1,5 @@
-import { ST_ContentStepper, STemplates_Props } from '@apps/contracts';
 import { Tab, TabGroup, TabList, TabPanel, TabPanels } from '@headlessui/react';
+import { ST_ContentStepper, STemplates_Props } from '@packages/contracts';
 import { Fragment } from 'react';
 
 import clsxm from '@/lib/clsxm';

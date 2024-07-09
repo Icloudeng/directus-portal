@@ -1,4 +1,4 @@
-import { ST_Card, STemplates_Props } from '@apps/contracts';
+import { ST_Card, STemplates_Props } from '@packages/contracts';
 
 import { Card } from '@/components/ui/cards/Card';
 

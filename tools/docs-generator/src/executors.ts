@@ -22,8 +22,8 @@ import {
   storeFooterContent,
 } from "./docusaurus/files";
 import { executorQueue } from "./queue";
-import { DataPayload, DataType } from "@apps/docs-pubsub";
-import type { DRTStatus } from "@apps/contracts";
+import { DataPayload, DataType } from "@packages/docs-pubsub";
+import type { DRTStatus } from "@packages/contracts";
 
 const execAsync = promisify(exec);
 

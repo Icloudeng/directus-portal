@@ -1,4 +1,4 @@
-import { MDNews } from '@apps/contracts';
+import { MDNews } from '@packages/contracts';
 import capitalize from 'lodash/capitalize';
 import { GetServerSidePropsContext } from 'next';
 import { useRouter } from 'next/router';

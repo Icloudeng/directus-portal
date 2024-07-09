@@ -1,4 +1,4 @@
-import { MPlansPricing, PlansPricingContent } from '@apps/contracts';
+import { MPlansPricing, PlansPricingContent } from '@packages/contracts';
 
 import { FixedPlans } from './FixedPlans';
 import { FlexiblePlans } from './FlexiblePlans';

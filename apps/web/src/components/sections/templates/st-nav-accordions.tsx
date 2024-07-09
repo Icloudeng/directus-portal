@@ -1,4 +1,4 @@
-import type { ST_NavAccordion, STemplates_Props } from '@apps/contracts';
+import type { ST_NavAccordion, STemplates_Props } from '@packages/contracts';
 import Image from 'next/legacy/image';
 
 import { Accordion, AccordionChild } from '@/components/ui/accordion/Accordion';

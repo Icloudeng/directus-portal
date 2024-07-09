@@ -1,4 +1,4 @@
-import { MDWithTranslation, MDWithUserTranslation } from '@apps/contracts';
+import { MDWithTranslation, MDWithUserTranslation } from '@packages/contracts';
 
 import { useSharedData } from '@/app/store';
 

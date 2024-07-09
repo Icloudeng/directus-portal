@@ -1,4 +1,4 @@
-import { ST_SimpleCardLink, STemplates_Props } from '@apps/contracts';
+import { ST_SimpleCardLink, STemplates_Props } from '@packages/contracts';
 
 import Button from '@/components/ui/buttons/Button';
 import UnstyledLink from '@/components/ui/links/UnstyledLink';

@@ -1,4 +1,4 @@
-import { ST_Testimonial, STemplates_Props } from '@apps/contracts';
+import { ST_Testimonial, STemplates_Props } from '@packages/contracts';
 
 import { ReviewCard } from '@/components/ui/cards/ReviewCard';
 import {

@@ -1,4 +1,4 @@
-import { ST_Map, STemplates_Props } from '@apps/contracts';
+import { ST_Map, STemplates_Props } from '@packages/contracts';
 import dynamic from 'next/dynamic';
 
 import { useSharedData } from '@/app/store';

@@ -3,9 +3,9 @@ import {
   M2APageSectionReusable,
   PS_Content,
   ST_Vls,
-} from '@apps/contracts';
-import { CMS_MODELS } from '@apps/contracts';
-import { PlansPricingContent } from '@apps/contracts';
+} from '@packages/contracts';
+import { CMS_MODELS } from '@packages/contracts';
+import { PlansPricingContent } from '@packages/contracts';
 
 import { qWithAsset, qWithAssets } from './gql-query';
 import {

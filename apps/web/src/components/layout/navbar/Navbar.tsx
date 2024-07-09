@@ -1,5 +1,3 @@
-import type { I_MDWithUserTranslation } from '@apps/contracts';
-import type { MDNavbarLink } from '@apps/contracts';
 import {
   Popover,
   PopoverButton,
@@ -7,6 +5,8 @@ import {
   PopoverPanel,
   Transition,
 } from '@headlessui/react';
+import type { I_MDWithUserTranslation } from '@packages/contracts';
+import type { MDNavbarLink } from '@packages/contracts';
 import { Fragment, useState } from 'react';
 import { AiOutlineMenuFold } from 'react-icons/ai';
 import { VscChevronDown } from 'react-icons/vsc';

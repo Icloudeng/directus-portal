@@ -1,4 +1,4 @@
-import { ST_SimpleCard, STemplates_Props } from '@apps/contracts';
+import { ST_SimpleCard, STemplates_Props } from '@packages/contracts';
 
 import { HasSvgText } from '@/components/ui/HasSvgText';
 

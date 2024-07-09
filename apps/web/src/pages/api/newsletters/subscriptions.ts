@@ -1,4 +1,4 @@
-import { ListmonkClient } from '@apps/listmonk-client';
+import { ListmonkClient } from '@packages/listmonk-client';
 import { NextApiRequest, NextApiResponse } from 'next';
 
 import { validateForm } from '@/app/utils/validations';

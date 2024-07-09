@@ -1,5 +1,5 @@
 {
-	"name": "@extensions/directus-extension-searchable",
+	"name": "@directus-extension/searchable",
 	"version": "1.0.0",
 	"keywords": [
 		"directus",
@@ -17,7 +17,7 @@
 		"dev": "directus-extension build -w --no-minify"
 	},
 	"devDependencies": {
-		"@apps/contracts": "workspace:*",
+		"@packages/contracts": "workspace:*",
 		"@directus/extensions-sdk": "9.20.4",
 		"@directus/sdk": "^10.3.3",
 		"@types/node": "^18.15.10",

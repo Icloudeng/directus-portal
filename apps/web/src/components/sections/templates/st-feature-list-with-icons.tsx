@@ -1,4 +1,4 @@
-import { ST_FeatureListWithIcon, STemplates_Props } from '@apps/contracts';
+import { ST_FeatureListWithIcon, STemplates_Props } from '@packages/contracts';
 
 import { ParseSvgText } from '@/components/ui/HasSvgText';
 

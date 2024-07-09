@@ -1,4 +1,4 @@
-import { ST_PageAsideMenu, STemplates_Props } from '@apps/contracts';
+import { ST_PageAsideMenu, STemplates_Props } from '@packages/contracts';
 
 import {
   AsideMenu,

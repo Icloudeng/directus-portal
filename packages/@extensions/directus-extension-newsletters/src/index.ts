@@ -5,8 +5,8 @@ import {
   MDListmonk,
   MDAuthor,
   MDCompanyDetail,
-} from "@apps/contracts";
-import { ListmonkClient } from "@apps/listmonk-client";
+} from "@packages/contracts";
+import { ListmonkClient } from "@packages/listmonk-client";
 
 type Register = Parameters<Parameters<typeof defineHook>["0"]>["0"];
 type Action = Parameters<Register["action"]>;

@@ -1,4 +1,4 @@
-import type { ST_Value, STemplates_Props } from '@apps/contracts';
+import type { ST_Value, STemplates_Props } from '@packages/contracts';
 
 import clsxm from '@/lib/clsxm';
 

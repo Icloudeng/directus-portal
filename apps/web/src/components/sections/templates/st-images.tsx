@@ -1,4 +1,4 @@
-import { ST_Image, STemplates_Props } from '@apps/contracts';
+import { ST_Image, STemplates_Props } from '@packages/contracts';
 import Image from 'next/legacy/image';
 
 export function ST_ImagesFC({ items }: STemplates_Props<ST_Image>) {

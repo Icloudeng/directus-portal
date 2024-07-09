@@ -1,4 +1,4 @@
-import { ST_Countdown, STemplates_Props } from '@apps/contracts';
+import { ST_Countdown, STemplates_Props } from '@packages/contracts';
 import { useTranslation } from 'next-i18next';
 import Countdown, { CountdownRendererFn } from 'react-countdown';
 

@@ -1,4 +1,4 @@
-import { MDPlansComparison } from '@apps/contracts';
+import { MDPlansComparison } from '@packages/contracts';
 import { useTranslation } from 'next-i18next';
 
 import { useSharedData } from '@/app/store';

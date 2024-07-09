@@ -10,7 +10,7 @@ import {
   ST_SideTextFeature,
   ST_TimelineCard,
   ST_Video,
-} from '@apps/contracts';
+} from '@packages/contracts';
 
 export const DumpFormInput: ST_FormInput[] = [
   {

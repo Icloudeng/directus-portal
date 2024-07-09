@@ -1,5 +1,8 @@
-import { ST_TransformedImageCarousel, STemplates_Props } from '@apps/contracts';
-import { MDWithAsset } from '@apps/contracts';
+import {
+  ST_TransformedImageCarousel,
+  STemplates_Props,
+} from '@packages/contracts';
+import { MDWithAsset } from '@packages/contracts';
 import Image from 'next/legacy/image';
 
 import clsxm from '@/lib/clsxm';

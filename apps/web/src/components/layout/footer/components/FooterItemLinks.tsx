@@ -1,4 +1,4 @@
-import { MDFooterLink } from '@apps/contracts';
+import { MDFooterLink } from '@packages/contracts';
 
 import UnstyledLink from '@/components/ui/links/UnstyledLink';
 

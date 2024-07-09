@@ -1,4 +1,4 @@
-import { MDDCPage } from "@apps/contracts";
+import { MDDCPage } from "@packages/contracts";
 import * as async from "modern-async";
 
 type PageById = Record<string, MDDCPage>;

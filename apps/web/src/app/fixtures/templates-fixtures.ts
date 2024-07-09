@@ -36,8 +36,8 @@ import type {
   ST_TimelineRange,
   ST_TransformedImageCarousel,
   ST_Value,
-} from '@apps/contracts';
-import type { DRTStatus } from '@apps/contracts';
+} from '@packages/contracts';
+import type { DRTStatus } from '@packages/contracts';
 
 const getId = () => `${Math.random() * 10 ** 17}`;
 const dumpDRTStatus: () => DRTStatus = () => ({

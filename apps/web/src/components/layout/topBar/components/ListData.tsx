@@ -1,4 +1,4 @@
-import { MDLanguage } from '@apps/contracts';
+import { MDLanguage } from '@packages/contracts';
 import { useRouter } from 'next/router';
 
 import NextImage from '@/components/ui/NextImage';

@@ -1,4 +1,4 @@
-import { PartnerRequest } from '@apps/contracts';
+import { PartnerRequest } from '@packages/contracts';
 import { NextApiRequest, NextApiResponse } from 'next';
 
 import { validateForm } from '@/app/utils/validations';

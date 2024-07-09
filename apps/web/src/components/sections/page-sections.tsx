@@ -4,8 +4,8 @@ import {
   PS_Content,
   STemplates_Props,
   ValueOf,
-} from '@apps/contracts';
-import { CMS_MODELS } from '@apps/contracts';
+} from '@packages/contracts';
+import { CMS_MODELS } from '@packages/contracts';
 import isSvg from 'is-svg';
 import React, { FunctionComponent, useMemo, useRef } from 'react';
 

@@ -1,4 +1,4 @@
-import { ST_Markdown, STemplates_Props } from '@apps/contracts';
+import { ST_Markdown, STemplates_Props } from '@packages/contracts';
 
 import { MarkdownContent } from '@/components/ui/react-markdown/MarkdownContent';
 

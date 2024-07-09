@@ -1,4 +1,4 @@
-import { ST_SideTextMedia, STemplates_Props } from '@apps/contracts';
+import { ST_SideTextMedia, STemplates_Props } from '@packages/contracts';
 
 import clsxm from '@/lib/clsxm';
 

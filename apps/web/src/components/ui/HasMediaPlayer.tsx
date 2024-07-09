@@ -1,4 +1,4 @@
-import { MDWithAsset } from '@apps/contracts';
+import { MDWithAsset } from '@packages/contracts';
 import Image from 'next/legacy/image';
 import ReactPlayer from 'react-player';
 

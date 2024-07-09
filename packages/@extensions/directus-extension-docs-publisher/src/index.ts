@@ -1,6 +1,6 @@
 import { defineHook } from "@directus/extensions-sdk";
-import { connect, DataType } from "@apps/docs-pubsub";
-import { CMS_MODELS } from "@apps/contracts";
+import { connect, DataType } from "@packages/docs-pubsub";
+import { CMS_MODELS } from "@packages/contracts";
 
 const client = connect();
 

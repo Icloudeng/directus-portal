@@ -1,4 +1,4 @@
-import { ST_Iframe, STemplates_Props } from '@apps/contracts';
+import { ST_Iframe, STemplates_Props } from '@packages/contracts';
 
 export function ST_IframeFC({ items }: STemplates_Props<ST_Iframe>) {
   return (
