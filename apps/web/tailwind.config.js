@@ -84,12 +84,6 @@ module.exports = {
         streamleft: 'streamleft  15s linear infinite forwards',
         streamright: 'streamright 15s linear 0s infinite normal none running',
       },
-      // gridAutoRows: {
-
-      // },
-      // gridAutoColumns: {
-
-      // },
     },
     screens: {
       xs: '480px',

@@ -1,120 +1,129 @@
-
 .body_timeline {
-    --color: rgba(30, 30, 30);
-    --bgColor: rgba(245, 245, 245);
-  
-    @apply grid content-center gap-8 text-[color:var(--color)] p-4;
-    font-family: "Poppins", sans-serif;
-  }
-  
-  .h1_timeline {
-    @apply text-center;
-  }
-  
+  --color: rgba(30, 30, 30);
+  --bgColor: rgba(245, 245, 245);
+
+  @apply grid content-center gap-8 text-[color:var(--color)];
+  font-family: 'Poppins', sans-serif;
+}
+
+.h1_timeline {
+  @apply text-center;
+}
+
+.ul_timeline {
+  --col-gap: 2rem;
+  --row-gap: 2rem;
+  --line-w: 0.25rem;
+  @apply grid grid-cols-[var(--line-w)_1fr] auto-cols-max gap-x-[var(--col-gap)] w-[min(60rem,90%)];
+  list-style: none;
+  margin-inline: auto;
+}
+
+/* line */
+.ul_timeline::before {
+  @apply content-[''] col-[1] row-[1_/_span_20] rounded-[calc(var(--line-w)_/_2)];
+  background: rgb(225, 225, 225);
+}
+
+/* row gaps */
+.ul_timeline .li_timeline:not(:last-child) {
+  @apply mb-[var(--row-gap)];
+}
+
+/* card */
+.ul_timeline .li_timeline {
+  @apply col-[2] row-[span_2] grid grid-rows-[min-content_min-content_min-content];
+  --inlineP: 1.5rem;
+  margin-inline: var(--inlineP);
+}
+
+/* date */
+.ul_timeline .li_timeline .date_timeline {
+  --dateH: 3rem;
+  @apply h-[var(--dateH)] text-center bg-[color:var(--accent-color)] text-[white] text-xl font-bold grid place-content-center relative rounded-[calc(var(--dateH)_/_2)_0_0_calc(var(--dateH)_/_2)];
+  margin-inline: calc(var(--inlineP) * -1);
+}
+
+/* date flap */
+.ul_timeline .li_timeline .date_timeline::before {
+  @apply content-[''] w-[var(--inlineP)] aspect-[1] bg-[linear-gradient(rgba(0,0,0,0.2)_100%,transparent)] absolute right-0 top-full;
+  background: var(--accent-color);
+  clip-path: polygon(0 0, 100% 0, 0 100%);
+}
+
+/* circle */
+.ul_timeline .li_timeline .date_timeline::after {
+  @apply content-[''] absolute w-8 aspect-[1] border-[color:var(--accent-color)] translate-x-2/4 -translate-y-2/4 right-[calc(100%_+_var(--col-gap)_+_var(--line-w)_/_2)] rounded-[50%] border-[0.3rem] border-solid top-2/4;
+  background: var(--bgColor);
+}
+
+/* title descr */
+.ul_timeline .li_timeline .title_timeline,
+.ul_timeline .li_timeline .descr_timeline {
+  @apply relative;
+  background: var(--bgColor);
+  padding-inline: 1.5rem;
+}
+.ul_timeline .li_timeline .title_timeline {
+  @apply overflow-hidden font-medium;
+  padding-block-start: 1.5rem;
+  padding-block-end: 1rem;
+}
+.ul_timeline .li_timeline .descr_timeline {
+  @apply overflow-hidden font-light;
+  padding-block-end: 1.5rem;
+}
+
+/* shadows */
+.ul_timeline .li_timeline .title_timeline::before,
+.ul_timeline .li_timeline .descr_timeline::before {
+  @apply content-[''] absolute w-[90%] h-2 blur-sm -translate-x-2/4 translate-y-2/4 rounded-[50%] left-2/4;
+  background: rgba(0, 0, 0, 0.5);
+}
+.ul_timeline .li_timeline .title_timeline::before {
+  @apply bottom-[calc(100%_+_0.125rem)];
+}
+
+.ul_timeline .li_timeline .descr_timeline::before {
+  @apply z-[-1] bottom-1;
+}
+
+@media (min-width: 1060px) {
   .ul_timeline {
-    --col-gap: 2rem;
-    --row-gap: 2rem;
-    --line-w: 0.25rem;
-    @apply grid grid-cols-[var(--line-w)_1fr] auto-cols-max gap-x-[var(--col-gap)] w-[min(60rem,90%)];
-    list-style: none;
-    margin-inline: auto;
+    @apply grid-cols-[1fr_var(--line-w)_1fr] before:col-[2];
   }
-  
-  /* line */
+  .ul_timeline .li_timeline:nth-child(odd) {
+    @apply col-[1];
+  }
+  .ul_timeline .li_timeline:nth-child(even) {
+    @apply col-[3];
+  }
+  /* start second card */
+  .ul_timeline .li_timeline:nth-child(2) {
+    @apply row-[2/4];
+  }
+  .ul_timeline .li_timeline:nth-child(odd) .date_timeline::before {
+    @apply left-0;
+    clip-path: polygon(0 0, 100% 0, 100% 100%);
+  }
+  .ul_timeline .li_timeline:nth-child(odd) .date_timeline::after {
+    @apply -translate-x-2/4 -translate-y-2/4 left-[calc(100%_+_var(--col-gap)_+_var(--line-w)_/_2)];
+  }
+  .ul_timeline .li_timeline:nth-child(odd) .date_timeline {
+    @apply rounded-[0_calc(var(--dateH)_/_2)_calc(var(--dateH)_/_2)_0];
+  }
+}
+
+@media (max-width: 870px) {
+  .ul_timeline {
+    @apply w-full block;
+  }
+
   .ul_timeline::before {
-    @apply content-[''] col-[1] row-[1_/_span_20] rounded-[calc(var(--line-w)_/_2)];
-    background: rgb(225, 225, 225);
+    @apply hidden;
   }
-  
-  /* columns*/
-  
-  /* row gaps */
-  .ul_timeline .li_timeline:not(:last-child) {
-    @apply mb-[var(--row-gap)];
-  }
-  
-  /* card */
-  .ul_timeline .li_timeline {
-    @apply col-[2] row-[span_2] grid grid-rows-[min-content_min-content_min-content];
-    --inlineP: 1.5rem;
-    margin-inline: var(--inlineP);
-  }
-  
-  /* date */
-  .ul_timeline .li_timeline .date_timeline {
-    @apply h-[var(--dateH)] text-center bg-[color:var(--accent-color)] text-[white] text-xl font-bold grid place-content-center relative rounded-[calc(var(--dateH)_/_2)_0_0_calc(var(--dateH)_/_2)];
-    --dateH: 3rem;
-    margin-inline: calc(var(--inlineP) * -1);
-  }
-  
-  /* date flap */
-  .ul_timeline .li_timeline .date_timeline::before {
-    @apply content-[''] w-[var(--inlineP)] aspect-[1] bg-[linear-gradient(rgba(0,0,0,0.2)_100%,transparent)] absolute right-0 top-full;
-    background: var(--accent-color);
-    clip-path: polygon(0 0, 100% 0, 0 100%);
-  }
-  
-  /* circle */
+
   .ul_timeline .li_timeline .date_timeline::after {
-    @apply content-[''] absolute w-8 aspect-[1] border-[color:var(--accent-color)] translate-x-2/4 -translate-y-2/4 right-[calc(100%_+_var(--col-gap)_+_var(--line-w)_/_2)] rounded-[50%] border-[0.3rem] border-solid top-2/4;
-    background: var(--bgColor);
+    @apply hidden;
   }
-  
-  /* title descr */
-  .ul_timeline .li_timeline .title_timeline,
-  .ul_timeline .li_timeline .descr_timeline {
-    @apply relative;
-    background: var(--bgColor);
-    padding-inline: 1.5rem;
-  }
-  .ul_timeline .li_timeline .title_timeline {
-    @apply overflow-hidden font-medium;
-    padding-block-start: 1.5rem;
-    padding-block-end: 1rem;
-  }
-  .ul_timeline .li_timeline .descr_timeline {
-    @apply overflow-hidden font-light;
-    padding-block-end: 1.5rem;
-  }
-  
-  /* shadows */
-  .ul_timeline .li_timeline .title_timeline::before,
-  .ul_timeline .li_timeline .descr_timeline::before {
-    @apply content-[''] absolute w-[90%] h-2 blur-sm -translate-x-2/4 translate-y-2/4 rounded-[50%] left-2/4;
-    background: rgba(0, 0, 0, 0.5);
-  }
-  .ul_timeline .li_timeline .title_timeline::before {
-    @apply bottom-[calc(100%_+_0.125rem)];
-  }
-  
-  .ul_timeline .li_timeline .descr_timeline::before {
-    @apply z-[-1] bottom-1;
-  }
-  
-  @media (min-width: 40rem) {
-    .ul_timeline {
-      @apply grid-cols-[1fr_var(--line-w)_1fr] before:col-[2];
-    }
-    .ul_timeline .li_timeline:nth-child(odd) {
-      @apply col-[1];
-    }
-    .ul_timeline .li_timeline:nth-child(even) {
-      @apply col-[3];
-    }
-    /* start second card */
-    .ul_timeline .li_timeline:nth-child(2) {
-      @apply row-[2/4];
-    }
-    .ul_timeline .li_timeline:nth-child(odd) .date_timeline::before {
-      @apply left-0;
-      clip-path: polygon(0 0, 100% 0, 100% 100%);
-    }
-    .ul_timeline .li_timeline:nth-child(odd) .date_timeline::after {
-      @apply -translate-x-2/4 -translate-y-2/4 left-[calc(100%_+_var(--col-gap)_+_var(--line-w)_/_2)];
-    }
-    .ul_timeline .li_timeline:nth-child(odd) .date_timeline {
-      @apply rounded-[0_calc(var(--dateH)_/_2)_calc(var(--dateH)_/_2)_0];
-    }
-  }
-  
-  
+}

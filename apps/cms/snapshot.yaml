@@ -1998,7 +1998,7 @@ collections:
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: 70
+      sort: 71
       sort_field: null
       translations: null
       unarchive_value: null
@@ -2218,7 +2218,7 @@ collections:
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: 78
+      sort: 80
       sort_field: sort
       translations: null
       unarchive_value: draft
@@ -2240,7 +2240,7 @@ collections:
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: 79
+      sort: 81
       sort_field: null
       translations: null
       unarchive_value: null
@@ -2262,7 +2262,7 @@ collections:
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: 73
+      sort: 75
       sort_field: sort
       translations: null
       unarchive_value: draft
@@ -2284,7 +2284,7 @@ collections:
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: 67
+      sort: 68
       sort_field: sort
       translations: null
       unarchive_value: draft
@@ -2306,7 +2306,7 @@ collections:
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: 68
+      sort: 69
       sort_field: null
       translations: null
       unarchive_value: null
@@ -2372,7 +2372,7 @@ collections:
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: 69
+      sort: 70
       sort_field: sort
       translations: null
       unarchive_value: draft
@@ -2394,7 +2394,7 @@ collections:
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: 70
+      sort: 72
       sort_field: null
       translations: null
       unarchive_value: null
@@ -2548,7 +2548,7 @@ collections:
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: 74
+      sort: 76
       sort_field: sort
       translations: null
       unarchive_value: draft
@@ -2570,7 +2570,7 @@ collections:
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: 75
+      sort: 77
       sort_field: null
       translations: null
       unarchive_value: null
@@ -2658,7 +2658,7 @@ collections:
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: 72
+      sort: 74
       sort_field: sort
       translations: null
       unarchive_value: draft
@@ -3120,7 +3120,7 @@ collections:
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: 76
+      sort: 78
       sort_field: sort
       translations: null
       unarchive_value: draft
@@ -3142,7 +3142,7 @@ collections:
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: 77
+      sort: 79
       sort_field: null
       translations: null
       unarchive_value: null
@@ -3421,14 +3421,14 @@ collections:
       collapse: open
       collection: ST_TimelineCards
       color: null
-      display_template: null
+      display_template: '{{status}} {{id}}'
       group: Section_Templates
       hidden: true
       icon: null
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: 64
+      sort: 82
       sort_field: sort
       translations: null
       unarchive_value: draft
@@ -3450,7 +3450,7 @@ collections:
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: 65
+      sort: 83
       sort_field: null
       translations: null
       unarchive_value: null
@@ -3582,7 +3582,7 @@ collections:
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: 71
+      sort: 73
       sort_field: sort
       translations: null
       unarchive_value: draft
@@ -55004,20 +55004,20 @@ fields:
       foreign_key_table: null
       foreign_key_column: null
   - collection: ST_TimelineCards_translations
-    field: desc
+    field: description
     type: text
     meta:
       collection: ST_TimelineCards_translations
       conditions: null
       display: null
       display_options: null
-      field: desc
+      field: description
       group: null
       hidden: false
       interface: input-multiline
       note: null
       options:
-        placeholder: 'Description '
+        trim: true
       readonly: false
       required: true
       sort: 4
@@ -55027,7 +55027,7 @@ fields:
       validation_message: null
       width: full
     schema:
-      name: desc
+      name: description
       table: ST_TimelineCards_translations
       data_type: text
       default_value: null
@@ -55132,7 +55132,8 @@ fields:
       interface: input
       note: null
       options:
-        placeholder: 'title '
+        placeholder: null
+        trim: true
       readonly: false
       required: true
       sort: 3

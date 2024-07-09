@@ -163,7 +163,7 @@ function PageSection({
         </style>
       )}
 
-      <div
+      <section
         className={clsxm(
           'relative py-10 bg-white isolate page__section',
           classId,
@@ -194,11 +194,13 @@ function PageSection({
           {(item.translations?.title || item.translations?.description) && (
             <div className='flex flex-col items-center justify-center gap-7 mb-7 page__section-titles'>
               {item.translations?.title && (
-                <h1 className='text-center'>{item.translations?.title}</h1>
+                <h2 className='text-center text-3xl'>
+                  {item.translations?.title}
+                </h2>
               )}
 
               {item.translations?.description && (
-                <span className='max-w-xl text-center'>
+                <span className='max-w-2xl text-center'>
                   {item.translations?.description}
                 </span>
               )}
@@ -228,7 +230,7 @@ function PageSection({
             })}
           </div>
         </div>
-      </div>
+      </section>
     </>
   );
 }

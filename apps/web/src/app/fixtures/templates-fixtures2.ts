@@ -8,6 +8,7 @@ import {
   ST_HeroWithMediaBackground,
   ST_Image,
   ST_SideTextFeature,
+  ST_TimelineCard,
   ST_Video,
 } from '@apps/contracts';
 
@@ -560,6 +561,55 @@ export const DumpContentSteppers: ST_ContentStepper[] = [
       id: '3473881e-f94d-49d5-8055-f915baeca66f',
       status: 'published',
       date_created: '2024-06-30T11:00:29.969Z',
+    },
+  },
+];
+
+export const DumpTimelineCards: ST_TimelineCard[] = [
+  {
+    id: '53',
+    collection: 'ST_TimelineCards',
+    item: {
+      color: '#41516C',
+      translations: [
+        {
+          id: '1',
+          languages_code: {
+            code: 'en',
+            name: 'English',
+          },
+          card_title: 'Time One',
+          title: 'How do I update my billing information?',
+          description:
+            "To contact customer support, look for a 'Contact us' or 'Help' button or link on the website or platform. You may be able to email, call, or chat with customer support for assistance.",
+        },
+      ],
+      id: 'c21179f7-44c5-48ee-94e5-7fbceab24af8',
+      status: 'published',
+      date_created: '2024-07-09T19:21:31.925Z',
+    },
+  },
+  {
+    id: '54',
+    collection: 'ST_TimelineCards',
+    item: {
+      color: '#FFC23B',
+      translations: [
+        {
+          id: '2',
+          languages_code: {
+            code: 'en',
+            name: 'English',
+          },
+          card_title: 'TIme two',
+          title: 'To contact customer support',
+          description:
+            "To contact customer support, look for a 'Contact us' or 'Help' button or link on the website or platform. You may be able to email, call, or chat with customer support for assistance.",
+        },
+      ],
+      id: 'f6704f03-2da8-41ee-9a68-543d6884613f',
+      status: 'published',
+      date_created: '2024-07-09T19:21:31.947Z',
     },
   },
 ];

@@ -452,17 +452,6 @@ const q_ST: Query = {
     }),
     ...qWithStatus,
   },
-  [section_templates.st_timeline_cards]: {
-    __typeName: section_templates.st_timeline_cards,
-    __args: qWithPublishedStatus(),
-    color: true,
-    ...qWithTranslations({
-      card_title: true,
-      title: true,
-      desc: true,
-    }),
-    ...qWithStatus,
-  },
   [section_templates.st_videos]: {
     __typeName: section_templates.st_videos,
     __args: qWithPublishedStatus(),
@@ -518,6 +507,18 @@ const q_ST: Query = {
     ...qWithTranslations({
       title: true,
       content: true,
+    }),
+    ...qWithStatus,
+  },
+
+  [section_templates.st_timeline_cards]: {
+    __typeName: section_templates.st_timeline_cards,
+    __args: qWithPublishedStatus(),
+    color: true,
+    ...qWithTranslations({
+      card_title: true,
+      title: true,
+      description: true,
     }),
     ...qWithStatus,
   },
