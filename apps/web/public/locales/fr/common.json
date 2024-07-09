@@ -69,5 +69,12 @@
   "Back to Home": "De retour à la page d'acceuil",
   "500 - Server error": "500 - Erreur de serveur",
   "Oops something went wrong. Try to refresh this page or": "Oups quelque chose s'est mal passé. Essayez d'actualiser cette page ou",
-  "feel free to contact us if the problem presists.": "n'hésitez pas à nous contacter si le problème persiste."
+  "feel free to contact us if the problem presists.": "n'hésitez pas à nous contacter si le problème persiste.",
+  "Company name": "Nom de l'entreprise",
+  "Email": "Email",
+  "Support": "Support",
+  "Addresses": "Adresses",
+  "Address": "Adresse",
+  "Phone": "numéro de téléphone",
+  "Support email": "Email de support"
 }

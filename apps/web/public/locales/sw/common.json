@@ -66,8 +66,15 @@
   "MINUTES": "dakika",
   "SECONDS": "sekunde",
   "Page Not Found": "Ukurasa haujapatikana",
-  "Back to Home": "Rudi Nyumbani",
+  "Back to Home": "Rudi Nyuma",
   "500 - Server error": "500 - Hitilafu ya seva",
   "Oops something went wrong. Try to refresh this page or": "Samahani, kuna kitu kimekosewa. Jaribu kureload ukurasa huu au",
-  "feel free to contact us if the problem presists.": "usisite kuwasiliana nasi ikiwa tatizo litaendelea."
+  "feel free to contact us if the problem presists.": "usisite kuwasiliana nasi ikiwa tatizo litaendelea.",
+  "Company name": "Jina la kampuni",
+  "Email": "Barua pepe",
+  "Support": "Usajili",
+  "Addresses": "Majibu",
+  "Address": "Majibu",
+  "Phone": "nambari ya simu",
+  "Support email": "Barua pepe ya usajili"
 }
