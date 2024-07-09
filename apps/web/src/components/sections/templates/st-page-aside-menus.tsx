@@ -6,6 +6,7 @@ import {
 } from '@/components/ui/aside-menu/aside-menu';
 import { MarkdownContent } from '@/components/ui/react-markdown/MarkdownContent';
 
+import { DEFAULT_LANG } from '@/app/constant/env';
 import { useSharedData } from '@/app/store';
 import { mut } from '@/cms/mut';
 
@@ -23,13 +24,17 @@ export function ST_PageAsideMenusFC({
           aside.item,
           locale
         );
+
+        const { translations: enTranslations } = mut(aside.item, DEFAULT_LANG);
+
         return (
           <AsideMenuContent
             key={id}
-            menuTitle={translations?.menu_name || 'Menu-' + i}
             title={translations?.title}
+            menuTitle={translations?.menu_name || 'Menu-' + i}
+            hrefTitle={enTranslations?.menu_name || 'Menu-' + i}
           >
-            <div className='prose md:prose-lg lg:prose-xl mb-5'>
+            <div className='prose md:prose-lg lg:prose-xl mb-5 max-w-none'>
               <MarkdownContent>
                 {translations?.markdown_content || ''}
               </MarkdownContent>

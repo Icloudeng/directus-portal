@@ -10,8 +10,11 @@ import React, {
   useState,
 } from 'react';
 
+import clsxm from '@/lib/clsxm';
+
 import UnstyledLink from '@/components/ui/links/UnstyledLink';
 
+import { asciify } from '@/app/utils/asciify';
 import { scrollToElement } from '@/app/utils/scroll-to-element';
 
 export function AsideMenu({ children }: PropsWithChildren) {
@@ -24,25 +27,31 @@ export function AsideMenu({ children }: PropsWithChildren) {
       .map((child, index) => {
         const node = child as React.ReactElement;
         const title = node?.props?.menuTitle;
+
         return title
           ? {
               title,
               index,
-              href: title as string,
+              href: node?.props?.hrefTitle || (title as string),
               node,
             }
           : null;
       })
       .filter(Boolean)
-      .map((title, i) => {
-        const $title = title as NonNullable<typeof title>;
-        $title.href =
-          $title.href.split(' ').join('-').toLowerCase() + '-aside_menu-' + i;
-        $title.node = React.cloneElement($title.node, {
-          href: $title.href,
+      .map((_child, i) => {
+        const child = _child as NonNullable<typeof _child>;
+
+        child.href =
+          child.href.split(' ').join('-').toLowerCase() + '-aside_menu-' + i;
+
+        child.href = asciify(child.href);
+
+        child.node = React.cloneElement(child.node, {
+          href: child.href,
           last: i === arrChildren.length - 1,
         });
-        return $title;
+
+        return child;
       });
   }, [children]);
 
@@ -149,17 +158,20 @@ export function AsideMenuContent({
   className,
   ...props
 }: PropsWithChildren<{
-  menuTitle: string;
   title?: string;
   className?: string;
+  menuTitle: string;
+  hrefTitle?: string;
 }>) {
   const { href, last } = props as any;
   return (
     <div
       id={href}
-      className={`content-section flex flex-col gap-8 ${className || ''} ${
-        !last ? 'mb-20' : ''
-      }`}
+      className={clsxm(
+        `content-section flex flex-col gap-8`,
+        className,
+        !last && 'mb-20'
+      )}
     >
       <div className='header--container'>
         <div className='section__header max-w-2xl space-y-5'>

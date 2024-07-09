@@ -21,31 +21,36 @@ export function ST_CompanyDetailsFC(_: STemplates_Props<ST_CompanyDetail>) {
         <div className='company--details md:w-1/2'>
           <h2 className='md:text-4xl text-2xl mb-8'>{t('Company details')}</h2>
           <ul className='list-disc ml-8'>
-            <li className='mb-3'>
-              {t('Company name')}: {cmp?.company_name}
-            </li>
-            <li className='mb-3'>
-              {t('Email')}:{' '}
-              {cmp?.email && (
+            {cmp?.company_name && (
+              <li className='mb-3'>
+                {t('Company name')}: {cmp?.company_name}
+              </li>
+            )}
+
+            {cmp?.email && (
+              <li className='mb-3'>
+                {t('Email')}:{' '}
                 <a href={`mailto:${cmp?.email}`} className='text-primary-400'>
                   {cmp?.email}
                 </a>
-              )}
-            </li>
-            <li className='mb-3'>
-              {t('Support')}:{' '}
-              {cmp?.support_email && (
+              </li>
+            )}
+
+            {cmp?.support_email && (
+              <li className='mb-3'>
+                {t('Support email')}:{' '}
                 <a
                   href={`mailto:${cmp?.support_email}`}
                   className='text-primary-400'
                 >
                   {cmp?.support_email}
                 </a>
-              )}
-            </li>
-            <li className='mb-3'>
-              {t('Website')}:{' '}
-              {cmp?.website && (
+              </li>
+            )}
+
+            {cmp?.website && (
+              <li className='mb-3'>
+                {t('Website')}:{' '}
                 <UnderlineLink
                   href={cmp?.website}
                   target='_blank'
@@ -53,8 +58,8 @@ export function ST_CompanyDetailsFC(_: STemplates_Props<ST_CompanyDetail>) {
                 >
                   {cmp?.website}
                 </UnderlineLink>
-              )}
-            </li>
+              </li>
+            )}
           </ul>
         </div>
         <div className='relative w-full md:w-1/2 md:px-9 mb-7 md:mb-0'>

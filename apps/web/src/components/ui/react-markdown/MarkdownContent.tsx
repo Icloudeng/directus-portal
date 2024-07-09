@@ -93,7 +93,7 @@ export function MarkdownContent({ children, toc = false, className }: Props) {
   const { tocParent, tocOptions, rehypeToc, rehypeSlug } = useRehypeToc(toc);
 
   return (
-    <div className={`w-full ${toc ? 'lg:flex' : ''} ${className || ''}`}>
+    <div className={clsxm(`w-full`, toc && 'lg:flex', className)}>
       {toc && (
         <div className='lg:w-[30%] lg:mt-10'>
           <div
@@ -102,7 +102,7 @@ export function MarkdownContent({ children, toc = false, className }: Props) {
           />
         </div>
       )}
-      <div className={`${toc ? 'lg:w-[70%]' : ''}`}>
+      <div className={clsxm(toc && 'lg:w-[70%]')}>
         <ReactMarkdown
           components={{
             code: Code,
