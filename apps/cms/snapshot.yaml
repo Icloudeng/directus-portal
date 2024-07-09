@@ -140,7 +140,7 @@ collections:
       archive_app_filter: true
       archive_field: null
       archive_value: null
-      collapse: open
+      collapse: closed
       collection: Collections
       color: '#7D37C3'
       display_template: null
@@ -662,7 +662,7 @@ collections:
       archive_app_filter: true
       archive_field: null
       archive_value: null
-      collapse: open
+      collapse: closed
       collection: Form
       color: '#284076'
       display_template: null
