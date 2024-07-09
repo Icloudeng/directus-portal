@@ -112,5 +112,6 @@ export const CMS_MODELS = {
     st_hero_with_media_backgrounds: "ST_HeroWithMediaBackgrounds",
     st_side_text_features: "ST_SideTextFeatures",
     st_content_steppers: "ST_ContentSteppers",
+    st_timeline_cards: "ST_TimelineCards",
   } as const,
 };

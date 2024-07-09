@@ -97,6 +97,10 @@ snapshot:
 	pnpm -r snapshot
 
 
+.PHONY: apply
+apply:
+	pnpm -r apply
+
 
 .PHONY: lint-fix
 lint-fix:
