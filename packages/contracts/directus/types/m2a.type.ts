@@ -586,6 +586,24 @@ export type ST_TimelineCard = MDHasM2A<
   ST_V<"st_timeline_cards">
 >;
 
+export type ST_HorizontalCards = MDHasM2A<
+  {
+    image: MDWithAsset;
+    flexible_image: boolean;
+    border_card: boolean;
+    background_color: string;
+    clickable_card: boolean;
+    hover_animation?: boolean;
+  } & MDWithTranslation<{
+    small_title: string;
+    big_title: string;
+    description: string;
+    buttons?: RepeaterBtn[];
+  }> &
+    DRTStatus,
+  ST_V<"st_horizontal_cards">
+>;
+
 //------------------- Page Sections --------------------//
 export type PS_Content =
   | ST_Value
@@ -634,6 +652,7 @@ export type PS_Content =
   | ST_HeroWithMediaBackground
   | ST_SideTextFeature
   | ST_ContentStepper
+  | ST_HorizontalCards
   | ST_TimelineCard;
 
 export type M2APageSection = MDHasM2A<
