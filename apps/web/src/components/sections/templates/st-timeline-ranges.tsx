@@ -58,7 +58,7 @@ export function ST_TimelineRangesFC({
           </div>
           <div className='w-full py-14'>
             <input
-              className='w-full'
+              className='w-full accent-primary-400'
               type='range'
               value={index}
               onChange={(e) => setIndex(+e.currentTarget.value)}
