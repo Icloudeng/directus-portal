@@ -1,8 +1,6 @@
-/* eslint-disable */
-import { useSharedData } from '@/app/store';
-
-// @ts-ignore
 import { paletten } from 'paletten';
+
+import { useSharedData } from '@/app/store';
 
 export function AppCustomStyle() {
   const { SiteLayout } = useSharedData();
@@ -13,7 +11,7 @@ export function AppCustomStyle() {
 
     customColor = Object.keys(shades)
       .reduce((acc, key, index, arr) => {
-        const xIndex = arr[index + 1] as any;
+        const xIndex = arr[index + 1] as keyof typeof shades;
 
         if (xIndex) {
           const v = shades[xIndex].replace(/(rgb\(|,|\))/gi, '');
