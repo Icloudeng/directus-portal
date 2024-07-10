@@ -198,6 +198,9 @@ importers:
       pako:
         specifier: ^2.1.0
         version: 2.1.0
+      paletten:
+        specifier: 0.5.2
+        version: 0.5.2
       plyr-react:
         specifier: ^5.3.0
         version: 5.3.0(plyr@3.7.8)(react@18.3.1)
@@ -9328,6 +9331,9 @@ packages:
 
   pako@2.1.0:
     resolution: {integrity: sha512-w+eufiZ1WuJYgPXbV/PO3NCMEc3xqylkKHzp8bxp1uW4qaSNQUkwmLLEc3kKsfz8lpV1F8Ht3U1Cm+9Srog2ug==}
+
+  paletten@0.5.2:
+    resolution: {integrity: sha512-wWoDdzdOAx1haXYMXv1yNodVMZ5RMU71wxWaHoCNYnmlJdrEqcchF8EOuQfSdEYOAIdrhH+nC+iCgrf9RGNBBg==}
 
   param-case@3.0.4:
     resolution: {integrity: sha512-RXlj7zCYokReqWpOPH9oYivUzLYZ5vAPIfEmCTNViosC78F8F0H9y7T7gG2M39ymgutxF5gcFEsyZQSph9Bp3A==}
@@ -23973,6 +23979,8 @@ snapshots:
   pako@1.0.11: {}
 
   pako@2.1.0: {}
+
+  paletten@0.5.2: {}
 
   param-case@3.0.4:
     dependencies:

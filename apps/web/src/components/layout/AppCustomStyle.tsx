@@ -1,18 +1,22 @@
-import { shadesOf } from 'tw-shades';
-
 import { useSharedData } from '@/app/store';
+
+const { paletten } = require('paletten');
 
 export function AppCustomStyle() {
   const { SiteLayout } = useSharedData();
 
   let customColor = '';
   if (SiteLayout?.primary_color) {
-    const shades = shadesOf(SiteLayout?.primary_color, { format: 'rgb' });
+    const shades2 = paletten(SiteLayout?.primary_color, { format: 'rgb' });
 
-    customColor = Object.keys(shades)
+    customColor = Object.keys(shades2)
       .reduce((acc, key, index, arr) => {
-        if (arr[index + 1]) {
-          acc.push(`--tw-color-primary-${key}: ${shades[+arr[index + 1]]};`);
+        const xIndex = arr[index + 1];
+
+        if (xIndex) {
+          const v = shades2[xIndex].replace(/(rgb\(|,|\))/gi, '');
+
+          acc.push(`--tw-color-primary-${key}: ${v};`);
         }
         return acc;
       }, [] as string[])
