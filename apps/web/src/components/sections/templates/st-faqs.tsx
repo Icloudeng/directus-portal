@@ -33,8 +33,8 @@ function STFAQ(props: { item: ST_FAQ; index: number }) {
             <div
               className={clsxm(
                 'accordion py-8 px-6 border-b border-solid border-gray-200 transition-all duration-500 mb-2',
-                'rounded-2xl hover:bg-indigo-50',
-                open && ['bg-indigo-50 bg-opacity-50 active']
+                'rounded-2xl hover:bg-primary-50 hover:bg-opacity-50',
+                open && ['bg-primary-50 bg-opacity-40 active']
               )}
               id={`basic-heading-with-arrow-${props.index}`}
             >
@@ -42,7 +42,7 @@ function STFAQ(props: { item: ST_FAQ; index: number }) {
                 className={clsxm(
                   'accordion-toggle group inline-flex items-center justify-between leading-8 text-gray-900 w-full transition duration-500 text-left',
                   'hover:text-primary-600',
-                  open && ['font-medium text-indigo-600']
+                  open && ['font-medium text-primary-600']
                 )}
                 aria-controls={`basic-collapse-with-arrow-${props.index}`}
               >
@@ -50,7 +50,7 @@ function STFAQ(props: { item: ST_FAQ; index: number }) {
                 <svg
                   className={clsxm(
                     'text-gray-500 transition duration-500 group-hover:text-primary-600',
-                    open && ['indigo-600 rotate-180']
+                    open && ['primary-600 rotate-180']
                   )}
                   width='22'
                   height='22'

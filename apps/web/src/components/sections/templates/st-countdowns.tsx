@@ -27,7 +27,7 @@ const renderer: (t: any) => CountdownRendererFn = (t) => {
   return ({ days, hours, minutes, seconds }) => (
     <div className='flex items-start justify-center w-full gap-4 count-down-main'>
       <div className='timer w-16'>
-        <div className='bg-primary-600 py-4 px-2 rounded-lg overflow-hidden'>
+        <div className='bg-primary-600 bg-opacity-85 py-4 px-2 rounded-lg overflow-hidden'>
           <h3 className='countdown-element days font-Cormorant font-semibold text-2xl text-white text-center'>
             {days}
           </h3>
@@ -40,7 +40,7 @@ const renderer: (t: any) => CountdownRendererFn = (t) => {
         :
       </h3>
       <div className='timer w-16'>
-        <div className='bg-primary-600 py-4 px-2 rounded-lg overflow-hidden'>
+        <div className='bg-primary-600 bg-opacity-85 py-4 px-2 rounded-lg overflow-hidden'>
           <h3 className='countdown-element hours font-Cormorant font-semibold text-2xl text-white text-center'>
             {hours}
           </h3>
@@ -53,7 +53,7 @@ const renderer: (t: any) => CountdownRendererFn = (t) => {
         :
       </h3>
       <div className='timer w-16'>
-        <div className='bg-primary-600 py-4 px-2 rounded-lg overflow-hidden'>
+        <div className='bg-primary-600 bg-opacity-85 py-4 px-2 rounded-lg overflow-hidden'>
           <h3 className='countdown-element minutes font-Cormorant font-semibold text-2xl text-white text-center'>
             {minutes}
           </h3>
@@ -66,7 +66,7 @@ const renderer: (t: any) => CountdownRendererFn = (t) => {
         :
       </h3>
       <div className='timer w-16'>
-        <div className='bg-primary-600 py-4 px-2 rounded-lg overflow-hidden '>
+        <div className='bg-primary-600 bg-opacity-85 py-4 px-2 rounded-lg overflow-hidden '>
           <h3 className='countdown-element seconds font-Cormorant font-semibold text-2xl text-white text-center animate-countinsecond'>
             {seconds}
           </h3>

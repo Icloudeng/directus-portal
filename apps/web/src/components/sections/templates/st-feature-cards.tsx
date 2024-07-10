@@ -18,12 +18,12 @@ function STFeatureCard(props: { item: ST_FeatureCard }) {
   const item = useMut(props.item.item);
 
   return (
-    <div className='group relative w-full bg-gray-100 rounded-2xl p-4 transition-all duration-500 max-md:max-w-md max-md:mx-auto md:w-2/5 md:h-64 xl:p-7 xl:w-1/4 hover:bg-primary-600'>
+    <div className='group relative w-full bg-gray-100 rounded-2xl p-4 transition-all duration-500 max-md:max-w-md max-md:mx-auto md:w-2/5 md:h-64 xl:p-7 xl:w-1/4 hover:bg-primary-600 hover:bg-opacity-80'>
       {item.icon_svg && (
         <div className='bg-white rounded-full flex justify-center items-center mb-5 w-14 h-14 '>
           <ParseSvgText
             text={item.icon_svg}
-            className='w-8 h-8 stroke-primary-400'
+            className='w-8 h-8 fill-primary-400'
           />
         </div>
       )}

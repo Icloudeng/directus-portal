@@ -71,7 +71,7 @@ export function RawPrevButton({
     <span
       className={clsxm(
         `inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 `,
-        'bg-white/30 group-hover:bg-white/50 ring-2 group-focus:ring-3 group-focus:ring-primary-400 group-focus:outline-none',
+        'bg-white/30 group-hover:bg-white/50 ring-2 ring-primary-200 group-focus:ring-3 group-focus:ring-primary-400 group-focus:outline-none',
         !enabled && 'ring-gray-200',
         white && ['bg-white group-hover:bg-white/95 ring-0']
       )}
@@ -108,7 +108,7 @@ export function RawNextButton({
     <span
       className={clsxm(
         `inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30`,
-        'group-hover:bg-white/50 ring-2 group-focus:ring-3 group-focus:ring-primary-400 group-focus:outline-none',
+        'group-hover:bg-white/50 ring-2 ring-primary-200 group-focus:ring-3 group-focus:ring-primary-400 group-focus:outline-none',
         !enabled && 'ring-gray-200',
         white && ['bg-white group-hover:bg-white/95 ring-0']
       )}

@@ -23,7 +23,7 @@ function MyApp({
     <SharedDataProvider value={datas}>
       <NextProgress
         height='3px'
-        color={datas?.SiteLayout?.site_background_color}
+        color='var(--color-primary-500)'
         options={{
           showSpinner: false,
           speed: 500,

@@ -136,7 +136,7 @@ function NavbarLink({
       onMouseEnter={onMouseHover}
       onMouseLeave={onMouseOut}
       className={clsxm(
-        'menu-top__item hover:text-primary-400',
+        'menu-top__item hover:text-primary-100',
         hasSubmenus && ['relative dropdown']
       )}
     >
@@ -146,6 +146,7 @@ function NavbarLink({
           onClick={(e) => e.preventDefault()}
           className={clsxm(
             'menu-top__link flex items-center gap-1 py-2 outline-none border-none',
+            'hover:text-primary-300',
             opened && 'text-primary-400'
           )}
         >

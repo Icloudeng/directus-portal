@@ -11,7 +11,6 @@
 @tailwind utilities;
 
 :root {
-  /* #region  /**=========== Primary Color =========== */
   --tw-color-primary-50: 239 246 255;
   --tw-color-primary-100: 219 234 254;
   --tw-color-primary-200: 191 219 254;
@@ -22,18 +21,18 @@
   --tw-color-primary-700: 29 78 216;
   --tw-color-primary-800: 30 64 175;
   --tw-color-primary-900: 30 58 138;
-  --color-primary-50: rgb(var(--tw-color-primary-50)); /* #eff6ff */
-  --color-primary-100: rgb(var(--tw-color-primary-100)); /* #dbeafe */
-  --color-primary-200: rgb(var(--tw-color-primary-200)); /* #bfdbfe */
-  --color-primary-300: rgb(var(--tw-color-primary-300)); /* #93c5fd */
-  --color-primary-400: rgb(var(--tw-color-primary-400)); /* #60a5fa */
-  --color-primary-500: rgb(var(--tw-color-primary-500)); /* #3b82f6 */
-  --color-primary-600: rgb(var(--tw-color-primary-600)); /* #2563eb */
-  --color-primary-700: rgb(var(--tw-color-primary-700)); /* #1d4ed8 */
-  --color-primary-800: rgb(var(--tw-color-primary-800)); /* #1e40af */
-  --color-primary-900: rgb(var(--tw-color-primary-900)); /* #1e3a8a */
-  /* #endregion  /**======== Primary Color =========== */
+  --color-primary-50: rgb(var(--tw-color-primary-50));
+  --color-primary-100: rgb(var(--tw-color-primary-100));
+  --color-primary-200: rgb(var(--tw-color-primary-200));
+  --color-primary-300: rgb(var(--tw-color-primary-300));
+  --color-primary-400: rgb(var(--tw-color-primary-400));
+  --color-primary-500: rgb(var(--tw-color-primary-500));
+  --color-primary-600: rgb(var(--tw-color-primary-600));
+  --color-primary-700: rgb(var(--tw-color-primary-700));
+  --color-primary-800: rgb(var(--tw-color-primary-800));
+  --color-primary-900: rgb(var(--tw-color-primary-900));
 }
+
 body {
   -webkit-font-smoothing: antialiased;
   scroll-behavior: smooth;

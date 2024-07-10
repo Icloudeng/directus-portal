@@ -1,5 +1,7 @@
 import { useTranslation } from 'next-i18next';
 
+import clsxm from '@/lib/clsxm';
+
 import Button from '@/components/ui/buttons/Button';
 import { Spinner } from '@/components/ui/Spinner';
 
@@ -36,7 +38,10 @@ export const Subscribe = () => {
             required
             name='email'
             onKeyUp={onKeyUp}
-            className='border-none placeholder-gray-300 bg-transparent ring-1 rounded-sm h-12 max-w-[20rem] w-full px-2 font-base outline-none focus:ring-2'
+            className={clsxm(
+              'border-none placeholder-gray-300 bg-transparent ring-1 ring-primary-300',
+              'rounded-sm h-12 max-w-[20rem] w-full px-2 font-base outline-none focus:ring-2 focus:ring-primary-400'
+            )}
           />
           <div>
             <Button
