@@ -1,20 +1,22 @@
+/* eslint-disable */
 import { useSharedData } from '@/app/store';
 
-const { paletten } = require('paletten');
+// @ts-ignore
+import { paletten } from 'paletten';
 
 export function AppCustomStyle() {
   const { SiteLayout } = useSharedData();
 
   let customColor = '';
   if (SiteLayout?.primary_color) {
-    const shades2 = paletten(SiteLayout?.primary_color, { format: 'rgb' });
+    const shades = paletten(SiteLayout?.primary_color, { format: 'rgb' });
 
-    customColor = Object.keys(shades2)
+    customColor = Object.keys(shades)
       .reduce((acc, key, index, arr) => {
-        const xIndex = arr[index + 1];
+        const xIndex = arr[index + 1] as any;
 
         if (xIndex) {
-          const v = shades2[xIndex].replace(/(rgb\(|,|\))/gi, '');
+          const v = shades[xIndex].replace(/(rgb\(|,|\))/gi, '');
 
           acc.push(`--tw-color-primary-${key}: ${v};`);
         }
