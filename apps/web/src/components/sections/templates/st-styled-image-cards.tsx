@@ -1,90 +1,88 @@
 import { ST_StyledImageCard, STemplates_Props } from '@packages/contracts';
 
 import clsxm from '@/lib/clsxm';
+import { useMut } from '@/cms/mut';
+import React, { Fragment } from 'react';
 
 export function ST_StyledImageCardsFC({
   items,
 }: STemplates_Props<ST_StyledImageCard>) {
   return (
     <div className='space-y-8 sm:space-y-0 sm:grid sm:grid-cols-2 md:grid-cols-3 gap-8 mt-4'>
-      <div
-        className='card-shadow rounded-2xl p-0 bg-cover bg-center h-96 relative overflow-hidden'
-        style={{
-          backgroundImage: `url("https://images.unsplash.com/photo-1611244419377-b0a760c19719?w=800&amp;auto=format&amp;fit=crop&amp;q=60&amp;ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGFydGlzdHxlbnwwfHwwfHx8MA%3D%3D")`,
-        }}
-      >
-        <div
-          className='absolute inset-0'
-          style={{
-            backgroundImage: `linear-gradient(transparent 0%, var(--color-primary-800) 100%)`,
-          }}
-        >
-          <div className='h-full flex'>
-            <div className='leading-none p-6 rounded-2xl mt-auto mb-2 text-4xl font-semibold drop-shadow-sm tracking-tight text-primary-50'>
-              Create
-              <br />
-              <span className='text-primary-200'>
-                color scales
-                <br />
-              </span>
-              in seconds.
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className='card-shadow rounded-2xl p-2 bg-cover bg-bottom h-96 relative overflow-hidden'>
-        <div className='absolute inset-0 bg-primary-200'>
-          <div
-            className='absolute rounded-full z-0 w-[26rem] h-[26rem] top-[2rem] right-[6rem]'
-            style={{
-              backgroundPosition: '25% -83%',
-              backgroundSize: '90%',
-              transform: 'translate(50%, -50%)',
-              backgroundImage: `url("https://images.unsplash.com/photo-1603208636525-8825c33ed34b?w=800&amp;auto=format&amp;fit=crop&amp;q=60&amp;ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8ODd8fGxhdWdoaW5nfGVufDB8fDB8fHww")`,
-            }}
-          />
-          <div
-            className='absolute rounded-full w-[22rem] h-[22rem] top-[2rem] right-[6rem] border-[25px] border-primary-200'
-            style={{
-              transform: 'translate(50%, -50%)',
-            }}
-          />
-          <div
-            className='absolute rounded-full w-[14rem] h-[14rem] top-[2rem] right-[6rem] border-[25px] border-primary-200'
-            style={{
-              transform: 'translate(50%, -50%)',
-            }}
-          />
-          <div className='h-full flex'>
-            <div className='leading-none p-6 rounded-2xl mt-auto mb-2 text-4xl font-semibold drop-shadow-sm tracking-tight text-primary-900'>
-              Create
-              <br />
-              <span className='text-primary-600'>
-                color scales
-                <br />
-              </span>
-              in seconds.
-            </div>
-          </div>
-        </div>
-      </div>
+      {items.map((item) => {
+        switch (item.item.style) {
+          case 'gradient':
+            return <GradientCard key={item.id} item={item} />;
+          case 'circle_border':
+            return <CircleCard key={item.id} item={item} />;
+          case 'rectangle_border':
+            return <RectangleCard key={item.id} item={item} />;
+          default:
+            return <React.Fragment key={item.id}></React.Fragment>;
+        }
+      })}
+    </div>
+  );
+}
 
-      <div
-        className='card-shadow rounded-2xl p-2 bg-cover bg-center h-96 relative overflow-hidden'
-        style={{
-          backgroundImage: `url("https://images.unsplash.com/photo-1545209536-c79b0603d7ad?w=800&amp;auto=format&amp;fit=crop&amp;q=60&amp;ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjd8fGxhdWdoaW5nfGVufDB8fDB8fHww")`,
-        }}
-      >
+function RectangleCard(props: { item: ST_StyledImageCard }) {
+  const { translations, image } = useMut(props.item.item);
+
+  return (
+    <div
+      className='card-shadow rounded-2xl p-2 bg-cover bg-center h-96 relative overflow-hidden'
+      style={{
+        backgroundImage: `url("${image?.src || ''}")`,
+      }}
+    >
+      <div className='h-full flex'>
+        <div
+          className={clsxm(
+            'leading-none p-4 rounded-2xl mt-auto mb-2 text-4xl font-semibold tracking-tight text-white border w-full',
+            'bg-opacity-80 backdrop-filter backdrop-blur-sm bg-primary-700/80 border-primary-600'
+          )}
+        >
+          {splitTitle(translations?.title || '', (title) => (
+            <>{title}</>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function CircleCard(props: { item: ST_StyledImageCard }) {
+  const { translations, image } = useMut(props.item.item);
+
+  return (
+    <div className='card-shadow rounded-2xl p-2 bg-cover bg-bottom h-96 relative overflow-hidden'>
+      <div className='absolute inset-0 bg-primary-200'>
+        <div
+          className='absolute rounded-full z-0 w-[26rem] h-[26rem] top-[2rem] right-[6rem]'
+          style={{
+            backgroundPosition: '25% -83%',
+            backgroundSize: '100%',
+            transform: 'translate(50%, -50%)',
+            backgroundImage: `url("${image?.src || ''}")`,
+          }}
+        />
+        <div
+          className='absolute rounded-full w-[22rem] h-[22rem] top-[2rem] right-[6rem] border-[25px] border-primary-200'
+          style={{
+            transform: 'translate(50%, -50%)',
+          }}
+        />
+        <div
+          className='absolute rounded-full w-[14rem] h-[14rem] top-[2rem] right-[6rem] border-[25px] border-primary-200'
+          style={{
+            transform: 'translate(50%, -50%)',
+          }}
+        />
         <div className='h-full flex'>
-          <div
-            className={clsxm(
-              'leading-none p-4 rounded-2xl mt-auto mb-2 text-4xl font-semibold tracking-tight text-white border w-full',
-              'bg-opacity-80 backdrop-filter backdrop-blur-sm bg-primary-700/80 border-primary-600'
-            )}
-          >
-            Create
-            <br /> color scales
-            <br /> in seconds.
+          <div className='leading-none p-6 rounded-2xl mt-auto mb-2 text-4xl font-semibold drop-shadow-sm tracking-tight text-primary-900'>
+            {splitTitle(translations?.title || '', (title) => (
+              <span className='text-primary-600'>{title}</span>
+            ))}
           </div>
         </div>
       </div>
@@ -92,7 +90,71 @@ export function ST_StyledImageCardsFC({
   );
 }
 
-// function STStyledImageCard(props: { item: ST_StyledImageCard }) {
-//   const item = useMut(props.item.item);
-//   return ();
-// }
+function GradientCard(props: { item: ST_StyledImageCard }) {
+  const { translations, image } = useMut(props.item.item);
+
+  return (
+    <div
+      className='card-shadow rounded-2xl p-0 bg-cover bg-center h-96 relative overflow-hidden'
+      style={{
+        backgroundImage: `url("${image?.src || ''}")`,
+      }}
+    >
+      <div
+        className='absolute inset-0'
+        style={{
+          backgroundImage: `linear-gradient(transparent 0%, var(--color-primary-800) 100%)`,
+        }}
+      >
+        <div className='h-full flex'>
+          <div className='leading-none p-6 rounded-2xl mt-auto mb-2 text-4xl font-semibold drop-shadow-sm tracking-tight text-primary-50'>
+            {splitTitle(translations?.title || '', (title) => (
+              <span className='text-primary-200'>{title}</span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+const splitTitle = (
+  title: string,
+  colorWrapper: (title: string) => JSX.Element
+) => {
+  const words = title.split(' ');
+  const divider = Math.floor((words.length - 1) / 2);
+
+  const dividedWords = words.reduce((acc, cur, index) => {
+    if (index === 0) {
+      acc.push(cur);
+      return acc;
+    }
+
+    if (acc.length === 1 && index <= divider) {
+      acc.push(cur);
+    } else if (acc.length === 2 && index > divider) {
+      acc.push(cur);
+    } else {
+      acc[acc.length - 1] += ` ${cur}`;
+    }
+
+    return acc;
+  }, [] as string[]);
+
+  return dividedWords.map((word, i) => {
+    const items: JSX.Element[] = [];
+
+    if (i === 1) {
+      items.push(<Fragment key={i}>{colorWrapper(word)}</Fragment>);
+    } else {
+      items.push(<Fragment key={i}>{word}</Fragment>);
+    }
+
+    if (i !== dividedWords.length - 1) {
+      items.push(<br key={i + 1} />);
+    }
+
+    return <Fragment key={i}>{items}</Fragment>;
+  });
+};
