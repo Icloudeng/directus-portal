@@ -37,19 +37,19 @@ export const FooterSimple = () => {
   }, [] as string[]);
 
   return (
-    <footer className='sm:px-10 py-10 text-gray-300 z-0'>
+    <footer className='sm:px-10 py-8 text-gray-300 z-0'>
       <div className='x-container-fluid flex flex-col gap-5 divide-y-2 divide-gray-800'>
         {FooterLayout?.show_footer_links !== false && (
-          <div className='container py-10 mx-auto'>
+          <div className='py-10'>
             <div className='flex flex-wrap justify-between md:text-left text-center -mb-10 -mx-4'>
               {FooterLinks.map((link) => {
                 const { translations } = mut(link, locale);
                 return (
                   <div className='lg:w-1/6 md:w-1/2 w-full px-4' key={link.id}>
-                    <h3 className='title-font font-medium text-primary-400 trackingWidest text-sm mb-3'>
+                    <h3 className='title-font font-medium text-primary-400 text-sm mb-3'>
                       {translations?.name}
                     </h3>
-                    <nav className='list-none mb-10'>
+                    <ul className='list-none mb-10 '>
                       {link.links.map((item) => {
                         const { translations } = mut(item, locale);
                         return (
@@ -57,14 +57,14 @@ export const FooterSimple = () => {
                             <UnstyledLink
                               href={item.url}
                               target={item.external ? '_blank' : undefined}
-                              className='text-gray-400 hover:text-gray-300'
+                              className='text-gray-300 hover:text-gray-200 text-sm'
                             >
                               {translations?.name}
                             </UnstyledLink>
                           </li>
                         );
                       })}
-                    </nav>
+                    </ul>
                   </div>
                 );
               })}
@@ -96,7 +96,7 @@ export const FooterSimple = () => {
             )}
           </div>
         </div>
-        <div className='bg-gray-800 bg-opacity-50'>
+        <div className='bg-opacity-50'>
           <div className='container mx-auto py-4 px-5 flex flex-wrap flex-col sm:flex-row'>
             <p className='text-gray-400 text-sm text-center sm:text-left'>
               <UnstyledLink
@@ -155,12 +155,12 @@ function Subscription() {
           )}
         />
         {error && (
-          <div className='w-full text-center mt-2 text-red-500 lg:max-w-[400px]'>
+          <div className='w-full text-sm mt-2 text-red-400 lg:max-w-[400px]'>
             {t(error)}
           </div>
         )}
         {success && (
-          <div className='w-full text-center mt-2 text-green-500 lg:max-w-[400px]'>
+          <div className='w-full text-sm mt-2 text-green-400 lg:max-w-[400px]'>
             {t('SUBSCRIPTION_SUCCESS')}(s).
           </div>
         )}
@@ -168,12 +168,15 @@ function Subscription() {
       <Button
         disabled={loading}
         type='submit'
-        className='inline-flex text-white bg-primary-400 border-0 py-2 px-6 focus:outline-none hover:bg-primary-500 rounded-sm'
+        className={clsxm(
+          'text-white bg-primary-400 border-0 py-2 px-6 focus:outline-none hover:bg-primary-500 rounded-sm',
+          'inline-flex items-center space-x-2'
+        )}
       >
-        {t('Subscribe')}{' '}
+        <span>{t('Subscribe')}</span>
         {loading && (
-          <span className='ml-1'>
-            <Spinner />
+          <span className='w-6 h-6 flex items-center justify-center'>
+            <Spinner className='mr-0' />
           </span>
         )}
       </Button>

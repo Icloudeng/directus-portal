@@ -3,6 +3,8 @@ import round from 'lodash/round';
 import { useTranslation } from 'next-i18next';
 import { useCallback, useState } from 'react';
 
+import clsxm from '@/lib/clsxm';
+
 import { ReactSelector } from '@/components/ui/ReactSelector';
 
 import { useSharedData } from '@/app/store';
@@ -140,13 +142,14 @@ function Plan({
       </td>
       <td className='min-w-[5rem] py-2 pr-2 text-xs leading-6 whitespace-normal border-b border-slate-100'>
         <span
-          className={`p-1 ${
+          className={clsxm(
+            `p-1 text-white rounded-md capitalize`,
             {
               basic: 'bg-slate-400',
-              extended: 'bg-blue-400',
+              extended: 'bg-primary-400',
               pro: 'bg-green-400',
             }[type]
-          } text-white rounded-md capitalize`}
+          )}
         >
           {type}
         </span>
