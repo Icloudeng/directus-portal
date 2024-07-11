@@ -11881,10 +11881,6 @@ fields:
       data_type: json
       default_value:
         - company_name
-        - payment_modes
-        - privacy
-        - terms_services
-        - use_cookies
       max_length: null
       numeric_precision: null
       numeric_scale: null
