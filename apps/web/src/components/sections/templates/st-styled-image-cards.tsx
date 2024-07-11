@@ -134,7 +134,11 @@ const splitTitle = (
 
     if (acc.length === 1 && index <= divider) {
       acc.push(cur);
-    } else if (acc.length === 2 && index > divider) {
+    } else if (
+      acc.length === 2 &&
+      index > divider &&
+      acc[acc.length - 1].split(' ').length > 1
+    ) {
       acc.push(cur);
     } else {
       acc[acc.length - 1] += ` ${cur}`;
