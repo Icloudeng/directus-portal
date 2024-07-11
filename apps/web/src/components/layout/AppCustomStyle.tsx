@@ -30,8 +30,6 @@ export function AppCustomStyle() {
     customProseStyle = `.prose { --tw-prose-pre-bg: ${bgColor}; }`;
   }
 
-  console.log(customStyleVariables);
-
   return (
     <>
       <style jsx global>{`

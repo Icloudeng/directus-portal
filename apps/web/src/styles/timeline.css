@@ -1,6 +1,6 @@
 .body_timeline {
   --color: rgba(30, 30, 30);
-  --bgColor: rgba(245, 245, 245);
+  --bgColor: var(--color-primary-50);
 
   @apply grid content-center gap-8 text-[color:var(--color)];
   font-family: 'Poppins', sans-serif;
