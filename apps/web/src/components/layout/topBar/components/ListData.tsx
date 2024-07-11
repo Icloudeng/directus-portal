@@ -17,7 +17,7 @@ export const LangList = ({
   };
 
   return (
-    <div className='lang-switcher__item px-5 py-2 hover:bg-textGray'>
+    <div className='lang-switcher__item px-5 py-2 hover:bg-slate-100'>
       <a
         className='flex items-center gap-[6px] cursor-pointer'
         onClick={() => {

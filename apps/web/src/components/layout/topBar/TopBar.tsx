@@ -28,7 +28,7 @@ export const TopBar: React.FC = () => {
   const language = languages.find((lg) => lg.code === locale);
 
   return (
-    <div className='block border-b border-b-textGray bg-white px-3 sd:px-10 z-50 topbar--line'>
+    <div className='block border-b border-b-slate-100 bg-white px-3 sd:px-10 z-50 topbar--line'>
       <div className='h-10 flex items-center justify-start'>
         <div className='flex flex-1 items-center mr-auto overflow-hidden flex-nowrap'>
           {News && News.length > 0 && (
@@ -47,7 +47,7 @@ export const TopBar: React.FC = () => {
         <div className=' mr-5'>
           <TopbarLinks />
         </div>
-        <div className='text-xs text-textDark h-full relative flex items-center'>
+        <div className='text-xs text-primary-950 h-full relative flex items-center'>
           {language && (
             <nav ref={targetEl} className='lang-switcher block'>
               <button
@@ -67,10 +67,10 @@ export const TopBar: React.FC = () => {
 
                 <span className='flex items-center gap-[1px]'>
                   <span>{language?.name}</span>
-                  <VscChevronDown className='lang-switcher__chevron text-textDark text-sm' />
+                  <VscChevronDown className='lang-switcher__chevron text-primary-950 text-sm' />
                 </span>
               </button>
-              <div className='lang-switcher__submenu absolute flex flex-col gap-[1px] border border-b-textGray py-2 top-full -left-5 bg-white z-50 invisible opacity-0'>
+              <div className='lang-switcher__submenu absolute flex flex-col gap-[1px] border border-b-slate-100 py-2 top-full -left-5 bg-white z-50 invisible opacity-0'>
                 {languages.map((lang, i) => (
                   <LangList key={i} onClick={closeLangDropdown} {...lang} />
                 ))}
@@ -97,13 +97,13 @@ function TopbarNews() {
             title={title}
             href={'/news/' + $data.slug}
             className={clsxm(
-              'animated-underline ml-2 text-xs flex items-center justify-start text-textDark',
+              'animated-underline ml-2 text-xs flex items-center justify-start text-primary-950',
               'truncate'
             )}
           >
             {title.length > 50 ? title.substring(0, 50) + '...' : title}
           </UnstyledLink>
-          <VscChevronRight className='text-textDark text-sm' />
+          <VscChevronRight className='text-primary-950 text-sm' />
         </>
       )}
     </>
@@ -115,7 +115,7 @@ function TopbarLinks() {
   const datas = useMut(TopbarLinks);
 
   return (
-    <ul className='no-underline hidden sm:flex gap-5 text-xs text-textDark list-none'>
+    <ul className='no-underline hidden sm:flex gap-5 text-xs text-primary-950 list-none'>
       {datas.map(({ translations, url, id, external }) => (
         <li key={id}>
           <UnstyledLink

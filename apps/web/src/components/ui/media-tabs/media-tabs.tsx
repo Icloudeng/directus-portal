@@ -33,9 +33,10 @@ export function MediaTabs({ children }: PropsWithChildren) {
               <Button
                 key={index}
                 onClick={() => setActive(index)}
-                className={`btn-tab-direction ${
-                  index === active ? 'btn-tab-active' : ''
-                } py-3 font-semibold rounded-md border-none bg-[#f5f7fa] text-dark hover:bg-primary-400`}
+                className={clsxm(
+                  `btn-tab-direction py-3 font-semibold rounded-md border-none bg-[#f5f7fa] text-dark hover:bg-primary-400`,
+                  index === active && 'btn-tab-active'
+                )}
               >
                 {title}
               </Button>
