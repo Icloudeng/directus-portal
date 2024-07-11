@@ -16,19 +16,14 @@ export function ST_StyledImageCardsFC({
         <div
           className='absolute inset-0'
           style={{
-            backgroundImage: `linear-gradient(transparent 0%, var(--color-primary-700) 100%)`,
+            backgroundImage: `linear-gradient(transparent 0%, var(--color-primary-800) 100%)`,
           }}
         >
           <div className='h-full flex'>
-            <div
-              className='leading-none p-6 rounded-2xl mt-auto mb-2 text-4xl font-semibold drop-shadow-sm tracking-tight'
-              style={{
-                color: 'rgb(252, 245, 244)',
-              }}
-            >
+            <div className='leading-none p-6 rounded-2xl mt-auto mb-2 text-4xl font-semibold drop-shadow-sm tracking-tight text-primary-50'>
               Create
               <br />
-              <span className='text-primary-100'>
+              <span className='text-primary-200'>
                 color scales
                 <br />
               </span>
@@ -38,7 +33,7 @@ export function ST_StyledImageCardsFC({
         </div>
       </div>
       <div className='card-shadow rounded-2xl p-2 bg-cover bg-bottom h-96 relative overflow-hidden'>
-        <div className='absolute inset-0 bg-primary-100'>
+        <div className='absolute inset-0 bg-primary-200'>
           <div
             className='absolute rounded-full z-0 w-[26rem] h-[26rem] top-[2rem] right-[6rem]'
             style={{
@@ -49,22 +44,22 @@ export function ST_StyledImageCardsFC({
             }}
           />
           <div
-            className='absolute rounded-full w-[22rem] h-[22rem] top-[2rem] right-[6rem] border-[25px] border-primary-100'
+            className='absolute rounded-full w-[22rem] h-[22rem] top-[2rem] right-[6rem] border-[25px] border-primary-200'
             style={{
               transform: 'translate(50%, -50%)',
             }}
           />
           <div
-            className='absolute rounded-full w-[14rem] h-[14rem] top-[2rem] right-[6rem] border-[25px] border-primary-100'
+            className='absolute rounded-full w-[14rem] h-[14rem] top-[2rem] right-[6rem] border-[25px] border-primary-200'
             style={{
               transform: 'translate(50%, -50%)',
             }}
           />
           <div className='h-full flex'>
-            <div className='leading-none p-6 rounded-2xl mt-auto mb-2 text-4xl font-semibold drop-shadow-sm tracking-tight text-primary-800'>
+            <div className='leading-none p-6 rounded-2xl mt-auto mb-2 text-4xl font-semibold drop-shadow-sm tracking-tight text-primary-900'>
               Create
               <br />
-              <span className='text-primary-500'>
+              <span className='text-primary-600'>
                 color scales
                 <br />
               </span>
@@ -84,7 +79,7 @@ export function ST_StyledImageCardsFC({
           <div
             className={clsxm(
               'leading-none p-4 rounded-2xl mt-auto mb-2 text-4xl font-semibold tracking-tight text-white border w-full',
-              'bg-opacity-80 backdrop-filter backdrop-blur-sm bg-primary-600/80 border-primary-500'
+              'bg-opacity-80 backdrop-filter backdrop-blur-sm bg-primary-700/80 border-primary-600'
             )}
           >
             Create

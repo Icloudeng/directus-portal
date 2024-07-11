@@ -11,16 +11,17 @@
 @tailwind utilities;
 
 :root {
-  --tw-color-primary-50: 239 246 255;
-  --tw-color-primary-100: 219 234 254;
-  --tw-color-primary-200: 191 219 254;
-  --tw-color-primary-300: 147 197 253;
-  --tw-color-primary-400: 96 165 250;
-  --tw-color-primary-500: 59 130 246;
-  --tw-color-primary-600: 37 99 235;
-  --tw-color-primary-700: 29 78 216;
-  --tw-color-primary-800: 30 64 175;
-  --tw-color-primary-900: 30 58 138;
+  --tw-color-primary-50: 236 243 254;
+  --tw-color-primary-100: 216 230 253;
+  --tw-color-primary-200: 177 206 251;
+  --tw-color-primary-300: 138 181 249;
+  --tw-color-primary-400: 99 156 248;
+  --tw-color-primary-500: 60 131 246;
+  --tw-color-primary-600: 16 104 244;
+  --tw-color-primary-700: 10 84 205;
+  --tw-color-primary-800: 8 66 161;
+  --tw-color-primary-900: 6 48 117;
+  --tw-color-primary-950: 4 39 95;
   --color-primary-50: rgb(var(--tw-color-primary-50));
   --color-primary-100: rgb(var(--tw-color-primary-100));
   --color-primary-200: rgb(var(--tw-color-primary-200));
@@ -33,7 +34,7 @@
   --color-primary-900: rgb(var(--tw-color-primary-900));
 
   /* Backgrounds */
-  --bg-main-color: #313b4d;
+  --bg-main-color: #00002ed7;
 }
 
 body {

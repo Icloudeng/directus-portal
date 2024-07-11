@@ -13,11 +13,9 @@ export function AppCustomStyle() {
 
     customStyleVariables = Object.keys(shades)
       .reduce((acc, key, index, arr) => {
-        const xIndex = arr[index + 1] as keyof typeof shades;
-
-        if (xIndex) {
-          const v = shades[xIndex].replace(/(rgb\(|,|\))/gi, '');
-
+        const currentIndex = arr[index] as keyof typeof shades;
+        if (currentIndex) {
+          const v = shades[currentIndex].replace(/(rgb\(|,|\))/gi, '');
           acc.push(`--tw-color-primary-${key}: ${v};`);
         }
         return acc;
@@ -31,6 +29,8 @@ export function AppCustomStyle() {
 
     customProseStyle = `.prose { --tw-prose-pre-bg: ${bgColor}; }`;
   }
+
+  console.log(customStyleVariables);
 
   return (
     <>
