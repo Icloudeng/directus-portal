@@ -57783,6 +57783,8 @@ fields:
       options:
         opacity: false
         presets:
+          - name: Default
+            color: '#3B82F6'
           - name: White
             color: '#FFFFFF'
           - name: Black
