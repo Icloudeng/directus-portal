@@ -12,15 +12,12 @@ export default function Layout({
   children: React.ReactNode;
   whiteNav?: boolean;
 }) {
-  const { SiteLayout, FooterLayout } = useSharedData();
+  const { FooterLayout } = useSharedData();
 
   return (
     <div
       id='layout__container'
-      className='min-h-screen min-w-full flex flex-col bg-gradient-to-b pt-36'
-      style={{
-        backgroundColor: SiteLayout?.site_background_color || '#313B4D',
-      }}
+      className='min-h-screen min-w-full flex flex-col bg-gradient-to-b pt-36 bg-[var(--bg-main-color)]'
     >
       <Header whiteNav={whiteNav} />
       {whiteNav && <div className='h-14 sd:h-24 bg-white -mt-[8rem] xl:h-32' />}

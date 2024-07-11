@@ -522,6 +522,17 @@ const q_ST: Query = {
     }),
     ...qWithStatus,
   },
+
+  [section_templates.st_styled_image_cards]: {
+    __typeName: section_templates.st_styled_image_cards,
+    __args: qWithPublishedStatus(),
+    style: true,
+    image: qWithQueryAsset(),
+    ...qWithTranslations({
+      title: true,
+    }),
+    ...qWithStatus,
+  },
 };
 
 type PSQuery = {

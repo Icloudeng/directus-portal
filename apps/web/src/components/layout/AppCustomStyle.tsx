@@ -5,11 +5,13 @@ import { useSharedData } from '@/app/store';
 export function AppCustomStyle() {
   const { SiteLayout } = useSharedData();
 
-  let customColor = '';
+  let customStyleVariables = '';
+  let customProseStyle = '';
+
   if (SiteLayout?.primary_color) {
     const shades = paletten(SiteLayout?.primary_color, { format: 'rgb' });
 
-    customColor = Object.keys(shades)
+    customStyleVariables = Object.keys(shades)
       .reduce((acc, key, index, arr) => {
         const xIndex = arr[index + 1] as keyof typeof shades;
 
@@ -21,21 +23,37 @@ export function AppCustomStyle() {
         return acc;
       }, [] as string[])
       .join('\n');
+
+    // BG Main Color
+    const bgColor = adjust(SiteLayout?.primary_color, -200) + 'd7';
+
+    customStyleVariables += `\n--bg-main-color: ${bgColor};`;
+
+    customProseStyle = `.prose { --tw-prose-pre-bg: ${bgColor}; }`;
   }
 
   return (
     <>
-      {SiteLayout?.site_background_color && (
-        <style jsx global>{`
-          .prose {
-            --tw-prose-pre-bg: ${SiteLayout?.site_background_color};
-          }
-
-          :root {
-            ${customColor}
-          }
-        `}</style>
-      )}
+      <style jsx global>{`
+        ${customProseStyle}
+        :root {
+          ${customStyleVariables}
+        }
+      `}</style>
     </>
+  );
+}
+
+function adjust(color: string, amount: number) {
+  return (
+    '#' +
+    color
+      .replace(/^#/, '')
+      .replace(/../g, (color: string) =>
+        (
+          '0' +
+          Math.min(255, Math.max(0, parseInt(color, 16) + amount)).toString(16)
+        ).substr(-2)
+      )
   );
 }

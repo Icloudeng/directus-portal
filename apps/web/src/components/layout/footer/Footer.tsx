@@ -13,7 +13,7 @@ import { Subscribe } from './components/Subscribe';
 import { TermsConditions } from './components/TermsConditions';
 
 export const Footer = () => {
-  const { FooterLinks, FooterLayout, SiteLayout } = useSharedData();
+  const { FooterLinks, FooterLayout } = useSharedData();
   const footer_links = useMut(FooterLinks);
 
   const showSection =
@@ -27,12 +27,7 @@ export const Footer = () => {
   const bottom_footer = FooterLayout?.bottom_footer || [];
 
   return (
-    <footer
-      className='sm:px-10 py-10 text-gray-300 z-0'
-      style={{
-        backgroundColor: SiteLayout?.site_background_color || '#313B4D',
-      }}
-    >
+    <footer className='sm:px-10 py-10 text-gray-300 z-0'>
       <div className='x-container-fluid flex flex-col gap-5 divide-y-2 divide-gray-800'>
         {FooterLayout?.show_top_footer === true && <FooterTopSection />}
 

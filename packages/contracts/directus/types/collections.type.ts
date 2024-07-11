@@ -14,7 +14,6 @@ import { M2APageSection, M2APageSectionReusable } from "./m2a.type";
 // --------------- Layout -------------
 
 export type MDSiteLayout = {
-  site_background_color: string;
   primary_color?: string;
 } & Omit<DRTStatus, "status">;
 

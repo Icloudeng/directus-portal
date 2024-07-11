@@ -17,8 +17,7 @@ import { socialIcons } from './components/ContactSection';
 import { SocialMedia } from './components/SocialMedia';
 
 export const FooterSimple = () => {
-  const { FooterLinks, FooterLayout, SiteLayout, locale, CompanyDetails } =
-    useSharedData();
+  const { FooterLinks, FooterLayout, locale, CompanyDetails } = useSharedData();
   const socials = CompanyDetails?.socials || [];
   const bottom_footer = FooterLayout?.bottom_footer || [];
 
@@ -38,12 +37,7 @@ export const FooterSimple = () => {
   }, [] as string[]);
 
   return (
-    <footer
-      className='sm:px-10 py-10 text-gray-300 z-0'
-      style={{
-        backgroundColor: SiteLayout?.site_background_color || '#313B4D',
-      }}
-    >
+    <footer className='sm:px-10 py-10 text-gray-300 z-0'>
       <div className='x-container-fluid flex flex-col gap-5 divide-y-2 divide-gray-800'>
         {FooterLayout?.show_footer_links !== false && (
           <div className='container py-10 mx-auto'>

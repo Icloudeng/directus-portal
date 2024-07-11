@@ -586,6 +586,17 @@ export type ST_TimelineCard = MDHasM2A<
   ST_V<"st_timeline_cards">
 >;
 
+export type ST_StyledImageCard = MDHasM2A<
+  {
+    style: "gradient" | "circle_border" | "rectangle_border";
+    image: MDWithAsset;
+  } & MDWithTranslation<{
+    title: string;
+  }> &
+    DRTStatus,
+  ST_V<"st_styled_image_cards">
+>;
+
 //------------------- Page Sections --------------------//
 export type PS_Content =
   | ST_Value
@@ -634,7 +645,8 @@ export type PS_Content =
   | ST_HeroWithMediaBackground
   | ST_SideTextFeature
   | ST_ContentStepper
-  | ST_TimelineCard;
+  | ST_TimelineCard
+  | ST_StyledImageCard;
 
 export type M2APageSection = MDHasM2A<
   {
