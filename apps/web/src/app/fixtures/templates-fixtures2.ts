@@ -8,6 +8,7 @@ import {
   ST_HeroWithMediaBackground,
   ST_Image,
   ST_SideTextFeature,
+  ST_StyledImageCard,
   ST_TimelineCard,
   ST_Video,
 } from '@packages/contracts';
@@ -610,6 +611,82 @@ export const DumpTimelineCards: ST_TimelineCard[] = [
       id: 'f6704f03-2da8-41ee-9a68-543d6884613f',
       status: 'published',
       date_created: '2024-07-09T19:21:31.947Z',
+    },
+  },
+];
+
+export const DumpStyledImageCards: ST_StyledImageCard[] = [
+  {
+    id: '55',
+    collection: 'ST_StyledImageCards',
+    item: {
+      style: 'gradient',
+      image: {
+        id: 'bf1c59ee-237e-44a5-8bf8-4715937be143',
+        src: 'https://flowbite.com/docs/images/blog/image-1.jpg',
+      },
+      translations: [
+        {
+          id: '1',
+          languages_code: {
+            code: 'en',
+            name: 'English',
+          },
+          title: 'Create color scales in seconds.',
+        },
+      ],
+      id: '86772129-1ff8-4c93-beb7-b3c5b1d2be33',
+      status: 'published',
+      date_created: '2024-07-11T16:47:58.520Z',
+      date_updated: '2024-07-11T20:01:50.148Z',
+    },
+  },
+  {
+    id: '56',
+    collection: 'ST_StyledImageCards',
+    item: {
+      style: 'circle_border',
+      image: {
+        id: '20c17e17-a1d5-44d9-8074-746ac391e0ef',
+        src: 'https://flowbite.com/docs/images/blog/image-2.jpg',
+      },
+      translations: [
+        {
+          id: '2',
+          languages_code: {
+            code: 'en',
+            name: 'English',
+          },
+          title: 'Create color scales in seconds.',
+        },
+      ],
+      id: 'b90218de-0568-49ce-81a9-8bf685804b58',
+      status: 'published',
+      date_created: '2024-07-11T20:01:50.108Z',
+    },
+  },
+  {
+    id: '57',
+    collection: 'ST_StyledImageCards',
+    item: {
+      style: 'rectangle_border',
+      image: {
+        id: 'c9eabbcf-962e-4bef-8fa9-2ec933c9840d',
+        src: 'https://flowbite.com/docs/images/blog/image-3.jpg',
+      },
+      translations: [
+        {
+          id: '3',
+          languages_code: {
+            code: 'en',
+            name: 'English',
+          },
+          title: 'Create color scales in seconds.',
+        },
+      ],
+      id: '9083c24d-be88-41fd-ac2e-85aa73a63d1d',
+      status: 'published',
+      date_created: '2024-07-11T20:01:50.130Z',
     },
   },
 ];
