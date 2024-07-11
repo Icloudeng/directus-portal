@@ -12564,6 +12564,55 @@ fields:
               interface: select-color
               options:
                 opacity: true
+                presets:
+                  - name: White
+                    color: '#FFFFFF'
+                  - name: Black
+                    color: '#000000'
+                  - name: Rose
+                    color: '#f43f5e'
+                  - name: Pink
+                    color: '#f472b6'
+                  - name: Fuchsia
+                    color: '#d946ef'
+                  - name: Purple
+                    color: '#a855f7'
+                  - name: Violet
+                    color: '#8b5cf6'
+                  - name: Indigo
+                    color: '#6366f1'
+                  - name: Blue
+                    color: '#3b82f6'
+                  - name: Sky
+                    color: '#0ea5e9'
+                  - name: Cyan
+                    color: '#06b6d4'
+                  - name: Teal
+                    color: '#14b8a6'
+                  - name: Emerald
+                    color: '#10b981'
+                  - name: Green
+                    color: '#22c55e'
+                  - name: Lime
+                    color: '#84cc16'
+                  - name: Yellow
+                    color: '#eab308'
+                  - name: Amber
+                    color: '#f59e0b'
+                  - name: Orange
+                    color: '#f97316'
+                  - name: Red
+                    color: '#ef4444'
+                  - name: Stone
+                    color: '#78716c'
+                  - name: Neutral
+                    color: '#737373'
+                  - name: Zinc
+                    color: '#71717a'
+                  - name: Gray
+                    color: '#6b7280'
+                  - name: Slate
+                    color: '#64748b'
       readonly: false
       required: false
       sort: 2
@@ -22447,10 +22496,54 @@ fields:
       options:
         opacity: true
         presets:
-          - name: Gray Color
-            color: '#F5F7FA'
-          - name: Dark Color
-            color: '#313B4D'
+          - name: White
+            color: '#FFFFFF'
+          - name: Black
+            color: '#000000'
+          - name: Rose
+            color: '#f43f5e'
+          - name: Pink
+            color: '#f472b6'
+          - name: Fuchsia
+            color: '#d946ef'
+          - name: Purple
+            color: '#a855f7'
+          - name: Violet
+            color: '#8b5cf6'
+          - name: Indigo
+            color: '#6366f1'
+          - name: Blue
+            color: '#3b82f6'
+          - name: Sky
+            color: '#0ea5e9'
+          - name: Cyan
+            color: '#06b6d4'
+          - name: Teal
+            color: '#14b8a6'
+          - name: Emerald
+            color: '#10b981'
+          - name: Green
+            color: '#22c55e'
+          - name: Lime
+            color: '#84cc16'
+          - name: Yellow
+            color: '#eab308'
+          - name: Amber
+            color: '#f59e0b'
+          - name: Orange
+            color: '#f97316'
+          - name: Red
+            color: '#ef4444'
+          - name: Stone
+            color: '#78716c'
+          - name: Neutral
+            color: '#737373'
+          - name: Zinc
+            color: '#71717a'
+          - name: Gray
+            color: '#6b7280'
+          - name: Slate
+            color: '#64748b'
       readonly: false
       required: false
       sort: 3
@@ -24335,6 +24428,55 @@ fields:
       note: null
       options:
         opacity: true
+        presets:
+          - name: White
+            color: '#FFFFFF'
+          - name: Black
+            color: '#000000'
+          - name: Rose
+            color: '#f43f5e'
+          - name: Pink
+            color: '#f472b6'
+          - name: Fuchsia
+            color: '#d946ef'
+          - name: Purple
+            color: '#a855f7'
+          - name: Violet
+            color: '#8b5cf6'
+          - name: Indigo
+            color: '#6366f1'
+          - name: Blue
+            color: '#3b82f6'
+          - name: Sky
+            color: '#0ea5e9'
+          - name: Cyan
+            color: '#06b6d4'
+          - name: Teal
+            color: '#14b8a6'
+          - name: Emerald
+            color: '#10b981'
+          - name: Green
+            color: '#22c55e'
+          - name: Lime
+            color: '#84cc16'
+          - name: Yellow
+            color: '#eab308'
+          - name: Amber
+            color: '#f59e0b'
+          - name: Orange
+            color: '#f97316'
+          - name: Red
+            color: '#ef4444'
+          - name: Stone
+            color: '#78716c'
+          - name: Neutral
+            color: '#737373'
+          - name: Zinc
+            color: '#71717a'
+          - name: Gray
+            color: '#6b7280'
+          - name: Slate
+            color: '#64748b'
       readonly: false
       required: false
       sort: 6
@@ -27932,10 +28074,54 @@ fields:
       options:
         opacity: true
         presets:
-          - name: Gray Color
-            color: '#F5F7FA'
-          - name: Dark Color
-            color: '#313B4D'
+          - name: White
+            color: '#FFFFFF'
+          - name: Black
+            color: '#000000'
+          - name: Rose
+            color: '#f43f5e'
+          - name: Pink
+            color: '#f472b6'
+          - name: Fuchsia
+            color: '#d946ef'
+          - name: Purple
+            color: '#a855f7'
+          - name: Violet
+            color: '#8b5cf6'
+          - name: Indigo
+            color: '#6366f1'
+          - name: Blue
+            color: '#3b82f6'
+          - name: Sky
+            color: '#0ea5e9'
+          - name: Cyan
+            color: '#06b6d4'
+          - name: Teal
+            color: '#14b8a6'
+          - name: Emerald
+            color: '#10b981'
+          - name: Green
+            color: '#22c55e'
+          - name: Lime
+            color: '#84cc16'
+          - name: Yellow
+            color: '#eab308'
+          - name: Amber
+            color: '#f59e0b'
+          - name: Orange
+            color: '#f97316'
+          - name: Red
+            color: '#ef4444'
+          - name: Stone
+            color: '#78716c'
+          - name: Neutral
+            color: '#737373'
+          - name: Zinc
+            color: '#71717a'
+          - name: Gray
+            color: '#6b7280'
+          - name: Slate
+            color: '#64748b'
       readonly: false
       required: false
       sort: 3
@@ -32214,8 +32400,52 @@ fields:
         presets:
           - name: White
             color: '#FFFFFF'
-          - name: 'Gray '
-            color: '#A2B5CD'
+          - name: Black
+            color: '#000000'
+          - name: Rose
+            color: '#f43f5e'
+          - name: Pink
+            color: '#f472b6'
+          - name: Fuchsia
+            color: '#d946ef'
+          - name: Purple
+            color: '#a855f7'
+          - name: Violet
+            color: '#8b5cf6'
+          - name: Indigo
+            color: '#6366f1'
+          - name: Blue
+            color: '#3b82f6'
+          - name: Sky
+            color: '#0ea5e9'
+          - name: Cyan
+            color: '#06b6d4'
+          - name: Teal
+            color: '#14b8a6'
+          - name: Emerald
+            color: '#10b981'
+          - name: Green
+            color: '#22c55e'
+          - name: Lime
+            color: '#84cc16'
+          - name: Yellow
+            color: '#eab308'
+          - name: Amber
+            color: '#f59e0b'
+          - name: Orange
+            color: '#f97316'
+          - name: Red
+            color: '#ef4444'
+          - name: Stone
+            color: '#78716c'
+          - name: Neutral
+            color: '#737373'
+          - name: Zinc
+            color: '#71717a'
+          - name: Gray
+            color: '#6b7280'
+          - name: Slate
+            color: '#64748b'
       readonly: false
       required: true
       sort: 6
@@ -33143,6 +33373,57 @@ fields:
               type: string
               interface: select-color
               note: Border Color
+              options:
+                opacity: false
+                presets:
+                  - name: White
+                    color: '#FFFFFF'
+                  - name: Black
+                    color: '#000000'
+                  - name: Rose
+                    color: '#f43f5e'
+                  - name: Pink
+                    color: '#f472b6'
+                  - name: Fuchsia
+                    color: '#d946ef'
+                  - name: Purple
+                    color: '#a855f7'
+                  - name: Violet
+                    color: '#8b5cf6'
+                  - name: Indigo
+                    color: '#6366f1'
+                  - name: Blue
+                    color: '#3b82f6'
+                  - name: Sky
+                    color: '#0ea5e9'
+                  - name: Cyan
+                    color: '#06b6d4'
+                  - name: Teal
+                    color: '#14b8a6'
+                  - name: Emerald
+                    color: '#10b981'
+                  - name: Green
+                    color: '#22c55e'
+                  - name: Lime
+                    color: '#84cc16'
+                  - name: Yellow
+                    color: '#eab308'
+                  - name: Amber
+                    color: '#f59e0b'
+                  - name: Orange
+                    color: '#f97316'
+                  - name: Red
+                    color: '#ef4444'
+                  - name: Stone
+                    color: '#78716c'
+                  - name: Neutral
+                    color: '#737373'
+                  - name: Zinc
+                    color: '#71717a'
+                  - name: Gray
+                    color: '#6b7280'
+                  - name: Slate
+                    color: '#64748b'
           - field: data
             name: data
             type: json
@@ -34266,6 +34547,55 @@ fields:
       note: null
       options:
         opacity: true
+        presets:
+          - name: White
+            color: '#FFFFFF'
+          - name: Black
+            color: '#000000'
+          - name: Rose
+            color: '#f43f5e'
+          - name: Pink
+            color: '#f472b6'
+          - name: Fuchsia
+            color: '#d946ef'
+          - name: Purple
+            color: '#a855f7'
+          - name: Violet
+            color: '#8b5cf6'
+          - name: Indigo
+            color: '#6366f1'
+          - name: Blue
+            color: '#3b82f6'
+          - name: Sky
+            color: '#0ea5e9'
+          - name: Cyan
+            color: '#06b6d4'
+          - name: Teal
+            color: '#14b8a6'
+          - name: Emerald
+            color: '#10b981'
+          - name: Green
+            color: '#22c55e'
+          - name: Lime
+            color: '#84cc16'
+          - name: Yellow
+            color: '#eab308'
+          - name: Amber
+            color: '#f59e0b'
+          - name: Orange
+            color: '#f97316'
+          - name: Red
+            color: '#ef4444'
+          - name: Stone
+            color: '#78716c'
+          - name: Neutral
+            color: '#737373'
+          - name: Zinc
+            color: '#71717a'
+          - name: Gray
+            color: '#6b7280'
+          - name: Slate
+            color: '#64748b'
       readonly: false
       required: false
       sort: 4
@@ -34696,26 +35026,54 @@ fields:
       options:
         opacity: true
         presets:
-          - name: Default
-            color: '#313B4D'
-          - name: Purple
-            color: '#6644FF'
-          - name: Blue
-            color: '#3399FF'
-          - name: Green
-            color: '#2ECDA7'
-          - name: Yellow
-            color: '#FFC23B'
-          - name: Orange
-            color: '#FFA439'
-          - name: Red
-            color: '#E35169'
-          - name: Black
-            color: '#18222F'
-          - name: Gray
-            color: '#A2B5CD'
           - name: White
             color: '#FFFFFF'
+          - name: Black
+            color: '#000000'
+          - name: Rose
+            color: '#f43f5e'
+          - name: Pink
+            color: '#f472b6'
+          - name: Fuchsia
+            color: '#d946ef'
+          - name: Purple
+            color: '#a855f7'
+          - name: Violet
+            color: '#8b5cf6'
+          - name: Indigo
+            color: '#6366f1'
+          - name: Blue
+            color: '#3b82f6'
+          - name: Sky
+            color: '#0ea5e9'
+          - name: Cyan
+            color: '#06b6d4'
+          - name: Teal
+            color: '#14b8a6'
+          - name: Emerald
+            color: '#10b981'
+          - name: Green
+            color: '#22c55e'
+          - name: Lime
+            color: '#84cc16'
+          - name: Yellow
+            color: '#eab308'
+          - name: Amber
+            color: '#f59e0b'
+          - name: Orange
+            color: '#f97316'
+          - name: Red
+            color: '#ef4444'
+          - name: Stone
+            color: '#78716c'
+          - name: Neutral
+            color: '#737373'
+          - name: Zinc
+            color: '#71717a'
+          - name: Gray
+            color: '#6b7280'
+          - name: Slate
+            color: '#64748b'
       readonly: false
       required: true
       sort: 3
@@ -37792,26 +38150,54 @@ fields:
       options:
         opacity: true
         presets:
-          - name: Default
-            color: '#313B4D'
-          - name: Purple
-            color: '#6644FF'
-          - name: Blue
-            color: '#3399FF'
-          - name: Green
-            color: '#2ECDA7'
-          - name: Yellow
-            color: '#FFC23B'
-          - name: Orange
-            color: '#FFA439'
-          - name: Red
-            color: '#E35169'
-          - name: Black
-            color: '#18222F'
-          - name: Gray
-            color: '#A2B5CD'
           - name: White
             color: '#FFFFFF'
+          - name: Black
+            color: '#000000'
+          - name: Rose
+            color: '#f43f5e'
+          - name: Pink
+            color: '#f472b6'
+          - name: Fuchsia
+            color: '#d946ef'
+          - name: Purple
+            color: '#a855f7'
+          - name: Violet
+            color: '#8b5cf6'
+          - name: Indigo
+            color: '#6366f1'
+          - name: Blue
+            color: '#3b82f6'
+          - name: Sky
+            color: '#0ea5e9'
+          - name: Cyan
+            color: '#06b6d4'
+          - name: Teal
+            color: '#14b8a6'
+          - name: Emerald
+            color: '#10b981'
+          - name: Green
+            color: '#22c55e'
+          - name: Lime
+            color: '#84cc16'
+          - name: Yellow
+            color: '#eab308'
+          - name: Amber
+            color: '#f59e0b'
+          - name: Orange
+            color: '#f97316'
+          - name: Red
+            color: '#ef4444'
+          - name: Stone
+            color: '#78716c'
+          - name: Neutral
+            color: '#737373'
+          - name: Zinc
+            color: '#71717a'
+          - name: Gray
+            color: '#6b7280'
+          - name: Slate
+            color: '#64748b'
       readonly: false
       required: true
       sort: 3
@@ -49915,6 +50301,57 @@ fields:
               type: string
               interface: select-color
               required: true
+              options:
+                opacity: false
+                presets:
+                  - name: White
+                    color: '#FFFFFF'
+                  - name: Black
+                    color: '#000000'
+                  - name: Rose
+                    color: '#f43f5e'
+                  - name: Pink
+                    color: '#f472b6'
+                  - name: Fuchsia
+                    color: '#d946ef'
+                  - name: Purple
+                    color: '#a855f7'
+                  - name: Violet
+                    color: '#8b5cf6'
+                  - name: Indigo
+                    color: '#6366f1'
+                  - name: Blue
+                    color: '#3b82f6'
+                  - name: Sky
+                    color: '#0ea5e9'
+                  - name: Cyan
+                    color: '#06b6d4'
+                  - name: Teal
+                    color: '#14b8a6'
+                  - name: Emerald
+                    color: '#10b981'
+                  - name: Green
+                    color: '#22c55e'
+                  - name: Lime
+                    color: '#84cc16'
+                  - name: Yellow
+                    color: '#eab308'
+                  - name: Amber
+                    color: '#f59e0b'
+                  - name: Orange
+                    color: '#f97316'
+                  - name: Red
+                    color: '#ef4444'
+                  - name: Stone
+                    color: '#78716c'
+                  - name: Neutral
+                    color: '#737373'
+                  - name: Zinc
+                    color: '#71717a'
+                  - name: Gray
+                    color: '#6b7280'
+                  - name: Slate
+                    color: '#64748b'
           - field: icon_svg
             name: icon_svg
             type: text
@@ -54530,7 +54967,57 @@ fields:
       hidden: false
       interface: select-color
       note: null
-      options: null
+      options:
+        opacity: false
+        presets:
+          - name: White
+            color: '#FFFFFF'
+          - name: Black
+            color: '#000000'
+          - name: Rose
+            color: '#f43f5e'
+          - name: Pink
+            color: '#f472b6'
+          - name: Fuchsia
+            color: '#d946ef'
+          - name: Purple
+            color: '#a855f7'
+          - name: Violet
+            color: '#8b5cf6'
+          - name: Indigo
+            color: '#6366f1'
+          - name: Blue
+            color: '#3b82f6'
+          - name: Sky
+            color: '#0ea5e9'
+          - name: Cyan
+            color: '#06b6d4'
+          - name: Teal
+            color: '#14b8a6'
+          - name: Emerald
+            color: '#10b981'
+          - name: Green
+            color: '#22c55e'
+          - name: Lime
+            color: '#84cc16'
+          - name: Yellow
+            color: '#eab308'
+          - name: Amber
+            color: '#f59e0b'
+          - name: Orange
+            color: '#f97316'
+          - name: Red
+            color: '#ef4444'
+          - name: Stone
+            color: '#78716c'
+          - name: Neutral
+            color: '#737373'
+          - name: Zinc
+            color: '#71717a'
+          - name: Gray
+            color: '#6b7280'
+          - name: Slate
+            color: '#64748b'
       readonly: false
       required: true
       sort: 3
@@ -56142,6 +56629,55 @@ fields:
       note: null
       options:
         opacity: true
+        presets:
+          - name: White
+            color: '#FFFFFF'
+          - name: Black
+            color: '#000000'
+          - name: Rose
+            color: '#f43f5e'
+          - name: Pink
+            color: '#f472b6'
+          - name: Fuchsia
+            color: '#d946ef'
+          - name: Purple
+            color: '#a855f7'
+          - name: Violet
+            color: '#8b5cf6'
+          - name: Indigo
+            color: '#6366f1'
+          - name: Blue
+            color: '#3b82f6'
+          - name: Sky
+            color: '#0ea5e9'
+          - name: Cyan
+            color: '#06b6d4'
+          - name: Teal
+            color: '#14b8a6'
+          - name: Emerald
+            color: '#10b981'
+          - name: Green
+            color: '#22c55e'
+          - name: Lime
+            color: '#84cc16'
+          - name: Yellow
+            color: '#eab308'
+          - name: Amber
+            color: '#f59e0b'
+          - name: Orange
+            color: '#f97316'
+          - name: Red
+            color: '#ef4444'
+          - name: Stone
+            color: '#78716c'
+          - name: Neutral
+            color: '#737373'
+          - name: Zinc
+            color: '#71717a'
+          - name: Gray
+            color: '#6b7280'
+          - name: Slate
+            color: '#64748b'
       readonly: false
       required: false
       sort: 5
@@ -57245,28 +57781,56 @@ fields:
       interface: select-color
       note: null
       options:
-        opacity: true
+        opacity: false
         presets:
-          - name: Default
-            color: '#313B4D'
-          - name: Purple
-            color: '#6644FF'
-          - name: Blue
-            color: '#3399FF'
-          - name: Green
-            color: '#2ECDA7'
-          - name: Yellow
-            color: '#FFC23B'
-          - name: Orange
-            color: '#FFA439'
-          - name: Red
-            color: '#E35169'
-          - name: Black
-            color: '#18222F'
-          - name: Gray
-            color: '#A2B5CD'
           - name: White
             color: '#FFFFFF'
+          - name: Black
+            color: '#000000'
+          - name: Rose
+            color: '#f43f5e'
+          - name: Pink
+            color: '#f472b6'
+          - name: Fuchsia
+            color: '#d946ef'
+          - name: Purple
+            color: '#a855f7'
+          - name: Violet
+            color: '#8b5cf6'
+          - name: Indigo
+            color: '#6366f1'
+          - name: Blue
+            color: '#3b82f6'
+          - name: Sky
+            color: '#0ea5e9'
+          - name: Cyan
+            color: '#06b6d4'
+          - name: Teal
+            color: '#14b8a6'
+          - name: Emerald
+            color: '#10b981'
+          - name: Green
+            color: '#22c55e'
+          - name: Lime
+            color: '#84cc16'
+          - name: Yellow
+            color: '#eab308'
+          - name: Amber
+            color: '#f59e0b'
+          - name: Orange
+            color: '#f97316'
+          - name: Red
+            color: '#ef4444'
+          - name: Stone
+            color: '#78716c'
+          - name: Neutral
+            color: '#737373'
+          - name: Zinc
+            color: '#71717a'
+          - name: Gray
+            color: '#6b7280'
+          - name: Slate
+            color: '#64748b'
       readonly: false
       required: true
       sort: 3
@@ -57279,7 +57843,7 @@ fields:
       name: primary_color
       table: SiteLayout
       data_type: character varying
-      default_value: '#60A5FA'
+      default_value: '#3b82f6'
       max_length: 255
       numeric_precision: null
       numeric_scale: null
