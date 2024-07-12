@@ -6,13 +6,10 @@ import { useMut } from '@/cms/mut';
 
 export function ST_ButtonsFC({ items }: STemplates_Props<ST_Button>) {
   return (
-    <div className='flex justify-center flex-wrap'>
-      {items.map((btn, i) => {
+    <div className='flex justify-center flex-wrap gap-3'>
+      {items.map((btn) => {
         return (
-          <div
-            key={btn.item.id}
-            className={items.length > 1 && i > 0 ? 'ml-3' : ''}
-          >
+          <div key={btn.item.id}>
             <ButtonItem {...btn} />
           </div>
         );

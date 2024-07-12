@@ -13,7 +13,6 @@ enum ButtonVariant {
 
 type ButtonProps = {
   isLoading?: boolean;
-  isDarkBg?: boolean;
   variant?: keyof typeof ButtonVariant;
 } & React.ComponentPropsWithRef<'button'>;
 
@@ -25,7 +24,6 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       disabled: buttonDisabled,
       isLoading,
       variant = 'primary',
-      isDarkBg = false,
       ...rest
     },
     ref
@@ -55,15 +53,11 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
               'text-primary-500',
               'border border-primary-500',
               'hover:bg-primary-50 active:bg-primary-100 disabled:bg-primary-100',
-              isDarkBg &&
-                'hover:bg-gray-900 active:bg-gray-800 disabled:bg-gray-800',
             ],
             variant === 'ghost' && [
               'text-primary-500',
               'shadow-none',
               'hover:bg-primary-50 active:bg-primary-100 disabled:bg-primary-100',
-              isDarkBg &&
-                'hover:bg-gray-900 active:bg-gray-800 disabled:bg-gray-800',
             ],
             variant === 'light' && [
               'bg-white text-dark',
@@ -72,9 +66,9 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
               'active:bg-white/80 disabled:bg-gray-200',
             ],
             variant === 'dark' && [
-              'bg-gray-900 text-white',
+              'bg-primary-950 text-white',
               'border border-gray-600',
-              'hover:bg-gray-800 active:bg-gray-700 disabled:bg-gray-700',
+              'hover:bg-primary-950/80 active:bg-primary-950/80 disabled:bg-primary-950/70',
             ],
           ],
           //#endregion  //*======== Variants ===========

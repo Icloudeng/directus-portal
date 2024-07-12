@@ -9,6 +9,8 @@ import {
 } from 'react-icons/fa';
 import { GoMail } from 'react-icons/go';
 
+import clsxm from '@/lib/clsxm';
+
 import UnstyledLink from '@/components/ui/links/UnstyledLink';
 
 import { useSharedData } from '@/app/store';
@@ -25,7 +27,7 @@ export const socialIcons: { [x: string]: JSX.Element } = {
   linkedin: <FaLinkedinIn fontSize={17} />,
 };
 
-export const ContactSection = () => {
+export const ContactSection = (props: { className?: string }) => {
   const { CompanyDetails } = useSharedData();
   const data = useMut(CompanyDetails);
   const { t } = useTranslation();
@@ -33,7 +35,12 @@ export const ContactSection = () => {
   const socials = data?.socials || [];
 
   return (
-    <div className='middle-right text-xs xs:text-sm flex-1 flex flex-col gap-5'>
+    <div
+      className={clsxm(
+        'middle-right text-sm flex-1 flex flex-col gap-5',
+        props.className
+      )}
+    >
       {data?.translations?.slogan && (
         <p className='max-w-[24rem] leading-5 mb-3'>
           {data?.translations?.slogan}

@@ -28,18 +28,31 @@ export const Footer = () => {
 
   return (
     <footer className='sm:px-10 py-10 text-gray-300 z-0'>
-      <div className='x-container-fluid flex flex-col gap-5 divide-y-2 divide-gray-800'>
+      <div className='x-container-fluid flex flex-col gap-5 divide-y-2 divide-primary-900'>
         {FooterLayout?.show_top_footer === true && <FooterTopSection />}
 
         {showSection && (
-          <div className='middle-footer flex items-start py-10 divide-x-[1px] divide-gray-300 text-xs xs:text-sm'>
-            {FooterLayout?.show_footer_contacts === true && <ContactSection />}
+          <div
+            className={clsxm(
+              'flex items-start py-10 sm:divide-x-[1px] sm:divide-primary-300 text-sm w-full',
+              'flex-col-reverse sm:flex-row sm:justify-between pb-3 sm:pb-0 gap-5'
+            )}
+          >
+            {FooterLayout?.show_footer_contacts === true && (
+              <ContactSection
+                className={clsxm(
+                  'min-w-40 w-full sm:w-auto',
+                  'border-t-2 border-t-primary-900 sm:border-0 sm:border-t-none pt-5 sm:pt-0'
+                )}
+              />
+            )}
 
             {FooterLayout?.show_footer_links !== false && (
               <div
                 className={clsxm(
                   'middle-left grid grid-cols-1 ss:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:flex items-start',
-                  'gap-20 sm:flex-[2.7] flex-[3.6] ml-1 xs:ml-3 px-4',
+                  'gap-20 sm:flex-[2.7] flex-[3.6]',
+                  'sm:ml-3 sm:px-4',
                   hasFooterLinks ? ['justify-around'] : ['justify-start']
                 )}
               >
