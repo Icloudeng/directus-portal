@@ -6682,7 +6682,7 @@ fields:
         template: "{{address_name}}\_--\_{{status}}"
       readonly: false
       required: false
-      sort: 8
+      sort: 9
       special:
         - o2m
       translations: null
@@ -6751,7 +6751,7 @@ fields:
             value: €
       readonly: false
       required: true
-      sort: 7
+      sort: 8
       special: null
       translations: null
       validation: null
@@ -6790,7 +6790,7 @@ fields:
       options: null
       readonly: true
       required: false
-      sort: 15
+      sort: 16
       special:
         - date-created
       translations: null
@@ -6830,7 +6830,7 @@ fields:
       options: null
       readonly: true
       required: false
-      sort: 17
+      sort: 18
       special:
         - date-updated
       translations: null
@@ -6871,7 +6871,7 @@ fields:
         trim: true
       readonly: false
       required: false
-      sort: 9
+      sort: 10
       special: null
       translations: null
       validation: null
@@ -6893,6 +6893,45 @@ fields:
       has_auto_increment: false
       foreign_key_table: null
       foreign_key_column: null
+  - collection: CompanyDetails
+    field: favicon
+    type: uuid
+    meta:
+      collection: CompanyDetails
+      conditions: null
+      display: file
+      display_options: null
+      field: favicon
+      group: null
+      hidden: false
+      interface: file-image
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 6
+      special:
+        - file
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: favicon
+      table: CompanyDetails
+      data_type: uuid
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: directus_files
+      foreign_key_column: id
   - collection: CompanyDetails
     field: id
     type: uuid
@@ -6948,7 +6987,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: 11
+      sort: 12
       special:
         - file
       translations: null
@@ -7027,7 +7066,7 @@ fields:
         template: "{{social_name}}\_---\_{{status}}"
       readonly: false
       required: false
-      sort: 12
+      sort: 13
       special:
         - o2m
       translations: null
@@ -7071,7 +7110,7 @@ fields:
             value: archived
       readonly: false
       required: false
-      sort: 13
+      sort: 14
       special: null
       translations: null
       validation: null
@@ -7111,7 +7150,7 @@ fields:
         trim: true
       readonly: false
       required: false
-      sort: 10
+      sort: 11
       special: null
       translations: null
       validation: null
@@ -7150,7 +7189,7 @@ fields:
         languageField: code
       readonly: false
       required: false
-      sort: 6
+      sort: 7
       special:
         - translations
       translations: null
@@ -7174,7 +7213,7 @@ fields:
         template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
       readonly: true
       required: false
-      sort: 14
+      sort: 15
       special:
         - user-created
       translations: null
@@ -7214,7 +7253,7 @@ fields:
         template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
       readonly: true
       required: false
-      sort: 16
+      sort: 17
       special:
         - user-updated
       translations: null
@@ -59772,6 +59811,27 @@ relations:
       constraint_name: chatwoot_user_updated_foreign
       on_update: NO ACTION
       on_delete: NO ACTION
+  - collection: CompanyDetails
+    field: favicon
+    related_collection: directus_files
+    meta:
+      junction_field: null
+      many_collection: CompanyDetails
+      many_field: favicon
+      one_allowed_collections: null
+      one_collection: directus_files
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    schema:
+      table: CompanyDetails
+      column: favicon
+      foreign_key_table: directus_files
+      foreign_key_column: id
+      constraint_name: companydetails_favicon_foreign
+      on_update: NO ACTION
+      on_delete: SET NULL
   - collection: CompanyDetails
     field: image
     related_collection: directus_files

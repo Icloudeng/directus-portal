@@ -59,8 +59,8 @@ export function qWithAsset<T extends { [x: string]: MDWithAsset | unknown }>(
       break;
   }
 
-  const orgin = cms_url.endsWith('/') ? cms_url : cms_url + '/';
-  const url = `${orgin}assets/${asset.id}?access_token=${
+  const origin = cms_url.endsWith('/') ? cms_url : cms_url + '/';
+  const url = `${origin}assets/${asset.id}?access_token=${
     access_token + preset_url
   }`;
 

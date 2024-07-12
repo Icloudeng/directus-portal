@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 
 import { COMPANY_NAME, WEBSITE_URL } from '@/app/constant/env';
 import { useSharedData } from '@/app/store';
+import { nextAsset } from '@/app/utils/next-asset';
 import { useMut } from '@/cms/mut';
 
 const defaultMeta = {
@@ -31,11 +32,11 @@ export default function Seo({ dynamicPage, ...props }: SeoProps) {
   const page = useMut(dynamicPage);
   const sh = useSharedData();
   const shared = useSharedData() as unknown as typeof sh | undefined;
-  const cdT = useMut(shared?.CompanyDetails);
+  const companyDetails = useMut(shared?.CompanyDetails);
 
   const $title = page?.translations?.title;
   const $description =
-    page?.translations?.description || cdT?.translations?.slogan;
+    page?.translations?.description || companyDetails?.translations?.slogan;
   const $image = page?.image;
 
   const meta = {
@@ -43,8 +44,8 @@ export default function Seo({ dynamicPage, ...props }: SeoProps) {
     ...props,
   };
 
-  meta.title = shared?.CompanyDetails?.website_title || meta.title;
-  meta.siteName = shared?.CompanyDetails?.website_title || meta.siteName;
+  meta.title = companyDetails?.website_title || meta.title;
+  meta.siteName = companyDetails?.website_title || meta.siteName;
 
   meta['title'] =
     props.templateTitle || $title
@@ -111,11 +112,12 @@ export default function Seo({ dynamicPage, ...props }: SeoProps) {
         [
           {
             rel: 'icon',
-            href: cdT?.logo_sm?.src
-              ? `/_next/image?url=${encodeURIComponent(
-                  cdT?.logo_sm?.src
-                )}&w=3840&q=75`
-              : '/images/logo.png',
+            href: nextAsset({
+              url: companyDetails?.favicon?.src || companyDetails?.logo?.src,
+              defaultUrl: '/images/logo.png',
+              width: 75,
+              height: 75,
+            }),
           },
         ] as Favicons[]
       ).map((linkProps) => (
