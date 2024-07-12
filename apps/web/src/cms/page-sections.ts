@@ -533,6 +533,26 @@ const q_ST: Query = {
     }),
     ...qWithStatus,
   },
+  [section_templates.st_horizontal_cards]: {
+    __typeName: section_templates.st_horizontal_cards,
+    __args: qWithPublishedStatus(),
+    image: qWithQueryAsset({
+      width: true,
+      height: true,
+    }),
+    flexible_image: true,
+    border_card: true,
+    background_color: true,
+    clickable_card: true,
+    hover_animation: true,
+    ...qWithTranslations({
+      small_title: true,
+      big_title: true,
+      description: true,
+      buttons: true,
+    }),
+    ...qWithStatus,
+  },
 };
 
 type PSQuery = {
