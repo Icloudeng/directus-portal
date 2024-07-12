@@ -664,7 +664,7 @@ export type PS_Content =
   | ST_ContentStepper
   | ST_TimelineCard
   | ST_StyledImageCard
-  | ST_HorizontalCards;;
+  | ST_HorizontalCards;
 
 export type M2APageSection = MDHasM2A<
   {
