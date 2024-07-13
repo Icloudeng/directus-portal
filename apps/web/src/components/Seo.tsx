@@ -115,8 +115,8 @@ export default function Seo({ dynamicPage, ...props }: SeoProps) {
             href: nextAsset({
               url: companyDetails?.favicon?.src || companyDetails?.logo?.src,
               defaultUrl: '/images/logo.png',
-              width: 75,
-              height: 75,
+              width: 96,
+              height: 96,
             }),
           },
         ] as Favicons[]
