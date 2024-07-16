@@ -506,6 +506,7 @@ export type ST_FeatureListWithIcon = MDHasM2A<
   } & MDWithTranslation<{
     title: string;
     features: string[];
+    buttons?: RepeaterBtn[];
   }> &
     DRTStatus,
   ST_V<"st_feature_list_with_icons">

@@ -449,6 +449,7 @@ const q_ST: Query = {
     ...qWithTranslations({
       title: true,
       features: true,
+      buttons: true,
     }),
     ...qWithStatus,
   },

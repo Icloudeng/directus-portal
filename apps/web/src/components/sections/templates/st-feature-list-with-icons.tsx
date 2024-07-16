@@ -1,6 +1,7 @@
 import { ST_FeatureListWithIcon, STemplates_Props } from '@packages/contracts';
 
 import { ParseSvgText } from '@/components/ui/HasSvgText';
+import ButtonLink from '@/components/ui/links/ButtonLink';
 
 import { useMut } from '@/cms/mut';
 
@@ -18,6 +19,8 @@ export function ST_FeatureListWithIconsFC({
 
 function STFeatureListWithIcon(props: { item: ST_FeatureListWithIcon }) {
   const item = useMut(props.item.item);
+
+  const buttons = item.translations?.buttons || [];
 
   return (
     <div className='xl:w-1/3 md:w-1/2 flex justify-evenly'>
@@ -59,6 +62,25 @@ function STFeatureListWithIcon(props: { item: ST_FeatureListWithIcon }) {
             </li>
           ))}
         </ul>
+
+        {buttons.length > 0 && (
+          <div className='flex flex-col space-y-2 mt-2'>
+            {buttons.map((btn, i) => {
+              return (
+                <div key={i}>
+                  <ButtonLink
+                    href={btn.url}
+                    variant={btn.variant}
+                    target={btn.external ? '_blank' : undefined}
+                    className='text-sm ml-1'
+                  >
+                    {btn.name}
+                  </ButtonLink>
+                </div>
+              );
+            })}
+          </div>
+        )}
       </div>
     </div>
   );

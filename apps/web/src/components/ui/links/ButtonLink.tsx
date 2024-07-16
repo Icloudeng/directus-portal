@@ -12,6 +12,7 @@ enum ButtonVariant {
   'ghost',
   'light',
   'dark',
+  'underline',
 }
 
 type ButtonLinkProps = {
@@ -58,6 +59,13 @@ const ButtonLink = React.forwardRef<HTMLAnchorElement, ButtonLinkProps>(
               'bg-primary-950 text-white',
               'border border-gray-600',
               'hover:bg-primary-950/80 active:bg-primary-950/80 disabled:bg-primary-950/70',
+            ],
+
+            variant === 'underline' && [
+              'px-0 py-0 p-0 shadow-none rounded-none',
+              'animated-underline custom-link inline-flex items-center font-medium',
+              'focus:outline-none focus-visible:rounded focus-visible:ring focus-visible:ring-primary-500 focus-visible:ring-offset-2',
+              'border-b border-dotted border-dark hover:border-black/0',
             ],
           ],
           //#endregion  //*======== Variants ===========
