@@ -516,10 +516,12 @@ const q_ST: Query = {
     __typeName: section_templates.st_timeline_cards,
     __args: qWithPublishedStatus(),
     color: true,
+    readmore_url: true,
     ...qWithTranslations({
       card_title: true,
       title: true,
       description: true,
+      slogan: true,
     }),
     ...qWithStatus,
   },

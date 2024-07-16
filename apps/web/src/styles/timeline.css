@@ -64,13 +64,16 @@
   background: var(--bgColor);
   padding-inline: 1.5rem;
 }
+.link_timeline{
+  background: var(--bgColor);
+}
 .ul_timeline .li_timeline .title_timeline {
   @apply overflow-hidden font-medium;
   padding-block-start: 1.5rem;
   padding-block-end: 1rem;
 }
 .ul_timeline .li_timeline .descr_timeline {
-  @apply overflow-hidden font-light;
+  @apply overflow-hidden font-light text-sm;
   padding-block-end: 1.5rem;
 }
 

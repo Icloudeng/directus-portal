@@ -28,13 +28,24 @@ function STTimelineCard(props: { item: ST_TimelineCard }) {
         className='date_timeline'
       >
         {item.translations?.card_title}
+        
       </div>
 
       <div className='title_timeline'>
-        <h3 className='box-title_timeline'>{item.translations?.title}</h3>
+        <h4 className='box-title_timeline'>{item.translations?.title}</h4>
+        <i className='text-sm'>{item.translations?.slogan}</i>
       </div>
 
       <div className='descr_timeline'>{item.translations?.description}</div>
+      <div className='link_timeline ps-6 pb-4'>
+        <a 
+          className="text-blue-500 inline-flex items-center text-sm" 
+          style={{ '--accent-color': item.color } as any} 
+          href={ item.readmore_url }>
+            Read more
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" className="w-4 h-4 ml-2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
+        </a>
+      </div>
     </li>
   );
 }

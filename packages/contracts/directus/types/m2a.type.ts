@@ -578,10 +578,12 @@ export type ST_ContentStepper = MDHasM2A<
 export type ST_TimelineCard = MDHasM2A<
   {
     color: string;
+    readmore_url: string;
   } & MDWithTranslation<{
     card_title: string;
     title: string;
     description: string;
+    slogan: string;
   }> &
     DRTStatus,
   ST_V<"st_timeline_cards">
