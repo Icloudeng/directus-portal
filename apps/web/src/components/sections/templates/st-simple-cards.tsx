@@ -18,7 +18,7 @@ function STSimpleCard(props: { item: ST_SimpleCard }) {
   const item = useMut(props.item.item);
 
   return (
-    <div className='xl:w-1/3 md:w-1/2 p-4'>
+    <div className='w-full xl:w-1/3 md:w-1/2 p-4'>
       <div className='border border-gray-200 p-6 rounded-lg h-full'>
         <div className='w-10 h-10 inline-flex items-center justify-center rounded-full bg-primary-50 text-primary-500 mb-4'>
           {item.icon_svg && (
