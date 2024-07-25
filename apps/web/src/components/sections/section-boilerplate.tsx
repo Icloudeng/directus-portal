@@ -2,7 +2,7 @@ export const SectionBoilerplate = () => {
   return (
     <div className='x-container max-w-7xl mx-auto py-10 flex flex-col items-center gap-10 ss:px-12'>
       <div className='flex flex-col items-center justify-center gap-7 mb-7'>
-        <h1 className='text-center'>Section Boilerplate</h1>
+        <h3 className='text-center h3'>Section Boilerplate</h3>
         <span className='max-w-xl text-center'>
           This is the section boilerplate template
         </span>

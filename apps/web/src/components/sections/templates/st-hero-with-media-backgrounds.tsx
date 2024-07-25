@@ -212,9 +212,9 @@ function STHeroWithMediaBackground({
         </h1>
 
         {translations?.description && (
-          <h3 className='font-light text-xl text-white'>
+          <p className='font-light text-xl text-white'>
             {translations?.description}
-          </h3>
+          </p>
         )}
 
         {buttons.length > 0 && (

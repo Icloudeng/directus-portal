@@ -7,7 +7,7 @@ export const BlogTextContentHorizontal = () => {
   return (
     <div className='x-container max-w-7xl mx-auto py-10 flex flex-col items-center gap-10 ss:px-12'>
       <div className='flex flex-col items-center justify-center gap-7 mb-7'>
-        <h1 className='text-center'>Horizontal Blog Text Content</h1>
+        <h2 className='text-center h1'>Horizontal Blog Text Content</h2>
         <span className='max-w-xl text-center'>
           This is the section boilerplate template
         </span>
@@ -21,9 +21,9 @@ export const BlogTextContentHorizontal = () => {
                 <span className='inline-block py-1 px-2 rounded bg-primary-50 text-primary-400 text-xs font-medium tracking-widest'>
                   CATEGORY
                 </span>
-                <h2 className='sm:text-3xl text-2xl title-font font-medium text-gray-900 mt-4 mb-4'>
+                <h3 className='sm:text-3xl text-2xl title-font font-medium text-gray-900 mt-4 mb-4'>
                   Roof party normcore before they sold out, cornhole vape
-                </h2>
+                </h3>
                 <p className='leading-relaxed mb-8'>
                   Live-edge letterpress cliche, salvia fanny pack humblebrag
                   narwhal portland. VHS man braid palo santo hoodie brunch trust

@@ -62,14 +62,14 @@ function Content({ item }: ST_SideTextMedia) {
           sided ? 'lg:w-1/2 lg:items-start' : 'lg:w-4/5'
         )}
       >
-        <h1
+        <h3
           className={clsxm(
             `text-center leading-10 text-[30px] md:text-[40px] font-bold`,
             sided && 'lg:text-start'
           )}
         >
           {translations?.title}
-        </h1>
+        </h3>
         <div className='mt-[30px]'>
           <p
             className={clsxm(

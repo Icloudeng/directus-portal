@@ -4,11 +4,11 @@ export function TutorialsSearchInput() {
   return (
     <div className='w-full p-12 bg-primary-400 mb-7 rounded-2xl text-white'>
       <div className='flex flex-col gap-5 mb-4'>
-        <h1>Tutorials</h1>
-        <span className='font-bold'>
+        <h3 className='h1'>Tutorials</h3>
+        <p className='font-bold'>
           Follow along with one of our 6,000+ development and sysadmin
           tutorials.
-        </span>
+        </p>
       </div>
       <div className='flex flex-col gap-3 max-w-xl'>
         <InputWithIcon

@@ -86,7 +86,7 @@ function FooterTopSection() {
 
   return (
     <div className='top-footer flex flex-col items-center gap-12 py-10'>
-      <h1 className='text-center'>
+      <h3 className='text-center h1'>
         {texts.map(({ title, color }, i) => {
           return (
             <span style={{ color: color || undefined }} key={i}>
@@ -94,7 +94,7 @@ function FooterTopSection() {
             </span>
           );
         })}
-      </h1>
+      </h3>
       <div className='flex flex-col ss:flex-row items-center gap-7'>
         {buttons.map((btn, i) => {
           return (

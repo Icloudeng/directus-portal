@@ -7,7 +7,7 @@ export const TopLeftRightContent = () => {
   return (
     <div className='x-container max-w-7xl mx-auto py-10 flex flex-col items-center gap-10 ss:px-12'>
       <div className='flex flex-col items-center justify-center gap-7 mb-7'>
-        <h1 className='text-center'>Horizontal Blog Text Content</h1>
+        <h2 className='text-center h1'>Horizontal Blog Text Content</h2>
         <span className='max-w-xl text-center'>
           This is the section boilerplate template
         </span>
@@ -42,9 +42,9 @@ export const TopLeftRightContent = () => {
                     </svg>
                   </div>
                   <div className='flex flex-col items-center text-center justify-center'>
-                    <h2 className='font-medium title-font mt-4 text-gray-900 text-lg'>
+                    <h3 className='font-medium title-font mt-4 text-gray-900 text-lg'>
                       Phoebe Caulfield
-                    </h2>
+                    </h3>
                     <div className='w-12 h-1 bg-primary-400 rounded mt-2 mb-4'></div>
                     <p className='text-base'>
                       Raclette knausgaard hella meggs normcore williamsburg
