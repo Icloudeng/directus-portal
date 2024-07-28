@@ -24,8 +24,6 @@ import { mut, useMut } from '@/cms/mut';
 
 import { Submenu } from './components/SubMenu';
 
-import Logo from '~/images/logo.png';
-
 export const Navbar = ({ whiteNav }: { whiteNav?: boolean }) => {
   const { CompanyDetails, NavbarButtons, locale, NavbarLayout } =
     useSharedData();
@@ -51,16 +49,18 @@ export const Navbar = ({ whiteNav }: { whiteNav?: boolean }) => {
       <div className='relative x-container-fluid flex items-center justify-between gap-4 h-full'>
         <div className='nav__logo'>
           <UnstyledLink href='/' className='inline-block'>
-            <NextImage
-              useSkeleton
-              imgClassName={
-                NavbarLayout?.navbar_logo_rounded ? 'rounded-full' : undefined
-              }
-              src={CompanyDetails?.logo?.src || Logo.src}
-              width={NavbarLayout?.navbar_logo_width || 60}
-              height={NavbarLayout?.navbar_logo_height || 60}
-              alt={CompanyDetails?.company_name || COMPANY_NAME || 'Smatflow'}
-            />
+            {CompanyDetails?.logo?.src && (
+              <NextImage
+                useSkeleton
+                imgClassName={
+                  NavbarLayout?.navbar_logo_rounded ? 'rounded-full' : undefined
+                }
+                src={CompanyDetails?.logo?.src}
+                width={NavbarLayout?.navbar_logo_width || 60}
+                height={NavbarLayout?.navbar_logo_height || 60}
+                alt={CompanyDetails?.company_name || COMPANY_NAME || 'Smatflow'}
+              />
+            )}
           </UnstyledLink>
         </div>
 

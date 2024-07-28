@@ -22,8 +22,8 @@ function Content() {
 
   useEffect(() => {
     if (!ref.current) return;
-    const iwindow = ref.current.contentWindow;
-    if (!iwindow) return;
+    const iWindow = ref.current.contentWindow;
+    if (!iWindow) return;
 
     setFaced(false);
 
@@ -32,9 +32,9 @@ function Content() {
       setFaced(true);
     };
 
-    iwindow.addEventListener('NextRouteChangeStart', onChange);
+    iWindow.addEventListener('NextRouteChangeStart', onChange);
     return () => {
-      iwindow.removeEventListener('NextRouteChangeStart', onChange);
+      iWindow.removeEventListener('NextRouteChangeStart', onChange);
     };
   }, [ref, route]);
 

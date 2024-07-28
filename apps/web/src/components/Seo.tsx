@@ -8,14 +8,13 @@ import { nextAsset } from '@/app/utils/next-asset';
 import { useMut } from '@/cms/mut';
 
 const defaultMeta = {
-  title: 'Smatflow',
-  siteName: 'Smatflow',
-  description:
-    (COMPANY_NAME || '') + 'a giant cloud computing solution provider',
+  title: 'My Site',
+  siteName: 'My Site',
+  description: '',
   url: WEBSITE_URL || '',
   type: 'website',
   robots: 'follow, index',
-  image: '/images/banner.jpg',
+  image: '',
 };
 
 type SeoProps = {
@@ -63,6 +62,7 @@ export default function Seo({ dynamicPage, ...props }: SeoProps) {
 
   const url = `${meta.url}${page?.url || props.pathname || router.asPath}`;
   const description = $description || meta.description;
+  const image = meta.image || $image?.src;
 
   return (
     <Head>
@@ -77,12 +77,14 @@ export default function Seo({ dynamicPage, ...props }: SeoProps) {
       <meta property='og:site_name' content={meta.siteName} />
       <meta property='og:description' content={description} />
       <meta property='og:title' content={$title || meta.title} />
-      <meta property='og:image' content={$image?.src || meta.image} />
-      {$image?.type && <meta property='og:image:type' content={$image?.type} />}
-      {$image?.width && (
+      {image && <meta property='og:image' content={image} />}
+      {!!$image?.type && (
+        <meta property='og:image:type' content={$image?.type} />
+      )}
+      {!!$image?.width && (
         <meta property='og:image:width' content={$image?.width.toString()} />
       )}
-      {$image?.height && (
+      {!!$image?.height && (
         <meta property='og:image:height' content={$image?.height.toString()} />
       )}
       {/* Twitter */}
@@ -90,8 +92,8 @@ export default function Seo({ dynamicPage, ...props }: SeoProps) {
       <meta name='twitter:site' content='@th_clarence' />
       <meta name='twitter:title' content={$title || meta.title} />
       <meta name='twitter:description' content={description} />
-      <meta name='twitter:image' content={meta.image || $image?.src} />
-      {meta.date && (
+      {image && <meta name='twitter:image' content={image} />}
+      {!!meta.date && (
         <>
           <meta property='article:published_time' content={meta.date} />
           <meta
@@ -114,7 +116,6 @@ export default function Seo({ dynamicPage, ...props }: SeoProps) {
             rel: 'icon',
             href: nextAsset({
               url: companyDetails?.favicon?.src || companyDetails?.logo?.src,
-              defaultUrl: '/images/logo.png',
               width: 96,
               height: 96,
             }),
