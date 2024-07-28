@@ -14,7 +14,7 @@ function generateSiteMap(
   originUrl?: string
 ) {
   return `<?xml version="1.0" encoding="UTF-8"?>
-     <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd http://www.w3.org/TR/xhtml11/xhtml11_schema.html http://www.w3.org/2002/08/xhtml/xhtml1-strict.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/TR/xhtml11/xhtml11_schema.html">
        <url>
          <loc>${originUrl}</loc>
        </url>
@@ -35,18 +35,36 @@ function generateSiteMap(
              },
            ];
 
+           const pageUrl =
+             page.url[page.url.length - 1] === '/'
+               ? page.url.slice(0, page.url.length - 1)
+               : page.url;
+
+           const xHtmlLinks =
+             page.translations.length > 1
+               ? page.translations
+                   .map((translation) => {
+                     const code = translation.languages_code.code;
+                     const langPath = code === DEFAULT_LANG ? '' : `/${code}`;
+
+                     return `<xhtml:link rel="alternate" hreflang="${code}-${code.toUpperCase()}" href="${
+                       originUrl + langPath
+                     }/${pageUrl}" />`;
+                   })
+                   .join('\n')
+               : '';
+
            return translations
              .map((translation) => {
                const code = translation.languages_code.code;
                const langPath = code === DEFAULT_LANG ? '' : `/${code}`;
 
-               const pageUrl =
-                 page.url[page.url.length - 1] === '/'
-                   ? page.url.slice(0, page.url.length - 1)
-                   : page.url;
-
                return `<url>
                         <loc>${`${originUrl + langPath}/${pageUrl}`}</loc>
+                        <lastmod>${
+                          page.date_updated || page.date_created
+                        }</lastmod>
+                        ${xHtmlLinks}
                     </url>`;
              })
              .join('');
