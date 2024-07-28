@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { useTranslation } from 'next-i18next';
 
 import cn from '@/lib/cn';
@@ -14,7 +15,6 @@ import { mut, useMut } from '@/cms/mut';
 
 import { socialIcons } from './components/ContactSection';
 import { SocialMedia } from './components/SocialMedia';
-import Link from 'next/link';
 
 export const FooterSimple = () => {
   const { FooterLinks, FooterLayout, locale, CompanyDetails } = useSharedData();
