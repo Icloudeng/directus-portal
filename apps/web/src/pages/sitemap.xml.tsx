@@ -50,7 +50,7 @@ function generateSiteMap(
 
                      return `<xhtml:link rel="alternate" hreflang="${code}" href="${
                        originUrl + langPath
-                     }/${pageUrl}" />`;
+                     }/-/${pageUrl}" />`;
                    })
                    .join('\n')
                : '';
@@ -61,7 +61,7 @@ function generateSiteMap(
                const langPath = code === DEFAULT_LANG ? '' : `/${code}`;
 
                return `<url>
-                        <loc>${`${originUrl + langPath}/${pageUrl}`}</loc>
+                        <loc>${`${originUrl + langPath}/-/${pageUrl}`}</loc>
                         <lastmod>${
                           page.date_updated || page.date_created
                         }</lastmod>
