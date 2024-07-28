@@ -10,6 +10,8 @@
       - repository_url
       - company_domain
 
+    domain_without_www: null
+
   vars_files:
     - vars/main.yml
 
@@ -30,6 +32,11 @@
       apt:
         upgrade: dist
         update_cache: yes
+
+    - name: Set domain without www
+      set_fact:
+        domain_without_www: "{{ domain | regex_replace('^www\\.', '') }}"
+      when: domain is regex('^www\\.')
 
   environment:
     APP_ENV: "{{ app_env }}"

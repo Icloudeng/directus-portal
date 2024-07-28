@@ -102,13 +102,31 @@ server {
     include nginxconfig.io/general.conf;
 }
 
-# server {
-#   listen        443 ssl http2;
-#   listen        [::]:443 ssl http2;
-#   server_name   {{ domain }};
-#
-#   return 302 http://www.{{ domain }};
-# }
+{% if domain_without_www %}
+server {
+  listen        80;
+  listen        [::]:80;
+  server_name   {{ domain_without_www }};
+  include       nginxconfig.io/letsencrypt.conf;
+
+  location / {
+     return 302 http://www.{{ domain_without_www }};
+  }
+}
+{% endif %}
+
+
+
+{% if domain_without_www and letsencrypt %}
+server {
+  listen        443 ssl http2;
+  listen        [::]:443 ssl http2;
+  server_name   {{ domain_without_www }};
+
+  return 302 https://www.{{ domain_without_www }};
+}
+{% endif %}
+
 
 
 {% if letsencrypt %}
