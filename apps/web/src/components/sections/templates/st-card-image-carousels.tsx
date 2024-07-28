@@ -5,7 +5,7 @@ import type {
 import Image from 'next/legacy/image';
 import { useTranslation } from 'next-i18next';
 
-import clsxm from '@/lib/clsxm';
+import cn from '@/lib/cn';
 
 import {
   DotButton,
@@ -88,7 +88,7 @@ function CarouselItem({
   return (
     <div className='snap-center w-full'>
       <div
-        className={clsxm(
+        className={cn(
           `relative flex-shrink-0 max-w[95vw] w-full overflow-hidden rounded-3xl scl transition-all duration-500`,
           !active ? '' : 'scale-[.85]'
         )}

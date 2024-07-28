@@ -1,7 +1,7 @@
 import { NavbarLinkSubmenu, NavbarLinkSubmenuItem } from '@packages/contracts';
 import React from 'react';
 
-import clsxm from '@/lib/clsxm';
+import cn from '@/lib/cn';
 
 import { HasSvgText } from '@/components/ui/HasSvgText';
 import UnstyledLink from '@/components/ui/links/UnstyledLink';
@@ -16,20 +16,20 @@ export const Submenu = React.memo(({ data }: { data: NavbarLinkSubmenu }) => {
 
   return (
     <div
-      className={clsxm(
+      className={cn(
         `flex w-[15rem] p-4`,
         featured ? 'flex-col' : 'items-start justify-between bg-white'
       )}
     >
       <div
-        className={clsxm(
+        className={cn(
           `flex flex-col w-full`,
           featured ? 'items-start h-full' : 'items-center'
         )}
       >
         {groupName && (
           <span
-            className={clsxm(
+            className={cn(
               `text-sm text-gray-300 mt-1 mb-4 font-semibold`,
               featured && 'font-bold underline underline-offset-8'
             )}
@@ -66,7 +66,7 @@ const SubmenuItem = ({
     <UnstyledLink
       href={url}
       target={external ? '_blank' : undefined}
-      className={clsxm(
+      className={cn(
         'p-3 pl-2 flex items-start rounded-lg w-full',
         `animated-underline`,
         featured ? 'hover:bg-primary-100' : 'hover:bg-gray-50 navbar__link-icon'

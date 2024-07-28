@@ -1,87 +1,64 @@
-import { FooterBottom } from '@packages/contracts';
-import { useTranslation } from 'next-i18next';
 import { FaCcMastercard, FaCcPaypal, FaCcVisa } from 'react-icons/fa';
 
 import UnstyledLink from '@/components/ui/links/UnstyledLink';
 
 import { COMPANY_NAME } from '@/app/constant/env';
 import { useSharedData } from '@/app/store';
+import { useMut } from '@/cms/mut';
 
 export const TermsConditions = () => {
-  const { t } = useTranslation();
   const { CompanyDetails, FooterLayout } = useSharedData();
-  const bottom_footer = FooterLayout?.bottom_footer || [];
 
-  const itemValues = [
-    'company_name',
-    'terms_services',
-    'privacy',
-    'use_cookies',
-    'payment_modes',
-  ] as FooterBottom[];
+  const footer_layout = useMut(
+    FooterLayout,
+    undefined,
+    'bottom_footer_translations'
+  );
 
-  const newItems = bottom_footer.reduce((acc, v) => {
-    if (!itemValues.includes(v)) {
-      acc.push(v);
-    }
-    return acc;
-  }, [] as string[]);
+  const links = footer_layout?.bottom_footer_translations?.links || [];
+
+  const has_company_name =
+    footer_layout?.show_bottom_footer_company_name === true;
+
+  const has_payment_modes =
+    footer_layout?.show_bottom_footer_payment_modes === true;
+
+  if (!links.length && !has_company_name && !has_payment_modes) {
+    return <></>;
+  }
 
   return (
     <div className='flex items-end sm:items-center space-x-32 pt-10'>
       <div className='bottom-footer flex flex-col items-start gap-2 md:flex-row md:items-center md:gap-0 md:divide-x-2'>
-        {bottom_footer.includes('company_name') && (
-          <span className='px-2 text-xs hover:text-primary-400'>
+        {has_company_name && (
+          <UnstyledLink
+            href='/'
+            className='px-2 text-xs hover:text-primary-400'
+          >
             &#169; {new Date().getFullYear()}{' '}
-            <UnstyledLink href='#'>
-              {CompanyDetails?.company_name || COMPANY_NAME}
-            </UnstyledLink>
-          </span>
-        )}
-
-        {bottom_footer.includes('terms_services') && (
-          <UnstyledLink
-            href='#'
-            className='px-2 text-xs hover:text-primary-400'
-          >
-            {t('Terms of services')}
+            {CompanyDetails?.company_name || COMPANY_NAME}
           </UnstyledLink>
         )}
 
-        {bottom_footer.includes('privacy') && (
+        {links?.map((link, i) => (
           <UnstyledLink
-            href='#'
+            key={i}
+            href={link.url}
+            target={link.external ? '_blank' : ''}
             className='px-2 text-xs hover:text-primary-400'
           >
-            {t('TERM_PRIVACY')}
+            {link.name}
           </UnstyledLink>
-        )}
-
-        {bottom_footer.includes('use_cookies') && (
-          <UnstyledLink
-            href='#'
-            className='px-2 text-xs hover:text-primary-400'
-          >
-            {t('Use of Cookies')}
-          </UnstyledLink>
-        )}
+        ))}
       </div>
 
-      {bottom_footer.includes('payment_modes') && (
+      {has_payment_modes && (
         <span className='flex flex-col xs:flex-row items-center gap-7 '>
           <FaCcMastercard fontSize={22} />
           <FaCcVisa fontSize={22} />
           <FaCcPaypal fontSize={22} />
         </span>
       )}
-
-      {newItems.map((v, i) => {
-        return (
-          <span key={i} className='px-2 text-xs hover:text-primary-400'>
-            {v}
-          </span>
-        );
-      })}
     </div>
   );
 };

@@ -1,6 +1,6 @@
 import type { ST_Value, STemplates_Props } from '@packages/contracts';
 
-import clsxm from '@/lib/clsxm';
+import cn from '@/lib/cn';
 
 import { HasSvgText } from '@/components/ui/HasSvgText';
 
@@ -12,7 +12,7 @@ export function ST_ValuesFC({ items }: STemplates_Props<ST_Value>) {
 
   return (
     <div
-      className={clsxm(
+      className={cn(
         'grid grid-cols-1 sd:grid-cols-2 gap-16 lg:gap-3',
         first.item.rows === 'dynamic' && ['lg:flex items-center justify-center']
       )}

@@ -1,7 +1,7 @@
 import { useTranslation } from 'next-i18next';
 import { HTMLInputTypeAttribute, useId } from 'react';
 
-import clsxm from '@/lib/clsxm';
+import cn from '@/lib/cn';
 
 import { useErrorInput } from '@/app/hooks/useErrorInput';
 
@@ -35,7 +35,7 @@ function InputField({
   const id = useId();
 
   return (
-    <div className={clsxm('w-full', className)}>
+    <div className={cn('w-full', className)}>
       <label
         htmlFor={inputID + id}
         className='block text-sm font-medium text-gray-700 capitalize'
@@ -52,14 +52,14 @@ function InputField({
           required={required}
           pattern={pattern}
           defaultValue={defaultValue}
-          className={clsxm(
+          className={cn(
             `block w-full rounded-sm bg-gray-50 py-3 px-4 focus:border-primary-400 focus:ring-primary-400 sm:text-sm`,
             error ? 'border-red-400' : 'border-gray-300'
           )}
           placeholder={inputPlaceholder}
         />
         <span
-          className={clsxm(
+          className={cn(
             `text-red-400 text-sm font-light inline-block`,
             error ? 'opacity-100' : 'opacity-0 hidden'
           )}

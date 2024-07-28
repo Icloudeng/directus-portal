@@ -3,7 +3,7 @@ import round from 'lodash/round';
 import { useTranslation } from 'next-i18next';
 import { useCallback, useState } from 'react';
 
-import clsxm from '@/lib/clsxm';
+import cn from '@/lib/cn';
 
 import { ReactSelector } from '@/components/ui/ReactSelector';
 
@@ -142,7 +142,7 @@ function Plan({
       </td>
       <td className='min-w-[5rem] py-2 pr-2 text-xs leading-6 whitespace-normal border-b border-slate-100'>
         <span
-          className={clsxm(
+          className={cn(
             `p-1 text-white rounded-md capitalize`,
             {
               basic: 'bg-slate-400',

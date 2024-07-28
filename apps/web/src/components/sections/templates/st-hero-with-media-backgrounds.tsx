@@ -6,7 +6,7 @@ import Image from 'next/legacy/image';
 import { Router } from 'next/router';
 import { useEffect } from 'react';
 
-import clsxm from '@/lib/clsxm';
+import cn from '@/lib/cn';
 
 import {
   DotButton,
@@ -164,14 +164,14 @@ function STHeroWithMediaBackground({
   return (
     <div className='h-full w-full shrink-0 grow-0 basis-full relative'>
       <div
-        className={clsxm(
+        className={cn(
           'absolute top-0 left-0 w-full h-full overflow-hidden',
           'after:content-[""] after:absolute after:w-full after:h-full after:bg-black after:bg-opacity-60'
         )}
       >
         {hasVideo && (
           <video
-            className={clsxm(
+            className={cn(
               'min-w-full min-h-full absolute object-cover',
               '-translate-x-2/4 -translate-y-2/4 left-2/4 top-2/4'
             )}
@@ -185,7 +185,7 @@ function STHeroWithMediaBackground({
 
         {hasImage && (
           <Image
-            className={clsxm(
+            className={cn(
               'min-w-full min-h-full absolute object-cover inset-0 ',
               animated && [
                 'transition-transform duration-[10s] ease-out',
@@ -202,7 +202,7 @@ function STHeroWithMediaBackground({
       </div>
 
       <div
-        className={clsxm(
+        className={cn(
           'x-container space-y-2 flex flex-col justify-center items-start',
           'absolute inset-0 z-10 h-full'
         )}

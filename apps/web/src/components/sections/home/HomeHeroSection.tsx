@@ -3,7 +3,7 @@ import Image from 'next/legacy/image';
 import { useCallback, useMemo, useState } from 'react';
 import { TypeAnimation } from 'react-type-animation';
 
-import clsxm from '@/lib/clsxm';
+import cn from '@/lib/cn';
 
 import ButtonLink from '@/components/ui/links/ButtonLink';
 import NextImage from '@/components/ui/NextImage';
@@ -40,10 +40,10 @@ export const HomeHeroSection = ({ data }: { data: MDHomePageHero }) => {
   }, [trailing_titles, onTypingProgress]);
 
   const contentText = (
-    <div className={clsxm('hero-left sd:w-1/2', !hasImage && 'sd:w-3/4')}>
+    <div className={cn('hero-left sd:w-1/2', !hasImage && 'sd:w-3/4')}>
       <div className='flex flex-col items-center sd:items-start gap-4 sm:gap-7 mb-6'>
         <h1
-          className={clsxm(
+          className={cn(
             'font-extrabold text-4xl sd:text-2xl sm:text-[2.3rem] -mb-4 text-center sd:text-start md:leading-[3rem]',
             !translations?.title && trailingTitles.length === 0 && 'hidden',
             !hasImage && 'sd:text-center w-full'
@@ -69,7 +69,7 @@ export const HomeHeroSection = ({ data }: { data: MDHomePageHero }) => {
 
       {translations?.description && (
         <p
-          className={clsxm(
+          className={cn(
             'text-gray-300 text-center sd:text-start leading-[1.5] sm:text-[1rem] md:text-[20px] sd:w-[95%]',
             !hasImage && 'sd:text-center block w-full'
           )}
@@ -80,7 +80,7 @@ export const HomeHeroSection = ({ data }: { data: MDHomePageHero }) => {
 
       {buttons.length > 0 && (
         <div
-          className={clsxm(
+          className={cn(
             'flex flex-wrap gap-3 mt-6 justify-center sd:justify-start',
             !hasImage && 'sd:justify-center'
           )}
@@ -108,7 +108,7 @@ export const HomeHeroSection = ({ data }: { data: MDHomePageHero }) => {
     <>
       {images.length > 0 ? (
         <div
-          className={clsxm(
+          className={cn(
             'relative hero-right flex items-center justify-end h-80 max-w-xs sd:max-w-full w-full sd:w-1/2',
             disposition === 'text_left' ? 'justify-end' : 'justify-start'
           )}
@@ -125,7 +125,7 @@ export const HomeHeroSection = ({ data }: { data: MDHomePageHero }) => {
                 return (
                   <div
                     key={id}
-                    className={clsxm(
+                    className={cn(
                       'absolute transition-opacity duration-300 inset-0',
                       activated ? 'opacity-100' : 'opacity-0'
                     )}
@@ -149,7 +149,7 @@ export const HomeHeroSection = ({ data }: { data: MDHomePageHero }) => {
         <>
           {image?.src && (
             <div
-              className={clsxm(
+              className={cn(
                 'hero-right flex items-center  max-w-xs sd:max-w-full sd:w-1/2',
                 disposition === 'text_left' ? 'justify-end' : 'justify-start'
               )}
@@ -171,7 +171,7 @@ export const HomeHeroSection = ({ data }: { data: MDHomePageHero }) => {
 
   return (
     <div
-      className={clsxm(
+      className={cn(
         'x-container flex flex-col sd:flex-row items-center justify-between text-white sm:px-7 md:px-9 gap-3',
         !hasImage && 'justify-center'
       )}

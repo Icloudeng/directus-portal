@@ -1,7 +1,6 @@
-import { FooterBottom } from '@packages/contracts';
 import { useTranslation } from 'next-i18next';
 
-import clsxm from '@/lib/clsxm';
+import cn from '@/lib/cn';
 
 import Button from '@/components/ui/buttons/Button';
 import UnstyledLink from '@/components/ui/links/UnstyledLink';
@@ -11,30 +10,22 @@ import { COMPANY_NAME } from '@/app/constant/env';
 import { useErrorInput } from '@/app/hooks/useErrorInput';
 import { useFormSubmit } from '@/app/hooks/useFormSubmit';
 import { useSharedData } from '@/app/store';
-import { mut } from '@/cms/mut';
+import { mut, useMut } from '@/cms/mut';
 
 import { socialIcons } from './components/ContactSection';
 import { SocialMedia } from './components/SocialMedia';
+import Link from 'next/link';
 
 export const FooterSimple = () => {
   const { FooterLinks, FooterLayout, locale, CompanyDetails } = useSharedData();
+  const footer_layout = useMut(
+    FooterLayout,
+    undefined,
+    'bottom_footer_translations'
+  );
+
   const socials = CompanyDetails?.socials || [];
-  const bottom_footer = FooterLayout?.bottom_footer || [];
-
-  const itemValues = [
-    'company_name',
-    'terms_services',
-    'privacy',
-    'use_cookies',
-    'payment_modes',
-  ] as FooterBottom[];
-
-  const newItems = bottom_footer.reduce((acc, v) => {
-    if (!itemValues.includes(v)) {
-      acc.push(v);
-    }
-    return acc;
-  }, [] as string[]);
+  const links = footer_layout?.bottom_footer_translations?.links || [];
 
   return (
     <footer className='sm:px-10 py-8 text-gray-300 z-0'>
@@ -108,16 +99,21 @@ export const FooterSimple = () => {
                 © {new Date().getFullYear()}{' '}
               </UnstyledLink>
 
-              {newItems.map((v, i) => {
+              {links.map((link, i) => {
                 return (
-                  <span key={i} className='px-2 text-xs hover:text-primary-400'>
-                    {v}
-                  </span>
+                  <Link
+                    href={link.url}
+                    key={i}
+                    className='px-2 text-xs hover:text-primary-400'
+                    target={link.external ? '_blank' : ''}
+                  >
+                    {link.name}
+                  </Link>
                 );
               })}
             </p>
 
-            {bottom_footer.includes('company_name') && (
+            {FooterLayout?.show_bottom_footer_company_name && (
               <span className='sm:ml-auto sm:mt-0 mt-2 sm:w-auto w-full sm:text-left text-center text-sm'>
                 {CompanyDetails?.company_name || COMPANY_NAME}
               </span>
@@ -149,7 +145,7 @@ function Subscription() {
           placeholder={t('Enter your email')}
           id='footer-field'
           name='footer-field'
-          className={clsxm(
+          className={cn(
             'w-full bg-transparent placeholder-gray-300 bg-opacity-50 rounded-sm border border-primary-400 focus:ring-1 focus:bg-transparent',
             'focus:ring-primary-400 focus:border-primary-500 text-base outline-none py-1 px-3 leading-8 transition-colors duration-200 ease-in-out'
           )}
@@ -168,7 +164,7 @@ function Subscription() {
       <Button
         disabled={loading}
         type='submit'
-        className={clsxm(
+        className={cn(
           'text-white bg-primary-400 border-0 py-2 px-6 focus:outline-none hover:bg-primary-500 rounded-sm',
           'inline-flex items-center space-x-2'
         )}

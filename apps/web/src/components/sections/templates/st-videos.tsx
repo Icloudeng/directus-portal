@@ -1,6 +1,6 @@
 import { MDWithAsset, ST_Video, STemplates_Props } from '@packages/contracts';
 
-import clsxm from '@/lib/clsxm';
+import cn from '@/lib/cn';
 
 import { HasMediaPlayer } from '@/components/ui/HasMediaPlayer';
 
@@ -34,7 +34,7 @@ function HasPlayer({
   return (
     <div className='video-wrapper w-full mb-5'>
       <div
-        className={clsxm(
+        className={cn(
           'video-container relative w-full',
           (!media?.src || media_url) && 'h-[15rem] ss:h-[27rem] md:h-[37rem]',
           'z-[1]'

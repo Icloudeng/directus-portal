@@ -1,10 +1,10 @@
-import clsxm from '@/lib/clsxm';
+import cn from '@/lib/cn';
 
 export function Spinner(props: { className?: string }) {
   return (
     <svg
       aria-hidden='true'
-      className={clsxm(
+      className={cn(
         'mr-2 w-4 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-primary-600',
         props.className
       )}

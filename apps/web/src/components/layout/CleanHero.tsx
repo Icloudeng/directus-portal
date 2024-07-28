@@ -1,4 +1,4 @@
-import clsxm from '@/lib/clsxm';
+import cn from '@/lib/cn';
 
 export function CleanHero({
   title,
@@ -11,7 +11,7 @@ export function CleanHero({
 }) {
   return (
     <div
-      className={clsxm(
+      className={cn(
         'flex max-h-[1000px] bg-[#f5f7fa] -mt-1',
         !noBottomSpace ? ['min-h-[350px]'] : ['pt-[175px] pb-2']
       )}

@@ -94,15 +94,23 @@ export type MDFooterLayout = {
   show_footer_links: boolean;
   show_footer_mailing_subscription: boolean;
   show_top_footer: boolean;
+  show_bottom_footer_payment_modes: boolean;
+  show_bottom_footer_company_name: boolean;
   footer_type: "full_footer" | "simple_footer";
-  bottom_footer: FooterBottom[];
-} & MDWithTranslation<{
-  titles: { title: string; color: string }[];
-  buttons: (Omit<RepeaterBtn, "variant"> & {
-    variant?: ButtonVariant | "text";
-  })[];
-}> &
-  Omit<DRTStatus, "status">;
+  top_footer_translations: MDWithTranslation<{
+    titles: { title: string; color: string }[];
+    buttons: (Omit<RepeaterBtn, "variant"> & {
+      variant?: ButtonVariant | "text";
+    })[];
+  }>["translations"];
+  bottom_footer_translations: MDWithTranslation<{
+    links: {
+      name: string;
+      url: string;
+      external?: boolean;
+    }[];
+  }>["translations"];
+} & Omit<DRTStatus, "status">;
 
 type MDFooterLinkItemField = {
   id: ID;

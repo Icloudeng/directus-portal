@@ -1,7 +1,7 @@
 import React from 'react';
 import { PropsWithChildren, useState } from 'react';
 
-import clsxm from '@/lib/clsxm';
+import cn from '@/lib/cn';
 
 import Button from '@/components/ui/buttons/Button';
 
@@ -33,7 +33,7 @@ export function MediaTabs({ children }: PropsWithChildren) {
               <Button
                 key={index}
                 onClick={() => setActive(index)}
-                className={clsxm(
+                className={cn(
                   `btn-tab-direction py-3 font-semibold rounded-md border-none bg-[#f5f7fa] text-dark hover:bg-primary-400`,
                   index === active && 'btn-tab-active'
                 )}
@@ -76,7 +76,7 @@ export function MediaTabsPane({
     </>
   );
   return (
-    <div className={clsxm('relative w-full', !active && 'hidden')}>
+    <div className={cn('relative w-full', !active && 'hidden')}>
       {disposition === 'text_bottom' ? (
         <>
           {children}

@@ -2,7 +2,7 @@ import { Tab, TabGroup, TabList, TabPanel, TabPanels } from '@headlessui/react';
 import { ST_ContentStepper, STemplates_Props } from '@packages/contracts';
 import { Fragment } from 'react';
 
-import clsxm from '@/lib/clsxm';
+import cn from '@/lib/cn';
 
 import { useSharedData } from '@/app/store';
 import { mut } from '@/cms/mut';
@@ -15,7 +15,7 @@ export function ST_ContentSteppersFC({
   return (
     <TabGroup vertical>
       <TabList
-        className={clsxm(
+        className={cn(
           'items-center justify-center w-full space-y-4 sm:flex sm:space-x-8 sm:space-y-0 mb-8 group',
           'border border-solid border-gray-200 rounded-2xl p-3'
         )}
@@ -28,14 +28,14 @@ export function ST_ContentSteppersFC({
               {({ selected, hover }) => {
                 return (
                   <button
-                    className={clsxm(
+                    className={cn(
                       'flex items-center text-primary-600 space-x-2.5 focus:outline-none transition',
                       'text-gray-500',
                       (selected || hover) && 'text-primary-600/80'
                     )}
                   >
                     <span
-                      className={clsxm(
+                      className={cn(
                         'flex items-center justify-center w-8 h-8 border rounded-full shrink-0',
                         'border-gray-500',
                         selected && 'border-primary-600'
@@ -63,7 +63,7 @@ export function ST_ContentSteppersFC({
           return (
             <TabPanel
               key={id}
-              className={clsxm(
+              className={cn(
                 'px-0 overflow-hidden prose mb-4 w-full max-w-none'
               )}
               dangerouslySetInnerHTML={{

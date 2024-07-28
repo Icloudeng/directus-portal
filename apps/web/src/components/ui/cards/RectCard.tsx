@@ -1,7 +1,7 @@
 import Image from 'next/legacy/image';
 import { ReactNode } from 'react';
 
-import clsxm from '@/lib/clsxm';
+import cn from '@/lib/cn';
 
 type IRectCard = {
   cardText?: string;
@@ -12,7 +12,7 @@ type IRectCard = {
 export const RectCard = ({ cardText, cardLogo, className }: IRectCard) => {
   return (
     <div
-      className={clsxm(
+      className={cn(
         'flex items-center justify-center bg-[#f5f7fa] gap-2 shadow-md max-w-[12rem] min-w-[12rem] p-6 rounded-lg mr-8',
         className
       )}

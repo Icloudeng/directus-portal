@@ -1,6 +1,6 @@
 import { ST_FeatureCard, STemplates_Props } from '@packages/contracts';
 
-import clsxm from '@/lib/clsxm';
+import cn from '@/lib/cn';
 
 import { ParseSvgText } from '@/components/ui/HasSvgText';
 
@@ -21,7 +21,7 @@ function STFeatureCard(props: { item: ST_FeatureCard }) {
 
   return (
     <div
-      className={clsxm(
+      className={cn(
         'group relative w-full bg-gray-100 rounded-2xl p-4 transition-all duration-500 hover:bg-primary-600 hover:bg-opacity-80'
       )}
     >

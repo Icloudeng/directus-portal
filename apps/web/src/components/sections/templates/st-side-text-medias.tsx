@@ -1,6 +1,6 @@
 import { ST_SideTextMedia, STemplates_Props } from '@packages/contracts';
 
-import clsxm from '@/lib/clsxm';
+import cn from '@/lib/cn';
 
 import { HasMediaPlayer } from '@/components/ui/HasMediaPlayer';
 import ButtonLink from '@/components/ui/links/ButtonLink';
@@ -48,7 +48,7 @@ function Content({ item }: ST_SideTextMedia) {
 
   return (
     <div
-      className={clsxm(
+      className={cn(
         `flex lg:justify-between flex-col mb-5 lg:gap-6`,
         sided && [
           disposition === 'text_right' ? 'lg:flex-row-reverse' : 'lg:flex-row',
@@ -57,13 +57,13 @@ function Content({ item }: ST_SideTextMedia) {
       )}
     >
       <div
-        className={clsxm(
+        className={cn(
           `w-full lg:mx-0 justify-center flex items-center flex-col mx-auto`,
           sided ? 'lg:w-1/2 lg:items-start' : 'lg:w-4/5'
         )}
       >
         <h3
-          className={clsxm(
+          className={cn(
             `text-center leading-10 text-[30px] md:text-[40px] font-bold`,
             sided && 'lg:text-start'
           )}
@@ -72,7 +72,7 @@ function Content({ item }: ST_SideTextMedia) {
         </h3>
         <div className='mt-[30px]'>
           <p
-            className={clsxm(
+            className={cn(
               `text-center text-[18px] ss:text-[20px] font-light leading-[1.64]`,
               sided && 'lg:text-start'
             )}
@@ -80,11 +80,11 @@ function Content({ item }: ST_SideTextMedia) {
             {translations?.description}
           </p>
         </div>
-        <div className={clsxm(sided && 'lg:block')}>{buttonNode}</div>
+        <div className={cn(sided && 'lg:block')}>{buttonNode}</div>
       </div>
 
       <div
-        className={clsxm(
+        className={cn(
           `relative w-full mt-4 lg:flex video-plyr h-[15rem] ss:min-h-[27rem] md:min-h-[29rem]`,
           sided ? 'lg:w-1/2' : 'lg:w-4/5'
         )}
@@ -92,7 +92,7 @@ function Content({ item }: ST_SideTextMedia) {
         <HasMediaPlayer media={media} media_url={media_url} />
       </div>
 
-      <div className={clsxm(`block`, sided && 'lg:hidden')}>{buttonNode}</div>
+      <div className={cn(`block`, sided && 'lg:hidden')}>{buttonNode}</div>
     </div>
   );
 }

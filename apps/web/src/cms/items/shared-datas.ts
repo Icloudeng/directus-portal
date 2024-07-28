@@ -95,13 +95,17 @@ const gql_query = jsonToGraphQLQuery({
       show_footer_contacts: true,
       show_footer_links: true,
       show_footer_mailing_subscription: true,
-      bottom_footer: true,
+      show_bottom_footer_payment_modes: true,
+      show_bottom_footer_company_name: true,
       show_top_footer: true,
       footer_type: true,
-      ...qWithTranslations({
+      top_footer_translations: qWithTranslations({
         titles: true,
         buttons: true,
-      }),
+      }).translations,
+      bottom_footer_translations: qWithTranslations({
+        links: true,
+      }).translations,
     },
     [CMS_MODELS.company_details]: {
       ...qWithStatus,

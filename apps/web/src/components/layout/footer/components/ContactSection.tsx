@@ -9,7 +9,7 @@ import {
 } from 'react-icons/fa';
 import { GoMail } from 'react-icons/go';
 
-import clsxm from '@/lib/clsxm';
+import cn from '@/lib/cn';
 
 import UnstyledLink from '@/components/ui/links/UnstyledLink';
 
@@ -36,7 +36,7 @@ export const ContactSection = (props: { className?: string }) => {
 
   return (
     <div
-      className={clsxm(
+      className={cn(
         'middle-right text-sm flex-1 flex flex-col gap-5',
         props.className
       )}

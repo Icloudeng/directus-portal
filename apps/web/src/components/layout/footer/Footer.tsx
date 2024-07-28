@@ -1,6 +1,6 @@
 import React from 'react';
 
-import clsxm from '@/lib/clsxm';
+import cn from '@/lib/cn';
 
 import ButtonLink from '@/components/ui/links/ButtonLink';
 
@@ -24,8 +24,6 @@ export const Footer = () => {
     FooterLayout?.show_footer_contacts === false &&
     FooterLayout.show_footer_links !== false;
 
-  const bottom_footer = FooterLayout?.bottom_footer || [];
-
   return (
     <footer className='sm:px-10 py-10 text-gray-300 z-0'>
       <div className='x-container-fluid flex flex-col gap-5 divide-y-2 divide-primary-900'>
@@ -33,14 +31,14 @@ export const Footer = () => {
 
         {showSection && (
           <div
-            className={clsxm(
+            className={cn(
               'flex items-start py-10 sm:divide-x-[1px] sm:divide-primary-300 text-sm w-full',
               'flex-col-reverse sm:flex-row sm:justify-between pb-3 sm:pb-0 gap-5'
             )}
           >
             {FooterLayout?.show_footer_contacts === true && (
               <ContactSection
-                className={clsxm(
+                className={cn(
                   'min-w-40 w-full sm:w-auto',
                   'border-t-2 border-t-primary-900 sm:border-0 sm:border-t-none pt-5 sm:pt-0'
                 )}
@@ -49,7 +47,7 @@ export const Footer = () => {
 
             {FooterLayout?.show_footer_links !== false && (
               <div
-                className={clsxm(
+                className={cn(
                   'middle-left grid grid-cols-1 ss:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:flex items-start',
                   'gap-20 sm:flex-[2.7] flex-[3.6]',
                   'sm:ml-3 sm:px-4',
@@ -67,10 +65,12 @@ export const Footer = () => {
             )}
           </div>
         )}
+
         {FooterLayout?.show_footer_mailing_subscription === true && (
           <Subscribe />
         )}
-        {bottom_footer.length > 0 && <TermsConditions />}
+
+        <TermsConditions />
       </div>
     </footer>
   );
@@ -78,8 +78,9 @@ export const Footer = () => {
 
 function FooterTopSection() {
   const { FooterLayout } = useSharedData();
-  const layout = useMut(FooterLayout);
-  const translations = layout?.translations;
+  const layout = useMut(FooterLayout, undefined, 'top_footer_translations');
+
+  const translations = layout?.top_footer_translations;
 
   const texts = translations?.titles || [];
   const buttons = translations?.buttons || [];

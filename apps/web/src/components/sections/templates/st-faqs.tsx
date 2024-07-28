@@ -6,7 +6,7 @@ import {
 import { ST_FAQ, STemplates_Props } from '@packages/contracts';
 import { useEffect, useRef } from 'react';
 
-import clsxm from '@/lib/clsxm';
+import cn from '@/lib/cn';
 
 import { useMut } from '@/cms/mut';
 
@@ -31,7 +31,7 @@ function STFAQ(props: { item: ST_FAQ; index: number }) {
             <AutoClose open={open} close={close} />
 
             <div
-              className={clsxm(
+              className={cn(
                 'accordion py-8 px-6 border-b border-solid border-gray-200 transition-all duration-500 mb-2',
                 'rounded-2xl hover:bg-primary-50 hover:bg-opacity-50',
                 open && ['bg-primary-50 bg-opacity-40 active']
@@ -39,7 +39,7 @@ function STFAQ(props: { item: ST_FAQ; index: number }) {
               id={`basic-heading-with-arrow-${props.index}`}
             >
               <DisclosureButton
-                className={clsxm(
+                className={cn(
                   'accordion-toggle group inline-flex items-center justify-between leading-8 text-gray-900 w-full transition duration-500 text-left',
                   'hover:text-primary-600',
                   open && ['font-medium text-primary-600']
@@ -48,7 +48,7 @@ function STFAQ(props: { item: ST_FAQ; index: number }) {
               >
                 <h5>{item.translations?.title}</h5>
                 <svg
-                  className={clsxm(
+                  className={cn(
                     'text-gray-500 transition duration-500 group-hover:text-primary-600',
                     open && ['primary-600 rotate-180']
                   )}
@@ -72,7 +72,7 @@ function STFAQ(props: { item: ST_FAQ; index: number }) {
                 transition
                 id={`basic-collapse-with-arrow-${props.index}`}
                 aria-labelledby={`basic-heading-with-arrow-${props.index}`}
-                className={clsxm(
+                className={cn(
                   'accordion-content px-0 overflow-hidden prose mb-4 w-full',
                   'origin-top transition duration-200 ease-in-out data-[closed]:-translate-y-1 data-[closed]:opacity-0'
                 )}

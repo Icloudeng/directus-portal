@@ -1,7 +1,7 @@
 import { useTranslation } from 'next-i18next';
 import { useId } from 'react';
 
-import clsxm from '@/lib/clsxm';
+import cn from '@/lib/cn';
 
 import { useErrorInput } from '@/app/hooks/useErrorInput';
 
@@ -29,7 +29,7 @@ export const TextArea = ({
   const id = useId();
 
   return (
-    <div className={clsxm('w-full', className)}>
+    <div className={cn('w-full', className)}>
       <label
         htmlFor={inputID + id}
         className='block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400'

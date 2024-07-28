@@ -16,7 +16,7 @@ import {
 import dynamic from 'next/dynamic';
 
 import { useRehypeToc } from '@/app/hooks/useRehypeToc';
-import clsxm from '@/lib/clsxm';
+import cn from '@/lib/cn';
 import { hasKroki } from './kroki-utils';
 import { Highlighter } from './highlighter';
 
@@ -81,7 +81,7 @@ const Pre: keyof JSX.IntrinsicElements | PreComponent = ({
   return (
     <pre
       {...props}
-      className={clsxm(
+      className={cn(
         className,
         withKrokiC && ['bg-transparent m-0 p-0 leading-none']
       )}
@@ -93,7 +93,7 @@ export function MarkdownContent({ children, toc = false, className }: Props) {
   const { tocParent, tocOptions, rehypeToc, rehypeSlug } = useRehypeToc(toc);
 
   return (
-    <div className={clsxm(`w-full`, toc && 'lg:flex', className)}>
+    <div className={cn(`w-full`, toc && 'lg:flex', className)}>
       {toc && (
         <div className='lg:w-[30%] lg:mt-10'>
           <div
@@ -102,7 +102,7 @@ export function MarkdownContent({ children, toc = false, className }: Props) {
           />
         </div>
       )}
-      <div className={clsxm(toc && 'lg:w-[70%]')}>
+      <div className={cn(toc && 'lg:w-[70%]')}>
         <ReactMarkdown
           components={{
             code: Code,

@@ -1,7 +1,7 @@
 import { MDWithAsset, RepeaterBtn } from '@packages/contracts';
 import Image from 'next/legacy/image';
 
-import clsxm from '@/lib/clsxm';
+import cn from '@/lib/cn';
 
 import ButtonLink from '../links/ButtonLink';
 import UnstyledLink from '../links/UnstyledLink';
@@ -38,7 +38,7 @@ export function Card({
       {!flexible_image && image?.src && (
         <div className='relative flex-1 min-h-[202px] w-full mb-3'>
           <Image
-            className={clsxm(
+            className={cn(
               `image object-cover h-full w-full`,
               border_card ? 'rounded-tl-xl rounded-tr-xl' : ''
             )}
@@ -53,7 +53,7 @@ export function Card({
       {flexible_image && image && (
         <div className='flex-1 w-full mb-3 relative'>
           <Image
-            className={clsxm(
+            className={cn(
               `h-full w-full`,
               border_card ? 'rounded-tl-xl rounded-tr-xl' : ''
             )}
@@ -67,7 +67,7 @@ export function Card({
       )}
 
       <div
-        className={clsxm(
+        className={cn(
           `w-full flex-[1.1] overflow-hidden my-2`,
           border_card ? 'px-5' : 'px-1'
         )}
@@ -83,7 +83,7 @@ export function Card({
 
       {btns.length > 0 && (
         <div
-          className={clsxm(
+          className={cn(
             'my-3 flex flex-wrap justify-between  gap-3',
             border_card ? 'px-5' : 'px-1'
           )}
@@ -109,7 +109,7 @@ export function Card({
 
   return (
     <div
-      className={clsxm(
+      className={cn(
         'relative w-full min-h-[24rem] md:basis-[calc((100%_-_32px)_/_3)]',
         border_card && 'border border-gray-200 shadow-md rounded-xl',
         hover_animation &&

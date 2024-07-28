@@ -9,7 +9,7 @@ import { forwardRef, useCallback, useEffect, useState } from 'react';
 import { GrClose } from 'react-icons/gr';
 import { VscChevronDown } from 'react-icons/vsc';
 
-import clsxm from '@/lib/clsxm';
+import cn from '@/lib/cn';
 
 import { HasSvgText } from '@/components/ui/HasSvgText';
 import ButtonLink from '@/components/ui/links/ButtonLink';
@@ -77,7 +77,7 @@ function Submenu({
     <>
       <li
         onClick={hasMenu ? () => setActive((a) => !a) : undefined}
-        className={clsxm(
+        className={cn(
           'menu-top__item border-b-[1px] px-8 w-full',
           'hover:text-primary-400',
           hasMenu && 'relative dropdown',
@@ -86,7 +86,7 @@ function Submenu({
       >
         <button
           type='button'
-          className={clsxm(
+          className={cn(
             'menu-top__link w-full flex items-center justify-between my-5 text-base font-medium',
             active && ['active']
           )}
@@ -109,7 +109,7 @@ function Submenu({
 
         {hasMenu && (
           <div
-            className={clsxm(
+            className={cn(
               'submenu__mob bg-white pl-3 rounded mb-10',
               !active && ['hidden']
             )}
@@ -163,7 +163,7 @@ export const MobileMenu = forwardRef<HTMLDivElement>((_, ref) => {
     <div
       ref={mergeRefs([ref, targetEl])}
       id='mob--menu-El'
-      className={clsxm(
+      className={cn(
         'mobile__menu xl:hidden translate-x-[40rem]',
         'transition-all duration-500 fixed bg-white ss:max-w-[496px] w-full',
         'top-0 sd:top-[41px] right-0 h-full z-50 shadow-lg ring-1 ring-black ring-opacity-5'

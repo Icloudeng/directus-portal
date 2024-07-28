@@ -20,8 +20,11 @@ export type BooleanValues<TModel> = {
     : string;
 };
 
-export type MDWithTranslation<T = unknown> = {
-  translations: ({
+export type MDWithTranslation<
+  T = unknown,
+  Key extends string = "translations",
+> = {
+  [k in Key]: ({
     id: ID;
     languages_code: { code: string; name: string };
   } & T)[];
@@ -67,8 +70,8 @@ export type QueryWithTranslation<T> = {
   };
 };
 
-export type I_MDWithUserTranslation<T> = {
-  [k in keyof T]: k extends "translations"
+export type I_MDWithUserTranslation<T, Key = "translations"> = {
+  [k in keyof T]: k extends Key
     ? T[k] extends (infer L)[] | undefined
       ? L | undefined
       : never
@@ -84,9 +87,12 @@ export type WithTranslation<T> = T & {
     T[k]}_translations`;
 };
 
-export type MDWithUserTranslation<T> = T extends (infer P)[]
-  ? I_MDWithUserTranslation<P>[]
-  : I_MDWithUserTranslation<T>;
+export type MDWithUserTranslation<
+  T,
+  Key = "translations",
+> = T extends (infer P)[]
+  ? I_MDWithUserTranslation<P, Key>[]
+  : I_MDWithUserTranslation<T, Key>;
 
 export type MDTranslation = {
   [x: string]: string;

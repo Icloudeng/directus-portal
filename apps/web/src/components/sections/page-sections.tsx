@@ -9,7 +9,7 @@ import { CMS_MODELS } from '@packages/contracts';
 import isSvg from 'is-svg';
 import React, { FunctionComponent, useMemo, useRef } from 'react';
 
-import clsxm from '@/lib/clsxm';
+import cn from '@/lib/cn';
 
 import { VALID_CSS } from '@/app/utils/regex';
 import { testHexColor } from '@/app/utils/tests';
@@ -164,7 +164,7 @@ function PageSection({
       )}
 
       <section
-        className={clsxm(
+        className={cn(
           'relative py-10 bg-white isolate page__section',
           classId,
           !item.container && ['overflow-hidden']
@@ -186,7 +186,7 @@ function PageSection({
         )}
 
         <div
-          className={clsxm(
+          className={cn(
             'page__section-container py-10 flex flex-col items-center gap-10',
             item.container && ['x-container ss:px-12']
           )}

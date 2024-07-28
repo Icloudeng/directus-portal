@@ -71,11 +71,11 @@ export function qWithAsset<T extends { [x: string]: MDWithAsset | unknown }>(
 
 export function qWithAssets<T extends { [x: string]: MDWithAsset | unknown }>(
   access_token: string,
-  datas: T[],
+  items: T[],
   imageKey: keyof T = 'image',
   preset?: string | [number, number]
 ): T[] {
-  return datas.map((data) => qWithAsset(access_token, data, imageKey, preset));
+  return items.map((item) => qWithAsset(access_token, item, imageKey, preset));
 }
 
 type Query<T> = {

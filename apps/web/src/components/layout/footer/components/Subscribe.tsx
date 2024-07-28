@@ -1,6 +1,6 @@
 import { useTranslation } from 'next-i18next';
 
-import clsxm from '@/lib/clsxm';
+import cn from '@/lib/cn';
 
 import Button from '@/components/ui/buttons/Button';
 import { Spinner } from '@/components/ui/Spinner';
@@ -38,7 +38,7 @@ export const Subscribe = () => {
             required
             name='email'
             onKeyUp={onKeyUp}
-            className={clsxm(
+            className={cn(
               'border-none placeholder-gray-300 bg-transparent ring-1 ring-primary-300',
               'rounded-sm h-12 max-w-[20rem] w-full px-2 font-base outline-none focus:ring-2 focus:ring-primary-400'
             )}
@@ -46,7 +46,7 @@ export const Subscribe = () => {
           <Button
             type='submit'
             disabled={loading}
-            className={clsxm(
+            className={cn(
               'w-full ss:w-min py-[.7rem] px-8 font-light bg-primary-400 rounded-sm hover:bg-primary-500',
               'inline-flex justify-center items-center space-x-2 min-w-36'
             )}
@@ -61,7 +61,7 @@ export const Subscribe = () => {
         </form>
 
         <div
-          className={clsxm(
+          className={cn(
             'w-full text-sm mt-2 text-red-400 lg:max-w-[400px]',
             !error && 'opacity-0'
           )}

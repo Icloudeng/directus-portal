@@ -1,4 +1,4 @@
-import clsxm from '@/lib/clsxm';
+import cn from '@/lib/cn';
 
 import { ICarouselButton, IDotButton } from '@/types';
 
@@ -6,7 +6,7 @@ export const DotButton = ({ position, selected, onClick }: IDotButton) => {
   return (
     <button
       type='button'
-      className={clsxm(
+      className={cn(
         `w-3 h-3 rounded-full`,
         selected ? 'bg-primary-300' : 'bg-gray-300/50 hover:bg-gray-300'
       )}
@@ -29,7 +29,7 @@ export const PrevButton = ({
       type='button'
       onClick={onClick}
       disabled={!enabled}
-      className={clsxm(
+      className={cn(
         'absolute hidden top-0 ss:-left-16 sm:-left-20 z-30 ss:flex items-center justify-center',
         'h-full px-4 cursor-pointer group focus:outline-none',
         className
@@ -52,7 +52,7 @@ export const NextButton = ({
       type='button'
       onClick={onClick}
       disabled={!enabled}
-      className={clsxm(
+      className={cn(
         'absolute top-0 hidden ss:-right-16 sm:-right-20 z-30 ss:flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none',
         className
       )}
@@ -69,7 +69,7 @@ export function RawPrevButton({
 }: Pick<ICarouselButton, 'enabled' | 'white'>) {
   return (
     <span
-      className={clsxm(
+      className={cn(
         `inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 `,
         'bg-white/30 group-hover:bg-white/50 ring-2 ring-primary-200 group-focus:ring-3 group-focus:ring-primary-400 group-focus:outline-none',
         !enabled && 'ring-gray-200',
@@ -78,7 +78,7 @@ export function RawPrevButton({
     >
       <svg
         aria-hidden='true'
-        className={clsxm(
+        className={cn(
           `w-5 h-5 text-primary-400 sm:w-6 sm:h-6`,
           !enabled && 'text-gray-200',
           white && ['text-primary-400 hover:text-primary-600']
@@ -106,7 +106,7 @@ export function RawNextButton({
 }: Pick<ICarouselButton, 'enabled' | 'white'>) {
   return (
     <span
-      className={clsxm(
+      className={cn(
         `inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30`,
         'group-hover:bg-white/50 ring-2 ring-primary-200 group-focus:ring-3 group-focus:ring-primary-400 group-focus:outline-none',
         !enabled && 'ring-gray-200',
@@ -115,7 +115,7 @@ export function RawNextButton({
     >
       <svg
         aria-hidden='true'
-        className={clsxm(
+        className={cn(
           `w-5 h-5 text-primary-400 sm:w-6 sm:h-6`,
           !enabled && 'text-gray-200',
           white && ['text-primary-400 hover:text-primary-600']

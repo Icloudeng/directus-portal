@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import clsxm from '@/lib/clsxm';
+import cn from '@/lib/cn';
 
 import UnstyledLink, {
   UnstyledLinkProps,
@@ -25,7 +25,7 @@ const ButtonLink = React.forwardRef<HTMLAnchorElement, ButtonLinkProps>(
       <UnstyledLink
         ref={ref}
         {...rest}
-        className={clsxm(
+        className={cn(
           'inline-flex items-center rounded px-4 py-2 font-medium',
           'focus:outline-none focus-visible:ring focus-visible:ring-primary-500',
           'shadow-sm',

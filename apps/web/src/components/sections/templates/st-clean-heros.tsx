@@ -5,7 +5,7 @@ import Router from 'next/router';
 import { useEffect } from 'react';
 import React from 'react';
 
-import clsxm from '@/lib/clsxm';
+import cn from '@/lib/cn';
 
 import { HasSvgText } from '@/components/ui/HasSvgText';
 import ButtonLink from '@/components/ui/links/ButtonLink';
@@ -111,14 +111,14 @@ function Header({ item, index }: ST_CleanHero & { index: number }) {
 
   return (
     <div
-      className={clsxm(
+      className={cn(
         'flex max-h-[1000px] mt-[30px] sd:mt-0',
         hasImage && ['lg:justify-between'],
         disposition === 'text_right' && ['flex-row-reverse']
       )}
     >
       <div
-        className={clsxm(
+        className={cn(
           'justify-center max-w-[460px] flex items-center flex-col mx-auto',
           hasImage
             ? ['lg:items-start lg:mx-0 lg:w-1/2']
@@ -127,7 +127,7 @@ function Header({ item, index }: ST_CleanHero & { index: number }) {
         )}
       >
         <h1
-          className={clsxm(
+          className={cn(
             'text-center text-[30px] sm:text-[45px] font-bold clean-hero--texts',
             hasImage && ['lg:text-start']
           )}
@@ -137,7 +137,7 @@ function Header({ item, index }: ST_CleanHero & { index: number }) {
 
         <div className='mt-[30px] clean-hero--texts'>
           <p
-            className={clsxm(
+            className={cn(
               'text-center text-[18px] ss:text-[20px] font-light leading-[1.64]',
               hasImage && ['lg:text-start']
             )}

@@ -2,7 +2,7 @@ import { ST_ColouredCard, STemplates_Props } from '@packages/contracts';
 import Image from 'next/legacy/image';
 import Link from 'next/link';
 
-import clsxm from '@/lib/clsxm';
+import cn from '@/lib/cn';
 
 import { ParseSvgText } from '@/components/ui/HasSvgText';
 
@@ -26,11 +26,9 @@ function STColouredCard(props: { item: ST_ColouredCard }) {
   const leading = item.leading_card && !!item.background_image;
 
   return (
-    <div
-      className={clsxm('relative w-full h-auto', leading && ['md:col-span-2'])}
-    >
+    <div className={cn('relative w-full h-auto', leading && ['md:col-span-2'])}>
       <div
-        className={clsxm(
+        className={cn(
           'rounded-2xl overflow-hidden',
           leading
             ? ['flex justify-between flex-row flex-wrap']
@@ -39,7 +37,7 @@ function STColouredCard(props: { item: ST_ColouredCard }) {
         style={{ backgroundColor: item.background_color }}
       >
         <div
-          className={clsxm(
+          className={cn(
             leading ? ['p-5 xl:p-8 w-full md:w-1/2'] : ['p-5 xl:p-8 h-full']
           )}
         >
@@ -62,7 +60,7 @@ function STColouredCard(props: { item: ST_ColouredCard }) {
           {hasLink && (
             <Link
               href={item.read_more_url || ''}
-              className={clsxm(
+              className={cn(
                 'py-2 px-5 border border-solid border-gray-300 rounded-full gap-2 text-xs text-white font-semibold',
                 'inline-flex items-center justify-between transition-all duration-500 hover:bg-white/5'
               )}

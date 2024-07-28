@@ -1,7 +1,7 @@
 import { ST_SideTextFeature, STemplates_Props } from '@packages/contracts';
 import Image from 'next/legacy/image';
 
-import clsxm from '@/lib/clsxm';
+import cn from '@/lib/cn';
 
 import { ParseSvgText } from '@/components/ui/HasSvgText';
 
@@ -24,14 +24,14 @@ function SideTextFeature({ item }: ST_SideTextFeature) {
 
   return (
     <div
-      className={clsxm(
+      className={cn(
         'lg:bg-gray-50 lg:p-16 rounded-[4rem] space-y-6 md:flex  md:gap-6 justify-center md:space-y-0 lg:items-center',
         disposition === 'text_left' ? 'flex-row-reverse' : 'flex-row',
         !sided && 'md:block'
       )}
     >
       <div
-        className={clsxm(
+        className={cn(
           'md:5/12 lg:w-1/2 relative h-full',
           'h-[15rem] ss:min-h-96',
           !sided && 'md:w-full lg:w-full ss:min-h-[27rem] mb-4'
@@ -47,9 +47,7 @@ function SideTextFeature({ item }: ST_SideTextFeature) {
         />
       </div>
 
-      <div
-        className={clsxm('md:7/12 lg:w-1/2', !sided && 'md:w-full lg:w-full')}
-      >
+      <div className={cn('md:7/12 lg:w-1/2', !sided && 'md:w-full lg:w-full')}>
         <h3 className='text-2xl font-semibold text-gray-700 md:text-3xl'>
           {translations?.title}
         </h3>

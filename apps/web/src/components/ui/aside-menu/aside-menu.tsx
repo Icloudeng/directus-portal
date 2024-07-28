@@ -10,7 +10,7 @@ import React, {
   useState,
 } from 'react';
 
-import clsxm from '@/lib/clsxm';
+import cn from '@/lib/cn';
 
 import UnstyledLink from '@/components/ui/links/UnstyledLink';
 
@@ -167,7 +167,7 @@ export function AsideMenuContent({
   return (
     <div
       id={href}
-      className={clsxm(
+      className={cn(
         `content-section flex flex-col gap-8`,
         className,
         !last && 'mb-20'

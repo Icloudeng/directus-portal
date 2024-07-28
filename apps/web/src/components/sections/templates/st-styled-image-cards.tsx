@@ -1,7 +1,7 @@
 import { ST_StyledImageCard, STemplates_Props } from '@packages/contracts';
 import React, { Fragment } from 'react';
 
-import clsxm from '@/lib/clsxm';
+import cn from '@/lib/cn';
 
 import { useMut } from '@/cms/mut';
 
@@ -38,7 +38,7 @@ function RectangleCard(props: { item: ST_StyledImageCard }) {
     >
       <div className='h-full flex'>
         <div
-          className={clsxm(
+          className={cn(
             'leading-none p-4 rounded-2xl mt-auto mb-2 text-4xl font-semibold tracking-tight text-white border w-full',
             'bg-opacity-80 backdrop-filter backdrop-blur-sm bg-primary-700/80 border-primary-600'
           )}

@@ -1,7 +1,7 @@
 import { ST_Chart, STemplates_Props } from '@packages/contracts';
 import dynamic from 'next/dynamic';
 
-import clsxm from '@/lib/clsxm';
+import cn from '@/lib/cn';
 
 import { MarkdownContent } from '@/components/ui/react-markdown/MarkdownContent';
 
@@ -26,7 +26,7 @@ export function ST_ChartsFC({ items }: STemplates_Props<ST_Chart>) {
         return (
           <div
             key={item.item.id}
-            className={clsxm(
+            className={cn(
               `mb-5`,
               hasTextContent && 'flex flex-col-reverse md:flex-row'
             )}
@@ -38,7 +38,7 @@ export function ST_ChartsFC({ items }: STemplates_Props<ST_Chart>) {
             )}
 
             <div
-              className={clsxm(
+              className={cn(
                 `my-5 w-full relative h-[250px] md:h-[400px]`,
                 hasTextContent && 'md:w-1/2'
               )}

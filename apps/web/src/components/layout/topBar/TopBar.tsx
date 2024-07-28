@@ -2,7 +2,7 @@ import { useTranslation } from 'next-i18next';
 import React from 'react';
 import { VscChevronDown, VscChevronRight } from 'react-icons/vsc';
 
-import clsxm from '@/lib/clsxm';
+import cn from '@/lib/cn';
 
 import { LangList } from '@/components/layout/topBar/components/ListData';
 import UnstyledLink from '@/components/ui/links/UnstyledLink';
@@ -96,7 +96,7 @@ function TopbarNews() {
           <UnstyledLink
             title={title}
             href={'/news/' + $data.slug}
-            className={clsxm(
+            className={cn(
               'animated-underline ml-2 text-xs flex items-center justify-start text-primary-950',
               'truncate'
             )}

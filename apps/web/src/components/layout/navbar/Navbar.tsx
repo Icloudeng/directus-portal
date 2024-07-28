@@ -11,7 +11,7 @@ import { Fragment, useState } from 'react';
 import { AiOutlineMenuFold } from 'react-icons/ai';
 import { VscChevronDown } from 'react-icons/vsc';
 
-import clsxm from '@/lib/clsxm';
+import cn from '@/lib/cn';
 
 import ButtonLink from '@/components/ui/links/ButtonLink';
 import UnstyledLink from '@/components/ui/links/UnstyledLink';
@@ -36,7 +36,7 @@ export const Navbar = ({ whiteNav }: { whiteNav?: boolean }) => {
 
   return (
     <nav
-      className={clsxm(
+      className={cn(
         'nav__parent h-[70px] xl:h-[100px]',
         whiteNav && ['bg-white text-black shadow-sm'],
         'flex items-center xl:px-10 transition-all ease-in-out duration-100',
@@ -135,7 +135,7 @@ function NavbarLink({
       key={id}
       onMouseEnter={onMouseHover}
       onMouseLeave={onMouseOut}
-      className={clsxm(
+      className={cn(
         'menu-top__item hover:text-primary-100',
         hasSubmenus && ['relative dropdown']
       )}
@@ -144,7 +144,7 @@ function NavbarLink({
         <PopoverButton
           type='button'
           onClick={(e) => e.preventDefault()}
-          className={clsxm(
+          className={cn(
             'menu-top__link flex items-center gap-1 py-2 outline-none border-none',
             'hover:text-primary-300',
             opened && 'text-primary-400'
@@ -160,7 +160,7 @@ function NavbarLink({
 
           {hasSubmenus && (
             <VscChevronDown
-              className={clsxm(
+              className={cn(
                 'text-primary-500 text-sm transition-transform',
                 opened && 'rotate-180'
               )}
