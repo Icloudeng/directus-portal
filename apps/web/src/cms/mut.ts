@@ -53,11 +53,15 @@ export function mut<
 }
 
 function translate<Key extends string = 'translations'>(
-  data: MDWithTranslation<unknown, Key> & { translated?: boolean },
+  data: MDWithTranslation<unknown, Key> & {
+    [k in `${string}_translated`]?: boolean;
+  },
   lang: string,
   key: Key
 ) {
-  if (!data || !data[key] || data.translated) {
+  const translatedKey = `${key}_translated` as const;
+
+  if (!data || !data[key] || data[translatedKey]) {
     return data;
   }
 
@@ -73,10 +77,15 @@ function translate<Key extends string = 'translations'>(
 
   for (const itemLang of [lang, default_lang]) {
     data[key] = find(itemLang);
-    if (data[key]) break;
+
+    if (data[key]) {
+      break;
+    }
   }
 
-  data.translated = true;
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  data[translatedKey] = true;
 
   return data;
 }
