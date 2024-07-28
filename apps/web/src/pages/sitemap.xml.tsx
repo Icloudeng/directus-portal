@@ -17,6 +17,7 @@ function generateSiteMap(
     <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd http://www.w3.org/TR/xhtml11/xhtml11_schema.html http://www.w3.org/2002/08/xhtml/xhtml1-strict.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/TR/xhtml11/xhtml11_schema.html">
        <url>
          <loc>${originUrl}</loc>
+         <priority>1</priority>
        </url>
        <url>
          <loc>${originUrl}/blog</loc>
@@ -47,7 +48,7 @@ function generateSiteMap(
                      const code = translation.languages_code.code;
                      const langPath = code === DEFAULT_LANG ? '' : `/${code}`;
 
-                     return `<xhtml:link rel="alternate" hreflang="${code}-${code.toUpperCase()}" href="${
+                     return `<xhtml:link rel="alternate" hreflang="${code}" href="${
                        originUrl + langPath
                      }/${pageUrl}" />`;
                    })
