@@ -27,14 +27,6 @@ generate-ssh-key:
 	ssh-keygen -t ed25519 -f ~/.ssh/id_ansible -N ''
 	ssh-copy-id -i ~/.ssh/id_ansible $(user)@$(ip)
 
-
-# ============================
-# Dev server
-# ============================
-.PHONY: dev
-dev:
-	pnpm dev --filter=@apps/web --filter=@apps/cms --filter=@packages/contracts
-
 # ============================
 # Deployment
 # ============================
@@ -86,6 +78,18 @@ provision-cd:
 # ============================
 # App commands
 # ============================
+
+.PHONY: dev
+dev:
+	pnpm dev --filter=@apps/web --filter=@apps/cms --filter=@packages/contracts
+
+
+.PHONY: build-web
+build-web:
+	pnpm build --filter=@apps/web
+
+
+
 .PHONY: docsearch-scraper
 docsearch-scraper:
 	pnpm -r docsearch-scraper
