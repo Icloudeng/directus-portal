@@ -2,16 +2,6 @@ import { defineEndpoint } from "@directus/extensions-sdk";
 import type { Filter } from "@directus/sdk";
 import { CMS_MODELS } from "@packages/contracts";
 
-type Handler = (
-  req: {
-    query: any;
-    schema: any;
-    accountability: any;
-  },
-  res: { json: (arg0: any) => any },
-  next: (arg0: any) => any
-) => any;
-
 export default defineEndpoint((router, { services, exceptions }) => {
   const { ItemsService } = services;
   const { ServiceUnavailableException } = exceptions;
@@ -32,7 +22,7 @@ export default defineEndpoint((router, { services, exceptions }) => {
     common: any = {},
     searchable = "name"
   ) => {
-    return function handler(req, res, next) {
+    return function handler(req: any, res: any, next: any) {
       const service = new ItemsService(service_name, {
         schema: req.schema,
         accountability: req.accountability,
@@ -57,7 +47,7 @@ export default defineEndpoint((router, { services, exceptions }) => {
         .catch((error: { message: any }) => {
           return next(new ServiceUnavailableException(error.message));
         });
-    } as Handler;
+    };
   };
 
   router.get(
