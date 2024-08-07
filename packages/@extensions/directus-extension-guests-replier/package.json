@@ -1,5 +1,5 @@
 {
-	"name": "@directus-extension/guests-replier",
+	"name": "@extensions/directus-extension-guests-replier",
 	"version": "1.0.0",
 	"keywords": [
 		"directus",

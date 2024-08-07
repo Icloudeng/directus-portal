@@ -1,5 +1,5 @@
 {
-	"name": "@directus-extension/compaigns",
+	"name": "@extensions/directus-extension-campaign",
 	"version": "1.0.0",
 	"keywords": [
 		"directus",

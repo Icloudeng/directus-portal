@@ -1,5 +1,5 @@
 {
-	"name": "@directus-extension/newsletters",
+	"name": "@extensions/directus-extension-newsletters",
 	"version": "1.0.0",
 	"keywords": [
 		"directus",

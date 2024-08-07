@@ -1,5 +1,5 @@
 {
-	"name": "@directus-extension/docs-publisher",
+	"name": "@extensions/directus-extension-docs-publisher",
 	"version": "1.0.0",
 	"keywords": [
 		"directus",

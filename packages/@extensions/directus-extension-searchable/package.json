@@ -1,5 +1,5 @@
 {
-	"name": "@directus-extension/searchable",
+	"name": "@extensions/directus-extension-searchable",
 	"version": "1.0.0",
 	"keywords": [
 		"directus",

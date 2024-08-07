@@ -2,6 +2,7 @@
     "makefile.extensionOutputFolder": "./.vscode",
     "deepscan.ignoreConfirmWarning": true,
     "cSpell.words": [
+        "directus",
         "Matomo"
     ]
 }

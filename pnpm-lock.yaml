@@ -9,32 +9,32 @@ importers:
   .:
     devDependencies:
       prettier:
-        specifier: ^3.3.2
-        version: 3.3.2
+        specifier: ^3.3.3
+        version: 3.3.3
       turbo:
         specifier: ^2.0.12
         version: 2.0.12
 
   apps/cms:
     dependencies:
-      '@directus-extension/compaigns':
-        specifier: workspace:*
-        version: link:../../packages/@extensions/directus-extension-compaigns
-      '@directus-extension/docs-publisher':
-        specifier: workspace:*
-        version: link:../../packages/@extensions/directus-extension-docs-publisher
-      '@directus-extension/guests-replier':
-        specifier: workspace:*
-        version: link:../../packages/@extensions/directus-extension-guests-replier
-      '@directus-extension/newsletters':
-        specifier: workspace:*
-        version: link:../../packages/@extensions/directus-extension-newsletters
-      '@directus-extension/searchable':
-        specifier: workspace:*
-        version: link:../../packages/@extensions/directus-extension-searchable
       '@directus/sdk':
         specifier: ^10.3.3
         version: 10.3.5
+      '@extensions/directus-extension-campaign':
+        specifier: workspace:*
+        version: link:../../packages/@extensions/directus-extension-campaign
+      '@extensions/directus-extension-docs-publisher':
+        specifier: workspace:*
+        version: link:../../packages/@extensions/directus-extension-docs-publisher
+      '@extensions/directus-extension-guests-replier':
+        specifier: workspace:*
+        version: link:../../packages/@extensions/directus-extension-guests-replier
+      '@extensions/directus-extension-newsletters':
+        specifier: workspace:*
+        version: link:../../packages/@extensions/directus-extension-newsletters
+      '@extensions/directus-extension-searchable':
+        specifier: workspace:*
+        version: link:../../packages/@extensions/directus-extension-searchable
       directus:
         specifier: 9.26.0
         version: 9.26.0(encoding@0.1.13)(lodash@4.17.21)
@@ -374,7 +374,7 @@ importers:
         specifier: ^4.9.5
         version: 4.9.5
 
-  packages/@extensions/directus-extension-compaigns:
+  packages/@extensions/directus-extension-campaign:
     devDependencies:
       '@directus/extensions-sdk':
         specifier: 9.26.0
@@ -5152,6 +5152,9 @@ packages:
   core-js@3.37.1:
     resolution: {integrity: sha512-Xn6qmxrQZyB0FFY8E3bgRXei3lWDJHhvI+u0q9TKIYM49G8pAr0FgnnrFRAmsbptZL1yxRADVXn+x5AGsbBfyw==}
 
+  core-js@3.38.0:
+    resolution: {integrity: sha512-XPpwqEodRljce9KswjZShh95qJ1URisBeKCjUdq27YdenkslVe7OO0ZJhlYXAChW7OhXaRLl8AAba7IBfoIHug==}
+
   core-util-is@1.0.2:
     resolution: {integrity: sha512-3lqz5YjWTYnW6dlDa5TLaTCcShfar1e40rmcJVwCBJC6mWlFuj0eCHIElmG1g5kyuJ/GD+8Wn4FFCcz4gJPfaQ==}
 
@@ -5582,6 +5585,15 @@ packages:
 
   debug@4.3.5:
     resolution: {integrity: sha512-pt0bNEmneDIvdL1Xsd9oDQ/wrQRkXDT4AUWlNZNPKvW5x/jyO9VFXkJUP07vQ2upmw5PlaITaPKc31jK13V+jg==}
+    engines: {node: '>=6.0'}
+    peerDependencies:
+      supports-color: '*'
+    peerDependenciesMeta:
+      supports-color:
+        optional: true
+
+  debug@4.3.6:
+    resolution: {integrity: sha512-O/09Bd4Z1fBrU4VzkhFqVgpPzaGbw6Sm9FEkBT1A/YBXQFGuuSxa1dN2nxgxS34JmKXqYx8CZAwEVoJFImUXIg==}
     engines: {node: '>=6.0'}
     peerDependencies:
       supports-color: '*'
@@ -9461,8 +9473,8 @@ packages:
     engines: {node: '>=10.13.0'}
     hasBin: true
 
-  prettier@3.3.2:
-    resolution: {integrity: sha512-rAVeHYMcv8ATV5d508CFdn+8/pHPpXeIid1DdrPwXnaAdH7cqjVbpJaT5eq4yRAFU/lsbwYwSF/n5iNrdJHPQA==}
+  prettier@3.3.3:
+    resolution: {integrity: sha512-i2tDNA0O5IrMO757lfrdQZCc2jPNDVntV0m/+4whiDfWaTKfMNgR7Qz0NAeGz/nRqF4m5/6CLzbP4/liHt12Ew==}
     engines: {node: '>=14'}
     hasBin: true
 
@@ -12908,7 +12920,7 @@ snapshots:
       '@babel/traverse': 7.24.7
       '@babel/types': 7.24.7
       convert-source-map: 1.9.0
-      debug: 4.3.5(supports-color@9.4.0)
+      debug: 4.3.6
       gensync: 1.0.0-beta.2
       json5: 2.2.3
       lodash: 4.17.21
@@ -12991,7 +13003,7 @@ snapshots:
       '@babel/core': 7.24.7
       '@babel/helper-compilation-targets': 7.24.7
       '@babel/helper-plugin-utils': 7.24.7
-      debug: 4.3.5(supports-color@9.4.0)
+      debug: 4.3.6
       lodash.debounce: 4.0.8
       resolve: 1.22.8
     transitivePeerDependencies:
@@ -16928,7 +16940,7 @@ snapshots:
 
   agent-base@6.0.2:
     dependencies:
-      debug: 4.3.5(supports-color@9.4.0)
+      debug: 4.3.6
     transitivePeerDependencies:
       - supports-color
 
@@ -18019,6 +18031,8 @@ snapshots:
 
   core-js@3.37.1: {}
 
+  core-js@3.38.0: {}
+
   core-util-is@1.0.2: {}
 
   core-util-is@1.0.3: {}
@@ -18496,6 +18510,10 @@ snapshots:
       ms: 2.1.2
     optionalDependencies:
       supports-color: 9.4.0
+
+  debug@4.3.6:
+    dependencies:
+      ms: 2.1.2
 
   decamelize-keys@1.1.1:
     dependencies:
@@ -20402,7 +20420,7 @@ snapshots:
     dependencies:
       '@tootallnate/once': 1.1.2
       agent-base: 6.0.2
-      debug: 4.3.5(supports-color@9.4.0)
+      debug: 4.3.6
     transitivePeerDependencies:
       - supports-color
 
@@ -20410,7 +20428,7 @@ snapshots:
     dependencies:
       '@tootallnate/once': 2.0.0
       agent-base: 6.0.2
-      debug: 4.3.5(supports-color@9.4.0)
+      debug: 4.3.6
     transitivePeerDependencies:
       - supports-color
 
@@ -20451,7 +20469,7 @@ snapshots:
   https-proxy-agent@5.0.1:
     dependencies:
       agent-base: 6.0.2
-      debug: 4.3.5(supports-color@9.4.0)
+      debug: 4.3.6
     transitivePeerDependencies:
       - supports-color
 
@@ -20583,7 +20601,7 @@ snapshots:
     dependencies:
       '@ioredis/commands': 1.2.0
       cluster-key-slot: 1.1.2
-      debug: 4.3.5(supports-color@9.4.0)
+      debug: 4.3.6
       denque: 2.1.0
       lodash.defaults: 4.2.0
       lodash.isarguments: 3.1.0
@@ -20843,7 +20861,7 @@ snapshots:
 
   istanbul-lib-source-maps@4.0.1:
     dependencies:
-      debug: 4.3.5(supports-color@9.4.0)
+      debug: 4.3.6
       istanbul-lib-coverage: 3.2.2
       source-map: 0.6.1
     transitivePeerDependencies:
@@ -22152,7 +22170,7 @@ snapshots:
   micromark@3.2.0:
     dependencies:
       '@types/debug': 4.1.12
-      debug: 4.3.5(supports-color@9.4.0)
+      debug: 4.3.6
       decode-named-character-reference: 1.0.2
       micromark-core-commonmark: 1.1.0
       micromark-factory-space: 1.1.0
@@ -23104,7 +23122,7 @@ snapshots:
 
   plyr@3.7.8:
     dependencies:
-      core-js: 3.37.1
+      core-js: 3.38.0
       custom-event-polyfill: 1.0.7
       loadjs: 4.3.0
       rangetouch: 2.0.1
@@ -23489,7 +23507,7 @@ snapshots:
 
   prettier@2.8.8: {}
 
-  prettier@3.3.2: {}
+  prettier@3.3.3: {}
 
   pretty-error@4.0.0:
     dependencies:
@@ -24367,7 +24385,7 @@ snapshots:
 
   retry-request@5.0.2:
     dependencies:
-      debug: 4.3.5(supports-color@9.4.0)
+      debug: 4.3.6
       extend: 3.0.2
     transitivePeerDependencies:
       - supports-color
@@ -24812,7 +24830,7 @@ snapshots:
   socks-proxy-agent@6.2.1:
     dependencies:
       agent-base: 6.0.2
-      debug: 4.3.5(supports-color@9.4.0)
+      debug: 4.3.6
       socks: 2.8.3
     transitivePeerDependencies:
       - supports-color
