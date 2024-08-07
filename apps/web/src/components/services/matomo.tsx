@@ -1,28 +1,23 @@
-import { useEffect, useRef } from 'react';
-
-import matomoInit from '@/lib/matomo-next';
+import { init } from '@socialgouv/matomo-next';
+import { useEffect } from 'react';
 
 import { useSharedData } from '@/app/store';
 
 export function MatomoNext() {
   const shared = useSharedData();
+  const Matomo = shared?.Matomo;
 
-  const init = useRef(() => {
-    const Matomo = shared?.Matomo;
+  useEffect(() => {
     if (Matomo && Matomo.status === 'published') {
-      matomoInit({
-        url:
-          Matomo.base_url.slice(-1) === '/'
-            ? Matomo.base_url.slice(0, -1)
-            : Matomo.base_url,
+      const baseUrl = Matomo.base_url;
+      baseUrl.slice(-1) === '/' ? baseUrl.slice(0, -1) : baseUrl;
+
+      init({
+        url: baseUrl,
         siteId: Matomo.site_id + '',
       });
     }
-  });
-
-  useEffect(() => {
-    init.current();
-  }, [init]);
+  }, [Matomo]);
 
   return <></>;
 }
