@@ -19,7 +19,7 @@ This is the Smatflow offical site repository.
 **Clone the repository:**
 
 ```
-git clone https://hub.smatflow.net/smatflow-projects/smatflow-portal.git
+git clone https://github.com/Icloudeng/directus-portal.git
 ```
 
 **Install packages**
