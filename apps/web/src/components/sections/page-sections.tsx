@@ -17,6 +17,7 @@ import { useMut } from '@/cms/mut';
 
 import * as stfc from './templates';
 import { HasSvgText } from '../ui/HasSvgText';
+import { nextAsset } from '@/app/utils/next-asset';
 
 const { section_templates } = CMS_MODELS;
 type ST = typeof section_templates;
@@ -172,7 +173,11 @@ function PageSection({
         style={{
           backgroundImage:
             background_image?.src && !hasSvg
-              ? `url(${background_image.src})`
+              ? `url(${nextAsset({
+                  url: background_image.src,
+                  width: 1920,
+                  quality: 75,
+                })})`
               : undefined,
         }}
         data-g-template={section.collection}

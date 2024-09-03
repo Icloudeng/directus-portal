@@ -4,6 +4,7 @@ import React, { Fragment } from 'react';
 import cn from '@/lib/cn';
 
 import { useMut } from '@/cms/mut';
+import { nextAsset } from '@/app/utils/next-asset';
 
 export function ST_StyledImageCardsFC({
   items,
@@ -33,7 +34,9 @@ function RectangleCard(props: { item: ST_StyledImageCard }) {
     <div
       className='card-shadow rounded-2xl p-2 bg-cover bg-center h-96 relative overflow-hidden'
       style={{
-        backgroundImage: `url("${image?.src || ''}")`,
+        backgroundImage: `url("${
+          nextAsset({ url: image?.src, width: 1920, quality: 75 }) || ''
+        }")`,
       }}
     >
       <div className='h-full flex'>
@@ -64,7 +67,9 @@ function CircleCard(props: { item: ST_StyledImageCard }) {
             backgroundPosition: '25% -83%',
             backgroundSize: '100%',
             transform: 'translate(50%, -50%)',
-            backgroundImage: `url("${image?.src || ''}")`,
+            backgroundImage: `url("${
+              nextAsset({ url: image?.src, width: 1920, quality: 75 }) || ''
+            }")`,
           }}
         />
         <div
@@ -98,7 +103,9 @@ function GradientCard(props: { item: ST_StyledImageCard }) {
     <div
       className='card-shadow rounded-2xl p-0 bg-cover bg-center h-96 relative overflow-hidden'
       style={{
-        backgroundImage: `url("${image?.src || ''}")`,
+        backgroundImage: `url("${
+          nextAsset({ url: image?.src, width: 1920, quality: 75 }) || ''
+        }")`,
       }}
     >
       <div
