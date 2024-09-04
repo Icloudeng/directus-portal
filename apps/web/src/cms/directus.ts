@@ -6,14 +6,11 @@ import {
   DIRECTUS_URL,
 } from '@/app/constant/env';
 
-const directus = new Directus(DIRECTUS_URL, {
-  auth: {
-    autoRefresh: true,
-    msRefreshBeforeExpires: 1000,
-  },
-});
+const directus = new Directus(DIRECTUS_URL);
 
 export async function getDirectusClient() {
+  await directus.auth.refreshIfExpired();
+
   if (await directus.auth.token) {
     return directus;
   }

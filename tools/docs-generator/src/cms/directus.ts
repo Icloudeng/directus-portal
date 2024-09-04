@@ -1,12 +1,7 @@
 import { Directus } from "@directus/sdk";
 import { DIRECTUS_HOST, DIRECTUS_EMAIL, DIRECTUS_PASSWORD } from "../constants";
 
-const directus = new Directus(DIRECTUS_HOST, {
-  auth: {
-    autoRefresh: true,
-    msRefreshBeforeExpires: 1000,
-  },
-});
+const directus = new Directus(DIRECTUS_HOST);
 
 export async function getDirectusClient() {
   await directus.auth.refreshIfExpired();
