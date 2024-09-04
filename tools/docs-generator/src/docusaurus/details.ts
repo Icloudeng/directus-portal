@@ -1,5 +1,5 @@
 import { CompanyDetail } from "../cms/type";
-import { DIRECTUS_STATIC_TOKEN, DIRECTUS_URL, WEBSITE_URL } from "../constants";
+import { DIRECTUS_URL, WEBSITE_URL } from "../constants";
 
 export type DetailContent = {
   meta: {
@@ -38,7 +38,7 @@ export function generateDetailContent(companyDetails: CompanyDetail) {
   if (companyDetails && companyDetails.logo) {
     meta.favicon = `${DIRECTUS_URL}/assets/${
       companyDetails.logo.id
-    }?access_token=${DIRECTUS_STATIC_TOKEN}&width=${50}&height=${50}`;
+    }?width=${50}&height=${50}`;
   }
 
   /**

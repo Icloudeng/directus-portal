@@ -16,7 +16,7 @@ cms_domain: "{{ cms_domain_var }}"
 # App path
 root_path: "/home/{{ ansible_user }}/{{ domain }}"
 
-# App
+# Apps Config
 web_port: 3000
 docs_port: 3100
 cms_port: 8055
@@ -26,11 +26,7 @@ docs_enabled: "{{ docs_enabled_var | bool }}" # activate docs app
 
 # Typesense
 typesense_port: 8108
-typesense_getway_port: 443
-
-# portaladmin account
-portaladmin_email: "portaladmin@{{ company_domain }}"
-appuser_email: "appuser@{{ company_domain }}"
+typesense_gateway_port: 443
 
 # Nginx
 client_host: "127.0.0.1:{{ web_port }}"
@@ -39,15 +35,7 @@ cms_host: "127.0.0.1:{{ cms_port }}"
 typesense_host: "127.0.0.1:{{ typesense_port }}"
 enable_cms_cors: false
 
-# Database
-database: portal
-
-# Cms
-cms_ldap_authentication: "{{ cms_ldap_auth_var | bool }}"
-app_user_token: mdzjETutYM06z9ch56CmFkjIOWZCwraG
-ldap_client_url: ipa.smatflow.net
-
-# mailer
+# MAILER
 mailer: true
 mailer_host: "mail.smatflow.net"
 mailer_port: 587
@@ -62,6 +50,8 @@ mailer_password: !vault |
   31373938353536646634343363663861653135633961356561666635306333353736636139623431
   3039613464336430626365653861623035363532623561613364
 
+# DATABASE
+database: portal
 database_password: !vault |
   $ANSIBLE_VAULT;1.1;AES256
   61356661393930376261663135303165666134366134643038363836323331353237313664653434
@@ -71,6 +61,8 @@ database_password: !vault |
   32353361333733383839646339306634316537383566666263346630626637386364303938353364
   3462383139346136313135656138656463346564613265336433
 
+# PortalAdmin account
+portaladmin_email: "portaladmin@{{ company_domain }}"
 portaladmin_password: !vault |
   $ANSIBLE_VAULT;1.1;AES256
   33306433636464343333303266663662303030626462636565326161623061386363633834623333
@@ -79,6 +71,9 @@ portaladmin_password: !vault |
   3333626334643562640a336161306231383234306162323761346663396532626564656239393963
   62383737343561373637623564366563663736613834646338643066313931626531
 
+# CMS
+cms_ldap_authentication: "{{ cms_ldap_auth_var | bool }}"
+ldap_client_url: ipa.smatflow.net
 ldap_user_bind_password: !vault |
   $ANSIBLE_VAULT;1.1;AES256
   66303763373530316639343364393134313166396461633661643764656332303861653961643936

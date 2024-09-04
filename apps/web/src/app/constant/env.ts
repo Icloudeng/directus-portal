@@ -16,4 +16,3 @@ export const DIRECTUS_URL = process.env.DIRECTUS_URL || '';
 export const CMS_URL = process.env.CMS_URL || '';
 export const DIRECTUS_EMAIL = process.env.DIRECTUS_EMAIL || '';
 export const DIRECTUS_PASSWORD = process.env.DIRECTUS_PASSWORD || '';
-export const DIRECTUS_STATIC_TOKEN = process.env.DIRECTUS_STATIC_TOKEN || '';

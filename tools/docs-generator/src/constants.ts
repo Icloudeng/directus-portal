@@ -42,7 +42,8 @@ export const DIRECTUS_URL = url.endsWith("/")
 
 export const DIRECTUS_HOST = process.env.DIRECTUS_HOST || "";
 
-export const DIRECTUS_STATIC_TOKEN = process.env.DIRECTUS_STATIC_TOKEN || "";
+export const DIRECTUS_EMAIL = process.env.DIRECTUS_EMAIL || "";
+export const DIRECTUS_PASSWORD = process.env.DIRECTUS_PASSWORD || "";
 
 export const WEBSITE_URL = process.env.WEBSITE_URL || "";
 

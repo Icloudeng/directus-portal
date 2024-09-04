@@ -29,7 +29,7 @@
   with_items:
     - http
     - https
-    - "{{ typesense_getway_port }}" # typesense nginx getway
+    - "{{ typesense_gateway_port }}" # typesense nginx getway
 
 - name: Firewall | Activation
   become: true

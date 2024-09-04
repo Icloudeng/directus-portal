@@ -118,12 +118,6 @@ spec:
               value: admin@example.com
             - name: ADMIN_PASSWORD
               value: password
-            - name: APP_USER_EMAIL
-              value: app@example.com
-            - name: APP_USER_PASSWORD
-              value: password
-            - name: APP_USER_TOKEN
-              value: mdzjETutYM06z9ch56CmFkjIOWZCwraG
             - name: ASSETS_CACHE_TTL
               value: 30m
             - name: AUTH_LDAP_BIND_DN
@@ -453,8 +447,6 @@ spec:
               value: English
             - name: DIRECTUS_HOST
               value: http://cms:8055
-            - name: DIRECTUS_STATIC_TOKEN
-              value: mdzjETutYM06z9ch56CmFkjIOWZCwraG
             - name: DIRECTUS_URL
               value: http://127.0.0.1:8055
             - name: DOCS_APP_PM2_NAME

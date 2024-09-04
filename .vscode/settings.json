@@ -3,6 +3,8 @@
     "deepscan.ignoreConfirmWarning": true,
     "cSpell.words": [
         "directus",
-        "Matomo"
+        "Matomo",
+        "portaladmin",
+        "Typesense"
     ]
 }

@@ -16,18 +16,18 @@
   lineinfile:
     path: "{{ env_docs_file }}"
     regexp: "^TYPESENSE_PORT="
-    line: "TYPESENSE_PORT={{ typesense_getway_port }}"
+    line: "TYPESENSE_PORT={{ typesense_gateway_port }}"
 
 - name: Docs App .env config | TYPESENSE_PROTOCOL
   lineinfile:
     path: "{{ env_docs_file }}"
     regexp: "^TYPESENSE_PROTOCOL="
     line: "TYPESENSE_PROTOCOL=https"
-  when: typesense_getway_port != 80
+  when: typesense_gateway_port != 80
 
 - name: Docs App .env config | TYPESENSE_PROTOCOL
   lineinfile:
     path: "{{ env_docs_file }}"
     regexp: "^TYPESENSE_PROTOCOL="
     line: "TYPESENSE_PROTOCOL=http"
-  when: typesense_getway_port == 80
+  when: typesense_gateway_port == 80

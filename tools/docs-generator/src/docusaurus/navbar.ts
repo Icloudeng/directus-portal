@@ -2,7 +2,7 @@ import type { MDDCNamespace } from "@packages/contracts";
 // import type { ThemeConfig } from "@docusaurus/preset-classic";
 import type { CompanyDetail, MDLang } from "../cms/type";
 import { NamespaceBaseLink, reArrangeNamespace } from "./namespaces";
-import { DIRECTUS_STATIC_TOKEN, DIRECTUS_URL, WEBSITE_URL } from "../constants";
+import { DIRECTUS_URL } from "../constants";
 import { cmsTransTransformer, transKey, Translations } from "./translations";
 import utils from "../utils";
 
@@ -80,7 +80,7 @@ export function generateNavbarContent({
     meta.navbar.logo = {
       src: `${DIRECTUS_URL}/assets/${
         companyDetails.logo.id
-      }?access_token=${DIRECTUS_STATIC_TOKEN}&width=${50}&height=${50}`,
+      }?width=${50}&height=${50}`,
       alt: companyDetails.website_title || "",
       // ...(WEBSITE_URL ? { href: WEBSITE_URL } : {}),
     };
