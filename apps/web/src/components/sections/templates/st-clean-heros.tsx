@@ -24,7 +24,7 @@ export function ST_CleanHerosFC({
     sharedObject[first.collection] = first.item.id;
   }
 
-  const applyStyle =
+  const isHero =
     sharedObject[first.collection] === first.item.id && first.item.hero;
 
   useEffect(() => {
@@ -39,7 +39,7 @@ export function ST_CleanHerosFC({
 
   return (
     <>
-      {!!applyStyle && (
+      {!!isHero && (
         <style key={first.collection} jsx global>
           {
             /*css*/ `
@@ -105,7 +105,7 @@ export function ST_CleanHerosFC({
                 }
               `}</style>
             )}
-            <Header {...data} index={i} />
+            <Header {...data} isHero={isHero} index={i} />
           </React.Fragment>
         );
       })}
@@ -113,7 +113,9 @@ export function ST_CleanHerosFC({
   );
 }
 
-function Header({ item, index }: ST_CleanHero & { index: number }) {
+type THeaderProps = ST_CleanHero & { index: number; isHero: boolean };
+
+function Header({ item, index, isHero }: THeaderProps) {
   const { translations, image, image_svg, disposition } = useMut(item);
   const buttons = translations?.buttons || [];
 
@@ -123,8 +125,18 @@ function Header({ item, index }: ST_CleanHero & { index: number }) {
     <div
       className={cn(
         'flex max-h-[1000px] mt-[30px] sd:mt-0',
+
         hasImage && ['lg:justify-between'],
-        disposition === 'text_right' && ['flex-row-reverse']
+
+        disposition === 'text_right' && ['flex-row-reverse'],
+
+        !isHero &&
+          hasImage && [
+            'flex-col-reverse',
+            disposition === 'text_right'
+              ? ['lg:flex-row-reverse']
+              : ['lg:flex-row'],
+          ]
       )}
     >
       <div
@@ -179,7 +191,13 @@ function Header({ item, index }: ST_CleanHero & { index: number }) {
       {hasImage && (
         <HasSvgText
           svgText={image_svg}
-          className='lg:w-1/2 hidden lg:block st_flexible_icon relative'
+          className={cn(
+            'lg:w-2/5 hidden lg:block st_flexible_icon relative',
+            !isHero && [
+              'block w-full ss:w-96 lg:w-2/5 self-center',
+              disposition === 'text_right' ? 'lg:self-start' : 'lg:self-end',
+            ]
+          )}
           fallback={
             <>
               {image &&
