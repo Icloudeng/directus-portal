@@ -166,7 +166,7 @@ function PageSection({
 
       <section
         className={cn(
-          'relative py-10 bg-white isolate page__section',
+          'relative py-10 bg-white isolate page__section bg-no-repeat',
           classId,
           !item.container && ['overflow-hidden']
         )}
