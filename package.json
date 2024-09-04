@@ -2,11 +2,6 @@
   "name": "smatflow-websites",
   "version": "1.0.0",
   "private": true,
-  "workspaces": [
-    "apps/*",
-    "packages/*",
-    "tools/*"
-  ],
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev --parallel",
@@ -21,5 +16,5 @@
   "engines": {
     "node": ">=18.0.0"
   },
-  "packageManager": "pnpm@9.1.4"
+  "packageManager": "pnpm@9.9.0"
 }
