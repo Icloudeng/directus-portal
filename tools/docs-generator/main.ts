@@ -16,7 +16,7 @@ import { executorQueue } from "./src/queue";
  * --------------------------------------------------------------------------------------
  * --------------------------------------------------------------------------------------
  * !IMPORTANT
- * For now we're not handle each event action particulary, means normaly we should handle them
+ * For now we're not handle each event action particularly, means normally we should handle them
  * by providing the correspond process or executor, for item delete, create, updateF
  * --------------------------------------------------------------------------------------
  * --------------------------------------------------------------------------------------
@@ -58,7 +58,7 @@ async function process({ type, data }: { type: DataType; data: DataPayload }) {
 
   /**
    * For languages, namespaces and pages alway rebuild whole docs app
-   * !important this is not good for optimization spacialy when there are many content,
+   * !important this is not good for optimization specially when there are many content,
    * !we should handle every event action (create, update, delete) on its own logic or executorF
    */
   if (
@@ -98,7 +98,7 @@ async function process({ type, data }: { type: DataType; data: DataPayload }) {
 }
 
 /**
- * Proccess generate all
+ * Process generate all
  * @param type
  * @param data
  */
@@ -112,7 +112,7 @@ const processGenerateAllDebounce = debounce(
 );
 
 /**
- * Proccess generate footer
+ * Process generate footer
  *
  * @param type
  * @param data
