@@ -63,13 +63,12 @@ export type QDynamicPagesType<PS = false> = {
 
 export async function getGqlDynamicPages(request_pathname: string) {
   const directus = await getDirectusClient();
-  const access_token = await directus.auth.token;
 
   const res = await directus.graphql.items<QDynamicPagesType>(gql_query, {
     request_pathname: request_pathname.trim(),
   });
 
-  if (!res.data || !access_token) {
+  if (!res.data) {
     return res;
   }
   const { Pages } = res.data;
@@ -77,27 +76,35 @@ export async function getGqlDynamicPages(request_pathname: string) {
   const page = Pages[0];
 
   if (page) {
-    qWithAsset(access_token, page, 'image');
+    qWithAsset({
+      item: page,
+      imageKey: 'image',
+    });
   }
 
-  await pageSectionsAdapters(page, access_token);
+  await pageSectionsAdapters(page);
 
   return res;
 }
 
 export async function getGqlAllPages() {
   const directus = await getDirectusClient();
-  const access_token = await directus.auth.token;
 
   const res = await directus.graphql.items<QDynamicPagesType>(gql_all_pages);
 
-  if (!res.data || !access_token) {
+  if (!res.data) {
     return res;
   }
   const { Pages } = res.data;
 
   Pages.map((page) => {
-    if (page) qWithAsset(access_token, page, 'image');
+    if (page) {
+      qWithAsset({
+        item: page,
+        imageKey: 'image',
+      });
+    }
+
     return page;
   });
 

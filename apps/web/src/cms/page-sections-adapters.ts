@@ -35,14 +35,13 @@ type ParamPageSection = {
 };
 
 export async function pageSectionsAdapters<T extends ParamPageSectionReusable>(
-  data: T | undefined,
-  access_token: string
+  data: T | undefined
 ) {
   if (!data) return;
 
   const ps = pageSectionExtractReusableM2A(data); // this must be called at top of any others functions
   pageSectionPublished(ps);
-  pageSectionsWithAssets(access_token, ps.sections);
+  pageSectionsWithAssets(ps.sections);
   await pageSectionWithContent(ps.sections);
 }
 
@@ -108,16 +107,16 @@ function pageSectionExtractReusableM2A(
   return data as ParamPageSection;
 }
 
-function pageSectionsWithAssets(
-  access_token: string,
-  sections: M2APageSection[]
-) {
+function pageSectionsWithAssets(sections: M2APageSection[]) {
   const $sections = [...sections];
   const psAssets = (sections: M2APageSection[]) => {
     const section = sections.pop();
     if (!section) return;
 
-    qWithAsset(access_token, section.item, 'background_image');
+    qWithAsset({
+      item: section.item,
+      imageKey: 'background_image',
+    });
 
     const stAssets = (s_templates: PS_Content[]) => {
       const st = s_templates.pop();
@@ -125,26 +124,48 @@ function pageSectionsWithAssets(
 
       switch (st.collection) {
         case section_templates.st_media_tabs:
-          qWithAssets(access_token, st.item.translations, 'media');
+          qWithAssets({
+            items: st.item.translations,
+            imageKey: 'media',
+          });
           break;
         case section_templates.st_side_text_medias:
-          qWithAsset(access_token, st.item, 'media');
+          qWithAsset({
+            item: st.item,
+            imageKey: 'media',
+          });
           break;
         case section_templates.st_hero_with_media_backgrounds:
-          qWithAsset(access_token, st.item, 'media');
+          qWithAsset({
+            item: st.item,
+            imageKey: 'media',
+          });
           break;
         case section_templates.st_testimonials:
-          qWithAsset(access_token, st.item, 'image', [71, 71]);
+          qWithAsset({
+            item: st.item,
+            imageKey: 'image',
+            preset: [71, 71],
+          });
           break;
         case section_templates.st_coloured_cards:
-          qWithAsset(access_token, st.item, 'background_image');
+          qWithAsset({
+            item: st.item,
+            imageKey: 'background_image',
+          });
           break;
         case section_templates.st_videos:
-          qWithAsset(access_token, st.item, 'video_file');
+          qWithAsset({
+            item: st.item,
+            imageKey: 'video_file',
+          });
           break;
         default:
-          // Actually all templates modeles uses image as default key for assets
-          qWithAsset(access_token, st.item, 'image' as any);
+          // Actually all templates models uses image as default key for assets
+          qWithAsset({
+            item: st.item,
+            imageKey: 'image' as any,
+          });
           break;
       }
 

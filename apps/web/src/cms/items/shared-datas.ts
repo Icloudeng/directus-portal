@@ -243,14 +243,35 @@ export async function getGqlSharedData() {
 
   const { languages, CompanyDetails } = res.data;
 
-  languages?.forEach((lang) => qWithAsset(access_token, lang, 'icon_flag'));
+  languages?.forEach((lang) => {
+    qWithAsset({
+      item: lang,
+      imageKey: 'icon_flag',
+    });
+  });
 
   if (CompanyDetails) {
-    qWithAsset(access_token, CompanyDetails, 'logo');
-    qWithAsset(access_token, CompanyDetails, 'favicon');
-    qWithAsset(access_token, CompanyDetails, 'image');
+    qWithAsset({
+      item: CompanyDetails,
+      imageKey: 'logo',
+    });
+
+    qWithAsset({
+      item: CompanyDetails,
+      imageKey: 'favicon',
+    });
+
+    qWithAsset({
+      item: CompanyDetails,
+      imageKey: 'image',
+    });
+
     CompanyDetails?.socials?.forEach((social) =>
-      qWithAsset(access_token, social, 'icon', [50, 50])
+      qWithAsset({
+        item: social,
+        imageKey: 'icon',
+        preset: [50, 50],
+      })
     );
   }
 

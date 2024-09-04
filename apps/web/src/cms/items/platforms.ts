@@ -54,7 +54,6 @@ const gql_query = jsonToGraphQLQuery({
 
 export async function searchGqlPlatforms(query: string) {
   const directus = await getDirectusClient();
-  const access_token = await directus.auth.token;
 
   const res = await directus.graphql.items<{ platforms: MDPlatform[] }>(
     gql_query,
@@ -62,10 +61,10 @@ export async function searchGqlPlatforms(query: string) {
   );
   if (!res.data) return res;
 
-  if (access_token) {
-    const { platforms } = res.data;
-    qWithAssets(access_token, platforms, 'icon');
-  }
+  qWithAssets({
+    items: res.data.platforms,
+    imageKey: 'icon',
+  });
 
   return res;
 }
@@ -101,7 +100,6 @@ const gql_query_slug = jsonToGraphQLQuery({
 
 export async function getGqlPlatformsBySlug(slug: string) {
   const directus = await getDirectusClient();
-  const access_token = await directus.auth.token;
 
   const res = await directus.graphql.items<{ platforms: MDPlatform[] }>(
     gql_query_slug,
@@ -109,10 +107,10 @@ export async function getGqlPlatformsBySlug(slug: string) {
   );
   if (!res.data) return res;
 
-  if (access_token) {
-    const { platforms } = res.data;
-    qWithAssets(access_token, platforms, 'icon');
-  }
+  qWithAssets({
+    items: res.data.platforms,
+    imageKey: 'icon',
+  });
 
   return res;
 }
@@ -143,7 +141,6 @@ const pg_gql_query = jsonToGraphQLQuery({
 
 export async function getGqlPlatformsByCategories() {
   const directus = await getDirectusClient();
-  const access_token = await directus.auth.token;
 
   const res = await directus.graphql.items<{
     categories: MDPlatformCategory[];
@@ -153,13 +150,21 @@ export async function getGqlPlatformsByCategories() {
     return undefined;
   }
 
-  if (access_token) {
-    const { categories } = res.data;
-    qWithAssets(access_token, categories, 'icon');
-    categories.forEach((cat) => {
-      cat.platforms && qWithAssets(access_token, cat.platforms, 'icon');
-    });
-  }
+  const { categories } = res.data;
+
+  qWithAssets({
+    items: categories,
+    imageKey: 'icon',
+  });
+
+  categories.forEach((category) => {
+    if (category.platforms) {
+      qWithAssets({
+        items: category.platforms,
+        imageKey: 'icon',
+      });
+    }
+  });
 
   return res?.data;
 }

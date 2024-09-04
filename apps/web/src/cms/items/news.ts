@@ -81,15 +81,17 @@ export async function getGqlListNewsQuery(
   limit = 9
 ) {
   const directus = await getDirectusClient();
-  const access_token = await directus.auth.token;
 
   const res = await directus.graphql.items<{ news: MDNews[] }>(
     listNews_gql_query(query, offset, limit)
   );
 
-  if (!res.data || !access_token) return res;
+  if (!res.data) return res;
 
-  qWithAssets(access_token, res.data.news || [], 'image');
+  qWithAssets({
+    items: res.data.news || [],
+    imageKey: 'image',
+  });
 
   return res;
 }
@@ -113,18 +115,28 @@ const newsBySlugQuery = jsonToGraphQLQuery({
 
 export async function getGqlNewsBySlug(slug: string) {
   const directus = await getDirectusClient();
-  const access_token = await directus.auth.token;
 
   const res = await directus.graphql.items<{ news: MDNews[] }>(
     newsBySlugQuery,
     { slug }
   );
 
-  if (!res.data || !access_token) return res;
+  if (!res.data) return res;
+
   const news = res.data.news || [];
-  qWithAssets(access_token, news, 'image');
-  news.forEach(($new) => {
-    $new.author && qWithAsset(access_token, $new.author, 'image');
+
+  qWithAssets({
+    items: news,
+    imageKey: 'image',
+  });
+
+  news.forEach((_new) => {
+    if (_new.author) {
+      qWithAsset({
+        item: _new.author,
+        imageKey: 'image',
+      });
+    }
   });
 
   return res;

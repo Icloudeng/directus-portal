@@ -22,8 +22,3 @@ export async function getDirectusClient() {
 
   return directus;
 }
-
-export async function getDirectusAuthToken() {
-  await getDirectusClient();
-  return directus.auth.token;
-}

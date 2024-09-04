@@ -53,15 +53,17 @@ export async function getGqlListBlogQuery(
   limit = 9
 ) {
   const directus = await getDirectusClient();
-  const access_token = await directus.auth.token;
 
   const res = await directus.graphql.items<{ blogs: MDBlog[] }>(
     listBlog_gql_query(query, offset, limit)
   );
 
-  if (!res.data || !access_token) return res;
+  if (!res.data) return res;
 
-  qWithAssets(access_token, res.data.blogs || [], 'image');
+  qWithAssets({
+    items: res.data.blogs || [],
+    imageKey: 'image',
+  });
 
   return res;
 }
@@ -86,18 +88,28 @@ const newsBySlugQuery = jsonToGraphQLQuery({
 
 export async function getGqlBlogBySlug(slug: string) {
   const directus = await getDirectusClient();
-  const access_token = await directus.auth.token;
 
   const res = await directus.graphql.items<{ blogs: MDBlog[] }>(
     newsBySlugQuery,
     { slug }
   );
 
-  if (!res.data || !access_token) return res;
+  if (!res.data) return res;
+
   const blogs = res.data.blogs || [];
-  qWithAssets(access_token, blogs, 'image');
+
+  qWithAssets({
+    items: blogs,
+    imageKey: 'image',
+  });
+
   blogs.forEach((blog) => {
-    blog.author && qWithAsset(access_token, blog.author, 'image');
+    if (blog.author) {
+      qWithAsset({
+        item: blog.author,
+        imageKey: 'image',
+      });
+    }
   });
 
   return res;

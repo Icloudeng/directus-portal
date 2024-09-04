@@ -50,21 +50,30 @@ export type QHomeHeroQueriesType<PS = false> = {
 
 export async function getGqlHomeQueries() {
   const directus = await getDirectusClient();
-  const access_token = await directus.auth.token;
 
   const res = await directus.graphql.items<QHomeHeroQueriesType>(gql_query);
 
-  if (!res.data || !access_token) return res;
+  if (!res.data) {
+    return res;
+  }
+
   const { HomeHero, HomeSections } = res.data;
 
   if (HomeHero) {
-    qWithAsset(access_token, HomeHero, 'image');
+    qWithAsset({
+      item: HomeHero,
+      imageKey: 'image',
+    });
+
     (HomeHero.images || []).forEach((image) =>
-      qWithAsset(access_token, image, 'directus_files_id')
+      qWithAsset({
+        item: image,
+        imageKey: 'directus_files_id',
+      })
     );
   }
 
-  await pageSectionsAdapters(HomeSections, access_token);
+  await pageSectionsAdapters(HomeSections);
 
   return res;
 }

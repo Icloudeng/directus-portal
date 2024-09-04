@@ -6,6 +6,8 @@ const directus = new Directus(DIRECTUS_HOST);
 export async function getDirectusClient() {
   if (await directus.auth.token) return directus;
 
+  directus.auth.autoRefresh = true;
+
   await directus.auth.login({
     email: DIRECTUS_EMAIL,
     password: DIRECTUS_PASSWORD,

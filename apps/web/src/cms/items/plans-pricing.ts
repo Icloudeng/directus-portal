@@ -78,16 +78,19 @@ const queries = jsonToGraphQLQuery({
 
 export async function getGqlPlansPricingQueries() {
   const directus = await getDirectusClient();
-  const access_token = await directus.auth.token;
 
   const res = await directus.graphql
     .items<PlansPricingContent>(queries)
     .catch(console.error);
 
-  if (res?.data && access_token) {
+  if (res?.data) {
     const { machine_templates } = res.data;
+
     machine_templates.forEach((item) => {
-      qWithAsset(access_token, item, 'icon');
+      qWithAsset({
+        item,
+        imageKey: 'icon',
+      });
     });
   }
 

@@ -38,44 +38,65 @@ export function qWithQueryAsset(moreFields: { [x: string]: boolean } = {}) {
   };
 }
 
+type IQAsset<T extends { [x: string]: MDWithAsset | unknown }> = {
+  item: T;
+  imageKey: keyof T;
+  preset?: string | [number, number];
+  access_token?: string;
+};
+
+type IQAssets<T extends { [x: string]: MDWithAsset | unknown }> = {
+  items: T[];
+  imageKey: keyof T;
+  preset?: string | [number, number];
+  access_token?: string;
+};
+
 export function qWithAsset<T extends { [x: string]: MDWithAsset | unknown }>(
-  access_token: string,
-  data: T,
-  imageKey: keyof T = 'image',
-  preset?: string | [number, number]
+  params: IQAsset<T>
 ) {
+  const { item, imageKey = 'image', preset, access_token } = params;
+
   const cms_url = CMS_URL;
 
-  if (!data[imageKey]) return data;
-  let preset_url = '';
-  const asset = data[imageKey] as unknown as MDWithAsset;
+  if (!item[imageKey]) return item;
+
+  const asset = item[imageKey] as unknown as MDWithAsset;
+
+  const urlParams = new URLSearchParams();
 
   switch (typeof preset) {
     case 'string':
-      preset_url += `&key=${preset}`;
+      urlParams.set('key', preset);
       break;
     case 'object':
-      preset_url += `&width=${preset[0]}&height=${preset[1]}`;
+      urlParams.set('width', preset[0].toString());
+      urlParams.set('height', preset[1].toString());
       break;
   }
 
+  if (access_token) {
+    urlParams.set('access_token', access_token);
+  }
+
   const origin = cms_url.endsWith('/') ? cms_url : cms_url + '/';
-  const url = `${origin}assets/${asset.id}?access_token=${
-    access_token + preset_url
-  }`;
 
-  asset.src = url;
+  asset.src = `${origin}assets/${asset.id}?${urlParams.toString()}`;
 
-  return data;
+  return item;
 }
 
 export function qWithAssets<T extends { [x: string]: MDWithAsset | unknown }>(
-  access_token: string,
-  items: T[],
-  imageKey: keyof T = 'image',
-  preset?: string | [number, number]
+  params: IQAssets<T>
 ): T[] {
-  return items.map((item) => qWithAsset(access_token, item, imageKey, preset));
+  return params.items.map((item) =>
+    qWithAsset({
+      item,
+      access_token: params.access_token,
+      imageKey: params.imageKey || 'image',
+      preset: params.preset,
+    })
+  );
 }
 
 type Query<T> = {
