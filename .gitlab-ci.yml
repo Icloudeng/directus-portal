@@ -37,6 +37,7 @@ front-test:
           - pnpm-lock.yaml
       paths:
         - .pnpm-store
+        - node_modules
 
     - key: front-turbo-cache
       paths:
