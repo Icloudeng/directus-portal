@@ -11,13 +11,13 @@ import React, { FunctionComponent, useMemo, useRef } from 'react';
 
 import cn from '@/lib/cn';
 
+import { nextAsset } from '@/app/utils/next-asset';
 import { VALID_CSS } from '@/app/utils/regex';
 import { testHexColor } from '@/app/utils/tests';
 import { useMut } from '@/cms/mut';
 
 import * as stfc from './templates';
 import { HasSvgText } from '../ui/HasSvgText';
-import { nextAsset } from '@/app/utils/next-asset';
 
 const { section_templates } = CMS_MODELS;
 type ST = typeof section_templates;

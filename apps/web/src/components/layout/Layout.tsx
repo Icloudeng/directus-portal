@@ -1,10 +1,11 @@
+import cn from '@/lib/cn';
+
 import { useSharedData } from '@/app/store';
 
 import { Footer } from './footer/Footer';
 import { FooterSimple } from './footer/FooterSimple';
 import Header from './Header';
 import { MobileMenu } from './mobileMenu/MobileMenu';
-import cn from '@/lib/cn';
 
 export default function Layout({
   children,
