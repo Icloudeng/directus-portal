@@ -13,7 +13,7 @@ import { mut } from '@/cms/mut';
 
 export function ST_PlatformsFC({
   items,
-  sectionId,
+  section,
 }: STemplates_Props<ST_Platform>) {
   const { item } = items[0];
   const [categories, setCategories] = useState(item.categories || []);
@@ -42,7 +42,7 @@ export function ST_PlatformsFC({
         <InputSearch onChange={onSearch} />
       </div>
       <AsideMenuCategories
-        hrefPrefix={sectionId as string}
+        hrefPrefix={section?.id as string}
         items={categories.map((cat) => {
           const { translations } = mut(cat, locale);
           return {

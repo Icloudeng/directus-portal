@@ -24,6 +24,9 @@ export function ST_CleanHerosFC({
     sharedObject[first.collection] = first.item.id;
   }
 
+  const applyStyle =
+    sharedObject[first.collection] === first.item.id && first.item.hero;
+
   useEffect(() => {
     const routerChangeStart = () => {
       delete sharedObject[first.collection];
@@ -36,7 +39,7 @@ export function ST_CleanHerosFC({
 
   return (
     <>
-      {sharedObject[first.collection] === first.item.id && (
+      {!!applyStyle && (
         <style key={first.collection} jsx global>
           {
             /*css*/ `
@@ -49,20 +52,27 @@ export function ST_CleanHerosFC({
                   var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
                 color: rgb(0 0 0 / var(--tw-text-opacity));
               }
+
+              .white-navbar.hidden {
+                display: block;
+              }
+
               .${sectionClass} {
-                margin-top: -4rem;
-                padding-bottom: 6rem;
+                margin-top: -0.3rem;
+                padding-bottom: 5rem;
+                padding-top: 5rem;
                 order: -1;
               }
               @media screen and (max-width: 620px) {
                 .${sectionClass} {
+                  padding-top: 4rem;
                   padding-bottom: 4rem;
                 }
               }
 
               @media screen and (max-width: 719px) {
                 .${sectionClass} {
-                  margin-top: -9rem;
+                  margin-top: -0.3rem;
                 }
               }
 
@@ -128,7 +138,7 @@ function Header({ item, index }: ST_CleanHero & { index: number }) {
       >
         <h1
           className={cn(
-            'text-center text-[30px] sm:text-[45px] font-bold clean-hero--texts',
+            'text-center text-[30px] sm:text-[45px] font-bold clean-hero--texts leading-10',
             hasImage && ['lg:text-start']
           )}
         >

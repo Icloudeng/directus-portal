@@ -56,7 +56,7 @@ export default function Page({ platform }: { platform: MDPlatform }) {
                 />
               </div>
               <div className='sd:ml-4 flex items-center'>
-                <h1 className='text-gray-700 font-normal text-4xl mb-1 sd:mb-0'>
+                <h1 className='text-gray-700 font-normal text-4xl mb-1 sd:mb-0 leading-10'>
                   {name}
                 </h1>
                 {link && (

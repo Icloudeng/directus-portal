@@ -4,6 +4,7 @@ import { Footer } from './footer/Footer';
 import { FooterSimple } from './footer/FooterSimple';
 import Header from './Header';
 import { MobileMenu } from './mobileMenu/MobileMenu';
+import cn from '@/lib/cn';
 
 export default function Layout({
   children,
@@ -17,10 +18,15 @@ export default function Layout({
   return (
     <div
       id='layout__container'
-      className='min-h-screen min-w-full flex flex-col bg-gradient-to-b pt-36 bg-[var(--bg-main-color)]'
+      className='min-h-screen min-w-full flex flex-col bg-gradient-to-b pt-36 bg-[var(--bg-main-color)] relative'
     >
       <Header whiteNav={whiteNav} />
-      {whiteNav && <div className='h-14 sd:h-24 bg-white -mt-[8rem] xl:h-32' />}
+      <div
+        className={cn(
+          'h-14 sd:h-24 bg-white -mt-[8rem] xl:h-32 white-navbar',
+          whiteNav ? 'block' : 'hidden'
+        )}
+      />
 
       <div className='main__content z-0 flex flex-col justify-center'>
         {children}

@@ -207,7 +207,7 @@ function STHeroWithMediaBackground({
           'absolute inset-0 z-10 h-full'
         )}
       >
-        <h1 className='font-light text-5xl text-white'>
+        <h1 className='font-light text-5xl text-white leading-10'>
           {translations?.title}
         </h1>
 

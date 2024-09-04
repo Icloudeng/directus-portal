@@ -35,7 +35,7 @@ export default function NotFoundPage() {
               </svg>
             </div>
           </div>
-          <h1 className='mt-5 text-[36px] font-bold text-slate-800 lg:text-[50px]'>
+          <h1 className='mt-5 text-[36px] font-bold text-slate-800 lg:text-[50px] leading-10'>
             {t('500 - Server error')}
           </h1>
           <p className='text-slate-600 mt-5 lg:text-lg'>

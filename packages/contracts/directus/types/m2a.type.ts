@@ -20,8 +20,8 @@ import { CMS_MODELS } from "../constants";
 export type ISharedObject = { [x: string]: any };
 export type STemplates_Props<T> = {
   items: T[];
+  section?: M2APageSection;
   sectionClass: string;
-  sectionId?: ID;
   sharedObject: ISharedObject;
   fcIndex?: number;
 };
@@ -111,6 +111,7 @@ export type ST_NavAccordion = MDHasM2A<
 
 export type ST_CleanHero = MDHasM2A<
   {
+    hero: boolean;
     image?: MDWithAsset;
     image_svg?: string;
     text_color?: string;

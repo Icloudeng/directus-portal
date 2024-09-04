@@ -223,8 +223,8 @@ function PageSection({
                     <div className={`w-full st__content-${content.collection}`}>
                       <STComponent
                         items={items}
+                        section={section}
                         sectionClass={classId}
-                        sectionId={section.id}
                         sharedObject={sharedObject}
                         fcIndex={cIdx}
                       />

@@ -93,6 +93,7 @@ const q_ST: Query = {
   [section_templates.st_clean_heros]: {
     __typeName: section_templates.st_clean_heros,
     __args: qWithPublishedStatus(),
+    hero: true,
     image: qWithQueryAsset({
       height: true,
       width: true,

@@ -17,7 +17,7 @@ export function CleanHero({
       )}
     >
       <div className='xl:max-w-[560px] lg:max-w-[480px] justify-center max-w-[460px] flex items-center flex-col mx-auto'>
-        <h1 className='text-center text-[30px] sm:text-[45px] font-bold'>
+        <h1 className='text-center text-[30px] sm:text-[45px] font-bold leading-10'>
           {title}
         </h1>
         {description && (
