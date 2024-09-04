@@ -1,0 +1,12 @@
+apiVersion: v1
+data:
+  DOCS_WEB_URL: http://host.docker.internal:3100
+  TYPESENSE_API_KEY: typesense-docsearch-scraper
+  TYPESENSE_HOST: host.docker.internal
+  TYPESENSE_PORT: "8108"
+  TYPESENSE_PROTOCOL: http
+kind: ConfigMap
+metadata:
+  labels:
+    io.kompose.service: docsearch-scraper-docker-env
+  name: docker-env

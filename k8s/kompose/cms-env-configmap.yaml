@@ -1,0 +1,26 @@
+apiVersion: v1
+data:
+  ADMIN_EMAIL: admin@example.com
+  ADMIN_PASSWORD: password
+  CACHE_AUTO_PURGE: "true"
+  CACHE_ENABLED: "true"
+  CACHE_REDIS: redis://redis:6379
+  CACHE_STORE: redis
+  CORS_ENABLED: "false"
+  DB_CLIENT: postgres
+  DB_DATABASE: portal
+  DB_HOST: db
+  DB_PASSWORD: portal
+  DB_PORT: "5432"
+  DB_USER: postgres
+  HOST: 0.0.0.0
+  KEY: 255d861b-5ea1-5996-9aa3-922530ec40b1
+  PORT: "8055"
+  PUBLIC_URL: http://localhost:8055
+  REDIS_URL: redis://redis:6379
+  SECRET: 6116487b-cda1-52c2-b5b5-c8022c45e263
+kind: ConfigMap
+metadata:
+  labels:
+    io.kompose.service: cms-cms-env
+  name: cms-env

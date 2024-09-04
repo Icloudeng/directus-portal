@@ -1,0 +1,24 @@
+apiVersion: v1
+data:
+  DEBOUNCE_EXECUTOR: "false"
+  DEFAULT_LANG: en
+  DEFAULT_LANG_NAME: English
+  DIRECTUS_EMAIL: admin@example.com
+  DIRECTUS_HOST: http://cms:8055
+  DIRECTUS_PASSWORD: password
+  DIRECTUS_URL: http://127.0.0.1:8055
+  DOCS_APP_PM2_NAME: docs-app
+  ENV: prod
+  IS_DOCKER: "true"
+  REDIS_URL: redis://redis:6379
+  TYPESENSE_API_KEY: typesense-docsearch-scraper
+  TYPESENSE_COLLECTION_NAME: smatflow
+  TYPESENSE_HOST: 127.0.0.1
+  TYPESENSE_PORT: "8108"
+  TYPESENSE_PROTOCOL: http
+  WEBSITE_URL: http://localhost:3000
+kind: ConfigMap
+metadata:
+  labels:
+    io.kompose.service: docs-docs-env
+  name: docs-env

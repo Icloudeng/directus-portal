@@ -1,0 +1,489 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: ./kompose convert
+    kompose.version: 1.34.0 (cbf2835db)
+  labels:
+    io.kompose.service: cms
+  name: cms
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: cms
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: ./kompose convert
+        kompose.version: 1.34.0 (cbf2835db)
+      labels:
+        io.kompose.service: cms
+    spec:
+      containers:
+        - env:
+            - name: ACCESS_TOKEN_TTL
+              valueFrom:
+                configMapKeyRef:
+                  key: ACCESS_TOKEN_TTL
+                  name: cms-env-sample
+            - name: ADMIN_EMAIL
+              valueFrom:
+                configMapKeyRef:
+                  key: ADMIN_EMAIL
+                  name: cms-env-sample
+            - name: ADMIN_EMAIL
+              valueFrom:
+                configMapKeyRef:
+                  key: ADMIN_EMAIL
+                  name: cms-env
+            - name: ADMIN_PASSWORD
+              valueFrom:
+                configMapKeyRef:
+                  key: ADMIN_PASSWORD
+                  name: cms-env-sample
+            - name: ADMIN_PASSWORD
+              valueFrom:
+                configMapKeyRef:
+                  key: ADMIN_PASSWORD
+                  name: cms-env
+            - name: ASSETS_CACHE_TTL
+              valueFrom:
+                configMapKeyRef:
+                  key: ASSETS_CACHE_TTL
+                  name: cms-env-sample
+            - name: AUTH_LDAP_BIND_DN
+              valueFrom:
+                configMapKeyRef:
+                  key: AUTH_LDAP_BIND_DN
+                  name: cms-env-sample
+            - name: AUTH_LDAP_BIND_PASSWORD
+              valueFrom:
+                configMapKeyRef:
+                  key: AUTH_LDAP_BIND_PASSWORD
+                  name: cms-env-sample
+            - name: AUTH_LDAP_CLIENT_URL
+              valueFrom:
+                configMapKeyRef:
+                  key: AUTH_LDAP_CLIENT_URL
+                  name: cms-env-sample
+            - name: AUTH_LDAP_DRIVER
+              valueFrom:
+                configMapKeyRef:
+                  key: AUTH_LDAP_DRIVER
+                  name: cms-env-sample
+            - name: AUTH_LDAP_FIRST_NAME_ATTRIBUTE
+              valueFrom:
+                configMapKeyRef:
+                  key: AUTH_LDAP_FIRST_NAME_ATTRIBUTE
+                  name: cms-env-sample
+            - name: AUTH_LDAP_GROUP_ATTRIBUTE
+              valueFrom:
+                configMapKeyRef:
+                  key: AUTH_LDAP_GROUP_ATTRIBUTE
+                  name: cms-env-sample
+            - name: AUTH_LDAP_GROUP_DN
+              valueFrom:
+                configMapKeyRef:
+                  key: AUTH_LDAP_GROUP_DN
+                  name: cms-env-sample
+            - name: AUTH_LDAP_GROUP_SCOPE
+              valueFrom:
+                configMapKeyRef:
+                  key: AUTH_LDAP_GROUP_SCOPE
+                  name: cms-env-sample
+            - name: AUTH_LDAP_LAST_NAME_ATTRIBUTE
+              valueFrom:
+                configMapKeyRef:
+                  key: AUTH_LDAP_LAST_NAME_ATTRIBUTE
+                  name: cms-env-sample
+            - name: AUTH_LDAP_MAIL_ATTRIBUTE
+              valueFrom:
+                configMapKeyRef:
+                  key: AUTH_LDAP_MAIL_ATTRIBUTE
+                  name: cms-env-sample
+            - name: AUTH_LDAP_USER_ATTRIBUTE
+              valueFrom:
+                configMapKeyRef:
+                  key: AUTH_LDAP_USER_ATTRIBUTE
+                  name: cms-env-sample
+            - name: AUTH_LDAP_USER_DN
+              valueFrom:
+                configMapKeyRef:
+                  key: AUTH_LDAP_USER_DN
+                  name: cms-env-sample
+            - name: AUTH_LDAP_USER_SCOPE
+              valueFrom:
+                configMapKeyRef:
+                  key: AUTH_LDAP_USER_SCOPE
+                  name: cms-env-sample
+            - name: AUTH_PROVIDERS
+              valueFrom:
+                configMapKeyRef:
+                  key: AUTH_PROVIDERS
+                  name: cms-env-sample
+            - name: CACHE_AUTO_PURGE
+              valueFrom:
+                configMapKeyRef:
+                  key: CACHE_AUTO_PURGE
+                  name: cms-env-sample
+            - name: CACHE_AUTO_PURGE
+              valueFrom:
+                configMapKeyRef:
+                  key: CACHE_AUTO_PURGE
+                  name: cms-env
+            - name: CACHE_ENABLED
+              valueFrom:
+                configMapKeyRef:
+                  key: CACHE_ENABLED
+                  name: cms-env-sample
+            - name: CACHE_ENABLED
+              valueFrom:
+                configMapKeyRef:
+                  key: CACHE_ENABLED
+                  name: cms-env
+            - name: CACHE_NAMESPACE
+              valueFrom:
+                configMapKeyRef:
+                  key: CACHE_NAMESPACE
+                  name: cms-env-sample
+            - name: CACHE_REDIS
+              valueFrom:
+                configMapKeyRef:
+                  key: CACHE_REDIS
+                  name: cms-env-sample
+            - name: CACHE_REDIS
+              valueFrom:
+                configMapKeyRef:
+                  key: CACHE_REDIS
+                  name: cms-env
+            - name: CACHE_STORE
+              valueFrom:
+                configMapKeyRef:
+                  key: CACHE_STORE
+                  name: cms-env-sample
+            - name: CACHE_STORE
+              valueFrom:
+                configMapKeyRef:
+                  key: CACHE_STORE
+                  name: cms-env
+            - name: CACHE_TTL
+              valueFrom:
+                configMapKeyRef:
+                  key: CACHE_TTL
+                  name: cms-env-sample
+            - name: CORS_ALLOWED_HEADERS
+              valueFrom:
+                configMapKeyRef:
+                  key: CORS_ALLOWED_HEADERS
+                  name: cms-env-sample
+            - name: CORS_CREDENTIALS
+              valueFrom:
+                configMapKeyRef:
+                  key: CORS_CREDENTIALS
+                  name: cms-env-sample
+            - name: CORS_ENABLED
+              valueFrom:
+                configMapKeyRef:
+                  key: CORS_ENABLED
+                  name: cms-env-sample
+            - name: CORS_ENABLED
+              valueFrom:
+                configMapKeyRef:
+                  key: CORS_ENABLED
+                  name: cms-env
+            - name: CORS_EXPOSED_HEADERS
+              valueFrom:
+                configMapKeyRef:
+                  key: CORS_EXPOSED_HEADERS
+                  name: cms-env-sample
+            - name: CORS_MAX_AGE
+              valueFrom:
+                configMapKeyRef:
+                  key: CORS_MAX_AGE
+                  name: cms-env-sample
+            - name: CORS_METHODS
+              valueFrom:
+                configMapKeyRef:
+                  key: CORS_METHODS
+                  name: cms-env-sample
+            - name: CORS_ORIGIN
+              valueFrom:
+                configMapKeyRef:
+                  key: CORS_ORIGIN
+                  name: cms-env-sample
+            - name: DB_CLIENT
+              valueFrom:
+                configMapKeyRef:
+                  key: DB_CLIENT
+                  name: cms-env-sample
+            - name: DB_CLIENT
+              valueFrom:
+                configMapKeyRef:
+                  key: DB_CLIENT
+                  name: cms-env
+            - name: DB_DATABASE
+              valueFrom:
+                configMapKeyRef:
+                  key: DB_DATABASE
+                  name: cms-env-sample
+            - name: DB_DATABASE
+              valueFrom:
+                configMapKeyRef:
+                  key: DB_DATABASE
+                  name: cms-env
+            - name: DB_HOST
+              valueFrom:
+                configMapKeyRef:
+                  key: DB_HOST
+                  name: cms-env-sample
+            - name: DB_HOST
+              valueFrom:
+                configMapKeyRef:
+                  key: DB_HOST
+                  name: cms-env
+            - name: DB_PASSWORD
+              valueFrom:
+                configMapKeyRef:
+                  key: DB_PASSWORD
+                  name: cms-env-sample
+            - name: DB_PASSWORD
+              valueFrom:
+                configMapKeyRef:
+                  key: DB_PASSWORD
+                  name: cms-env
+            - name: DB_PORT
+              valueFrom:
+                configMapKeyRef:
+                  key: DB_PORT
+                  name: cms-env-sample
+            - name: DB_PORT
+              valueFrom:
+                configMapKeyRef:
+                  key: DB_PORT
+                  name: cms-env
+            - name: DB_USER
+              valueFrom:
+                configMapKeyRef:
+                  key: DB_USER
+                  name: cms-env-sample
+            - name: DB_USER
+              valueFrom:
+                configMapKeyRef:
+                  key: DB_USER
+                  name: cms-env
+            - name: EMAIL_FROM
+              valueFrom:
+                configMapKeyRef:
+                  key: EMAIL_FROM
+                  name: cms-env-sample
+            - name: EMAIL_SENDMAIL_NEW_LINE
+              valueFrom:
+                configMapKeyRef:
+                  key: EMAIL_SENDMAIL_NEW_LINE
+                  name: cms-env-sample
+            - name: EMAIL_SENDMAIL_PATH
+              valueFrom:
+                configMapKeyRef:
+                  key: EMAIL_SENDMAIL_PATH
+                  name: cms-env-sample
+            - name: EMAIL_TRANSPORT
+              valueFrom:
+                configMapKeyRef:
+                  key: EMAIL_TRANSPORT
+                  name: cms-env-sample
+            - name: EXTENSIONS_AUTO_RELOAD
+              valueFrom:
+                configMapKeyRef:
+                  key: EXTENSIONS_AUTO_RELOAD
+                  name: cms-env-sample
+            - name: EXTENSIONS_PATH
+              valueFrom:
+                configMapKeyRef:
+                  key: EXTENSIONS_PATH
+                  name: cms-env-sample
+            - name: HOST
+              valueFrom:
+                configMapKeyRef:
+                  key: HOST
+                  name: cms-env-sample
+            - name: HOST
+              valueFrom:
+                configMapKeyRef:
+                  key: HOST
+                  name: cms-env
+            - name: KEY
+              valueFrom:
+                configMapKeyRef:
+                  key: KEY
+                  name: cms-env-sample
+            - name: KEY
+              valueFrom:
+                configMapKeyRef:
+                  key: KEY
+                  name: cms-env
+            - name: LOG_LEVEL
+              valueFrom:
+                configMapKeyRef:
+                  key: LOG_LEVEL
+                  name: cms-env-sample
+            - name: LOG_STYLE
+              valueFrom:
+                configMapKeyRef:
+                  key: LOG_STYLE
+                  name: cms-env-sample
+            - name: MAX_PAYLOAD_SIZE
+              valueFrom:
+                configMapKeyRef:
+                  key: MAX_PAYLOAD_SIZE
+                  name: cms-env-sample
+            - name: MESSENGER_NAMESPACE
+              valueFrom:
+                configMapKeyRef:
+                  key: MESSENGER_NAMESPACE
+                  name: cms-env-sample
+            - name: MESSENGER_REDIS
+              valueFrom:
+                configMapKeyRef:
+                  key: MESSENGER_REDIS
+                  name: cms-env-sample
+            - name: MESSENGER_STORE
+              valueFrom:
+                configMapKeyRef:
+                  key: MESSENGER_STORE
+                  name: cms-env-sample
+            - name: PORT
+              valueFrom:
+                configMapKeyRef:
+                  key: PORT
+                  name: cms-env-sample
+            - name: PORT
+              valueFrom:
+                configMapKeyRef:
+                  key: PORT
+                  name: cms-env
+            - name: PUBLIC_URL
+              valueFrom:
+                configMapKeyRef:
+                  key: PUBLIC_URL
+                  name: cms-env-sample
+            - name: PUBLIC_URL
+              valueFrom:
+                configMapKeyRef:
+                  key: PUBLIC_URL
+                  name: cms-env
+            - name: RATE_LIMITER_DURATION
+              valueFrom:
+                configMapKeyRef:
+                  key: RATE_LIMITER_DURATION
+                  name: cms-env-sample
+            - name: RATE_LIMITER_ENABLED
+              valueFrom:
+                configMapKeyRef:
+                  key: RATE_LIMITER_ENABLED
+                  name: cms-env-sample
+            - name: RATE_LIMITER_GLOBAL_REDIS
+              valueFrom:
+                configMapKeyRef:
+                  key: RATE_LIMITER_GLOBAL_REDIS
+                  name: cms-env-sample
+            - name: RATE_LIMITER_POINTS
+              valueFrom:
+                configMapKeyRef:
+                  key: RATE_LIMITER_POINTS
+                  name: cms-env-sample
+            - name: RATE_LIMITER_REDIS
+              valueFrom:
+                configMapKeyRef:
+                  key: RATE_LIMITER_REDIS
+                  name: cms-env-sample
+            - name: RATE_LIMITER_STORE
+              valueFrom:
+                configMapKeyRef:
+                  key: RATE_LIMITER_STORE
+                  name: cms-env-sample
+            - name: REDIS_URL
+              valueFrom:
+                configMapKeyRef:
+                  key: REDIS_URL
+                  name: cms-env-sample
+            - name: REDIS_URL
+              valueFrom:
+                configMapKeyRef:
+                  key: REDIS_URL
+                  name: cms-env
+            - name: REFRESH_TOKEN_COOKIE_NAME
+              valueFrom:
+                configMapKeyRef:
+                  key: REFRESH_TOKEN_COOKIE_NAME
+                  name: cms-env-sample
+            - name: REFRESH_TOKEN_COOKIE_SAME_SITE
+              valueFrom:
+                configMapKeyRef:
+                  key: REFRESH_TOKEN_COOKIE_SAME_SITE
+                  name: cms-env-sample
+            - name: REFRESH_TOKEN_COOKIE_SECURE
+              valueFrom:
+                configMapKeyRef:
+                  key: REFRESH_TOKEN_COOKIE_SECURE
+                  name: cms-env-sample
+            - name: REFRESH_TOKEN_TTL
+              valueFrom:
+                configMapKeyRef:
+                  key: REFRESH_TOKEN_TTL
+                  name: cms-env-sample
+            - name: ROOT_REDIRECT
+              valueFrom:
+                configMapKeyRef:
+                  key: ROOT_REDIRECT
+                  name: cms-env-sample
+            - name: SECRET
+              valueFrom:
+                configMapKeyRef:
+                  key: SECRET
+                  name: cms-env-sample
+            - name: SECRET
+              valueFrom:
+                configMapKeyRef:
+                  key: SECRET
+                  name: cms-env
+            - name: STORAGE_LOCAL_DRIVER
+              valueFrom:
+                configMapKeyRef:
+                  key: STORAGE_LOCAL_DRIVER
+                  name: cms-env-sample
+            - name: STORAGE_LOCAL_ROOT
+              valueFrom:
+                configMapKeyRef:
+                  key: STORAGE_LOCAL_ROOT
+                  name: cms-env-sample
+            - name: STORAGE_LOCATIONS
+              valueFrom:
+                configMapKeyRef:
+                  key: STORAGE_LOCATIONS
+                  name: cms-env-sample
+          image: registry-hub.smatflow.net/smatflow-projects/smatflow-portal/cms:latest
+          name: cms
+          ports:
+            - containerPort: 8055
+              protocol: TCP
+          volumeMounts:
+            - mountPath: /app/apps/cms/database
+              name: cms-database
+            - mountPath: /app/apps/cms/extensions
+              name: cms-extensions
+            - mountPath: /app/apps/cms/uploads
+              name: cms-uploads
+      restartPolicy: Always
+      volumes:
+        - name: cms-database
+          persistentVolumeClaim:
+            claimName: cms-database
+        - name: cms-extensions
+          persistentVolumeClaim:
+            claimName: cms-extensions
+        - name: cms-uploads
+          persistentVolumeClaim:
+            claimName: cms-uploads
