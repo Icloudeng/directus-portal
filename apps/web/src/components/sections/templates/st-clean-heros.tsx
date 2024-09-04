@@ -126,7 +126,7 @@ function Header({ item, index, isHero }: THeaderProps) {
       className={cn(
         'flex max-h-[1000px] mt-[30px] sd:mt-0',
 
-        hasImage && ['lg:justify-between'],
+        hasImage && ['lg:justify-around'],
 
         disposition === 'text_right' && ['flex-row-reverse'],
 
