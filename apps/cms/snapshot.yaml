@@ -35256,7 +35256,7 @@ fields:
       options: null
       readonly: true
       required: false
-      sort: 11
+      sort: 12
       special:
         - date-created
       translations: null
@@ -35296,7 +35296,7 @@ fields:
       options: null
       readonly: true
       required: false
-      sort: 13
+      sort: 14
       special:
         - date-updated
       translations: null
@@ -35340,7 +35340,7 @@ fields:
             value: text_right
       readonly: false
       required: true
-      sort: 7
+      sort: 8
       special: null
       translations: null
       validation: null
@@ -35352,6 +35352,45 @@ fields:
       data_type: character varying
       default_value: text_left
       max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: ST_CleanHeros
+    field: hero
+    type: boolean
+    meta:
+      collection: ST_CleanHeros
+      conditions: null
+      display: null
+      display_options: null
+      field: hero
+      group: null
+      hidden: false
+      interface: boolean
+      note: null
+      options: null
+      readonly: false
+      required: true
+      sort: 2
+      special:
+        - cast-boolean
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: hero
+      table: ST_CleanHeros
+      data_type: boolean
+      default_value: true
+      max_length: null
       numeric_precision: null
       numeric_scale: null
       is_nullable: true
@@ -35417,7 +35456,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: 6
+      sort: 7
       special:
         - file
       translations: null
@@ -35459,7 +35498,7 @@ fields:
         template: <svg></svg>
       readonly: false
       required: false
-      sort: 5
+      sort: 6
       special: null
       translations: null
       validation: null
@@ -35498,14 +35537,14 @@ fields:
         text: ST Clean Heros
       readonly: false
       required: false
-      sort: 2
+      sort: 3
       special:
         - alias
         - no-data
       translations: null
       validation: null
       validation_message: null
-      width: full
+      width: half
   - collection: ST_CleanHeros
     field: sort
     type: integer
@@ -35522,7 +35561,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: 9
+      sort: 10
       special: null
       translations: null
       validation: null
@@ -35581,7 +35620,7 @@ fields:
             value: archived
       readonly: false
       required: false
-      sort: 8
+      sort: 9
       special: null
       translations: null
       validation: null
@@ -35669,7 +35708,7 @@ fields:
             color: '#64748b'
       readonly: false
       required: false
-      sort: 4
+      sort: 5
       special: null
       translations: null
       validation: null
@@ -35709,7 +35748,7 @@ fields:
         userLanguage: true
       readonly: false
       required: true
-      sort: 3
+      sort: 4
       special:
         - translations
       translations: null
@@ -35733,7 +35772,7 @@ fields:
         template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
       readonly: true
       required: false
-      sort: 10
+      sort: 11
       special:
         - user-created
       translations: null
@@ -35773,7 +35812,7 @@ fields:
         template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
       readonly: true
       required: false
-      sort: 12
+      sort: 13
       special:
         - user-updated
       translations: null
