@@ -235,11 +235,10 @@ export type QShareDataType = {
  */
 export async function getGqlSharedData() {
   const directus = await getDirectusClient();
-  const access_token = await directus.auth.token;
 
   const res = await directus.graphql.items<QShareDataType>(gql_query);
 
-  if (!res.data || !access_token) return res;
+  if (!res.data) return res;
 
   const { languages, CompanyDetails } = res.data;
 
