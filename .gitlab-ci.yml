@@ -32,11 +32,15 @@ front-test:
     - pnpm run build
 
   cache:
-    key:
+    - key:
       files:
         - pnpm-lock.yaml
-    paths:
-      - .pnpm-store
+      paths:
+        - .pnpm-store
+
+    - key: front-turbo-cache
+      paths:
+        - .turbo/cache
 
 # ############# Servers deployments #########################
 
