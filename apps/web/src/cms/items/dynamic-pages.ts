@@ -76,7 +76,10 @@ export async function getGqlDynamicPages(request_pathname: string) {
 
   const page = Pages[0];
 
-  if (page) qWithAsset(access_token, page, 'image');
+  if (page) {
+    qWithAsset(access_token, page, 'image');
+  }
+
   await pageSectionsAdapters(page, access_token);
 
   return res;

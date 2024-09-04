@@ -194,11 +194,13 @@ function pageSectionWithContent(sections: M2APageSection[]) {
       mutate(content, memo) {
         const { plan_pricing } = content.item;
         content.item.plan_pricing_contents = <PlansPricingContent>{};
+
         plan_pricing?.push('machine_templates');
+
         plan_pricing?.forEach((key) => {
-          content.item.plan_pricing_contents &&
-            memo &&
-            (content.item.plan_pricing_contents[key] = memo[key] as any);
+          if (content.item.plan_pricing_contents && memo) {
+            content.item.plan_pricing_contents[key] = memo[key] as any;
+          }
         });
       },
     }),
