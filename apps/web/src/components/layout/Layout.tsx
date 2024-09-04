@@ -29,9 +29,9 @@ export default function Layout({
         )}
       />
 
-      <div className='main__content z-0 flex flex-col justify-center'>
+      <main className='main__content z-0 flex flex-col justify-center'>
         {children}
-      </div>
+      </main>
 
       {FooterLayout?.footer_type !== 'simple_footer' && <Footer />}
       {FooterLayout?.footer_type === 'simple_footer' && <FooterSimple />}
