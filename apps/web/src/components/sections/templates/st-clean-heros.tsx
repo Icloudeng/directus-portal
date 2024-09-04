@@ -138,7 +138,7 @@ function Header({ item, index }: ST_CleanHero & { index: number }) {
       >
         <h1
           className={cn(
-            'text-center text-[30px] sm:text-[45px] font-bold clean-hero--texts leading-10',
+            'text-center text-3xl sm:text-5xl font-bold clean-hero--texts',
             hasImage && ['lg:text-start']
           )}
         >

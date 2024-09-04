@@ -117,7 +117,7 @@ export function Publishing({
 
               {/* Content */}
               <div className='mt-8'>
-                <h1 className='mb-16 leading-10'>{translations?.title}</h1>
+                <h1 className='mb-16'>{translations?.title}</h1>
                 {item.image && (
                   <Link
                     href={item.image?.src || ''}

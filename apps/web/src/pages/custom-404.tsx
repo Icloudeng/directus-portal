@@ -22,9 +22,7 @@ export default function HomePage() {
               size={60}
               className='drop-shadow-glow animate-flicker text-red-500'
             />
-            <h1 className='mt-8 text-4xl md:text-6xl leading-10'>
-              {t('Page Not Found')}
-            </h1>
+            <h1 className='mt-8 text-4xl md:text-6xl'>{t('Page Not Found')}</h1>
             <ArrowLink className='mt-4 md:text-lg' href='/'>
               {t('Back to Home')}
             </ArrowLink>
