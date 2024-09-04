@@ -33,8 +33,8 @@ front-test:
 
   cache:
     - key:
-      files:
-        - pnpm-lock.yaml
+        files:
+          - pnpm-lock.yaml
       paths:
         - .pnpm-store
 
