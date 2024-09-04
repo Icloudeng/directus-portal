@@ -194,6 +194,7 @@ export const DumpCleanHero: ST_CleanHero[] = [
     item: {
       ...dumpDRTStatus(),
       disposition: 'text_left',
+      hero: false,
       translations: [
         {
           id: getId(),
