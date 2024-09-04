@@ -65,6 +65,10 @@ export const CMS_MODELS = {
     reusable_page_sections: "ReusablePageSections",
     reusable_page_sections_categories: "ReusablePageSectionsCategories",
   } as const,
+  directus: {
+    directus_permissions: "directus_permissions",
+    directus_files: "directus_files",
+  } as const,
   section_templates: {
     st_values: "ST_Values",
     st_navtabs: "ST_NavTabs",

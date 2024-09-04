@@ -56,8 +56,6 @@ COPY --from=builder /app/out/pnpm-lock.yaml ./pnpm-lock.yaml
 RUN rm -rf ./package.json
 
 RUN pnpm --filter-prod "./apps/cms" install --frozen-lockfile --prod
-# install concurrently
-RUN pnpm --filter-prod "./apps/cms" add concurrently --prod
 
 COPY --from=installer /app/apps/cms ./apps/cms
 COPY --from=installer /app/packages/ ./packages/

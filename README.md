@@ -36,7 +36,6 @@ For a quick start consider using docker and docker compose
 
 - `cp apps/cms/.env.sample apps/cms/.env`
 
-
 ### Build Packages
 
 - `pnpm build`
@@ -45,22 +44,16 @@ For a quick start consider using docker and docker compose
 
 - `pnpm run -r setup`
 
-### Create App User
-
-- `pnpm run -r create-app-user`
-
 ## Server
 
 - `pnpm dev --filter=web --filter=cms --filter=@packages/contracts`
 
 Starts development servers for (cms: http://localhost:8055/ and web: http://localhost:3000/)
 
-
 **Admin Account**
 
 - email: admin@example.com
 - password: password
-
 
 ## Monorepos
 
