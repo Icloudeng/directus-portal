@@ -2,8 +2,8 @@ import { Directus } from '@directus/sdk';
 
 import {
   DIRECTUS_EMAIL,
-  DIRECTUS_PASSWORD,
   DIRECTUS_HOST,
+  DIRECTUS_PASSWORD,
 } from '@/app/constant/env';
 
 const directus = new Directus(DIRECTUS_HOST);
