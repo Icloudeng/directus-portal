@@ -35,8 +35,8 @@ export const METAFILE_PATH = path.resolve(DOCS_APP_PATH, "meta/meta.json");
 
 export const INTRO_DOCS_FILE = path.resolve(CONTENT_DOCS_PATH, "intro.md");
 
-const url = process.env.DIRECTUS_URL || "";
-export const DIRECTUS_URL = url.endsWith("/")
+const url = process.env.DIRECTUS_PUBLIC_URL || "";
+export const DIRECTUS_PUBLIC_URL = url.endsWith("/")
   ? url.slice(0, url.length - 1)
   : url;
 

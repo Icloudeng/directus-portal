@@ -2,7 +2,7 @@ import type { MDDCNamespace } from "@packages/contracts";
 // import type { ThemeConfig } from "@docusaurus/preset-classic";
 import type { CompanyDetail, MDLang } from "../cms/type";
 import { NamespaceBaseLink, reArrangeNamespace } from "./namespaces";
-import { DIRECTUS_URL } from "../constants";
+import { DIRECTUS_PUBLIC_URL } from "../constants";
 import { cmsTransTransformer, transKey, Translations } from "./translations";
 import utils from "../utils";
 
@@ -78,7 +78,7 @@ export function generateNavbarContent({
    */
   if (companyDetails && companyDetails.logo) {
     meta.navbar.logo = {
-      src: `${DIRECTUS_URL}/assets/${
+      src: `${DIRECTUS_PUBLIC_URL}/assets/${
         companyDetails.logo.id
       }?width=${50}&height=${50}`,
       alt: companyDetails.website_title || "",

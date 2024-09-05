@@ -54,10 +54,10 @@ spec:
                 configMapKeyRef:
                   key: DIRECTUS_PASSWORD
                   name: docs-env
-            - name: DIRECTUS_URL
+            - name: DIRECTUS_PUBLIC_URL
               valueFrom:
                 configMapKeyRef:
-                  key: DIRECTUS_URL
+                  key: DIRECTUS_PUBLIC_URL
                   name: docs-env
             - name: DOCS_APP_PM2_NAME
               valueFrom:

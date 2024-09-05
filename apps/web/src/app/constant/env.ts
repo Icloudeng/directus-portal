@@ -12,7 +12,7 @@ export const COMPANY_NAME = process.env.NEXT_PUBLIC_COMPANY_NAME;
 export const WEBSITE_URL = process.env.NEXT_PUBLIC_WEBSITE_URL;
 
 // CMS directus env vars
-export const DIRECTUS_URL = process.env.DIRECTUS_URL || '';
+export const DIRECTUS_PUBLIC_URL = process.env.DIRECTUS_PUBLIC_URL || '';
 export const DIRECTUS_HOST = process.env.DIRECTUS_HOST || '';
 export const DIRECTUS_EMAIL = process.env.DIRECTUS_EMAIL || '';
 export const DIRECTUS_PASSWORD = process.env.DIRECTUS_PASSWORD || '';

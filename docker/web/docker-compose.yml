@@ -24,7 +24,7 @@ services:
       - DIRECTUS_EMAIL=admin@example.com
       - DIRECTUS_PASSWORD=password
       - DIRECTUS_HOST=http://cms:8055
-      - DIRECTUS_URL=http://cms:8055
+      - DIRECTUS_PUBLIC_URL=http://cms:8055
     volumes:
       - web-cache:/app/apps/web/.next/cache:rw
     ports:

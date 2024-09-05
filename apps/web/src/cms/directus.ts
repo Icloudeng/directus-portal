@@ -3,10 +3,10 @@ import { Directus } from '@directus/sdk';
 import {
   DIRECTUS_EMAIL,
   DIRECTUS_PASSWORD,
-  DIRECTUS_URL,
+  DIRECTUS_HOST,
 } from '@/app/constant/env';
 
-const directus = new Directus(DIRECTUS_URL);
+const directus = new Directus(DIRECTUS_HOST);
 
 export async function getDirectusClient() {
   await directus.auth.refreshIfExpired();

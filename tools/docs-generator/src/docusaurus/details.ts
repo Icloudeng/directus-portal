@@ -1,5 +1,5 @@
 import { CompanyDetail } from "../cms/type";
-import { DIRECTUS_URL, WEBSITE_URL } from "../constants";
+import { DIRECTUS_PUBLIC_URL, WEBSITE_URL } from "../constants";
 
 export type DetailContent = {
   meta: {
@@ -36,7 +36,7 @@ export function generateDetailContent(companyDetails: CompanyDetail) {
    * Set favicon (use website title from cms)
    */
   if (companyDetails && companyDetails.logo) {
-    meta.favicon = `${DIRECTUS_URL}/assets/${
+    meta.favicon = `${DIRECTUS_PUBLIC_URL}/assets/${
       companyDetails.logo.id
     }?width=${50}&height=${50}`;
   }

@@ -30,7 +30,7 @@ spec:
               value: admin@example.com
             - name: DIRECTUS_PASSWORD
               value: password
-            - name: DIRECTUS_URL
+            - name: DIRECTUS_PUBLIC_URL
               value: http://cms:8055
           image: registry-hub.smatflow.net/smatflow-projects/smatflow-portal/web:latest
           name: web
