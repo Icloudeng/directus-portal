@@ -24,7 +24,7 @@ spec:
     spec:
       containers:
         - env:
-            - name: CMS_URL
+            - name: DIRECTUS_HOST
               value: http://cms:8055
             - name: DIRECTUS_EMAIL
               value: admin@example.com

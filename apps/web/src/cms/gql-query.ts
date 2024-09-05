@@ -7,7 +7,7 @@ import {
   QueryWithTranslation,
 } from '@packages/contracts';
 
-import { CMS_URL } from '@/app/constant/env';
+import { DIRECTUS_HOST } from '@/app/constant/env';
 
 export const qWithStatus: DRTQueryT<DRTStatus> = {
   id: true,
@@ -57,8 +57,6 @@ export function qWithAsset<T extends { [x: string]: MDWithAsset | unknown }>(
 ) {
   const { item, imageKey = 'image', preset, access_token } = params;
 
-  const cms_url = CMS_URL;
-
   if (!item[imageKey]) return item;
 
   const asset = item[imageKey] as unknown as MDWithAsset;
@@ -79,7 +77,9 @@ export function qWithAsset<T extends { [x: string]: MDWithAsset | unknown }>(
     urlParams.set('access_token', access_token);
   }
 
-  const origin = cms_url.endsWith('/') ? cms_url : cms_url + '/';
+  const origin = DIRECTUS_HOST.endsWith('/')
+    ? DIRECTUS_HOST
+    : DIRECTUS_HOST + '/';
 
   asset.src = `${origin}assets/${asset.id}?${urlParams.toString()}`;
 
