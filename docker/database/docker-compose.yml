@@ -1,4 +1,4 @@
-version: '3.8'
+version: "3.8"
 services:
   db:
     image: postgis/postgis:12-3.2-alpine
@@ -23,7 +23,7 @@ services:
     env_file:
       - ../../tools/typesense/docker.env
     ports:
-      - 8108:8108
+      - 127.0.0.1:8108:8108
     volumes:
       - typesense-data:/data
 
