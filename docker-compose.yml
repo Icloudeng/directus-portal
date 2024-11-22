@@ -1,4 +1,3 @@
-version: '3.8'
 services:
   db:
     extends:
@@ -64,5 +63,3 @@ volumes:
   docs-build:
   docs-scraper-meta:
   docs-docusaurus:
-
-

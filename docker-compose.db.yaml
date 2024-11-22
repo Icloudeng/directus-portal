@@ -1,25 +1,24 @@
-version: "3.8"
 services:
   db:
     extends:
       file: docker/database/docker-compose.yml
       service: db
     ports:
-      - 127.0.0.1:5432:5432
+      - 5432:5432
 
   redis:
     extends:
       file: docker/database/docker-compose.yml
       service: redis
     ports:
-      - 127.0.0.1:6379:6379
+      - 6379:6379
 
   typesense:
     extends:
       file: docker/database/docker-compose.yml
       service: typesense
     ports:
-      - 127.0.0.1:8108:8108
+      - 8108:8108
 
 volumes:
   db-data:
