@@ -62,7 +62,7 @@ export default function Seo({ dynamicPage, ...props }: SeoProps) {
 
   const url = `${meta.url}${page?.url || props.pathname || router.asPath}`;
   const description = $description || meta.description;
-  const image = meta.image || $image?.src;
+  const image = meta.image || nextAsset({ url: $image?.src, width: 1920 });
 
   return (
     <Head>

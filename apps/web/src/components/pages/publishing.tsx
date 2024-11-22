@@ -8,6 +8,7 @@ import { FaRegShareSquare } from 'react-icons/fa';
 import { COMPANY_NAME } from '@/app/constant/env';
 import { useSharedData } from '@/app/store';
 import { toLocaleDateString } from '@/app/utils/helpers';
+import { nextAsset } from '@/app/utils/next-asset';
 import { useMut } from '@/cms/mut';
 
 import Seo from '../Seo';
@@ -36,11 +37,13 @@ export function Publishing({
       .catch(console.warn);
   }, [CompanyDetails?.company_name, translations?.title]);
 
+  const image = nextAsset({ url: item.image?.src, width: 1920 });
+
   return (
     <>
       <Seo
         templateTitle={translations?.title}
-        image={item.image?.src}
+        image={image}
         suffix={t(type)}
         description={translations?.summary}
         keywords={item.tags || []}
@@ -120,7 +123,7 @@ export function Publishing({
                 <h1 className='mb-16'>{translations?.title}</h1>
                 {item.image && (
                   <Link
-                    href={item.image?.src || ''}
+                    href={image || ''}
                     target='_blank'
                     className='relative w-full h-[284px] sm:h-[384px] lg:h-[484px] mb-16 block'
                   >
